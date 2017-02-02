@@ -1,0 +1,26 @@
+# don't ignore follow file and dir
+
+# ignore some file and dir
+/Downloads
+.bash_history
+.bash_logout
+.bashrc
+/.cache/
+/.config/
+/.dbus/
+/.ecryptfs/
+/.gconf/
+/.gnupg/
+.ICEauthority
+.lesshst
+/.local/
+/.mozilla/
+.pam_environment
+/.presage/
+/.Private/
+/.ssh/
+.sudo_as_admin_successful
+/.sunpinyin/
+*.txt
+*.swp
+*.bak
