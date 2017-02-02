@@ -1,0 +1,5 @@
+Downloads/
+├── Firefox-latest-x86_64(1).tar.bz2
+└── stardict.tar
+
+0 directories, 2 files
