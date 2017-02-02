@@ -8,7 +8,7 @@
 /.cache/
 /.config/
 /.dbus/
-/.ecryptfs
+/.ecryptfs/
 /.gconf/
 /.gnupg/
 .ICEauthority
