@@ -8,7 +8,7 @@
 /.cache/
 /.config/
 /.dbus/
-/.ecryptfs/
+/.ecryptfs
 /.gconf/
 /.gnupg/
 .ICEauthority
@@ -21,6 +21,6 @@
 /.ssh/
 .sudo_as_admin_successful
 /.sunpinyin/
-*.txt
-*.swp
-*.bak
+./*.txt
+./*.swp
+./*.bak
