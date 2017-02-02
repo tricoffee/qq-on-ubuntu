@@ -1,14 +1,19 @@
 # don't ignore follow file and dir
 
 # ignore some file and dir
-/Downloads
+/Downloads/
 .bash_history
 .bash_logout
 .bashrc
 /.cache/
 /.config/
 /.dbus/
+
+# need to config
+# /.ecryptfs/
+# need to config
 /.ecryptfs/
+
 /.gconf/
 /.gnupg/
 .ICEauthority
@@ -17,10 +22,22 @@
 /.mozilla/
 .pam_environment
 /.presage/
+
+# need to config
+# /.Private/
+# need to config
 /.Private/
+
 /.ssh/
 .sudo_as_admin_successful
 /.sunpinyin/
 ./*.txt
+
+# need to config
+# ./*.swp
+# ./*.bak
+# need to config
 ./*.swp
 ./*.bak
+
+/桌面/
