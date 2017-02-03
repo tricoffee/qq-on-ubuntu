@@ -1,4 +1,4 @@
-Downloads/
+/home/qq/Downloads/
 ├── Firefox-latest-x86_64(1).tar.bz2
 └── stardict.tar
 

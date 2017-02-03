@@ -1,0 +1,12 @@
+/home/qq/Note/
+├── backup
+├── git
+│   └── push-an-exist-local-repository-to-remote-server.txt
+└── ubuntu
+    ├── boot-directory-clean.txt
+    ├── download-directory-content-list.txt
+    ├── firefox
+    │   └── replace-system-default-firefox.txt
+    └── note-directory-content-list.txt
+
+4 directories, 5 files
