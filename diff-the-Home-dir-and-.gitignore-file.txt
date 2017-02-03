@@ -75,7 +75,7 @@ xclipboard
 /.ssh/
 .sudo_as_admin_successful
 /.sunpinyin/
-./*.txt
+*.txt
 
 # need to config
 # ./*.swp
