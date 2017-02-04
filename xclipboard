@@ -1,1 +1,0 @@
-ls -la | awk {print } | grep -E -v "(\.|Shell)"
