@@ -1,6 +1,8 @@
 /home/qq/Note/
 ├── backup
 ├── git
+│   ├── git-ignore.txt
+│   ├── git-remove-remote-repository-file.txt
 │   └── push-an-exist-local-repository-to-remote-server.txt
 └── ubuntu
     ├── boot-directory-clean.txt
@@ -9,4 +11,4 @@
     │   └── replace-system-default-firefox.txt
     └── note-directory-content-list.txt
 
-4 directories, 5 files
+4 directories, 7 files

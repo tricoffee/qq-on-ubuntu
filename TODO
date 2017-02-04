@@ -1,0 +1,7 @@
+1. 继续测试.gitignore文件的属性
+	1)使用'!/DIR/'表达式可以对过滤这个目录的行为取反
+	2)使用'man gitignore'命令查询过滤规则
+
+2. 继续改进ShellScript/backup.sh
+	1)使用bash命令去除cat /etc/issue命令的回车换行符号输出
+	2)使用awk命令去除cat /etc/issue命令的回车换行符号输出
