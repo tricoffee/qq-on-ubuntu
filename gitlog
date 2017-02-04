@@ -1,0 +1,14 @@
+commit 540e0bc180076b24bae1ad3361273133e485a407
+Author: qiaoqiangv <qiaoqiangv@126.com>
+Date:   Sat Feb 4 21:00:49 2017 +0800
+
+    backup on Ubuntu 16.04.1
+      at 2017年 02月 04日 星期六 21:00:47 CSTi
+
+commit f979d80733c6b1a7838aa6f4b260b3e39f3d10f4
+Author: qiaoqiangv <qiaoqiangv@126.com>
+Date:   Sat Feb 4 21:00:09 2017 +0800
+
+    backup on "${MACHINE_VERSION}" at "${DATE}i"
+
+commit 6a6bcad47541d0ced7db92e478b7f732717d592d

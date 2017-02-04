@@ -12,7 +12,7 @@
 # need to config
 # /.ecryptfs/
 # need to config
-.ecryptfs
+/.ecryptfs
 
 /.gconf/
 /.gnupg/
@@ -26,7 +26,7 @@
 # need to config
 # /.Private/
 # need to config
-.Private
+/.Private
 
 /.ssh/
 .sudo_as_admin_successful
@@ -37,7 +37,7 @@
 # ./*.swp
 # ./*.bak
 # need to config
-./*.swp
-./*.bak
+/*.swp
+/*.bak
 
 /桌面/
