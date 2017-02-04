@@ -9,6 +9,7 @@
     ├── download-directory-content-list.txt
     ├── firefox
     │   └── replace-system-default-firefox.txt
+    ├── github-directory-content-list.txt
     └── note-directory-content-list.txt
 
-4 directories, 7 files
+4 directories, 8 files

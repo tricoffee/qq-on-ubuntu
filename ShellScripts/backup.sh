@@ -34,7 +34,7 @@
 
 	git pull
 	git add -A
-	git commit -m 'backup on "${MACHINE_VERSION}" at "${DATE}i"'
+	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}i"
 	git push
 
 	cd -
