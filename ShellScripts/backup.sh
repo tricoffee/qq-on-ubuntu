@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # use 'tree' command to detach the Download directory's contant
-	tree ~/Downloads/ > ~/Note/ubuntu/download-directory-content-list.txt
-	tree ~/Note/ > ~/Note/ubuntu/note-directory-content-list.txt
-	tree ~/Github/ >> ~/Note/ubuntu/github-directory-content-list.txt
+	tree ~/Downloads/ > ~/Note/backup/download-directory-content-list.txt
+	tree ~/Note/ > ~/Note/backup/note-directory-content-list.txt
+	tree ~/Github/ >> ~/Note/backup/github-directory-content-list.txt
 
 # use system command to checkout what different between the remote repository and local repository
 	DIFF_HOMEDIR_AND_GITIGNORE=~/diff-the-Home-dir-and-.gitignore-file.txt
@@ -32,7 +32,7 @@
 
 	cd ~/
 
-	git pull
+	#git pull
 	git add -A
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"
 	git push

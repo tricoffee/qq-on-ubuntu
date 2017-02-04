@@ -1,0 +1,17 @@
+/home/qq/Note/
+├── backup
+│   ├── download-directory-content-list.txt
+│   ├── github-directory-content-list.txt
+│   └── note-directory-content-list.txt
+├── git
+│   ├── git-ignore.txt
+│   ├── git-push-an-exist-local-repository-to-remote-server.txt
+│   ├── git-remove-remote-repository-file.txt
+│   └── git-retract-commit.txt
+└── ubuntu
+    ├── boot
+    │   └── boot-directory-clean.txt
+    └── firefox
+        └── replace-system-default-firefox.txt
+
+5 directories, 9 files

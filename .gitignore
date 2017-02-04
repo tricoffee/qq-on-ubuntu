@@ -2,6 +2,7 @@
 
 # ignore some file and dir
 /Downloads/
+/Github/
 .bash_history
 .bash_logout
 .bashrc
