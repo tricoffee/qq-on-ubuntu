@@ -27,7 +27,9 @@
 	echo "[end]" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
 
 # use 'git' command backup Home folder to remote repository of the github
-	MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}')
+	# this two method to get machine version have equal result
+	# MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | tr -d '\n')
+	MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | awk '{{printf "%s",$0}}')
 	DATE=$(date)
 
 	cd ~/
