@@ -2,6 +2,6 @@
 	1)使用'!/DIR/'表达式可以对过滤这个目录的行为取反
 	2)使用'man gitignore'命令查询过滤规则
 
-2. 继续改进ShellScript/backup.sh
-	1)使用bash命令去除cat /etc/issue命令的回车换行符号输出
-	2)使用awk命令去除cat /etc/issue命令的回车换行符号输出
+2. 尝试修正ideviceinstaller编译时main函数中比较一个有符号整形数和无符号整形数的错误
+3. 为emacs添加cscope插件
+4. 实现自动添加TODO内容的脚本 --- ShellScript/add-TODO-list.sh

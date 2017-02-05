@@ -1,0 +1,5 @@
+ls
+cp .emacs .emacs.d/
+mv .emacs.d/.emacs .emacs.d/inie.el
+mv .emacs .emacs_bak
+ls

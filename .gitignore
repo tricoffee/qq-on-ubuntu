@@ -23,6 +23,8 @@
 /.mozilla/
 .pam_environment
 /.presage/
+/.wine/
+/.local/
 
 # need to config
 # /.Private/

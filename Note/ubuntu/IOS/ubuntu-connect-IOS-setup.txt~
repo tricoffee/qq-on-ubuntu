@@ -1,0 +1,33 @@
+与iPad/iPhone同步 无需越狱 2013-08-02 10:48:57
+
+分类： LINUX
+
+libimobiledevice提供了在Linux中访问iOS设备的方案，只要将iPad或iPhone与电脑连接，无需越狱即可互传文件。其最新开发版支持目前最新的iOS 5.1.1 （2012年6月16日数据，最新信息请前往其网站查询）。
+功能
+
+除了互传文件外，libimobiledevice 还支持访问应用程序的文档空间、备份与恢复乃至利用iOS设备上网等，但尚不支持管理设备中的相册和音乐库等。最新的功能支持信息可在其首页下方看到。
+安装
+
+有些发行版，如Ubuntu，已经内置了该软件，故可直接与iPad等设备连接。未预装该软件的其它发行版则需安装一系列软件（包），如
+
+ libimobiledevice, ifuse
+ 提供一个可访问iOS设备的用户空间文件系统，这些工具还依赖usbmuxd，用于管理与iOS设备的USB连接。
+
+gvfs-afc, gvfs-afp
+如果使用GNOME，强烈推荐安装GVFS的这两个后端，这样iOS设备会在连接后被自动挂载。
+
+注意发行版仓库中的版本可能不够新，此时需要自行安装新版工具，如Archlinux用户可直接安装libimobiledevice-git。
+
+另外，视发行版不同，安装后可能需要赋予用户相应的权限。如Archlinux中，需要把用户加入usbmux组[2]。
+使用
+
+如果正确安装了上述软件，先以root身份运行 usbmuxd
+
+$ sudo usbmuxd
+
+再连接iPad或iPhone，GNOME应该就能自动辨识出相应设备了。
+
+如果没有使用GNOME+GVFS，可使用ifuse命令手动挂载，如：
+
+$ mkdir ~/iOS
+$ ifuse ~/iOS
