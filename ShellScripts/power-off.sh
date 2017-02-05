@@ -1,3 +1,3 @@
 #!/bin/bash
-	/home/qq/ShellScript/backup.sh
+	/home/qq/ShellScripts/backup.sh
 	gnome-session-quit --power-off --force --no-prompt 
