@@ -1,28 +1,47 @@
 /home/qq/Note/
 ├── backup
+│   ├── book-directory-content-list.txt
 │   ├── download-directory-content-list.txt
 │   ├── github-directory-content-list.txt
-│   └── note-directory-content-list.txt
+│   ├── note-directory-content-list.txt
+│   └── old-disk-data
+│       └── temp.txt
 ├── emacs
+│   ├── emacs-usage.txt
 │   └── themes
 │       └── some-emacs-theme.txt
+├── exercise
+│   └── exercise.txt
 ├── git
 │   ├── git-ignore.txt
 │   ├── git-push-an-exist-local-repository-to-remote-server.txt
 │   ├── git-remove-remote-repository-file.txt
 │   └── git-retract-commit.txt
-└── ubuntu
-    ├── boot
-    │   └── boot-directory-clean.txt
-    ├── console
-    │   └── console-zh-encoding-support.txt
-    ├── firefox
-    │   └── replace-system-default-firefox.txt
-    ├── IOS
-    │   ├── ubuntu-connect-IOS-setup.txt
-    │   ├── ubuntu-connect-IOS-setup.txt~
-    │   └── ubuntu-connect-IOS-support.txt
-    └── shellScript
-        └── get-sh-argument.txt
+├── ubuntu
+│   ├── boot
+│   │   └── boot-directory-clean.txt
+│   ├── console
+│   │   └── console-zh-encoding-support.txt
+│   ├── DWM
+│   │   ├── dmenu-usage.txt
+│   │   └── dwm-usage.txt
+│   ├── firefox
+│   │   └── replace-system-default-firefox.txt
+│   ├── IOS
+│   │   ├── ubuntu-connect-IOS-setup.txt
+│   │   ├── ubuntu-connect-IOS-setup.txt~
+│   │   └── ubuntu-connect-IOS-support.txt
+│   ├── shellScript
+│   │   └── get-sh-argument.txt
+│   └── wget
+│       └── wget-usage.txt
+├── vim
+│   └── vim-usage.txt
+├── virtualbox
+│   └── modify-vboxharddisk-size.txt
+├── VPN
+│   └── greevpnserver.txt
+└── website
+    └── ubuntu-development-correlate-website.txt
 
-10 directories, 15 files
+18 directories, 26 files

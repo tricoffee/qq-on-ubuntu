@@ -1,0 +1,4 @@
+1.
+    $ ./VBoxManage.exe showhdinfo v-box\ machine/ubuntu-16.04/ubuntu-12.04.5.vdi
+2.
+    $ ./VBoxManage.exe modifyhd v-box\ machine/ubuntu-16.04/ubuntu-12.04.5.vdi --resize YOU_NEED_SIZE
