@@ -2488,3 +2488,826 @@
         └── Makefile.in
 
 45 directories, 775 files
+/home/qq/Github/
+├── ideviceinstaller
+│   ├── aclocal.m4
+│   ├── AUTHORS
+│   ├── autogen.sh
+│   ├── autom4te.cache
+│   │   ├── output.0
+│   │   ├── output.1
+│   │   ├── requests
+│   │   ├── traces.0
+│   │   └── traces.1
+│   ├── compile -> /usr/share/automake-1.15/compile
+│   ├── config.guess -> /usr/share/automake-1.15/config.guess
+│   ├── config.h
+│   ├── config.h.in
+│   ├── config.log
+│   ├── config.status
+│   ├── config.sub -> /usr/share/automake-1.15/config.sub
+│   ├── configure
+│   ├── configure.ac
+│   ├── COPYING
+│   ├── depcomp -> /usr/share/automake-1.15/depcomp
+│   ├── install-sh -> /usr/share/automake-1.15/install-sh
+│   ├── libtool
+│   ├── ltmain.sh -> /usr/share/libtool/build-aux/ltmain.sh
+│   ├── m4
+│   │   ├── as-compiler-flag.m4
+│   │   ├── libtool.m4 -> /usr/share/aclocal/libtool.m4
+│   │   ├── lt~obsolete.m4 -> /usr/share/aclocal/lt~obsolete.m4
+│   │   ├── ltoptions.m4 -> /usr/share/aclocal/ltoptions.m4
+│   │   ├── ltsugar.m4 -> /usr/share/aclocal/ltsugar.m4
+│   │   └── ltversion.m4 -> /usr/share/aclocal/ltversion.m4
+│   ├── Makefile
+│   ├── Makefile.am
+│   ├── Makefile.in
+│   ├── man
+│   │   ├── ideviceinstaller.1
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   └── Makefile.in
+│   ├── missing -> /usr/share/automake-1.15/missing
+│   ├── NEWS
+│   ├── README
+│   ├── src
+│   │   ├── ideviceinstaller.c
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   └── Makefile.in
+│   └── stamp-h1
+├── ifuse
+│   ├── aclocal.m4
+│   ├── AUTHORS
+│   ├── autogen.sh
+│   ├── autom4te.cache
+│   │   ├── output.0
+│   │   ├── output.1
+│   │   ├── requests
+│   │   ├── traces.0
+│   │   └── traces.1
+│   ├── compile -> /usr/share/automake-1.15/compile
+│   ├── config.h
+│   ├── config.h.in
+│   ├── config.log
+│   ├── config.status
+│   ├── configure
+│   ├── configure.ac
+│   ├── COPYING
+│   ├── depcomp -> /usr/share/automake-1.15/depcomp
+│   ├── docs
+│   │   ├── ifuse.1
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   └── Makefile.in
+│   ├── install-sh -> /usr/share/automake-1.15/install-sh
+│   ├── Makefile
+│   ├── Makefile.am
+│   ├── Makefile.in
+│   ├── missing -> /usr/share/automake-1.15/missing
+│   ├── NEWS
+│   ├── README
+│   ├── src
+│   │   ├── ifuse
+│   │   ├── ifuse.c
+│   │   ├── ifuse.o
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   └── Makefile.in
+│   └── stamp-h1
+├── libimobiledevice
+│   ├── aclocal.m4
+│   ├── AUTHORS
+│   ├── autogen.sh
+│   ├── autom4te.cache
+│   │   ├── output.0
+│   │   ├── output.1
+│   │   ├── requests
+│   │   ├── traces.0
+│   │   └── traces.1
+│   ├── common
+│   │   ├── debug.c
+│   │   ├── debug.h
+│   │   ├── debug.lo
+│   │   ├── debug.o
+│   │   ├── libinternalcommon.la
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── socket.c
+│   │   ├── socket.h
+│   │   ├── socket.lo
+│   │   ├── socket.o
+│   │   ├── thread.c
+│   │   ├── thread.h
+│   │   ├── thread.lo
+│   │   ├── thread.o
+│   │   ├── userpref.c
+│   │   ├── userpref.h
+│   │   ├── userpref.lo
+│   │   ├── userpref.o
+│   │   ├── utils.c
+│   │   ├── utils.h
+│   │   ├── utils.lo
+│   │   └── utils.o
+│   ├── compile -> /usr/share/automake-1.15/compile
+│   ├── config.guess -> /usr/share/automake-1.15/config.guess
+│   ├── config.h
+│   ├── config.h.in
+│   ├── config.log
+│   ├── config.status
+│   ├── config.sub -> /usr/share/automake-1.15/config.sub
+│   ├── configure
+│   ├── configure.ac
+│   ├── COPYING
+│   ├── COPYING.LESSER
+│   ├── cython
+│   │   ├── afc.pxi
+│   │   ├── debugserver.pxi
+│   │   ├── diagnostics_relay.pxi
+│   │   ├── file_relay.pxi
+│   │   ├── heartbeat.pxi
+│   │   ├── house_arrest.pxi
+│   │   ├── imobiledevice.pxd
+│   │   ├── imobiledevice.pyx
+│   │   ├── installation_proxy.pxi
+│   │   ├── lockdown.pxi
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── misagent.pxi
+│   │   ├── mobilebackup2.pxi
+│   │   ├── mobilebackup.pxi
+│   │   ├── mobile_image_mounter.pxi
+│   │   ├── mobilesync.pxi
+│   │   ├── notification_proxy.pxi
+│   │   ├── restore.pxi
+│   │   ├── sbservices.pxi
+│   │   ├── screenshotr.pxi
+│   │   └── webinspector.pxi
+│   ├── depcomp -> /usr/share/automake-1.15/depcomp
+│   ├── docs
+│   │   ├── idevicebackup.1
+│   │   ├── idevicebackup2.1
+│   │   ├── idevicecrashreport.1
+│   │   ├── idevicedate.1
+│   │   ├── idevicedebug.1
+│   │   ├── idevicedebugserverproxy.1
+│   │   ├── idevicediagnostics.1
+│   │   ├── ideviceenterrecovery.1
+│   │   ├── idevice_id.1
+│   │   ├── ideviceimagemounter.1
+│   │   ├── ideviceinfo.1
+│   │   ├── idevicename.1
+│   │   ├── idevicenotificationproxy.1
+│   │   ├── idevicepair.1
+│   │   ├── ideviceprovision.1
+│   │   ├── idevicescreenshot.1
+│   │   ├── idevicesyslog.1
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   └── Makefile.in
+│   ├── doxygen.cfg
+│   ├── doxygen.cfg.in
+│   ├── include
+│   │   ├── asprintf.h
+│   │   ├── endianness.h
+│   │   ├── libimobiledevice
+│   │   │   ├── afc.h
+│   │   │   ├── debugserver.h
+│   │   │   ├── diagnostics_relay.h
+│   │   │   ├── file_relay.h
+│   │   │   ├── heartbeat.h
+│   │   │   ├── house_arrest.h
+│   │   │   ├── installation_proxy.h
+│   │   │   ├── libimobiledevice.h
+│   │   │   ├── lockdown.h
+│   │   │   ├── misagent.h
+│   │   │   ├── mobilebackup2.h
+│   │   │   ├── mobilebackup.h
+│   │   │   ├── mobile_image_mounter.h
+│   │   │   ├── mobilesync.h
+│   │   │   ├── notification_proxy.h
+│   │   │   ├── property_list_service.h
+│   │   │   ├── restore.h
+│   │   │   ├── sbservices.h
+│   │   │   ├── screenshotr.h
+│   │   │   ├── service.h
+│   │   │   ├── syslog_relay.h
+│   │   │   └── webinspector.h
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   └── Makefile.in
+│   ├── install-sh -> /usr/share/automake-1.15/install-sh
+│   ├── libtool
+│   ├── ltmain.sh -> /usr/share/libtool/build-aux/ltmain.sh
+│   ├── m4
+│   │   ├── ac_pkg_cython.m4
+│   │   ├── ac_python_devel.m4
+│   │   ├── as-compiler-flag.m4
+│   │   ├── ax_pthread.m4
+│   │   ├── ax_swig_enable_cxx.m4
+│   │   ├── cython_python.m4
+│   │   ├── libtool.m4 -> /usr/share/aclocal/libtool.m4
+│   │   ├── lt~obsolete.m4 -> /usr/share/aclocal/lt~obsolete.m4
+│   │   ├── ltoptions.m4 -> /usr/share/aclocal/ltoptions.m4
+│   │   ├── ltsugar.m4 -> /usr/share/aclocal/ltsugar.m4
+│   │   └── ltversion.m4 -> /usr/share/aclocal/ltversion.m4
+│   ├── Makefile
+│   ├── Makefile.am
+│   ├── Makefile.in
+│   ├── missing -> /usr/share/automake-1.15/missing
+│   ├── NEWS
+│   ├── README
+│   ├── src
+│   │   ├── afc.c
+│   │   ├── afc.h
+│   │   ├── afc.lo
+│   │   ├── afc.o
+│   │   ├── debugserver.c
+│   │   ├── debugserver.h
+│   │   ├── debugserver.lo
+│   │   ├── debugserver.o
+│   │   ├── device_link_service.c
+│   │   ├── device_link_service.h
+│   │   ├── device_link_service.lo
+│   │   ├── device_link_service.o
+│   │   ├── diagnostics_relay.c
+│   │   ├── diagnostics_relay.h
+│   │   ├── diagnostics_relay.lo
+│   │   ├── diagnostics_relay.o
+│   │   ├── file_relay.c
+│   │   ├── file_relay.h
+│   │   ├── file_relay.lo
+│   │   ├── file_relay.o
+│   │   ├── heartbeat.c
+│   │   ├── heartbeat.h
+│   │   ├── heartbeat.lo
+│   │   ├── heartbeat.o
+│   │   ├── house_arrest.c
+│   │   ├── house_arrest.h
+│   │   ├── house_arrest.lo
+│   │   ├── house_arrest.o
+│   │   ├── idevice.c
+│   │   ├── idevice.h
+│   │   ├── idevice.lo
+│   │   ├── idevice.o
+│   │   ├── installation_proxy.c
+│   │   ├── installation_proxy.h
+│   │   ├── installation_proxy.lo
+│   │   ├── installation_proxy.o
+│   │   ├── libimobiledevice-1.0.pc
+│   │   ├── libimobiledevice-1.0.pc.in
+│   │   ├── libimobiledevice.la
+│   │   ├── lockdown.c
+│   │   ├── lockdown.h
+│   │   ├── lockdown.lo
+│   │   ├── lockdown.o
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── misagent.c
+│   │   ├── misagent.h
+│   │   ├── misagent.lo
+│   │   ├── misagent.o
+│   │   ├── mobilebackup2.c
+│   │   ├── mobilebackup2.h
+│   │   ├── mobilebackup2.lo
+│   │   ├── mobilebackup2.o
+│   │   ├── mobilebackup.c
+│   │   ├── mobilebackup.h
+│   │   ├── mobilebackup.lo
+│   │   ├── mobilebackup.o
+│   │   ├── mobile_image_mounter.c
+│   │   ├── mobile_image_mounter.h
+│   │   ├── mobile_image_mounter.lo
+│   │   ├── mobile_image_mounter.o
+│   │   ├── mobilesync.c
+│   │   ├── mobilesync.h
+│   │   ├── mobilesync.lo
+│   │   ├── mobilesync.o
+│   │   ├── notification_proxy.c
+│   │   ├── notification_proxy.h
+│   │   ├── notification_proxy.lo
+│   │   ├── notification_proxy.o
+│   │   ├── property_list_service.c
+│   │   ├── property_list_service.h
+│   │   ├── property_list_service.lo
+│   │   ├── property_list_service.o
+│   │   ├── restore.c
+│   │   ├── restore.h
+│   │   ├── restore.lo
+│   │   ├── restore.o
+│   │   ├── sbservices.c
+│   │   ├── sbservices.h
+│   │   ├── sbservices.lo
+│   │   ├── sbservices.o
+│   │   ├── screenshotr.c
+│   │   ├── screenshotr.h
+│   │   ├── screenshotr.lo
+│   │   ├── screenshotr.o
+│   │   ├── service.c
+│   │   ├── service.h
+│   │   ├── service.lo
+│   │   ├── service.o
+│   │   ├── syslog_relay.c
+│   │   ├── syslog_relay.h
+│   │   ├── syslog_relay.lo
+│   │   ├── syslog_relay.o
+│   │   ├── webinspector.c
+│   │   ├── webinspector.h
+│   │   ├── webinspector.lo
+│   │   └── webinspector.o
+│   ├── stamp-h1
+│   └── tools
+│       ├── idevicebackup
+│       ├── idevicebackup2
+│       ├── idevicebackup2.c
+│       ├── idevicebackup2-idevicebackup2.o
+│       ├── idevicebackup.c
+│       ├── idevicebackup-idevicebackup.o
+│       ├── idevicecrashreport
+│       ├── idevicecrashreport.c
+│       ├── idevicecrashreport-idevicecrashreport.o
+│       ├── idevicedate
+│       ├── idevicedate.c
+│       ├── idevicedate-idevicedate.o
+│       ├── idevicedebug
+│       ├── idevicedebug.c
+│       ├── idevicedebug-idevicedebug.o
+│       ├── idevicedebugserverproxy
+│       ├── idevicedebugserverproxy.c
+│       ├── idevicedebugserverproxy-idevicedebugserverproxy.o
+│       ├── idevicediagnostics
+│       ├── idevicediagnostics.c
+│       ├── idevicediagnostics-idevicediagnostics.o
+│       ├── ideviceenterrecovery
+│       ├── ideviceenterrecovery.c
+│       ├── ideviceenterrecovery-ideviceenterrecovery.o
+│       ├── idevice_id
+│       ├── idevice_id.c
+│       ├── idevice_id-idevice_id.o
+│       ├── ideviceimagemounter
+│       ├── ideviceimagemounter.c
+│       ├── ideviceimagemounter-ideviceimagemounter.o
+│       ├── ideviceinfo
+│       ├── ideviceinfo.c
+│       ├── ideviceinfo-ideviceinfo.o
+│       ├── idevicename
+│       ├── idevicename.c
+│       ├── idevicename-idevicename.o
+│       ├── idevicenotificationproxy
+│       ├── idevicenotificationproxy.c
+│       ├── idevicenotificationproxy-idevicenotificationproxy.o
+│       ├── idevicepair
+│       ├── idevicepair.c
+│       ├── idevicepair-idevicepair.o
+│       ├── ideviceprovision
+│       ├── ideviceprovision.c
+│       ├── ideviceprovision-ideviceprovision.o
+│       ├── idevicescreenshot
+│       ├── idevicescreenshot.c
+│       ├── idevicescreenshot-idevicescreenshot.o
+│       ├── idevicesyslog
+│       ├── idevicesyslog.c
+│       ├── idevicesyslog-idevicesyslog.o
+│       ├── Makefile
+│       ├── Makefile.am
+│       └── Makefile.in
+├── libplist
+│   ├── aclocal.m4
+│   ├── AUTHORS
+│   ├── autogen.sh
+│   ├── autom4te.cache
+│   │   ├── output.0
+│   │   ├── output.1
+│   │   ├── requests
+│   │   ├── traces.0
+│   │   └── traces.1
+│   ├── compile -> /usr/share/automake-1.15/compile
+│   ├── config.guess -> /usr/share/automake-1.15/config.guess
+│   ├── config.h
+│   ├── config.h.in
+│   ├── config.log
+│   ├── config.status
+│   ├── config.sub -> /usr/share/automake-1.15/config.sub
+│   ├── configure
+│   ├── configure.ac
+│   ├── COPYING
+│   ├── COPYING.LESSER
+│   ├── cython
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── plist.c
+│   │   ├── plist.la
+│   │   ├── plist_la-plist.lo
+│   │   ├── plist_la-plist.o
+│   │   ├── plist_la-plist_util.lo
+│   │   ├── plist_la-plist_util.o
+│   │   ├── plist.pxd
+│   │   ├── plist.pyx
+│   │   ├── plist_util.c
+│   │   └── plist_util.h
+│   ├── depcomp -> /usr/share/automake-1.15/depcomp
+│   ├── doxygen.cfg
+│   ├── doxygen.cfg.in
+│   ├── include
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   └── plist
+│   │       ├── Array.h
+│   │       ├── Boolean.h
+│   │       ├── Data.h
+│   │       ├── Date.h
+│   │       ├── Dictionary.h
+│   │       ├── Integer.h
+│   │       ├── Key.h
+│   │       ├── Node.h
+│   │       ├── plist.h
+│   │       ├── plist++.h
+│   │       ├── Real.h
+│   │       ├── String.h
+│   │       ├── Structure.h
+│   │       └── Uid.h
+│   ├── install-sh -> /usr/share/automake-1.15/install-sh
+│   ├── libcnary
+│   │   ├── cnary.c
+│   │   ├── COPYING
+│   │   ├── include
+│   │   │   ├── iterator.h
+│   │   │   ├── list.h
+│   │   │   ├── node.h
+│   │   │   ├── node_iterator.h
+│   │   │   ├── node_list.h
+│   │   │   └── object.h
+│   │   ├── iterator.c
+│   │   ├── iterator.lo
+│   │   ├── iterator.o
+│   │   ├── libcnary.la
+│   │   ├── list.c
+│   │   ├── list.lo
+│   │   ├── list.o
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── node.c
+│   │   ├── node_iterator.c
+│   │   ├── node_iterator.lo
+│   │   ├── node_iterator.o
+│   │   ├── node_list.c
+│   │   ├── node_list.lo
+│   │   ├── node_list.o
+│   │   ├── node.lo
+│   │   ├── node.o
+│   │   └── README
+│   ├── libtool
+│   ├── ltmain.sh -> /usr/share/libtool/build-aux/ltmain.sh
+│   ├── m4
+│   │   ├── ac_pkg_cython.m4
+│   │   ├── ac_python_devel.m4
+│   │   ├── as-compiler-flag.m4
+│   │   ├── ax_pthread.m4
+│   │   ├── cython_python.m4
+│   │   ├── libtool.m4 -> /usr/share/aclocal/libtool.m4
+│   │   ├── lt~obsolete.m4 -> /usr/share/aclocal/lt~obsolete.m4
+│   │   ├── ltoptions.m4 -> /usr/share/aclocal/ltoptions.m4
+│   │   ├── ltsugar.m4 -> /usr/share/aclocal/ltsugar.m4
+│   │   └── ltversion.m4 -> /usr/share/aclocal/ltversion.m4
+│   ├── Makefile
+│   ├── Makefile.am
+│   ├── Makefile.in
+│   ├── missing -> /usr/share/automake-1.15/missing
+│   ├── NEWS
+│   ├── README
+│   ├── src
+│   │   ├── Array.cpp
+│   │   ├── Array.lo
+│   │   ├── Array.o
+│   │   ├── base64.c
+│   │   ├── base64.h
+│   │   ├── base64.lo
+│   │   ├── base64.o
+│   │   ├── Boolean.cpp
+│   │   ├── Boolean.lo
+│   │   ├── Boolean.o
+│   │   ├── bplist.c
+│   │   ├── bplist.lo
+│   │   ├── bplist.o
+│   │   ├── bytearray.c
+│   │   ├── bytearray.h
+│   │   ├── bytearray.lo
+│   │   ├── bytearray.o
+│   │   ├── Data.cpp
+│   │   ├── Data.lo
+│   │   ├── Data.o
+│   │   ├── Date.cpp
+│   │   ├── Date.lo
+│   │   ├── Date.o
+│   │   ├── Dictionary.cpp
+│   │   ├── Dictionary.lo
+│   │   ├── Dictionary.o
+│   │   ├── hashtable.c
+│   │   ├── hashtable.h
+│   │   ├── hashtable.lo
+│   │   ├── hashtable.o
+│   │   ├── Integer.cpp
+│   │   ├── Integer.lo
+│   │   ├── Integer.o
+│   │   ├── Key.cpp
+│   │   ├── Key.lo
+│   │   ├── Key.o
+│   │   ├── libplist.la
+│   │   ├── libplist++.la
+│   │   ├── libplist.pc
+│   │   ├── libplist++.pc
+│   │   ├── libplist.pc.in
+│   │   ├── libplist++.pc.in
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── Node.cpp
+│   │   ├── Node.lo
+│   │   ├── Node.o
+│   │   ├── plist.c
+│   │   ├── plist.h
+│   │   ├── plist.lo
+│   │   ├── plist.o
+│   │   ├── ptrarray.c
+│   │   ├── ptrarray.h
+│   │   ├── ptrarray.lo
+│   │   ├── ptrarray.o
+│   │   ├── Real.cpp
+│   │   ├── Real.lo
+│   │   ├── Real.o
+│   │   ├── strbuf.h
+│   │   ├── String.cpp
+│   │   ├── String.lo
+│   │   ├── String.o
+│   │   ├── Structure.cpp
+│   │   ├── Structure.lo
+│   │   ├── Structure.o
+│   │   ├── time64.c
+│   │   ├── time64.h
+│   │   ├── time64_limits.h
+│   │   ├── time64.lo
+│   │   ├── time64.o
+│   │   ├── Uid.cpp
+│   │   ├── Uid.lo
+│   │   ├── Uid.o
+│   │   ├── xplist.c
+│   │   ├── xplist.lo
+│   │   └── xplist.o
+│   ├── stamp-h1
+│   ├── test
+│   │   ├── amp.test
+│   │   ├── bigarraycmp.test
+│   │   ├── bigarray.test
+│   │   ├── cdata.test
+│   │   ├── data
+│   │   │   ├── 1.plist
+│   │   │   ├── 2.plist
+│   │   │   ├── 3.plist
+│   │   │   ├── 4.plist
+│   │   │   ├── 5.plist
+│   │   │   ├── 6.plist
+│   │   │   ├── 7.plist
+│   │   │   ├── amp.plist
+│   │   │   ├── cdata.plist
+│   │   │   ├── dictref1byte.bplist
+│   │   │   ├── dictref2bytes.bplist
+│   │   │   ├── dictref3bytes.bplist
+│   │   │   ├── dictref4bytes.bplist
+│   │   │   ├── dictref5bytes.bplist
+│   │   │   ├── dictref6bytes.bplist
+│   │   │   ├── dictref7bytes.bplist
+│   │   │   ├── dictref8bytes.bplist
+│   │   │   ├── empty_keys.plist
+│   │   │   ├── entities.plist
+│   │   │   ├── hex.plist
+│   │   │   ├── invalid_tag.plist
+│   │   │   ├── malformed_dict.bplist
+│   │   │   ├── off1byte.bplist
+│   │   │   ├── off2bytes.bplist
+│   │   │   ├── off3bytes.bplist
+│   │   │   ├── off4bytes.bplist
+│   │   │   ├── off5bytes.bplist
+│   │   │   ├── off6bytes.bplist
+│   │   │   ├── off7bytes.bplist
+│   │   │   ├── off8bytes.bplist
+│   │   │   ├── offxml.plist
+│   │   │   ├── order.bplist
+│   │   │   ├── order.plist
+│   │   │   ├── recursion.bplist
+│   │   │   ├── signed.bplist
+│   │   │   ├── signed.plist
+│   │   │   ├── signedunsigned.bplist
+│   │   │   ├── signedunsigned.plist
+│   │   │   ├── unsigned.bplist
+│   │   │   └── unsigned.plist
+│   │   ├── dates.test
+│   │   ├── emptycmp.test
+│   │   ├── empty_keys.test
+│   │   ├── empty.test
+│   │   ├── entities.test
+│   │   ├── hex.test
+│   │   ├── hugecmp.test
+│   │   ├── huge.test
+│   │   ├── invalid_tag.test
+│   │   ├── largecmp.test
+│   │   ├── large.test
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── malformed_dict.test
+│   │   ├── mediumcmp.test
+│   │   ├── medium.test
+│   │   ├── offsetsize.test
+│   │   ├── order.test
+│   │   ├── plist_cmp
+│   │   ├── plist_cmp.c
+│   │   ├── plist_cmp.o
+│   │   ├── plist_test
+│   │   ├── plist_test.c
+│   │   ├── plist_test.o
+│   │   ├── recursion.test
+│   │   ├── refsize.test
+│   │   ├── signedunsigned1.test
+│   │   ├── signedunsigned2.test
+│   │   ├── signedunsigned3.test
+│   │   ├── smallcmp.test
+│   │   ├── small.test
+│   │   ├── timezone1.test
+│   │   └── timezone2.test
+│   ├── test-driver -> /usr/share/automake-1.15/test-driver
+│   └── tools
+│       ├── Makefile
+│       ├── Makefile.am
+│       ├── Makefile.in
+│       ├── plistutil
+│       ├── plistutil.c
+│       └── plistutil.o
+├── libusbmuxd
+│   ├── aclocal.m4
+│   ├── AUTHORS
+│   ├── autogen.sh
+│   ├── autom4te.cache
+│   │   ├── output.0
+│   │   ├── output.1
+│   │   ├── requests
+│   │   ├── traces.0
+│   │   └── traces.1
+│   ├── common
+│   │   ├── collection.c
+│   │   ├── collection.h
+│   │   ├── collection.lo
+│   │   ├── collection.o
+│   │   ├── libinternalcommon.la
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── socket.c
+│   │   ├── socket.h
+│   │   ├── socket.lo
+│   │   └── socket.o
+│   ├── compile -> /usr/share/automake-1.15/compile
+│   ├── config.guess -> /usr/share/automake-1.15/config.guess
+│   ├── config.h
+│   ├── config.h.in
+│   ├── config.log
+│   ├── config.status
+│   ├── config.sub -> /usr/share/automake-1.15/config.sub
+│   ├── configure
+│   ├── configure.ac
+│   ├── COPYING
+│   ├── depcomp -> /usr/share/automake-1.15/depcomp
+│   ├── include
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   ├── Makefile.in
+│   │   ├── usbmuxd.h
+│   │   └── usbmuxd-proto.h
+│   ├── install-sh -> /usr/share/automake-1.15/install-sh
+│   ├── libtool
+│   ├── libusbmuxd.pc
+│   ├── libusbmuxd.pc.in
+│   ├── ltmain.sh -> /usr/share/libtool/build-aux/ltmain.sh
+│   ├── m4
+│   │   ├── as-compiler-flag.m4
+│   │   ├── ax_pthread.m4
+│   │   ├── libtool.m4 -> /usr/share/aclocal/libtool.m4
+│   │   ├── lt~obsolete.m4 -> /usr/share/aclocal/lt~obsolete.m4
+│   │   ├── ltoptions.m4 -> /usr/share/aclocal/ltoptions.m4
+│   │   ├── ltsugar.m4 -> /usr/share/aclocal/ltsugar.m4
+│   │   └── ltversion.m4 -> /usr/share/aclocal/ltversion.m4
+│   ├── Makefile
+│   ├── Makefile.am
+│   ├── Makefile.in
+│   ├── missing -> /usr/share/automake-1.15/missing
+│   ├── NEWS
+│   ├── README
+│   ├── src
+│   │   ├── libusbmuxd.c
+│   │   ├── libusbmuxd.la
+│   │   ├── libusbmuxd.lo
+│   │   ├── libusbmuxd.o
+│   │   ├── Makefile
+│   │   ├── Makefile.am
+│   │   └── Makefile.in
+│   ├── stamp-h1
+│   └── tools
+│       ├── iproxy
+│       ├── iproxy.c
+│       ├── iproxy-iproxy.o
+│       ├── Makefile
+│       ├── Makefile.am
+│       └── Makefile.in
+└── usbmuxd
+    ├── aclocal.m4
+    ├── AUTHORS
+    ├── autogen.sh
+    ├── autom4te.cache
+    │   ├── output.0
+    │   ├── output.1
+    │   ├── requests
+    │   ├── traces.0
+    │   └── traces.1
+    ├── compile -> /usr/share/automake-1.15/compile
+    ├── config.guess -> /usr/share/automake-1.15/config.guess
+    ├── config.h
+    ├── config.h.in
+    ├── config.log
+    ├── config.status
+    ├── config.sub -> /usr/share/automake-1.15/config.sub
+    ├── configure
+    ├── configure.ac
+    ├── COPYING.GPLv2
+    ├── COPYING.GPLv3
+    ├── depcomp -> /usr/share/automake-1.15/depcomp
+    ├── docs
+    │   ├── Makefile
+    │   ├── Makefile.am
+    │   ├── Makefile.in
+    │   └── usbmuxd.8
+    ├── install-sh -> /usr/share/automake-1.15/install-sh
+    ├── libtool
+    ├── ltmain.sh -> /usr/share/libtool/build-aux/ltmain.sh
+    ├── m4
+    │   ├── as-compiler-flag.m4
+    │   ├── libtool.m4 -> /usr/share/aclocal/libtool.m4
+    │   ├── lt~obsolete.m4 -> /usr/share/aclocal/lt~obsolete.m4
+    │   ├── ltoptions.m4 -> /usr/share/aclocal/ltoptions.m4
+    │   ├── ltsugar.m4 -> /usr/share/aclocal/ltsugar.m4
+    │   └── ltversion.m4 -> /usr/share/aclocal/ltversion.m4
+    ├── Makefile
+    ├── Makefile.am
+    ├── Makefile.in
+    ├── missing -> /usr/share/automake-1.15/missing
+    ├── NEWS
+    ├── README
+    ├── src
+    │   ├── client.c
+    │   ├── client.h
+    │   ├── conf.c
+    │   ├── conf.h
+    │   ├── device.c
+    │   ├── device.h
+    │   ├── log.c
+    │   ├── log.h
+    │   ├── main.c
+    │   ├── Makefile
+    │   ├── Makefile.am
+    │   ├── Makefile.in
+    │   ├── preflight.c
+    │   ├── preflight.h
+    │   ├── usb.c
+    │   ├── usb.h
+    │   ├── usbmuxd
+    │   ├── usbmuxd-client.o
+    │   ├── usbmuxd-conf.o
+    │   ├── usbmuxd-device.o
+    │   ├── usbmuxd-log.o
+    │   ├── usbmuxd-main.o
+    │   ├── usbmuxd-preflight.o
+    │   ├── usbmuxd-proto.h
+    │   ├── usbmuxd-usb.o
+    │   ├── usbmuxd-utils.o
+    │   ├── utils.c
+    │   └── utils.h
+    ├── stamp-h1
+    ├── systemd
+    │   ├── Makefile
+    │   ├── Makefile.am
+    │   ├── Makefile.in
+    │   ├── usbmuxd.service
+    │   └── usbmuxd.service.in
+    └── udev
+        ├── 39-usbmuxd.rules
+        ├── 39-usbmuxd.rules.in
+        ├── Makefile
+        ├── Makefile.am
+        └── Makefile.in
+
+45 directories, 775 files

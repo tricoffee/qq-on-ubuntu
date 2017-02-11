@@ -1,3 +1,4 @@
 #!/bin/bash
 # this script to echo some word to TODO file
-	echo "$1" >> test
+	echo -en '\n'  >> ~/TODO
+	echo -e "$(date) ~~~ CONTENT : $1" >> ~/TODO

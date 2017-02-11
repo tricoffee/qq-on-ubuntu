@@ -1,5 +1,50 @@
+cat test
+./add-TODO-list.sh "test tst"
+cat test
+./add-TODO-list.sh "    test tst"
+cat test
+./add-TODO-list.sh "\t test tst"
+cat test
+./add-TODO-list.sh '\t test tst'
+cat test
+gedit ../Note/ubuntu/shellScript/get-sh-argument.txt 
+./add-TODO-list.sh '\t test tst'
+cat test
+./add-TODO-list.sh "\t test tst"
+cat test
+./add-TODO-list.sh "\n\n"
+cat test
+./add-TODO-list.sh "\n"
+cat test
+rm -rf test
+./add-TODO-list.sh "hello"
+./add-TODO-list.sh "world"
+./add-TODO-list.sh "!"
+cat test
+./add-TODO-list.sh "hello"
+./add-TODO-list.sh "world"
+./add-TODO-list.sh "!"
+cat test
+./add-TODO-list.sh "!"
+cat test
+./add-TODO-list.sh "!"
+cat test
+sdcv
+./add-TODO-list.sh "!"
+cat test
+man
+manul
+./add-TODO-list.sh "!"
+cat test
+sudo 
 ls
-cp .emacs .emacs.d/
-mv .emacs.d/.emacs .emacs.d/inie.el
-mv .emacs .emacs_bak
-ls
+sudo install-my-custom-sh-script.sh
+cd
+cat /etc/inittab
+cat /etc/init.d/rc.local
+ls -a /etc/init.d/rc
+ls -l /etc/init.d/rc
+cat /etc/init.d/rc
+ls /etc/init.d/rcS
+ls -l /etc/init.d/rcS
+gedit Note/ubuntu/console/console-zh-encoding-support.txt 

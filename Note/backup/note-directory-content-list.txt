@@ -14,11 +14,15 @@
 └── ubuntu
     ├── boot
     │   └── boot-directory-clean.txt
+    ├── console
+    │   └── console-zh-encoding-support.txt
     ├── firefox
     │   └── replace-system-default-firefox.txt
-    └── IOS
-        ├── ubuntu-connect-IOS-setup.txt
-        ├── ubuntu-connect-IOS-setup.txt~
-        └── ubuntu-connect-IOS-support.txt
+    ├── IOS
+    │   ├── ubuntu-connect-IOS-setup.txt
+    │   ├── ubuntu-connect-IOS-setup.txt~
+    │   └── ubuntu-connect-IOS-support.txt
+    └── shellScript
+        └── get-sh-argument.txt
 
-8 directories, 13 files
+10 directories, 15 files
