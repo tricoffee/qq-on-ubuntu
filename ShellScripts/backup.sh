@@ -30,6 +30,7 @@
 # use 'git' command backup Home folder to remote repository of the github
 	# this two method to get machine version have equal result
 	# MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | tr -d '\n')
+
 	MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | awk '{{printf "%s",$0}}')
 	DATE=$(date)
 
@@ -39,8 +40,10 @@
 	git add -A
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"
 	git push
+	
+	sleep 4
 
-	#cd -
+	cd -
 
 
 # [end]

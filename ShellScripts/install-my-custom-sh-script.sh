@@ -13,6 +13,7 @@
 	# echo "~/ShellScripts/${SPECIFY_SHELL_SCRIPT}"
 
 	cd ~/ShellScripts/
-	echo $(pwd)
+	#echo $(pwd)
+	chmod u+x ~/ShellScripts/*
 	cp -a ${SPECIFY_SHELL_SCRIPT} /usr/local/bin/
 	cd -

@@ -5,9 +5,6 @@ highlight Normal color: black; background: white; font-size:13pt
 set hintchars=abcdefghijklmnopqrstuvwxyz
 set gui=noaddons,nobookmarks,nonavigation
 set maxitems=7
-set nextpattern=s*下一页|下一张|next|下一篇|下一頁|后一页|下页|后页s*,^bnextb,bnextb,bsuivantb,^>$,^(>>|??|?)$,^(>|?),(>|?)$,bmoreb
-set previouspattern=s*上一页|上一张|prev|上一篇|上一頁|上页|前一页|前页s*,^bprev|previousb,bprev|previousb,^<$,^(<<|??|?)$,^(<|?),(<|?)$
 
 " source! /home/qq/.vimperatorrc.local
-
 " vim: set ft=vimperator:

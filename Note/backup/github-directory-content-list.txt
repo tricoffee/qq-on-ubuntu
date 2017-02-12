@@ -4,4 +4,5 @@ ifuse
 libimobiledevice
 libplist
 libusbmuxd
+qiaoqiangv.github.com
 usbmuxd

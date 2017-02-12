@@ -1,50 +1,50 @@
-cat test
-./add-TODO-list.sh "test tst"
-cat test
-./add-TODO-list.sh "    test tst"
-cat test
-./add-TODO-list.sh "\t test tst"
-cat test
-./add-TODO-list.sh '\t test tst'
-cat test
-gedit ../Note/ubuntu/shellScript/get-sh-argument.txt 
-./add-TODO-list.sh '\t test tst'
-cat test
-./add-TODO-list.sh "\t test tst"
-cat test
-./add-TODO-list.sh "\n\n"
-cat test
-./add-TODO-list.sh "\n"
-cat test
-rm -rf test
-./add-TODO-list.sh "hello"
-./add-TODO-list.sh "world"
-./add-TODO-list.sh "!"
-cat test
-./add-TODO-list.sh "hello"
-./add-TODO-list.sh "world"
-./add-TODO-list.sh "!"
-cat test
-./add-TODO-list.sh "!"
-cat test
-./add-TODO-list.sh "!"
-cat test
-sdcv
-./add-TODO-list.sh "!"
-cat test
-man
-manul
-./add-TODO-list.sh "!"
-cat test
-sudo 
-ls
-sudo install-my-custom-sh-script.sh
-cd
-cat /etc/inittab
-cat /etc/init.d/rc.local
-ls -a /etc/init.d/rc
-ls -l /etc/init.d/rc
 cat /etc/init.d/rc
 ls /etc/init.d/rcS
 ls -l /etc/init.d/rcS
 gedit Note/ubuntu/console/console-zh-encoding-support.txt 
+cd Github/qiaoqiangv.github.com/
+find-specify-text-in-this-dir.sh "peter"
+find-specify-text-in-this-dir.sh "peter's corner"
+find-specify-text-in-this-dir.sh "happypeter"
+find-specify-text-in-this-dir.sh "happypeter.github.com"
+find-specify-text-in-this-dir.sh "happypeter.github.com"
+find ./ -name "*.*" | grep -nr "happypeter.github.com"
+ls ~/ShellScripts/
+add-TODO-list.sh "调试github博客，修改happypeter的博客框架"
+cat  ~/TODO 
+logout.sh 
+find-file
+find-file test
+cd Github/
+cd qiaoqiangv.github.com/
+ls
+find-specify-text-in-this-dir.sh "go"
+cd Github/qiaoqiangv.github.com/
+find-specify-text-in-this-dir.sh "go"
+find-specify-text-in-this-dir.sh "go"
+add-TODO-list.sh "配置emacs blackboard theme找出其中过期的函数在emacs 24当中对应的函数是什么"
+cat ~/TODO 
+tree ~/Note/
+echo -e "# emacswiki 包含emacs所有相关信息的网站" >> ~/Note/website/emacs-discovery-website.txt
+echo -e "https://www.emacswiki.org/emacs/SiteMap" >> ~/Note/website/emacs-discovery-website.txt
+cat ~/Note/website/emacs-discovery-website.txt 
+echo -e "" >> ~/Note/website/emacs-discovery-website.txt
+cat ~/Note/website/emacs-discovery-website.txt 
+echo -e " " >> ~/Note/website/emacs-discovery-website.txt
+cat ~/Note/website/emacs-discovery-website.txt 
+cat ~/TODO 
+sdcv
+sdcv
+echo -e "# emacs 官方网站，包含emacs相关的信息（包括emacswiki）" >> ~/Note/website/emacs-discovery-website.txt
+echo -e "http://www.gnuemacs.org/" >> ~/Note/website/emacs-discovery-website.txt
+cat ~/Note/website/emacs-discovery-website.txt 
+sdcv
+cd
+cat TODO 
+add-TODO-list.sh "调试.emacs.d/init-my-config.el中的"eshell color config"配置中过期的elisp函数在emacs24中对应的函数是什么"
+cat TODO 
+add-TODO-list.sh "调试.emacs.d/init-my-config.el中的\"eshell color config\"配置中过期的elisp函数在emacs24中对应的函数是什么"
+cat TODO 
+ls -a --color=yes
+ls --color=yes -a
+ls --color=yes

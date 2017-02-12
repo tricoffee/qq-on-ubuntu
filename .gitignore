@@ -4,6 +4,7 @@
 /Downloads/
 /Github/
 /Books/
+/桌面/
 .bash_history
 .bash_logout
 .bashrc
@@ -23,7 +24,6 @@
 /.ssh/
 .sudo_as_admin_successful
 /.sunpinyin/
-/桌面/
 /*.txt
 
 # need to config
