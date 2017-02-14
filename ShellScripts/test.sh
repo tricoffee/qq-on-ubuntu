@@ -10,10 +10,12 @@
 	#echo backup on ${MACHINE_VERSION} at ${DATE}
 
 # [end]
-	MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | tr -d '\n')
+	# MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | tr -d '\n')
 	#MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | awk '{{printf "%s",$0}}')
-	DATE=$(date)
+	# DATE=$(date)
 
-	echo $MACHINE_VERSION
+	# echo $MACHINE_VERSION
 
 # [end]
+
+echo $HOME/.profile

@@ -1,35 +1,3 @@
-cat /etc/init.d/rc
-ls /etc/init.d/rcS
-ls -l /etc/init.d/rcS
-gedit Note/ubuntu/console/console-zh-encoding-support.txt 
-cd Github/qiaoqiangv.github.com/
-find-specify-text-in-this-dir.sh "peter"
-find-specify-text-in-this-dir.sh "peter's corner"
-find-specify-text-in-this-dir.sh "happypeter"
-find-specify-text-in-this-dir.sh "happypeter.github.com"
-find-specify-text-in-this-dir.sh "happypeter.github.com"
-find ./ -name "*.*" | grep -nr "happypeter.github.com"
-ls ~/ShellScripts/
-add-TODO-list.sh "调试github博客，修改happypeter的博客框架"
-cat  ~/TODO 
-logout.sh 
-find-file
-find-file test
-cd Github/
-cd qiaoqiangv.github.com/
-ls
-find-specify-text-in-this-dir.sh "go"
-cd Github/qiaoqiangv.github.com/
-find-specify-text-in-this-dir.sh "go"
-find-specify-text-in-this-dir.sh "go"
-add-TODO-list.sh "配置emacs blackboard theme找出其中过期的函数在emacs 24当中对应的函数是什么"
-cat ~/TODO 
-tree ~/Note/
-echo -e "# emacswiki 包含emacs所有相关信息的网站" >> ~/Note/website/emacs-discovery-website.txt
-echo -e "https://www.emacswiki.org/emacs/SiteMap" >> ~/Note/website/emacs-discovery-website.txt
-cat ~/Note/website/emacs-discovery-website.txt 
-echo -e "" >> ~/Note/website/emacs-discovery-website.txt
-cat ~/Note/website/emacs-discovery-website.txt 
 echo -e " " >> ~/Note/website/emacs-discovery-website.txt
 cat ~/Note/website/emacs-discovery-website.txt 
 cat ~/TODO 
@@ -48,3 +16,35 @@ cat TODO
 ls -a --color=yes
 ls --color=yes -a
 ls --color=yes
+cd .emacs.d/
+find-specify-text-in-this-dir.sh "tramp"
+rm -rf init-my-config.el\~
+rm -rf init.el\~ 
+ls
+rm -rf init.el\~ 
+ls
+ls -l
+rm -rf inie.el\~
+ls
+ls -l
+find-specify-text-in-this-dir.sh "tramp"
+find-specify-text-in-this-dir.sh "tramp" 
+gnome-session-quit --power-off
+logout.sh 
+./ShellScripts/test.sh 
+./ShellScripts/test.sh 
+./ShellScripts/test.sh 
+./ShellScripts/test.sh 
+logout.sh 
+cd /etc/
+find -name "run-personal-config.sh"
+sudo find -name "run-personal-config.sh"
+sudo find -name "run*"
+sudo mv /etc/init.d/run-personal-profile.sh ~/ShellScript/
+sudo mv /etc/init.d/run-personal-profile.sh ~/ShellScripts/
+cd
+mv ShellScripts/run-personal-profile.sh ShellScripts/run-personal-profile-in-rcLocal.sh
+cd /etc/
+find-specify-text-in-this-dir.sh "my personal"
+sudo find-specify-text-in-this-dir.sh "my personal"
+sudo reboot

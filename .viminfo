@@ -1,0 +1,262 @@
+# 本 viminfo 檔案是由 Vim 7.4 所產生.
+# 如果想要自行修改請特別小心！
+
+# 'encoding' 在此檔建立時的值
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Last Search Pattern:
+~MSle0~/.
+
+# 命令列 歷史記錄 (新到舊):
+:x
+:w
+:q
+:wq
+:q!
+:e 
+:e /etc/profile
+:set nu
+
+# 搜尋字串 歷史記錄 (新到舊):
+?/.
+?/profile
+?/exit
+?/exit 0
+? \<PROGNAME\>
+? \<Xsession\>
+?/Xsession
+? \<OPTIONFILE\>
+
+# 運算式 歷史記錄 (新到舊):
+
+# 輸入行  歷史記錄 (新到舊):
+
+# 輸入行  歷史記錄 (新到舊):
+
+# 暫存器:
+"0	LINE	0
+	# $PPID变量显示当前shell的父进程号
+"1	LINE	0
+		
+"2	LINE	0
+		echo "Current PID is $BASHPID"
+"3	LINE	0
+		ps -aux
+"4	LINE	0
+	source $HOME/.profile 
+"5	LINE	0
+	# my personal config
+"6	LINE	0
+	
+"7	LINE	0
+	. /etc/gdm3/Xsession
+"8	LINE	0
+	# my personal config
+"9	CHAR	0
+	# my personal config
+	source /etc/profile
+""-	CHAR	0
+	-
+
+# 檔案標記:
+'0  4  16  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'1  1  0  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'2  5  4  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'3  6  7  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'4  7  29  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'5  1  0  ~/Github/dwm/config.def.h
+'6  13  0  /etc/rc.local
+'7  81  0  /etc/init/gdm3.conf
+'8  1  7  /etc/init.d/run-personal-profile.sh
+'9  1  0  /etc/init.d/checkfs.sh
+
+# Jumplist (由新到舊):
+-'  4  16  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+-'  1  0  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+-'  5  4  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+-'  6  7  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+-'  7  29  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+-'  1  0  ~/Github/dwm/config.def.h
+-'  13  0  /etc/rc.local
+-'  1  0  /etc/rc.local
+-'  81  0  /etc/init/gdm3.conf
+-'  1  0  /etc/init/gdm3.conf
+-'  1  7  /etc/init.d/run-personal-profile.sh
+-'  1  0  /etc/init.d/checkfs.sh
+-'  2  18  /etc/init.d/run-personal-profile.sh
+-'  8  0  /etc/X11/xinit/xinitrc
+-'  1  0  /etc/X11/xinit/xinitrc
+-'  55  7  /etc/init/gdm3.conf
+-'  96  0  /etc/init.d/gdm3
+-'  1  0  /etc/init.d/gdm3
+-'  21  28  /etc/gdm3/Xsession
+-'  53  35  /etc/gdm3/Xsession
+-'  52  34  /etc/gdm3/Xsession
+-'  46  33  /etc/gdm3/Xsession
+-'  45  31  /etc/gdm3/Xsession
+-'  73  0  /etc/gdm3/Xsession
+-'  1  0  /etc/gdm3/Xsession
+-'  28  0  /etc/profile
+-'  1  0  /etc/profile
+-'  222  0  /etc/gdm3/Xsession
+-'  116  0  /etc/X11/Xsession
+-'  1  0  /etc/X11/Xsession
+-'  217  0  /etc/gdm3/Xsession
+-'  99  71  /etc/X11/Xsession
+-'  40  4  /etc/X11/Xsession
+-'  36  2  /etc/X11/Xsession
+-'  34  4  /etc/X11/Xsession
+-'  117  0  /etc/X11/Xsession
+-'  121  0  /etc/X11/Xsession
+-'  29  5  /etc/profile
+-'  21  0  ~/ShellScripts/test.sh
+-'  1  0  ~/ShellScripts/test.sh
+-'  11  0  /etc/X11/Xsession
+-'  85  7  /etc/X11/Xsession
+-'  26  12  /etc/X11/Xsession
+-'  16  12  /etc/X11/Xsession
+-'  7  7  /etc/X11/Xsession
+-'  5  9  /etc/X11/Xsession
+-'  3  11  /etc/X11/Xsession
+-'  60  23  /etc/X11/Xsession
+-'  57  23  /etc/X11/Xsession
+-'  52  20  /etc/X11/Xsession
+-'  1  0  /etc/X11/Xsession.d/75dbus_dbus-launch
+-'  17  0  /etc/X11/Xsession.d/75dbus_dbus-launch
+-'  58  0  /etc/gdm3/Xsession
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  1  0  /etc/profile.d/run-local-profile.sh
+-'  2  16  /etc/profile.d/run-local-profile.sh
+-'  21  28  /etc/gdm3/Xsession
+-'  53  35  /etc/gdm3/Xsession
+-'  52  34  /etc/gdm3/Xsession
+-'  46  33  /etc/gdm3/Xsession
+-'  45  31  /etc/gdm3/Xsession
+-'  73  0  /etc/gdm3/Xsession
+-'  1  0  /etc/gdm3/Xsession
+-'  28  0  /etc/profile
+-'  1  0  /etc/profile
+-'  222  0  /etc/gdm3/Xsession
+
+# 檔案內 Mark 記錄 (由新到舊):
+
+> ~/ShellScripts/get-ubuntu-startup-script-list.sh
+	"	4	16
+	^	6	2
+	.	6	1
+	+	1	7
+	+	6	23
+	+	7	29
+	+	6	7
+	+	1	8
+	+	6	0
+	+	7	0
+	+	1	7
+	+	5	4
+	+	6	0
+	+	3	1
+	+	4	49
+	+	5	1
+	+	6	1
+
+> ~/Github/dwm/config.def.h
+	"	1	0
+
+> /etc/rc.local
+	"	13	0
+	^	13	1
+	.	13	0
+	+	14	0
+	+	13	0
+
+> /etc/init/gdm3.conf
+	"	81	0
+
+> /etc/init.d/run-personal-profile.sh
+	"	1	7
+	^	2	25
+	.	1	7
+	+	1	10
+	+	2	18
+	+	1	7
+
+> /etc/init.d/checkfs.sh
+	"	1	0
+
+> /etc/X11/xinit/xinitrc
+	"	8	0
+
+> /etc/init.d/gdm3
+	"	96	0
+
+> /etc/gdm3/Xsession
+	"	21	28
+
+> /etc/profile
+	"	28	0
+	^	29	6
+	.	29	0
+	+	29	7
+	+	29	5
+	+	29	0
+
+> /etc/X11/Xsession
+	"	116	0
+	.	116	0
+	+	121	0
+	+	122	0
+	+	116	0
+	+	116	0
+	+	116	0
+	+	116	0
+
+> ~/ShellScripts/test.sh
+	"	21	0
+	^	21	19
+	.	21	18
+	+	22	0
+	+	21	18
+
+> /etc/X11/Xsession.d/75dbus_dbus-launch
+	"	1	0
+
+> /etc/profile.d/run-local-profile.sh
+	"	2	16
+	^	2	17
+	.	2	16
+	+	2	16

@@ -88,7 +88,8 @@
 ; (setq cscope-do-not-update-database t)
 
 ;;-------------------------------------------------------------------------
-;; sudo
+;; use sudo command edit root permission file,
+;; keybind: C-x C-f /sudo::/
 ;;-------------------------------------------------------------------------
 (require 'tramp)
 
