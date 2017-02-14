@@ -41,7 +41,7 @@
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"
 	git push
 	
-	sleep 4
+	sleep 10
 
 	cd -
 

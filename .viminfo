@@ -11,9 +11,9 @@
 ~MSle0~/.
 
 # 命令列 歷史記錄 (新到舊):
+:q
 :x
 :w
-:q
 :wq
 :q!
 :e 
@@ -62,18 +62,25 @@
 	-
 
 # 檔案標記:
-'0  4  16  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'1  1  0  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'2  5  4  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'3  6  7  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'4  7  29  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'5  1  0  ~/Github/dwm/config.def.h
-'6  13  0  /etc/rc.local
-'7  81  0  /etc/init/gdm3.conf
-'8  1  7  /etc/init.d/run-personal-profile.sh
-'9  1  0  /etc/init.d/checkfs.sh
+'0  49  0  /usr/local/bin/backup.sh
+'1  44  8  ~/ShellScripts/backup.sh
+'2  44  8  /usr/local/bin/backup.sh
+'3  1  0  /usr/local/bin/power-off-on-gui.sh
+'4  4  16  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'5  1  0  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'6  5  4  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'7  6  7  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'8  7  29  ~/ShellScripts/get-ubuntu-startup-script-list.sh
+'9  1  0  ~/Github/dwm/config.def.h
 
 # Jumplist (由新到舊):
+-'  49  0  /usr/local/bin/backup.sh
+-'  1  0  /usr/local/bin/backup.sh
+-'  44  8  ~/ShellScripts/backup.sh
+-'  1  0  ~/ShellScripts/backup.sh
+-'  44  8  /usr/local/bin/backup.sh
+-'  10  0  /usr/local/bin/backup.sh
+-'  1  0  /usr/local/bin/power-off-on-gui.sh
 -'  4  16  ~/ShellScripts/get-ubuntu-startup-script-list.sh
 -'  1  0  ~/ShellScripts/get-ubuntu-startup-script-list.sh
 -'  5  4  ~/ShellScripts/get-ubuntu-startup-script-list.sh
@@ -163,17 +170,23 @@
 -'  1  0  /etc/profile.d/run-local-profile.sh
 -'  2  16  /etc/profile.d/run-local-profile.sh
 -'  21  28  /etc/gdm3/Xsession
--'  53  35  /etc/gdm3/Xsession
--'  52  34  /etc/gdm3/Xsession
--'  46  33  /etc/gdm3/Xsession
--'  45  31  /etc/gdm3/Xsession
--'  73  0  /etc/gdm3/Xsession
--'  1  0  /etc/gdm3/Xsession
--'  28  0  /etc/profile
--'  1  0  /etc/profile
--'  222  0  /etc/gdm3/Xsession
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> /usr/local/bin/backup.sh
+	"	49	0
+	^	44	9
+	.	44	8
+	+	44	8
+
+> ~/ShellScripts/backup.sh
+	"	44	8
+	^	44	9
+	.	44	8
+	+	44	8
+
+> /usr/local/bin/power-off-on-gui.sh
+	"	1	0
 
 > ~/ShellScripts/get-ubuntu-startup-script-list.sh
 	"	4	16
