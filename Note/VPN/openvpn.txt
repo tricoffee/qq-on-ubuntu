@@ -1,0 +1,324 @@
+
+VPN 和代理
+
+安装 OpenVPN
+
+OpenVPN 支持所有类型的VPS，需要系统支持 Tun/Tap 设备。
+开启 Tun/Tap 支持
+
+XEN VPS 无需开启 Tun/Tap，直接支持，跳过这一步。
+
+在 putty 里面运行如下命令，检查是否开启了tun设备：
+
+ls /dev/net/
+
+如果出现如下提示，表示已经开启，否则需要开启 tun 支持。
+
+root@241541:/etc/openvpn# ls /dev/net/    
+tun
+
+如果没有发现上面的提示，则需要按下面的办法处理。
+
+请先登录 管理面板，打开 VPS 后，点击【设置】，然后再点击【激活TUN/TAP】
+
+然后重复上述测试，如果仍然无法找到 tun 设备，尝试手工创建，命令如下：
+
+mkdir /dev/net 
+mknod /dev/net/tun c 10 200
+
+安装 openvpn
+
+在 putty 里面运行如下命令安装 openvpn，再提示输入 (Y/n) 时，输入 Y 回车继续:
+
+apt-get install openvpn easy-rsa
+
+执行结果如下：
+
+root@241541:~# apt-get install openvpn easy-rsa
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following extra packages will be installed:
+  liblzo2-2 libpkcs11-helper1
+Suggested packages:
+  resolvconf
+The following NEW packages will be installed:
+  liblzo2-2 libpkcs11-helper1 openvpn easy-rsa libccid opensc pcscd
+0 upgraded, 6 newly installed, 0 to remove and 197 not upgraded.
+Need to get 478 kB of archives.
+After this operation, 1346 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty-updates/main liblzo2-2 amd64 2.06-1.2ubuntu1.1 [46.1 kB]
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty/main libpkcs11-helper1 amd64 1.11-1 [42.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/main openvpn amd64 2.3.2-7ubuntu3.1 [390 kB]
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty/universe libccid amd64 1.4.15-1 [80.0 kB]
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty/universe pcscd amd64 1.8.10-1ubuntu1 [54.4 kB]
+Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe opensc amd64 0.13.0-3ubuntu4.1 [794 kB]
+Get:4 http://archive.ubuntu.com/ubuntu/ trusty/universe easy-rsa all 2.2.2-1 [17.1 kB] 
+Fetched 478 kB in 3s (127 kB/s)  
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Preconfiguring packages ...
+Selecting previously unselected package liblzo2-2:amd64.
+(Reading database ... 34021 files and directories currently installed.)
+Preparing to unpack .../liblzo2-2_2.06-1.2ubuntu1.1_amd64.deb ...
+Unpacking liblzo2-2:amd64 (2.06-1.2ubuntu1.1) ...
+Selecting previously unselected package libpkcs11-helper1:amd64.
+Preparing to unpack .../libpkcs11-helper1_1.11-1_amd64.deb ...
+Unpacking libpkcs11-helper1:amd64 (1.11-1) ...
+Selecting previously unselected package openvpn.
+Preparing to unpack .../libccid_1.4.15-1_amd64.deb ...
+Unpacking libccid (1.4.15-1) ...
+Selecting previously unselected package pcscd.
+Preparing to unpack .../pcscd_1.8.10-1ubuntu1_amd64.deb ...
+Unpacking pcscd (1.8.10-1ubuntu1) ...
+Selecting previously unselected package opensc.
+Preparing to unpack .../opensc_0.13.0-3ubuntu4.1_amd64.deb ...
+Unpacking opensc (0.13.0-3ubuntu4.1) ...
+Selecting previously unselected package openvpn.
+Preparing to unpack .../openvpn_2.3.2-7ubuntu3.1_amd64.deb ...
+Unpacking openvpn (2.3.2-7ubuntu3.1) ...
+Selecting previously unselected package easy-rsa.
+Preparing to unpack .../easy-rsa_2.2.2-1_all.deb ...
+Unpacking easy-rsa (2.2.2-1) ...
+Processing triggers for man-db (2.6.7.1-1) ...
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Setting up liblzo2-2:amd64 (2.06-1.2ubuntu1.1) ...
+Setting up libpkcs11-helper1:amd64 (1.11-1) ...
+Setting up libccid (1.4.15-1) ...
+Setting up pcscd (1.8.10-1ubuntu1) ...
+Setting up opensc (0.13.0-3ubuntu4.1) ..
+Setting up openvpn (2.3.2-7ubuntu3.1) ...
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+ * Restarting virtual private network daemon(s)...                                                                                                                               *   No VPN is running.
+Setting up easy-rsa (2.2.2-1) ...
+Processing triggers for libc-bin (2.19-0ubuntu6) ...
+
+配置 openvpn
+
+在 Putty 执行依次逐行如下命令，遇到(y/n)的提示输入 y 回车，否则直接回车继续：
+
+gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
+cp -r /usr/share/easy-rsa/ /etc/openvpn/
+cd /etc/openvpn/easy-rsa/
+cp openssl-1.0.0.cnf openssl.cnf
+source vars
+./clean-all
+./build-ca
+./build-key-server server
+./build-key client
+./build-dh
+
+执行上面的命令过程如下所示：
+
+root@241541:/etc/openvpn# gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
+root@241541:/etc/openvpn# cp -r /usr/share/easy-rsa/ /etc/openvpn/
+root@241541:/etc/openvpn# cd /etc/openvpn/easy-rsa/
+root@241541:/etc/openvpn/easy-rsa# source vars
+NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/2.0/keys
+root@241541:/etc/openvpn/easy-rsa# ./clean-all
+root@241541:/etc/openvpn/easy-rsa# ./build-ca
+Generating a 1024 bit RSA private key
+.++++++
+........++++++
+writing new private key to 'ca.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [US]:
+State or Province Name (full name) [CA]:
+Locality Name (eg, city) [SanFrancisco]:
+Organization Name (eg, company) [Fort-Funston]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [Fort-Funston CA]:
+Name []:
+Email Address [me@myhost.mydomain]:
+root@241541:/etc/openvpn/easy-rsa# ./build-key-server server
+Generating a 1024 bit RSA private key
+......++++++
+............++++++
+writing new private key to 'server.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [US]:
+State or Province Name (full name) [CA]:
+Locality Name (eg, city) [SanFrancisco]:
+Organization Name (eg, company) [Fort-Funston]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [server]:
+Name []:
+Email Address [me@myhost.mydomain]:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+Using configuration from /etc/openvpn/easy-rsa/openssl.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+countryName           :PRINTABLE:'US'
+stateOrProvinceName   :PRINTABLE:'CA'
+localityName          :PRINTABLE:'SanFrancisco'
+organizationName      :PRINTABLE:'Fort-Funston'
+commonName            :PRINTABLE:'server'
+emailAddress          :IA5STRING:'me@myhost.mydomain'
+Certificate is to be certified until Jul 28 09:21:30 2022 GMT (3650 days)
+Sign the certificate? [y/n]:y
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+
+root@241541:/etc/openvpn/easy-rsa# ./build-key client
+Generating a 1024 bit RSA private key
+..............++++++
+.......................++++++
+writing new private key to 'client.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [US]:
+State or Province Name (full name) [CA]:
+Locality Name (eg, city) [SanFrancisco]:
+Organization Name (eg, company) [Fort-Funston]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [client]:
+Name []:
+Email Address [me@myhost.mydomain]:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+Using configuration from /etc/openvpn/easy-rsa/openssl.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+countryName           :PRINTABLE:'US'
+stateOrProvinceName   :PRINTABLE:'CA'
+localityName          :PRINTABLE:'SanFrancisco'
+organizationName      :PRINTABLE:'Fort-Funston'
+commonName            :PRINTABLE:'client'
+emailAddress          :IA5STRING:'me@myhost.mydomain'
+Certificate is to be certified until Jul 28 09:22:53 2022 GMT (3650 days)
+Sign the certificate? [y/n]:y
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+root@241541:/etc/openvpn/easy-rsa# ./build-dh
+Generating DH parameters, 2048 bit long safe prime, generator 2
+This is going to take a long time
+...............+..........................................................................+.............+.....................+.....................................+....................................
+............................................................................+.........................................................+......................................................................
+..................................................+...........................................................................................................................................................
+...........................+...................................................+.......................................................................................................................+....
+..........................................+.......................................+..........................................................................................................................
+...........................................................+............................................................................................+....................................................
+.+.............+......................+.............................................................+..+.....................+....................................................................+....
+...........................+..+..+.....+...+...............++*++*++*
+
+将刚才创建的文件复制到配置目录，继续执行如下命令：
+
+cd /etc/openvpn
+cp /etc/openvpn/easy-rsa/keys/ca.crt .
+cp /etc/openvpn/easy-rsa/keys/server.crt .
+cp /etc/openvpn/easy-rsa/keys/server.key .
+cp /etc/openvpn/easy-rsa/keys/dh*.pem .
+
+执行结果如下：
+
+root@241541:/etc/openvpn/easy-rsa# cd /etc/openvpn
+root@241541:/etc/openvpn# cp /etc/openvpn/easy-rsa/keys/ca.crt .
+root@241541:/etc/openvpn# cp /etc/openvpn/easy-rsa/keys/server.crt .
+root@241541:/etc/openvpn# cp /etc/openvpn/easy-rsa/keys/server.key .
+root@241541:/etc/openvpn# cp /etc/openvpn/easy-rsa/keys/dh*.pem .
+
+为了更方便的使用openvpn，这里我们需要修改openvpn的协议和端口，我们将通讯协议改为 tcp，端口改为 https 的端口号 443。
+
+继续在 putty 里面执行如下命令：
+
+sed -i 's/port.*/port 443/' /etc/openvpn/server.conf
+sed -i 's/;proto tcp.*/proto tcp/' /etc/openvpn/server.conf
+sed -i 's/.*proto udp.*/;proto udp/' /etc/openvpn/server.conf
+sed -i 's/;push "dhcp-option DNS 208.67.222.222"/push "dhcp-option DNS 208.67.222.222"/' /etc/openvpn/server.conf
+sed -i 's/;push "dhcp-option DNS 208.67.220.220"/push "dhcp-option DNS 208.67.222.220"/' /etc/openvpn/server.conf
+sed -i 's/keepalive 10 120/keepalive 1000 12000/' /etc/openvpn/server.conf
+sed -i 's/;push "redirect-gateway.*/push "redirect-gateway def1 bypass-dhcp"/' /etc/openvpn/server.conf
+sed -i 's/;duplicate-cn.*/duplicate-cn/' /etc/openvpn/server.conf 
+
+执行结果如下所示：
+
+root@241541:/etc/openvpn# sed -i 's/port.*/port 443/' /etc/openvpn/server.conf
+root@241541:/etc/openvpn# sed -i 's/;proto tcp.*/proto tcp/' /etc/openvpn/server.conf
+root@241541:/etc/openvpn# sed -i 's/.*proto udp.*/;proto udp/' /etc/openvpn/server.conf
+root@241541:/etc/openvpn# sed -i 's/;push "dhcp-option DNS 208.67.222.222"/push "dhcp-option DNS 208.67.222.222"/' /etc/openvpn/server.conf
+root@241541:/etc/openvpn# sed -i 's/;push "dhcp-option DNS 208.67.220.220"/push "dhcp-option DNS 208.67.222.220"/' /etc/openvpn/server.conf
+root@241541:/etc/openvpn# sed -i 's/keepalive 10 120/keepalive 1000 12000/' /etc/openvpn/server.conf
+root@241541:/etc/openvpn# sed -i 's/;push "redirect-gateway.*/push "redirect-gateway def1 bypass-dhcp"/' /etc/openvpn/server.conf
+
+配置完成，执行如下命令重启 openvpn ：
+
+service openvpn restart
+
+执行结果如下：
+
+root@241541:/etc/openvpn#  service openvpn restart
+* Stopping virtual private network daemon(s)...
+*   No VPN is running.
+* Starting virtual private network daemon(s)...
+*   Autostarting VPN 'server'
+
+配置 防火墙
+
+在Putty里面执行如下命令：
+
+打开 IP 转发：
+
+echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
+sysctl -p
+
+执行如下命令配置防火墙：
+
+iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
+iptables-save > /etc/iptables-rules
+echo '#!/bin/sh' > /etc/network/if-up.d/iptablesload
+echo 'iptables-restore < /etc/iptables-rules' >> /etc/network/if-up.d/iptablesload
+echo 'exit 0' >> /etc/network/if-up.d/iptablesload
+chmod +x /etc/network/if-up.d/iptablesload
+
+大功告成，可以使用 OPEN VPN 了。
+
+
+[end]

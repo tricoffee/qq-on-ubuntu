@@ -11,11 +11,11 @@
 ~MSle0~/.
 
 # 命令列 歷史記錄 (新到舊):
-:q
 :x
 :w
-:wq
+:q
 :q!
+:wq
 :e 
 :e /etc/profile
 :set nu
@@ -59,21 +59,32 @@
 	# my personal config
 	source /etc/profile
 ""-	CHAR	0
-	-
+	 
 
 # 檔案標記:
-'0  49  0  /usr/local/bin/backup.sh
-'1  44  8  ~/ShellScripts/backup.sh
-'2  44  8  /usr/local/bin/backup.sh
-'3  1  0  /usr/local/bin/power-off-on-gui.sh
-'4  4  16  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'5  1  0  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'6  5  4  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'7  6  7  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'8  7  29  ~/ShellScripts/get-ubuntu-startup-script-list.sh
-'9  1  0  ~/Github/dwm/config.def.h
+'0  3  0  ~/Note/VPN/openvpn.txt
+'1  72  0  /etc/openvpn/easy-rsa/vars
+'2  15  0  /etc/openvpn/easy-rsa/vars
+'3  56  4  /etc/openvpn/easy-rsa/vars
+'4  80  0  /etc/openvpn/easy-rsa/vars
+'5  14  0  /etc/openvpn/easy-rsa/clean-all
+'6  49  0  /usr/local/bin/backup.sh
+'7  44  8  ~/ShellScripts/backup.sh
+'8  44  8  /usr/local/bin/backup.sh
+'9  1  0  /usr/local/bin/power-off-on-gui.sh
 
 # Jumplist (由新到舊):
+-'  3  0  ~/Note/VPN/openvpn.txt
+-'  308  0  ~/Note/VPN/openvpn.txt
+-'  321  40  ~/Note/VPN/openvpn.txt
+-'  1  0  ~/Note/VPN/openvpn.txt
+-'  72  0  /etc/openvpn/easy-rsa/vars
+-'  1  0  /etc/openvpn/easy-rsa/vars
+-'  15  0  /etc/openvpn/easy-rsa/vars
+-'  56  4  /etc/openvpn/easy-rsa/vars
+-'  80  0  /etc/openvpn/easy-rsa/vars
+-'  14  0  /etc/openvpn/easy-rsa/clean-all
+-'  1  0  /etc/openvpn/easy-rsa/clean-all
 -'  49  0  /usr/local/bin/backup.sh
 -'  1  0  /usr/local/bin/backup.sh
 -'  44  8  ~/ShellScripts/backup.sh
@@ -162,16 +173,60 @@
 -'  1  0  /etc/profile.d/run-local-profile.sh
 -'  2  16  /etc/profile.d/run-local-profile.sh
 -'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  21  28  /etc/gdm3/Xsession
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/Note/VPN/openvpn.txt
+	"	3	0
+	^	3	0
+	.	3	0
+	+	321	40
+	+	324	4
+	+	3	0
+
+> /etc/openvpn/easy-rsa/vars
+	"	72	0
+	^	72	5
+	.	72	0
+	+	15	4
+	+	21	4
+	+	22	4
+	+	23	4
+	+	29	4
+	+	39	4
+	+	45	4
+	+	46	4
+	+	53	4
+	+	56	4
+	+	59	4
+	+	64	4
+	+	65	4
+	+	66	4
+	+	67	4
+	+	68	4
+	+	69	4
+	+	72	4
+	+	15	0
+	+	21	0
+	+	22	0
+	+	23	0
+	+	29	0
+	+	39	0
+	+	45	0
+	+	46	0
+	+	53	0
+	+	56	0
+	+	59	0
+	+	64	0
+	+	65	0
+	+	66	0
+	+	67	0
+	+	68	0
+	+	69	0
+	+	72	0
+
+> /etc/openvpn/easy-rsa/clean-all
+	"	14	0
 
 > /usr/local/bin/backup.sh
 	"	49	0
