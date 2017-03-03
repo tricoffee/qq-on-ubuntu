@@ -1,0 +1,93 @@
+
+### 各种官网
+# 微软官网
+https://www.microsoft.com/zh-cn
+# ibm官网
+http://www.ibm.com/cn-zh/
+# 苹果官网
+http://www.apple.com/cn/
+# “程序员”主站
+http://www.csdn.net/
+
+
+### 学习网站
+# CSDN学院
+http://edu.csdn.net/
+# CSDN知识库
+http://lib.csdn.net/
+# 菜鸟教程
+http://www.runoob.com/
+# codecademy 编程学院
+https://www.codecademy.com/
+
+
+### 现成的软件项目
+# 软件商城
+http://mall.csdn.net/
+# 项目搜索
+https://www.codeproject.com/search.aspx
+# 开源中国
+http://www.oschina.net/
+
+
+### 新闻
+# CSDN极客头条
+http://geek.csdn.net/
+# 极客导航
+http://www.gogeeks.cn/
+# hacker news （英文）
+https://news.ycombinator.com/
+# reddit （各种社交新闻的站点）
+https://www.reddit.com/
+# v2ex 一个汇集各类奇妙好玩的话题和流行动向的网站
+https://www.v2ex.com/
+# cnBeta - it 业界资讯站
+http://www.cnbeta.com/
+# infoQ - （技术新闻）
+http://www.infoq.com/cn/
+
+
+### 编程技术博客
+# 阮一峰的博客 - 编程技术博客
+http://www.ruanyifeng.com/blog/
+# 酷壳 - 编程技术博客
+http://coolshell.cn/
+# 云风的 BLOG
+http://blog.codingnow.com/
+# The Daily WTF - （关于编程方面的搞笑博客）
+http://thedailywtf.com/
+
+
+#### 编程技术论坛
+# stackoverflow问答网站（英文）
+http://stackoverflow.com/
+# 编程问题问答网站
+https://segmentfault.com/
+# 编程技术问答
+http://ask.csdn.net/
+# CSDN论坛
+http://bbs.csdn.net/home
+# CSDN博客
+http://blog.csdn.net/
+# 博客园
+https://www.cnblogs.com/
+# IBM developerWorks - （ibm开发者论坛）
+http://www.ibm.com/developerworks/cn/
+# IBM developerWorks - （ibm开发者论坛 - 英文版）
+http://www.ibm.com/developerworks/
+# 前端乱炖 - 前端技术论坛
+http://www.html-js.com/
+# ITeye - java技术论坛
+http://www.iteye.com/
+
+
+### 代码搜索引擎
+# searchcode - （代码片段、项目搜索 - 英文）
+https://searchcode.com/
+# github - （代码托管、代码片段、项目搜索 - 英文）
+https://github.com/
+
+
+### 结对编程
+# CSDN CODE - 代码托管、协作编程、代码片段、社区支持
+https://code.csdn.net/
