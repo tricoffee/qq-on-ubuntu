@@ -1,0 +1,4 @@
+1. 安装所需的软件包
+   sudo apt install w3m w3m-el w3m-img
+2. 使用网上下载的配置文件
+   参照~/.emacs.d/init-w3m.el 

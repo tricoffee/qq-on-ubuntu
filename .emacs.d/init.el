@@ -1,10 +1,11 @@
 ;;----------------------------------------------------------------------------
 ;; set load path
 ;;----------------------------------------------------------------------------
-; (add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/themes/")
 (load-file "~/.emacs.d/init-my-config.el")
-(load-file "~/.emacs.d/themes/color-theme-blackboard.el")
+(load-file "~/.emacs.d/init-w3m.el")
+;(load-file "~/.emacs.d/themes/color-theme-blackboard.el")
 
 ;;----------------------------------------------------------------------------
 ;; my personal config profile
@@ -28,12 +29,13 @@
 (setq x-select-enable-clipboard t) 
 ;; Add my config
 (require 'init-my-config)
+(require 'init-w3m)
 ; (load 'init-my-config)
 
-(require 'color-theme)
+;(require 'color-theme)
 ; (color-theme-initialize)
-(setq color-theme-initialize t)
-(load-file "~/.emacs.d/themes/color-theme-blackboard.el")
+;(setq color-theme-initialize t)
+;(load-file "~/.emacs.d/themes/color-theme-blackboard.el")
 
 ;; Local Variables:
 ;; coding: utf-8

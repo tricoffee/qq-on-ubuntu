@@ -1,25 +1,3 @@
-echo -e " " >> ~/Note/website/emacs-discovery-website.txt
-cat ~/Note/website/emacs-discovery-website.txt 
-cat ~/TODO 
-sdcv
-sdcv
-echo -e "# emacs 官方网站，包含emacs相关的信息（包括emacswiki）" >> ~/Note/website/emacs-discovery-website.txt
-echo -e "http://www.gnuemacs.org/" >> ~/Note/website/emacs-discovery-website.txt
-cat ~/Note/website/emacs-discovery-website.txt 
-sdcv
-cd
-cat TODO 
-add-TODO-list.sh "调试.emacs.d/init-my-config.el中的"eshell color config"配置中过期的elisp函数在emacs24中对应的函数是什么"
-cat TODO 
-add-TODO-list.sh "调试.emacs.d/init-my-config.el中的\"eshell color config\"配置中过期的elisp函数在emacs24中对应的函数是什么"
-cat TODO 
-ls -a --color=yes
-ls --color=yes -a
-ls --color=yes
-cd .emacs.d/
-find-specify-text-in-this-dir.sh "tramp"
-rm -rf init-my-config.el\~
-rm -rf init.el\~ 
 ls
 rm -rf init.el\~ 
 ls
@@ -48,3 +26,25 @@ cd /etc/
 find-specify-text-in-this-dir.sh "my personal"
 sudo find-specify-text-in-this-dir.sh "my personal"
 sudo reboot
+ls
+mkdir workspace
+ls
+mv workspace Workspace
+ls
+cd Workspace/
+ls
+mkdir c_programming_language
+cd c_programming_language/
+ls
+cd
+cd Books/
+ls
+firefox the-c-programming-language_ind.html 
+w3m
+cd
+ediff diff1 diff2
+diff diff1 diff2
+diff diff1 diff2
+diff diff1 diff2
+cd .emacs.d/
+ls

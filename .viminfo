@@ -14,12 +14,12 @@
 $
 
 # 命令列 歷史記錄 (新到舊):
+:x
+:q
+:set nu
 :wq
 :w
-:set nu
-:q
 :q!
-:x
 :e 
 :e /etc/profile
 
@@ -85,16 +85,20 @@ $
 "0	LINE	0
 	
 ""1	LINE	0
-	    更新纪录
+				(when (w3m-anchor)
 "2	LINE	0
-	
+				;; 这里判断是否是一个锚链接
 "3	LINE	0
-	
+	    更新纪录
 "4	LINE	0
 	
 "5	LINE	0
+	
+"6	LINE	0
+	
+"7	LINE	0
 	kkkkkkkkkkkkkkkk
-"6	CHAR	0
+"8	CHAR	0
 	
 	更新纪录
 	
@@ -129,43 +133,30 @@ $
 	        更改了工具介绍，换用自行开发的正则表达式测试器
 	    2013-1-10 v2.33
 	        说明包含前导0的IP地址是合法的
-"7	LINE	0
-	
-"8	LINE	0
-	###  [end]  ###
-"9	CHAR	0
-	Posted by: 大CC | 18NOV,2013
-	博客：blog.me115.com
-	微博：新浪微博
-	分类: Linux&Unix
-	好文要顶 关注我 收藏该文
-	大CC
-	关注 - 3
-	粉丝 - 482
-	+加关注
-	9
-	0
-	« 上一篇：Linux Shell 文本处理工具集锦
-	» 下一篇：发博客后自动同步摘要到新浪微博
-	posted @ 2013-11-19 12:23 大CC 阅读(20058) 评论(8) 编辑 收藏
-	
+"9	LINE	0
 	
 "-	CHAR	0
 		
 
 # 檔案標記:
-'0  31  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
-'1  198  0  ~/Note/ubuntu/shell_command/text-processing-tools.txt
-'2  1  0  ~/Note/ubuntu/shell_script_skills/shell-script-simple-tutorial.txt
-'3  1  0  ~/Note/ubuntu/shellScript/get-sh-argument.txt
-'4  487  0  ~/Note/ubuntu/command_line_interface/text-processing-tools.txt
-'5  504  12  ~/Note/ubuntu/Linux
-'6  23  0  ~/TODO
-'7  5  1  ~/TODO
-'8  1  0  ~/GuLong.txt
-'9  1  0  ~/gulong.txt
+'0  10  5  ~/diff1
+'1  8188  0  ~/Books/the-c-programming-language.txt
+'2  31  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+'3  198  0  ~/Note/ubuntu/shell_command/text-processing-tools.txt
+'4  1  0  ~/Note/ubuntu/shell_script_skills/shell-script-simple-tutorial.txt
+'5  1  0  ~/Note/ubuntu/shellScript/get-sh-argument.txt
+'6  487  0  ~/Note/ubuntu/command_line_interface/text-processing-tools.txt
+'7  504  12  ~/Note/ubuntu/Linux
+'8  23  0  ~/TODO
+'9  5  1  ~/TODO
 
 # Jumplist (由新到舊):
+-'  10  5  ~/diff1
+-'  1  0  ~/diff1
+-'  8188  0  ~/Books/the-c-programming-language.txt
+-'  1  0  ~/Books/the-c-programming-language.txt
+-'  12522  0  ~/Books/the-c-programming-language.txt
+-'  9133  0  ~/Books/the-c-programming-language.txt
 -'  31  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  451  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  445  276  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
@@ -237,8 +228,38 @@ $
 -'  14  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  1  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  112  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  31  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  451  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  445  276  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  441  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  407  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  366  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  348  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  328  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  322  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  321  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  320  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  319  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  318  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  317  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  316  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  310  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  293  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  274  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  242  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  224  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  209  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  196  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/diff1
+	"	10	5
+	.	10	0
+	+	10	0
+
+> ~/Books/the-c-programming-language.txt
+	"	8188	0
 
 > ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 	"	31	0
