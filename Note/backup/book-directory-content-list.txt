@@ -1,1 +1,3 @@
 gimp
+The-C-Programming-Language_2nd-Edition_zh-第二版中文版.pdf
+The-C-Programming-Language_Prentice+Hall_2nd-Edition.pdf

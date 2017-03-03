@@ -10,17 +10,21 @@
 # Last Search Pattern:
 ~MSle0~/.
 
+# 前一組替代字串:
+$
+
 # 命令列 歷史記錄 (新到舊):
 :q
+:set nu
+:wq
 :x
 :w
 :q!
-:wq
 :e 
 :e /etc/profile
-:set nu
 
 # 搜尋字串 歷史記錄 (新到舊):
+? @$
 ?/.
 ?/profile
 ?/exit
@@ -37,43 +41,47 @@
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-"0	LINE	0
-	# $PPID变量显示当前shell的父进程号
-"1	LINE	0
-		
+"0	CHAR	0
+	 
+""1	LINE	0
+		backup.sh
 "2	LINE	0
-		echo "Current PID is $BASHPID"
+		
 "3	LINE	0
-		ps -aux
+		echo "Current PID is $BASHPID"
 "4	LINE	0
-	source $HOME/.profile 
+		ps -aux
 "5	LINE	0
-	# my personal config
+	source $HOME/.profile 
 "6	LINE	0
-	
+	# my personal config
 "7	LINE	0
-	. /etc/gdm3/Xsession
+	
 "8	LINE	0
+	. /etc/gdm3/Xsession
+"9	LINE	0
 	# my personal config
-"9	CHAR	0
-	# my personal config
-	source /etc/profile
-""-	CHAR	0
+"-	CHAR	0
 	 
 
 # 檔案標記:
-'0  12  0  ~/TODO
-'1  3  0  ~/Note/VPN/openvpn.txt
-'2  72  0  /etc/openvpn/easy-rsa/vars
-'3  15  0  /etc/openvpn/easy-rsa/vars
-'4  56  4  /etc/openvpn/easy-rsa/vars
-'5  80  0  /etc/openvpn/easy-rsa/vars
-'6  14  0  /etc/openvpn/easy-rsa/clean-all
-'7  49  0  /usr/local/bin/backup.sh
-'8  44  8  ~/ShellScripts/backup.sh
-'9  44  8  /usr/local/bin/backup.sh
+'0  1  0  ~/GuLong.txt
+'1  1  0  ~/gulong.txt
+'2  2  1  ~/ShellScripts/power-off-only.sh
+'3  16  0  ~/ShellScripts
+'4  12  0  ~/TODO
+'5  3  0  ~/Note/VPN/openvpn.txt
+'6  72  0  /etc/openvpn/easy-rsa/vars
+'7  15  0  /etc/openvpn/easy-rsa/vars
+'8  56  4  /etc/openvpn/easy-rsa/vars
+'9  80  0  /etc/openvpn/easy-rsa/vars
 
 # Jumplist (由新到舊):
+-'  1  0  ~/GuLong.txt
+-'  1  0  ~/gulong.txt
+-'  2  1  ~/ShellScripts/power-off-only.sh
+-'  1  0  ~/ShellScripts/power-off-only.sh
+-'  16  0  ~/ShellScripts
 -'  12  0  ~/TODO
 -'  1  0  ~/TODO
 -'  3  0  ~/Note/VPN/openvpn.txt
@@ -167,15 +175,19 @@
 -'  1  0  /etc/profile.d/run-local-profile.sh
 -'  2  16  /etc/profile.d/run-local-profile.sh
 -'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/GuLong.txt
+	"	1	0
+
+> ~/gulong.txt
+	"	1	0
+
+> ~/ShellScripts/power-off-only.sh
+	"	2	1
+	.	2	0
+	+	2	0
 
 > ~/TODO
 	"	12	0
