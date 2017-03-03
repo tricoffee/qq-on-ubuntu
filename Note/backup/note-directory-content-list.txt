@@ -21,8 +21,6 @@
 ├── ubuntu
 │   ├── boot
 │   │   └── boot-directory-clean.txt
-│   ├── command_line_interface
-│   │   └── create-symbol-link.txt
 │   ├── console
 │   │   └── console-zh-encoding-support.txt
 │   ├── DWM
@@ -34,8 +32,14 @@
 │   │   ├── ubuntu-connect-IOS-setup.txt
 │   │   ├── ubuntu-connect-IOS-setup.txt~
 │   │   └── ubuntu-connect-IOS-support.txt
-│   ├── shellScript
-│   │   └── get-sh-argument.txt
+│   ├── regular_expression
+│   │   └── regular-expression-simple-tutorial.txt
+│   ├── shell_command
+│   │   ├── create-symbol-link.txt
+│   │   └── text-processing-tools.txt
+│   ├── shell_script_skills
+│   │   ├── get-sh-argument.txt
+│   │   └── shell-script-simple-tutorial.txt
 │   ├── ssh_server
 │   │   └── build-ssh-server.txt
 │   └── wget
@@ -52,4 +56,4 @@
     ├── emacs-discovery-website.txt
     └── ubuntu-development-correlate-website.txt
 
-20 directories, 32 files
+21 directories, 35 files

@@ -8,31 +8,72 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/.
+~MSle0~/# 
 
 # 前一組替代字串:
 $
 
 # 命令列 歷史記錄 (新到舊):
-:q
-:set nu
 :wq
-:x
 :w
+:set nu
+:q
 :q!
+:x
 :e 
 :e /etc/profile
 
 # 搜尋字串 歷史記錄 (新到舊):
+?/# 
+? \<元字符\>
+? \<网上的资源及本文参考文献\>
+? \<更新纪录\>
+? \<联系作者\>
+? \<还有些什么东西没提到\>
+? \<平衡组\>
+? \<处理选项\>
+? \<贪婪与懒惰\>
+? \<注释\>
+? \<负向零宽断言\>
+? \<零宽断言\>
+? \<后向引用\>
+? \<分组\>
+? \<反义\>
+? \<分枝条件\>
+? \<字符类\>
+? \<重复\>
+? \<字符转义\>
+? \<测试正则表达式\>
+? \<入门\>
+? \<正则表达式到底是什么东西\>
+? \<如何使用本教程\>
+? \<迭代文件中的行\>
+? \<数据流处理工具\>
+? \<文本替换利器\>
+? \<统计行和字符的工具\>
+? \<按列拼接文本\>
+? \<按列切分文本\>
+? \<进行转换\>
+? \<uniq\>
+? \<sort\>
+? \<xargs\>
+? \<grep\>
+? \<find\>
+? \<收集信息\>
+? \<杀死进程\>
+? \<记录日志\>
+? \<故障排查\>
+? \<磁盘管理\>
+? \<ftp\>
+? \<备份系统快照\>
+? \<归档工具\>
+? \<网站下载\>
+? \<目录操作\>
+? \<算术比较\>
+? \<的控制结构\>
+? \<shell\>
+? \<给终端来点颜色\>
 ? @$
-?/.
-?/profile
-?/exit
-?/exit 0
-? \<PROGNAME\>
-? \<Xsession\>
-?/Xsession
-? \<OPTIONFILE\>
 
 # 運算式 歷史記錄 (新到舊):
 
@@ -41,142 +82,356 @@ $
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-"0	CHAR	0
-	 
+"0	LINE	0
+	
 ""1	LINE	0
-		backup.sh
+	    更新纪录
 "2	LINE	0
-		
+	
 "3	LINE	0
-		echo "Current PID is $BASHPID"
+	
 "4	LINE	0
-		ps -aux
+	
 "5	LINE	0
-	source $HOME/.profile 
-"6	LINE	0
-	# my personal config
+	kkkkkkkkkkkkkkkk
+"6	CHAR	0
+	
+	更新纪录
+	
+	    2006-3-27 第一版
+	    2006-10-12 第二版
+	        修正了几个细节上的错误和不准确的地方
+	        增加了对处理中文时的一些说明
+	        更改了几个术语的翻译（采用了MSDN的翻译方式）
+	        增加了平衡组的介绍
+	        放弃了对The Regulator的介绍，改用Regex Tester
+	    2007-3-12 V2.1
+	        修正了几个小的错误
+	        增加了对处理选项(RegexOptions)的介绍
+	    2007-5-28 V2.2
+	        重新组织了对零宽断言的介绍
+	        删除了几个不太合适的示例，添加了几个实用的示例
+	        其它一些微小的更改
+	    2007-8-3 V2.21
+	        修改了几处文字错误
+	        修改/添加了对$,\b的精确说明
+	        承认了作者是个骗子
+	        给RegexTester添加了Singleline选项的相关功能
+	    2008-4-13 v2.3
+	        调整了部分章节的次序
+	        修改了页面布局，删除了专门的参考节
+	        针对读者的反馈，调整了部分内容
+	    2009-4-11 v2.31
+	        修改了几处文字错误
+	        添加了一些注释说明
+	        调整了一些措词
+	    2011-8-17 v2.32
+	        更改了工具介绍，换用自行开发的正则表达式测试器
+	    2013-1-10 v2.33
+	        说明包含前导0的IP地址是合法的
 "7	LINE	0
 	
 "8	LINE	0
-	. /etc/gdm3/Xsession
-"9	LINE	0
-	# my personal config
+	###  [end]  ###
+"9	CHAR	0
+	Posted by: 大CC | 18NOV,2013
+	博客：blog.me115.com
+	微博：新浪微博
+	分类: Linux&Unix
+	好文要顶 关注我 收藏该文
+	大CC
+	关注 - 3
+	粉丝 - 482
+	+加关注
+	9
+	0
+	« 上一篇：Linux Shell 文本处理工具集锦
+	» 下一篇：发博客后自动同步摘要到新浪微博
+	posted @ 2013-11-19 12:23 大CC 阅读(20058) 评论(8) 编辑 收藏
+	
+	
 "-	CHAR	0
-	 
+		
 
 # 檔案標記:
-'0  1  0  ~/GuLong.txt
-'1  1  0  ~/gulong.txt
-'2  2  1  ~/ShellScripts/power-off-only.sh
-'3  16  0  ~/ShellScripts
-'4  12  0  ~/TODO
-'5  3  0  ~/Note/VPN/openvpn.txt
-'6  72  0  /etc/openvpn/easy-rsa/vars
-'7  15  0  /etc/openvpn/easy-rsa/vars
-'8  56  4  /etc/openvpn/easy-rsa/vars
-'9  80  0  /etc/openvpn/easy-rsa/vars
+'0  31  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+'1  198  0  ~/Note/ubuntu/shell_command/text-processing-tools.txt
+'2  1  0  ~/Note/ubuntu/shell_script_skills/shell-script-simple-tutorial.txt
+'3  1  0  ~/Note/ubuntu/shellScript/get-sh-argument.txt
+'4  487  0  ~/Note/ubuntu/command_line_interface/text-processing-tools.txt
+'5  504  12  ~/Note/ubuntu/Linux
+'6  23  0  ~/TODO
+'7  5  1  ~/TODO
+'8  1  0  ~/GuLong.txt
+'9  1  0  ~/gulong.txt
 
 # Jumplist (由新到舊):
--'  1  0  ~/GuLong.txt
--'  1  0  ~/gulong.txt
--'  2  1  ~/ShellScripts/power-off-only.sh
--'  1  0  ~/ShellScripts/power-off-only.sh
--'  16  0  ~/ShellScripts
--'  12  0  ~/TODO
--'  1  0  ~/TODO
--'  3  0  ~/Note/VPN/openvpn.txt
--'  308  0  ~/Note/VPN/openvpn.txt
--'  321  40  ~/Note/VPN/openvpn.txt
--'  1  0  ~/Note/VPN/openvpn.txt
--'  72  0  /etc/openvpn/easy-rsa/vars
--'  1  0  /etc/openvpn/easy-rsa/vars
--'  15  0  /etc/openvpn/easy-rsa/vars
--'  56  4  /etc/openvpn/easy-rsa/vars
--'  80  0  /etc/openvpn/easy-rsa/vars
--'  14  0  /etc/openvpn/easy-rsa/clean-all
--'  1  0  /etc/openvpn/easy-rsa/clean-all
--'  49  0  /usr/local/bin/backup.sh
--'  1  0  /usr/local/bin/backup.sh
--'  44  8  ~/ShellScripts/backup.sh
--'  1  0  ~/ShellScripts/backup.sh
--'  44  8  /usr/local/bin/backup.sh
--'  10  0  /usr/local/bin/backup.sh
--'  1  0  /usr/local/bin/power-off-on-gui.sh
--'  4  16  ~/ShellScripts/get-ubuntu-startup-script-list.sh
--'  1  0  ~/ShellScripts/get-ubuntu-startup-script-list.sh
--'  5  4  ~/ShellScripts/get-ubuntu-startup-script-list.sh
--'  6  7  ~/ShellScripts/get-ubuntu-startup-script-list.sh
--'  7  29  ~/ShellScripts/get-ubuntu-startup-script-list.sh
--'  1  0  ~/Github/dwm/config.def.h
--'  13  0  /etc/rc.local
--'  1  0  /etc/rc.local
--'  81  0  /etc/init/gdm3.conf
--'  1  0  /etc/init/gdm3.conf
--'  1  7  /etc/init.d/run-personal-profile.sh
--'  1  0  /etc/init.d/checkfs.sh
--'  2  18  /etc/init.d/run-personal-profile.sh
--'  8  0  /etc/X11/xinit/xinitrc
--'  1  0  /etc/X11/xinit/xinitrc
--'  55  7  /etc/init/gdm3.conf
--'  96  0  /etc/init.d/gdm3
--'  1  0  /etc/init.d/gdm3
--'  21  28  /etc/gdm3/Xsession
--'  53  35  /etc/gdm3/Xsession
--'  52  34  /etc/gdm3/Xsession
--'  46  33  /etc/gdm3/Xsession
--'  45  31  /etc/gdm3/Xsession
--'  73  0  /etc/gdm3/Xsession
--'  1  0  /etc/gdm3/Xsession
--'  28  0  /etc/profile
--'  1  0  /etc/profile
--'  222  0  /etc/gdm3/Xsession
--'  116  0  /etc/X11/Xsession
--'  1  0  /etc/X11/Xsession
--'  217  0  /etc/gdm3/Xsession
--'  99  71  /etc/X11/Xsession
--'  40  4  /etc/X11/Xsession
--'  36  2  /etc/X11/Xsession
--'  34  4  /etc/X11/Xsession
--'  117  0  /etc/X11/Xsession
--'  121  0  /etc/X11/Xsession
--'  29  5  /etc/profile
--'  21  0  ~/ShellScripts/test.sh
--'  1  0  ~/ShellScripts/test.sh
--'  11  0  /etc/X11/Xsession
--'  85  7  /etc/X11/Xsession
--'  26  12  /etc/X11/Xsession
--'  16  12  /etc/X11/Xsession
--'  7  7  /etc/X11/Xsession
--'  5  9  /etc/X11/Xsession
--'  3  11  /etc/X11/Xsession
--'  60  23  /etc/X11/Xsession
--'  57  23  /etc/X11/Xsession
--'  52  20  /etc/X11/Xsession
--'  1  0  /etc/X11/Xsession.d/75dbus_dbus-launch
--'  17  0  /etc/X11/Xsession.d/75dbus_dbus-launch
--'  58  0  /etc/gdm3/Xsession
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
--'  2  16  /etc/profile.d/run-local-profile.sh
--'  1  0  /etc/profile.d/run-local-profile.sh
+-'  31  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  451  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  445  276  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  441  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  407  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  366  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  348  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  328  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  322  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  321  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  320  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  319  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  318  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  317  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  316  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  310  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  293  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  274  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  242  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  224  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  209  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  196  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  179  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  159  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  150  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  113  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  95  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  64  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  53  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  38  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  29  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  164  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  46  47  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  13  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  139  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  30  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  450  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  440  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  28  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  406  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  27  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  365  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  26  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  347  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  25  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  327  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  24  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  309  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  267  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  23  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  292  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  22  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  273  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  263  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  21  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  241  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  20  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  208  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  19  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  18  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  17  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  223  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  195  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  16  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  178  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  158  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  15  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  149  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  14  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  1  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  112  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+	"	31	0
+	^	450	0
+	.	30	0
+	+	458	47
+	+	461	0
+	+	459	0
+	+	460	4
+	+	38	1
+	+	34	0
+	+	31	1
+	+	32	0
+	+	33	1
+	+	53	1
+	+	53	0
+	+	52	0
+	+	39	0
+	+	50	0
+	+	54	0
+	+	54	0
+	+	36	0
+	+	64	1
+	+	62	0
+	+	95	1
+	+	93	0
+	+	113	1
+	+	111	0
+	+	150	1
+	+	148	0
+	+	159	1
+	+	158	0
+	+	179	1
+	+	177	0
+	+	196	1
+	+	194	0
+	+	224	1
+	+	222	0
+	+	209	1
+	+	207	0
+	+	242	1
+	+	240	0
+	+	274	1
+	+	272	0
+	+	293	1
+	+	291	0
+	+	310	1
+	+	308	0
+	+	328	1
+	+	326	0
+	+	348	1
+	+	346	0
+	+	366	1
+	+	364	0
+	+	407	1
+	+	405	0
+	+	441	1
+	+	439	0
+	+	451	1
+	+	449	0
+	+	30	0
+
+> ~/Note/ubuntu/shell_command/text-processing-tools.txt
+	"	198	0
+	^	491	15
+	.	165	0
+	+	23	1
+	+	22	0
+	+	100	0
+	+	101	1
+	+	127	1
+	+	153	1
+	+	164	1
+	+	180	1
+	+	215	1
+	+	242	1
+	+	263	1
+	+	262	0
+	+	269	1
+	+	268	0
+	+	316	1
+	+	453	1
+	+	24	0
+	+	102	0
+	+	128	0
+	+	154	0
+	+	181	0
+	+	216	0
+	+	243	0
+	+	264	0
+	+	270	0
+	+	317	0
+	+	454	0
+	+	491	14
+	+	490	0
+	+	454	0
+	+	164	0
+	+	165	0
+
+> ~/Note/ubuntu/shell_script_skills/shell-script-simple-tutorial.txt
+	"	1	0
+	^	33	4
+	.	334	0
+	+	1	86
+	+	1	36
+	+	449	24
+	+	451	0
+	+	451	4
+	+	450	0
+	+	451	10
+	+	393	0
+	+	451	0
+	+	389	0
+	+	390	0
+	+	388	0
+	+	25	1
+	+	24	0
+	+	48	1
+	+	85	1
+	+	124	1
+	+	152	1
+	+	205	1
+	+	235	1
+	+	234	0
+	+	261	1
+	+	281	1
+	+	280	0
+	+	298	1
+	+	320	1
+	+	333	1
+	+	345	1
+	+	344	0
+	+	368	1
+	+	26	0
+	+	49	0
+	+	86	0
+	+	26	0
+	+	27	0
+	+	28	0
+	+	29	0
+	+	30	0
+	+	32	0
+	+	33	0
+	+	34	0
+	+	27	3
+	+	28	3
+	+	29	3
+	+	30	3
+	+	32	3
+	+	34	3
+	+	33	3
+	+	206	0
+	+	262	0
+	+	282	0
+	+	334	0
+
+> ~/Note/ubuntu/shellScript/get-sh-argument.txt
+	"	1	0
+
+> ~/Note/ubuntu/command_line_interface/text-processing-tools.txt
+	"	487	0
+	^	487	0
+	.	487	0
+	+	501	0
+	+	501	0
+	+	489	0
+	+	480	0
+	+	480	0
+	+	480	0
+	+	485	0
+	+	486	0
+	+	480	0
+	+	487	0
+
+> ~/Note/ubuntu/Linux
+	"	504	12
+	^	504	15
+	.	504	12
+	+	1	26
+	+	504	12
+
+> ~/TODO
+	"	23	0
+	^	21	15
+	.	23	0
+	+	9	2
+	+	11	2
+	+	14	2
+	+	17	2
+	+	19	2
+	+	5	1
+	+	21	0
+	+	23	0
 
 > ~/GuLong.txt
 	"	1	0
@@ -188,9 +443,6 @@ $
 	"	2	1
 	.	2	0
 	+	2	0
-
-> ~/TODO
-	"	12	0
 
 > ~/Note/VPN/openvpn.txt
 	"	3	0

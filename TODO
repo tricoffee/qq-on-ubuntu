@@ -6,15 +6,18 @@
 
 3. 为emacs添加cscope插件
 
+4. 2017年 02月 12日 星期日 12:53:53 CST ~~~ CONTENT : 调试github博客，修改happypeter的博客框架
 
-2017年 02月 12日 星期日 12:53:53 CST ~~~ CONTENT : 调试github博客，修改happypeter的博客框架
-
-2017年 02月 12日 星期日 15:23:03 CST ~~~ CONTENT : 配置emacs blackboard theme找出其中过期的函数在emacs 24
+5. 2017年 02月 12日 星期日 15:23:03 CST ~~~ CONTENT : 配置emacs blackboard theme找出其中过期的函数在emacs 24
 						   当中对应的函数是什么
 
-2017年 02月 12日 星期日 16:03:31 CST ~~~ CONTENT : 调试.emacs.d/init-my-config.el中的"eshell color config"
+6. 2017年 02月 12日 星期日 16:03:31 CST ~~~ CONTENT : 调试.emacs.d/init-my-config.el中的"eshell color config"
 						   配置中过期的elisp函数在emacs24中对应的函数是什么
 
-2017年 02月 12日 星期日 16:10:50 CST ~~~ CONTENT : 找一下为什么使用qq用户名登陆时无法自动加载.profile文件
+7. 2017年 02月 12日 星期日 16:10:50 CST ~~~ CONTENT : 找一下为什么使用qq用户名登陆时无法自动加载.profile文件
 
-2017年 02月 14日 星期二 21:57:53 CST ~~~ CONTENT : 利用ShellScripts/get-ubuntu-startup-script-list.sh标记出ubuntu启动过程中运行的脚本
+8. 2017年 02月 14日 星期二 21:57:53 CST ~~~ CONTENT : 利用ShellScripts/get-ubuntu-startup-script-list.sh标记出ubuntu启动过程中运行的脚本
+
+99.helloworld
+
+99. helloworld
