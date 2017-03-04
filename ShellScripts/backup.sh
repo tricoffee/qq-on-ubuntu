@@ -24,6 +24,10 @@
 	DATE=$(date)
 
 	cd ~/
+	echo "======================================"
+	echo "||  shell change to HOME directory  ||"
+	echo "======================================"
+
 
 	#git pull
 	git add -A
