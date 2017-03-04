@@ -16,6 +16,14 @@
 
 	# echo $MACHINE_VERSION
 
-# [end]
+	echo -en "\n\n"
+	echo "========================================================"
+	echo "||  backup home folder to github remote repository !  ||"
+	echo "========================================================"
 
-echo $HOME/.profile
+	echo -en "\n\n"
+	echo "=========================================================================="
+	echo "||  now shell will change to old directory, press C^c to cancel action  ||"
+	echo "=========================================================================="
+
+	sleep 20

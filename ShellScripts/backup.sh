@@ -7,12 +7,13 @@
 	ls ~/Books/ > ~/Note/backup/book-directory-content-list.txt
 
 # use system command to checkout what different between the remote repository and local repository
+	LF='\n'
 	DIFF_HOMEDIR_AND_GITIGNORE=~/diff-the-Home-dir-and-.gitignore-file.txt
 
 	echo "*** this is Home directory's contant ***" > ${DIFF_HOMEDIR_AND_GITIGNORE}
-	echo -e "\n$(ls -a ~/)\n\n" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
+	echo -e "${LF}$(ls -a ~/)${LF}${LF}" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
 	echo "*** this is .gitignore regulate the file ignore rule ***" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
-	echo -e "\n$(cat ~/.gitignore)\n\n" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
+	echo -e "${LF}$(cat ~/.gitignore)${LF}${LF}" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
 	echo "[end]" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
  
 # use 'git' command backup Home folder to remote repository of the github
@@ -28,12 +29,17 @@
 	git add -A
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"
 	git push
-	
-	echo -e "\n\n========================================================"
-	echo -e "||  backup home folder to github remote repository !  ||"
-	echo -e "========================================================\n\n"
+
+	echo -en "\n\n"
+	echo "========================================================"
+	echo "||  backup home folder to github remote repository !  ||"
+	echo "========================================================"
+
+	echo -en "\n\n"
+	echo "=========================================================================="
+	echo "||  now shell will change to old directory, press C^c to cancel action  ||"
+	echo "=========================================================================="
+
 	sleep 10
 
 	cd -
-
-# [end]
