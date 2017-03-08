@@ -1,0 +1,42 @@
+1. Anjuta
+   Anjuta是一个建立在GNU/Linux下为C、C++提供编译的集成开发环境。
+   它最初旨在为GTK/GNOME设计，并且自身具有很好的编程属性。这其中
+   包括项目管理、应用开发、交互调试以及强大的代码编辑和语法增彩的
+   性质。
+
+2. Eclipse
+   Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，
+   它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Ec-
+   lipse 附带了一个标准的插件集，包括Java开发工具（Java Development 
+   Kit，JDK）。尽管 Eclipse 是使用Java语言开发的，但它的用途并不限于
+   Java 语言；例如，支持诸如C/C++、COBOL、PHP、Android等编程语言的插
+   件已经可用，或预计将会推出。
+   
+3. Kdevelop
+   Kdevelop是一个自由，开放源代码 的 IDE（集成开发环境），包括Linux，
+   Solaris，FreeBSD，Mac OS X 以及其他类Unix系统，它是一个功能全，可
+   扩展的IDE。
+   
+4. MonoDevelop
+   MonoDevelop 是个适用于Linux、Mac OS X和Microsoft Windows的开放
+   源代码集成开发环境，主要用来开发Mono与.NET Framework软件。MonoDe-
+   velop 集成了很多Eclipse与Microsoft Visual Studio的特性，像是 I-
+   ntellisense、版本控制还有 GUI 与 Web 设计工具。另外还集成了GTK#G-
+   UI设计工具（叫做Stetic）。 目前支持的语言有Python、Vala、C#、Java
+   、BOO、Nemerle、Visual Basic .NET、CIL、C与C++。
+   
+5. Qt Creator
+   Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推
+   出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系
+   统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。根据官方描述
+   ，Qt Creator 的设计目标是使开发人员能够利用 Qt 这个应用程序框架更加快
+   速及轻易的完成开发任务。
+   
+
+6. Sun Studio
+   Sun Studio 12 软件是 Solaris 操作系统的首选开发环境。它不仅优化了 C、
+   C++ 及 Fortran 编译器，而且还结合了处于世界级领先地位的 Netbeans IDE
+   以及其他一些性能工具。
+   对基于 Sparc 平台的 Solaris 操作系统以及基于 x86/x64 平台的 Solaris
+   操作系统和 Linux 操作系统（包括最新的多核心系统）而言，Sun Studio 软件
+   为其提供了高性能、优化的 C、C++ 及 Fortran 编译器。
