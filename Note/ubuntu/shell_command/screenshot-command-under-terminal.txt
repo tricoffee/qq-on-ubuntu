@@ -1,0 +1,7 @@
+import, scrot
+http://blog.csdn.net/wretchedme/article/details/41786381
+https://www.douban.com/group/topic/16028849/
+https://linux.cn/article-3197-1.html
+
+import, scrot, snapscreenshot
+http://blog.chinaunix.net/uid-26707720-id-3779186.html
