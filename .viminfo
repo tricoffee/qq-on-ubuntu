@@ -147,26 +147,32 @@ $
 	n
 
 # 檔案標記:
-'0  23  0  ~/ShellScripts/backup.sh
-'1  19  0  ~/ShellScripts/install-my-custom-sh-script.sh
-'2  117  0  ~/.bashrc
-'3  30  0  ~/ShellScripts/backup.sh
-'4  29  30  ~/ShellScripts/backup.sh
-'5  50  0  ~/ShellScripts/backup.sh
-'6  13  61  ~/ShellScripts/add-todo-list.sh
-'7  17  1  ~/ShellScripts/test.sh
-'8  18  0  ~/ShellScripts/test.sh
-'9  10  1  ~/ShellScripts/add-todo-list.sh
+'0  29  0  ~/ShellScripts/backup.sh
+'1  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+'2  3  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+'3  1  0  ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+'4  173  0  ~/isotostick.sh
+'5  23  0  ~/ShellScripts/backup.sh
+'6  19  0  ~/ShellScripts/install-my-custom-sh-script.sh
+'7  117  0  ~/.bashrc
+'8  30  0  ~/ShellScripts/backup.sh
+'9  50  0  ~/ShellScripts/backup.sh
 
 # Jumplist (由新到舊):
--'  23  0  ~/ShellScripts/backup.sh
+-'  29  0  ~/ShellScripts/backup.sh
 -'  1  0  ~/ShellScripts/backup.sh
+-'  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+-'  3  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+-'  1  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+-'  1  0  ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+-'  173  0  ~/isotostick.sh
+-'  1  0  ~/isotostick.sh
+-'  23  0  ~/ShellScripts/backup.sh
 -'  19  0  ~/ShellScripts/install-my-custom-sh-script.sh
 -'  1  0  ~/ShellScripts/install-my-custom-sh-script.sh
 -'  117  0  ~/.bashrc
 -'  1  0  ~/.bashrc
 -'  30  0  ~/ShellScripts/backup.sh
--'  29  30  ~/ShellScripts/backup.sh
 -'  50  0  ~/ShellScripts/backup.sh
 -'  13  61  ~/ShellScripts/add-todo-list.sh
 -'  9  30  ~/ShellScripts/add-todo-list.sh
@@ -250,18 +256,11 @@ $
 -'  27  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  365  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  26  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  347  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  25  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  327  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  24  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  309  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  267  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  23  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 
 # 檔案內 Mark 記錄 (由新到舊):
 
 > ~/ShellScripts/backup.sh
-	"	23	0
+	"	29	0
 	^	29	31
 	.	32	0
 	+	38	8
@@ -348,6 +347,21 @@ $
 	+	27	0
 	+	31	0
 	+	32	0
+
+> ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+	"	1	0
+
+> ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+	"	3	0
+
+> ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+	"	1	0
+	^	1	174461
+	.	1	174458
+	+	1	174458
+
+> ~/isotostick.sh
+	"	173	0
 
 > ~/ShellScripts/install-my-custom-sh-script.sh
 	"	19	0

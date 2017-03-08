@@ -3,6 +3,5 @@ Oracle_VM_VirtualBox_Extension_Pack-4.3.12-93733a.vbox-extpack
 Oracle_VM_VirtualBox_Extension_Pack-5.0.32-112930.vbox-extpack
 stardict.tar
 the_collected_works_of_Gu_Long_novels
-ubuntu-16.04.2-desktop-i386.iso
+ubuntu-gnome-16.04.1-desktop-amd64.iso
 VirtualBox-4.3.12.tar.bz2
-virtualbox-4.3_4.3.12-93733~Ubuntu~raring_amd64.deb

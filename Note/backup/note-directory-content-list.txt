@@ -6,12 +6,6 @@
 │   ├── note-directory-content-list.txt
 │   └── old_disk_data
 │       └── temp.txt
-├── emacs
-│   ├── emacs-call-w3m-to-browse-website.txt
-│   ├── emacs-correlation-help.txt
-│   ├── emacs-usage.txt
-│   └── themes
-│       └── some-emacs-theme.txt
 ├── exercise
 │   └── exercise.txt
 ├── git
@@ -19,16 +13,31 @@
 │   ├── git-push-an-exist-local-repository-to-remote-server.txt
 │   ├── git-remove-remote-repository-file.txt
 │   └── git-retract-commit.txt
+├── programming_IDE
+│   ├── emacs
+│   │   ├── emacs-call-w3m-to-browse-website.txt
+│   │   ├── emacs-correlation-help.txt
+│   │   ├── emacs-usage.txt
+│   │   └── themes
+│   │       └── some-emacs-theme.txt
+│   └── linux-programming-IDE.txt
 ├── ubuntu
 │   ├── boot
 │   │   └── boot-directory-clean.txt
-│   ├── console
-│   │   └── console-zh-encoding-support.txt
-│   ├── DWM
-│   │   ├── dmenu-usage.txt
-│   │   └── dwm-usage.txt
-│   ├── firefox
-│   │   └── replace-system-default-firefox.txt
+│   ├── character_terminal
+│   │   ├── character-terminal-zh-encoding-support.txt
+│   │   ├── screenshot-command-under-terminal.txt
+│   │   ├── temp
+│   │   ├── terminal-record-command.txt
+│   │   └── use-google-on-terminal.txt
+│   ├── file_manager
+│   │   └── linux-terminal-file-manager.txt
+│   ├── install_ubuntu
+│   ├── internet_browser
+│   │   ├── eww
+│   │   ├── firefox
+│   │   │   └── replace-system-default-firefox.txt
+│   │   └── w3m
 │   ├── IOS
 │   │   ├── ubuntu-connect-IOS-setup.txt
 │   │   ├── ubuntu-connect-IOS-setup.txt~
@@ -38,14 +47,23 @@
 │   ├── shell_command
 │   │   ├── convert-pdf-to-text.txt
 │   │   ├── create-symbol-link.txt
+│   │   ├── intercept-screenshot-of-the-webpage.txt
+│   │   ├── linux-terminal-file-manager.txt
 │   │   └── text-processing-tools.txt
 │   ├── shell_script_skills
 │   │   ├── get-sh-argument.txt
 │   │   └── shell-script-simple-tutorial.txt
 │   ├── ssh_server
 │   │   └── build-ssh-server.txt
-│   └── wget
-│       └── wget-usage.txt
+│   ├── wget
+│   │   └── wget-usage.txt
+│   └── window_manager
+│       ├── DWM
+│       │   ├── dmenu-usage.txt
+│       │   └── dwm-usage.txt
+│       ├── linux-window-manager.txt
+│       ├── more-then-40-WM-evaluation.txt
+│       └── temp
 ├── vim
 │   └── vim-usage.txt
 ├── virtualbox
@@ -58,4 +76,4 @@
     ├── emacs-discovery-website.txt
     └── ubuntu-development-correlate-website.txt
 
-21 directories, 37 files
+28 directories, 48 files
