@@ -1,0 +1,11 @@
+Linux MC——终端环境的文件管理器
+
+介绍
+  Midnight Commander (MC)是 Linux 控制台和其它终端环境中的“瑞士军刀”，
+  是一个很方便的文件管理器，相当于Windows下的 Total Commander 吧。这给
+  予了新手一个菜单驱动控制台的体验，它比 Linux 标准命令容易学的多。不过用
+  它的人很少哦，可能是 Linux 用户更喜欢敲键盘的缘故吧。
+
+SEE AS :
+http://blog.csdn.net/duan1522630316/article/details/8728957
+http://www.cnblogs.com/end/archive/2012/10/06/2712872.html
