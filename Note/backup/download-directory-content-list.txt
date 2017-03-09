@@ -1,4 +1,5 @@
 Firefox-latest-x86_64(1).tar.bz2
+note.zip
 Oracle_VM_VirtualBox_Extension_Pack-4.3.12-93733a.vbox-extpack
 Oracle_VM_VirtualBox_Extension_Pack-5.0.32-112930.vbox-extpack
 stardict.tar

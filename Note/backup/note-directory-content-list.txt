@@ -49,14 +49,14 @@
 │   │   ├── create-symbol-link.txt
 │   │   ├── intercept-screenshot-of-the-webpage.txt
 │   │   ├── linux-terminal-file-manager.txt
-│   │   └── text-processing-tools.txt
+│   │   ├── text-processing-tools.txt
+│   │   └── wget
+│   │       └── wget-usage.txt
 │   ├── shell_script_skills
 │   │   ├── get-sh-argument.txt
 │   │   └── shell-script-simple-tutorial.txt
 │   ├── ssh_server
 │   │   └── build-ssh-server.txt
-│   ├── wget
-│   │   └── wget-usage.txt
 │   └── window_manager
 │       ├── DWM
 │       │   ├── dmenu-usage.txt

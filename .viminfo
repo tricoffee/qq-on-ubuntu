@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/TODO
+~Msle0~/\<baidu\>
 
 # 前一組替代字串:
 $
@@ -28,6 +28,8 @@ $
 :e /etc/profile
 
 # 搜尋字串 歷史記錄 (新到舊):
+? \<baidu\>
+? \<keywords\>
 ?/TODO
 ? \<LINENUM\>
 ?/# 
@@ -76,8 +78,6 @@ $
 ? \<网站下载\>
 ? \<目录操作\>
 ? \<算术比较\>
-? \<的控制结构\>
-? \<shell\>
 
 # 運算式 歷史記錄 (新到舊):
 
@@ -88,7 +88,7 @@ $
 # 暫存器:
 "0	LINE	0
 		echo -en "\n"
-""1	LINE	0
+"1	LINE	0
 	
 "2	CHAR	0
 		
@@ -143,24 +143,33 @@ $
 	# [end]
 "9	LINE	0
 	
-"-	CHAR	0
-	n
+""-	CHAR	0
+	\
 
 # 檔案標記:
-'0  29  0  ~/ShellScripts/backup.sh
-'1  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
-'2  3  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
-'3  1  0  ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
-'4  173  0  ~/isotostick.sh
-'5  23  0  ~/ShellScripts/backup.sh
-'6  19  0  ~/ShellScripts/install-my-custom-sh-script.sh
-'7  117  0  ~/.bashrc
-'8  30  0  ~/ShellScripts/backup.sh
-'9  50  0  ~/ShellScripts/backup.sh
+'0  47  0  ~/ShellScripts/backup.sh
+'1  1  0  ~/ShellScripts/run-personal-profile-in-rcLocal.sh
+'2  3  1  ~/ShellScripts/random-string.sh
+'3  1177  0  ~/.bash_history
+'4  62  59  ~/Github/bypy/setup.py
+'5  29  0  ~/ShellScripts/backup.sh
+'6  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+'7  3  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+'8  1  0  ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+'9  173  0  ~/isotostick.sh
 
 # Jumplist (由新到舊):
--'  29  0  ~/ShellScripts/backup.sh
+-'  47  0  ~/ShellScripts/backup.sh
 -'  1  0  ~/ShellScripts/backup.sh
+-'  1  0  ~/ShellScripts/run-personal-profile-in-rcLocal.sh
+-'  3  1  ~/ShellScripts/random-string.sh
+-'  1  0  ~/ShellScripts/random-string.sh
+-'  1177  0  ~/.bash_history
+-'  1  0  ~/.bash_history
+-'  62  59  ~/Github/bypy/setup.py
+-'  63  28  ~/Github/bypy/setup.py
+-'  1  0  ~/Github/bypy/setup.py
+-'  29  0  ~/ShellScripts/backup.sh
 -'  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
 -'  3  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
 -'  1  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
@@ -234,33 +243,22 @@ $
 -'  242  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  224  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
 -'  209  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  196  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  179  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  159  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  150  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  113  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  95  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  64  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  53  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  38  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  29  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  164  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  46  47  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  13  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  139  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  30  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  450  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  440  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  28  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  406  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  27  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  365  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
--'  26  4  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  62  59  ~/Github/bypy/setup.py
+-'  63  28  ~/Github/bypy/setup.py
+-'  1  0  ~/Github/bypy/setup.py
+-'  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+-'  3  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+-'  1  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+-'  1  0  ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+-'  173  0  ~/isotostick.sh
+-'  1  0  ~/isotostick.sh
+-'  19  0  ~/ShellScripts/install-my-custom-sh-script.sh
+-'  1  0  ~/ShellScripts/install-my-custom-sh-script.sh
 
 # 檔案內 Mark 記錄 (由新到舊):
 
 > ~/ShellScripts/backup.sh
-	"	29	0
+	"	47	0
 	^	29	31
 	.	32	0
 	+	38	8
@@ -347,6 +345,24 @@ $
 	+	27	0
 	+	31	0
 	+	32	0
+
+> ~/ShellScripts/run-personal-profile-in-rcLocal.sh
+	"	1	0
+
+> ~/ShellScripts/random-string.sh
+	"	1	8
+	^	1	3
+	.	1	8
+	+	1	1
+	+	2	0
+	+	3	0
+	+	1	8
+
+> ~/.bash_history
+	"	1177	0
+
+> ~/Github/bypy/setup.py
+	"	62	59
 
 > ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
 	"	1	0
