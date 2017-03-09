@@ -33,6 +33,7 @@
 │   ├── file_manager
 │   │   └── linux-terminal-file-manager.txt
 │   ├── install_ubuntu
+│   │   └── install-ubuntu-from-harddisk.txt
 │   ├── internet_browser
 │   │   ├── eww
 │   │   ├── firefox
@@ -76,4 +77,4 @@
     ├── emacs-discovery-website.txt
     └── ubuntu-development-correlate-website.txt
 
-28 directories, 48 files
+28 directories, 49 files
