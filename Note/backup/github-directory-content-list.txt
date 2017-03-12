@@ -1,9 +1,0 @@
-BaiduPCS
-dwm
-ideviceinstaller
-ifuse
-libimobiledevice
-libplist
-libusbmuxd
-qiaoqiangv.github.com
-usbmuxd

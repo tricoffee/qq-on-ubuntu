@@ -32,13 +32,13 @@
 │   │   └── use-google-on-terminal.txt
 │   ├── file_manager
 │   │   └── linux-terminal-file-manager.txt
+│   ├── fonts_setting
+│   │   └── wenquanyi-microhei.txt
 │   ├── install_ubuntu
 │   │   └── install-ubuntu-from-harddisk.txt
 │   ├── internet_browser
-│   │   ├── eww
-│   │   ├── firefox
-│   │   │   └── replace-system-default-firefox.txt
-│   │   └── w3m
+│   │   └── firefox
+│   │       └── replace-system-default-firefox.txt
 │   ├── IOS
 │   │   ├── ubuntu-connect-IOS-setup.txt
 │   │   ├── ubuntu-connect-IOS-setup.txt~
@@ -77,4 +77,4 @@
     ├── emacs-discovery-website.txt
     └── ubuntu-development-correlate-website.txt
 
-28 directories, 49 files
+27 directories, 50 files

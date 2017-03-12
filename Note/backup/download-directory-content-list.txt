@@ -1,8 +1,3 @@
-Firefox-latest-x86_64(1).tar.bz2
-note.zip
-Oracle_VM_VirtualBox_Extension_Pack-4.3.12-93733a.vbox-extpack
-Oracle_VM_VirtualBox_Extension_Pack-5.0.32-112930.vbox-extpack
-stardict.tar
-the_collected_works_of_Gu_Long_novels
-ubuntu-gnome-16.04.1-desktop-amd64.iso
-VirtualBox-4.3.12.tar.bz2
+examples.desktop
+Firefox-latest-x86_64.tar.bz2
+firefox.sh
