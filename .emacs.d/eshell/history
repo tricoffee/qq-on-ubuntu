@@ -1,4 +1,3 @@
-ls
 rm -rf init.el\~ 
 ls
 ls -l
@@ -48,3 +47,4 @@ diff diff1 diff2
 diff diff1 diff2
 cd .emacs.d/
 ls
+sudo apt install w3m-el
