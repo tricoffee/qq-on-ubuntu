@@ -47,6 +47,7 @@
 │   │   └── regular-expression-simple-tutorial.txt
 │   ├── shell_command
 │   │   ├── convert-pdf-to-text.txt
+│   │   ├── convert-text-file-encoding.txt
 │   │   ├── create-symbol-link.txt
 │   │   ├── intercept-screenshot-of-the-webpage.txt
 │   │   ├── linux-terminal-file-manager.txt
@@ -75,6 +76,7 @@
 └── website
     ├── development-and-learnning-website.txt
     ├── emacs-discovery-website.txt
-    └── ubuntu-development-correlate-website.txt
+    ├── ubuntu-development-correlate-website.txt
+    └── without-working-website.txt
 
-27 directories, 50 files
+27 directories, 52 files
