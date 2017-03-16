@@ -1,42 +1,35 @@
-;;----------------------------------------------------------------------------
-;; set load path
-;;----------------------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/themes/")
-(load-file "~/.emacs.d/init-my-config.el")
-;(load-file "~/.emacs.d/init-w3m.el")
-;(load-file "~/.emacs.d/themes/color-theme-blackboard.el")
+;;; init.el --- Spacemacs Initialization File
+;;
+;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
+;;
+;; Author: Sylvain Benner <sylvain.benner@gmail.com>
+;; URL: https://github.com/syl20bnr/spacemacs
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; License: GPLv3
 
-;;----------------------------------------------------------------------------
-;; my personal config profile
-;;----------------------------------------------------------------------------
-;;----------------------------------------------------------------------------
-;; Which functionality to enable (use t or nil for true and false)
-;;----------------------------------------------------------------------------
-(defconst *spell-check-support-enabled* nil)
+;; Without this comment emacs25 adds (package-initialize) here
+;; (package-initialize)
 
-;;----------------------------------------------------------------------------
-;; Bootstrap config
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
+;; Increase gc-cons-threshold, depending on your system you may set it back to a
+;; lower value in your dotfile (function `dotspacemacs/user-config')
+(setq gc-cons-threshold 100000000)
 
-;;----------------------------------------------------------------------------
-;; My settings
-;;----------------------------------------------------------------------------
+(defconst spacemacs-version          "0.200.7" "Spacemacs version.")
+(defconst spacemacs-emacs-min-version   "24.4" "Minimal version of Emacs.")
 
-;; Allow emacs copy to or from other programs
-(setq x-select-enable-clipboard t) 
-;; Add my config
-(require 'init-my-config)
-
-;(require 'init-w3m)
-
-
-;(require 'color-theme)
-; (color-theme-initialize)
-;(setq color-theme-initialize t)
-;(load-file "~/.emacs.d/themes/color-theme-blackboard.el")
-
-;; Local Variables:
-;; coding: utf-8
-;; no-byte-compile: t ;; End:
+(if (not (version<= spacemacs-emacs-min-version emacs-version))
+    (message (concat "Your version of Emacs (%s) is too old. "
+                     "Spacemacs requires Emacs version %s or above.")
+             emacs-version spacemacs-emacs-min-version)
+  (load-file (concat (file-name-directory load-file-name)
+                     "core/core-load-paths.el"))
+  (require 'core-spacemacs)
+  (spacemacs/init)
+  (spacemacs/maybe-install-dotfile)
+  (configuration-layer/sync)
+  (spacemacs-buffer/display-info-box)
+  (spacemacs/setup-startup-hook)
+  (require 'server)
+  (unless (server-running-p) (server-start)))
