@@ -25,6 +25,7 @@
 .sudo_as_admin_successful
 /.sunpinyin/
 /*.txt
+/.npm/
 
 # need to config
 # /.ecryptfs/
