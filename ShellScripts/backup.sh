@@ -24,6 +24,7 @@
 	DATE=$(date)
 
 	cd /home/qq/
+
 	echo -en "\n"
 	echo "======================================"
 	echo "||  shell change to HOME directory  ||"
@@ -31,7 +32,10 @@
 	echo -en "\n"
 
 	git add -u
+	git commit -m "commit before pull at ${DATE}"
+
 	git pull
+
 	git add -A
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"
 	git push
@@ -40,7 +44,6 @@
 	echo "========================================================"
 	echo "||  backup home folder to github remote repository !  ||"
 	echo "========================================================"
-
 	echo -en "\n"
 	echo "=========================================================================="
 	echo "||  now shell will change to old directory, press C^c to cancel action  ||"
