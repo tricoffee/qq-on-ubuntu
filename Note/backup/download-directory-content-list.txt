@@ -1,3 +1,2 @@
-examples.desktop
-Firefox-latest-x86_64.tar.bz2
-firefox.sh
+b43-fwcutter_019-2_amd64.deb
+firmware-b43-installer_019-2_all.deb
