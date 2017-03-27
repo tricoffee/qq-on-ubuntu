@@ -25,6 +25,11 @@
 .sudo_as_admin_successful
 /.sunpinyin/
 /*.txt
+/.chewing/
+/.cinnamon/
+/.dmrc
+/.gnome2/
+/.scim/
 
 # need to config
 # /.ecryptfs/
