@@ -1,0 +1,2 @@
+# 创造一个软链接由SOURCE（某一具体文件）至TARGET（软链接所在处）
+	ln -s -T SOURCE TARGET

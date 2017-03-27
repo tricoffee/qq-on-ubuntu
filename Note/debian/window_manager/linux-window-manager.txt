@@ -1,0 +1,12 @@
+1. dwm
+   memory use : 1M
+
+2. wmii
+   memory use : 0.7M
+   
+3. sawfish
+   memory use : unknown
+   
+   
+SEE AS :
+  http://www.vpsee.com/2013/03/a-memeory-comparison-of-popular-linux-window-managers/
