@@ -30,6 +30,7 @@
 	echo "======================================"
 	echo -en "\n"
 
+	git add -u
 	git pull
 	git add -A
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"

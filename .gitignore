@@ -26,6 +26,11 @@
 /.sunpinyin/
 /*.txt
 /.npm/
+/.chewing/
+/.cinnamon/
+/.dmrc
+/.gnome2/
+/.scim/
 
 # need to config
 # /.ecryptfs/

@@ -1,0 +1,8 @@
+在两台电脑上使用一个远端仓库时，出现git pull 命令执行时的错误
+
+1.在A电脑上clone远端仓库，修改后提交
+2.在B电脑上使用git pull命令时出现错误，提示如下：
+	pull is not possible because you have unmerged files
+
+解决办法：
+pull会使用git merge导致冲突，需要将冲突的文件resolve掉 git add -u, git commit之后才能成功pull.
