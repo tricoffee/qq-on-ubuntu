@@ -1,4 +1,0 @@
-debian-live-8.7.1-amd64-gnome-desktop.iso
-examples.desktop
-Firefox-latest-x86_64.tar.bz2
-firefox.sh
