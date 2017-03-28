@@ -29,3 +29,5 @@
 13. 2017年 03月 05日 星期日 22:26:12 CST - CONTENT : 使用emacs调用google翻译api翻译选中的整个缓冲区中的文字，并且以一个段落的原文下面接该段落的翻译结果的格式输出至一个新的emacs缓冲区中去。
 
 14. 2017年 03月 09日 星期四 19:03:16 CST - CONTENT : reinstall ubuntu-desktop, install ubuntu from hard disk.
+
+15. 二  3月 28 08:49:37 CST 2017 - CONTENT : test the backup.sh script 
