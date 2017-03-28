@@ -1,30 +1,20 @@
 openConnection: connect: 沒有此一檔案或目錄
 cannot connect to brltty at :0
-upstart: update-notifier-cds main process (3960) terminated with status 1
-upstart: update-notifier-cds main process (4451) terminated with status 1
-upstart: update-notifier-cds main process (4617) terminated with status 1
-upstart: update-notifier-cds main process (4682) terminated with status 1
-upstart: update-notifier-cds main process (4697) terminated with status 1
-upstart: update-notifier-cds main process (4750) terminated with status 1
-upstart: update-notifier-cds main process (4784) terminated with status 1
-upstart: update-notifier-cds main process (4856) terminated with status 1
-upstart: update-notifier-cds main process (5109) terminated with status 1
-upstart: upstart-dbus-session-bridge main process (1760) terminated with status 1
-upstart: bamfdaemon main process (1796) killed by TERM signal
-upstart: gnome-session (Unity) main process (1831) killed by HUP signal
-upstart: unity-panel-service main process (1833) killed by HUP signal
-upstart: indicator-messages main process (1902) killed by HUP signal
-upstart: indicator-bluetooth main process (1903) killed by TERM signal
-upstart: indicator-power main process (1904) killed by TERM signal
-upstart: indicator-keyboard main process (1907) killed by HUP signal
-upstart: indicator-sound main process (1909) killed by HUP signal
-upstart: indicator-printers main process (1911) killed by TERM signal
-upstart: indicator-session main process (1912) killed by TERM signal
-upstart: indicator-application main process (1978) killed by TERM signal
-upstart: unity-settings-daemon main process (1808) killed by HUP signal
-upstart: indicator-application pre-stop process (5179) killed by TERM signal
-upstart: gnome-session (Unity) pre-stop process (5180) killed by TERM signal
-upstart: hud main process (1806) killed by HUP signal
-upstart: indicator-datetime main process (1906) killed by TERM signal
+upstart: unity7 main process ended, respawning
+upstart: bamfdaemon main process (1712) killed by TERM signal
+upstart: indicator-bluetooth main process (1832) killed by TERM signal
+upstart: indicator-power main process (1834) killed by TERM signal
+upstart: hud main process (1750) killed by HUP signal
+upstart: unity-settings-daemon main process (1752) killed by HUP signal
+upstart: gnome-session (Unity) main process (1766) killed by HUP signal
+upstart: unity-panel-service main process (1768) killed by HUP signal
+upstart: indicator-datetime main process (1836) killed by TERM signal
+upstart: indicator-sound main process (1841) killed by HUP signal
+upstart: indicator-printers main process (1842) killed by TERM signal
+upstart: indicator-session main process (1843) killed by TERM signal
+upstart: indicator-application main process (1882) killed by TERM signal
+upstart: unity7 pre-start process (3852) killed by TERM signal
+upstart: indicator-application pre-stop process (3869) killed by TERM signal
+upstart: gnome-session (Unity) pre-stop process (3870) killed by TERM signal
+upstart: gpg-agent post-stop process (3873) killed by TERM signal
 upstart: 從D-Bus匯流排中離線
-upstart: unity7 main process (2015) terminated with status 1
