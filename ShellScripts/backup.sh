@@ -34,7 +34,19 @@
 	git add -u
 	git commit -m "commit before pull at ${DATE}"
 
+	echo -en "\n"
+	echo "=============================================================="
+	echo "||  using "git add -u" to add some files before "git pull"  ||"
+	echo "=============================================================="
+	echo -en "\n"
+
 	git pull
+
+	echo -en "\n"
+	echo "==============================="
+	echo "||  now is using "git pull"  ||"
+	echo "==============================="
+	echo -en "\n"
 
 	git add -A
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"
@@ -52,3 +64,6 @@
 	sleep 10
 
 	cd -
+
+
+# [end]
