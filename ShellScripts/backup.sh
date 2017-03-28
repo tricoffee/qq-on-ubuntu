@@ -23,16 +23,13 @@
 	MACHINE_VERSION=$(cat /etc/issue | awk '{print $1,$2}' | awk '{{printf "%s",$0}}')
 	DATE=$(date)
 
-	cd /home/qq/
-
 	echo -en "\n"
 	echo "======================================"
 	echo "||  shell change to HOME directory  ||"
 	echo "======================================"
 	echo -en "\n"
 
-	git add -u
-	git commit -m "commit before pull at ${DATE}"
+	cd /home/qq/
 
 	echo -en "\n"
 	echo "=============================================================="
@@ -40,7 +37,8 @@
 	echo "=============================================================="
 	echo -en "\n"
 
-	git pull
+	git add -u
+	git commit -m "commit before pull at ${DATE}"
 
 	echo -en "\n"
 	echo "==============================="
@@ -48,6 +46,7 @@
 	echo "==============================="
 	echo -en "\n"
 
+	git pull
 	git add -A
 	git commit -m "backup on ${MACHINE_VERSION} at ${DATE}"
 	git push
