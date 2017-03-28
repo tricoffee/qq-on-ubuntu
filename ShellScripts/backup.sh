@@ -25,7 +25,7 @@
 
 	echo -en "\n"
 	echo "======================================"
-	echo "||  shell change to HOME directory  ||"
+	echo "||  shell is will change to HOME directory  ||"
 	echo "======================================"
 	echo -en "\n"
 
@@ -41,9 +41,9 @@
 	git commit -m "commit before pull at ${DATE}"
 
 	echo -en "\n"
-	echo "==============================="
-	echo "||  now is using "git pull"  ||"
-	echo "==============================="
+	echo "====================================================================="
+	echo "||  now is using "git pull" before push local repo to remote repo  ||"
+	echo "====================================================================="
 	echo -en "\n"
 
 	git pull
