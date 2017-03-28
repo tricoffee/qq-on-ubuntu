@@ -1,0 +1,161 @@
+安装中文版man手册，同时保留原英文版手册
+标签： linux
+2013-07-14 13:52 1554人阅读 评论(1) 收藏 举报
+分类：
+linux（6） 常见问题（14）
+
+目录(?)[+]
+
+在学习Linux的过程中，有时需要用到man来查询命令，但是为了在学习的过程中锻炼自己阅读英文原版书籍的能力，建议阅读英文版的手册。
+
+将分一下几步：
+
+    下载开源的man-pages 中文手册包
+    配置解压手册包
+    测试安装中文包
+
+一、在个人工作目录安装中文帮助手册
+
+        这样优点是每个用户，登陆进去都可以有自己的语言版帮助手册。大家直接手册不会被相互调用，独立而且灵活
+1、下载开源man中文手册包(man-pages手册页)
+
+         通过linux wget下载开发包 
+
+        输入命令
+[cpp] view plain copy
+
+    wget http://manpages-zh.googlecode.com/files/manpages-zh-1.5.tar.gz  
+
+2、解压man中文手册包
+
+只要在自己工作目录下面建立man/zh_CN 目录，将压缩包解压，按照规格目录中。man命令就可以搜索到。
+
+特别说明下,下面的安装保证你的语言环境设置为中文：
+
+qiong@gaoyuan-Rev-1-0:~$ echo $LANG
+zh_CN.UTF-8
+
+如果不是：通过 export LANG=zh_CN.GB2312
+
+如果你发现上面执行不通过，你可以运行：locale -a 查一下你系统支持的字符集
+[cpp] view plain copy
+
+    qiong@gaoyuan-Rev-1-0:~$  cd ~  
+    #进入当前目录  
+    qiong@gaoyuan-Rev-1-0:~$  mkdir -p man/zh_CN  
+    #建立目录man 以及子目录zh_CN  
+    qiong@gaoyuan-Rev-1-0:~$  tree  man   
+    man  
+    `-- zh_CN  
+    #目录以及子目录已经可以了，现在只需要将压缩包解压到zh_CN 中文目录即可  
+       
+    qiong@gaoyuan-Rev-1-0:~$  tar -xzvf manpages-zh-1.5.tar.gz  
+    manpages-zh-1.5/src/mann/expr.n  
+    manpages-zh-1.5/src/mann/fblocked.n  
+    manpages-zh-1.5/src/mann/fconfigure.n  
+    manpages-zh-1.5/src/mann/fcopy.n  
+    manpages-zh-1.5/src/mann/file.n  
+    manpages-zh-1.5/src/mann/fileevent.n  
+    manpages-zh-1.5/src/mann/filename.n  
+    manpages-zh-1.5/src/mann/flush.n  
+    manpages-zh-1.5/src/mann/focusNext.n  
+    manpages-zh-1.5/src/mann/for.n  
+    manpages-zh-1.5/src/mann/foreach.n  
+       
+    #......解压数据包  
+       
+    qiong@gaoyuan-Rev-1-0:~$  cd manpages-zh-1.5  
+    qiong@gaoyuan-Rev-1-0:~$  ls  
+    COPYING  debian  DOCS  Makefile  man-pages-zh_CN.spec  raw  README  README.GB  src  utils  
+    #该目录结构 支持make安装的,可以通过make命令生成编译文件，也可以直接复制里面src目录安装  
+       
+    qiong@gaoyuan-Rev-1-0:~$  make  
+    mkdir UTF-8  
+    cp -r src/man* UTF-8/  
+    #已经生成了：UTF-8目录下面文件，只需要将该目录复制到~/man/zh_CN下面即可  
+    qiong@gaoyuan-Rev-1-0:~$  cp -r UTF-8/* ~/man/zh_CN/  
+
+通过上面几步已经将帮助手册安装到自己的工作目录下面的man/zh_CN下面了。
+
+3、测试man中文帮助手册是否安装成功
+[cpp] view plain copy
+
+    qiong@gaoyuan-Rev-1-0:~$  man -w  
+    /usr/kerberos/man:/usr/local/share/man:/usr/share/man/zh_CN:/usr/share/man:/home/chengmo/man/zh_CN:/home/chengmo/man:/usr/local/man  
+    #发现已经在MANPATH路径加入了：/home/chengmo/man 以及：/home/chengmo/man/zh_CN  
+       
+       
+    qiong@gaoyuan-Rev-1-0:~$  man -aw passwd  
+    /usr/share/man/man1/passwd.1.gz  
+    /usr/share/man/man5/passwd.5.gz  
+    /home/chengmo/man/zh_CN/man5/passwd.5  
+    #发现已经找到中文手册了  
+       
+    qiong@gaoyuan-Rev-1-0:~$  man 5 -aw passwd  
+    /usr/share/man/man5/passwd.5.gz  
+    /home/chengmo/man/zh_CN/man5/passwd.5  
+    #读取领域5限定类型，这样系统原先的英文也保留了，看中英文也很方便  
+       
+       
+    qiong@gaoyuan-Rev-1-0:~$  man 5 -a passwd  
+    #显示英文的，按q就会出来中文文档了  
+
+
+二、所有用户公用中文帮助手册
+
+这里原理跟个人用户基本一样，只是手册放到大家公用目录，而不是个人目录即可。
+[cpp] view plain copy
+
+    qiong@gaoyuan-Rev-1-0:~$  tree /usr/share/man/zh_CN  
+    /usr/share/man/zh_CN  
+    |-- man1  
+    |   `-- newgrp.1.gz  
+    `-- man8  
+        |-- adduser.8.gz  
+        |-- chpasswd.8.gz  
+        |-- groupadd.8.gz  
+        |-- groupdel.8.gz  
+        |-- groupmod.8.gz  
+        |-- useradd.8.gz  
+        |-- userdel.8.gz  
+        `-- usermod.8.gz  
+
+
+系统默认公共手册页地址一般在：/usr/share/man下面，放到下面的zh_CN目录即可。qiong@gaoyuan-Rev-1-0:~$
+[cpp] view plain copy
+
+     make  
+    mkdir UTF-8  
+    cp -r src/man* UTF-8/  
+    #已经生成了：UTF-8目录下面文件，只需要将该目录复制到~/man/zh_CN下面即可  
+    qiong@gaoyuan-Rev-1-0:~$  cp -r UTF-8/* /usr/share/man/zh_CN/  
+
+
+其它的man.config配置不需要修改。
+检查一下：
+[cpp] view plain copy
+
+    qiong@gaoyuan-Rev-1-0:~$  man 5 -aw passwd  
+
+
+/usr/share/man/man5/passwd.5.gz
+/user/share/man/zh_CN/man5/passwd.5
+说明手册已经安装好了。
+
+出处：http://www.cnblogs.com/chengmo
+本文版权归作者和博客园共有，欢迎转载，请务必添加原文链接。
+  	 
+  	 
+
+如果想完全将英文版本的man手册配置成为中文版的，步骤如下：
+
+　　1)  终端输入sudo apt-get install manpages-zh
+
+　　2)  安装后修改配置文件sudo gedit /etc/manpath.config
+
+　　3)  将所有的/usr/share/man替换为/usr/share/man/zh_CN
+
+　　4)  保存即可。
+
+ 
+[end]

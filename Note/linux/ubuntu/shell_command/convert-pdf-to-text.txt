@@ -1,0 +1,153 @@
+第一种办法：
+
+1. 安装能从图片中抓取文本的软件
+   $ sudo apt install gocr tesseract-ocr
+
+2. 使用软件将pdf转换成ppm（图片）文件
+   $ pdftoppm YOURPDF.pdf PPMNAME.ppm
+
+3. 使用tesseract将图片中的文本抓取出来并保存为文本文档
+   $ tesseract PPMNAME.ppm TEXT.txt
+
+
+
+
+第二种办法：
+
+1. 安装可以编辑pdf的软件
+   1) $ sudo apt install pdfedit
+   2) $ sudo apt install Scribus
+   3) $ sudo apt install Flpsed
+   4) $ sudo apt install Gimp
+
+
+
+
+第三种办法：
+
+1. 安装pdftk
+   如果说PDF是电子纸张，那么pdftk就是电子起钉器、打孔机、粘合剂、解密指环和 X光镜片。
+Pdftk是一个简单的工具，可以对PDF文档进行各种日常操作。Pdftk可以让你简单而自由地操
+作PDF。它不需要Acrobat，并且可以运行在 Linux, Windows, Mac OS X, FreeBSD和Solaris
+之上。在Debian/Ubuntu中你可以通过apt安装pdftk:
+
+   $ sudo apt install pdftk
+
+2. 解压PDF页面流，以便可以在文本编辑器中编辑PDF代码
+   $ pdftk mydoc.pdf output mydoc.clear.pdf uncompress
+
+
+
+
+第四种办法：
+
+1. 安装poppler工具链
+
+Poppler是一个基于xpdf-3.0代码基础的PDF渲染库。 Poppler-utils软件包包括了pdftops 
+(PDF到Postｓｃｒｉｐｔ的转换器), pdfinfo (PDF文档信息提取器), pdfimages (PDF图像
+提取器), pdftohtml (PDF到HTML的转换器), pdftotext (PDF到text的转换器), 以及pdffonts 
+(PDF字体分析器)。Debian/Ubuntu用户可以通过apt安装poppler:
+
+     $ sudo aptitude install poppler-utils
+
+
+
+
+1) 转换PDF到TEXT
+
+Pdftotext将可移植文档格式(PDF)文件转换成纯文本。
+
+     $ pdftotext example.pdf example.txt
+
+如果文本文件未指定, pdftotext将file.pdf转换成file.txt。如果文本文件是 ?-’，则文本会
+被送到标准输出。
+
+
+转换第3到7页(包括3和7)使用:
+
+     $ pdftotext -f 3 -l 7 example.pdf example.txt
+
+
+只提取第3页
+
+     $ pdftotext -f 3 -l 3 example.pdf example.txt
+
+     $ pdftotext -layout example.pdf example.txt
+
+上面的命令可以维持原始的物理布局并按阅读顺序输出文本。如果不想插入页面分隔符你可以设置
+-nopgbrk选项。如果PDF文件有密码保护，可以设置-opw (拥有者密码)或者-upw (用户密码)选项。
+
+
+
+
+2) 从PDF提取图像
+Pdfimages从可移植文档格式(PDF)文件中提取图片，保存为可移植像素图(PPM), 可移植位图(PBM), 
+或者JPEG文件。Pdfimages读取PDF文件，扫描一个或多个页面，并将每一个图像写入一个名为
+image-root-nnn.xxx的PPM、PBM或者JPEG文件，其中nnn是图像编号，xxx是图像类型(.ppm, .pbm, 
+.jpg)。Pdfimages从PDF文件提取原始图像数据，不做任何额外的变化。任何PDF内容流里的旋转，
+剪切，颜色反转等动作都被忽略。
+
+
+     $ pfdimages example.pdf exampleimage
+
+上面这个命令会从example.pdf提取所有的图像。图像会被保存为PPM格式。
+
+
+使用-j选项将图像保存为JPG格式
+
+     $ pfdimages -j example.pdf exampleimage
+
+
+使用-f和-l选项制定起始页和结束页。为了扫描第3至7页(包括3和7)使用：
+
+     $ pfdimages -f 3 -l 7 example.pdf exampleimage
+
+
+只扫描指定的某一页使用:
+
+     $ pfdimages -f 3 -l 3 example.pdf exampleimage
+
+如果PDF文件有密码保护使用-opw和-upw选项:
+
+-opw 拥有着密码
+-upw 用户密码
+
+
+
+
+3) 转换PDF到HTML
+pdftohtml是一个将pdf文档转换成html的程序。它在当前工作目录中产生输出。
+
+
+用法:
+
+     $ pdftohtml file.pdf file.html
+
+
+如果你想要看到图形，需要使用 -c (也就是“complex”) 选项:
+
+     $ pdftohtml -c file.pdf file.html
+
+
+
+
+4) 转换PDF到图像
+
+首先你的机器上必须已经安装 ImageMagick。要在Debian/Ubuntu上安装ImageMagick可以运行下面的命令：
+
+     $ sudo aptitude install imagemagick
+
+
+要将 pdf 文件转换成图像使用‘convert‘ 命令:
+
+     $ convert doc.pdf doc.jpeg
+
+
+转换成 tiff
+
+     $ convert doc.pdf doc.tiff
+
+
+
+
+[end]

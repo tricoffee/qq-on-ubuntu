@@ -1,0 +1,14 @@
+ttyrec
+http://www.cnblogs.com/linux130/p/5682379.html
+
+ttygif 
+http://blog.csdn.net/simple_the_best/article/details/53224083
+
+script
+http://www.bkjia.com/Linuxjc/913804.html
+http://www.landui.com/help/Show-1448.html
+http://www.cnblogs.com/Suzzz/p/4107700.html
+
+showterm, asciinema, TermRecord 
+http://www.tuicool.com/articles/mUnYNrb
+http://blog.csdn.net/guochaoxxl/article/details/48675155

@@ -1,0 +1,133 @@
+控制台汉化Fbterm和Yong
+[转载自] : http://blog.csdn.net/flytreeleft/article/details/6679638
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+本次汉化Linux控制台所使用的软件为fbterm和小小拼音输入法(yong).
+
+
+1. 下载并安装fbterm:
+[plain] view plain copy
+
+    wget -c http://fbterm.googlecode.com/files/fbterm-1.7.0.tar.gz  
+    tar -xzf fbterm-1.7.0.tar.gz  
+    cd fbterm-1.7  
+    ./configure --prefix=/usr  
+    make  
+    sudo make install  
+
+
+将用户加入video组:
+[plain] view plain copy
+
+    sudo adduser user video  
+
+
+2. 下载并安装小小拼音输入法(yong),由于该软件在Linux下只提供7z压缩
+包文件,所以需下载并安装p7zip工具包.
+(1). 安装p7zip:
+下载地址:http://sourceforge.net/projects/p7zip/files/p7zip/9.20.1/p7zip_9.20.1_src_all.tar.bz2/download
+[html] view plain copy
+
+    make 7z  
+    sudo ./install.sh  
+
+(2). 下载并解压yong:
+下载地址:http://u.115.com/file/bh1ojcho
+[plain] view plain copy
+
+    7z x yong-lin-1.7.0-1.7z  
+
+
+(3). 将yong移到"/usr/local"目录下,然后进入"/usr/local/yong",运行命令
+"sudo ./yong-tool.sh --install"安装yong.
+(4). 修改配置文件"~/.yong/yong.ini",修改默认输入法为pinyin:
+[plain] view plain copy
+
+    [IM]  
+    default=6  
+    中英文切换键改为左SHIFT:  
+    [key]  
+    CNen=LSHIFT  
+
+
+3. 接着,修改fbterm的配置文件"~/.fbtermrc",使fbterm使用yong作为
+其默认的输入法:
+[plain] view plain copy
+
+    input-method=yong  
+
+
+4. 由于fbterm使用的默认字体mono表现比较差,所以我为Linux安装了
+微软雅黑用于中文显示,Consolas用于英文显示(也可以使用Moncao,二者表现
+都不错,但是个人认为Consolas表现柔和,很适合作为编程字体).下面就涉及到
+Linux下字体的安装了:
+(1). 安装微软雅黑:
+a. 从Windows 7或XP中复制msyh.ttf和msyhbd.ttf到Linux字体目录
+"/usr/share/fonts/truetype/msttcorefonts"中,并将两个文件
+权限修改为777,也可以修改为644,再创建两个软连接,如:
+[plain] view plain copy
+
+    sudo ln -s msyh.ttf Msyh.ttf  
+    sudo ln -s msyhbd.ttf Msyhbd.ttf  
+
+b. 接着使用如下命令注册字体:
+[plain] view plain copy
+
+    sudo mkfontscale  
+    sudo mkfontdir  
+    sudo fc-cache -fv  
+
+
+(2). Consolas也是Windows下的字体,其安装过程与微软雅黑一样,只是
+该字体需到网上下载,下载地址如下(这是雅黑和Consolas的结合体,
+字体名称为"YaHei Consolas Hybrid"):
+http://files.xiaogui.org/eclipse-indigo/YaHei.Consolas.1.12.rar
+
+
+(3). Monaco本来为Mac系统上的字体,不过现在已经有Linux下的版本了,
+故只需下载并将其放到字体目录即可,也没了上面的麻烦了.
+下载地址:http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf
+
+
+5. 修改fbterm的默认字体,编辑其配置文件"~/.fbtermrc",修改font-names的
+值为"Consolas,Monaco,微软雅黑",并将字体font-size调大至15,这就看个人爱好了.
+
+
+6. 最后修改用户配置文件"~/.bashrc",在文件尾部添加命令,
+"LANG=zh_CN.UTF-8 fbterm",这样在用户从控制台登录后,立即就可以进入fbterm
+终端,并且能够正常支持中文的显示和输入了.
+由于在GUI下的终端能够很好地支持中文输入和显示了,显然不需要使用fbterm了,
+但是为了能够在GUI和控制台进行切换的过程中自动调用fbterm,故我在bashrc中添加
+如下判断:
+[html] view plain copy
+
+    if [ "$TERM" = "linux" ]; then  
+    # 此处使用了别名,如此当我们退出fbterm后便能够简单的通过命令  
+    # fbterm重新启动fbterm了,而不用再指定LANG.  
+    alias fbterm='LANG=zh_CN.UTF-8 fbterm'  
+    fbterm  
+    fi  
+
+
+6. ^_^,很高兴地告诉你,这篇文章大部分就是在控制台下写的,因为还有些URL地址什么
+的，我还不知道怎么复制,所以......不过感觉倍儿爽,你也来试试吧!
+
+
+截图如下：
+
+
+
+参考资料:
+
+    fbterm 可以分别设置中英文字体，另外，fbterm下头使用小小输入法很爽很high
+    centos 雅黑
+    小小输入法
+
+前文参考：
+
+    Ubuntu文本控制台显示英文 图形控制台显示中文
+    让Linux终端显示中文，还能让你在终端下看电影哟！！
+
+
+[end]

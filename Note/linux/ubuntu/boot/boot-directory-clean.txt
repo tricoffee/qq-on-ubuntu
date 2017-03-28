@@ -1,0 +1,14 @@
+
+1. use 'du' command to checkout the /boot directory available space
+	$ du -h /boot
+
+2. use follow command to check up the /boot directory current linux image number
+	$ dpkg --get-selections | grep "linux-image"
+
+3. use follow command to uninstall the unnecessarily linux version's image
+	$ sudo apt purge linux-image-YOU_DON'T_NEED_LINUX_VERSION-generic 
+
+4. use 'du' command to checkout the /boot directory available space
+	$ du -h /boot
+
+[end]
