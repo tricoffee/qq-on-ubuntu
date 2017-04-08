@@ -101,8 +101,4 @@
     ├── ubuntu-development-correlate-website.txt
     └── without-working-website.txt
 
-<<<<<<< HEAD
-34 directories, 66 files
-=======
-33 directories, 66 files
->>>>>>> 29336b28430e33932bb34d94034deea3a2b389f1
+34 directories, 67 files

@@ -32,7 +32,8 @@
 /.gnome2_private/
 /.scim/
 /.compiz/
-/.xinputrc
+.xinputrc
+.Xauthority
 
 # need to config
 # /.ecryptfs/
