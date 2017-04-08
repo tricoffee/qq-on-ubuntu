@@ -23,15 +23,16 @@
 /.local/
 /.ssh/
 .sudo_as_admin_successful
-/.sunpinyin/
 /*.txt
 /.npm/
 /.chewing/
 /.cinnamon/
 /.dmrc
 /.gnome2/
+/.gnome2_private/
 /.scim/
 /.compiz/
+/.xinputrc
 
 # need to config
 # /.ecryptfs/
