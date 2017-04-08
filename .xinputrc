@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-# im-config(8) generated on Tue, 28 Mar 2017 18:23:08 +0800
-run_im fcitx
-# im-config signature: de5e08704e48a9dcb0932740f1bf349d  -
-=======
-# im-config(8) generated on Fri, 31 Mar 2017 10:22:30 +0800
-run_im ibus
-# im-config signature: 87d02d755464e62e4ef93d8ee542625a  -
->>>>>>> 29336b28430e33932bb34d94034deea3a2b389f1

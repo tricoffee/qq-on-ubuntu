@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<compiz_session id="1033f66127d044c38d149055113980928600000018310050">
-  <window id="1033f66127d044c38d149055127179595100000018310052" title="Downloads - Vimperator" class="Firefox" name="Navigator" role="browser" command="firefox">
-    <geometry x="137" y="99" width="1229" height="669"/>
-    <maximized vert="yes" horz="yes"/>
-    <workspace index="0"/>
-  </window>
-</compiz_session>
