@@ -1,0 +1,160 @@
+    (setq load-path (cons "~/.sawfish/lisp" load-path))  
+    (setq default-font   
+          (get-font "-dejavu-dejavu sans mono-medium-o-normal-*"))  
+    (defun capture-root-window ()  
+      "capture root window"  
+      (interactive)  
+      (system "import -window root shot.png; display shot.png&"))  
+    (defun capture-this-window ()  
+      "capture active window"  
+      (interactive)  
+      (let ((w (current-event-window)))  
+        (when w  
+          (display-message (concat  
+                            "import -window "  
+                            (prin1-to-string (window-id w)) " window.png"))  
+          (system (concat "import -window "  
+                          (prin1-to-string (window-id w)) " window.png"))  
+          (system "display window.png&"))))  
+    (defun capture-region ()  
+      "capture region"  
+      (interactive)  
+      (let ((process (make-process standard-output)  
+        (start-process process "import" "capture.png")))))  
+    (setq docs-menu  
+          '(("bash-zh"            (system "firefox ~/docs/abs-guide-3.7-cnhtml/HTML/index.html &"))  
+            ("sawfish"            (system "firefox ~/docs/sawfish/prog-manual.html &"))  
+            ("librep"             (system "firefox ~/docs/sawfish/librep-manual.html &"))  
+            ("learn gnu emacs"    (system "okular ~/docs/emacs/Learn_GNU_Emacs.pdf &"))  
+            ("emacs manual"       (system "firefox ~/docs/emacs/GNU_Emacs_Manual/index.html &"))  
+            ("elisp tutorial"     (system "okular ~/docs/emacs/elisp_tuto.pdf &"))  
+            ("elisp manual"       (system "firefox ~/docs/emacs/elisp_manual/Introduction.html &"))  
+            ("common lisp manual" (system "firefox ~/docs/emacs/cltl/cltl2.html &"))  
+            ("flex"               (system "firefox ~/docs/flex/index.html &"))  
+            ("bison manual"       (system "firefox ~/docs/bison.html &"))  
+            ("GNU C Library"      (system "firefox ~/docs/glibc-doc-reference/index.html &"))  
+            ("socket programming" (system "firefox ~/docs/Sockets_Programming/index.html &"))  
+            ("sqlite3-doc"        (system "firefox ~/docs/sqlite3-doc/index.html &"))  
+            ("sqlite3-doc-pic"    (system "firefox ~/docs/sqlite3-doc-pic/index.html &"))))  
+    (require 'sawfish.wm.menus)  
+    (setq restart-menu  
+          '(("确定 yes" (restart))  
+            ("按错 no"  (no-operation))))  
+    (setq quit-menu  
+          '(("确定 yes" (quit))  
+            ("按错 no"  (no-operation))))  
+    (setq capture-menu  
+          '(("当前窗口"  (capture-this-window))  
+            ("区域"     (capture-region))  
+            ("整个屏幕"  (capture-root-window))))  
+    (setq main-menu  
+        '(("终端 terminal"   (system "gnome-terminal &"))  
+          ("编辑 Emacs"      (system "emacs &"))  
+          ("浏览 Firefox"    (system "firefox &"))  
+          ("备忘 knotes"     (system "knotes &"))  
+          ("图像 Gqview"     (system "gqview &"))  
+          ("阅读 PDF"        (system "okular &"))  
+          ("比较 Meld"       (system "meld &"))  
+          ("取色 Gcolor2"    (system "gcolor2 &"))  
+          ("计算 gcalctool"  (system "gcalctool &"))  
+          ("抓图 capture"    (popup-menu capture-menu))  
+          ("文档 document"   (popup-menu docs-menu))  
+          ("运行 run"        (system "gmrun &"));run-shell-command is also OK  
+          ()  
+          ("上锁 lock"       (system "xscreensaver-command -lock &"))  
+          ("重启 restart"    (popup-menu restart-menu))  
+          ("退出 quit"       (popup-menu quit-menu))  
+    ))  
+    (bind-keys global-keymap "M-F1" '(popup-menu main-menu))  
+    (bind-keys global-keymap "M-F2" '(system "gmrun &"))  
+    (bind-keys global-keymap "M-F3" '(maximize-window-toggle (current-event-window)))  
+    (bind-keys global-keymap "M-F4" '(delete-window (current-event-window)))  
+    ;; short cuts for xmms  
+    ;;(bind-keys global-keymap "Pause" '(wy-run "xmms -u&"))  
+    ;;(bind-keys global-keymap "W-KP_Left" '(wy-run "xmms -r&"))  
+    ;;(bind-keys global-keymap "W-KP_Right" '(wy-run "xmms -f &"))  
+    ;;(bind-keys global-keymap "W-KP_Insert" '(wy-run "xmms -p &"))  
+    ;;(bind-keys global-keymap "W-KP_Delete" '(wy-run "xmms -s &"))  
+    ;;(bind-keys global-keymap "W-KP_Enter" '(wy-run "xmms -u &"))  
+    (define startup-programs  
+      '(("gnome-panel")  
+        ("xscreensaver" "-no-splash")  
+        ("fcitx")))  
+    (mapc (lambda (program)  
+            (apply start-process (make-process standard-output) program))  
+          startup-programs)  
+    (add-hook 'before-exit-hook  
+              (lambda ()  
+                (mapc stop-process (active-processes))))  
+    ;; jump-or-exec  
+    ;; 如果程序在运行，就调到当前桌面，如果没有运行，就运行它。  
+    (require 'jump-or-exec)  
+    (bind-keys global-keymap "H--" '(system "aumix -v -4"))  
+    (bind-keys global-keymap "H-=" '(system "aumix -v +4"))  
+    (bind-keys global-keymap "H-m" '(system "xmms2 play"))  
+    ;emacs  
+    (bind-keys global-keymap "H-e"   
+               `(jump-or-exec "^emacs@"  
+                              ,(lambda () (system "emacs &"))  
+                              ,(lambda (wind) (display-window wind))))  
+    ;gnome-terminal  
+    (bind-keys global-keymap "H-t"  
+               `(jump-or-exec "~"  
+                              ,(lambda () (system "gnome-terminal &"))  
+                              ,(lambda (wind) (display-window wind))))  
+    ;firefox  
+    (bind-keys global-keymap "H-f"   
+               `(jump-or-exec "Iceweasel"  
+                              ,(lambda () (system "firefox &"))  
+                              ,(lambda (wind) (display-window wind))))  
+    ; 移动窗口到右上角  
+    (bind-keys window-keymap "H-Prior"  
+           '(move-resize-window-to (current-event-window)   
+                                   (/ (screen-width) 2) 0  
+                                   (/ (screen-width) 2) (/ (screen-height) 2)))  
+    ; 移动窗口到右下角  
+    (bind-keys window-keymap "H-Next"  
+           '(move-resize-window-to (current-event-window)   
+                                   (/ (screen-width) 2) (/ (screen-height) 2)  
+                                   (/ (screen-width) 2) (/ (screen-height) 2)))  
+    ; 移动窗口到左上角  
+    (bind-keys window-keymap "H-Home"  
+           '(move-resize-window-to (current-event-window)   
+                                   0 0  
+                                   (/ (screen-width) 2) (/ (screen-height) 2)))  
+    ; 移动窗口到左下角  
+    (bind-keys window-keymap "H-End"  
+           '(move-resize-window-to (current-event-window)  
+                                   0 (/ (screen-height) 2)  
+                                   (/ (screen-width) 2) (/ (screen-height) 2)))  
+    ; 移动窗口到左边  
+    (bind-keys window-keymap "H-Left"  
+           '(move-resize-window-to (current-event-window)   
+                                   0 0  
+                                   (/ (screen-width) 2) (screen-height)))  
+    ; 移动窗口到右边  
+    (bind-keys window-keymap "H-Right"  
+           '(move-resize-window-to (current-event-window)   
+                                   (/ (screen-width) 2) 0  
+                                   (/ (screen-width) 2) (screen-height)))  
+    ; 移动窗口到上边  
+    (bind-keys window-keymap "H-Up"  
+           '(move-resize-window-to (current-event-window)   
+                                   0 0  
+                                   (screen-width) (/ (screen-height) 2)))  
+    ; 移动窗口到下边  
+    (bind-keys window-keymap "H-Down"  
+           '(move-resize-window-to (current-event-window)  
+                                   0 (/ (screen-height) 2)  
+                                   (screen-width) (/ (screen-height) 2)))  
+    ;;(define (wy-run-shell-command command)  
+    ;;  "Execute the given shell command."  
+    ;;  (system (format nil "%s &" command)))  
+    ;;(define (wy-run-shell-command command)  
+    ;;  "Execute the given shell command."  
+    ;;    (system (format nil "%s &" command)))  
+    ;;(define-command 'wy-run-shell-command wy-run-shell-command  
+    ;;  #:spec "sCommand:"  
+    ;;  #:type `(and (labelled ,(_ "Command:") string)))  
+
+
