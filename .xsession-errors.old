@@ -1,19 +1,18 @@
 openConnection: connect: 沒有此一檔案或目錄
 cannot connect to brltty at :0
-upstart: upstart-dbus-session-bridge main process (1886) terminated with status 1
-upstart: indicator-bluetooth main process (2044) killed by TERM signal
-upstart: indicator-power main process (2046) killed by TERM signal
-upstart: indicator-datetime main process (2050) killed by TERM signal
-upstart: indicator-printers main process (2054) killed by TERM signal
-upstart: indicator-session main process (2056) killed by TERM signal
-upstart: indicator-application main process (2086) killed by TERM signal
-upstart: indicator-application pre-stop process (4752) killed by TERM signal
-upstart: gnome-session (Unity) pre-stop process (4753) killed by TERM signal
-upstart: unity-settings-daemon main process (1951) killed by HUP signal
-upstart: hud main process (1965) killed by HUP signal
-upstart: gnome-session (Unity) main process (1981) killed by HUP signal
-upstart: unity-panel-service main process (1985) killed by HUP signal
-upstart: indicator-sound main process (2053) killed by HUP signal
+upstart: bamfdaemon main process (2004) killed by TERM signal
+upstart: hud main process (2021) killed by HUP signal
+upstart: unity-settings-daemon main process (2023) killed by HUP signal
+upstart: at-spi2-registryd main process (2036) killed by HUP signal
+upstart: gnome-session (Unity) main process (2037) killed by HUP signal
+upstart: unity-panel-service main process (2039) killed by HUP signal
+upstart: indicator-bluetooth main process (2073) killed by TERM signal
+upstart: indicator-power main process (2075) killed by TERM signal
+upstart: indicator-datetime main process (2078) killed by TERM signal
+upstart: indicator-sound main process (2082) killed by HUP signal
+upstart: indicator-printers main process (2083) killed by TERM signal
+upstart: indicator-session main process (2085) killed by TERM signal
+upstart: indicator-application main process (2131) killed by TERM signal
+upstart: indicator-application pre-stop process (4108) killed by TERM signal
+upstart: gnome-session (Unity) pre-stop process (4110) killed by TERM signal
 upstart: 從D-Bus匯流排中離線
-upstart: unity7 main process (2139) terminated with status 1
-upstart: bamfdaemon main process (1952) killed by TERM signal
