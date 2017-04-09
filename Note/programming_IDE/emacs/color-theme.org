@@ -1,0 +1,65 @@
+给emacs安装color-theme
+
+分类：问题解决 2013-01-07 15:13 63人阅读评论(0) 收藏举报
+
+决定把bash搬到emacs里进行操作，觉得emacs配色不好，所以找到这个网址。这里说得很详细，但是在我这里加了(color-theme-initialize)反而
+有错误，我在.emacs文件中所添加的文本如下：
+
+(require ‘color-theme)
+(color-theme-oswald)
+
+一般来说，你从M-x color-theme-select 中选择的主题名称中间有空格，你只要把空格改成英文的连字符就可以了，比如，我选择的是 Calm
+Forest，在这里写成 calm-forest就可以了。
+
+转自：http://wangcong.org/blog/archives/305
+
+决定给emacs换个主题，因为默认的这个主题比较丑。
+
+简单搜索了一下，需要安装color-theme这个package。从这里下载：
+
+http://download.gna.org/color-theme/
+
+下载解压缩后，需要
+
+1) 把color-theme.el拷贝到某个load-path中，比如我的是~/.emacs.d
+
+2) 把themes目录也要拷贝到上面的路径中
+
+3) 在~/.emacs里添加下面几行：
+
+(require ‘color-theme)
+(color-theme-initialize)
+(color-theme-oswald)
+
+注意：网上的很多教程并没提到第2行，但是它必须有，否则会出错。
+最起码在我这里如此。
+
+第3行是我自己选择的一个主题，你可以换成你自己喜欢的，浏览里面
+的主题可以用M-x color-theme-select，然后一个个地试，觉得哪个好
+就把第三行替换成那个。
+
+最后，如果你有其它主题，把它下载到themes目录里，然后再修改
+~/.emacs：
+
+(load-file “~/.emacs.d/themes/your-own-theme.el”)
+(color-theme-your-own)
+
+这样emacs看起来就很漂亮。
+
+BTW，这里有一款为mm准备的粉红主题，很炫。不知道有没有mm使用emacs？
+
+转自:http://www.cnblogs.com/FelixLee/archive/2011/01/24/2412617.html
+
+1. 下载color-theme的压缩包：http://download.gna.org/color-theme/；
+2. 解压缩到加载路径中（加载路径可以在Emacs的配置文件里设置或更改，方法
+见备注a）；
+3. 打开Emacs的配置文件，写入代码：
+(require 'color-theme)
+(color-theme-initialize)
+;;(color-theme-主题名字（小写）)
+4. 浏览主题：M-x color-theme-select，一个一个的试，决定之后打开配置文件把名字改了，保存退出（主题预览，备注b）；
+
+备注：
+a. 编辑配置文件，加入代码：
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+b. 移动光标到想要查看的主题行，回车或者按“i”

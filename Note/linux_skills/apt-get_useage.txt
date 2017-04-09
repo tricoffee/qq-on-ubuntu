@@ -1,0 +1,62 @@
+ apt使用 2011-12-15 10:34:13
+分类： LINUX
+      apt-get下载的文件放在哪个目录
+apt-get install **这样的命令会下载文件放在 /var/cache/apt/archives目录下，然后安装。这样这个目录所占空间会越来越大，幸运的是apt提供了相应的管理工具apt-get clean删除/var/cache/apt/archives/ 和 /var/cache/apt/archives/partial/目录下所有包(锁定的除外)。
+apt-get autoclean仅删除不再能被下载的包.  另外aptitude clean也可删除/var/cache/apt/archives/ 和 /var/cache/apt/archives/partial/目录下所有包(锁定的除外)。
+apt-get
+　　这个不用多说了Debian最基本的包管理程序。快速、实用、高效。
+     手册：http://www.debian.org/doc/manuals/apt-howto/index.zh-cn.html#contents
+aptitude
+　　是在主控台 (Console) 上的套件管理程式的第一选择。aptitude 支援了大部份的 apt-get 在命令列上的操作指令，且在处理相依问题上，通过在安装时在相关包上加标注使它在卸载时表现优於 apt-get。Debian对于aptitude也是很推崇的。
+　　aptitude并不是apt-get的前端程序，他有自己的一套算法。
+---------------------------------
+songbei6注:aptitude在ubuntu下也有。。
+
+
+
+
+
+
+
+apt 0.5.27 for linux i386 ，编译于 Jul 29 2004 22:59:33
+用法： apt-get [选项] 命令
+       apt-get [选项] install|remove 包甲 [包乙 ...]
+       apt-get [选项] source 包甲 [包乙 ...]
+
+apt-get 提供了一个用于下载和安装软件包的简易命令行界面。
+最常用命令是 update 和 install。
+
+命令：
+   update - 下载更新软件包列表信息
+   upgrade - 进行一次升级
+   install - 安装新的软件包(注：包名是 libc6 而非 libc6.deb)
+   remove - 卸载软件包
+   source - 下载源码包文件
+   build-dep - 为源码包配置所需的构建依赖关系
+   dist-upgrade - 发布版升级，见 apt-get(   dselect-upgrade - 根据 dselect 的选择来进行升级
+   clean - 删除所有已下载的包文件
+   auto-clean - 删除老版本的已下载的包文件
+   check - 核对以确认系统的依赖关系的完整性
+选项：
+  -h  本帮助文档。
+  -q  让输出可作为日志 - 不显示进度
+  -qq 除了错误外，什么都不输出
+  -d  仅仅下载 - 【不】安装或解开包文件
+  -s  不作实际操作。只是依次模拟执行命令
+  -y  对所有询问都作肯定的回答，同时不作任何提示
+  -f  当没有通过完整性测试时，程序仍试图继续执行
+  -m  当有包文件无法找到时，程序仍试图继续执行
+  -u  显示已升级的软件包列表
+  -b  在下载完源码包后，编译生成相应的软件包
+  -V  显示详尽的版本号
+  -c=? 读取指定配置文件
+  -o=? 设置任意指定的配置选项，例如 -o dir::cache=/tmp
+请查阅 apt-get(、sources.list(5) 和 apt.conf(5)的参考手册
+以猎取更多信息和选项。
+
+
+
+
+
+sudo apt-get -d install DebName  #适用于当前系统内还未安装这个软件包。此命令可以只下载不安装。
+但是当前系统已经安装了该软件包，而缓存/var/cache/apt/archives/ 被清空了， 现在想只下载不再安装。这个命令就不行了。下载不了。

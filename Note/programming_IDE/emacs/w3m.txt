@@ -1,0 +1,873 @@
+W3m
+
+出自Ubuntu中文
+
+w3m是一个基于文本的网页浏览器，支持多种操作系统，在命令行终端可以很好的支持中文。即使在没有鼠标支持的情况下也可以检查网页的输出。本
+文列出常用的快捷键。
+
+目录                                 
+                                     
+  * 1 页面操作                       
+  * 2 超链接操作                     
+  * 3 文件/流操作                    
+  * 4 缓存操作                       
+  * 5 缓存选择模式（也就是按了s以後）
+  * 6 书签操作                       
+  * 7 搜索                           
+  * 8 标记                           
+  * 9 杂项                           
+  * 10 行编辑模式                    
+
+[编辑] 页面操作
+
+SPC,C-v 向下翻页
+b,ESC v 向上翻页
+l,C-f 焦点向右
+h,C-b 焦点向左
+j,C-n 焦点向下
+k,C-p 焦点向上
+J 向下滚动一行
+K 向上滚动一行
+^,C-a 到行首
+$,C-e 到行尾
+w 到下一个单词
+W 到上一个单词
+> 右移一屏
+< 左移一屏
+. 屏幕右移一列
+, 屏幕左移一列
+g,M-< 到首行
+G,M-> 到末行
+ESC g 到指定行
+Z 当前行居中
+z 当前列居中
+TAB 转到下个超链接
+C-u,ESC TAB 到上个超链接
+[ 到第一个超链接
+] 到最後一个超链接
+
+[编辑] 超链接操作
+
+RET 打开超链接
+a, ESC RET 链接另存为
+u 查看链接url
+i 查看图片url
+I 查看图片
+ESC I 图片另存为
+: 标记rul字符串为锚点
+ESC : 标记ID串为锚点
+c 查看当前页面的URL
+= 显示当前页面属性
+C-g 查看当前行号
+C-h 查看历史记录
+F 提交表单
+M 用外部浏览器打开当前页面 (use 2M and 3M to invoke second and third browser)
+ESC M 用外部浏览器打开链接 (use 2ESC M and 3ESC M to invoke second and third browser
+
+[编辑] 文件/流操作
+
+U 打开URL
+V 打开文件
+@ 执行外部命令并导入
+# 执行外部命令并浏览
+
+[编辑] 缓存操作
+
+B 返回
+v 查看源代码
+s 选择缓存
+E 编辑缓存代码
+C-l 重画屏幕
+R 刷新
+S 页面另存为
+ESC s 源码另存为
+ESC e 编辑图片
+
+[编辑] 缓存选择模式（也就是按了s以後）
+
+k, C-p 上一缓存
+j, C-n 下一缓存
+D 删除当前缓存
+RET 转至选择的缓存
+
+[编辑] 书签操作
+
+ESC b 打开书签
+ESC a 添加当前页到书签
+
+[编辑] 搜索
+
+/,C-s 向前搜索
+?,C-r 向後搜索
+n 下一个
+N 上一个
+C-w 打开/关闭 循环搜索
+
+[编辑] 标记
+
+C-SPC 设定/取消 标记（好像这个键一般被输入法占用了）
+ESC p 转至上一标记
+ESC n 转至下一标记
+" 使用正则表达式标记
+
+[编辑] 杂项
+
+! 执行外部命令
+H 帮助
+o 设置选项
+C-k 显示接受到的cookie
+C-c 终止
+C-z 挂起（输入jobs命令可以列出被停止运行的进程及编号， 运行命令bg %进程编号可将进程转为后台运行， fg %进程号将进程转向前台进行）
+q 退出（需确认）
+Q 退出而不确认
+
+[编辑] 行编辑模式
+
+C-f 光标向後
+C-b 光标向前
+C-h 删除前一字符
+C-d 删除当前字符
+C-k 删除光标後所有内容
+C-u 删除光标前所有内容
+C-a 光标到行首
+C-e 光标到行尾
+C-p 取得历史记录中的前一个词
+C-n 取得历史记录中的後一个词
+TAB,SPC 自动完成文件名
+RETURN 确定
+
+取自“http://wiki.ubuntu.org.cn/W3m”
+
+
+
+
+
+
+
+
+
+
+
+Emacs才是世界上最强的IDE – 用w3m浏览网页
+
+2009年11月23日 ahei 发表评论阅读评论
+
+[chrome]  
+
+也许当你看到我这个标题的时候, 你就会感到惊讶, 在Emacs里面能浏览网页? 对, 在Emacs里面确实能浏览网页. 你应该是第一次见到能浏览网页的
+IDE吧, 其他的IDE顶多是能浏览一些带超链接的帮助. 有必要在Emacs里面浏览网页吗? 有那么多的浏览器, 为什么要在Emacs里面浏览网页? 对啊,
+为什么啊?
+
+当你在浏览网页的时候, 你是否想过只按几个字母就可以上下滚动网页, 上下翻屏, 前进后退? 现在的浏览器都是多标签页浏览, 你是否想过能用更
+方便的方式来切换这些标签页, 而不是那么难按的Ctrl+Tab? 当你在网页文本框里面输入文字的时候, 你是否想过是否可以使用自己熟悉的编辑器方
+式来编辑这些文本呢?
+
+上述功能, w3m都可以完成.
+
+现在你很想见见w3m了吧? 下面就是它:
+
+在w3m里面浏览goo    在w3m里面浏览百           在w3m里面浏览Ema                
+                                                                              
+在w3m里面浏览google 在w3m里面浏览百度         在w3m里面浏览EmacsWiki          
+
+在w3m浏览我的博     用w3m在google里           用w3m在google图                 
+                                                                              
+在w3m浏览我的博客   用w3m在google里搜索刘德华 用w3m在google图片搜索中搜索陈好 
+
+下面我来讲讲w3m的使用.
+
+使用M-M打开w3m，它会提示你输入一个url，不输入的话默认为主页(这样设置(setq w3m-home-page “http://www.google.cn”))，或者用C-x M-B打开
+标签页，再或者使用w3m-browse-current-buffer命令直接调用w3m来浏览当前buffer，w3m-browse-current-buffer会单独开一个w3m的buffer来浏览
+当前buffer内容，而w3m-buffer直接在当前buffer浏览，下面是用w3m直接浏览这篇文章的html：
+
+使用w3m浏览当前b
+
+使用w3m浏览当前buffer
+
+注意：下面所说的按键如无特殊说明，均是在w3m中有效。
+
+浏览页面
+
+正如vim中那样, h, j, k, l上下左右移动光标, J, K快速上下移动光标, u向上滚半屏, 空格键向下翻一屏, n或tab移到光标到下一个链接, p或
+Shift+tab移动光标到上一个链接, w移动光标到下一个表单, b移动个光标到上一个表单. 按f，w3m会把它的每一个链接加一个编号，你输入编号就可
+以到达这个链接，非常之方便，效果如下：
+
+w3m的链接编号  
+
+w3m的链接编号
+
+上图中灰色的数字编号就是链接的数字编号。默认的w3m链接编号有个小问题，就是不显示form的编号，不知道它为啥不显示，我改了一下，使得可以
+显示form的编号，因为显示编号实际上是用函数w3m-link-numbering来实现的，它的代码如下：
+
+^?View Code LISP
+
+1  (defun w3m-link-numbering (&rest args)                                         
+2    "Make overlays that display link numbers."                                   
+3    (when w3m-link-numbering-mode                                                
+4      (save-excursion                                                            
+5        (goto-char (point-min))                                                  
+6        (let ((i 0)                                                              
+7              overlay num)                                                       
+8          (catch 'already-numbered                                               
+9            (while (w3m-goto-next-anchor)                                        
+10             ;; 这里判断是否是一个锚链接                                        
+11             (when (w3m-anchor)                                                 
+12               (when (get-char-property (point) 'w3m-link-numbering-overlay)    
+13                 (throw 'already-numbered nil))                                 
+14               (setq overlay (make-overlay (point) (1+ (point)))                
+15                     num (format "[%d]" (incf i)))                              
+16               (w3m-static-if (featurep 'xemacs)                                
+17                   (progn                                                       
+18                     (overlay-put overlay 'before-string num)                   
+19                     (set-glyph-face (extent-begin-glyph overlay)               
+20                                     'w3m-link-numbering))                      
+21                 (w3m-add-face-property 0 (length num) 'w3m-link-numbering num) 
+22                 (overlay-put overlay 'before-string num)                       
+23                 (overlay-put overlay 'evaporate t))                            
+24               (overlay-put overlay 'w3m-link-numbering-overlay i))))))))       
+
+上面代码中用了“(when (w3m-anchor)”判断是否有锚链接，form显然没有，所以把这条语句去掉就可以了。
+接着前面，还可以使用goto-line直接定位光标到指定行(最好打开行号显示，方便你查看行号)。上述命令以及Emacs本身的光标移动命令使得可以快
+速移动光标和定位链接.
+
+图片显示
+
+^?View Code LISP
+
+(setq w3m-default-display-inline-images t)
+
+设置默认显示图片, t或者用鼠标单击图片或者图片url控制是否显示光标处的图片, T控制是否显示所有图片
+
+导航
+
+F或C-;前进, B或C-h后退; S列出历史页面, M-s显示曾经打开的会话和当前的会话; 回车或者单击鼠标在当前标签页中打开光标处的链接, m在新标签
+页中打开光标处的链接, g在新标签页中打开用户所输入的url, G在当前标签页中打开用户所输入的url, s启用自定义的搜索引擎来搜索, P显示当前
+标签页url, c拷贝当前标签页url, U拷贝并显示光标所在处的链接的url, d下载光标处的链接, M-d下载用户输入的url, r重新加载当前页, 相当于一
+般浏览器的强制刷新(Ctrl+F5).
+
+切换标签页
+
+M-n切换到下一个标签页, M-p切换到上一个标签页, C-k关闭当前标签页, C-c 1关闭其他的标签页, 只留下当前标签页, 1或C-x 1最大化当前标签页,
+还可以使用Emacs自己的ido来方便的切换标签页. M-n可以复制当前标签页. C-x C-s可以保存当前标签页, C-x C-w可以在保存当前标签页的同时，直
+接改变当前mode为你所输入的文件名对应的mode，不再是w3m-mode了.
+
+书签
+
+a把当前页面加到书签里面去, M-a把光标处的url加入书签, v新开一个标签页来显示所有的书签, 打开书签后, M-e可以直接打开书签文件进行编辑,
+M-k可以删除一个书签, C-_可以undo刚才删掉的标签.
+下面这个是书签的截图:
+
+w3m的书签      
+
+w3m的书签
+
+工具栏
+
+一般的浏览器都有个工具栏，w3m当然也有。w3m-use-toolbar这个选项控制是否显示工具栏，如果你不想要显示工具栏的话把它设为nil就可以了。但
+是如果你想要显示工具栏的话，并不需要手动去设置这个变量，为什么呢？因为emacs-w3m已经自动帮你设置好了，代码如下：
+
+^?View Code LISP
+
+1  (defcustom w3m-use-toolbar                                         
+2    (and (featurep 'tool-bar)                                        
+3         ;; Emacs 22 and greater return t for `(featurep 'tool-bar)' 
+4         ;; even if being launched with the -nw option.              
+5         (display-images-p)                                          
+6         (or (featurep 'gtk)                                         
+7         (image-type-available-p 'xpm)))                             
+8    "Non-nil activates toolbar of w3m."                              
+9    :group 'w3m                                                      
+10   :type 'boolean)                                                  
+
+如果你有tool-bar这个包，而且能显示图片，它就会自动帮你设为t的。
+那是不是现在你就能看到工具栏呢？抱歉，不能，因为工具栏显示的话会用到图片，而这个图片emacs-w3m从哪里找呢？这就需要你指定了，通过
+w3m-icon-directory指定，指定好它了以后，打开w3m的时候，就会看到一个工具栏了(当然，首先你的工具栏得打开，C-u 1 M-x tool-bar-mode)，
+效果如下：
+
+w3m的工具栏    
+
+w3m的工具栏
+
+其他
+
+M-k显示cookie, 打开cookie页面, 你还可以编辑cookie.
+当要在form中输入数据的时候，把光标移到form上，按回车键或m，如果当前form框很小(比如搜索引擎的输入框)，w3m会让你在minibuffer中输入数
+据，如果很大的话(比如编辑wiki的时候很大的文本框)，w3m则会新开一个buffer让你输入，方便之极，在那个新开的buffer里面，按C-c C-q取消输
+入，C-c C-c则确认输入。
+switch-to-w3m命令可以切换到w3m的buffer。
+w3m-weather可以显示天气预报，不过显示的都是作者家(日本)的那天气预报，如果有人对天气预报感兴趣的话，可以使用cn-weather，这是水木上的
+wlamos写的一个elisp包。
+
+以上我所说的命令已经让你能够快速浏览网页了, w3m的功能特别强大, 等待你的挖掘, w3m的elisp代码有2万5千多行, elisp可不像c代码, 不需要多
+少行代码就可以实现非常强大的功能, w3m的代码就有那么多, 从此也可见它的功能之强大.
+
+w3m的不足
+
+任何软件都有不足, 包括Emacs, w3m更是如此, 其实它的缺点还挺大的, 它不能识别css, …, 也许你现在觉得它也太弱了吧, 连css都识别不了, 不要
+这样鄙视它, 它毕竟是一个文本浏览器, 但是它能看图片, 这个从上面的截图你也能看出来. 既然w3m有这么大的缺点, 我为什么还要向大家介绍w3m
+呢? 原因是它既然是个文本浏览器, 浏览速度当然就很快了, 看一些文字居多的网页还是比较不错的, 小说之类的网页啊, w3m都是个不错的选择, 我
+现在经常用它来浏览EmacsWiki.
+
+有什么改进的软件吗?
+
+conkeror起初是一个firefox的插件, 使得能在firefox下模拟Emacs的快捷键, 随着后来的发展, 它独立成为一个软件了, 它的操作方式完全类似
+Emacs, 而且它的命令也是自文档的, 不过它的配置文件是JavaScript写的, 对JavaScript比较熟悉的同志是件好事. 目前firefox的插件它也基本都
+能兼容, 不能兼容的稍微修改一下也能兼容. 那么它是完美的吗? 当然也不是, 由于它是独立于Emacs之外的, 好多对Emacs的定制就不能用于它了,
+比如我写了一个非常好用的浏览buffer的包, conkeror便不能用了, 正因为它是独立于Emacs之外, 它的标签页浏览都不是很方便. 不过它有一个非常
+好用的功能, 就是可以显示每个链接的编号, 然后用户可以输入链接编号快速打开某个链接.
+
+我的w3m配置文件在这里，配置如下：
+
+^?View Code LISP
+
+1   ;; -*- Emacs-Lisp -*-                                                                              
+2                                                                                                      
+3   ;; Time-stamp: <2010-02-23 13:52:32 Tuesday by ahei>                                               
+4                                                                                                      
+5   (require 'w3m)                                                                                     
+6   (require 'w3m-lnum)                                                                                
+7   (require 'util)                                                                                    
+8                                                                                                      
+9   (defvar w3m-buffer-name-prefix "*w3m" "Name prefix of w3m buffer")                                 
+10  (defvar w3m-buffer-name (concat w3m-buffer-name-prefix "*") "Name of w3m buffer")                  
+11  (defvar w3m-bookmark-buffer-name (concat w3m-buffer-name-prefix "-bookmark*") "Name of w3m buffer")
+12  (defvar w3m-dir (concat my-emacs-lisps-path "emacs-w3m/") "Dir of w3m.")                           
+13                                                                                                     
+14  (setq w3m-command-arguments '("-cookie" "-F"))                                                     
+15  (setq w3m-use-cookies t)                                                                           
+16  (setq w3m-icon-directory (concat w3m-dir "icons"))                                                 
+17  (setq w3m-use-mule-ucs t)                                                                          
+18  (setq w3m-home-page "http://www.google.cn")                                                        
+19  (setq w3m-default-display-inline-images t)                                                         
+20                                                                                                     
+21  (defun w3m-settings ()                                                                             
+22    (make-local-variable 'hl-line-face)                                                              
+23    (setq hl-line-face 'hl-line-nonunderline-face)                                                   
+24    (setq hl-line-overlay nil)                                                                       
+25    (color-theme-adjust-hl-line-face))                                                               
+26                                                                                                     
+27  (add-hook 'w3m-mode-hook 'w3m-settings)                                                            
+28                                                                                                     
+29  (defun w3m-save-current-buffer ()                                                                  
+30    "Save current w3m buffer."                                                                       
+31    (interactive)                                                                                    
+32    (save-excursion                                                                                  
+33      (mark-whole-buffer)                                                                            
+34      (call-interactively 'copy-region-as-kill-nomark))                                              
+35    (with-temp-buffer                                                                                
+36      (call-interactively 'yank)                                                                     
+37      (call-interactively 'write-file)))                                                             
+38                                                                                                     
+39  (defun w3m-print-current-url ()                                                                    
+40    "Display current url."                                                                           
+41    (interactive)                                                                                    
+42    (w3m-message "%s" (w3m-url-readable-string w3m-current-url)))                                    
+43                                                                                                     
+44  (defun w3m-copy-current-url ()                                                                     
+45    "Display the current url in the echo area and put it into `kill-ring'."                          
+46    (interactive)                                                                                    
+47    (when w3m-current-url                                                                            
+48      (let ((deactivate-mark nil))                                                                   
+49        (kill-new w3m-current-url)                                                                   
+50        (w3m-print-current-url))))                                                                   
+51                                                                                                     
+52  (defun view-w3m-bookmark ()                                                                        
+53    "View w3m bokmark."                                                                              
+54    (interactive)                                                                                    
+55    (let ((buffer (get-buffer w3m-bookmark-buffer-name)))                                            
+56      (if buffer                                                                                     
+57          (switch-to-buffer buffer)                                                                  
+58        (with-current-buffer (get-buffer-create w3m-bookmark-buffer-name)                            
+59          (w3m-mode)                                                                                 
+60          (w3m-bookmark-view)))))                                                                    
+61                                                                                                     
+62  (defun switch-to-w3m ()                                                                            
+63    "Switch to *w3m* buffer."                                                                        
+64    (interactive)                                                                                    
+65    (let ((buffer (get-buffer w3m-buffer-name)))                                                     
+66      (if buffer                                                                                     
+67          (switch-to-buffer buffer)                                                                  
+68        (message "Could not found w3m buffer."))))                                                   
+69                                                                                                     
+70  (defun w3m-browse-current-buffer ()                                                                
+71    "Use w3m browser current buffer."                                                                
+72    (interactive)                                                                                    
+73    (w3m-browse-buffer))                                                                             
+74                                                                                                     
+75  (defun w3m-browse-buffer (&optional buffer)                                                        
+76    "Use w3m browser buffer BUFFER."                                                                 
+77    (interactive "bBuffer to browse use w3m: ")                                                      
+78    (unless buffer (setq buffer (current-buffer)))                                                   
+79    (let* ((file (buffer-file-name buffer))                                                          
+80           (name (buffer-name buffer)))                                                              
+81      (if file                                                                                       
+82          (w3m-goto-url-new-session file)                                                            
+83        (with-current-buffer buffer                                                                  
+84          (save-excursion                                                                            
+85            (mark-whole-buffer)                                                                      
+86            (call-interactively 'copy-region-as-kill-nomark)))                                       
+87        (let* ((new-name                                                                             
+88                (concat                                                                              
+89                 w3m-buffer-name-prefix                                                              
+90                 "-"                                                                                 
+91                 (if (string= "*" (substring name 0 1))                                              
+92                     (substring name 1)                                                              
+93                   (concat name "*"))))                                                              
+94               (new-buffer (get-buffer-create new-name)))                                            
+95          (switch-to-buffer new-buffer)                                                              
+96          (call-interactively 'yank)                                                                 
+97          (w3m-buffer)                                                                               
+98          (w3m-mode)                                                                                 
+99          (setq w3m-current-title (buffer-name))))))                                                 
+100                                                                                                    
+101 ;; fix small bug about of `w3m-auto-show'                                                          
+102 ;; see my-blog/emacs/w3m-auto-show-bug.htm                                                         
+103 (defun w3m-auto-show ()                                                                            
+104   "Scroll horizontally so that the point is visible."                                              
+105   (when (and truncate-lines                                                                        
+106              w3m-auto-show                                                                         
+107              (not w3m-horizontal-scroll-done)                                                      
+108              (not (and (eq last-command this-command)                                              
+109                        (or (eq (point) (point-min))                                                
+110                            (eq (point) (point-max)))))                                             
+111              (or (memq this-command '(beginning-of-buffer end-of-buffer))                          
+112                  (string-match "\\`i?search-"                                                      
+113                                (if (symbolp this-command) (symbol-name this-command) ""))          
+114                  (and (markerp (nth 1 w3m-current-position))                                       
+115                       (markerp (nth 2 w3m-current-position))                                       
+116                       (>= (point)                                                                  
+117                           (marker-position (nth 1 w3m-current-position)))                          
+118                       (<= (point)                                                                  
+119                           (marker-position (nth 2 w3m-current-position))))))                       
+120     (w3m-horizontal-on-screen))                                                                    
+121   (setq w3m-horizontal-scroll-done nil))                                                           
+122                                                                                                    
+123 (defun w3m-link-numbering (&rest args)                                                             
+124   "Make overlays that display link numbers."                                                       
+125   (when w3m-link-numbering-mode                                                                    
+126     (save-excursion                                                                                
+127       (goto-char (point-min))                                                                      
+128       (let ((i 0)                                                                                  
+129             overlay num)                                                                           
+130         (catch 'already-numbered                                                                   
+131           (while (w3m-goto-next-anchor)                                                            
+132             (when (get-char-property (point) 'w3m-link-numbering-overlay)                          
+133               (throw 'already-numbered nil))                                                       
+134             (setq overlay (make-overlay (point) (1+ (point)))                                      
+135                   num (format "[%d]" (incf i)))                                                    
+136             (w3m-static-if (featurep 'xemacs)                                                      
+137                 (progn                                                                             
+138                   (overlay-put overlay 'before-string num)                                         
+139                   (set-glyph-face (extent-begin-glyph overlay)                                     
+140                                   'w3m-link-numbering))                                            
+141               (w3m-add-face-property 0 (length num) 'w3m-link-numbering num)                       
+142               (overlay-put overlay 'before-string num)                                             
+143               (overlay-put overlay 'evaporate t))                                                  
+144             (overlay-put overlay 'w3m-link-numbering-overlay i)))))))                              
+145                                                                                                    
+146 (apply-define-key                                                                                  
+147  global-map                                                                                        
+148  `(("M-M"     w3m-goto-url-new-session)                                                            
+149    ("C-x M-B" view-w3m-bookmark)                                                                   
+150    ("C-x M-m" switch-to-w3m)))                                                                     
+151                                                                                                    
+152 (apply-define-key                                                                                  
+153  w3m-mode-map                                                                                      
+154   `(("<backtab>" w3m-previous-anchor)                                                              
+155     ("n"         w3m-next-anchor)                                                                  
+156     ("p"         w3m-previous-anchor)                                                              
+157     ("w"         w3m-next-form)                                                                    
+158     ("b"         w3m-previous-form)                                                                
+159     ("f"         w3m-go-to-linknum)                                                                
+160     ("M-n"       w3m-next-buffer)                                                                  
+161     ("M-p"       w3m-previous-buffer)                                                              
+162     ("C-k"       kill-this-buffer)                                                                 
+163     ("C-k"       w3m-delete-buffer)                                                                
+164     ("C-c 1"     w3m-delete-other-buffers)                                                         
+165     ("1"         delete-other-windows)                                                             
+166     ("C-x C-s"   w3m-save-current-buffer-sb)                                                       
+167     ("P"         w3m-print-current-url)                                                            
+168     ("U"         w3m-print-this-url)                                                               
+169     ("c"         w3m-copy-current-url)                                                             
+170     ("g"         w3m-goto-url-new-session)                                                         
+171     ("G"         w3m-goto-url)                                                                     
+172     ("d"         w3m-download-this-url-sb)                                                         
+173     ("M-d"       w3m-download-sb)                                                                  
+174     ("s"         w3m-search)                                                                       
+175     ("S"         w3m-history)                                                                      
+176     ("u"         View-scroll-page-backward)                                                        
+177     ("J"         roll-down)                                                                        
+178     ("K"         roll-up)                                                                          
+179     ("o"         other-window)                                                                     
+180     ("m"         w3m-view-this-url-new-session)                                                    
+181     ("C-h"       w3m-view-previous-page)                                                           
+182     ("F"         w3m-view-next-page)                                                               
+183     ("C-;"       w3m-view-next-page)                                                               
+184     ("r"         w3m-reload-this-page)                                                             
+185     ("v"         w3m-bookmark-view-new-session)                                                    
+186     ("M-e"       w3m-bookmark-edit)                                                                
+187     ("'"         switch-to-other-buffer)))                                                         
+
+
+
+
+
+
+
+
+
+
+
+
+Emacs才是世界上最强的IDE – 用w3m浏览网页 2010-06-25 12:49:53
+
+分类：
+
+也许当你看到我这个标题的时候, 你就会感到惊讶, 在Emacs里面能浏览网页? 对, 在Emacs里面确实能浏览网页. 你应该是第一次见到能浏览网页的
+IDE吧, 其他的IDE顶多是能浏览一些带超链接的帮助. 有必要在Emacs里面浏览网页吗? 有那么多的浏览器, 为什么要在Emacs里面浏览网页? 对啊,
+为什么啊?
+
+当你在浏览网页的时候, 你是否想过只按几个字母就可以上下滚动网页, 上下翻屏, 前进后退? 现在的浏览器都是多标签页浏览, 你是否想过能用更
+方便的方式来切换这些标签页, 而不是那么难按的Ctrl+Tab? 当你在网页文本框里面输入文字的时候, 你是否想过是否可以使用自己熟悉的编辑器方
+式来编辑这些文本呢?
+
+上述功能, w3m都可以完成.
+
+现在你很想见见w3m了吧? 下面就是它:
+
+在w3m里面浏览goo    在w3m里面浏览百           在w3m里面浏览Ema                
+                                                                              
+在w3m里面浏览google 在 w3m里面浏览百度        在w3m里面浏览EmacsWiki          
+
+在w3m浏览我的博     用w3m在google里           用w3m在google图                 
+                                                                              
+在 w3m浏览我的博客  用w3m在google里搜索刘德华 用w3m在google图片搜索中搜索陈好 
+
+下面我来讲讲w3m的使用.
+
+使用M-M打开w3m，它会提示你输入一个url，不输入的话默认为主页(这样设置(setq w3m-home-page “http://www.google.cn”))，或者用C-x M-B打
+开标签页，再或者使用w3m-browse-current-buffer命令直接调用w3m来浏览当前buffer，w3m-browse- current-buffer会单独开一个w3m的buffer来
+浏览当前buffer内容，而w3m-buffer直接在当前buffer浏览，下面是用w3m直接浏览这篇文章的html：
+
+使用w3m浏览当前b
+
+使用w3m浏览当前buffer
+
+注意：下面所说的按键如无特殊说明，均是在w3m中有效。
+
+浏览页面
+
+正如vim中那样, h, j, k, l上下左右移动光标, J, K快速上下移动光标, u向上滚半屏, 空格键向下翻一屏, n或tab移到光标到下一个链接, p或
+Shift+tab移动光标到上一个链接, w移动光标到下一个表单, b移动个光标到上一个表单. 按f，w3m会把它的每一个链接加一个编号，你输入编号就
+可以到达这个链接，非常之方便，效果如下：
+
+w3m的链接编号  
+
+w3m 的链接编号
+
+上图中灰色的数字编号就是链接的数字编号。默认的w3m链接编号有个小问题，就是不显示form的编号，不知道它为啥不显示，我改了一下，使得可
+以显示 form的编号，因为显示编号实际上是用函数w3m-link-numbering来实现的，它的代码如下：
+^
+
+1  (defun w3m-link-numbering (&rest args)                                        
+2    "Make overlays that display link numbers."                                  
+3    (when w3m-link-numbering-mode                                               
+4      (save-excursion                                                           
+5        (goto-char (point-min))                                                 
+6        (let ((i 0)                                                             
+7              overlay num)                                                      
+8          (catch 'already-numbered                                              
+9            (while (w3m-goto-next-anchor)                                       
+10             ;; 这里判断是否是一个锚链接                                       
+11             (when (w3m-anchor)                                                
+12               (when (get-char-property (point) 'w3m-link-numbering-overlay)   
+13                 (throw 'already-numbered nil))                                
+14               (setq overlay (make-overlay (point) (1+ (point)))               
+15                     num (format "[%d]" (incf i)))                             
+16               (w3m-static-if (featurep 'xemacs)                               
+17                   (progn                                                      
+18                     (overlay-put overlay 'before-string num)                  
+19                     (set-glyph-face (extent-begin-glyph overlay)              
+20                                     'w3m-link-numbering))                     
+21                 (w3m-add-face-property 0 (length num) 'w3m-link-numbering num)
+22                 (overlay-put overlay 'before-string num)                      
+23                 (overlay-put overlay 'evaporate t))                           
+24               (overlay-put overlay 'w3m-link-numbering-overlay i))))))))      
+
+上面代码中用了“(when (w3m-anchor)”判断是否有锚链接，form显然没有，所以把这条语句去掉就可以了。
+接着前面，还可以使用goto-line直接定位光标到指定行(最好打开行号显示，方便你查看行号)。上述命令以及Emacs本身的光标移动命令使得可以快
+速移动光标和定位链接.
+
+图片显示
+
+(setq w3m-default-display-inline-images t)
+
+设置默认显示图片, t或者用鼠标单击图片或者图片url控制是否显示光标处的图片, T控制是否显示所有图片
+
+导航
+
+F或C-;前进, B或C-h后退; S列出历史页面, M-s显示曾经打开的会话和当前的会话; 回车或者单击鼠标在当前标签页中打开光标处的链接, m在新标
+签页中打开光标处的链接, g在新标签页中打开用户所输入的url, G在当前标签页中打开用户所输入的url, s启用自定义的搜索引擎来搜索, P显示当
+前标签页url, c拷贝当前标签页url, U拷贝并显示光标所在处的链接的url, d下载光标处的链接, M-d下载用户输入的url, r重新加载当前页, 相当
+于一般浏览器的强制刷新(Ctrl+F5).
+
+切换标签页
+
+M-n切换到下一个标签页, M-p切换到上一个标签页, C-k关闭当前标签页, C-c 1关闭其他的标签页, 只留下当前标签页, 1或C-x 1最大化当前标签
+页, 还可以使用Emacs自己的ido来方便的切换标签页. M-n可以复制当前标签页. C-x C-s可以保存当前标签页, C-x C-w可以在保存当前标签页的同
+时，直接改变当前mode为你所输入的文件名对应的mode，不再是w3m-mode了.
+
+书签
+
+a把当前页面加到书签里面去, M-a把光标处的url加入书签, v新开一个标签页来显示所有的书签, 打开书签后, M-e可以直接打开书签文件进行编辑,
+M-k可以删除一个书签, C-_可以undo刚才删掉的标签.
+下面这个是书签的截图:
+
+w3m的书签      
+
+w3m 的书签
+
+工具栏
+
+一般的浏览器都有个工具栏，w3m当然也有。w3m-use-toolbar这个选项控制是否显示工具栏，如果你不想要显示工具栏的话把它设为 nil就可以了。
+但是如果你想要显示工具栏的话，并不需要手动去设置这个变量，为什么呢？因为emacs-w3m已经自动帮你设置好了，代码如下：
+
+^
+
+1  (defcustom w3m-use-toolbar                                         
+2    (and (featurep 'tool-bar)                                        
+3         ;; Emacs 22 and greater return t for `(featurep 'tool-bar)' 
+4         ;; even if being launched with the -nw option.              
+5         (display-images-p)                                          
+6         (or (featurep 'gtk)                                         
+7         (image-type-available-p 'xpm)))                             
+8    "Non-nil activates toolbar of w3m."                              
+9    :group 'w3m                                                      
+10   :type 'boolean)                                                  
+
+如果你有tool-bar这个包，而且能显示图片，它就会自动帮你设为t的。
+那是不是现在你就能看到工具栏呢？抱歉，不能，因为工具栏显示的话会用到图片，而这个图片emacs-w3m从哪里找呢？这就需要你指定了，通过
+w3m- icon-directory指定，指定好它了以后，打开w3m的时候，就会看到一个工具栏了(当然，首先你的工具栏得打开，C-u 1 M-x tool-bar-mode)
+，效果如下：
+
+w3m的工具栏    
+
+w3m 的工具栏
+
+其他
+
+M-k显示cookie, 打开cookie页面, 你还可以编辑cookie.
+当要在form中输入数据的时候，把光标移到form上，按回车键或m，如果当前form框很小(比如搜索引擎的输入框)，w3m会让你在 minibuffer中输入
+数据，如果很大的话(比如编辑wiki的时候很大的文本框)，w3m则会新开一个buffer让你输入，方便之极，在那个新开的buffer里面，按C-c C-q取消
+输入，C-c C-c则确认输入。
+switch-to-w3m命令可以切换到w3m的buffer。
+w3m-weather可以显示天气预报，不过显示的都是作者家(日本)的那天气预报，如果有人对天气预报感兴趣的话，可以使用cn-weather，这是水木上
+的wlamos写的一个elisp包。
+
+以上我所说的命令已经让你能够快速浏览网页了, w3m的功能特别强大, 等待你的挖掘, w3m的elisp代码有2万5千多行, elisp可不像c代码, 不需要
+多少行代码就可以实现非常强大的功能, w3m的代码就有那么多, 从此也可见它的功能之强大.
+
+w3m的不足
+
+任何软件都有不足, 包括Emacs, w3m更是如此, 其实它的缺点还挺大的, 它不能识别css, …, 也许你现在觉得它也太弱了吧, 连css都识别不了, 不
+要这样鄙视它, 它毕竟是一个文本浏览器, 但是它能看图片, 这个从上面的截图你也能看出来. 既然w3m有这么大的缺点, 我为什么还要向大家介绍
+w3m呢? 原因是它既然是个文本浏览器, 浏览速度当然就很快了, 看一些文字居多的网页还是比较不错的, 小说之类的网页啊, w3m都是个不错的选
+择, 我现在经常用它来浏览EmacsWiki.
+
+有什么改进的软件吗?
+
+conkeror起初是一个firefox的插件, 使得能在firefox下模拟Emacs的快捷键, 随着后来的发展, 它独立成为一个软件了, 它的操作方式完全类似
+Emacs, 而且它的命令也是自文档的, 不过它的配置文件是JavaScript写的, 对JavaScript比较熟悉的同志是件好事. 目前firefox的插件它也基本都
+能兼容, 不能兼容的稍微修改一下也能兼容. 那么它是完美的吗? 当然也不是, 由于它是独立于Emacs之外的, 好多对Emacs的定制就不能用于它了,
+比如我写了一个非常好用的浏览buffer的包, conkeror便不能用了, 正因为它是独立于Emacs之外, 它的标签页浏览都不是很方便. 不过它有一个非
+常好用的功能, 就是可以显示每个链接的编号, 然后用户可以输入链接编号快速打开某个链接.
+
+我的w3m配置文件在这里，配置如下：
+
+1   ;; -*- Emacs-Lisp -*-                                                                              
+2                                                                                                      
+3   ;; Time-stamp: <2010-02-23 13:52:32 Tuesday by ahei>                                               
+4                                                                                                      
+5   (require 'w3m)                                                                                     
+6   (require 'w3m-lnum)                                                                                
+7   (require 'util)                                                                                    
+8                                                                                                      
+9   (defvar w3m-buffer-name-prefix "*w3m" "Name prefix of w3m buffer")                                 
+10  (defvar w3m-buffer-name (concat w3m-buffer-name-prefix "*") "Name of w3m buffer")                  
+11  (defvar w3m-bookmark-buffer-name (concat w3m-buffer-name-prefix "-bookmark*") "Name of w3m buffer")
+12  (defvar w3m-dir (concat my-emacs-lisps-path "emacs-w3m/") "Dir of w3m.")                           
+13                                                                                                     
+14  (setq w3m-command-arguments '("-cookie" "-F"))                                                     
+15  (setq w3m-use-cookies t)                                                                           
+16  (setq w3m-icon-directory (concat w3m-dir "icons"))                                                 
+17  (setq w3m-use-mule-ucs t)                                                                          
+18  (setq w3m-home-page "http://www.google.cn")                                                        
+19  (setq w3m-default-display-inline-images t)                                                         
+20                                                                                                     
+21  (defun w3m-settings ()                                                                             
+22    (make-local-variable 'hl-line-face)                                                              
+23    (setq hl-line-face 'hl-line-nonunderline-face)                                                   
+24    (setq hl-line-overlay nil)                                                                       
+25    (color-theme-adjust-hl-line-face))                                                               
+26                                                                                                     
+27  (add-hook 'w3m-mode-hook 'w3m-settings)                                                            
+28                                                                                                     
+29  (defun w3m-save-current-buffer ()                                                                  
+30    "Save current w3m buffer."                                                                       
+31    (interactive)                                                                                    
+32    (save-excursion                                                                                  
+33      (mark-whole-buffer)                                                                            
+34      (call-interactively 'copy-region-as-kill-nomark))                                              
+35    (with-temp-buffer                                                                                
+36      (call-interactively 'yank)                                                                     
+37      (call-interactively 'write-file)))                                                             
+38                                                                                                     
+39  (defun w3m-print-current-url ()                                                                    
+40    "Display current url."                                                                           
+41    (interactive)                                                                                    
+42    (w3m-message "%s" (w3m-url-readable-string w3m-current-url)))                                    
+43                                                                                                     
+44  (defun w3m-copy-current-url ()                                                                     
+45    "Display the current url in the echo area and put it into `kill-ring'."                          
+46    (interactive)                                                                                    
+47    (when w3m-current-url                                                                            
+48      (let ((deactivate-mark nil))                                                                   
+49        (kill-new w3m-current-url)                                                                   
+50        (w3m-print-current-url))))                                                                   
+51                                                                                                     
+52  (defun view-w3m-bookmark ()                                                                        
+53    "View w3m bokmark."                                                                              
+54    (interactive)                                                                                    
+55    (let ((buffer (get-buffer w3m-bookmark-buffer-name)))                                            
+56      (if buffer                                                                                     
+57          (switch-to-buffer buffer)                                                                  
+58        (with-current-buffer (get-buffer-create w3m-bookmark-buffer-name)                            
+59          (w3m-mode)                                                                                 
+60          (w3m-bookmark-view)))))                                                                    
+61                                                                                                     
+62  (defun switch-to-w3m ()                                                                            
+63    "Switch to *w3m* buffer."                                                                        
+64    (interactive)                                                                                    
+65    (let ((buffer (get-buffer w3m-buffer-name)))                                                     
+66      (if buffer                                                                                     
+67          (switch-to-buffer buffer)                                                                  
+68        (message "Could not found w3m buffer."))))                                                   
+69                                                                                                     
+70  (defun w3m-browse-current-buffer ()                                                                
+71    "Use w3m browser current buffer."                                                                
+72    (interactive)                                                                                    
+73    (w3m-browse-buffer))                                                                             
+74                                                                                                     
+75  (defun w3m-browse-buffer (&optional buffer)                                                        
+76    "Use w3m browser buffer BUFFER."                                                                 
+77    (interactive "bBuffer to browse use w3m: ")                                                      
+78    (unless buffer (setq buffer (current-buffer)))                                                   
+79    (let* ((file (buffer-file-name buffer))                                                          
+80           (name (buffer-name buffer)))                                                              
+81      (if file                                                                                       
+82          (w3m-goto-url-new-session file)                                                            
+83        (with-current-buffer buffer                                                                  
+84          (save-excursion                                                                            
+85            (mark-whole-buffer)                                                                      
+86            (call-interactively 'copy-region-as-kill-nomark)))                                       
+87        (let* ((new-name                                                                             
+88                (concat                                                                              
+89                 w3m-buffer-name-prefix                                                              
+90                 "-"                                                                                 
+91                 (if (string= "*" (substring name 0 1))                                              
+92                     (substring name 1)                                                              
+93                   (concat name "*"))))                                                              
+94               (new-buffer (get-buffer-create new-name)))                                            
+95          (switch-to-buffer new-buffer)                                                              
+96          (call-interactively 'yank)                                                                 
+97          (w3m-buffer)                                                                               
+98          (w3m-mode)                                                                                 
+99          (setq w3m-current-title (buffer-name))))))                                                 
+100                                                                                                    
+101 ;; fix small bug about of `w3m-auto-show'                                                          
+102 ;; see my-blog/emacs/w3m-auto-show-bug.htm                                                         
+103 (defun w3m-auto-show ()                                                                            
+104   "Scroll horizontally so that the point is visible."                                              
+105   (when (and truncate-lines                                                                        
+106              w3m-auto-show                                                                         
+107              (not w3m-horizontal-scroll-done)                                                      
+108              (not (and (eq last-command this-command)                                              
+109                        (or (eq (point) (point-min))                                                
+110                            (eq (point) (point-max)))))                                             
+111              (or (memq this-command '(beginning-of-buffer end-of-buffer))                          
+112                  (string-match "\\`i?search-"                                                      
+113                                (if (symbolp this-command) (symbol-name this-command) ""))          
+114                  (and (markerp (nth 1 w3m-current-position))                                       
+115                       (markerp (nth 2 w3m-current-position))                                       
+116                       (>= (point)                                                                  
+117                           (marker-position (nth 1 w3m-current-position)))                          
+118                       (<= (point)                                                                  
+119                           (marker-position (nth 2 w3m-current-position))))))                       
+120     (w3m-horizontal-on-screen))                                                                    
+121   (setq w3m-horizontal-scroll-done nil))                                                           
+122                                                                                                    
+123 (defun w3m-link-numbering (&rest args)                                                             
+124   "Make overlays that display link numbers."                                                       
+125   (when w3m-link-numbering-mode                                                                    
+126     (save-excursion                                                                                
+127       (goto-char (point-min))                                                                      
+128       (let ((i 0)                                                                                  
+129             overlay num)                                                                           
+130         (catch 'already-numbered                                                                   
+131           (while (w3m-goto-next-anchor)                                                            
+132             (when (get-char-property (point) 'w3m-link-numbering-overlay)                          
+133               (throw 'already-numbered nil))                                                       
+134             (setq overlay (make-overlay (point) (1+ (point)))                                      
+135                   num (format "[%d]" (incf i)))                                                    
+136             (w3m-static-if (featurep 'xemacs)                                                      
+137                 (progn                                                                             
+138                   (overlay-put overlay 'before-string num)                                         
+139                   (set-glyph-face (extent-begin-glyph overlay)                                     
+140                                   'w3m-link-numbering))                                            
+141               (w3m-add-face-property 0 (length num) 'w3m-link-numbering num)                       
+142               (overlay-put overlay 'before-string num)                                             
+143               (overlay-put overlay 'evaporate t))                                                  
+144             (overlay-put overlay 'w3m-link-numbering-overlay i)))))))                              
+145                                                                                                    
+146 (apply-define-key                                                                                  
+147  global-map                                                                                        
+148  `(("M-M"     w3m-goto-url-new-session)                                                            
+149    ("C-x M-B" view-w3m-bookmark)                                                                   
+150    ("C-x M-m" switch-to-w3m)))                                                                     
+151                                                                                                    
+152 (apply-define-key                                                                                  
+153  w3m-mode-map                                                                                      
+154   `(("<backtab>" w3m-previous-anchor)                                                              
+155     ("n"         w3m-next-anchor)                                                                  
+156     ("p"         w3m-previous-anchor)                                                              
+157     ("w"         w3m-next-form)                                                                    
+158     ("b"         w3m-previous-form)                                                                
+159     ("f"         w3m-go-to-linknum)                                                                
+160     ("M-n"       w3m-next-buffer)                                                                  
+161     ("M-p"       w3m-previous-buffer)                                                              
+162     ("C-k"       kill-this-buffer)                                                                 
+163     ("C-k"       w3m-delete-buffer)                                                                
+164     ("C-c 1"     w3m-delete-other-buffers)                                                         
+165     ("1"         delete-other-windows)                                                             
+166     ("C-x C-s"   w3m-save-current-buffer-sb)                                                       
+167     ("P"         w3m-print-current-url)                                                            
+168     ("U"         w3m-print-this-url)                                                               
+169     ("c"         w3m-copy-current-url)                                                             
+170     ("g"         w3m-goto-url-new-session)                                                         
+171     ("G"         w3m-goto-url)                                                                     
+172     ("d"         w3m-download-this-url-sb)                                                         
+173     ("M-d"       w3m-download-sb)                                                                  
+174     ("s"         w3m-search)                                                                       
+175     ("S"         w3m-history)                                                                      
+176     ("u"         View-scroll-page-backward)                                                        
+177     ("J"         roll-down)                                                                        
+178     ("K"         roll-up)                                                                          
+179     ("o"         other-window)                                                                     
+180     ("m"         w3m-view-this-url-new-session)                                                    
+181     ("C-h"       w3m-view-previous-page)                                                           
+182     ("F"         w3m-view-next-page)                                                               
+183     ("C-;"       w3m-view-next-page)                                                               
+184     ("r"         w3m-reload-this-page)                                                             
+185     ("v"         w3m-bookmark-view-new-session)                                                    
+186     ("M-e"       w3m-bookmark-edit)                                                                
+187     ("'"         switch-to-other-buffer)))                                                         

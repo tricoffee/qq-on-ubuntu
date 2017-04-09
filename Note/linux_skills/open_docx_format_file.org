@@ -1,0 +1,11 @@
+linux打开docx格式文件
+
+微软的恶毒之处在于喜欢自行其是，忽视用户的方便，office07弄出个docx格式，连2003都打不开，更不用说其他字处理程序了。遇到docx是linux用户的噩梦。
+
+过去了，现在一个新插件帮助我们找到了解决docx的途径：OpenOffice.org OpenXML Translator
+
+The OpenXML Translator provides support for opening and saving Microsoft* OpenXML-formatted word processing documents (.docx) in OpenOffice.org. 
+
+SF下载页：http://sourceforge.net/project/showfiles.php?group_id=169337
+
+getdeb为ubuntu提供了方便的deb安装包，你可以到这里下载：http://www.getdeb.net/release.php?id=1995

@@ -1,0 +1,156 @@
+
+* Emacs Mode for GDB 2008-11-02 15:28:27
+Location: http://blog.chinaunix.net/uid-1877180-id-303298.html                                                                    
+
+
+GUI是现代调试器的一个必备部分。这个模式为GDB提供了一个GUI，并保持了Emacs的强大功能。
+
+原文地址：http://www.linuxjournal.com/article/7876
+
+GNU symbolic debugger（GDB）是一个强大的开发工具，但是不足之处在于它只能在命令行下工作。GDB有一些聪明的特性，例如命令名与过程名的
+补全功能、使用 Enter重复之前的命令（这在单步执行前一项命令和查看列表时很有用）以及readline接口，这使得它在命令行下使用起来非常轻
+松。
+
+但是在某些任务中，图形用户界面（GUI）十分有用。GDB有若干图形前端，包括Insight，但是它们需要独立的编辑器。到目前为止，Emacs使用一
+个由Eric Raymond在1992年编写的模式，它包括一个GUD buffer，用于输入GDB的命令行命令；一个源代码 buufer，其中有一个箭头（“=>”）指向
+当前程序执行到的那一行。在本文中，我会讲述一个新模式，我将之称为GDB-UI，它是Emacs下一版本（21.4）的一部分，为许多现代调试器提供了
+GUI功能。这个模式相较于其他调试器的优势在于可以在任务中使用Emacs强大的功能，如编辑和搜索，这提供了一个真正的集成开发环境。
+
+背景知识
+
+Eric Raymond写过一个gud.el，它是一个大型统一调试器（grand unified debugger）模式，用于将GDB和其他调试器作为Emacs的一部分来运行。
+不久之前，工作于Cygnus的Tom Lord和Jim Kingdon编写了另一个称为gdba.el的模式。此模式源于gud.el，但是仅为使用GDB而设计，它随着GDB一
+起发布。
+
+GDB在通过gud.el运行于Emacs中时，它会使用-fullname选项输出一个称为annotation的tag，这个tag在每次运行中断的时候提供了当前文件名、行
+号和地址。Lord和Kingdon给GDB添加了更多的annotation，使得像Emacs这样的前端可以知道运行状态的更多信息。他们将这个机制称为2级
+annotation，而fullname选项则是1级。这就使得Emacs可以显示更多的信息，包括调用堆栈、当前栈的局部变量以及各断点的状态。我认为这是一
+个巨大的改进，但是出于某种原因，他们的成果未能被Emacs社区采纳，反而变得无用并被从GDB的发行版中去除。很多GDB用户可能没有注意到有这
+么个东西存在过，因为它只是随着GDB源代码发布的。
+
+在我第一次见到gdba.el的时候，Emacs已经有了许多改进。特别是它有了工具栏和speedbar。另外，Savannah的CVS版可以在边栏上放置图片，以作
+为断点图标。其成果gdb-ui.el尝试使用这些新特性，以及gdba.el中的那些特性。它保存在lisp/progmodes子目录下，与gud.el放在一起。
+
+教程
+
+下面用一个简单的程序来说明GDB-UI是如何工作的。
+
+myprog.c
+
+typedef struct {
+  float a;
+  float b;
+} substruct;
+
+struct {
+  int i;
+  substruct r;
+} c;
+main() {
+  int n = 4;
+  int m[10] = {0,1,4,9,16,25,36,49,64,81};
+  n = 5;
+  myproc(n);
+  c.i = 1;
+  c.r.a = 0.5;
+  c.r.b = 0.25;
+}
+
+myproc.c
+
+myproc(n)
+{
+  int p;
+  p = 2*n;
+  printf("Two times %d is %d\n", n, p);
+}
+
+用 -g 选项编译程序：
+
+cc -g -c myproc.c
+cc -g -o myprog myprog.c myproc.o
+
+在minibuffer中键入M-x gdb，调用GDB-UI。如有必要，输入可执行文件的文件名myprog，然后回车。Emacs会像以前的版本一样显示出GUD buffer
+。现在当变量gdb-many-windows设为t，可以通过选中菜单栏 (Gud -> GDB-UI-> Display other windows) 的复选框或通过minibuffer完成。
+
+Emacs会将主程序段的源代码以及GUD、本地变量、断点和栈的buffer在一个frame中。在本教程中我们默认界面会这样排列，但是一般来说，如果
+lisp变量gdb-many-windows的值为nil，其他的buffer只会当用户特别请求的时候才会出现。要让它们出现，进入菜单栏GUD项中的GDB-windows或
+GDB-Frames，然后选中你想要的buffer。
+
+如果工具栏没有出现，输入M-x toolbar-mode。慢慢将移动鼠标移过工具栏上的图标，工具提示会告诉你每个按钮的功能。这些图标大多数取自
+Cygnus Insight调试器，不过有几个是新图标。要特别注意的是，Stop和Go按钮不会停止和启动程序，它们的功能是设置和清除断点。
+
+[7876f1]                                
+
+图 1. 工具栏
+
+[7876f2]                                
+
+图 2. 源代码
+
+在源代码buffer的第14行左键单击行首，会出现一个红色的圆点，这表示在此行设了一个断点。再单击一次可以清除此断点，同时圆点消失。还可
+以通过在GUD buffer中输入break 14，或者将光标停留在14行并单击工具栏上的Stop按钮来设置。之后在GUD buffer中输入clear 14，或将光标停
+留在14行并单击工具栏上的Go按钮，可以将断点清除。
+
+再设置刚才说的断点，在GUD buffer中输入break myproc来设置另一个断点，现在看看breakpoints（断点）buffer。这个buffer在它自己的frame
+中显示所有断点的状态，如图3所示。
+
+[7876f3]
+
+图 3. 断点状态
+
+将光标放到第一个断点的详细信息上，按下空格。这个操作将断点禁用，断点会变成灰色。再按一次空格可以重新启用断点。在第二个断点上单击
+右键，源代码buffer会访问含有这个断点的文件并显示其位置。
+
+设置了断点后，单击Run按钮（样子为一个奔跑的人）来启动程序。第14行断点会显示一个小箭头，标示着程序执行停止在此。
+
+查看locals（局部变量） buffer，你会看到局部变量n的值为4。所有简单类型的局部变量的值都会在这个buffer中显示。数组、结构体和联合等复
+合类型只会简单地显示其类型，如图4所示。在本例中，变量m是一个数组。
+
+[7876f4]                                
+
+图 4. Locals Buffer
+
+将光标置于数组名上（本例中为m），单击样子为一对眼镜的按钮，speedbar会出现并显示数组的名字和类型。不过要注意的是，这个功能需要 GDB
+6.0 或更高版本。
+
+[7876f5]
+
+图 5. Watch Expression
+
+复合数据类型在 speedbar 中以树型格式展现。要查看m的所有值，右键单击表达式左边的标签。再次单击可将表达式收缩。这些表达式称为watch
+expression，当其值改变时会自动更新。不要将它们和watchpoint混淆，watchpoint会停止在GDB下执行的程序。全局变量c之类的结构体的嵌套层
+次比数组更深，其值也可以用类似方法浏览。
+
+用同样的方法显示将本地变量n显示为watch expression，使用工具栏或GUD buffer单步（step over）执行myprog的语句。注意这个表达式和其值
+的前景色变成红色，以提醒你它被改变了。
+
+继续执行myprog，它现在应该停止在myproc上。你可以使用工具栏或GUD buffer在栈上上下来回，源代码buffer和locals buffer也会相应更新。你
+也可以在stack buffer中右键单击以选择你要查看的frame。这个buffer显示调用堆栈，对当前frame反色显示。
+
+[7876f6]
+
+图 6. Stack Buffer
+
+结束调试后，按C-x k关闭GUD buffer，同时会关闭所有相关的buffer。如果你想编辑源代码并用Emacs重新编译的话不必这么做。这么做的优点在
+于可以保持GUDbuffer的shell历史以及GDB的断点。但是你要检查最近编辑过的代码的断点是不是你所想要的。
+
+本教程涉及了GDB-UI的基本功能。其他buffer留给读者自行探索。这些buffer有：
+
+  * Input/Output（输入/输出） Buffer：如果lisp变量gdb-use-inferior-io-buffer为非nil值，所调试的可执行程序从中读取输入并将输出显示
+    到其中。某些shell模式中的命令也可以在此使用。
+   
+  * Assembler（汇编器） Buffer：以机器码的形式显示当前frame。有一个箭头指向当前指令，你可以像在源代码buffer中一样设置和清除断点。
+    断点图标同样显示在边框或边栏上。
+   
+  * Threads（线程） Buffer：显示程序当前的所有线程。指向列表中的任意一个线程按回车，可以让该线程变为当前线程。接着源代码buffer会
+    显示出相应的代码。另外，右键单击可以将选中的线程变成当前线程。
+   
+  * Registers（寄存器） Buffer：显示寄存器中的值。
+   
+你可能不会用到这篇文章所述的所有功能，但是其中很多是可定制的。详细信息请参考发行版中自带的Emacs Info手册。
+
+结论
+
+Richard Stallman是Emacs和GDB的创始人，在GNU Project开始时，这两个程序是在同一个磁带中发布的。之后这两个程序都变得更为复杂，如今各
+自都有了自己的版本库、开发人员和邮件列表。但是，编辑器和调试器之间有着天然的联系，笔者在此所述的模式正致力于强化这一点。

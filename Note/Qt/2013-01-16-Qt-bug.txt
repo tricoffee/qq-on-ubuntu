@@ -1,0 +1,17 @@
+
+*根据Qt sdk中的描述，QDir在Qt当中已经抛弃不用，缘由大概是因为不可解决的Bug太多，另有一个新的类代替。所以在Qt编程当中需要注意
+
+
+
+点击最小化的 player 图标无法启动播放器bug
+
+找到原因是在 QProcess 启动进程失败同时发送 FailedToStart 的错误,可能的原因有四条：
+
+第一处可能是因为 qprocess.cpp 中的 line 1087 processStarted() 的值为 false 即执行进程失败，
+第二处可能是因为 qprocess.cpp 中的 line 2051 args.isEmpty() 判断参数为空，无法启动进程
+第三处可能是因为 qprocess.cpp 中的 line 1569 QProcess::error() 方法返回一个d->processError 的错误码
+第四处可能是 emdesktop.c 中的 Executing the same application twice is not supporteod 错误 导致 launch 方法返回 false
+
+另外在kernel当中tcb631_s65llv25_startup的函数出了问题
+
+超哥的分析：可能是Qt核心库出现了问题

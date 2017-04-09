@@ -1,0 +1,15 @@
+问题：emacs在shell模式下出现乱码
+
+分类：问题解决 2013-01-26 00:36 23人阅读评论(0) 收藏举报
+
+　　环境：ubuntu 10.04   emacs 23.1
+
+　　问题如题。要解决这个问题，只需要在.emacs配置文件中，添加一句：
+
+　　(ansi-color-for-comint-mode-on)
+
+　　即可解决乱码问题。
+
+　　
+
+　　参考文章：http://blog.163.com/yingquan_l/blog/static/46333076201041945113456/

@@ -1,0 +1,4 @@
+1，用UltraEdit打开导出的蓝屏镜像，按ctl+h将二进制格式转换为文本格式。
+2，按ctl+f查找关键字“ARMv”，（按F3查找下一个），找到这样的字样处："0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cr=00c5387f"。
+3，从此处开始，有"Unable to handle kernel paging request at virtual address 9ce6000c"，就是蓝屏的现场处，
+4,查找system clock关键字，这是系统rtc初始化的时间

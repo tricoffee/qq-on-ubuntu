@@ -1,0 +1,52 @@
+
+使用emacs作为C++ IDE工作（ECB+CEDET+VC配置）
+
+    我个人比较喜欢在文本模式下写程序，不喜欢X，因为使用文本模式写程序有一种特殊的亲切感:-)，也非常享受那样一个个字母以文本模式显示
+在PIETTY中的情形。而众所周知，在LINUX下写程序的IDE并非特别好用，有人说过，只有三种程序员：VIM,EMACS,OTHERS。我之前也用过一段时间的
+VIM，可是后来还是转到了EMACS旗下，因为我觉得它更符合我的口味，只有它才能是在文本模式下表现依然出色的选手。特别是在使用了ECB之后，
+我更感受到它的强大。
+    之前一段时间还是使用ECLIPSE（肯定要被BS:-)），可是在网络环境不太好的情况下，远程登录到服务器的速度就不理想，再使用VNC这样的东
+西，速度就让你无法忍受了，敲一个字母，5秒后才到屏幕上，不知您作如何感想？
+    我使用emacs要解决如下几个问题（我想基本上大家都是这样的需求）：
+1.语法高亮
+2.自动缩进
+3.自动语法补全
+4.SVN资源库
+5.自己的程序STYLE TEMPLATE
+    网上有不少关于emacs配置C++ IDE的文章，可惜真正的原创少之又少，天下文章一大抄，真正有用的东西很难找到，抄过来的东西配置到自己机
+器上并不一定就好使。还是看SOURCEFORGE的项目帮助比较保险。
+
+    下面是配置cedet+ecb的过程：
+    源码请到http://cedet.sourceforge.net/和http://ecb.sourceforge.net/下载。我下载的是cedet-1.0pre6版本和ecb2.40版本。（请注意：
+ecb是要依赖于cedet的完整包才能良好工作的，不像网上许多人总是下载了cedet包的一部分，如eieio和semantic，下载了之后又配置了一大通，最
+后发现还是不好使）。
+    下载到源码后，使用tar zxvf解压缩。
+    安装cedet：（http://cedet.sourceforge.net/setup.shtml）
+    （有篇关于cedet的经典文章，我已转来，此安装方法是此文章的一个精简版本http://hi.baidu.com/susdisk/blog/item/
+381f9b7f52f7dd0129388ac9.html）
+    进入cedet目录，在此目录下输入：
+emacs -Q -l cedet-build.el -f cedet-build
+    等待编译完毕之后，编辑.emacs文件，加入：
+;;################cedet###########
+(load-file "/home/xxx/emacsfiles/cedet-1.0pre6/common/cedet.el")
+(semantic-load-enable-excessive-code-helpers)
+(global-ede-mode t)
+(require 'semantic-ia)
+(require 'semantic-gcc)
+(global-srecode-minor-mode 1)
+
+    然后可以安装ecb了，其实ecb的安装非常简单（http://ecb.sourceforge.net/docs/Standard-ECB_002dInstallation.html#
+Standard-ECB_002dInstallation），解压之后直接编辑.emacs文件，加入如下内容：
+;;####################ecb###############
+(add-to-list 'load-path "/home/xxx/emacsfiles/ecb-2.40")
+(require 'ecb)
+(ecb-activate)
+    之后重启emacs，byte-compile ecb：
+M-x ecb-byte-compile
+    然后emacs就基本可以正常工作啦，我也只是非常菜的菜鸟级emacs使用者，望大牛莫笑:-)。
+    
+    以上我的配置都是适用于纯文本的emacs，不带X。因为我习惯于这样的工作方式，贴图(放大些看比较清楚）：
+
+[b6ed17]
+
+    以后会把配置emacs的过程及心得留到blog上:-)

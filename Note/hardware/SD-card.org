@@ -1,0 +1,1087 @@
+* RPi SD cards
+
+Location: http://elinux.org/RPi_SD_cards  
+From eLinux.org
+Jump to: navigation, search
+
+** Contents
+                                          
+  * 1 SD cards                            
+      + 1.1 Which SD card?                
+      + 1.2 Other SD card content         
+  * 2 Preinstalled SD cards               
+  * 3 Verification                        
+      + 3.1 Is this reliable?             
+      + 3.2 Technical Information         
+      + 3.3 Working / Non-working SD cards
+  * 4 Performance                         
+      + 4.1 Terminal Commands             
+      + 4.2 External Benchmarks           
+      + 4.3 Is this reliable?             
+      + 4.4 SD card performance           
+
+** SD cards
+
+The SD card is a key part of the Raspberry Pi; it provides the initial storage for the Operating System and files. Storage can be
+extended through many types of USB connected peripherals.
+
+When the Raspberry Pi is 'switched on', i.e. connected to a power supply, a special piece of code called the bootloader is
+executed, which reads more special code from the SD card that is used to start up the Raspberry Pi. If there is no SD card
+inserted, it will not start. Do NOT push in or pull out an SD card while the Raspberry Pi is connected to the power, as this is
+likely to corrupt the SD card data (you might get away with it, but it is best not to).
+
+The SD card must be formatted, or written to, in a special way that means the Raspberry Pi can read the data it needs to start
+properly. If you are new to this check the instructions, or buy a pre-formatted SD card.
+
+One advantage to using an SD card like this is that you can have several SD cards, each with a different operating system, or a
+different purpose. Simply power off, switch cards, and reconnect the power. You have a different computer to play with.
+
+*** Which SD card?
+
+SD card sizes     
+
+SD cards come in three physical sizes (see picture). The Raspberry Pi needs the largest one. The miniSD card and the MicroSD card
+can be used in a Raspberry Pi, but you will need an adapter / holder to fit it.
+
+SD cards come in a range of storage sizes. You need one of type SDHC, but there are other types of SDSC, SDXC and SDIO which will
+not work in a Raspberry Pi (confirmation needed). The SDHC type comes in memory sizes of up to 32 GB.
+
+There are other properties of SD cards that are not covered here. Read the Wikipedia article for those details.
+
+*** Other SD card content
+
+See the following links for other information:
+
+  * Select a Distribution
+
+  * Easy SD card set up
+
+  * Advanced set up
+
+  * Troubleshooting
+
+** Preinstalled SD cards
+
+You might like to consider buying a preinstalled card rather than create one yourself. A wide range of branded SD cards
+preinstalled with operating systems are available from The Pi Hut's Raspberry Pi Store.
+
+  * Raspbian
+      + Raspbian Preinstalled SD Cards (Multiple Size/Class choices)
+  * XBMC
+      + XBMC Preinstalled SD Cards (Multiple Size/Class choices)
+
+Kingston and other verified SD cards preinstalled with the latest Raspbian operating system are available from several websites
+including Amazon UK and eBay UK.
+
+** Verification
+
+Users have listed working and non-working cards here. The SD Card Association suggests there are more than 400 brands across
+dozens of product categories and more than 8,000 models. These are just a few.
+
+*** Is this reliable?
+
+Unfortunately there is little scope for analysis of the failures given below. There are several reasons why a card may not work.
+You will notice that the same card may be shown as working and not working; the model numbers on cards do seem to be confusing.
+
+  * the firmware / bootloader on early Raspberry Pi boards had a problem with Class 10 high speed cards. This has been fixed.
+  * the drivers in some Linux distributions have been improved since the initial release
+  * the Raspberry Pi can suffer from performance problems if peripherals are drawing too much power from the power supply; one of
+    the consequences is errors from the SD card
+  * unless using a preinstalled card, users have to copy a distribution image to the SD card. This might be considered more
+    technical than the user has previously experienced, resulting in a faulty SD card
+  * there are many cheap Chinese copies of (brand name) SD-Cards on the market, in addition they are often mislabelled as having
+    greater capacity than they really have, see SanDisk counterfeit cards
+
+... and of course, they may be faulty!
+
+*** Technical Information
+
+Note that manufacturers change their designs over time, even as the specs stay the same. (E.g. an ACME 8 GB class 4 card
+manufactured in 2011 might work, while one manufactured in 2012 might not.)
+
+For this reason, please specify product numbers in the lists below, when possible.
+
+You can also attach the following fields from your card's CID:
+
+cd /sys/class/mmc_host/mmc?/mmc?:*
+echo "man:$(cat manfid) oem:$(cat oemid) name:$(cat name) hwrev:$(cat hwrev) fwrev:$(cat fwrev)"
+
+*** Working / Non-working SD cards
+
+The table can be sorted using the triangles in the top row. Please add entries in the correct location, so that the initial sort
+is by Manufacturer, Type, Size and Class. Keep separate entries for working and non-working. Put your user name and date in the
+final column, so people can judge if the problem is still likely to occur.
+
+OK  Manufacturer    Type    Size Class          Model                                Info                           Logged by     
+                            (GB)                                                                                                  
+ok  7DAYSHOP.COM  SDHC      8    10                             man:0x000027 oem:0x5048 name:SD08G hwrev:0x3   Ap 3 Jul 2012      
+                                                                fwrev:0x0                                                         
+nok Acumem        SDHC      8    6                              many errors on 7 Jun 2012                      S0rce 8 Jun 2012   
+nok Adata         SDHC      2    ?     Speedy (MMAGF02GWMCA                                                    Oostenvr 4 Jul 2012
+                                       -NA)                                                                                       
+ok  Adata         SDHC      2    2     Speedy 8B0947                                                           Stevhorn 14 Aug    
+                                                                                                               2012               
+ok  Adata         SDHC      4    4     BH1109416141G                                                           Blutme 17 Aug 2012 
+ok  Adata         SDHC      8    2     MMB3F08GWMCA-GE                                                         Timishier 10 Jun   
+                                                                                                               2012               
+                                                                                                               Florz 26 May 2012, 
+ok  Adata         SDHC      8    6     MMAGR08GUDCA-DB          sometimes boots (Dattaway)                     Dattaway 13 Jun    
+                                                                                                               2012               
+                                       AUSDH8GCL10-R,                                                          Elatllat 22 Dec    
+ok  Adata         SDHC      8    10    P-SDH8G10-EC,                                                           2011, Madcow42 18  
+                                       ASDH8GCL10-R                                                            Jul 2012, Thenix 14
+                                                                                                               Jan 2013           
+ok  Adata         SDHC      16   6                                                                             Semtex 21 May 2012 
+nok Adata         SDHC      16   6     SD5MY168G0               won't boot                                     Nijntje 18 May 2012
+ok  Adata         SDHC      16   10    16GSDHC10                                                               Captainralf 6 Jun  
+                                                                                                               2012               
+ok  Adata         SDHC      32   10    AUSDH32GCL10-R                                                          Tom3f 13 Jul 2012  
+ok  Adata         microSDHC 8    4                              MicroSD w/ adapter                             0xAF 12 Jun 2012   
+ok  Adata         microSDHC 16   10    AUSDH16GCL10-RA1         with adapter                                   Frank26080115 1 Jul
+                                                                                                               2012               
+nok Agfa          microSDHC 16   6                              with adapter ENAAJK121960                      MaWe 13 Aug 2012   
+ok  AmazonBasics  SDHC      8    10    B0058GH0LS                                                              Reid 7 Jun 2012    
+ok  AmazonBasics  SDHC      16   10    B0058GH1IK               Tested 24 Jun 2012 no errors found             M3ch4 26 Jun 2012  
+nok AmazonBasics  SDHC      16   10                             many errors on 7 Jun 2012                      S0rce 8 Jun 2012   
+ok  AmazonBasics  SDHC      32   10                                                                            Lrosengreen 16 Aug 
+                                                                                                               2012               
+ok  Apacer        SDHC      8    6                                                                             Hamish 13 Aug 2012 
+ok  Apacer        microSDHC 8    10                             with adapter                                   Jasen 8 Jun 2012   
+ok  Centon        SDHC      16   4     1447                                                                    Uberfoo 23 Jul 2012
+                                       84209_8GB_SDHC (Silver/  operation is much slower than with a SanDisk                      
+ok  CnMemory      SDHC      8    4     Black label says 'High   4GB Class 4 card                               Ceptimus 2 Jun 2012
+                                       Capacity Card') Maplins                                                                    
+ok  CnMemory      microSDHC 8    10    86071                    man:0x00001b oem:0x534d name:00000 hwrev:0x1   fiodschi, 19 Jan   
+                                                                fwrev:0x0. write 10.4 MB/s, read 20.1 MB/s     2013               
+ok  Dane-Elec     SDHC      16   4                                                                             Elatllat 22 Dec    
+                                                                                                               2011               
+ok  Dane-Elec     SDHC      16   10    Pro 200X                                                                Ivazquez 15 Aug    
+                                       DEMS16GB2683ENBA                                                        2012               
+nok Delkin        SDHC      4    6     Delkin pro               works with Fedora Beefy Miracle 17             Gersh 7 Jun 2012   
+ok  Dikom         SDHC      16   10    207H3MD016IBSD                                                          Churchill 1 Jun    
+                                                                                                               2012               
+ok  Duracell      SDHC      4    4                                                                             Semtex 21 May 2012 
+ok  Duracell      SDHC      16   10    Pro Photo 200x                                                          Semtex 21 May 2012 
+                                                                man:0x00001d oem:0x4144 name:SD hwrev:0x1                         
+ok  Duracell      SDHC      32   10                             fwrev:0x0 (~4.6MB/s read, ~4.4MB/s write on    Bedevere 5 Jul 2012
+                                                                debian6-19-04-2012)                                               
+ok  Emtec         SD        2    ?                              man:0x000027 oem:0x5048 name:SD02G hwrev:0x2   Incyi 7 Jul 2012   
+                                                                fwrev:0x0                                                         
+ok  Emtec         SDHC      4    4     EKMSD4G60XHCN                                                           Korban 18 Aug 2012 
+                                                                ~17 MB/s read / ~14 MB/s write in 'dd'                            
+ok  Emtec         SDHC      8    10    EKMSD8G150XHC            (man:0x000003 oem:0x5344 name:SMI hwrev:0x1    NC 10 Feb 2013     
+                                                                fwrev:0x0)                                                        
+ok  Emtec         SD        16   10    EKMSD16G150XHC           less than half as fast as Sandisk 16gb Class   Declension 8 Aug   
+                                                                10                                             2012               
+ok  Extrememory   SDHC      16   10                             man:0x000012 oem:0x3456 name:F0F0F hwrev:0x1   Fjen 10 May 2012   
+                                                                fwrev:0x0                                                         
+ok  Extrememory   SDHC      32   10                             man:0x000003 oem:0x5344 name:SMI hwrev:0x1     Mfg 3 Jun 2012     
+                                                                fwrev:0x0                                                         
+ok  Fuji          SDHC      32   10    P10NM00580A              (man:0x000073 oem:0x4247 name:NCard hwrev:0x1  Crashmeplease 28   
+                                                                fwrev:0x0)                                     Jul 2012           
+nok GSkill        SDHC      32   10                                                                            Flatline403 12 May 
+                                                                                                               2012               
+ok  Goodram       microSDHC 8    4                                                                             Chmurli 9 Jun 2012 
+ok  Goodram       microSDHC 16   4     SDU16GHCAGRR10                                                          Mojca 22 Jun 2012  
+ok  Goodram       microSDHC 16   10                                                                            Druss 5 Aug 2012   
+ok  Hama          SDHC      2    2                                                                             Mikerr 5 Jul 2012  
+ok  Hama          SDHC      8    6     High Speed Pro                                                          Bubblebobble 17 May
+                                                                                                               2012               
+ok  Hema (Dutch   SDHC      4    ?                                                                             Frankivo 25 Jun    
+    dept. store)                                                                                               2012               
+ok  Hema (Dutch   SDHC      8    4                                                                             Hjongste 12 Jun    
+    dept. store)                                                                                               2012               
+ok  HP            SDHC      8    4                              doesn't reboot during first time startup       Semtex 21 May 2012 
+                                                                process, but restart again and fine after that                    
+ok  HP            SDHC      32   10                                                                            Harkin 28 Jun 2012 
+ok  ICIDU         SDHC      4    10                                                                            CurlyMo 1 Aug 2012 
+ok  ICIDU         microSDHC 8    10                                                                            Wieltje 13 Jun 2012
+ok  ICIDU         SDHC      16   10                             image write had issues, might be my            BjornW 26 May 2012 
+                                                                inexperience. It boots & shows Xserver                            
+ok  ICIDU         microSDHC 16   10                             (20 MB/sec)                                    Alphons 2 Aug 2012 
+ok  ICIDU         microSDHC 32   10                             (20 MB/sec)                                    Alphons 2 Aug 2012 
+                                                                mmc0: controller never released inhibit bit(s)                    
+                                                                                                               ChrisGreen 28 Jan  
+nok Imation       SDHC      32   10    S732G1232                followed by many and various mmc0: timeout     2013               
+                                                                errors                                                            
+                                                                                                                                  
+ok  Integral      SDHC      4    4     SD-K04G (purple label),                                                 Dmd 27 Aug 2012    
+                                       SD-M04G                                                                                    
+nok Integral      SDHC      4    4     S404G1115                                                               Pluggster 16 May   
+                                                                                                               2012               
+ok  Integral      SDHC      4    10    Ultima Pro                                                              Ace 26 May 2012    
+                                                                                                               Bubblebobble 17 May
+                                                                                                               2012mmc0:          
+                                                                                                               controller never   
+ok  Integral      SDHC      8    6     Ultima Pro               initial error -110 but boots within 5 seconds  released inhibit   
+                                                                with no further errors or issues               bit(s) and         
+                                                                                                                                  
+                                                                                                               mmc0: timeout      
+                                                                                                                                  
+ok  Integral      SDHC      8    10    Ultima Pro (20 MB/s)     works: initial error -110 but boots within 5   Auldy 10 Jun 2012  
+                                                                seconds with no further errors or issues                          
+ok  Integral      SDHC      16   6     Ultima Pro                                                              Zagblorg 26 Jul    
+                                                                                                               2012               
+nok Integral      SDHC      16   6     Ultima Pro (SH016GAA2BB)                                                Jmg123 23 Apr 2012 
+ok  Integral      SDHC      16   10    Ultima Pro               20 MB/s                                        Tomgco 17 Apr 2012 
+ok  Integral      SDHC      32   10                                                                            FLX 2 Jul 2012     
+ok  Integral      SDHC      32   10    Ultima Pro (20 MB/s)                                                    Ab30021190 30 Aug  
+                                                                                                               2012               
+ok  Joyflash      SDHC      16   10    LTSD1112016GB                                                           Vk2amv 8 Jun 2012  
+ok  Kingmax       SDHC      4    2                                                                             Sorinm 17 May 2012 
+nok Kingmax       microSDHC 4    4     KM04GMCSDHC4             won`t reboot when it`s hot                     Sorinm 17 May 2012 
+nok Kingmax       microSDHC 8    4     KM08GMCSDHC41A           won't reboot when it's hot                     Slabua 2 Aug 2012  
+ok  Kingston      SD        2          KING-SD-M02G-BULK        (0xAF 12 Jun 2012) boots the kernel, but       Md84419 5 Nov 2011,
+                                                                damages the filesystem                         0xAF 12 Jun 2012   
+ok  Kingston      SDHC      4    4     SD4/4GB                                                                 Rew 18 Apr 2012    
+                                                                Boots kernel but won't run init (times out).   RoSha 10 May 2012, 
+nok Kingston      SDHC      4    6                              (works fine - Malvineous)                      Malvineous 17 Jun  
+                                                                                                               2012               
+ok  Kingston      SDHC      4    10    SD10V/4GB                                                               Luismreis 2 Oct    
+                                                                                                               2012               
+ok  Kingston      SDHC      8    4     SD4/8GB                  Works reliably with Raspbian 18-9-2012 and     Md84419 5 Nov 2011,
+                                                                previous Debian releases (Picards)             Picards 28 Oct 2012
+                                                                does not work with current build of raspbmc    LastSilmaril 24 May
+nok Kingston      SDHC      8    4     SD4/8GB                  (LastSilmaril), unreliable with raspbian       2012, Quentinsf 20 
+                                                                (Quentinsf)                                    Oct 2012           
+ok  Kingston      SDHC      8    6     SD6/8GB                  errors on boot, but ok (Debian), does not work Jamsta 5 Jun 2012  
+                                                                with raspbmc rc2 or archlinux                                     
+                                       SD10G2/8GB ultimateX                                                    ShiftPlusOne 24 Apr
+ok  Kingston      SDHC      8    10    100X, SD10V/8GB                                                         2012, Stevepdp 13  
+                                       ultimateX 120X                                                          May 2012           
+nok Kingston      SDHC      8    10    SD10V/8GB                Very slow writing images to card and then      Stevhorn 14 Aug    
+                                                                either won't boot, or boots very slowly        2012               
+ok  Kingston      SDHC      16   4     SD4/16GB                                                                Skiesare 27 May    
+                                                                                                               2012               
+nok Kingston      SDHC      16   4     SDC4/16GB17              Device does not recognize it                   Martink 24 Jul 2012
+ok  Kingston      SDHC      16   6     SD6/16GB                                                                Malvineous 17 Jun  
+                                                                                                               2012               
+ok  Kingston      SDHC      16   10    SD10G2/16GB ultimateX                                                   Stevepdp 13 May    
+                                       100X, SD4/16GBET                                                        2012               
+nok Kingston      SDHC      16   10    SD10G2/16GB ultimateX    mmc0: Timeout waiting for hardware interrupt   Kimmoli 27 Jan 2013
+                                       100X                                                                                       
+nok Kingston      SDHC      16   10    SD10V/16GB               Starts boot ok but then gets stuck in mmc0     Hh 14 Nov 2012     
+                                                                timeouts                                                          
+ok  Kingston      SDHC      16   10    SD10V/16GB                                                              Franeks 14 Feb 2013
+ok  Kingston      SDHC      32   10    SD10G2/32GB, ultimateX                                                  Tony 29 May 2012,  
+                                       100X, SD10V                                                             Pmvarsa 17 Jul 2012
+ok  Kingston      SDXC      64   10    SDX10V/64GB                                                             Bromont 25 Nov 2012
+                                                                Adapter (File system .img written via          TrevorGowen 27 Jul 
+ok  Kingston      microSDHC 2          N0185-002.A00LF          Transcend microSDHC "USB stick-like" adapter - 2012               
+                                                                P3-102510)                                                        
+ok  Kingston      microSDHC 4    4                                                                             Bredman 16 May 2012
+ok  Kingston      microSDHC 8    4     SDC4/8GB                                                                Lilt 9 May 2012    
+ok  Kingston      microSDHC 16   10    SDC10/16GB                                                              Arrow 14 Jun 2012  
+ok  Kodak         SDHC      4    2                                                                             Semtex 21 May 2012 
+ok  Kodak         SDHC      8    4                                                                             Britaniola 22 Apr  
+                                                                                                               2012               
+ok  Kruidvat      SDHC      8    4                                                                             Boeboe 18 May 2012 
+ok  Kruidvat      SDHC      8    10                                                                            Asiklov 25 Oct 2012
+                                                                Boots consistently and no error messages in                       
+ok  Lexar         SDHC      4    4                              log after 1/2 hour use (works with Raspbmc -   Russell 26 Apr 2012
+                                                                321liftoff)                                                       
+ok  Lexar         SDHC      4    6     Platinum II                                                             Pdp7 25 Apr 2012   
+ok  Lexar         SDHC      8    4                                                                             Md84419 21 Apr 2012
+ok  Lexar         SDHC      8    6     Platinum II                                                             Shirro 7 May 2012  
+ok  Lexar         SDHC      8    6     Premium series                                                          Shinuza 28 Jun 2012
+ok  Lexar         SDHC      16   6     Platinum II                                                             Semtex 21 May 2012 
+ok  Lexar         SDXC      128  ?     LSD128CTBNA400           UHS-I                                          AdamGreenblatt 12  
+                                                                                                               Aug 2012           
+ok  Lexar         microSDHC 32   10    HIGH-SPEED                                                              RogerH 5 Jul 2012  
+ok  Master        SDHC      16   10                             [man:0x000003 oem:0x5344 name:SMI hwrev:0x1    Malvineous 1 Jul   
+                                                                fwrev:0x0]                                     2012               
+ok  Medion        SDHC      8    4                                                                             Buadhach 29 Jul    
+                                                                                                               2012               
+nok Memory2Go     SDHC      4    6     S404G1029                I/O Errors leading to Kernel Panic on startup  Snohi 12 Jun 2012  
+ok  Microcenter   SDHC      4    4                              hasn't worked with any of the images I've      Pnppl 11 Jun 2012  
+                                                                tried; appears to be completely unrecognized                      
+ok  Microcenter   SDHC      8    4     0289508                  (sold in bins at checkout)                     Pdp7 25 Apr 2012   
+ok  Microcenter   SDHC      8    10    0349728                  (sold in bins at checkout)                     Pdp7 25 Apr 2012   
+ok  Microcenter   SDHC      16   10                             (sold in bins at checkout)                     Crayfishandy 11 Jul
+                                                                                                               2012               
+ok  Mushkin       SDHC      16   10    MKNSDHCU1-16GB                                                          Frank26080115 1 Jul
+                                                                                                               2012               
+ok  Mushkin       SDHC      32   10    MKNSDHCC10-32GB                                                         Openboat 30 May    
+                                                                                                               2012               
+ok  Mustang       SDHC      8    10    SD8GHCCL10MU-R                                                          Xanatos 31 May 2012
+ok  MyMemory      SDHC      8    10    MYMESDH8G10              (latest batch not working - Bubblebobble)      Rew 18 Apr 2012    
+nok MyMemory      SDHC      8    10                                                                            Jezmck 27 Apr 2012 
+ok  MyMemory      SDHC      16   10    MYMESDH16G10                                                            Jblackburn 9 Jun   
+                                                                                                               2012               
+ok  MyMemory      SDHC      32   10                                                                            Dale2507 10 Nov    
+                                                                                                               2012               
+ok  OCZ           SDHC      8    6     Gold Series              tested with debian6-19-04-2012                 Alkarex 16 Jun 2012
+                                       (08110596-8GB-6)                                                                           
+ok  Optima        SDHC      8    4                              Does not boot with Raspbian Wheezy 2012-07-15. Penguintutor 19 Aug
+                                                                Works with 2012-09-18                          2012 / 10 Oct 2012 
+ok  Optima        SDHC      8    10    Pro-Speed                                                               DaWoodster 13 May  
+                                                                                                               2012               
+ok  Panasonic     SDHC      4    4                                                                             Mikerr 5 Jul 2012  
+ok  Panasonic     SDHC      4    10    UHS-I                    (~11.2MB/s read, ~6.2MB/s write)               M4rcs 26 Jul 2012  
+ok  Panasonic     SDHC      8    2                              (~11.1MB/s read, ~9.7MB/s write)               Malexmave 19 Jul   
+                                                                                                               2012               
+ok  Panasonic     SDHC      8    6                              ~4.8MB/s read, ~4.4MB/s write, following the   Xonx 21 Apr 2012   
+                                                                Performance below                                                 
+nok Panasonic     SDHC      8    10    RP-SDU08GD1K -           mmc0: timeout waiting for hardware interrupt   Selsinork 26 Apr   
+                                       London-2012-Collection                                                  2012               
+ok  Patriot       SDHC      8    6     PSF8GSDHC10-PC                                                          Paradigmic 7 Jun   
+                                                                                                               2012               
+nok Patriot       SDHC      8    6     PS8GSDHC10-BC            repeatable corruption after 1 or 2 reboots     Ntrepid8 17 Aug    
+                                                                with 2012-07-15-wheezy-raspbian                2012               
+nok Patriot       SDHC      8    10    PSF16GMCSDHC10                                                          Elatllat 22 Dec    
+                                                                                                               2011               
+ok  Patriot       SDHC      8    10    LX Series                                                               Nugget 9 Jun 2012  
+                                       PSF8GSDHC10-PC1                                                                            
+                                                                won't even boot 2012-08-16-wheezy-raspbian                        
+                                                                (mmc0: timeout waiting for hardware interrupt,                    
+nok Patriot       SDHC      8    10    PSF8GSDHC10-PC           followed by continuous I/O errors, timeouts,   Dgatwood 12 Sep    
+                                                                etc). Seems functional in Arch, but sometimes  2012               
+                                                                freezes at the beginning of boot (blinking                        
+                                                                underscore)                                                       
+                                                                I observed behavior similar to the full size                      
+nok Patriot       microSDHC 8    10    PSF8GMCSDHC10            version of this card (mmc0: timeout waiting    CVBruce 25 Jan 2013
+                                                                for hardware interrupt, followed by continuous                    
+                                                                I/O errors, timeouts, etc).                                       
+ok  Patriot       SDHC      8    10    LX Series PSF8GSDHC102PK Twin pack                                      verket 8 Jan 2013  
+ok  Patriot       SDHC      16   10    LX Series (PSF16GSDHC10) 19.3MB/s read, 9.3MB/s write                   Jamesnine 28 Jun   
+                                                                                                               2012               
+ok  Patriot       SDHC      32   10    PSF32GSDHC10                                                            Megs 29 May 2012   
+ok  Patriot       SDHC      32   10    UHS-1 PEF32GSDHC10U1     20.4MB/s read, 12.1MB/s write                  Bengoerz 12 Aug    
+                                                                                                               2012               
+ok  Patriot       microSDHC 16   10    PSF16GMCSDHC10           requires recent kernel update for boot         Wmdopple 9 Jun 2012
+                                                                fails with 2012-12-16-wheezy-raspbian and with                    
+                                                                1/8/13 kernel update. mmc0: controller never                      
+                                                                released inhibit bit(s) and                                       
+nok Patriot       microSDHC 16   10    PSF16GMCSDHC10                                                          verket 8 Jan 2013  
+                                                                mmc0: timeout waiting for hardware interrupt.                     
+                                                                Other cards work.                                                 
+                                                                                                                                  
+ok  Peak          microSDHC 4    4     MMBTR04GUBCA-ME          tested with Arch                               Selsinork 20 Apr   
+                                                                                                               2012               
+ok  Philips       SDHC      8    4     FM08SD35B                                                               Oostenvr 4 Jul 2012
+ok  Platinum      SDHC      4    6                                                                             Njoyard 6 Jul 2012 
+ok  Platinum      SDHC      8    6                              (man:0x00006f oem:0x0000 name:SMI hwrev:0x1    Boandlkramer 5 Aug 
+                                                                fwrev:0x0)                                     2012               
+nok Platinum      SDHC      8    8     O08G840 M3100487 TW                                                     MaWe 13 Aug 2012   
+nok Platinum      SDHC      16   10                             Does not boot with Raspbian Wheezy 2012-09-12  Palto 13 Sep 2012  
+ok  Platinum      SDXC      64   10                                                                            Datafreak 30 Jul   
+                                                                                                               2012               
+ok  Play.com      SDHC      4    6     S4E3CD04GEFAA                                                           JoeDaStudd 18 May  
+                                       0907090121106                                                           2012               
+ok  PNY           SD        2    ?     SD-M02G                                                                 Ewindich 24 Jul    
+                                                                                                               2012               
+ok  PNY           SDHC      4    4                                                                             Md84419 21 Apr 2012
+ok  PNY           SDHC      4    4     Optima (SD-K04G                                                         Weston 20 May 2012 
+                                       0834TT1297Y)                                                                               
+nok PNY           SDHC      8    4     Optima 120 HD SD-K08G    mmc -110 errors at init time on 12 Jun 2012    Zoward 12 Jun 2012 
+                                       0928 WF3673                                                                                
+nok PNY           SDHC      8    4     Premium                  mmc - mmc0: timeout waiting for hardware       Davidgyoung 21 Sep 
+                                                                interrupt                                      2012               
+ok  PNY           SDHC      8    6                                                                             Threedaymonk 5 Jun 
+                                                                                                               2012               
+ok  PNY           SDHC      16   4                                                                             Gcat 14 May 2012   
+                                       P-SDHC16G10-GE,          Works with Wheezy, does not work with Squeeze  Jecxjo 9 Jun 2012, 
+ok  PNY           SDHC      16   10    P-SDHC16G10-EF,          (mmc0: timeout...), Arch (no boot) (Joshdev),  Joshdev 22 Jun     
+                                       Pro-Elite                or Fedora Remix. Works with Raspbmc (Sp00l)    2012, Sp00l 21 Jul 
+                                       P-SDHC16U10-30-GE                                                       2012               
+ok  PNY           SDHC      32   10    P-SDHC32G10-GE           Works with Arch 2012-09-18 and Raspbian        Derekivey 29 Dec   
+                                                                2012-12-16                                     2012               
+                                       Professional             (mmc0 timeout with Debian, error -84 whilst                       
+nok PNY           SDHC      32   10    (P-SDHC32G10-EF)         initialising sd card with Fedora and QtonPi.   Optim4l 9 May 2012 
+                                                                Arch seems to work, gets to the login prompt)                     
+ok  PNY           microSDHC 4    4                              with adapter                                   Zulucat 21 Jun 2012
+ok  PNY           microSDHC 8    10                             with adapter                                   Zulucat 6 Jul 2012 
+nok Polaroid      SDHC      16   10    P-SDHC16GB10-EFPOL       mmc0: timeout waiting for hardware interrupt   Jamesnine 28 Jun   
+                                                                on debian6-19-04-2012                          2012               
+ok  PQI           SDHC      8    6                              Works with official debian6-19-04-2012         Remick 12 Jul 2012 
+ok  PRETEC        SDHC      8    10    8DK52-122ME                                                             ScorpAl 19 Jun 2012
+                                                                mmc0: timeout waiting for hardware interrupt,  Petacz 8 Aug 2012, 
+nok PRETEC        SDHC      8    10    233x (PC10SDHC08G)       Sometimes does not boot, kernel panic          DarkKnightCZ 23 Jan
+                                                                                                               2013               
+ok  promaster.com SDHC      8    10                             man:0x000027 oem:0x5048 name:SD08G hwrev:0x3   Douglas W. Jones   
+                                                                fwrev:0x0                                      Jan 2013           
+nok Reekin        SD        4    ?                              doesn't boot                                   Nicobsa 11 Jul 2012
+ok  Samsung       SDHC      4    ?                                                                             Genocho 26 Apr 2012
+ok  Samsung       SDHC      4    ?                                                                             Genocho 26 Apr 2012
+nok Samsung       SDHC      4    4     MB-SS4G MBSS4GMBDDBA-DD  doesn't boot with 2012-07-15-wheezy-raspbian;  Doctoruseful 19 Aug
+                                                                OK light partially lit                         2012               
+ok  Samsung       SDHC      8    6     MB-SS8GAEU                                                              Dakaix 24 Apr 2012 
+ok  Samsung       SDHC      8    10    MB-MP8GA, MB-SP8GA/EU,                                                  Garrocha 19 May    
+                                       MB-SP8GA/AM                                                             2012               
+ok  Samsung       SDHC      16   6     MB-SSAGAEU                                                              Dakaix 24 Apr 2012 
+ok  Samsung       SDHC      16   10    MB-SPAGA / MB-SPAGAEU                                                   Optim4l 11 May 2012
+ok  Samsung       SDHC      32   10    MB-SSBGA,                OK with Debian Wheezy. debian6-19-04-2012:     Alkarex 11 Jun 2012
+                                       MBSSBGVEOBGA-SH          mmc0: timeout waiting for hardware interrupt                      
+ok  Samsung       microSDHC 8    6     MMAGR08GUDCA-DB                                                         Ewindich 24 Jul    
+                                                                                                               2012               
+nok SanDisk       SD        2    ?     BE0916214253D                                                           Mate12345 9 Aug    
+                                                                                                               2012               
+ok  SanDisk       SD        2    ?                              Extreme III (BE0715105083B)                    Dscott 23 Apr 2012 
+                                                                (man:0x000003 oem:0x5344 name:SD02G hwrev:0x8                     
+nok SanDisk       SD        2    ?     Extreme III              fwrev:0x0) - tested with Raspbian (build       Boandlkramer 5 Aug 
+                                       (BE0722702998D)          2012-07-15) and Raspbmc installer (build       2012               
+                                                                2012-07-13)                                                       
+ok  SanDisk       SD        2    2     BE0816113150D            writes at 3.5 Mb/s                             Elatllat 22 Dec    
+                                                                                                               2011               
+ok  SanDisk       SD        2    4     Ultra                    15 MB/s                                        Md84419 24 Sept    
+                                                                                                               2011               
+ok  SanDisk       SD        2    4     Ultra II, BE0719111366D                                                 Md84419 5 Nov 2011,
+                                                                                                               Oostenvr 4 Jul 2012
+nok SanDisk       SDHC      2    ?     Ultra II BE0828713280D                                                  Oostenvr 4 Jul 2012
+                                       (15 MB/s)                                                                                  
+ok  SanDisk       SD        2    6     Extreme III              20 MB/s                                        Nooitaf 20 Jun 2012
+                                       (BE0804212046D)                                                                            
+ok  SanDisk       SD        2    ?                              SanDisk for Wii                                Stevepdp 18 Apr    
+                                                                                                               2012               
+ok  SanDisk       SDHC      4    2     BH0820113475D            Tested with RPITC (Based on Raspbian Wheezy)   Rendyair 11 Sep    
+                                                                                                               2012               
+                                                                Debian and xbmc boot, but fedora gets a lot of                    
+nok SanDisk       SDHC      4    2                              mmc0 note long write sync errors and then      Optim4l 10 May 2012
+                                                                hc_xfer_timeout errors at the login prompt                        
+nok SanDisk       SDHC      4    2     8H825413279G "Limited    Error -110 whilst initialising sd card         Jezmck 27 May 2012 
+                                       Edition"                                                                                   
+                                       SDSDB-004G-B35,                                                         Md84419 6 May 2012,
+ok  SanDisk       SDHC      4    4     BH1210821913G,                                                          Nicobsa 11 Jul     
+                                       SDSDB-004G-BT35                                                         2012, Ingestre 12  
+                                                                                                               Jul 2012           
+                                       SDSDB-008G-B35S /        Raspbian “wheezy”: used expand_rootfs option   Swehner Jan 2013,  
+ok  SanDisk       SDHC      8    4     SDSDB-008G-B35           of sudo raspi-config command to make all 8GB   Baji Feb 2013      
+                                                                available.                                                        
+                                       BH1030216016G,                                                          SquallStrife 15 May
+nok SanDisk       SDHC      4    4     BH1031116016G            Doesn't boot                                   2012, Vk2amv 9 Jun 
+                                                                                                               2012               
+nok SanDisk       SDHC      4    4     Ultra (BH1028516076D)    Intermitant booting ( 1/50 power on ), random  Russell 26 Apr 2012
+                                                                timeout messages when it does boot                                
+nok SanDisk       SDHC      4    4     Ultra (SDSDH-004G-U46)   won`t reboot when it`s hot                     Sorinm 17 May 2012 
+ok  SanDisk       SDHC      4    4     Ultra II                                                                Britaniola 22 Apr  
+                                                                                                               2012               
+ok  SanDisk       SDHC      4    6     Extreme III (30 MB/s)    works with 2012-10-28-wheezy-raspbian          JeffS 11 Nov 2012  
+nok SanDisk       SDHC      4    6     Extreme III C6                                                          Cmcr651 7 May 2012 
+                                       (BH0822411730D)                                                                            
+nok SanDisk       SDHC      4    6     Extreme III (30 MB/s)                                                   Jezmck 27 May 2012 
+                                       (BH0822712362G)                                                                            
+                                       Ultra SDSDH-004G-U46 -                                                  Selsinork 20 Apr   
+ok  SanDisk       SDHC      4    6     BH1136121837G,                                                          2012 / Alex347 5   
+                                       BH1130521822D,                                                          May 2012 / Jjuhl 26
+                                       BH1200421822D (30MB/s)                                                  May 2012           
+ok  SanDisk       SDHC      4    10    Extreme (BH10297143382G)                                                Wrdx 19 May 2012   
+                                                                30 MB/s HD Video - Doesn't boot - Works with   Paaland 21 May     
+nok SanDisk       SDHC      4    10    Extreme (SDSDX-004G-X46) new kernel.img and start.elf (Paaland), not    2012, MrF 19 Jun   
+                                                                working with new kernel.img and start.elf      2012               
+                                                                17-06-2012 or "wheezy"-beta (MrF)                                 
+ok  SanDisk       SDHC      8    4                              writes at ~1.5MB/s                             Ms705 30 Mar 2012  
+ok  SanDisk       SDHC      8    4     Ultra BI1024716014G      labelled as 15MB/s                             PhilH 3 Jun 2012   
+nok SanDisk       SDHC      8    6     Extreme (BI1101116253G)                                                 Alex347 5 May 2012 
+                                       Ultra SDSDH-008G-U46 /                                                  Dakaix 24 Apr 2012,
+                                       BI1131222083D,           SDSDH2-008G-AC11 requires updated Squeeze or   Crox 23 Jun 2012,  
+ok  SanDisk       SDHC      8    6     BI11321422083D (20 MB/s) Wheezy beta (Jim Manley)                       Jim Manley 27 Jun  
+                                       & SDSDH-008G-T11 (30MB/                                                 2012               
+                                       s) & SDSDH2-008G-AC11                                                                      
+                                       Ultra SDSDH-008G-U46                                                    Trebor27 15 Apr    
+                                       (BI1201421964G /                                                        2012 / Russell 26  
+nok SanDisk       SDHC      8    6     BI1201221964G /          Boots kernel but won't run init (mmc timeout   Apr 2012 /         
+                                       BI1131222083D),          waiting for interrupt) debian6-19-04-2012      ChuckHunky 8 May   
+                                       SDSRH-008G-A11 &                                                        2012/ Ryantm 10 Jun
+                                       SDSDH-008G-T11 (30 MB/s)                                                2012               
+                                       Extreme (BI11017514367G  May need updated bootcode.bin (BELzEBUB),      Timer 16 May 2012, 
+                                       / BI1130916254G /        Confirmed on Debian Squeeze 2012-04-19 and     BELzEBUB 30 Jun    
+ok  SanDisk       SDHC      8    10    B11209116254G /          Arch Linux 2012-06-13 (Arces), works with      2012, Arces 9 Jul  
+                                       SDSDX-008G-X46/          Raspian R3 (Histvan)                           2012, Histvan 14   
+                                       BI1218822414G)                                                          Jul 2012           
+nok SanDisk       SDHC      8    10    Extreme BI1108716254G,                                                  Dscott 23 Apr 2012,
+                                       BI110209116254G                                                         Max 31 May 2012    
+                                                                Doesn't work with debian6-19-04-2012.img and                      
+                                       Extreme (BI1200916252D/  with replacement kernel.img and start.elf      Weston 20 May 2012,
+nok SanDisk       SDHC      8    10    SDSDX-008G-X46),         (Weston). Doesn't work with Debian Wheezy beta Halton 8 Jun 2012, 
+                                       BI1201416254G            (2012-06-18)(Halton). Doesn't work with Arch   Madhur 27 Jun 2012 
+                                                                Linux 13/06/2012 (Madhur)                                         
+ok  SanDisk       SDHC      8    10    Extreme Pro              (95MB/s UHS-I) - Works with stock              Incyi 28 Jul 2012  
+                                       (SDSDXPA-008G-X46)       2012-07-15-wheezy-raspbian                                        
+                                                                Works with updated kernel/firmware, stock      Perchrh 28 Apr     
+nok SanDisk       SDHC      8    10    Extreme Pro              debian6-19-04-2012 boots kernel but won't run  2012, Tiwipewo 27  
+                                                                init (mmc timeout waiting for interrupt)       May 2012           
+                                       Ultra SDSDU-008G-U46 (30 Works with debian6-19-04-2012 or raspbian      MrF 6 Jun 2012,    
+ok  SanDisk       SDHC      8    10    MB/s)                    images but not with OpenELEC r11212 (MrF).     Vishnu vijay 28 Jul
+                                                                Works with OpenELEC r11493 (Vishnu vijay)      2012               
+ok  SanDisk       SDHC      8    10    Ultra SDSDU-008G-A11 (30 Works with raspbian images (blitzkrieg).       Blitzkrieg 26 Feb  
+                                       MB/s)                                                                   2013               
+ok  SanDisk       SDHC      16   4     SDSDB-016G-B35                                                          NickstaDB 17 Apr   
+                                                                                                               2012               
+ok  SanDisk       SDHC      16   6     Ultra (30MB/s)           Works with OpenELEC r11324                     Reckoner 17 Jun    
+                                       (BL1133921933G)                                                         2012               
+nok SanDisk       SDHC      16   6     Ultra (BL1202021933G)                                                   Dscott 23 Apr 2012 
+nok SanDisk       SDHC      16   6     Ultra I (BL1205921933G)  Boots kernel but won't run init (mmc timeout   SnarlingFox 10 May 
+                                                                waiting for interrupt)                         2012               
+                                       Extreme (45MB/s U1)      Doesn't work with debian6-19-04-2012 image,    Flatline403 12 May 
+                                       (BL1203322025G), (30MB/s but does work with 2012-06-18-wheezy-beta.img  2012, Dkleeman 13  
+ok  SanDisk       SDHC      16   10    HD Video)                and updated firmware (tested 2012-07-02).      Jun 2012, Zbyszek 2
+                                       (SDSDX3-016G-X46), (45MB Danbowes: Working with latest RaspBMC image    Jul 2012, Danbowes 
+                                       /s U1)(BL1203322025G)    (tested 12/09/2012)                            13 Sep 2012        
+                                       Extreme Pro              Doesn't work with stock debian6-19-04-2012                        
+ok  SanDisk       SDHC      16   10    SDSDXPA-016G-A75 (95MB/s image, but does work with freshly compiled     AXon 26 May 2012   
+                                       UHS-I)                   kernel                                                            
+                                       Ultra(30MB/s)            Works with debian6-19-04-2012 (Misox12).       Misox12 30 May     
+ok  SanDisk       SDHC      16   10    (SDSDU-016G-U46)         Kernel Panic with debian6-19-04-2012. Worked   2012, Casestudies  
+                                                                fine with Wheezy image (Casestudies)           30 Jun 2012        
+                                                                man:0x000003 oem:0x5344 name:SU16G hwrev:0x8                      
+ok  SanDisk       microSDHC 16   10    Ultra microSDHC I UHS-I  fwrev:0x0. Works again since                   fiodschi, 19 Jan   
+                                                                raspberrypi-firmware 20130116 in               2013               
+                                                                archlinux-arm. write 6.8 MB/s, read 21.0 MB/s                     
+                                       EXTREME SDHC UHS-I       Works with Raspbian “wheezy” and works with    Fazdogg 08 Jan     
+ok  SanDisk       SDHC      16   10    (SDSDX-016G-X46)         OpenELEC                                       2013; Shadyeglenn  
+                                                                                                               14 Feb 2013        
+ok  SanDisk       SDHC      32   4                                                                             Daviewales 30 May  
+                                                                                                               2012               
+ok  SanDisk       SDHC      32   6                                                                             Helpme1986 22 Apr  
+                                                                                                               2012               
+                                                                works with arch-04-29-image and latest                            
+ok  SanDisk       SDHC      32   10    Extreme (45MB/s UHS-I)   firmware (booting problems without firmware    Malhelo 8 Jun 2012 
+                                       (SDSDX-032G-X46)         update) / works with debian wheezy kernel      / jLo 2 Jan 2013   
+                                                                3.2.27+ (jLo)                                                     
+ok  SanDisk       SDHC      32   10    Ultra (30 MB/s)          Works with debian6-19-04-2012                  Pnppl 11 Jun 2012  
+ok  SanDisk       SDHC      32   10    Elevate (30 MB/s)        Works with 2012-12-16-wheezy-raspbian          bderry71 08 Jan    
+                                       SDSDU-032G-T11                                                          2013               
+ok  SanDisk       SDXC      64   10    Extreme (SDSDX-064G-X46) 45 MB/s UHS-I: works with                      Cracki 10 Aug 2012 
+                                                                2012-07-15-wheezy-raspbian                                        
+ok  SanDisk       SDXC      64   10    Ultra SDXC UHS-I FFP                                                    Zagblorg 26 Jul    
+                                       (3A114807)                                                              2012               
+ok  SanDisk       microSDHC 4    2                              with SanDisk microSD to SD adapter             Rew 24 Apr 2012    
+ok  SanDisk       microSDHC 4    4                              with SanDisk microSD to SD adapter             Sleepy 1 May 2012  
+                                                                Boots kernel but won't run init (mmc timeout                      
+                                                                waiting for interrupt) - Jens Pedersen /       Jens Pedersen 8 May
+nok SanDisk       microSDHC 4    6     Mobile Ultra             (tried 15-06-2012 with kernel 19-04-2012)      2012, Wieltje 15   
+                                                                error -84 transferring data, kernel panic: no  Jun 2012           
+                                                                init found - Wieltje                                              
+ok  SanDisk       microSDHC 8    2                                                                             Fjen 12 May 2012   
+ok  SanDisk       microSDHC 8    4                              with SanDisk microSD to SD adapter             Md84419 21 Apr 2012
+nok SanDisk       microSDHC 8    6     Mobile Ultra             working with the latest firmware, won`t reboot Sorinm 17 May 2012 
+                                       (SDSDQY-008G-U46A)       when it`s hot                                                     
+ok  SanDisk       microSDHC 8    10    Ultra (SDSDQU-008G-U46)  tested and working on Raspbian wheezy (and     Pepindur 11 Sep    
+                                       30 MB/s                  RaspBMC)                                       2012               
+ok  SanDisk       microSDHC 16   10    Mobile Ultra             working with the latest firmware               Mengineer 25 Aug   
+                                       (SDSDQUA-016G-U46A)                                                     2012               
+ok  SanDisk       microSDHC 32   4                                                                             Sherman 19 Jul 2012
+ok  SanDisk       microSDXC 64   6     SDSDQY-064G-A11A         boots up much more consistently with latest    LastSilmaril 23 May
+                                                                firmware                                       2012               
+                                                                Boots kernel but won't run init (mmc timeout                      
+                                                                waiting for interrupt ) - Tested 20/11/2012,   Xthexder 21 Nov    
+nok Silicon Power SDHC      8    10    SP008GBSDH010V10         2012-10-28-wheezy-raspbian.img with Nov 20     2012, Thenix 14 Jan
+                                                                kernel / Works fine                            2013               
+                                                                2012-12-16-wheezy-raspbian.img - Tested 14/01/                    
+                                                                2013                                                              
+ok  Silicon Power SDHC      16   10    SP016GBSDH010V10                                                        Xthexder 21 Nov    
+                                                                                                               2012               
+nok Silicon Power SDHC      32   6     LS2N732GQON03ASP         boots debian6-19-04-2012.img, but frequent     Michthom 21 Jun    
+                                                                slow response / system hangs                   2012               
+ok  Silicon Power microSDHC 4    6     SP004GBSTH006V10-SP                                                     Csgabe 19 May 2012 
+ok  Silicon Power microSDHC 8    10    S608G1202                                                               Blutme 17 Aug 2012 
+ok  Silicon Power microSDHC 16   10    SP016GBSDH010V10                                                        Jamesnine 10 Jun   
+                                                                                                               2012               
+ok  Sony          SDHC      4    4     SF-4B4, SF-4N4           (Write 6MB/s, Read 20MB/s)                     Krischaplin 7 May  
+                                                                                                               2012               
+ok  Sony          SDHC      8    4                              (Write 11.8MB/s, Read 17.4MB/s)                Slabua 9 Aug 2012  
+ok  Sony          SDHC      8    10    UHS-1                    Write 17.2 MB/s, Read 20.8 MB/s                Regi24 29 Dec 2012 
+                                                                Max read speed of ~94 MB/s, min write speed of                    
+ok  Sony          SDHC      32   10    SF-32NX/TQ               ~10 MB/s) - Works with archlinuxarm-29-04-2012 Chbg 13 Jun 2012   
+                                                                dd image with latest firmware update (as of                       
+                                                                10-06-2012)                                                       
+                                       SD-T08G 1045 US6923 G                                                                      
+ok  Strontium     SDHC      8    10    (White Shell - SKU 8                                                    Ssb 25 Jul 2012    
+                                       886450 703492)                                                                             
+ok  Super Talent  SDHC      32   10    SDHC32-C10 SKU:          works with Raspbmc RC4 and                     Drroller 14 Aug    
+                                       116-557-001              2012-07-15-wheezy-raspbian                     2012               
+ok  TakeMS        microSDHC 4    4                              with TakeMS adapter                            Delboy0 31 May 2012
+ok  TDK           SDHC      4    4     1008WW5261B                                                             Pluggster 17 May   
+                                                                                                               2012               
+ok  TDK           SDHC      2 x  4     80-56-10275-004G         Debian works, mmc0 errors when booting Fedora  Melikescheese 27   
+                            4                                                                                  May 2012           
+ok  TDK           SDHC      4    6     S404G1113                Works with Debian Wheezy (2012-06-18 beta)     Dcuk 26 Jun 2012   
+                                                                end May 2012, new kernel.img and start.elf,                       
+                                                                won't run init. 4 Jun 2012,                    Ceptimus 2 Jun     
+nok TDK           SDHC      4    6     S404G1041, S404G1046     debian6-19-04-2012.img, replacement kernel.img 2012, Norbini 4 Jun
+                                                                and start.elf from github. Got Error -84 and   2012               
+                                                                Kernel panic - not syncing: No init found                         
+ok  TDK           microSDHC 4    4     with Adapter                                                            Norbini 4 Jun 2012 
+                                       (80-56-10301-004G)                                                                         
+ok  TDK           microSDHC 8    10                             Works with Raspbian 2012-07-15                 Backeby 20 Jul 2012
+ok  Toshiba       SDHC      8    4     SD-K08G(1223 W17218 P)   Tested with Raspbian 2012-12-16. Speed is 4MB/ rendyair 16 Jan    
+                                                                s write                                        2013               
+ok  Toshiba       SDHC      16   10    SD-T16G(1046 US7022 C)                                                  Yang 5 Sep 2012    
+ok  Toshiba       microSDHC 8    ?     SD-C08GJ(BL3A)           with adapter                                   Jannis 15 May 2012 
+nok Transcend     SD        2    ?     6451AG 2G O2DS1                                                         MaWe 13 Aug 2012   
+ok  Transcend     SDHC      4    4     TS4GSDHC4 -              we've found these to work without any errors   RasMyra 12 Apr 2012
+                                       BH1130821915G            and offer reasonable performance                                  
+ok  Transcend     SDHC      4    6     TS4GSDHC6                no problems (does not work with Raspbmc as of  LakesGeek 23 Apr   
+                                                                1 Jun 2012 - 321liftoff)                       2012               
+ok  Transcend     SDHC      4    10    TS4GSDHC10E, TS4GSDHC10                                                 Mfg 3 Jun 2012,    
+                                                                                                               Thenix 14 Jan 2013 
+                                                                (man:0x000003 oem:0x5344 name:SD08G hwrev:0x8  Attila.afra 25 Apr 
+ok  Transcend     SDHC      8    4     TS8GSDHC4                fwrev:0x0) - works with both Debian "squeezy"  2012, Hedj 24 Jul  
+                                                                and Raspbian "wheezy" distributions (Hedj)     2012               
+ok  Transcend     SDHC      8    6     TS8GSDHC6-P2 -           ~5.8 MB/s read/write following the Performance Md84419 5 Nov 2011 
+                                       MMBFG08GWACA-M6          below                                                             
+ok  Transcend     SDHC      8    10    TS8GSDHC10                                                              Selsinork 26 Apr   
+                                                                                                               2012               
+ok  Transcend     SDHC      16   6     TS16GSDHC6                                                              Bullace 18 May 2012
+ok  Transcend     SDHC      16   10    TS16GSDHC10 /                                                           Rew 18 Apr 2012    
+                                       TS16GSDHC10E                                                                               
+nok Transcend     SDHC      16   10    TS16GSDHC10U1            Doesn't Boot, show that "kernel panic - not    Khfung02 13 Sep    
+                                                                syncing attempted to kill init"                2012               
+                                 10                             Works with Occidentals 0.2 from Adafruit, read                    
+ok  Transcend     SDHC      16   UHS-1 TS16GSDHC10U1            and write about 15 MB/s, didn't test other     aevh 18 Feb 2013   
+                                                                versions.                                                         
+ok  Transcend     SDHC      32   10    TS32GSDHC10,                                                            Vakya 29 May 2012  
+                                       TS32GSDHC10E                                                                               
+                                                                reads fine initially after image was written                      
+                                                                on a PC, gives mmc0 timeout errors reading                        
+nok Transcend     microSDHC 2    ?     MMAGR02GUECA-MB          back data after writing a large amount (in     Malvineous 16 Jun  
+                                                                this case with 'pacman -Syu'). Still seems to  2012               
+                                                                work, but is *very* slow after this happens,                      
+                                                                even across reboots                                               
+nok Transcend     microSDHC 32   ?     TS32GUSDHC4              Doesn't boot                                   Piponazo 7 Aug 2012
+ok  Transcend     SDXC      64   10    TS64GSDXC10                                                             Country 26 Jun 2012
+ok  Traveller     SDHC      4    ?     High Speed               Works with raspbian                            Sega dude 28 Jul   
+                                                                                                               2012               
+                                                                No problems.(man:0x000073 oem:0x4247           Rendyair 11 Sep    
+ok  V-Gen         microSDHC 8    ?                              name:NCard hwrev:0x1 fwrev:0x0). Tested with   2012               
+                                                                Raspbian Wheezy & Raspbmc                                         
+nok Veho          SDHC      4    6                                                                             Spaaa 5 Jun 2012   
+                                                                (man:0x00001b oem:0x534d name:00000 hwrev:0x1  Johnlane 28 Jul    
+ok  Veho          SDHC      8    6     Ultra fast               fwrev:0x0) 7.8Mb/s. Slow but tested with Arch  2012               
+                                                                Linux                                                             
+ok  Verbatim      SDHC      8    10    43961                                                                   Petacz 13 Aug 2012 
+                                                                Tested with September release of Raspbian and                     
+nok Verbatim      SDHC      8    10    Premium                  Debian Wheezy - both fail to boot with mmc     XQx 31 Oct 2012    
+                                                                errors                                                            
+ok  Verbatim      SDHC      16   4     44020                                                                   Adelahunty 22 Nov  
+                                                                                                               2012               
+nok Verbatim      SDHC      16   6     47178                    Raspbian Pisces RC3 - boots, but after login:  Razzda 15 Jul 2012 
+                                                                mmc timeout waiting for interrupt                                 
+ok  Verbatim      SDHC      16   10    43962                                                                   Klass 24 Jun 2012  
+ok  Verbatim      SDHC      32   6     44032                                                                   Jarip 14 Jul 2012  
+nok Verbatim      microSDHC 8    10    44012                    ArchLinux - boots, but after system update     John.glasson 29 Jul
+                                                                develops segmentation faults                   2012               
+ok  Walgreens     SD        1    ?                              Works with raspbmc, have not tested others     Sp00l 21 Jul 2012  
+    Photo                                                                                                                         
+ok  Walgreens     SD        2    ?                              Works with raspbian, have not tested others    Sega dude 27 Jul   
+    Photo                                                                                                      2012               
+
+** Performance
+
+The following results have been reported by Users.
+
+*** Terminal Commands
+
+To obtain the results in the table, type the following lines at a command prompt. If you are running the GUI windows, open the
+Terminal application.
+
+The dd command is the Linux block copy command. It reads from the if= file, in the first case a block of zeros, and writes to the 
+of= file, in the first case the file named test.tmp in your HOME directory (the ~/ means your HOME directory). The bs= gives the
+size of the data, and the count= gives the number of times this is repeated.
+
+Write speed
+
+dd if=/dev/zero of=~/test.tmp bs=500K count=1024
+
+Read speed
+
+dd if=~/test.tmp of=/dev/null bs=500K count=1024
+
+Delete the temporary file
+
+rm ~/test.tmp
+
+Kernel version
+
+uname -a
+
+*** External Benchmarks
+
+  * http://www.sakoman.com/OMAP/microsd-card-perfomance-test-results.html
+  * http://www.raspberrypi.org/phpBB3/viewtopic.php?f=2&t=4076
+
+*** Is this reliable?
+
+SD cards are given a rating (Class) by the manufacturers; the higher the rating the quicker the card. SD cards are usually used in
+a camera. The camera usually writes a block of data (a picture), then writes another. The SD card is tuned for this type of use.
+When used in the Raspberry Pi the data is written and read a lot more frequently, and from differing locations on the card. This
+difference in use means the manufacturers rating may not be as applicable for the Raspberry Pi.
+
+*** SD card performance
+
+The table can be sorted using the triangles in the top row. Please add entries in the correct location, so that the initial sort
+is by Manufacturer, Size, Type and Class
+
++--------------------------------------------------------------------------------------------------------------------------------+
+|                   |Read|Write|                          |                         |                                            |
+|      SD Card      |(MB/|(MB/ |          Distro          |         Kernel          |                   Notes                    |
+|                   | s) | s)  |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|ADATA 8GB SDHC     |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Class 10           |19.6|18.8 |2012-08-04 Debian Wheezy  |#168 PREEMPT Sat Jul 14  |                                            |
+|(ASDH8GCL10-R)     |    |     |"Raspbian"                |18:56:31 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|ADATA 8GB SDHC     |    |     |                          |Linux raspberrypi 3.2.27+|                                            |
+|Class 10           |18.2|12.4 |2012-12-16 Debian Wheezy  |#250 PREEMPT Thu Oct 18  |                                            |
+|(ASDH8GCL10-R)     |    |     |"Raspbian"                |19:03:02 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux alarmpi 3.2.27+ #60|                                            |
+|ADATA 16GB SDHC    |19.5|16.9 |2012-06-13 Arch Linux ARM |PREEMPT Thu Aug 23       |                                            |
+|Class 10           |    |     |                          |15:33:51 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|ADATA 32GB SDHC    |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Class 10           |20.1|6.4  |2012-06-18-wheezy-beta    |#152 PREEMPT Fri Jul 6   |                                            |
+|(ASDH32GCL10-R)    |    |     |                          |18:47:16 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux massah 3.1.9+ #168 |                                            |
+|AmazonBasics SDHC  |19.3|8.6  |Debian Wheezy "Raspbian"  |PREEMPT Sat Jul 14       |                                            |
+|Class 10 8GB       |    |     |                          |18:56:31 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux massah 3.1.9+ #202 |                                            |
+|AmazonBasics SDHC  |17  |9.4  |Debian Wheezy "Raspbian"  |PREEMPT Wed Jul 25       |Same board and card as above, slightly newer|
+|Class 10 8GB       |    |     |                          |22:11:06 BST 2012 armv6l |kernel.                                     |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Emtec SDHC 8GB     |    |     |                          |Linux raspberrypi 3.2.27+|                                            |
+|class 10           |20.3|14.6 |Debian Wheezy "Raspbian"  |#250 PREEMPT Thu Oct 18  |Turbo mode = High (950/250/450MHz)          |
+|(EKMSD8G150XHC)    |    |     |                          |19:03:02 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Extrememory SDHC   |4.7 |4.5  |Debian Wheezy "Raspbian"  |Linux raspbian 3.1.9+ #52|                                            |
+|16GB class 10      |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Extrememory SDHC   |11.3|5.4  |Debian Wheezy "Raspbian"  |Linux raspbian 3.1.9+ #  |init_emmc_clock=200000000 in config.txt     |
+|16GB class 10      |    |     |                          |101                      |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Extrememory SDHC   |18.2|6.3  |Debian Wheezy "Raspbian"  |Linux raspbian 3.1.9+    |kernel and firmware as of 17.06.2012, no    |
+|16GB class 10      |    |     |                          |custom                   |extra option in config.txt                  |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Extrememory SDHC   |    |     |                          |                         |                                            |
+|16GB class 10      |    |     |                          |                         |                                            |
+|(man:0x000012      |    |     |                          |Linux alarmpi            |                                            |
+|oem:0x3456         |16.9|10.7 |archlinuxarm-13-06-2012   |3.1.9-25-ARCH+ #1 PREEMPT|                                            |
+|name:F0F0F         |    |     |                          |                         |                                            |
+|hwrev:0x1          |    |     |                          |                         |                                            |
+|fwrev:0x0)         |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Extrememory SDHC   |    |     |                          |                         |                                            |
+|32GB class 10      |    |     |                          |                         |                                            |
+|(man:0x000003      |18.7|16.5 |archlinuxarm-13-06-2012   |Linux alarmpi            |                                            |
+|oem:0x5344 name:SMI|    |     |                          |3.1.9-25-ARCH+ #1 PREEMPT|                                            |
+|hwrev:0x1          |    |     |                          |                         |                                            |
+|fwrev:0x0)         |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Farnell Branded    |    |     |                          |                         |                                            |
+|(Samsung) SDHC 4GB |20.1|6.9  |Debian Wheezy Raspbian    |Linux raspbian 3.1.9+ #  |Pi overclocked to 900 Mhz arm_freq and 500  |
+|Class 4            |    |     |                          |168                      |Mhz sdram_freq                              |
+|(MMBTF04GWBCA-ME)  |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Fugi SDHC 32GB     |    |     |                          |Linux raspbian 3.1.9+ #  |man:0x000073 oem:0x4247 name:NCard hwrev:0x1|
+|class 10           |12.7|19.8 |Debian Wheezy Raspbian    |168                      |fwrev:0x0                                   |
+|(P10NM00580A)      |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|GoodRAM SDHC 16GB  |    |     |                          |Linux raspbian 3.1.9+ #  |                                            |
+|Pro class 10       |19.4|18.0 |Debian Wheezy Raspbian    |272                      |                                            |
+|(SDC16GHC10PGRR9)  |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Integral SDHC 16GB |17.7|19.6 |Debian Wheezy Raspbian    |Linux raspbian 3.1.9+ #  |                                            |
+|class 10           |    |     |                          |168                      |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingmax 8GB        |    |     |                          |Linux 3.1.9+ #242 PREEMPT|                                            |
+|microSDHC Class 4  |13.6|3.7  |Debian Wheezy Raspbian    |Wed Aug 1 19:47:22 BST   |                                            |
+|(KM08GMCSDHC41A)   |    |     |                          |2012                     |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston SDHC 4GB  |    |     |Debian Squeeze            |Linux raspberrypi 3.1.9+ |                                            |
+|class 4            |4.5 |4.1  |"debian6-19-04-2012"      |#52 Tue May 8 23:49:32   |                                            |
+|                   |    |     |                          |BST 2012                 |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston SDHC 4GB  |    |     |                          |Linux alarmpi 3.1.9-13+ #|Identical card to one above. One to look    |
+|class 4            |4.2 |2.5  |archlinuxarm-19-04-2012   |6 Thu May 10 00:48:37 UTC|into, as I was expecting Arch to be         |
+|                   |    |     |                          |2012                     |faster...                                   |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston uSDHC 4GB |4.0 |3.8  |Debian Squeeze            |Linux 3.1.9+ #90         |                                            |
+|class 4            |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston uSDHC 8GB |    |     |                          |Linux alarmpi 3.1.9+ #66 |CrystalDiskMark results (FAT32) This is my  |
+|class 4 (SDC4/8GB) |4.7 |3.7  |archlinuxarm-29-04-2012   |Thu May 17 16:56:20 BST  |only card that can be counted on to boot up |
+|                   |    |     |                          |2012                     |on each plug-in.                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston SDHC 8GB  |    |     |                          |Linux alarmpi 3.1.9+ #66 |                                            |
+|class 4 (SD4/8GB)  |4.6 |3.0  |archlinuxarm-29-04-2012   |Thu May 17 16:56:20 BST  |CrystalDiskMark results (FAT32)             |
+|                   |    |     |                          |2012                     |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspbian 3.1.9+ #  |                                            |
+|Kingston SDHC 8GB  |13.2|3.4  |Hexxeh Raspbian r3        |202 PREEMPT Wed Jul 25   |man:0x000002 oem:0x544d name:SA08G hwrev:0x1|
+|class 4 (SD4/8GB)  |    |     |                          |22:11:06 BST 2012 armv6l |fwrev:0x0                                   |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston SDHC 32GB |10.8|8.1  |Fedora 17 ARM snapshot 07 |Linux fedora-arm 3.1.9 #1|mmc0: note - long write sync 1453000ns -    |
+|class 10           |    |     |May 2012                  |                         |14608 its. - kernel/module problems?        |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston SDHC 32GB |    |     |Fedora 17 ARM nightly     |Linux fedora-arm 3.1.9+ #|custom kernel from raspberrypi github - no  |
+|class 10           |4.7 |4.1  |snapshot                  |101 PREEMPT Mon Jun 4    |more mmc0 sync problems                     |
+|                   |    |     |                          |17:19:44 BST 2012        |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Kingston SDHC 32GB |4.6 |3.5  |Debian Squeeze            |Linux raspberrypi 3.1.9+ |                                            |
+|class 10           |    |     |"debian6-19-04-2012"      |#90                      |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspbmc 3.2.27 #1  |                                            |
+|Noname uSDHC 16GB  |18.5|2.6  |Raspmc                    |PREEMPT Mon Nov 5        |                                            |
+|class 4            |    |     |                          |20:50:02 UTC 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Panasonic SDHC 8GB |4.8 |4.4  |                          |                         |                                            |
+|class 6            |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux rpi 3.1.9+ #168    |                                            |
+|Panasonic SDHC 8GB |11.1|9.7  |Debian Wheezy "Rasbpian"  |PREEMPT Sat Jul 14       |                                            |
+|class 4            |    |     |                          |18:56:31 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Patriot microSDHC  |    |     |                          |                         |                                            |
+|16GB Class 10      |9.5 |5.2  |Fedora 14                 |Linux raspi 3.1.9+ #101  |init_emmc_clock=200000000 in config.txt     |
+|(PSF16GMSHC10)     |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Patriot SDHC 16GB  |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Class 10           |19.3|9.3  |Debian Wheezy "Rasbpian"  |#168 PREEMPT Sat Jul 14  |                                            |
+|(PSF16GSDHC10)     |    |     |                          |18:56:31 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Patriot SDHC 32GB  |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Class 10 UHS-1     |20.4|12.1 |Debian Wheezy "Rasbpian"  |#168 PREEMPT Sat Jul 14  |                                            |
+|(PEF32GSDHC10U1)   |    |     |                          |18:56:31 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |                         |Had "long write sync" errors, slow boot     |
+|Samsung SDHC 16GB  |10.7|8.8  |Fedora 17 ARM snapshot 07 |Linux fedora-arm 3.1.9 #1|times and then system instability using USB |
+|Class 10 (MB-SPAGA)|    |     |May 2012 - GUI release    |                         |port on Macbook, switched to iPhone charger |
+|                   |    |     |                          |                         |(5V 1A) and warning disappeared             |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Samsung SDHC 16GB  |19.6|18.7 |Debian Wheezy "Raspbian"  |#168 PREEMPT Sat Jul 14  |(Same user / card as above, definitely      |
+|Class 10 (MB-SPAGA)|    |     |                          |18:56:31 BST 2012 armvl  |notable that Raspbian is superior)          |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Samsung microSDHC  |    |     |                          |Linux pisces 3.1.9+ #155 |                                            |
+|16GB Class 10      |19.8|15.8 |Debian Wheezy "Raspbian"  |PREEMPT Mon Jul 9        |-                                           |
+|(MB-MPAGA/US)      |    |     |                          |12:49:19 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Samsung microSDHC  |    |     |                          |                         |                                            |
+|16GB Class 4       |19.2|5.5  |Debian Wheezy "Raspbian"  | ?                       |-                                           |
+|(MB-MS4GA/US)      |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Extreme III|    |     |                          |Linux raspbmc 3.2.27 #1  |                                            |
+|2GB Class 10       |23.3|21.5 |Raspbmc                   |PREEMPT Mon Nov 5        |512Mb version of Raspberry Pi               |
+|(BE07054050838)    |    |     |                          |20:50:02 UTC arm61 GNU/  |                                            |
+|                   |    |     |                          |Linux                    |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux alarmpi 3.1.9+ #66 |CrystalDiskMark results (FAT32) Card has no |
+|SanDisk microSD 2GB|4.7 |4.2  |archlinuxarm-29-04-2012   |Thu May 17 16:56:20 BST  |serial/is likely a fake.                    |
+|                   |    |     |                          |2012                     |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspberry-pi 3.1.9+|                                            |
+|SanDisk Ultra SDHC |4.7 |4.4  |Raspbian Wheezy           |#1 PREEMPT Wed Jun 6     |man:0x000003 oem:0x5344 name:SD04G hwrev:0x8|
+|4GB class 4        |    |     |                          |16:26:14 CEST 2012 armv6l|fwrev:0x0                                   |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Ultra II   |    |     |                          |                         |                                            |
+|SDHC 4GB class 4   |20.9|14.6 |Raspbian Wheezy           |Linux raspberry-pi 3.1.9+|                                            |
+|(15 MB/s)          |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk SDHC 8GB   |    |     |                          |Linux raspberrypi 3.1.9+ |After Hexxeh rpi-update.                    |
+|class 4            |11.1|5.6  |Raspbian Wheezy           |#202 PREEMPT             |man:0x000003 oem:0x5344 name:SD08G hwrev:0x8|
+|                   |    |     |                          |                         |fwrev:0x0                                   |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk SDHC 8GB   |4.7 |3.2  |Debian Squeeze            |                         |                                            |
+|class 4            |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Ultra SDHC |    |     |                          |3.1.9-22-ARCH+ #1 PREEMPT|"mmc0: error -84 whilst initialising SD     |
+|I 8GB class 6 "30MB|19.5|7.6  |archlinuxarm              |Sun Jun 17 13:54:30 UTC  |card" at bootup, but works fine             |
+|/s*"               |    |     |                          |2012                     |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Ultra SDHC |    |     |                          |3.1.9+ #168 PREEMPT Sat  |                                            |
+|I 8GB class 10     |19.3|3.2  |Raspbian Wheezy           |Jul 14 18:56:31 BST 2012 |                                            |
+|"30MB/s*"          |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspbmc            |                                            |
+|SanDisk Ultra SDHC |    |     |                          |3.1.9-test-12-06 #1      |                                            |
+|I 8GB class 10     |13.6|14.5 |raspbmc rc3               |PREEMPT Mon Jun 18       |                                            |
+|"30MB/s*"          |    |     |                          |20:07:45 UTC 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Ultra SDHC |    |     |                          |3.1.9+ #168 PREEMPT Sat  |man:0x000003 oem:0x5344 name:SD16G hwrev:0x8|
+|II 16GB class 2    |16.7|16.2 |Raspbian Wheezy           |Jul 14 18:56:31 BST 2012 |fwrev:0x0                                   |
+|"15MB/s*"          |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Ultra SDHC |    |     |                          |                         |After Hexxeh rpi-update.                    |
+|16GB class 10 UHS-1|20.9|18.1 |Raspbian Wheezy           |Linux raspberrypi 3.1.9+ |man:0x000003 oem:0x5344 name:SU16G hwrev:0x8|
+|"30Mb/s"           |    |     |                          |#202 PREEMPT             |fwrev:0x0                                   |
+|(SDSDU-016G-U46)   |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Ultra SDHC |    |     |                          |                         |                                            |
+|16GB class 10 "30Mb|20.9|10.9 |Raspbian Wheezy           |Linux raspberrypi 3.6.11+|                                            |
+|/s"                |    |     |                          |#371 PREEMPT             |                                            |
+|(SDSDU-016G-U46)   |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Extreme    |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|SDHC I 4GB class 10|19.7|21.0 |2012-07-15-wheezy-raspbian|#168 PREEMPT Sat Jul 14  |Only boots with images with new firmware,   |
+|"30MB/s"           |    |     |                          |18:56:31 BST 2012 armv6l |didn't boot with previous images.           |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Extreme    |    |     |                          |Linux raspi              |                                            |
+|SDHC I 8GB class 10|17.7|19.7 |Archlinuxarm 2012-06-13   |3.1.9-28-ARCH+ #1 PREEMPT|                                            |
+|"30MB/s"           |    |     |                          |Fri Jul 6 23:07:26 UTC   |                                            |
+|                   |    |     |                          |2012 armv6l GNU/Linux    |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Extreme    |21.4|19.5 |                          |Linux raspberrypi 3.2.27+|                                            |
+|SDHC UHS-I 32GB    |/   |/    |2012-10-28-wheezy-raspbian|#250 PREEMPT Thu Oct 18  |                                            |
+|class 10 "30MB/s"  |18.4|22.2 |                          |19:03:02 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk Extreme    |    |     |                          |Linux raspberrypi 3.2.27+|                                            |
+|SDHC UHS-I 16GB    |21.1|20.8 |2012-09-18-wheezy-raspbian|#160 PREEMPT Mon Sep 17  |man:0x000003 oem:0x5344 name:SU16G hwrev:0x8|
+|class 10 "45MB/s"  |    |     |                          |23:18:42 BST 2012 armv6l |fwrev:0x0                                   |
+|(SDSDX-016G-X46)   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk SDHC 32GB  |4.6 |4.8  |                          |                         |                                            |
+|class 6            |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk uSDXC 64GB |    |     |                          |Linux alarmpi 3.1.9+ #66 |                                            |
+|class 6            |4.9 |3.8  |archlinuxarm-29-04-2012   |Thu May 17 16:56:20 BST  |CrystalDiskMark results (FAT32)             |
+|                   |    |     |                          |2012                     |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Silicon Power 8GB  |    |     |                          |Linux raspberrypi 3.2.27+|                                            |
+|class 10           |15.6|11.7 |Debian Wheezy "Raspbian"  |#250 PREEMPT Thu Oct 18  |                                            |
+|(SP008GBSDH010V10) |    |     |(2012-12-16)              |19:03:02 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|TDK microSDHC 4GB, |    |     |Debian Wheezy "Raspbian"  |3.1.9+ #168 PREEMPT Sat  |                                            |
+|Class 4            |11.2|4.7  |(2012-07-15)              |Jul 14 18:56:31 BST 2012 |                                            |
+|(80-56-10301-004G) |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Toshiba SD-T16G    |    |     |                          |3.1.9+ #272 PREEMPT Tue  |                                            |
+|SDHC 16GB, Class 10|20.6|13.5 |Debian Wheezy "Raspbian"  |Aug 7 22:51:44 BST 2012  |                                            |
+|(1046 US7022 C)    |    |     |                          |armv6l GNU/Linux         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend SDHC 8GB |5.8 |5.8  |                          |                         |                                            |
+|class 6            |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend SDHC 8GB |    |     |Debian Squeeze            |Linux raspberrypi 3.1.9+ |Tested with dd. Card doesn't maintain the   |
+|Class 6 (TS8GSDHC6)|4.6 |4.0  |"debian6-19-04-2012"      |#90 Wed Apr 18 18:23:05  |promised minimum class speed.               |
+|                   |    |     |                          |BST 2012 armv61 GNU/Linux|                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Transcend SDHC 8GB |11.1|8.1  |Debian Wheezy "Rasbpian"  |#168 PREEMPT Sat Jul 14  |man:0x000003 oem:0x5344 name:SD08G hwrev:0x8|
+|Class 4 (TS8GSDHC4)|    |     |                          |18:56:31 BST 2012 armv6l |fwrev:0x0                                   |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend microSDHC|    |     |                          |Linux raspberry-pi 3.1.9+|                                            |
+|8GB Kit, Class 4   |4.7 |3.7  |Raspbian Wheezy           |#1 PREEMPT Wed Jun 6     |man:0x000003 oem:0x5344 name:SU08G hwrev:0x8|
+|(TS8GUSDHC4)       |    |     |                          |16:26:14 CEST 2012 armv6l|fwrev:0x0                                   |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend SDHC 8GB |    |     |Debian Squeeze            |Linux raspberrypi 3.1.9+ |                                            |
+|Class 10           |4.6 |4.6  |"debian6-19-04-2012"      |armv61 GNU/Linux         |                                            |
+|(TS8GSDHC10)       |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend SDHC 8GB |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Class 10           |19.5|18.5 |Debian Wheezy "Rasbpian"  |#168 PREEMPT Tue Aug 7   |                                            |
+|(TS8GSDHC10)       |    |     |                          |22:51:44 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspi 3.1.9 #1     |                                            |
+|Transcend SDHC 4GB |9.8 |8.8  |Fedora Remix FC14         |PREEMPT Sat Mar 3        |Not sure why this setup is faster than      |
+|Class 6            |    |     |                          |21:58:00 UTC 2012 armv6l |others, test results repeatable.            |
+|                   |    |     |                          |armv6l armv6l GNU/Linux  |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend SDHC 4GB |    |     |                          |Linux raspberrypi 3.2.27+|                                            |
+|Class 10           |17.6|12.1 |Debian Wheezy "Rasbpian"  |#250 PREEMPT Thu Oct 18  |                                            |
+|(TS4GSDHC10)       |    |     |(2012-10-28)              |19:03:02 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend SDHC 16GB|20.3|11.9 |Debian Wheezy "Rasbpian"  |Linux raspberry-pi       |                                            |
+|Class 10           |    |     |                          |3.1.9-cutdown+ #173      |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspberrypi 3.2.27+|                                            |
+|Transcend SDHC 16GB|17.4|12.0 |Debian Wheezy             |#160 PREEMPT Mon Sep 17  |man:0x000074 oem:0x4a45 name:SDC hwrev:0x1  |
+|Class 10           |    |     |(2012-08-08-wheezy-armel) |23:18:42 BST 2012 armv6l |fwrev:0x0                                   |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Transcend SDHC 32GB|    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Class 10           |20.3|15.3 |Debian Wheezy "Rasbpian"  |#242 PREEMPT Wed Aug 1   |man:0x000074 oem:0x4a45 name:SDC hwrev:0x1  |
+|(TS32GSDHC10E)     |    |     |                          |19:47:22 BST 2012 armv6l |fwrev:0x0                                   |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Sandisk Extreme Pro|    |     |                          |Linux raspberrypi 3.2.27+|                                            |
+|SDHC 16GB Class 10 |21.6|21.7 |Debian Wheezy "Rasbpian"  |#160 PREEMPT Mon Sep 17  |                                            |
+|UHS-I              |    |     |                          |23:18:42 BST 2012 armv6l |                                            |
+|(SDSDXPA-016G-A75) |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|SanDisk Extreme Pro|20.8|18.6 |Debian Wheezy "Raspbian"  |#125 PREEMPT Sun Jun 17  |                                            |
+|SDHC 16GB Class 10 |    |     |                          |16:09:36 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Sandisk Ultra SDHC |    |     |                          |                         |Feels faster than my Kingston 4GB Class 4   |
+|I Class 6 ("30MB/  |4.7 |4.8  |Debian Wheezy "Raspbian"  |3.2.18+ #3 PREEMPT       |card.                                       |
+|s")                |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Sony 8GB SDHC Class|    |     |                          |Linux 3.1.9+ #272 PREEMPT|                                            |
+|4                  |17.4|11.8 |Debian Wheezy Raspbian    |Tue Aug 7 22:51:44 BST   |                                            |
+|                   |    |     |                          |2012                     |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|WINTEC FileMate    |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Professional SDHC  |4.6 |4.5  |Debian Squeeze            |#95 PREEMPT Thu May 31   |After installing new kernel with rpi-update |
+|16GB Class 10      |    |     |"debian6-19-04-2012"      |13:21:40 BST 2012 armv6l |on 2012-06-01                               |
+|(3FMSD16GBC10-R)   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Lexar SDHC 8GB     |18.9|6.8  |Debian Wheezy "Raspbian"  |3.1.9+ #110 PREEMPT      |                                            |
+|Class 4 "Multi-use"|    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Lexar SDHC 8GB     |    |     |                          |                         |                                            |
+|Class 6 "PLATINUM  |19.7|10.1 |Debian Wheezy "Raspbian"  |3.1.9+ #168 PREEMPT      |                                            |
+|II"                |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Lexar SDHC 16GB    |    |     |                          |Linux raspberrypi        |                                            |
+|Class 10 "PLATINUM |5.3 |4.8  |Debian Wheezy/sid         |3.2.19-rpi1+ #3          |                                            |
+|II"                |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Lexar SDHC 16GB    |    |     |                          |Linux raspbian 3.1.9+ #  |Same card as 'Lexar SDHC 16GB Class 10      |
+|Class 10 "PLATINUM |18.9|9.0  |Debian Wheezy "Raspbian"  |168 PREEMPT              |"PLATINUM II"' above - imaged with Raspbian |
+|II"                |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Mushkin SDHC 16GB  |    |     |                          |                         |                                            |
+|Class 10           |19.7|10.9 |2012-07-15-wheezy-raspbian|3.1.9+ #168 PREEMPT      |                                            |
+|MKNSDHCC10-16GB    |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|PNY SDHC 8GB Class |7.4 |13.2 |Debian Wheezy "Rasbpian"  |#168 PREEMPT Sat Jul 14  |                                            |
+|6 Limited Edition  |    |     |                          |18:56:31 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|                   |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|SanDisk MicroSDHC  |5.1 |11.4 |Debian Wheezy "Rasbpian"  |#168 PREEMPT Sat Jul 14  |                                            |
+|4GB                |    |     |                          |18:56:31 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|SanDisk UHS-I C10  |    |     |                          |Linux raspberrypi 3.1.9+ |                                            |
+|Ultra SDHC 8GB     |19.1|20.8 |Debian Wheezy "Rasbpian"  |#272 PREEMPT Tue Aug 7   |                                            |
+|(SDSDU-008G-U46)   |    |     |                          |22:51:44 BST 2012 armv6l |                                            |
+|                   |    |     |                          |GNU/Linux                |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Panasonic SDHC 4GB |11.2|6.2  |Debian Wheezy "Raspbian"  |3.1.9+ #144 PREEMPT      |Panasonic RP-SDU04GE1K                      |
+|Class 10 UHS-I     |    |     |                          |                         |                                            |
+|-------------------+----+-----+--------------------------+-------------------------+--------------------------------------------|
+|Sony SDHC 8GB Class|20.8|17.2 |Debian Wheezy "Raspbian"  |3.2.27+ #250 PREEMPT     |                                            |
+|10 UHS-1           |    |     |                          |                         |                                            |
++--------------------------------------------------------------------------------------------------------------------------------+
+
+Ras Back to the Hub
+
+Retrieved from "http://elinux.org/index.php?title=RPi_SD_cards&oldid=224324"

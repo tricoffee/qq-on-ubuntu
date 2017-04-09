@@ -1,0 +1,116 @@
+* 利用google翻译的API,做命令行下在线翻译
+
+stardict虽然有sdcv做命令行,不过毕竟词库有限.即然电脑一直联网的,就利用下google的api了.
+
+这个功能最先是我在一个vim的插件里面看到的,稍微分析了下.扣了出来.
+
+casio:~$ cat demo/python/trans.py
+#!/usr/bin/env python
+from urllib2 import urlopen
+from urllib import urlencode
+import sys
+
+# The google translate API can be found here:
+# http://code.google.com/apis/ajaxlanguage/documentation/#Examples
+
+from_lang='en'
+to_lang='zh-CN'
+langpair='%s|%s'%(from_lang,to_lang)
+text=' '.join(sys.argv[1:])
+base_url='http://ajax.googleapis.com/ajax/services/language/translate?'
+params=urlencode( (('v',1.0),
+('q',text),
+('langpair',langpair),) )
+url=base_url+params
+content=urlopen(url).read()
+start_idx=content.find('"translatedText":"')+18
+translation=content[start_idx:]
+end_idx=translation.find('"}, "')
+translation=translation[:end_idx]
+print translation 
+
+============================================
+执行起来:命令+要翻译的文字(可以是整段的)
+
+casio:~$ wdic i love google
+我爱谷歌
+
+哈哈~~在百度的空间里面写我爱谷歌....
+
+
+* 用于终端的收集英汉互译词典——DCCV（python写的玩具）
+
+Linux应用的数量其实没Windows那么多，好用的更少了
+就拿英汉词典来说，星际译王虽是元老级此外
+然则在Windows下用惯了有道之类的器材的我其实感觉不怎么好用
+后来用chrome的有道插件也根蒂根基解决了查单词的题目，因为须要查单词的时辰大多都在看网页
+没过多久感触感染不看网页的时辰查单词还是终端斗劲便利，固然浏览器一向开着然则去点那个插件图标然后再查词有点麻烦
+于是用上了sdcv和dict，都是把握台下的辞典对象，前者全称是“Star Dict Console Version”，查词的起原都是本地词库
+用法很简单，“sdcv [word]”就行了
+之后又不太喜好Ubuntu 10.04的unity换上gnome3又感触感染怪怪的，索性换了钟爱的Fedora
+某天忽然装了sdcv和dict发明没有英-汉的本地词库，也懒得装了，于是本身用python写了个基于dict.cn的收集版
+有须要的伴侣随便拿去用
+
+#!/usr/bin/python
+# coding: utf-8
+
+## DCCC (Dict.Cn Console Version)
+## v0.1
+## 基于收集的终端英汉互译词典
+## Author: mail2tevin＠gmaill.com
+## 2011.10.10
+## （），
+
+import urllib, sys, os
+xml.dom.minidom import parseString 
+
+def getClipboard():
+    return os.popen(""xsel"").read()
+
+def getText(nodelist):
+    for node in nodelist:
+        if node.nodeType == node.TEXT_NODE:
+            return node.data 
+
+def Text(xml, tagName, addin=""""):
+    if len(xml.getElementsByTagName(tagName)) > 0:
+        return getText(xml.getElementsByTagName(tagName)[0].childNodes) + addin
+
+def foundResult(xml):
+    if xml.getElementsByTagName(""sugg""):
+        printSugg(xml)
+        return True
+    elif Text(xml, ""def"") == ""Not Found"":
+        print ""没有成果""
+        return True
+    else:
+        return False
+
+def printSugg(xml):
+    suggs = xml.getElementsByTagName(""sugg"")
+    print ""您要找的是不是:""
+    for sugg in suggs:
+        print getText(sugg.childNodes)
+
+def printResult(xml):
+    pron = Text(xml, ""pron"")
+    if not pron:
+        pron = u""无音标""
+    print "\n％s [％s]\n" ％ (Text(xml, ""key""), pron)
+    print Text(xml, ""def"", ""\n"")
+    sents = xml.getElementsByTagName(""sent"")
+    for sent in sents:
+        print Text(sent, ""orig"").replace(""<em>"", ""["").replace(""</em>"", ""]"")
+        print Text(sent, ""trans"")
+    print ""\n""
+
+if __name__ == "__main__":
+    api_url = "http://dict.cn/ws.php？utf8=true&q="
+    try:
+        word = sys.argv[1]
+    except IndexError:
+        word = getClipboard()
+    xml_str = urllib.urlopen(api_url + word).read();
+    xml = parseString(xml_str)
+    if not foundResult(xml):
+        printResult(xml)

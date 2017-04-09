@@ -1,0 +1,165 @@
+emacs全屏和启动最大化[转]
+emacs全屏和启动最大化
+(global-set-key [f11] 'my-fullscreen)
+
+;全屏
+(defun my-fullscreen ()
+(interactive)
+(x-send-client-message
+nil 0 nil "_NET_WM_STATE" 32
+'(2 "_NET_WM_STATE_FULLSCREEN" 0))
+) 
+;该函数用于最大化,状态值为1说明最大化后不会被还原
+;因为这里有两次最大化 (分别是水平和垂直)
+(defun my-maximized ()
+(interactive)
+(x-send-client-message
+nil 0 nil "_NET_WM_STATE" 32
+'(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+(interactive)
+(x-send-client-message
+nil 0 nil "_NET_WM_STATE" 32
+'(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+(my-maximized) 
+
+;启动最大化
+(require 'maxframe)
+(setq mf-max-width 1018)
+(setq mf-max-height 730)
+(add-hook 'window-setup-hook 'maximize-frame t)
+
+；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；
+下面的配置文件转自ubuntu论坛，作者kemean
+;插件路径 
+(add-to-list 'load-path "/home/share/myemacs") 
+(add-to-list 'load-path "/home/share/myemacs/ecb") 
+(add-to-list 'load-path "/home/share/myemacs/xcscope") 
+(add-to-list 'load-path "/home/share/myemacs/cedet/common") 
+
+
+;字体设置 
+(set-default-font "YaHeiConsolas-13") 
+(set-fontset-font "fontset-default" 
+'unicode '("YaHeiConsolas-13" . "unicode-bmp")) 
+(setq default-frame-alist 
+(append '((font . "YaHeiConsolas-13")) default-frame-alist)) 
+
+
+;解决emacs shell 乱码 
+(setq ansi-color-for-comint-mode t) 
+(customize-group 'ansi-colors) 
+(kill-this-buffer);关闭customize窗口 
+
+
+;自定义按键 
+(global-set-key [f1] 'shell);F1进入Shell 
+(global-set-key [f5] 'gdb);F5调试程序 
+(setq compile-command "make -f Makefile") 
+(global-set-key [f7] 'do-compile);F7编译文件 
+(global-set-key [f8] 'other-window);F8窗口间跳转 
+(global-set-key [C-return] 'kill-this-buffer);C-return关闭当前buffer 
+(global-set-key [f10] 'split-window-vertically);F10分割窗口 
+(global-set-key [f11] 'delete-other-windows);F11 关闭其它窗口 
+(global-set-key [f12] 'my-fullscreen);F12 全屏 
+(global-set-key (kbd "C-,") 'backward-page);文件首 
+(global-set-key (kbd "C-.") 'forward-page);文件尾 
+
+
+;普通设置 
+(setq inhibit-startup-message t);关闭起动时闪屏 
+(setq visible-bell t);关闭出错时的提示声 
+(setq make-backup-files nil);不产生备份文件 
+(setq default-major-mode 'text-mode);一打开就起用 text 模式 
+(global-font-lock-mode t);语法高亮 
+(auto-image-file-mode t);打开图片显示功能 
+(fset 'yes-or-no-p 'y-or-n-p);以 y/n代表 yes/no 
+(column-number-mode t);显示列号 
+(show-paren-mode t);显示括号匹配 
+(display-time-mode 1);显示时间，格式如下 
+(setq display-time-24hr-format t) 
+(setq display-time-day-and-date t) 
+(tool-bar-mode nil);去掉那个大大的工具栏 
+(scroll-bar-mode nil);去掉滚动条 
+;(mouse-avoidance-mode 'animate);光标靠近鼠标指针时，让鼠标指针自动让开 
+(setq mouse-yank-at-point t);支持中键粘贴 
+(transient-mark-mode t);允许临时设置标记 
+(setq x-select-enable-clipboard t);支持emacs和外部程序的粘贴 
+(setq frame-title-format '("" buffer-file-name "@emacs" ));在标题栏显示buffer名称 
+(setq default-fill-column 80);默认显示 80列就换行 
+
+
+;鼠标滚轮，默认的滚动太快，这里改为3行 
+(defun up-slightly () (interactive) (scroll-up 3)) 
+(defun down-slightly () (interactive) (scroll-down 3)) 
+(global-set-key [mouse-4] 'down-slightly) 
+(global-set-key [mouse-5] 'up-slightly) 
+
+
+;非交互式编译 
+(defun do-compile () 
+"Save buffers and start compile" 
+(interactive) 
+(save-some-buffers t) 
+(setq compilation-read-command nil) 
+(compile compile-command) 
+(setq compilation-read-command t)) 
+
+
+;shell,gdb退出后，自动关闭该buffer 
+(add-hook 'shell-mode-hook 'mode-hook-func) 
+(add-hook 'gdb-mode-hook 'mode-hook-func) 
+(defun mode-hook-func () 
+(set-process-sentinel (get-buffer-process (current-buffer)) 
+#'kill-buffer-on-exit)) 
+(defun kill-buffer-on-exit (process state) 
+(message "%s" state) 
+(if (or 
+(string-match "exited abnormally with code.*" state) 
+(string-match "finished" state)) 
+(kill-buffer (current-buffer)))) 
+
+
+;全屏 
+(defun my-fullscreen () 
+(interactive) 
+(x-send-client-message 
+nil 0 nil "_NET_WM_STATE" 32 
+'(2 "_NET_WM_STATE_FULLSCREEN" 0))) 
+
+;最大化 
+(defun my-maximized-horz () 
+(interactive) 
+(x-send-client-message 
+nil 0 nil "_NET_WM_STATE" 32 
+'(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))) 
+(defun my-maximized-vert () 
+(interactive) 
+(x-send-client-message 
+nil 0 nil "_NET_WM_STATE" 32 
+'(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0))) 
+(defun my-maximized () 
+(interactive) 
+(x-send-client-message 
+nil 0 nil "_NET_WM_STATE" 32 
+'(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)) 
+(interactive) 
+(x-send-client-message 
+nil 0 nil "_NET_WM_STATE" 32 
+'(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0))) 
+(my-maximized) 
+
+
+;加入会话功能 
+(require 'session) 
+(add-hook 'after-init-hook 'session-initialize) 
+(load "desktop") 
+(desktop-save-mode) 
+
+
+;加入标签功能 
+(require 'tabbar) 
+(tabbar-mode) 
+;(global-set-key (kbd "") 'tabbar-backward-group) 
+;(global-set-key (kbd "") 'tabbar-forward-group) 
+(global-set-key (kbd "C-`") 'tabbar-backward) 
+(global-set-key (kbd "C-

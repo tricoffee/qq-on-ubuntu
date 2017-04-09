@@ -1,0 +1,41 @@
+﻿Qt自动化测试之---TDriver
+
+首先，自动化测试是怎么回事呢？
+
+
+相关网站：
+http://projects.developer.nokia.com/Testabilitydriver
+
+http://wiki.meego.com/TDriver
+
+http://gitorious.org/tdriver
+
+
+
+TestComplete也支持QT，但是要7.0以上的版本
+
+
+
+TDriver:
+
+
+第一步，应该安装Qt sdk 
+网址如下：
+
+http://www.developer.nokia.com/info/sw.nokia.com/id/da8df288-e615-443d-be5c-00c8a72435f8/Qt_SDK.html
+
+在线安装出现错误
+
+
+第二步，下载TDriver源码，并且编译安装
+但是编译不通过，
+
+
+第三步，下载TDriver源码并且安装
+
+git clone ssh://git@projects.developer.nokia.com/Testabilitydriver.git 
+的时候，出现如下问题
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+
+

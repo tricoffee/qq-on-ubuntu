@@ -1,0 +1,31 @@
+将ubuntu由图形模式启动更改为命令行启动
+
+分类：问题解决 2013-01-23 20:52 34人阅读评论(0) 收藏举报
+
+    为了节省时间，下面不会面面俱到的说到各个细节，望原谅。
+
+    环境：ubuntu 10.04
+
+    在ubuntu下，默认是没有/etc/inittab文件的，所以不能通过此文件更改ubuntu的运行级别(run level)。另外，从网上查到debian系(ubuntu
+基于debian)的运行级别不同于其它linux的发行版本，在debian系(包括ubuntu)中，2－5级别的默认效果是相同的，ubuntu(desktop)默认安装后，
+运行级别(run level)为2。有关ubuntu运行级别的详细内容可到网上查阅。
+
+    将ubuntu由图形模式启动更改为命令行启动的步骤如下：
+
+    1、用编辑器打开/etc/default/grub，如下图。
+
+[135895]
+
+    2、将GRUB_CMDLINE_LINUX=""那行，更改为GRUB_CMDLINE_LINUX="text"，如下图。
+
+[135895]
+
+    3、保存更改后的文件，然后运行命令“sudo update-grub”，之后重启便可以进入命令行模式。
+
+    要重新由命令行模式启动更改回图形模式启动只要做相反的动作即可。
+
+    在命令行模式下，如果要进入图形界面，只要键入“sudo /etc/init.d/lightdm start”即可。
+
+    参考文献：http://askubuntu.com/questions/74645/possible-to-install-ubuntu-desktop-and-then-boot-to-no-gui
+
+                        http://tc.itkee.com/os/detail-1729.html

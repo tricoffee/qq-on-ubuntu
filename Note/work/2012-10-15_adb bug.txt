@@ -1,0 +1,115 @@
+error: insufficient permissions for device
+
+
+第一种方法：
+
+不知为何，现在连接到开发机器上的时候出现如上的错误信息，一直提示权限不正确。
+暂的解决办法是使用root权限来启动adb server
+shily@hh-desktop:~$sudo -s
+[sudo] password for shily:
+root@hh-desktop:~#adb kill-server ； adb start-server
+* daemon not running. starting it now *
+* daemon started successfully *
+root@hh-desktop:~#exit
+exit
+shily@hh-desktop:~$
+再次执行adb shell就可以了。
+
+可是这样也不是办法，因为这个错误太频繁了，在开发的过程中，很容易执行adb kill-server，然后再切换到root启动adb start-server太不方便。
+
+这个时候就是setuid起作用的时候了。
+转到adb所在的目录
+shily@hh-desktop:~$cd ~/sdk/android-sdk_eng.sdk_linux-x86/tools
+shily@hh-desktop:~/sdk/android-sdk_eng.sdk_linux-x86/tools$ls -ladb
+-rwxr-xr-x 1 shily shily  341694 2010-05-11 05:46 adb
+shily@hh-desktop:~/sdk/android-sdk_eng.sdk_linux-x86/tools$sudo chown root:root adb
+[sudo] password for shily:
+shily@hh-desktop:~/sdk/android-sdk_eng.sdk_linux-x86/tools$ls -ladb
+-rwxr-xr-x 1root root  341694 2010-05-11 05:46 adb
+shily@hh-desktop:~/sdk/android-sdk_eng.sdk_linux-x86/tools$sudo chmod u+s adb
+shily@hh-desktop:~/sdk/android-sdk_eng.sdk_linux-x86/tools$ls -ladb
+-rwsr-xr-x 1 root root   341694 2010-05-11 05:46 adb
+shily@hh-desktop:~/sdk/android-sdk_eng.sdk_linux-x86/tools$
+这样无论哪个用户启动adb 使用的都是root权限，就不会提示权限不足的错误了。
+
+
+
+第二种方法：
+
+error: insufficient permissions for device
+
+解决：
+[calvin@calvin-desktop ~ 23:31:18 ] $ sudo -s
+sudo -s:执行环境变数中的 SHELL 所指定的 shell ，或是 /etc/passwd 里所指定的 shell 
+即相当于 sudo /bin/bash
+[root@calvin-desktop ~ 23:31:22 ] $ adb kill-server
+[root@calvin-desktop ~ 23:31:35 ] $ adb start-server
+* daemon not running. starting it now *
+* daemon started successfully *
+[root@calvin-desktop ~ 23:31:44 ] $ exit
+exit
+[calvin@calvin-desktop ~ 23:31:47 ] $ adb shell
+
+更新：
+在51-android.rules中只写一句：
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", MODE="0666"，即可。
+
+使用lsusb查看设备的usb id号
+[calvin@calvin-desktop ~ 23:34:27 ] $ lsusb
+Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 007 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 002 Device 015: ID 1004:615d LG Electronics, Inc. 
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 006 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+
+由此可见，该设备的id为1004，
+将/etc/udev/rules.d/51-android.rules文件的内容改为
+SUBSYSTEM=="usb", SYSFS{idVendor}=="1004", MODE="0666"即可。
+可以写多行，如：
+#Acer 0502
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0502", MODE="0666"
+#Dell 413c
+SUBSYSTEM=="usb", SYSFS{idVendor}=="413c", MODE="0666"
+#Foxconn 0489
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0489", MODE="0666"
+#Garmin-Asus 091E
+SUBSYSTEM=="usb", SYSFS{idVendor}=="091e", MODE="0666"
+#HTC 0bb4
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0bb4", MODE="0666"
+#Huawei 12d1
+SUBSYSTEM=="usb", SYSFS{idVendor}=="12d1", MODE="0666"
+#Kyocera 0482
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0482", MODE="0666"
+#LG 1004
+SUBSYSTEM=="usb", SYSFS{idVendor}=="1004", MODE="0666"
+#Motorola 22b8
+SUBSYSTEM=="usb", SYSFS{idVendor}=="22b8", MODE="0666"
+#Nvidia 0955
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0955", MODE="0666"
+#Pantech 10A9
+SUBSYSTEM=="usb", SYSFS{idVendor}=="10A9", MODE="0666"
+#Samsung 04e8
+SUBSYSTEM=="usb", SYSFS{idVendor}=="04e8", MODE="0666"
+#Sharp 04dd
+SUBSYSTEM=="usb", SYSFS{idVendor}=="04dd", MODE="0666"
+#Sony Ericsson 0fce
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0fce", MODE="0666"
+#ZTE 19D2
+SUBSYSTEM=="usb", SYSFS{idVendor}=="19D2", MODE="0666"
+
+
+
+第三种方法：
+
+sudo -s
+
+./adb kill-server
+
+./adb start-server
+
+./adb devices
+
+./adb shell

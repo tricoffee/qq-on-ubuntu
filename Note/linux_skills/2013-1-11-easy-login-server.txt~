@@ -1,0 +1,8 @@
+@ssh-keygen
+
+ubuntu 12.04
+# ssh-copy-id -i ~/.ssh/id_rsa.pub Youname@xxx.xxx.70.6 -p
+
+FreeBSD 9.0
+# scp ~/.ssh/id_rsa.pub Youname@xxx.xxx.70.6:~/.ssh/authorized_keys
+＃ ssh -qTfnN -D 7070 Youname@xxx.xxx.70.6

@@ -1,0 +1,14 @@
+12-14 工作
+
+1，烧写factory分区，pthread 创建三个并行的线程，使得rfid、gps、gsensor三个测试程序并行运行，看看有没有错误------准备编译当中
+2，和飞哥商量提交给华夏明科的service API文档的交付时间，因为标签操作API所传的参数还没办法确定.-----已沟通，还需确认
+3，和梁亦飞商量读卡成功率测试程序的形式应该是何种的，是Qt应用程序还是命令行测试程序-----
+4，rfid工厂模式读标签成功率过低的问题，郭老师修改代码后，我要编成factory.img测试是否可以正常测试到硬件以及标签-----
+5，在Qt代码的背光设置当中的show方法之前添加raise()方法，使得背景正常显示出来-----
+
+
+
+
+另外 ：如何在emacs当中使用两个shell窗口？
+step 1 : M-x rename-buffer <select a name>  ---  rename current shell buffer
+step 2 : M-x shell  ---  open a new shell buffer

@@ -1,0 +1,42 @@
+linux终端下的英文字典--SDCV 2010-03-30 11:03:23
+
+分类： LINUX
+
+sdcv全称为stardict console version，即终端下的词典。为什么选择这个呢，原因如下：
+1、stardict GUI做得并不好，老是出故障。
+2、linux下没有其它好的翻译软件了。
+3、sdcv使用起来也很方便。
+
+我的系统是ubuntu 8.10，其它linux系统应该也差不多。
+首先，安装：sudo apt-get install sdcv
+然后，安装词典数据，之前只安装了不带数据的sdcv。下载地址是：stardict dictionaries
+           要下载tarbal(即tar.bz2)格式。
+第三，将压缩包解压到~/.stardict/dic这个目录下，当然也可以放到其它目录，然后让~/.stardict/dic
+          指向这个目录。
+
+          现在，你在终端敲sdcv就可查询单词了。但到此还没有结束，我还有一番改进。如果你不习惯用快捷键，后面的你可以不用看了。
+
+第四、在终端打开：gconf-editor。如果没有，那安装：sudo apt-get install gconf-editor
+第五、在gconf-editor中，搜索keybinding，找到global_keybindings和keybinding_commands。
+第六、将global_keybindings中的run_command_n改成一个快捷键（n为序号），
+           比如<Control><Alt><Shift>s
+第七、将keybinding_commands中的command_n（此处的n与第六步相对应），
+           改为：gnome-terminal --window -e sdcv
+           表示新开一个终端窗口(window)，然后运行(execute)sdcv程序。
+           
+           现在怎么样呢？我只要按ctrl＋alt+shift+s，就会弹出一个终端窗口，可以用来查询单词。不用了就可以随时关闭，相当于金山词霸的热
+键。当初用stardict的时候，因为不提供热揵，让我好生失望。
+
+=========================================================
+sdcv还可以在vim中使用，只需要在~/.vimrc中加入
++---------------------------------------------------------------------------------------------------------------------------+
+|set keywordprg=sdcv                                                                                                        |
++---------------------------------------------------------------------------------------------------------------------------+
+这样，普通模式下按K键(shift+k)，光标所在的单词就会调用sdcv进行查询。
+==================================================================================
+
+另外，若想让sdcv自动记录查过的单词，需要在sdcv编译时支持readline库。包管理器提供的sdcv版本不知道支不支持sdcv，若自己下载源码编译安装
+，则系统中需要安装有readline-devel包。
+单词默认保存在~/.sdcv_history文件中，保存单词的个数由系统变量SDCV_HISTSIZE来指定，默认是2000.
+阅读(920) | 评论(0) | 转发(0) |
+0 

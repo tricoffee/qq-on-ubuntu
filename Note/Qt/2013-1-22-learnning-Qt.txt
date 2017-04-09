@@ -1,0 +1,146 @@
+QT相关资源 – 让你学会Qt
+2012年12月10日, 共 0 次吐槽, 74 次围观.
+字体大小: [小] [中] [大]
+
+NOKIA官方QT开发者网络：http://developer.qt.nokia.com/
+
+NOKIA官方QT实验室：http://labs.qt.nokia.com/
+
+NOKIA官方QT博客：http://blog.qt.nokia.com/
+
+NOKIA官方QT文档：http://doc.qt.nokia.com/
+
+QT Software GmbH： http://www.qtsoftware.de/oxShop/
+一个关于QT的WEBSHOP
+
+Qt-Prop： http://qt-prop.org/
+在这个网站你可以找到很多Proprietary Qt Applications
+
+Qt-Apps：http://qt-apps.org/
+在这个网站你可以找到很多Free Qt Applications，你可以获得别人的源码来学习、研究、当然使用时请遵守相关开源协议
+
+KDE-Apps：http://kde-apps.org/
+用过Linux/KDE的应该比较熟悉，里面有许多Applications for the KDE-Desktop，本人偶尔会去淘东西 =W=
+
+Qt-Centre： http://www.qtcentre.org/content/
+一个非常全面的外国网站，有forum、wiki、docs、blogs等，具体自己可以去tour一下 =W=
+
+Qt-forum：http://www.qtforum.org/index.html
+另一个比较有名的外国论坛 =W=
+http://www.developer.nokia.com/Develop/Qt/
+一个给开发者提供服务的NOKIA官方版块 = =
+
+Qt 中文论坛：http://www.qtcn.org/bbs/index-htm-m-area-alias-newhome.html
+国内最为老牌和最为活跃的Qt中文社区，内容非常丰富。（个人强烈推荐=W=）
+
+酷享Qt 论坛： http://www.cuteqt.com/
+专注于QT技术的博客与论坛，里面的内容很不错，大家可以去看看。=W=
+
+Qt知识库： http://www.qtkbase.com
+
+Qt中文网：http://www.qtsir.com/bbs/forum.php
+
+CSDN网站的Qt技术社区：http://qt.csdn.net/index.aspx
+
+齐亮的博客：http://www.qiliang.net/blog/
+《C++GUI Qt3编程》一书的中文版译者的博客，一些QT的资讯、分析。
+
+Kevin部落格：http://www.qkevin.com
+里面的Inside Qt Series（http://www.qkevin.com/qt）不错，讲了很多原理性的东西，个人推荐。
+
+豆子博客：http://devbean.blog.51cto.com/
+嘛，作者现在已经换博客了，地址如下：http://www.devbean.info/
+里面的Qt学习之路系列（http://devbean.blog.51cto.com/448512/d-8/p-4） 不错，适合新手，个人推荐。
+
+yafeilinux的个人空间：http://www.yafeilinux.com/
+里面的Qt Creator系列教程（http://www.yafeilinux.com/?page_id=3）不错，适合新 手，个人推荐。
+
+英文名：《C++ Primer plus》（中文译名：《C++ Primer plus 中文版》）
+作者：Stephen Prata
+如果选一本C++的入门书籍，本人倾向与选择此书（当然，也有人推荐《C++ Primer》，不过，感觉对于编程新手可能难了点，个人观点），具体自行参见百科。
+
+Qt学习之路离线版下载：http://dl.dbank.com/c0thnhuagn
+Inside Qt离线版（不全）下载：http://dl.dbank.com/c09zvxbbre
+Qt Creator系列官方下载：http://www.yafeilinux.com/?page_id=9
+
+QtWhitepaper/Qt白皮书
+官方在线文档：http://developer.qt.nokia.com/wiki/QtWhitepaper
+Qt4.6英文版下载：http://dl.dbank.com/c0o6nkh3w0
+Qt4.2中文版下载：http://dl.dbank.com/c0zmadbbap
+描述了Qt的整个Framework，很好的参考资料，建议阅读。
+
+Qt4.3类表：http://dl.dbank.com/c0imsoimal
+描绘了QT4.3各个类的关系。
+
+英文名：《 C++ GUI Programming with Qt 4 (2nd Edition)》
+中文译名：《C++ GUI Qt 4编程（第二版）》
+作者： (加)Jasmin Blanchette (英)Mark Summerfield
+评价颇高的教材，详细讲述了用最新的QT版本进行图形用户界面应用程序开发的各个方面，非常经典。不过，个人觉得对于初学者可能难度稍大。
+
+英文名：《 Advanced Qt Programming: Creating Great Software with C++ and Qt 4 》
+中文译名：《Qt高级编程》
+作者：(英)Mark Summerfield
+如书名所说 ，是本阐述Qt高级编程技术的书籍，非常不错。嘛，个人觉得对于初学者可能难度稍大。
+
+英文名：《The Book of Qt 4: The Art of Building Qt Applications 》
+中文译名：《The Book of QT 4中文版：QT程序设计艺术》
+作者：Daniel Molkentin
+个人看了几章，还是不错的书，比较适合初学者，可惜的是，至今好像没有中文版，下面是某人的翻译，不过只有前面几章，翻译质量不错：http://www.cnblogs.com/mcxiaoke/archive/2010/05/12/1733414.html
+
+英文名：《An Introduction to Design Patterns in C++ with Qt 4》
+中文译名：《C++设计模式–基于Qt4开源跨平台开发框架》（也译成《QT4设计模式导论》）
+作者： (美)Alan Ezust Paul Ezust
+扫描了个大概，感觉不错，因为没有细看，就不多说了，自行谷歌吧。 – -
+
+英文名：《Foundations of Qt Development》
+中文译名：《QT开发基础》
+作者：Thelin, Johan
+是本Qt的入门书，至今好像没有中文版，据说在翻译中，尚未上市，因为没有看过，就不多说了。 – -
+
+书名：《精通Qt4编程》
+作者：蔡志明 卢传富 李立夏 等编著
+详细介绍了Qt的基础知识和GUI编程应用，挺不错的，内容比较全，也比较适合新手和一定经验的程序员，值得一看。
+
+书名：《Qt4开发实践》
+作者：郑阿奇 陈超
+只看了下目录，貌似是Qt入门书，从C++开始，应该适合初学者，具体自行谷歌。
+
+书名：《Qt4图形设计与嵌入式开发》
+作者：丁林松 黄丽琴
+翻了下，感觉还可以吧，值得一看。
+
+书名：《零基础学Qt4编程》
+作者：吴迪
+感觉是针对初学者写的，太TM详细了，如果你看了还一点都不会的话，我就服了，下面是官方提供的电子版，个人在这就不多说什么了：
+http://www.qtcn.org/bbs/thread-htm-fid-89-search-all.html#tabA
+
+书名：《Linux窗口程序设计–Qt4精彩实例分析 》
+作者：成洁，卢紫毅
+实例+分析，穿插一些知识点，针对的是新手，实用性挺好的，不过个人对里面的代码质量不是很认可、另外原理性东西欠缺。总的来说，还是本不错 的书，可以看一下。
+
+英文名：《Sams Teach Yourself Beginning Programming in 24 Hours》
+中文名：《24小时学通Qt编程》
+作者：DanielSolin
+好像是比较老的一本书，不知道有没有最新版，用的貌似是 QT2，因此个人不是很推荐。
+
+书名：《Qtopia编程之道》
+作者：苗忠良 宛斌
+不了解此书，自行谷歌 = =
+
+Qt Examples： http://doc.qt.nokia.com/4.8-snapshot/all-examples.html
+Qt Tutorials： http://doc.qt.nokia.com/4.8-snapshot/tutorials.html
+Qt Demos：http://doc.qt.nokia.com/4.8-snapshot/demos.html
+推荐，看了就知道了，不需要理由。
+
+补充一个blog：
+http://blog.csdn.net/dbzhang800/article/details/6300789
+
+QT的编码规范：
+英文版：http://developer.qt.nokia.com/wiki/Qt_Coding_Style
+dbzhang800翻译中文版：http://blog.csdn.net/dbzhang800/article/details/6381636
+
+我主要使用的是Google C++ Style，不过鉴于QT库本身的命名，自己命名时部分采用了QT的编码规范.
+
+
+
+c++/Qt电子书 http://www.qtcn.org/bbs/read-htm-tid-1082.html

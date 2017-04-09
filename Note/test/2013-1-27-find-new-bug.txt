@@ -1,0 +1,66 @@
+子系统问题分类                  
+模块问题分类                     
+出现频率                         固定
+严重性                           致命                                                                                                 
+现象分类
+测试例编号
+硬件平台                        UT7310A_#37
+发现问题版本                     QT_20130126_gd9bce37_R270_V0.2.3
+解决问题版本
+网络类型
+测试地点(城市+区域)              北京
+分派给
+*摘要                          tslib无法校准并且导致系统死机
+* 说明
+问题重现步骤说明
+附加信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bug 描述：tslib无法校准并且导致系统死机
+发现问题版本：QT_20130126_gd9bce37_R270_V0.2.3
+	在v0.2.3版本，开机后进入tslib屏幕校准界面时候，大约30秒左右不操作的话就会出现白屏的现象（必现），如果点击屏幕校准的话，在点击屏幕校准点的时候，就会死机，tilib卡住不动。造成无法操作tslib设置，经过一段时间不操作tslib校准屏幕，然后同样会死机，使用logcat查看当时的log，只能查看一部份log，白屏之后adb断开连接。以下是log信息：
+
+
+# logcat
+logcat
+--------- beginning of /dev/log/main
+I/DEBUG   ( 1021): debuggerd: Nov  7 2012 10:49:23
+--------- beginning of /dev/log/system
+I/Vold    ( 1019): Vold 2.1 (the revenge) firing up
+D/Vold    ( 1019): Volume sdcard state changing -1 (Initializing) -> 0 (No-Media)
+W/GuiService( 1059): start touch screen calibrate.... 
+D/Vold    ( 1019): USB connected
+D/Vold    ( 1019): Share method ums now available
+W/Vold    ( 1019): Ignoring unknown switch 'usb_mass_storage'
+D/Vold    ( 1019): Volume sdcard state changing 0 (No-Media) -> 2 (Pending)
+D/Vold    ( 1019): Volume sdcard state changing 2 (Pending) -> 1 (Idle-Unmounted)
+W/        ( 1022): [PID:1022]install error handler complete
+W/        ( 1026): [PID:1026]install error handler complete
+W/        ( 1023): [PID:1023]install error handler complete
+W/        ( 1025): [PID:1025]install error handler complete
+W/        ( 1029): [PID:1029]install error handler complete
+W/QT      ( 1029): GpsService start... 
+W/QT      ( 1029): gpsservice.cpp GpsService 
+W/QT      ( 1029): listener thread started... 
+W/QT      ( 1022): audioservice.cpp::getHeadsetType()...0
+W/QT      ( 1025): loadconfig: "all" 0 0 true "cmnet" 
+W/QT      ( 1025): only 0 modem, retry...... 
+W/SSL_HASH( 1101): skip /etc/ssl/certs/origin/Verisign_Class_1_Public_Primary_Certification_Authority_-_G3.crt 
+W/        ( 1030): [PID:1030]install error handler complete
+W/SSL_HASH( 1106): skip /etc/ssl/certs/origin/Digital_Signature_Trust_Co._Global_CA_1.crt 
+W/SSL_HASH( 1111): skip /etc/ssl/certs/origin/WellsSecure_Public_Root_Certificate_Authority.crt 
+W/SSL_HASH( 1118): skip /etc/ssl/certs/origin/AddTrust_Qualified_Certificates_Root.crt 
+

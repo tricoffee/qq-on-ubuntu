@@ -1,0 +1,1066 @@
+
+* Linux2.6内核的vivi分区及内核MTD分区 
+                                                                   
+                      电梯直达 [  ] 跳转到指                                                                                      
+                      1楼 [收藏(0)] [报告]                                                                                        
+                      [online] 发表于 2009-10-06 15:53:19 |只看该作者 |倒序浏览                                                   
+                                                                                                                                  
+                      与Linux2.4内核相比，Linux2.6内核在性能、模块支持、可用性、可测量性等方面有大幅度的提高。
+					  Linux2.6内核取代2.4内核是大势所趋。                                                                                            
+                      　　ARM9 S3C2410                                                                                                     
+                      微处理器是一款由SAMSUNG公司为手持终端设计的低价格、低功耗、高性能，基于ARM920T核的微处理器。它与Linux                                                                                       
+					  的结合越来越紧密，逐渐在嵌入式领域得到广阔的。目前，在PDA、移动通信、路由器                                                                            
+                      、工业控制等领域都可以看到                                                                                  
+                      S3C2410                                                                                                     
+                      与Linux相结合的身影。                                                                                       
+                      　　当前市场上基于                                                                                          
+                      S3C2410                                                                                                     
+                      微处理器的开发板绝大部分都是用Nand Flash作为主存储器。Nand Flash是一种可在                                  
+                      系统                                                                                                        
+                      上进行电擦写，掉电后信息不丢失的存储器。                                                                    
+                      　　开发板从上电到                                                                                          
+                      内核                                                                                                        
+                      启动需要一个引导程序，在嵌入式Linux系统下称为Boot loader。                                                  
+                      vivi                                                                                                        
+                      是韩国MIZI公司为其ARM9系列产品研发的Boot Loader。                                                           
+                      　　                                                                                                        
+                      MTD                                                                                                         
+                      (存储                                                                                                       
+                      技术                                                                                                        
+                      器件)是Linux内核采纳的一种                                                                                  
+                      设备                                                                                                        
+                      子系统，它为底层的存储芯片提供了统一的设备接口。                                                            
+                      　　然而，vivi的Nand Flash分区(简称                                                                         
+                      vivi分区                                                                                                    
+                      )并不适合Linux2.6内核的需求，必须作出修改。而                                                               
+                      内核MTD分区                                                                                                 
+                      是与                                                                                                        
+                      vivi分区                                                                                                    
+                      相对应的，随着                                                                                              
+                      vivi分区                                                                                                    
+                      的改变也须重新定制。                                                                                        
+                      　　本文在分析                                                                                              
+                      vivi分区                                                                                                    
+                      与                                                                                                          
+                      内核MTD分区                                                                                                 
+                      的基本概念及两者关系的                                                                                      
+                      基础                                                                                                        
+                      上，详细介绍了基于                                                                                          
+                      S3C2410                                                                                                     
+                      开发板的Linux2.6内核下的vivi及                                                                              
+                      内核MTD分区                                                                                                 
+                      方法。                                                                                                      
+                      　　Vivi分区和                                                                                              
+                      内核MTD分区                                                                                                 
+youthpassion          的                                                                                                          
+youthpassion 当前离线 解析                                                                                                        
+                                                                                                                                  
+空间积分              　　Vivi分区解析                                                                                            
+    0                 　　Vivi分区指的是给引导程序、内核映像、                                                                    
+信誉积分              文件                                                                                                        
+    100               系统等在Nand Flash上分配                                                                                    
+UID                   空间                                                                                                        
+    22342877          及起始地址。在vivi的                                                                                        
+阅读权限              命令                                                                                                        
+    10                模式下输入命令：part show，可得                                                                             
+积分                  vivi分区                                                                                                    
+    25                信息。未作修改的                                                                                            
+帖子                  vivi分区                                                                                                    
+    29                信息如表1。                                                                                                 
+精华                                                                                                                              
+    0                 [bfaa43]                                                                                                    
+可用积分              　　从信息中可知，vivi把Nand Flash分为4个区，分别为vivi、param、kernel、root。信息中的offset表示各          
+    25                分区                                                                                                        
+专家积分              在Nand Flash中的起始位置，size及的后面128k、64k、768k、1M＋256k表示各分区的大小，flag为标识符。             
+    0                 　　未修改的vivi给放置内核映像文件zImage的kernel分区只有768k，但2.6内核的映像文件　一般都超过1M。另外，MIZI 
+在线时间              公司针对其自身产品所设计的vivi只对略大于2M的Nand Flash空间进行了分区；然而，                                
+    6 小时            S3C2410                                                                                                     
+注册时间              开发板的Nand Flash容量为一般为32M或64M的，还有很大的空间可用。所以，重新定制                                
+    2009-08-14        vivi分区                                                                                                    
+最后登录              十分必要。                                                                                                  
+    2010-10-15        　　                                                                                                        
+                      内核MTD分区                                                                                                 
+查看详细              解析                                                                                                        
+[77_ava]              　　Linux2.6内核的MTD能够支持ROM、RAM、FLASH(NOR和NAND)等存储芯片。MTD同时可提供两类MTD驱动程序，一类是MTD设
+                      备地址空间的映射，提供直接访问设备的操作；另一类则为建立文件系统提供基础。                                  
+白手起家              　　在基于Linux2.6内核的                                                                                    
+                      S3C2410                                                                                                     
+白手起家, 积分 25, 距 开发板上，Nand Flash上各段存储空间都被定义成MTD分区来                                                       
+离下一级还需 175 积分 管理                                                                                                        
+                      的，各分区都可以通过Linux系统中的设备文件来访问。所以在内核中必须有MTD对引导程序、内核映像、文件系统在Nand  
+帖子                  Flash上的分区信息。                                                                                         
+    29                　　                                                                                                        
+主题                  vivi分区                                                                                                    
+    18                与                                                                                                          
+精华                  内核MTD分区                                                                                                 
+    0                 的关系                                                                                                      
+可用积分              　　从Nand Flash启动时，                                                                                    
+    25                S3C2410                                                                                                     
+专家积分              硬件会自动把Nand Flash前4K代码拷贝芯片内部RAM空间，CPU其实是从内部RAM开始执行代码的，所以vivi必须放到Nand   
+    0                 Flash顶端。vivi开始执行后将初始化硬件设备、建立内存空间映射表，为调用内核做好准备；然后把压缩的内核映像加载 
+在线时间              到SDRAM中；最后跳转到内核映像入口，启动内核。                                                               
+    6 小时            　　                                                                                                        
+注册时间              内核MTD分区                                                                                                 
+    2009-08-14        必须与                                                                                                      
+最后登录              vivi分区                                                                                                    
+    2010-10-15        相一致。因为，                                                                                              
+                      vivi分区                                                                                                    
+  * 串门              中的地址是引导程序、内核映像及文件系统下载到Nand Flash的真正地址；而内核启动时，内核并不是去读              
+  * 好友              vivi分区                                                                                                    
+  * 博客              中的地址，而是去读                                                                                          
+  * 消息              内核MTD分区                                                                                                 
+                      设定的地址；所以，如果                                                                                      
+论坛徽章:             内核MTD分区                                                                                                 
+    0                 与                                                                                                          
+                      vivi分区                                                                                                    
+                      不相同，很可能导致不能正常启动内核及读取文件系统。                                                          
+                      　　vivi和内核MTD的重新分区                                                                                 
+                      　　vivi的重新分区                                                                                          
+                      　　根据开发板的Nand Flash大小及开发用途确定新的                                                            
+                      vivi分区                                                                                                    
+                      ，如表2。                                                                                                   
+                      [f42624]                                                                                                    
+                      　　打开vivi源代码下的arch/s3c2410/smdk.c文件，在函数：“mtd_partition_default_mtd_partitions[]={}”中可以看到
+                      vivi默认的Nand Flash分区信息。根据表2的新分区信息，在上述函数中以相同的格式修改原有分区信息即可完成vivi的重 
+                      新分区。                                                                                                    
+                      　　内核MTD的重新分区                                                                                       
+                      　　在给内核MTD重新分区之前，有一点应该注意，2.6.16(含)以前内核与2.6.17(含)以后内核的MTD重新分区方法是不一样
+                      的，前者是需要增加新的分区信息，而后者源代码初始文件中已含分区信息，需要的是修改分区信息。                  
+                      　　Linux2.6.16(含)以前内核的MTD重新分区                                                                    
+                      　　首先，在内核源代码arch/arm/mach-s3c2410/devs.c文件下增加头文件：“linux/mtd /partitions.h”、“asm/arch/   
+                      nand.h”、“linux/mtd/nand.h”。注意，因为头文件之间也有先后关联的关系，所以要把这三句放到＃include“devs.h”下面
+                      。若放在其他地方，编译可能报错。                                                                            
+                      　　然后，同样在devs.c文件下，根据表2添加新的分区信息：                                                     
+                      　　Static struct mtd_partition partition_info[]={                                                          
+                      　　{name：“vivi”,size：0x00020000,offset：0，}                                                             
+                      　　｛name：“param”,size：0x00010000,offset：0x00020000,｝,                                                 
+                      　　{name：“kernel”,size：0x001d0000,offset：0x00030000,},                                                  
+                      　　{name：“root”,size：0x00400000,offset：0x00200000,mask_flags：mtd_writeable,},                          
+                      　　{name：“program”,size：0x03a00000,offset：0x00600000,}                                                  
+                      　　｝；                                                                                                    
+                      　　Struct s3c2410_nand_set nandset={nr_partitions：5,partitions：partition_info,}；struct                  
+                      s3c2410_platform_nand 　　superlpplatform={tacls：0,twrph0：30,twrph1：0, sets：&　nandset,　nr_sets：1,};  
+                      　　最后，在devs.c文件的s3c_device_nand函数中增加：“.dev={.platform_data=& superlpplatform}”；在arch/arm/   
+                      mach-s3c2410/mach-smdk2410.c文件的“static struct platform_device*smdk2410_                                  
+                      devices[]_initdata={}”中增加“&s3c_device_nand”。目的是使内核在启动时初始化nand flash信息。                  
+                      　　Linux2.6.17(含)以后内核的MTD重新分区                                                                    
+                      　　Linux2.6.17(含)以后内核的MTD分区要比Linux2.6.16(含)以前内核简单很多，因为源代码的初始文件中已含分区信息 
+                      ，只要修改一下就行了。                                                                                      
+                      　　在源代码arch/arm/mach-s3c2410/common-smdk.c文件下的函数“mtd_partition smdk_default_nand_part[]={}”中，可
+                      以看到默认的MTD分区。根据表1，以相同的格式修改原分区信息即可完成MTD的重新分区。                             
+                      　　结语                                                                                                    
+                      　　基于Linux2.6内核的Linux与ARM9　                                                                         
+                      S3C2410                                                                                                     
+                      的结合将会在嵌入式领域得到广泛的应用。                                                                      
+                      vivi分区                                                                                                    
+                      与                                                                                                          
+                      内核MTD分区                                                                                                 
+                      是两者进行联合开发的基础。                                                                                  
+
+
+* uboot环境变量与内核MTD分区关系 [复制链接] 
+                                                              
+                  电梯直达 [  ] 跳转到指                                                                                         
+                  1楼 [收藏(0)] [报告]                                                                                           
+                  [online] 发表于 2011-12-23 02:29:47 |只看该作者 |倒序浏览                                                      
+                  分区只是内核的概念，就是说A～B地址放内核，C～D地址放文件系统，(也就是规定哪个地址区间放内核或者文件系统)等等。 
+                  1：在内核MTD中可以定义分区A~B，C~D。。。。。。并予以绝对的地址赋值给每个分区。我们可以来看看在内核中是怎样来对 
+                  MTD进行分区的：arch\arm\plat-s3c24xx\common-smdk.c                                                             
+                                                                                                                                 
+                  static struct mtd_partition smdk_default_nand_part[] = {                                                       
+                   [0] = {                                                                                                       
+                    .name = "Boot",                                                                                              
+                    .size = SZ_16K,                                                                                              
+                    .offset = 0,                                                                                                 
+                   },                                                                                                            
+                   [1] = {                                                                                                       
+                    .name = "S3C2410 flash partition 1",                                                                         
+                    .offset = 0,                                                                                                 
+                    .size = SZ_2M,                                                                                               
+                   },                                                                                                            
+                   [2] = {                                                                                                       
+                    .name = "S3C2410 flash partition 2",                                                                         
+                    .offset = SZ_4M,                                                                                             
+                    .size = SZ_4M,                                                                                               
+                   },                                                                                                            
+                   [3] = {                                                                                                       
+                    .name = "S3C2410 flash partition 3",                                                                         
+                    .offset = SZ_8M,                                                                                             
+                    .size = SZ_2M,                                                                                               
+                   },                                                                                                            
+                   [4] = {                                                                                                       
+                    .name = "S3C2410 flash partition 4",                                                                         
+                    .offset = SZ_1M * 10,                                                                                        
+                    .size = SZ_4M,                                                                                               
+                   },                                                                                                            
+                  ......                                                                                                         
+                   };                                                                                                            
+                  一般我们只需要分3-4个区，第一个为boot区，一个为boot参数区(传递给内核的参数),一个为内核区，一个为文件系统区。   
+                  而对于bootloader中只要能将内核下载到A~B区的A地址开始处就可以，C~D区的C起始地址下载文件系统。。。这些起始地址在 
+                  MTD的分区信息中能找到。所以bootloader对分区的概念不重要，只要它能把内核烧到A位置，把文件系统烧到C位置。        
+                  所以，在bootloader对Flash进行操作时，哪块区域放什么是以内核为主。                                              
+                  而为了方便操作，bootloader类似也引入分区的概念，如，可以使用“nand write 0x3000000 kernel 200000”命令将uImage烧 
+                  到kernel分区，而不必写那么长：nand write 3000000 A 200000,也就是用分区名来代替具体的地址。                     
+                  这要对bootloader对内核重新分区：这需要重新设置一下bootloader环境参数，就可以同步更新内核分区信息               
+                  如：                                                                                                           
+                  setenv bootargs 'noinitrd console=ttySAC0 root=/dev/mtdblock3 rootfstype=jffs2                                 
+                                             mtdparts=nand_flash:128k(u-boot)ro,64k(u-boot envs),3m(kernel),30m(root.jffs2),30m  
+                  (root.yaffs)'                                                                                                  
+                  内核配置时选上Device Drivers  ---> Memory Technology Device (MTD) support  ---> Command line partition table   
+                  parsing                                                                                                        
+                  在设置了mtdparts变量之后,就可以在nand read/write/erase命令中直接使用分区的名字而不必指定分区的偏移位置.而这需要
+                  内核MTD最好没有规划分区。                                                                                      
+                  如果你是通过uboot的内核命令行给MTD层传递MTD分区信息，这种情况下,内核读取到的分区信息始终和u-boot中的保持一致(推
+                  荐的做法)                                                                                                      
+                  如果你是把分区信息写在内核源代码MTD里定义好的方法,那最好保证它和u-boot中的保持一致,即同步修改uboot及内核的相关 
+                  部分。                                                                                                         
+                                                                                                                                 
+                  2：                                                                                                            
+                  内核通过bootargs找到文件系统，bootargs中的mtdblockx即代表分区，block1，2，3代表哪个分区。                      
+                  事实上,bootargs中的"root=/dev/mtdblockx"只是告诉内核,root fs从第x个(x=0,1,2...)MTD分区挂载,mtdblock0对应第一个 
+                  分区,mtdblock1对应第二个分区,以此类推.                                                                         
+                                                                                                                                 
+                  3：分区方法                                                                                                    
+                  1) MTD层的分区                                                                                                 
+                  2) 通过U-boot传递给内核的命令行中的mtdparts=...                                                                
+                  3) 其他可以让内核知道分区信息的任何办法，（内核默认的命令参数）                                                
+                  下面说到mtdparts，及它的用法：                                                                                 
+                  mtdparts                                                                                                       
+                  mtdparts=fc000000.nor_flash:1920k(linux),128k(fdt),20M(ramdisk),4M(jffs2),38272k(user),256k(env),384k(uboot)   
+                  要想这个参数起作用，内核中的mtd驱动必须要支持，即内核配置时需要选上Device Drivers  ---> Memory Technology      
+                  Device (MTD) support  ---> Command line partition table parsing                                                
+                                                                                                                                 
+                  mtdparts的格式如下：                                                                                           
+                  mtdparts=<mtddef>[;<mtddef]                                                                                    
+                  <mtddef>  := <mtd-id>:<partdef>[,<partdef>]                                                                    
+                   <partdef> := <size>[@offset][<name>][ro]                                                                      
+                   <mtd-id>  := unique id used in mapping driver/device                                                          
+                  <size>    := standard linux memsize OR "-" to denote all remaining space                                       
+                  <name>    := (NAME)                                                                                            
+                  因此你在使用的时候需要按照下面的格式来设置：                                                                   
+                  mtdparts=mtd-id:<size1>@<offset1>(<name1>),<size2>@<offset2>(<name2>)                                          
+                  这里面有几个必须要注意的：                                                                                     
+                  a.  mtd-id 必须要跟你当前平台的flash的mtd-id一致，不然整个mtdparts会失效怎样获取到当前平台的flash的mtd-id？    
+                  在bootargs参数列表中可以指定当前flash的mtd-id，如指定 mtdids:nand0=gen_nand.1，前面的nand0则表示第一个flash    
+                  b.  size在设置的时候可以为实际的size(xxM,xxk,xx)，也可以为'-'这表示剩余的所有空间。                            
+                  相关信息可以查看drivers/mtd/cmdlinepart.c中的注释找到相关描述。                                                
+                  U-boot的环境变量值得注意的有两个： bootcmd 和bootargs。                                                        
+                  引用：                                                                                                         
+                  u       bootcmd                                                                                                
+                      前面有说过bootcmd是自动启动时默认执行的一些命令，因此你可以在当前环境中定义各种不同配置，不同环境的参数设置
+                  ，然后设置bootcmd为你经常使用的那种参数。                                                                      
+                  u       bootargs                                                                                               
+                      bootargs是环境变量中的重中之重，甚至可以说整个环境变量都是围绕着bootargs来设置的。bootargs的种类非常非常的 
+                  多，我们平常只是使用了几种而已，感兴趣的可以看看这篇文章说的很全：http://www.linuxidc.com/Linux/2011-03/       
+                  33599p4.htm。bootargs非常的灵活，内核和文件系统的不同搭配就会有不同的设置方法，甚至你也可以不设置bootargs,而直 
+                  接将其写到内核中去（在配置内核的选项中可以进行这样的设置），正是这些原因导致了bootargs使用上的困难。           
+                      下面介绍一下bootargs常用参数，bootargs的种类非常的多，而且随着kernel的发展会出现一些新的参数，使得设置会更 
+                  加灵活多样。                                                                                                   
+                                                                                                                                 
+                  A. root                                                                                                        
+                  用来指定rootfs的位置，常见的情况有:                                                                            
+teaco77               root=/dev/ram rw                                                                                           
+teaco77 当前离线      root=/dev/ram0 rw                                                                                          
+                    请注意上面的这两种设置情况是通用的，我做过测试甚至root=/dev/ram1 rw和root=/dev/ram2 rw也是可以的，网上有人说 
+空间积分          在某些情况下是不通用的，即必须设置成ram或者ram0，但是目前还没有遇到，还需要进一步确认，遇到不行的时候可以逐一尝
+    0             试。                                                                                                           
+信誉积分                                                                                                                         
+    104               root=/dev/mtdx rw                                                                                          
+UID                   root=/dev/mtdblockx rw                                                                                     
+    25776631          root=/dev/mtdblock/x rw                                                                                    
+阅读权限              root=31:0x                                                                                                 
+    10                                                                                                                           
+积分              上面的这几个在一定情况下是通用的，当然这要看你当前的系统是否支持，不过mtd是字符设备，而mtdblock是块设备，有时候
+    10            你的挨个的试到底当前的系统支持上面那种情况下，不过root=/dev/mtdblockx rw比较通用。此外，如果直接指定设备名可以 
+帖子              的话，那么使用此设备的设备号也是可以的。                                                                       
+    11                                                                                                                           
+精华                  root=/dev/nfs                                                                                              
+    0             在文件系统为基于nfs的文件系统的时候使用。当然指定root=/dev/nfs之后，还需要指定nfsroot=serverip:nfs_dir，即指明 
+可用积分          文件系统存在那个主机的那个目录下面。                                                                           
+    10            B. rootfstype                                                                                                  
+专家积分              这个选项需要跟root一起配合使用，一般如果根文件系统是ext2的话，有没有这个选项是无所谓的，但是如果是         
+    0             jffs2,squashfs等文件系统的话，就需要rootfstype指明文件系统的类型，不然会无法挂载根分区.                        
+在线时间                                                                                                                         
+    15 小时       C. console                                                                                                     
+注册时间                                                                                                                         
+    2011-05-03    console=tty<n>  使用虚拟串口终端设备 <n>.                                                                      
+最后登录          console=ttyS<n>[,options] 使用特定的串口<n>，options可以是这样的形式bbbbpnx，这里bbbb是指串口的波特率，p是奇偶 
+    2012-07-01    校验位，n是指的bits。                                                                                          
+                  console=ttySAC<n>[,options] 同上面。                                                                           
+查看详细                                                                                                                         
+                 看你当前的环境，有时用ttyS<n>，有时用ttySAC<n>，网上有人说，这是跟内核的版本有关，2.4用ttyS<n>，2.6用ttySAC<n> 
+                  ，但实际情况是官方文档中也是使用ttyS<n>，所以应该是跟内核版本没有关联的。可以查看Documentation/                
+白手起家          serial-console.txt找到相关描述。                                                                               
+                                                                                                                                 
+白手起家, 积分    D. mem                                                                                                         
+10, 距离下一级还  mem=xxM 指定内存的大小，不是必须的                                                                             
+需 190 积分                                                                                                                      
+                  E. ramdisk_size                                                                                                
+帖子              ramdisk=xxxxx           不推荐                                                                                 
+    11            ramdisk_size=xxxxx   推荐                                                                                      
+主题              上面这两个都可以告诉ramdisk 驱动，创建的ramdisk的size，默认情况下是4m(s390默认8M)，你可以查看Documentation/    
+    7             ramdisk.txt找到相关的描述，不过ramdisk=xxxxx在新版的内核都已经没有提了，不推荐使用。                           
+精华                                                                                                                             
+    0             F. initrd, noinitrd                                                                                            
+可用积分          当你没有使用ramdisk启动系统的时候，你需要使用noinitrd这个参数，但是如果使用了的话，就需要指定initrd=           
+    10            r_addr,size, r_addr表示initrd在内存中的位置，size表示initrd的大小。                                            
+专家积分                                                                                                                         
+    0             G. init                                                                                                        
+在线时间          init指定的是内核启起来后，进入系统中运行的第一个脚本，一般init=/linuxrc, 或者init=/etc/preinit，preinit的内容一
+    15 小时       般是创建console,null设备节点，运行init程序，挂载一些文件系统等等操作。请注意，很多初学者以为init=/linuxrc是固定
+注册时间          写法，其实不然，/linuxrc指的是/目录下面的linuxrc脚本，一般是一个连接罢了。                                     
+    2011-05-03                                                                                                                   
+最后登录          H. ip                                                                                                          
+    2012-07-01    指定系统启动之后网卡的ip地址，如果你使用基于nfs的文件系统，那么必须要有这个参数，其他的情况下就看你自己的喜好了
+                  。设置ip有两种方法：                                                                                           
+  * 串门           ip = ip addr                                                                                                  
+  * 好友           ip=ip addr:server ip addr:gateway:netmask::which netcard:off                                                  
+  * 博客          这两种方法可以用，不过很明显第二种要详细很多，请注意第二种中which netcard 是指开发板上的网卡，而不是主机上的网 
+  * 消息          卡。                                                                                                           
+                                                                                                                                 
+                  说完常见的几种bootargs，那么我们来讨论平常我经常使用的几种组合：                                               
+                  1). 假设文件系统是ramdisk，且直接就在内存中，bootargs的设置应该如下：                                          
+                  setenv bootargs ‘initrd=0x32000000,0xa00000 root=/dev/ram0 console=ttySAC0 mem=64M init=/linuxrc’              
+                                                                                                                                 
+                  2). 假设文件系统是ramdisk，且在flash中，bootargs的设置应该如下：                                               
+                  setenv bootargs ‘mem=32M console=ttyS0,115200 root=/dev/ram rw init=/linuxrc’                                  
+                  注意这种情况下你应该要在bootm命令中指定ramdisk在flash中的地址，如bootm kernel_addr ramdisk_addr (fdt_addr)     
+                                                                                                                                 
+                  3). 假设文件系统是jffs2类型的，且在flash中，bootargs的设置应该如下                                             
+                  setenv bootargs ‘mem=32M console=ttyS0,115200 noinitrd root=/dev/mtdblock2 rw rootfstype=jffs2 init=/linuxrc’  
+                                                                                                                                 
+                  4). 假设文件系统是基于nfs的，bootargs的设置应该如下                                                            
+                  setenv bootargs ‘noinitrd mem=64M console=ttySAC0 root=/dev/nfs nfsroot=192.168.0.3:/nfs ip=                   
+                  192.168.0.5:192.168.0.3:192.168.0.3:255.255.255.0::eth0:off’                                                   
+                  或者                                                                                                           
+                  setenv bootargs ‘noinitrd mem=64M console=ttySAC0 root=/dev/nfs nfsroot=192.168.0.3:/nfs ip=192.168.0.5’       
+                                                                                                                                 
+                  B. rootfstype                                                                                                  
+                      这个选项需要跟root一起配合使用，一般如果根文件系统是ext2的话，有没有这个选项是无所谓的，但是如果是         
+                  jffs2,squashfs等文件系统的话，就需要rootfstype指明文件系统的类型，不然会无法挂载根分区.                        
+                                                                                                                                 
+                  C. console                                                                                                     
+                                                                                                                                 
+                  console=tty<n>  使用虚拟串口终端设备 <n>.                                                                      
+                  console=ttyS<n>[,options] 使用特定的串口<n>，options可以是这样的形式bbbbpnx，这里bbbb是指串口的波特率，p是奇偶 
+                  校验位，n是指的bits。                                                                                          
+                  console=ttySAC<n>[,options] 同上面。                                                                           
+                                                                                                                                 
+                  看你当前的环境，有时用ttyS<n>，有时用ttySAC<n>，网上有人说，这是跟内核的版本有关，2.4用ttyS<n>，2.6用ttySAC<n> 
+                  ，但实际情况是官方文档中也是使用ttyS<n>，所以应该是跟内核版本没有关联的。可以查看Documentation/                
+                  serial-console.txt找到相关描述。                                                                               
+                                                                                                                                 
+                  D. mem                                                                                                         
+                  mem=xxM 指定内存的大小，不是必须的                                                                             
+                                                                                                                                 
+                  E. ramdisk_size                                                                                                
+                  ramdisk=xxxxx           不推荐                                                                                 
+                  ramdisk_size=xxxxx   推荐                                                                                      
+                  上面这两个都可以告诉ramdisk 驱动，创建的ramdisk的size，默认情况下是4m(s390默认8M)，你可以查看Documentation/    
+                  ramdisk.txt找到相关的描述，不过ramdisk=xxxxx在新版的内核都已经没有提了，不推荐使用。                           
+                                                                                                                                 
+                  F. initrd, noinitrd                                                                                            
+                  当你没有使用ramdisk启动系统的时候，你需要使用noinitrd这个参数，但是如果使用了的话，就需要指定initrd=           
+                  r_addr,size, r_addr表示initrd在内存中的位置，size表示initrd的大小。                                            
+                                                                                                                                 
+                  G. init                                                                                                        
+                  init指定的是内核启起来后，进入系统中运行的第一个脚本，一般init=/linuxrc, 或者init=/etc/preinit，preinit的内容一
+                  般是创建console,null设备节点，运行init程序，挂载一些文件系统等等操作。请注意，很多初学者以为init=/linuxrc是固定
+                  写法，其实不然，/linuxrc指的是/目录下面的linuxrc脚本，一般是一个连接罢了。                                     
+                                                                                                                                 
+                  H. ip                                                                                                          
+                  指定系统启动之后网卡的ip地址，如果你使用基于nfs的文件系统，那么必须要有这个参数，其他的情况下就看你自己的喜好了
+                  。设置ip有两种方法：                                                                                           
+                   ip = ip addr                                                                                                  
+                   ip=ip addr:server ip addr:gateway:netmask::which netcard:off                                                  
+                  这两种方法可以用，不过很明显第二种要详细很多，请注意第二种中which netcard 是指开发板上的网卡，而不是主机上的网 
+                  卡。                                                                                                           
+                                                                                                                                 
+                  说完常见的几种bootargs，那么我们来讨论平常我经常使用的几种组合：                                               
+                  1). 假设文件系统是ramdisk，且直接就在内存中，bootargs的设置应该如下：                                          
+                  setenv bootargs ‘initrd=0x32000000,0xa00000 root=/dev/ram0 console=ttySAC0 mem=64M init=/linuxrc’              
+                                                                                                                                 
+                  2). 假设文件系统是ramdisk，且在flash中，bootargs的设置应该如下：                                               
+                  setenv bootargs ‘mem=32M console=ttyS0,115200 root=/dev/ram rw init=/linuxrc’                                  
+                  注意这种情况下你应该要在bootm命令中指定ramdisk在flash中的地址，如bootm kernel_addr ramdisk_addr (fdt_addr)     
+                                                                                                                                 
+                  3). 假设文件系统是jffs2类型的，且在flash中，bootargs的设置应该如下                                             
+                  setenv bootargs ‘mem=32M console=ttyS0,115200 noinitrd root=/dev/mtdblock2 rw rootfstype=jffs2 init=/linuxrc’  
+                                                                                                                                 
+                  4). 假设文件系统是基于nfs的，bootargs的设置应该如下                                                            
+                  setenv bootargs ‘noinitrd mem=64M console=ttySAC0 root=/dev/nfs nfsroot=192.168.0.3:/nfs ip=                   
+                  192.168.0.5:192.168.0.3:192.168.0.3:255.255.255.0::eth0:off’                                                   
+                  或者                                                                                                           
+                  setenv bootargs ‘noinitrd mem=64M console=ttySAC0 root=/dev/nfs nfsroot=192.168.0.3:/nfs ip=192.168.0.5’       
+                                                                                                                                 
+                  本篇文章来源于 Linux公社网站(www.linuxidc.com)  原文链接：http://www.linuxidc.com/Linux/2011-03/33599p3.htm    
+
+
+
+* U-boot分区及内核更新的实现
+
+http://blogold.chinaunix.net/u2/72003/showart_2151193.html一 问题提出
+1） 在没有网络的环境下可以使用U盘等存储介质来更新内核
+2） 可以通过网络远程更新内核
+3） 支持U-Boot对nor falsh ，nand flash的分区
+4） U-Boot下对JFFS2文件系统的支持。
+二 问题解决
+通过实现U-boot使用JFFS2文件系统加载内核的方法解决上述内核更新及分区问题
+ 
+三 问题实现（u-boot-2009.01）
+添加对JFFS2文件系统支持的宏定义
+./include/configs/ads5121.h
+#define CONFIG_CMD_JFFS2
+#define CONFIG_JFFS2_CMDLINE
+#define CONFIG_JFFS2_NAND
+ 
+//定义默认的分区信息(最好和内核定义的MTD分区信息一致)
+#define MTDIDS_DEFAULT          "nor0=ads5121-flash,nand0=ads5121-nand"
+#define MTDPARTS_DEFAULT        "mtdparts=ads5121-flash:256k(protected)," \
+                                        "59904k(filesystem)," \
+                                        "4m(kernel)," \
+                                        "256k(device-tree)," \
+                                        "1m(u-boot);" \
+                                "ads5121-nand:128m(jffs2)," \
+                                "-(data)"
+四 U-Boot分区及更新操作步骤
+CPU:   MPC5121e rev. 2.0, Core e300c4 at 400 MHz, CSB at 200 MHz
+Board: ADS5121 rev. 0x0400 (CPLD rev. 0x06)
+I2C:   ready
+DRAM:  512 MB
+FLASH: 64 MB
+NAND:  1024 MiB
+PCI:   Bus Dev VenId DevId Class Int
+Net:   FEC ETHERNET
+IDE:   Bus 0: not available 
+ 
+Type "run flash_nfs" to mount root filesystem over NFS
+ 
+Hit any key to stop autoboot:  0
+1 分区操作1）手动设置分区信息
+setenv mtdids nand0=ads5121-nand
+setenv mtdparts mtdparts=ads5121-nand:128m(jffs2 filesystem),4m(kernel),1m(device tree),-(data)
+=> mtdparts
+no such device nor0
+ 
+device nand0 <ads5121-nand>, # parts = 4
+ #: name                        size            offset          mask_flags
+ 0: jffs2 filesystem    0x08000000      0x00000000      0
+ 1: kernel              0x00400000      0x08000000      0
+ 2: device tree         0x00100000      0x08400000      0
+ 3: data                0x17b00000      0x08500000      0
+ 
+active partition: nand0,0 - (jffs2 filesystem) 0x08000000 @ 0x00000000
+ 
+defaults:
+mtdids  : nor0=ads5121-flash,nand0=ads5121-nand
+mtdparts: mtdparts=ads5121-flash:256k(protected),59904k(filesystem),4m(kernel),256k(device-tree),1m(u-boot);ads5121-nand:128m(jffs2),-(data)
+ 
+2）设置默认的分区信息
+=> mtdparts default
+=> mtdparts
+ 
+device nor0 <ads5121-flash>, # parts = 5
+ #: name                        size            offset          mask_flags
+ 0: protected           0x00040000      0x00000000      0
+ 1: filesystem          0x03a80000      0x00040000      0
+ 2: kernel              0x00400000      0x03ac0000      0
+ 3: device-tree         0x00040000      0x03ec0000      0
+ 4: u-boot              0x00100000      0x03f00000      0
+ 
+device nand0 <ads5121-nand>, # parts = 2
+ #: name                        size            offset          mask_flags
+ 0: jffs2               0x08000000      0x00000000      0
+ 1: data                0x18000000      0x08000000      0
+ 
+active partition: nor0,0 - (protected) 0x00040000 @ 0x00000000
+ 
+defaults:
+mtdids  : nor0=ads5121-flash,nand0=ads5121-nand
+mtdparts: mtdparts=ads5121-flash:256k(protected),59904k(filesystem),4m(kernel),256k(device-tree),1m(u-boot);ads5121-nand:128m(jffs2),-(data)
+=>
+ 
+3）删除分区：
+=> mtd del nand0,1
+=> mtdparts
+ 
+device nor0 <ads5121-flash>, # parts = 5
+ #: name                        size            offset          mask_flags
+ 0: protected           0x00040000      0x00000000      0
+ 1: filesystem          0x03a80000      0x00040000      0
+ 2: kernel              0x00400000      0x03ac0000      0
+ 3: device-tree         0x00040000      0x03ec0000      0
+ 4: u-boot              0x00100000      0x03f00000      0
+ 
+device nand0 <ads5121-nand>, # parts = 1
+ #: name                        size            offset          mask_flags
+ 0: jffs2               0x08000000      0x00000000      0
+ 
+active partition: nor0,0 - (protected) 0x00040000 @ 0x00000000
+ 
+defaults:
+mtdids  : nor0=ads5121-flash,nand0=ads5121-nand
+mtdparts: mtdparts=ads5121-flash:256k(protected),59904k(filesystem),4m(kernel),256k(device-tree),1m(u-boot);ads5121-nand:128m(jffs2),-(data)
+=>
+4）添加一个分区
+=> mtdparts add nand0 0x18000000@0x08000000 data
+=> mtdparts
+ 
+device nor0 <ads5121-flash>, # parts = 5
+ #: name                        size            offset          mask_flags
+ 0: protected           0x00040000      0x00000000      0
+ 1: filesystem          0x03a80000      0x00040000      0
+ 2: kernel              0x00400000      0x03ac0000      0
+ 3: device-tree         0x00040000      0x03ec0000      0
+ 4: u-boot              0x00100000      0x03f00000      0
+ 
+device nand0 <ads5121-nand>, # parts = 2
+ #: name                        size            offset          mask_flags
+ 0: jffs2               0x08000000      0x00000000      0
+ 1: data                0x18000000      0x08000000      0
+ 
+active partition: nor0,0 - (protected) 0x00040000 @ 0x00000000
+ 
+defaults:
+mtdids  : nor0=ads5121-flash,nand0=ads5121-nand
+mtdparts: mtdparts=ads5121-flash:256k(protected),59904k(filesystem),4m(kernel),256k(device-tree),1m(u-boot);ads5121-nand:128m(jffs2),-(data)
+=>
+5）修改当前活动分区（如果要操作某个分区，就需要将其修改为当前的活动分区）
+=> chpart nand0,0
+partition changed to nand0,0
+=> mtdparts
+ 
+device nor0 <ads5121-flash>, # parts = 5
+ #: name                        size            offset          mask_flags
+ 0: protected           0x00040000      0x00000000      0
+ 1: filesystem          0x03a80000      0x00040000      0
+ 2: kernel              0x00400000      0x03ac0000      0
+ 3: device-tree         0x00040000      0x03ec0000      0
+ 4: u-boot              0x00100000      0x03f00000      0
+ 
+device nand0 <ads5121-nand>, # parts = 2
+ #: name                        size            offset          mask_flags
+ 0: jffs2               0x08000000      0x00000000      0
+ 1: data                0x18000000      0x08000000      0
+ 
+active partition: nand0,0 - (jffs2) 0x08000000 @ 0x00000000
+ 
+defaults:
+mtdids  : nor0=ads5121-flash,nand0=ads5121-nand
+mtdparts: mtdparts=ads5121-flash:256k(protected),59904k(filesystem),4m(kernel),256k(device-tree),1m(u-boot);ads5121-nand:128m(jffs2),-(data)
+=>
+2 更新内核1）下载新内核到根文件系统
+Linux内核将NAND Flash设置了2个分区作为MTD设备：
+[root@root /]# cat /proc/mtd
+dev:    size   erasesize  name
+mtd0: 08000000 00020000 "nand0,128M"
+mtd1: 38000000 00020000 "nand0,896M"
+分区0:128M，分区1:896M， 分区0是用作存放jffs2等文件系统，分区1作为其他存储用途。我们可以通过网络或者U盘等方法将需要更新的内核下载到linux的根文件系统中：
+[root@root /]# ll
+drwxr-xr-x    2 root     root            0 Oct 23 09:14 Settings
+drwxr-xr-x    2 root     root            0 Nov 25 08:56 bin
+drwxr-xr-x    2 root     root            0 Oct 23 08:07 boot
+drwxr-xr-x    9 root     root        12720 Nov 26 13:41 dev
+drwxr-xr-x    8 root     root            0 Nov 26 13:38 etc
+drwxr-xr-x    4 root     root            0 Oct 26 10:03 home
+drwxr-xr-x    4 root     root            0 Oct 23 08:07 lib
+lrwxrwxrwx    1 root     root           11 Nov 25 08:56 linuxrc -> bin/busybox
+drwxr-xr-x    7 root     root            0 Oct 23 08:07 mnt
+drwxr-xr-x    3 root     root            0 Oct 23 08:07 opt
+dr-xr-xr-x   37 root     root            0 Jan  1  1970 proc
+drwxr-xr-x    2 root     root            0 Oct 23 08:07 root
+drwxr-xr-x    2 root     root            0 Nov 25 08:56 sbin
+drwxr-xr-x   11 root     root            0 Jan  1  1970 sys
+drwxr-xr-x    2 root     root         4096 Jan  1  1970 tmp
+-rwxrwxrwx    1 root     root      1702205 Nov 17 02:43 uImage_ori
+-rwxr-xr-x    1 root     root      1644439 Nov 26 13:41 uImage_update
+drwxr-xr-x   11 root     root            0 Nov 13 06:23 usr
+drwxr-xr-x   11 root     root          220 Oct 23 08:07 var
+[root@root /]#
+例如我们要更新才新内核文件为：uImage_update
+2）设置激活分区
+进入到U-Boot：
+U-Boot 2009.03 (11月 25 2009 - 21:22:45) MPC512X
+ 
+CPU:   MPC5121e rev. 2.0, Core e300c4 at 400 MHz, CSB at 200 MHz
+Board: ADS5121 rev. 0x0400 (CPLD rev. 0x06)
+I2C:   ready
+DRAM:  512 MB
+FLASH: 64 MB
+NAND:  1024 MiB
+PCI:   Bus Dev VenId DevId Class Int
+Net:   FEC ETHERNET
+IDE:   Bus 0: not available 
+ 
+Type "run flash_nfs" to mount root filesystem over NFS
+ 
+Hit any key to stop autoboot:  0
+=> mtdparts default
+=> mtdparts
+ 
+device nor0 <ads5121-flash>, # parts = 5
+ #: name                        size            offset          mask_flags
+ 0: protected           0x00040000      0x00000000      0
+ 1: filesystem          0x03a80000      0x00040000      0
+ 2: kernel              0x00400000      0x03ac0000      0
+ 3: device-tree         0x00040000      0x03ec0000      0
+ 4: u-boot              0x00100000      0x03f00000      0
+ 
+（注意我们的NAND Flash分区和内核的MTD分区是保持一致的。）
+device nand0 <ads5121-nand>, # parts = 2
+ #: name                        size            offset          mask_flags
+ 0: jffs2               0x08000000      0x00000000      0
+ 1: data                0x18000000      0x08000000      0
+ 
+active partition: nor0,0 - (protected) 0x00040000 @ 0x00000000
+ 
+defaults:
+mtdids  : nor0=ads5121-flash,nand0=ads5121-nand
+mtdparts: mtdparts=ads5121-flash:256k(protected),59904k(filesystem),4m(kernel),256k(device-tree),1m(u-boot);ads5121-nand:128m(jffs2),-(data)
+=> ls
+Scanning JFFS2 FS:  done.
+修改当前的活动分区，因为我们要操作的是nand0 的第一个分区（存放有根文件系统同时包含有我们需要更新的内核uImage_update。
+=> chpart nand0,0
+partition changed to nand0,0
+=> mtdparts
+ 
+device nor0 <ads5121-flash>, # parts = 5
+ #: name                        size            offset          mask_flags
+ 0: protected           0x00040000      0x00000000      0
+ 1: filesystem          0x03a80000      0x00040000      0
+ 2: kernel              0x00400000      0x03ac0000      0
+ 3: device-tree         0x00040000      0x03ec0000      0
+ 4: u-boot              0x00100000      0x03f00000      0
+ 
+device nand0 <ads5121-nand>, # parts = 2
+ #: name                        size            offset          mask_flags
+ 0: jffs2               0x08000000      0x00000000      0
+ 1: data                0x18000000      0x08000000      0
+ 
+active partition: nand0,0 - (jffs2) 0x08000000 @ 0x00000000
+ 
+defaults:
+mtdids  : nor0=ads5121-flash,nand0=ads5121-nand
+mtdparts: mtdparts=ads5121-flash:256k(protected),59904k(filesystem),4m(kernel),256k(device-tree),1m(u-boot);ads5121-nand:128m(jffs2),-(data)
+=>
+3）下载更新内核
+查看NAND Flash第一分区上存放的JFFS2文件系统内容：
+=> ls
+Scanning JFFS2 FS: .......................... done.
+ drwxr-xr-x        0 Fri Oct 23 09:14:40 2009 Settings
+ drwxr-xr-x        0 Fri Oct 23 08:07:46 2009 bin
+ drwxr-xr-x        0 Fri Oct 23 08:07:50 2009 boot
+ drwxr-xr-x        0 Fri Oct 23 08:08:34 2009 dev
+ drwxr-xr-x        0 Mon Oct 26 10:12:52 2009 etc
+ drwxr-xr-x        0 Mon Oct 26 09:09:47 2009 home
+ drwxr-xr-x        0 Fri Oct 23 08:07:49 2009 lib
+ lrwxrwxrwx       11 Wed Nov 25 08:56:18 2009 linuxrc -> bin/busybox
+ drwxr-xr-x        0 Fri Oct 23 08:07:50 2009 mnt
+ drwxr-xr-x        0 Fri Oct 23 08:07:46 2009 opt
+ drwxr-xr-x        0 Fri Oct 23 08:07:46 2009 proc
+ drwxr-xr-x        0 Fri Oct 23 08:07:50 2009 root
+ drwxr-xr-x        0 Fri Oct 23 08:07:50 2009 sbin
+ drwxr-xr-x        0 Fri Oct 23 08:07:50 2009 sys
+ drwxr-xr-x        0 Mon Oct 26 10:17:02 2009 tmp
+ -rwxrwxrwx  1702205 Tue Nov 17 02:43:01 2009 uImage_ori
+ drwxr-xr-x        0 Fri Oct 23 08:07:49 2009 usr
+ drwxr-xr-x        0 Fri Oct 23 08:07:50 2009 var
+ -rwxr-xr-x  1644439 Thu Nov 26 13:41:38 2009 uimage
+ -rwxr-xr-x  1644439 Thu Nov 26 13:41:38 2009 uImage
+ -rwxr-xr-x  1644439 Thu Nov 26 13:41:38 2009 uImage_update
+=>
+=> fsload 0x400000 uImage_update
+### JFFS2 loading 'uImage_update' to 0x400000
+### JFFS2 load complete: 1644439 bytes loaded to 0x400000
+4）烧写新内核到nor flash
+查看nor flash分区：
+device nor0 <ads5121-flash>, # parts = 5
+ #: name                        size            offset          mask_flags
+ 0: protected           0x00040000      0x00000000      0
+ 1: filesystem          0x03a80000      0x00040000      0
+ 2: kernel              0x00400000      0x03ac0000      0
+ 3: device-tree         0x00040000      0x03ec0000      0
+ 4: u-boot              0x00100000      0x03f00000      0
+我们将分区2作为存放内核，可以算出物理基址为：ffac0000
+=> erase ffac0000 ffcfffff
+ 
+......... done
+Erased 9 sectors
+=> cp.b 0x400000  0xffac0000 0x200000
+Copy to Flash... done
+5）从内存中启动新下载的内核
+=> bootm 0x400000 - 0xffec0000
+## Booting kernel from Legacy Image at 00400000 ...
+   Image Name:   Linux-2.6.24.6
+   Created:      2009-11-26   5:36:51 UTC
+   Image Type:   PowerPC Linux Kernel Image (gzip compressed)
+   Data Size:    1644375 Bytes =  1.6 MB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at ffec0000
+   Booting using the fdt blob at 0xffec0000
+   Uncompressing Kernel Image ... OK
+   Loading Device Tree to 007fb000, end 007ffa2f ... OK
+[    0.000000] Using MPC5121 ADS machine description
+[    0.000000] Linux version 2.6.24.6 (root@localhost.localdomain) (gcc version 4.1.2) #12 PREEMPT Thu Nov 26 00:36:46 EST 2009
+[    0.000000] MPC5121 ADS board from Freescale Semiconductor
+[    0.000000] preallocate_diu_videomemory: diu_size=5242880
+[    0.000000] preallocate_diu_videomemory: diu_mem=c0a00000
+[    0.000000] Found MPC512x PCI host bridge at 0x0000000080008500. Firmware bus number: 0->0
+[    0.000000] Zone PFN ranges:
+[    0.000000]   DMA             0 ->   131072
+[    0.000000]   Normal     131072 ->   131072
+[    0.000000] Movable zone start PFN for each node
+[    0.000000] early_node_map[1] active PFN ranges
+[    0.000000]     0:        0 ->   131072
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 130048
+[    0.000000] Kernel command line: root=/dev/mtdblock0 rw rootfstype=jffs2 console=ttyPSC0,115200
+[    0.000000] IPIC (128 IRQ sources) at fcff7c00
+[    0.000000] PID hash table entries: 2048 (order: 11, 8192 bytes)
+[ 1460.288919] clocksource: timebase mult[5000002] shift[22] registered
+[ 1460.289062] Console: colour dummy device 80x25
+[ 1460.289166] console [ttyPSC0] enabled
+[ 1460.397027] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+[ 1460.406733] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+[ 1460.465862] Memory: 508544k/524288k available (3276k kernel code, 15536k reserved, 148k data, 369k bss, 184k init)
+[ 1460.476258] SLUB: Genslabs=9, HWalign=32, Order=0-1, MinObjects=4, CPUs=1, Nodes=1
+[ 1460.563885] Mount-cache hash table entries: 512
+[ 1460.570856] net_namespace: 64 bytes
+[ 1460.576217] NET: Registered protocol family 16
+[ 1460.593330] Reserved irq 66(0x42) for MBX
+[ 1460.599847] Could not initialize clk spdif_txclk without a calc routine
+[ 1460.606549] Could not initialize clk spdif_rxclk without a calc routine
+[ 1460.613459] mapped ioctl to e1002000 and gpioctl to e1004100
+[ 1460.619119] PCI: Probing PCI hardware
+[ 1460.631440] SCSI subsystem initialized
+[ 1460.636450] usbcore: registered new interface driver usbfs
+[ 1460.642439] usbcore: registered new interface driver hub
+[ 1460.648065] usbcore: registered new device driver usb
+[ 1460.668033] NET: Registered protocol family 2
+[ 1460.672333] Time: timebase clocksource has been installed.
+[ 1460.716619] IP route cache hash table entries: 16384 (order: 4, 65536 bytes)
+[ 1460.725179] TCP established hash table entries: 65536 (order: 7, 524288 bytes)
+[ 1460.736154] TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+[ 1460.744924] TCP: Hash tables configured (established 65536 bind 65536)
+[ 1460.751398] TCP reno registered
+[ 1460.766726] JFFS2 version 2.2. (NAND) ? 2001-2006 Red Hat, Inc.
+[ 1460.773027] io scheduler noop registered
+[ 1460.776906] io scheduler anticipatory registered (default)
+[ 1460.782367] io scheduler deadline registered
+[ 1460.786671] io scheduler cfq registered
+[ 1460.833534] Console: switching to colour frame buffer device 128x48
+[ 1460.875966] fb0: Panel0 fb device registered successfully.
+[ 1460.881944] fb1: Panel1 AOI0 fb device registered successfully.
+[ 1460.888286] fb2: Panel1 AOI1 fb device registered successfully.
+[ 1460.894657] fb3: Panel2 AOI0 fb device registered successfully.
+[ 1460.901024] fb4: Panel2 AOI1 fb device registered successfully.
+[ 1460.907066] FSL_DIU_FB: registed FB device driver!
+[ 1461.157873] Serial: MPC52xx PSC UART driver
+[ 1461.162508] 80011300.serial: ttyPSC0 at MMIO 0x80011300 (irq = 40) is a MPC52xx PSC
+[ 1461.171261] 80011400.serial: ttyPSC1 at MMIO 0x80011400 (irq = 40) is a MPC52xx PSC
+[ 1461.180919] RAMDISK driver initialized: 4 RAM disks of 16384K size 1024 blocksize
+[ 1461.189583] fsl-mscan initializing
+[ 1461.194575] fsl-mscan fsl-mscan.0: probe port 0xE1062300 done, clk rate:100000000
+[ 1461.203712] fsl-mscan fsl-mscan.1: probe port 0xE1064380 done, clk rate:100000000
+[ 1461.213190] eth0: fs_enet: 00:ec:00:12:00:01
+[ 1461.218480] FEC MII Bus: probed
+[ 1461.221656] Uniform Multi-Platform E-IDE driver Revision: 7.00alpha2
+[ 1461.227990] ide: Assuming 33MHz system bus speed for PIO modes; override with idebus=xx
+[ 1461.237336] Driver 'sd' needs updating - please use bus_type methods
+[ 1461.244449] MPC5121 MTD nand Driver 0.2
+[ 1461.249116] NAND device: Manufacturer ID: 0xad, Chip ID: 0xdc (Hynix NAND 512MiB 3,3V 8-bit)
+[ 1461.257574] 2 NAND chips detected
+[ 1461.263636] mpc5121r2nfc 40000000.nfc: Using OF partition info
+[ 1461.269627] Creating 2 MTD partitions on "NAND":
+[ 1461.274209] 0x00000000-0x08000000 : "nand0,128M"
+[ 1461.279780] 0x08000000-0x40000000 : "nand0,896M"
+[ 1461.287204] fsl-ehci fsl-ehci.0: Freescale On-Chip EHCI Host Controller
+[ 1461.294203] fsl-ehci fsl-ehci.0: new USB bus registered, assigned bus number 1
+[ 1461.324401] fsl-ehci fsl-ehci.0: irq 44, io mem 0x80004000
+[ 1461.340366] fsl-ehci fsl-ehci.0: USB 2.0 started, EHCI 1.00, driver 10 Dec 2004
+[ 1461.349065] usb usb1: configuration #1 chosen from 1 choice
+[ 1461.355003] hub 1-0:1.0: USB hub found
+[ 1461.358793] hub 1-0:1.0: 1 port detected
+[ 1461.465293] Initializing USB Mass Storage driver...
+[ 1461.704388] usb 1-1: new high speed USB device using fsl-ehci and address 2
+[ 1461.851809] usb 1-1: configuration #1 chosen from 1 choice
+[ 1461.858825] scsi0 : SCSI emulation for USB Mass Storage devices
+[ 1461.865316] usbcore: registered new interface driver usb-storage
+[ 1461.871549] USB Mass Storage support registered.
+[ 1461.876659] mice: PS/2 mouse device common for all mice
+[ 1461.882754] mpc5121-rtc 80000a00.rtc: rtc core: registered mpc5121-rtc as rtc0
+[ 1461.890173] i2c /dev entries driver
+[ 1461.900160] Freescale(R) MPC5121 DMA Engine found, 64 channels
+[ 1462.008639] fsldma: Self-test copy successfully
+[ 1462.013770] usbcore: registered new interface driver usbhid
+[ 1462.019330] drivers/hid/usbhid/hid-core.c: v2.6:USB HID core driver
+[ 1462.025844] TCP cubic registered
+[ 1462.029247] NET: Registered protocol family 1
+[ 1462.033645] NET: Registered protocol family 17
+[ 1462.038040] can: controller area network core (rev 20071116 abi 8)
+[ 1462.044236] NET: Registered protocol family 29
+[ 1462.048897] can: raw protocol (rev 20071116)
+[ 1462.053487] RPC: Registered udp transport module.
+[ 1462.058152] RPC: Registered tcp transport module.
+[ 1462.063233] mpc5121-rtc 80000a00.rtc: setting system clock to 2009-11-26 14:09:26 UTC (1259244566)
+[ 1462.073040] JFFS2 doesn't use OOB.
+[ 1472.697943] VFS: Mounted root (jffs2 filesystem).
+[ 1472.702763] Freeing unused kernel memory: 184k init
+Mounting /proc and /sys
+Starting the hotplug events dispatcher udevd
+Synthesizing initial hotplug events
+Setting the hostname to root
+Mounting filesystems
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+Starting syslogd and klogd
+Running sysctl
+Setting up networking on loopback device:
+Setting up networking on eth0:
+Starting inetd:
+[root@root /]#
+[root@root /]# ls
+Settings       etc            mnt            sbin           uImage_update
+bin            home           opt            sys            usr
+boot           lib            proc           tmp            var
+dev            linuxrc        root           uImage_ori
+从内核的打印信息可以看出我们已经成功的更新了内核。
+ 
+6）从nor flash中启动新烧写的内核
+U-Boot 2009.03 (11月 25 2009 - 21:22:45) MPC512X
+ 
+CPU:   MPC5121e rev. 2.0, Core e300c4 at 400 MHz, CSB at 200 MHz
+Board: ADS5121 rev. 0x0400 (CPLD rev. 0x06)
+I2C:   ready
+DRAM:  512 MB
+FLASH: 64 MB
+NAND:  1024 MiB
+PCI:   Bus Dev VenId DevId Class Int
+Net:   FEC ETHERNET
+IDE:   Bus 0: not available 
+ 
+Type "run flash_nfs" to mount root filesystem over NFS
+ 
+Hit any key to stop autoboot:  0
+## Booting kernel from Legacy Image at ffac0000 ...
+   Image Name:   Linux-2.6.24.6
+   Created:      2009-11-26   5:36:51 UTC
+   Image Type:   PowerPC Linux Kernel Image (gzip compressed)
+   Data Size:    1644375 Bytes =  1.6 MB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at ffec0000
+   Booting using the fdt blob at 0xffec0000
+   Uncompressing Kernel Image ... OK
+   Loading Device Tree to 007fb000, end 007ffa2f ... OK
+[    0.000000] Using MPC5121 ADS machine description
+[    0.000000] Linux version 2.6.24.6 (root@localhost.localdomain) (gcc version 4.1.2) #12 PREEMPT Thu Nov 26 00:36:46 EST 2009
+[    0.000000] MPC5121 ADS board from Freescale Semiconductor
+[    0.000000] preallocate_diu_videomemory: diu_size=5242880
+[    0.000000] preallocate_diu_videomemory: diu_mem=c0a00000
+[    0.000000] Found MPC512x PCI host bridge at 0x0000000080008500. Firmware bus number: 0->0
+[    0.000000] Zone PFN ranges:
+[    0.000000]   DMA             0 ->   131072
+[    0.000000]   Normal     131072 ->   131072
+[    0.000000] Movable zone start PFN for each node
+[    0.000000] early_node_map[1] active PFN ranges
+[    0.000000]     0:        0 ->   131072
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 130048
+[    0.000000] Kernel command line: root=/dev/mtdblock0 rw rootfstype=jffs2 console=ttyPSC0,115200
+[    0.000000] IPIC (128 IRQ sources) at fcff7c00
+[    0.000000] PID hash table entries: 2048 (order: 11, 8192 bytes)
+[    0.000010] clocksource: timebase mult[5000002] shift[22] registered
+[    0.000154] Console: colour dummy device 80x25
+[    0.000256] console [ttyPSC0] enabled
+[    0.108108] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.117851] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.176872] Memory: 508544k/524288k available (3276k kernel code, 15536k reserved, 148k data, 369k bss, 184k init)
+[    0.187255] SLUB: Genslabs=9, HWalign=32, Order=0-1, MinObjects=4, CPUs=1, Nodes=1
+[    0.274882] Mount-cache hash table entries: 512
+[    0.281868] net_namespace: 64 bytes
+[    0.287198] NET: Registered protocol family 16
+[    0.304306] Reserved irq 66(0x42) for MBX
+[    0.310816] Could not initialize clk spdif_txclk without a calc routine
+[    0.317521] Could not initialize clk spdif_rxclk without a calc routine
+[    0.324434] mapped ioctl to e1002000 and gpioctl to e1004100
+[    0.330093] PCI: Probing PCI hardware
+[    0.342369] SCSI subsystem initialized
+[    0.347365] usbcore: registered new interface driver usbfs
+[    0.353359] usbcore: registered new interface driver hub
+[    0.358990] usbcore: registered new device driver usb
+[    0.378997] NET: Registered protocol family 2
+[    0.383295] Time: timebase clocksource has been installed.
+[    0.427587] IP route cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.436137] TCP established hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.447132] TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.455888] TCP: Hash tables configured (established 65536 bind 65536)
+[    0.462362] TCP reno registered
+[    0.477663] JFFS2 version 2.2. (NAND) ? 2001-2006 Red Hat, Inc.
+[    0.483964] io scheduler noop registered
+[    0.487844] io scheduler anticipatory registered (default)
+[    0.493305] io scheduler deadline registered
+[    0.497606] io scheduler cfq registered
+[    0.544454] Console: switching to colour frame buffer device 128x48
+[    0.586907] fb0: Panel0 fb device registered successfully.
+[    0.592885] fb1: Panel1 AOI0 fb device registered successfully.
+[    0.599232] fb2: Panel1 AOI1 fb device registered successfully.
+[    0.605598] fb3: Panel2 AOI0 fb device registered successfully.
+[    0.611961] fb4: Panel2 AOI1 fb device registered successfully.
+[    0.618004] FSL_DIU_FB: registed FB device driver!
+[    0.868626] Serial: MPC52xx PSC UART driver
+[    0.873254] 80011300.serial: ttyPSC0 at MMIO 0x80011300 (irq = 40) is a MPC52xx PSC
+[    0.882000] 80011400.serial: ttyPSC1 at MMIO 0x80011400 (irq = 40) is a MPC52xx PSC
+[    0.891674] RAMDISK driver initialized: 4 RAM disks of 16384K size 1024 blocksize
+[    0.900339] fsl-mscan initializing
+[    0.905331] fsl-mscan fsl-mscan.0: probe port 0xE1062300 done, clk rate:100000000
+[    0.914468] fsl-mscan fsl-mscan.1: probe port 0xE1064380 done, clk rate:100000000
+[    0.923951] eth0: fs_enet: 00:ec:00:12:00:01
+[    0.929250] FEC MII Bus: probed
+[    0.932421] Uniform Multi-Platform E-IDE driver Revision: 7.00alpha2
+[    0.938751] ide: Assuming 33MHz system bus speed for PIO modes; override with idebus=xx
+[    0.948123] Driver 'sd' needs updating - please use bus_type methods
+[    0.955179] MPC5121 MTD nand Driver 0.2
+[    0.959877] NAND device: Manufacturer ID: 0xad, Chip ID: 0xdc (Hynix NAND 512MiB 3,3V 8-bit)
+[    0.968370] 2 NAND chips detected
+[    0.974412] mpc5121r2nfc 40000000.nfc: Using OF partition info
+[    0.980418] Creating 2 MTD partitions on "NAND":
+[    0.984984] 0x00000000-0x08000000 : "nand0,128M"
+[    0.990570] 0x08000000-0x40000000 : "nand0,896M"
+[    0.998018] fsl-ehci fsl-ehci.0: Freescale On-Chip EHCI Host Controller
+[    1.005015] fsl-ehci fsl-ehci.0: new USB bus registered, assigned bus number 1
+[    1.035367] fsl-ehci fsl-ehci.0: irq 44, io mem 0x80004000
+[    1.051326] fsl-ehci fsl-ehci.0: USB 2.0 started, EHCI 1.00, driver 10 Dec 2004
+[    1.060019] usb usb1: configuration #1 chosen from 1 choice
+[    1.065956] hub 1-0:1.0: USB hub found
+[    1.069738] hub 1-0:1.0: 1 port detected
+[    1.176257] Initializing USB Mass Storage driver...
+[    1.415352] usb 1-1: new high speed USB device using fsl-ehci and address 2
+[    1.562650] usb 1-1: configuration #1 chosen from 1 choice
+[    1.569648] scsi0 : SCSI emulation for USB Mass Storage devices
+[    1.576156] usbcore: registered new interface driver usb-storage
+[    1.582390] USB Mass Storage support registered.
+[    1.587525] mice: PS/2 mouse device common for all mice
+[    1.593616] mpc5121-rtc 80000a00.rtc: rtc core: registered mpc5121-rtc as rtc0
+[    1.601034] i2c /dev entries driver
+[    1.610959] Freescale(R) MPC5121 DMA Engine found, 64 channels
+[    1.719596] fsldma: Self-test copy successfully
+[    1.724711] usbcore: registered new interface driver usbhid
+[    1.730270] drivers/hid/usbhid/hid-core.c: v2.6:USB HID core driver
+[    1.736784] TCP cubic registered
+[    1.740195] NET: Registered protocol family 1
+[    1.744596] NET: Registered protocol family 17
+[    1.748991] can: controller area network core (rev 20071116 abi 8)
+[    1.755189] NET: Registered protocol family 29
+[    1.759846] can: raw protocol (rev 20071116)
+[    1.764433] RPC: Registered udp transport module.
+[    1.769096] RPC: Registered tcp transport module.
+[    1.774171] mpc5121-rtc 80000a00.rtc: setting system clock to 2009-11-26 14:13:58 UTC (1259244838)
+[    1.783976] JFFS2 doesn't use OOB.
+[   12.421437] VFS: Mounted root (jffs2 filesystem).
+[   12.426255] Freeing unused kernel memory: 184k init
+Mounting /proc and /sys
+Starting the hotplug events dispatcher udevd
+Synthesizing initial hotplug events
+Setting the hostname to root
+Mounting filesystems
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+cp: write error: No space left on device
+Starting syslogd and klogd
+Running sysctl
+Setting up networking on loopback device:
+Setting up networking on eth0:
+Starting inetd:
+[root@root /]# ls
+Settings       etc            mnt            sbin           uImage_update
+bin            home           opt            sys            usr
+boot           lib            proc           tmp            var
+dev            linuxrc        root           uImage_ori
+[root@root /]#
+可见下载到nor flash中的内核也是我们更新后的内核。
+
+[END]
+
+
+* 关于boot分区排错全解析,救援模式，内核安装
+要对系统排错主要是对系统启动流程的熟悉，然后启动到哪发现问题，就可以初步判断故障出来哪里。
+今天我主要说说关于boot分区的问题。如果是boot分区出问题了。
+     
+      boot分区问题分三种
+一、grub问题
+二、内核问题
+三、boot分区问题
+#################################################################################
+我们来一一为大家讲解，
+          先说第一种，如果你boot分区的grub目录里的grub.conf配置文件丢失或者错误，回出现什么情况呢？会进入GRUB模式。但是这个不严重，我们只需要给系统提供系统启动的参数就能正常进入系统。
+先看原始grub.conf文件什么样子
+
+然后我们把这个文件里部分删除，就删initrd和kernel吧。然后我们从新启动系统
+系统就会停在这个画面，不能前进了。
+
+
+
+解决办法：
+按e进行编辑。我们看到，initrd和kernel都不在了，所以我们就要添加。
+
+、
+添加两条参数
+
+完成后，记住按B从新启动，切记。！！！！！这样就可以正常进入系统了，进入后你需要自己修改/boot/grub/grub.conf 。不然，你下次从新启动还要这样添加参数。
+
+如果GRUB坏的什么严重的话，我们就需要重新安装GRUB，这个需要进入救援模式，所以下下个问题最后，我会教大家。
+##########################################################################################
+二、内核出故障。
+内核故障分两种，一种是内核文件丢失，另一种是initrd  镜象文件丢失。
+故障现象：内核和initrd镜象不能补全
+
+这两中文件随便哪种丢失，我们都需要进入救援模式才能恢复。
+
+进入救援模式的方法。
+1、把安装光碟放去光驱
+2、设置系统从光盘启动
+3、按F5进入Recue 救援模式，然后输入linux rescue。
+
+
+4、选择语言和键盘，不启动网络功能。
+5、这步注意，要让系统帮你自动挂载以前的系统，也就是硬盘里的系统
+
+好了，现在就正式进入救援模式了。
+下面我们使用#chroot  切换到硬盘的系统
+具体命令 # chroot /mnt/sysimage/
+然后我们去boot查看缺少什么文件
+#cd /boot &&  ls
+如果发现没有initrd文件而有内核的情况下，我们使用这个命令，来创建initrd 文件
+
+在检查grub是否完好，如果没问题，那就可以连续使用两次exit命令来从新启动系统。
+如果系统内核丢失的情况下我们需要先安装内核。使用下面命令安装内核，在安装内核时会自动生成initrd，前提是需要有安装包，这个就自己挂载了。
+下面就是挂载和安装内核的过程
+
+
+上面说过安装GRUB的问题。现在我给大家演示下：
+
+刚安装的GRUB是没有grub.conf配置文件的，所以你需要自己编辑一个。
+
+#######################################################################################################
+三、如果你是boot分区都没了，那问题就比较严重了。不过还是可以搞定的。
+
+能够搞定的前提是，df命令里还有/dev/sda1是boot分区的记录，不然就比较危险了
+我们先给区，然后安装内核和GRUB，就可以搞定了。
+
+现在就参照上面的安装内核和GRUB了。
+
+本文出自 “
+Linux is a Perfect System 
+” 博客，谢绝转载！
+                

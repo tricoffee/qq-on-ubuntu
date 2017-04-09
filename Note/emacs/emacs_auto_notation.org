@@ -1,0 +1,54 @@
+* Emacs注释代码
+
+写程序的，要经常和注释打交道，注释和反注释一段代码是家常便饭。可惜，Emacs 虽然有这个功能，默认的配置却并不好用：
+
+  * 注释/反注释这两个功能默认没有绑定快捷键
+  * 需要先选中一段区域才能调用注释功能，哪怕只想注释/反注释当前行
+  * 好在有一个 Alt-; 的快捷键，默认绑定了 comment-dwim，能注释/反注释当前激活的区域。如果没有激活区域，就在当前行末加注释
+
+其实 Alt-; 默认绑定的 comment-dwim 已经很理想了，可是，还是不够 dwim ( Do What I Mean )。能不能变成，如果没有激活的区域，就注释/反
+注释当前行，仅当在行尾的时候才在行尾加注释呢？下面的配置就是参考别人配置写的 “照我说的做”注释函数:
+
+(defun qiang-comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command. If no region is selected and current line is not blank and we are not at the end of the line, then comment current line. Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(global-set-key "\M-;" 'qiang-comment-dwim-line) 
+
+
+* emacs 中注释函数的实现
+
+发布时间：2008-01-01 08:07:00  来源： ChinaUnix博客　  作者： ChinaUnix博客　  点击：300
+
+;; 注释/反注释一行或是一个区域的代码
+;; 如果没有选择一个区域(region), 则注释掉/反注释当前的行
+(global-set-key (kbd "C-/") ’tiw-comment)
+(defun tiw-comment ()
+  "comment/uncomment a line;; "
+  (interactive)
+  (save-excursion
+    (if (gnus-region-active-p)
+        (tiw-comment-region)
+      (tiw-comment-line))))
+(defun tiw-comment-line ()
+  "comment or uncomment a line according to
+the first charachter"
+  (save-excursion
+    (beginning-of-line)
+    (if (looking-at comment-start)
+        (uncomment-region (line-beginning-position) (line-end-position) nil)
+      (comment-region  (line-beginning-position) (line-end-position) nil))))
+(defun tiw-comment-region ()
+  "comment or uncomment a region according to
+the first character"
+  (interactive)
+  (let ((b-p (region-beginning))
+        (e-p (region-end)))
+    (save-excursion
+      (goto-char (region-beginning))
+      (if (looking-at comment-start)
+          (uncomment-region b-p e-p nil)
+        (comment-region b-p e-p nil)))))

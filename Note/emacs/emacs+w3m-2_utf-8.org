@@ -1,0 +1,607 @@
+* from emacser.com
+
+下面我来讲讲w3m的使用.
+
+使用M-M打开w3m，它会提示你输入一个url，不输入的话默认为主页(这样设置(setq w3m-home-page “http://www.google.cn”))， 或者用C-x M-B打开标签页，再或者使用w3m-browse-current-buffer命令直接调用w3m来浏览当前buffer，w3m-browse- current-buffer会单独开一个w3m的buffer来浏览当前buffer内容，而w3m-buffer直接在当前buffer浏览，下面是 用w3m直接浏览这篇文章的html：
+
+使用w3m浏览当前buffer
+
+注意：下面所说的按键如无特殊说明，均是在w3m中有效。
+
+浏览页面
+
+正如vim中那样, h, j, k, l上下左右移动光标, J, K快速上下移动光标, u向上滚半屏, 空格键向下翻一屏, n或tab移到光标到下一个链接, p或Shift+tab移动光标到上一个链接, w移动光标到下一个表单, b移动个光标到上一个表单. 按f，w3m会把它的每一个链接加一个编号，你输入编号就可以到达这个链接，非常之方便，效果如下：
+
+w3m的链接编号
+
+
+上图中灰色的数字编号就是链接的数字编号。默认的w3m链接编号有个小问题，就是不显示form的编号，不知道它为啥不显示，我改了一下，使得可以显示form的编号，因为显示编号实际上是用函数w3m-link-numbering来实现的，它的代码如下：
+
+(defun w3m-link-numbering (&rest args)
+  "Make overlays that display link numbers."
+  (when w3m-link-numbering-mode
+    (save-excursion
+      (goto-char (point-min))
+      (let ((i 0)
+            overlay num)
+        (catch 'already-numbered
+          (while (w3m-goto-next-anchor)
+            ;; 这里判断是否是一个锚链接
+            (when (w3m-anchor)
+              (when (get-char-property (point) 'w3m-link-numbering-overlay)
+                (throw 'already-numbered nil))
+              (setq overlay (make-overlay (point) (1+ (point)))
+                    num (format "[%d]" (incf i)))
+              (w3m-static-if (featurep 'xemacs)
+                  (progn
+                    (overlay-put overlay 'before-string num)
+                    (set-glyph-face (extent-begin-glyph overlay)
+                                    'w3m-link-numbering))
+                (w3m-add-face-property 0 (length num) 'w3m-link-numbering num)
+                (overlay-put overlay 'before-string num)
+                (overlay-put overlay 'evaporate t))
+              (overlay-put overlay 'w3m-link-numbering-overlay i))))))))
+
+上面代码中用了“(when (w3m-anchor)”判断是否有锚链接，form显然没有，所以把这条语句去掉就可以了。
+接着前面，还可以使用goto-line直接定位光标到指定行(最好打开行号显示，方便你查看行号)。上述命令以及Emacs本身的光标移动命令使得可以快速移动光标和定位链接.
+
+图片显示
+
+(setq w3m-default-display-inline-images t)
+设置默认显示图片, t或者用鼠标单击图片或者图片url控制是否显示光标处的图片, T控制是否显示所有图片
+
+导航
+
+F或C-;前进, B或C-h后退; S列出历史页面, M-s显示曾经打开的会话和当前的会话; 回车或者单击鼠标在当前标签页中打开光标处的链接, m在新标签页中打开光标处的链接, g在新标签页中打开用户所输入的url, G在当前标签页中打开用户所输入的url, s启用自定义的搜索引擎来搜索, P显示当前标签页url, c拷贝当前标签页url, U拷贝并显示光标所在处的链接的url, d下载光标处的链接, M-d下载用户输入的url, r重新加载当前页, 相当于一般浏览器的强制刷新(Ctrl+F5).
+
+切换标签页
+
+M-n切换到下一个标签页, M-p切换到上一个标签页, C-k关闭当前标签页, C-c 1关闭其他的标签页, 只留下当前标签页, 1或C-x 1最大化当前标签页, 还可以使用Emacs自己的ido来方便的切换标签页. M-n可以复制当前标签页. C-x C-s可以保存当前标签页, C-x C-w可以在保存当前标签页的同时，直接改变当前mode为你所输入的文件名对应的mode，不再是w3m-mode了.
+
+书签
+
+a把当前页面加到书签里面去, M-a把光标处的url加入书签, v新开一个标签页来显示所有的书签, 打开书签后, M-e可以直接打开书签文件进行编辑, M-k可以删除一个书签, C-_可以undo刚才删掉的标签.
+下面这个是书签的截图:
+
+w3m的书签
+
+工具栏
+
+一般的浏览器都有个工具栏，w3m当然也有。w3m-use-toolbar这个选项控制是否显示工具栏，如果你不想要显示工具栏的话把它设为 nil就可以了。但是如果你想要显示工具栏的话，并不需要手动去设置这个变量，为什么呢？因为emacs-w3m已经自动帮你设置好了，代码如下：
+
+(defcustom w3m-use-toolbar
+  (and (featurep 'tool-bar)
+       ;; Emacs 22 and greater return t for `(featurep 'tool-bar)'
+       ;; even if being launched with the -nw option.
+       (display-images-p)
+       (or (featurep 'gtk)
+	   (image-type-available-p 'xpm)))
+  "Non-nil activates toolbar of w3m."
+  :group 'w3m
+  :type 'boolean)
+
+如果你有tool-bar这个包，而且能显示图片，它就会自动帮你设为t的。
+那是不是现在你就能看到工具栏呢？抱歉，不能，因为工具栏显示的话会用到图片，而这个图片emacs-w3m从哪里找呢？这就需要你指定了，通过w3m- icon-directory指定，指定好它了以后，打开w3m的时候，就会看到一个工具栏了(当然，首先你的工具栏得打开，C-u 1 M-x tool-bar-mode)，效果如下：
+
+w3m的工具栏
+
+其他
+
+M-k显示cookie, 打开cookie页面, 你还可以编辑cookie.
+当要在form中输入数据的时候，把光标移到form上，按回车键或m，如果当前form框很小(比如搜索引擎的输入框)，w3m会让你在 minibuffer中输入数据，如果很大的话(比如编辑wiki的时候很大的文本框)，w3m则会新开一个buffer让你输入，方便之极，在那个新开 的buffer里面，按C-c C-q取消输入，C-c C-c则确认输入。
+switch-to-w3m命令可以切换到w3m的buffer。
+w3m-weather可以显示天气预报，不过显示的都是作者家(日本)的那天气预报，如果有人对天气预报感兴趣的话，可以使用cn-weather，这是水木上的wlamos写的一个elisp包。
+
+以上我所说的命令已经让你能够快速浏览网页了, w3m的功能特别强大, 等待你的挖掘, w3m的elisp代码有2万5千多行, elisp可不像c代码, 不需要多少行代码就可以实现非常强大的功能, w3m的代码就有那么多, 从此也可见它的功能之强大.
+
+w3m的不足
+
+任何软件都有不足, 包括Emacs, w3m更是如此, 其实它的缺点还挺大的, 它不能识别css, …, 也许你现在觉得它也太弱了吧, 连css都识别不了, 不要这样鄙视它, 它毕竟是一个文本浏览器, 但是它能看图片, 这个从上面的截图你也能看出来. 既然w3m有这么大的缺点, 我为什么还要向大家介绍w3m呢? 原因是它既然是个文本浏览器, 浏览速度当然就很快了, 看一些文字居多的网页还是比较不错的, 小说之类的网页啊, w3m都是个不错的选择, 我现在经常用它来浏览EmacsWiki.
+
+有什么改进的软件吗?
+
+conkeror起 初是一个firefox的插件, 使得能在firefox下模拟Emacs的快捷键, 随着后来的发展, 它独立成为一个软件了, 它的操作方式完全类似Emacs, 而且它的命令也是自文档的, 不过它的配置文件是JavaScript写的, 对JavaScript比较熟悉的同志是件好事. 目前firefox的插件它也基本都能兼容, 不能兼容的稍微修改一下也能兼容. 那么它是完美的吗? 当然也不是, 由于它是独立于Emacs之外的, 好多对Emacs的定制就不能用于它了, 比如我写了一个非常好用的浏览buffer的包, conkeror便不能用了, 正因为它是独立于Emacs之外, 它的标签页浏览都不是很方便. 不过它有一个非常好用的功能, 就是可以显示每个链接的编号, 然后用户可以输入链接编号快速打开某个链接.
+
+我的w3m配置文件在这里，配置如下：
+
+;; -*- Emacs-Lisp -*-
+ 
+;; Time-stamp: <2010-02-23 13:52:32 Tuesday by ahei>
+ 
+(require 'w3m)
+(require 'w3m-lnum)
+(require 'util)
+ 
+(defvar w3m-buffer-name-prefix "*w3m" "Name prefix of w3m buffer")
+(defvar w3m-buffer-name (concat w3m-buffer-name-prefix "*") "Name of w3m buffer")
+(defvar w3m-bookmark-buffer-name (concat w3m-buffer-name-prefix "-bookmark*") "Name of w3m buffer")
+(defvar w3m-dir (concat my-emacs-lisps-path "emacs-w3m/") "Dir of w3m.")
+ 
+(setq w3m-command-arguments '("-cookie" "-F"))
+(setq w3m-use-cookies t)
+(setq w3m-icon-directory (concat w3m-dir "icons"))
+(setq w3m-use-mule-ucs t)
+(setq w3m-home-page "http://www.google.cn")
+(setq w3m-default-display-inline-images t)
+ 
+(defun w3m-settings ()
+  (make-local-variable 'hl-line-face)
+  (setq hl-line-face 'hl-line-nonunderline-face)
+  (setq hl-line-overlay nil)
+  (color-theme-adjust-hl-line-face))
+ 
+(add-hook 'w3m-mode-hook 'w3m-settings)
+ 
+(defun w3m-save-current-buffer ()
+  "Save current w3m buffer."
+  (interactive)
+  (save-excursion
+    (mark-whole-buffer)
+    (call-interactively 'copy-region-as-kill-nomark))
+  (with-temp-buffer
+    (call-interactively 'yank)
+    (call-interactively 'write-file)))
+ 
+(defun w3m-print-current-url ()
+  "Display current url."
+  (interactive)
+  (w3m-message "%s" (w3m-url-readable-string w3m-current-url)))
+ 
+(defun w3m-copy-current-url ()
+  "Display the current url in the echo area and put it into `kill-ring'."
+  (interactive)
+  (when w3m-current-url
+    (let ((deactivate-mark nil))
+      (kill-new w3m-current-url)
+      (w3m-print-current-url))))
+ 
+(defun view-w3m-bookmark ()
+  "View w3m bokmark."
+  (interactive)
+  (let ((buffer (get-buffer w3m-bookmark-buffer-name)))
+    (if buffer
+        (switch-to-buffer buffer)
+      (with-current-buffer (get-buffer-create w3m-bookmark-buffer-name)
+        (w3m-mode)
+        (w3m-bookmark-view)))))
+ 
+(defun switch-to-w3m ()
+  "Switch to *w3m* buffer."
+  (interactive)
+  (let ((buffer (get-buffer w3m-buffer-name)))
+    (if buffer
+        (switch-to-buffer buffer)
+      (message "Could not found w3m buffer."))))
+ 
+(defun w3m-browse-current-buffer ()
+  "Use w3m browser current buffer."
+  (interactive)
+  (w3m-browse-buffer))
+ 
+(defun w3m-browse-buffer (&optional buffer)
+  "Use w3m browser buffer BUFFER."
+  (interactive "bBuffer to browse use w3m: ")
+  (unless buffer (setq buffer (current-buffer)))
+  (let* ((file (buffer-file-name buffer))
+         (name (buffer-name buffer)))
+    (if file
+        (w3m-goto-url-new-session file)
+      (with-current-buffer buffer
+        (save-excursion
+          (mark-whole-buffer)
+          (call-interactively 'copy-region-as-kill-nomark)))
+      (let* ((new-name
+              (concat
+               w3m-buffer-name-prefix
+               "-"
+               (if (string= "*" (substring name 0 1))
+                   (substring name 1)
+                 (concat name "*"))))
+             (new-buffer (get-buffer-create new-name)))
+        (switch-to-buffer new-buffer)
+        (call-interactively 'yank)
+        (w3m-buffer)
+        (w3m-mode)
+        (setq w3m-current-title (buffer-name))))))
+ 
+;; fix small bug about of `w3m-auto-show'
+;; see my-blog/emacs/w3m-auto-show-bug.htm
+(defun w3m-auto-show ()
+  "Scroll horizontally so that the point is visible."
+  (when (and truncate-lines
+             w3m-auto-show
+             (not w3m-horizontal-scroll-done)
+             (not (and (eq last-command this-command)
+                       (or (eq (point) (point-min))
+                           (eq (point) (point-max)))))
+             (or (memq this-command '(beginning-of-buffer end-of-buffer))
+                 (string-match "\\`i?search-"
+                               (if (symbolp this-command) (symbol-name this-command) ""))
+                 (and (markerp (nth 1 w3m-current-position))
+                      (markerp (nth 2 w3m-current-position))
+                      (>= (point)
+                          (marker-position (nth 1 w3m-current-position)))
+                      (<= (point)
+                          (marker-position (nth 2 w3m-current-position))))))
+    (w3m-horizontal-on-screen))
+  (setq w3m-horizontal-scroll-done nil))
+ 
+(defun w3m-link-numbering (&rest args)
+  "Make overlays that display link numbers."
+  (when w3m-link-numbering-mode
+    (save-excursion
+      (goto-char (point-min))
+      (let ((i 0)
+            overlay num)
+        (catch 'already-numbered
+          (while (w3m-goto-next-anchor)
+            (when (get-char-property (point) 'w3m-link-numbering-overlay)
+              (throw 'already-numbered nil))
+            (setq overlay (make-overlay (point) (1+ (point)))
+                  num (format "[%d]" (incf i)))
+            (w3m-static-if (featurep 'xemacs)
+                (progn
+                  (overlay-put overlay 'before-string num)
+                  (set-glyph-face (extent-begin-glyph overlay)
+                                  'w3m-link-numbering))
+              (w3m-add-face-property 0 (length num) 'w3m-link-numbering num)
+              (overlay-put overlay 'before-string num)
+              (overlay-put overlay 'evaporate t))
+            (overlay-put overlay 'w3m-link-numbering-overlay i)))))))
+ 
+(apply-define-key
+ global-map
+ `(("M-M"     w3m-goto-url-new-session)
+   ("C-x M-B" view-w3m-bookmark)
+   ("C-x M-m" switch-to-w3m)))
+ 
+(apply-define-key
+ w3m-mode-map
+  `(("<backtab>" w3m-previous-anchor)
+    ("n"         w3m-next-anchor)
+    ("p"         w3m-previous-anchor)
+    ("w"         w3m-next-form)
+    ("b"         w3m-previous-form)
+    ("f"         w3m-go-to-linknum)
+    ("M-n"       w3m-next-buffer)
+    ("M-p"       w3m-previous-buffer)
+    ("C-k"       kill-this-buffer)
+    ("C-k"       w3m-delete-buffer)
+    ("C-c 1"     w3m-delete-other-buffers)
+    ("1"         delete-other-windows)
+    ("C-x C-s"   w3m-save-current-buffer-sb)
+    ("P"         w3m-print-current-url)
+    ("U"         w3m-print-this-url)
+    ("c"         w3m-copy-current-url)
+    ("g"         w3m-goto-url-new-session)
+    ("G"         w3m-goto-url)
+    ("d"         w3m-download-this-url-sb)
+    ("M-d"       w3m-download-sb)
+    ("s"         w3m-search)
+    ("S"         w3m-history)
+    ("u"         View-scroll-page-backward)
+    ("J"         roll-down)
+    ("K"         roll-up)
+    ("o"         other-window)
+    ("m"         w3m-view-this-url-new-session)
+    ("C-h"       w3m-view-previous-page)
+    ("F"         w3m-view-next-page)
+    ("C-;"       w3m-view-next-page)
+    ("r"         w3m-reload-this-page)
+    ("v"         w3m-bookmark-view-new-session)
+    ("M-e"       w3m-bookmark-edit)
+    ("'"         switch-to-other-buffer)))
+
+评分: 7.6 (9次投票)
+标签：ahei, browser, buffer, conkeror, ctrl, DEA, Elisp, Emacs, face, IDE, java, lightbox, lisp, mode, org, screenshot, theme, vi, vim, w3m, windows, 光标, 定制, 工具栏, 截图, 按键, 插件, 搜索引擎, 浏览器, 行号, 配置, 配置文件, 配色, 配色, 鼠标
+相关日志
+
+
+
+
+
+
+* from chinaunix.com
+
+
+Emacs w3m
+Revision as of 03:31 2006年7月1日; view current revision
+鈫怬lder revision | Newer revision
+Emacs-W3M简明指南
+author: gnuisv@hotmail.com supporter: sd44/进化的鱼(cn.comp.os.linux) version 1.2
+简介：emacs-w3m是一个elisp的浏览器，运行在emacs下或者console(w3m)下，是字符浏览器的优秀作品，支持标签页、收藏夹、图形显示、鼠标等等。
+
+1、安装emacs-w3m：(gentoo)emerge emacs-w3m
+2、配置w3m：编辑~/.emacs文件，加入：
+w3m
+(autoload 'w3m "w3m" "interface for w3m on emacs" t) (setq w3m-command-arguments '("-cookie" "-F")) (setq w3m-use-cookies t) (setq w3m-home-page "http://www.linuxsir.com/bbs/") (require 'mime-w3m) (setq w3m-default-display-inline-image t) (setq w3m-default-toggle-inline-images t)
+(setq w3m-arrived-file-coding-system 'euc-cn) (setq w3m-bookmark-file-coding-system 'euc-cn) (setq w3m-default-url-coding-system 'euc-cn) (setq w3m-output-coding-system 'euc-cn) (setq w3m-coding-system 'euc-cn) (setq w3m-input-coding-system 'euc-cn) (setq w3m-find-coding-system 'euc-cn) (setq w3m-default-coding-system 'euc-cn) (setq w3m-coding-system-priority-list '(euc-cn)) (setq w3m-file-name-coding-system 'euc-cn) (setq w3m-bookmark-file-coding-system 'euc-cn)
+
+3、运行emacs-w3m：进入emacs，M-x w3m
+4、如何使用w3m?
+U：浏览一个网址 G：在标签页中打开一个网址左键：返回上一页 N：进入下一页空格：翻页 S：用google进行搜索
+5、退出w3m，q键
+FAQ
+1、为什么出现：Icon file /home/user/back-up.xpm not found的情况？ 增加配置：(setq w3m-icon-directory "/usr/share/emacs-w3m/icon") 2003.11
+
+
+
+
+* from 无赖皮肤
+
+** 熟练使用emacs-w3m三部曲（1） 2012-06-19 17:25:16
+分类： LINUX
+
+一：安装emacs-w3m
+
+
+
+首先，我说说为什么要用emacs-w3m。
+
+理由有三：
+
+第一，平时在emacs里面编辑文档的时候，经常要上网查询一些资料，如果再打开firefox或者谷歌浏览器，不仅费时费力，而且经常会出现一个问题，就是浏览器和emacs两者的窗口经常相互干扰：当我编辑文档的时候看不见浏览器里面的内容，而当我看浏览器的时候又无法编辑文档。
+
+第二，w3m是个文本浏览器，当我看到网页里面合适的内容，可以方便的复制粘贴（我可不提倡抄袭哦^_^），这一点放在firefox或者谷歌的话，就得用鼠标一阵左右键了。
+
+第三点，这个是最重要的，生活在emacs里面是我的追求，尽管不乏偏执，但是这仍旧是一种追求，所以w3m必然不能缺少。
+
+
+安装的时候，我上网找了好多关于“emacs w3m”的资料，普遍发现内容陈旧，而且很多抄都抄错了。我现在的系统是ubuntu 12.04 LTS + emacs23，够新吧，所以对于你肯定是有所帮助的。
+
+
+
+第一步：安装必需的依赖文件
+
+
+首先在你的系统里查询是否有下列文件包。
+
+*cvs
+*autoconf
+*libgc-dev
+*libncurses5-dev
+
+查询的方法很简单，例如在终端输入：
+
+dpkg -l 'cvs'
+
+它就会自动查看是否已经安装cvs，如果没有，你需要使用下面的指令安装：
+
+sudo apt-get install cvs
+
+上面的几个都可以使用这种方法来确定是否有该安装包。
+
+
+
+
+第二步：安装w3m
+
+
+
+首先：回到主目录
+
+cd
+
+其次：使用cvs下载源码包，输入下面的命令：
+cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m login
+它会要求你输入密码，直接回车即可。然后在输入下面的命令：
+ cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m checkout w3m
+这一步会下载w3m安装包，可能会浪费点时间，别着急。
+
+然后：安装w3m
+
+cd w3m
+
+./configure
+sudo make
+sudo make install
+
+这几步都是常见的安装命令，无错误之后就表示w3m已经安装完毕。
+
+最后：验证w3m是否正确安装。
+
+在终端输入w3m http://www.google.com
+
+如果出现谷歌的搜索界面就表示成功了，这个时候可能中文显示是乱码，别着急，后面我会解决这个问题。
+
+
+
+
+第三步：安装emacs-w3m
+
+
+
+首先：仍旧是回到主目录：
+
+cd
+
+其次，使用cvs下载安装包(这一步和w3m安装差不多)
+
+cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login
+
+要你输入密码，直接回车。接着输入下面的命令：
+
+cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
+这一步需要下载安装包，需要一段时间，当下载完毕的时候，进入emacs-w3m:
+
+cd emacs-w3m
+
+然后：安装emacs-w3m
+
+autoconf
+
+./configure
+sudo make 
+sudo make install
+
+这些步骤下来不出现问题就表明emacs-w3m安装成功。
+
+最后，进入emacs，输入M-x w3m,即可看到w3m界面。
+
+** 熟练使用emacs-w3m三部曲（2） 2012-06-19 17:32:11
+分类： LINUX
+
+
+二：编辑emacs-w3m的lisp代码
+
+
+
+要想使emacs中的w3m顺利的工作，相应的lisp代码是必不可少的，这有点像硬件的驱动程序。。。。
+
+下面是我的~/.emacs中关于emacs-w3m部分。
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;  设置emacs-w3m浏览器
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'load-path "~/emacs-w3m/")
+(require 'w3m-load)
+(require 'mime-w3m)
+(autoload 'w3m "w3m" "interface for w3m on emacs" t) 
+
+;; 设置w3m主页
+(setq w3m-home-page "http://www.google.com")
+
+;; 默认显示图片
+(setq w3m-default-display-inline-images t)
+(setq w3m-default-toggle-inline-images t)
+
+;; 使用cookies
+(setq w3m-use-cookies t)
+
+;;设定w3m运行的参数，分别为使用cookie和使用框架  
+(setq w3m-command-arguments '("-cookie" "-F"))               
+
+;; 使用w3m作为默认浏览器
+(setq browse-url-browser-function 'w3m-browse-url)                
+(setq w3m-view-this-url-new-session-in-background t)
+
+
+;;显示图标                                                      
+(setq w3m-show-graphic-icons-in-header-line t)                  
+(setq w3m-show-graphic-icons-in-mode-line t) 
+
+;;C-c C-p 打开，这个好用                                        
+(setq w3m-view-this-url-new-session-in-background t)  
+
+          
+(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)                                    
+(defun remove-w3m-output-garbages ()                            
+"去掉w3m输出的垃圾."                                            
+(interactive)                                                   
+(let ((buffer-read-only))                                       
+(setf (point) (point-min))                                      
+(while (re-search-forward "[\200-\240]" nil t)                  
+(replace-match " "))                                            
+(set-buffer-multibyte t))                                       
+(set-buffer-modified-p nil))
+
+
+
+
+问题：
+
+由于w3m-el和emacs23并不能充分匹配，有的时候会出现中文乱码问题。这个时候你需要卸载w3m-el包，同时安装w3m-el-snapshot包。
+
+命令如下：
+
+sudo apt-get remove w3m-el
+sudo apt-get install w3m-el-snapshot
+
+** 熟练使用emacs-w3m三部曲（3） 2012-06-19 17:37:28
+分类： LINUX
+
+
+三：emacs-w3m快捷键操作
+
+
+下面是一些常用的快捷键
+
+1：基本操作
+
+Q:关闭窗口
+
+q:直接离开
+
+C-x-k:关闭当前标签页
+
+U：打开URL
+
+V：打开文件 
+
+G：在标签页中打开一个网址
+
+S：用google进行搜索
+
+B：后退
+
+N：前进
+
+H：主页
+
+R：刷新  
+
+RET：打开链接
+
+
+2：页面操作
+
+其实还有hjkl四个快捷键作为上下左右，但是对于emacser,还是使用emacs自带的更方便一点。。。
+
+C-n 向下一行
+
+C-P 向上一行
+
+C-b 向后
+
+C-f 向前
+
+C-v 向下滚屏
+
+M-v向上滚屏
+
+>：想左滚屏
+
+<：向右滚屏
+
+,：向左滚动一格
+
+.：向右滚动一格
+
+
+3：书签
+
+
+a：添加当前页到书签
+
+M-a：添加该URL到书签
+
+v:显示书签
+
+E：编辑书签
+
+C-k：删除书签
+
+C-_：撤销书签
+
+
+4：使用百度谷歌搜索
+
+在出现的搜索框回车，然后在buffer会出现TEXT，在它后边输入你想要搜索的东东，然后回车，它就会出现在搜索框，之后再点击搜索的图标即可。
+
+其它的类似的搜索都可以这样办，你可通过这种方式登录chinaunix           
+
+
+5：其它重要操作
+
+
+M:用外部浏览器打开当前页面
+
+ESC M ：用外部浏览器打开链接
+
+C-c C-k：停止载入
+
+

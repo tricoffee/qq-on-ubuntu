@@ -1,0 +1,7 @@
+自己的本子小黑X200，之前装的是F14-X64，F15出来了赶快将15请进来，先安装的32位的，一路顺风，重启，GNOME3还不错，就是有点慢的感觉，测试以下硬件，发现蓝牙无法打开无法设定，莫名其妙，又重装了一遍64位的，结果还是不行，
+tail -f /var/log/messages发现在启动蓝牙设置程序的时候有错误讯息：
+[system] Activation via systemd failed for unit 'dbus-org.bluez.service': Unit dbus-org.bluez.service failed to load: No such file or directory. See system logs and 'systemctl status' for details.
+google了一下，最后发现是默认蓝牙服务没有开，解决方法如下：
+在终端下面用root执行systemctl start bluetooth.service（将蓝牙服务打开即可）
+如果想开机就自动打开的话，请用systemctl enable bluetooth.service将服务设为默认开启状态即可
+匹配一下蓝牙鼠标，成功使用

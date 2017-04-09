@@ -1,0 +1,4 @@
+为什么Lisp没有流行起来 
+http://www.oschina.net/translate/why_lisp_failed
+
+跨越边界: Lisp 之美http://www.ibm.com/developerworks/cn/java/j-cb02067.html

@@ -1,0 +1,5 @@
+./build.sh clean all
+./build.sh clean tslib
+./build.sh make cyitutils
+./build.sh make all -j16
+

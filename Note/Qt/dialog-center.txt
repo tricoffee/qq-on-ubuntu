@@ -1,0 +1,104 @@
+QT窗口居中显示
+
+博客分类： QT
+QT 窗口居中 
+    看到网上很多文章,窗口居中,无非都是move至窗口的中心目标; 有两种方式, 一种在构造函数中直接计算中心坐标; 另一种是在窗口show后再move至相应坐标.
+  
+    1. 在构造函数中添加
+Cpp代码  
+/**  
+  *构建函数中move至中心坐标时, 必须应用setFixedSize(500,500); 否则达不到期望居中显示的目标  
+  */   
+ialog:Dialog(QObject *parent=0):QDialog(parent) {   
+...   
+this->setFixedSize(500,500); //这句必须添加   
+this->setWindowTitle(tr("StyleSheet"));   
+  
+QDesktopWidget *desk=QApplication::desktop();   
+int wd=desk->width();   
+int ht=desk->height();   
+this->move((wd-width())/2,(ht-height())/2);   
+   
+ 
+  2. main函数中添加
+ 
+  
+Cpp代码  
+/**  
+   *方式一: 先显示后移动会产生窗口闪烁,有点不太好 
+   */   
+int main(int argc,char **argv) {   
+   QApplication app(argc,argv);   
+   Dialog dialog;   
+   dialog.show();   
+    
+   QDesktopWidget *desk=QApplication::desktop();   
+   int wd=desk->width();   
+   int ht=desk->height();   
+   dialog.move((wd-dialog.width())/2,(ht-dialog.height())/2);   
+     
+   return app.exec();  
+}   
+ 
+ 
+Cpp代码  
+/** 
+ *方式二: 在移动和显示窗口前重新设置窗口的大小,这样就能达到期望的效果且不会闪烁 
+ */  
+int main(int argc,char **argv)  
+{  
+    QApplication app(argc,argv);  
+  
+    Dialog dialog;  
+    dialog.resize(500,500); //重新设置大小   
+  
+   QDesktopWidget *desk=QApplication::desktop();  
+    int wd=desk->width();  
+    int ht=desk->height();  
+    dialog.move((wd-dialog.width())/2,(ht-dialog.height())/2);  
+      
+   dialog.show();  
+}  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 如何让自定义Dialog上下居中
+分类： Android AP 2011-08-05 15:20 650人阅读 评论(2) 收藏 举报
+dialog
+在自定义的Dialog中，如果View与Title都用自己的，这时，会发现不会居中。Title的位置有被空着，感觉Dialog被压到下面来了。
+
+其实只要设一个Dialog属性，这时Dialog就能够上下居中了。
+
+ 
+
+customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+
+android快速开机技术
+
+1，工具：bootchart
+
+综述论文的内容：
+android快速开机技术探讨
+            1节，概括内容。2节，分析一般的android开机流程。3，测量android开机流程中载入linux kernel和初始化android的时间。
+			4，列举并分析目前已有的android平台快速开机技术。5，总结

@@ -1,0 +1,1671 @@
+-*- coding: utf-8 -*-
+2012-09-29
+
+¡ôxah@xah-VirtualBox 2012-09-19 03:00:27 ~/Downloads/emacs-24.2
+make
+[ -r "/home/xah/Downloads/emacs-24.2/src/config.in" ] || ( cd /home/xah/Downloads/emacs-24.2 && autoheader )
+cd lib; make all                            \
+	  CC='gcc -std=gnu99' CFLAGS='-g -O2' CPPFLAGS='' \
+	  LDFLAGS='-Wl,-znocombreloc ' MAKE='make'
+make[1]: Entering directory `/home/xah/Downloads/emacs-24.2/lib'
+rm -f alloca.h-t alloca.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  cat /home/xah/Downloads/emacs-24.2/lib/alloca.in.h; \
+	} > alloca.h-t && \
+	mv -f alloca.h-t alloca.h
+rm -f arg-nonnull.h-t arg-nonnull.h && \
+	sed -n -e '/GL_ARG_NONNULL/,$p' \
+	  < /home/xah/Downloads/emacs-24.2/build-aux/snippet/arg-nonnull.h \
+	  > arg-nonnull.h-t && \
+	mv arg-nonnull.h-t arg-nonnull.h
+rm -f getopt.h-t getopt.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''HAVE_GETOPT_H''@|1|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_GETOPT_H''@|<getopt.h>|g' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      < /home/xah/Downloads/emacs-24.2/lib/getopt.in.h; \
+	} > getopt.h-t && \
+	mv -f getopt.h-t getopt.h
+rm -f warn-on-use.h-t warn-on-use.h && \
+	sed -n -e '/^.ifndef/,$p' \
+	  < /home/xah/Downloads/emacs-24.2/build-aux/snippet/warn-on-use.h \
+	  > warn-on-use.h-t && \
+	mv warn-on-use.h-t warn-on-use.h
+rm -f inttypes.h-t inttypes.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's/@''HAVE_INTTYPES_H''@/1/g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_INTTYPES_H''@|<inttypes.h>|g' \
+	      -e 's/@''PRI_MACROS_BROKEN''@/0/g' \
+	      -e 's/@''APPLE_UNIVERSAL_BUILD''@/0/g' \
+	      -e 's/@''HAVE_LONG_LONG_INT''@/1/g' \
+	      -e 's/@''HAVE_UNSIGNED_LONG_LONG_INT''@/1/g' \
+	      -e 's/@''PRIPTR_PREFIX''@/__PRIPTR_PREFIX/g' \
+	      -e 's/@''GNULIB_IMAXABS''@/0/g' \
+	      -e 's/@''GNULIB_IMAXDIV''@/0/g' \
+	      -e 's/@''GNULIB_STRTOIMAX''@/1/g' \
+	      -e 's/@''GNULIB_STRTOUMAX''@/1/g' \
+	      -e 's/@''HAVE_DECL_IMAXABS''@/1/g' \
+	      -e 's/@''HAVE_DECL_IMAXDIV''@/1/g' \
+	      -e 's/@''HAVE_DECL_STRTOIMAX''@/1/g' \
+	      -e 's/@''HAVE_DECL_STRTOUMAX''@/1/g' \
+	      -e 's/@''INT32_MAX_LT_INTMAX_MAX''@/1/g' \
+	      -e 's/@''INT64_MAX_EQ_LONG_MAX''@/defined _LP64/g' \
+	      -e 's/@''UINT32_MAX_LT_UINTMAX_MAX''@/1/g' \
+	      -e 's/@''UINT64_MAX_EQ_ULONG_MAX''@/defined _LP64/g' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      -e '/definition of _GL_WARN_ON_USE/r warn-on-use.h' \
+	      < /home/xah/Downloads/emacs-24.2/lib/inttypes.in.h; \
+	} > inttypes.h-t && \
+	mv inttypes.h-t inttypes.h
+rm -f c++defs.h-t c++defs.h && \
+	sed -n -e '/_GL_CXXDEFS/,$p' \
+	  < /home/xah/Downloads/emacs-24.2/build-aux/snippet/c++defs.h \
+	  > c++defs.h-t && \
+	mv c++defs.h-t c++defs.h
+rm -f signal.h-t signal.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_SIGNAL_H''@|<signal.h>|g' \
+	      -e 's|@''GNULIB_PTHREAD_SIGMASK''@|1|g' \
+	      -e 's|@''GNULIB_RAISE''@|0|g' \
+	      -e 's/@''GNULIB_SIGNAL_H_SIGPIPE''@/0/g' \
+	      -e 's/@''GNULIB_SIGPROCMASK''@/0/g' \
+	      -e 's/@''GNULIB_SIGACTION''@/0/g' \
+	      -e 's|@''HAVE_POSIX_SIGNALBLOCKING''@|1|g' \
+	      -e 's|@''HAVE_PTHREAD_SIGMASK''@|1|g' \
+	      -e 's|@''HAVE_RAISE''@|1|g' \
+	      -e 's|@''HAVE_SIGSET_T''@|1|g' \
+	      -e 's|@''HAVE_SIGINFO_T''@|1|g' \
+	      -e 's|@''HAVE_SIGACTION''@|1|g' \
+	      -e 's|@''HAVE_STRUCT_SIGACTION_SA_SIGACTION''@|1|g' \
+	      -e 's|@''HAVE_TYPE_VOLATILE_SIG_ATOMIC_T''@|1|g' \
+	      -e 's|@''HAVE_SIGHANDLER_T''@|1|g' \
+	      -e 's|@''REPLACE_PTHREAD_SIGMASK''@|0|g' \
+	      -e 's|@''REPLACE_RAISE''@|0|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r c++defs.h' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      -e '/definition of _GL_WARN_ON_USE/r warn-on-use.h' \
+	      < /home/xah/Downloads/emacs-24.2/lib/signal.in.h; \
+	} > signal.h-t && \
+	mv signal.h-t signal.h
+rm -f stdio.h-t stdio.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_STDIO_H''@|<stdio.h>|g' \
+	      -e 's/@''GNULIB_DPRINTF''@/0/g' \
+	      -e 's/@''GNULIB_FCLOSE''@/0/g' \
+	      -e 's/@''GNULIB_FDOPEN''@/0/g' \
+	      -e 's/@''GNULIB_FFLUSH''@/0/g' \
+	      -e 's/@''GNULIB_FGETC''@/1/g' \
+	      -e 's/@''GNULIB_FGETS''@/1/g' \
+	      -e 's/@''GNULIB_FOPEN''@/0/g' \
+	      -e 's/@''GNULIB_FPRINTF''@/1/g' \
+	      -e 's/@''GNULIB_FPRINTF_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_FPURGE''@/0/g' \
+	      -e 's/@''GNULIB_FPUTC''@/1/g' \
+	      -e 's/@''GNULIB_FPUTS''@/1/g' \
+	      -e 's/@''GNULIB_FREAD''@/1/g' \
+	      -e 's/@''GNULIB_FREOPEN''@/0/g' \
+	      -e 's/@''GNULIB_FSCANF''@/1/g' \
+	      -e 's/@''GNULIB_FSEEK''@/0/g' \
+	      -e 's/@''GNULIB_FSEEKO''@/0/g' \
+	      -e 's/@''GNULIB_FTELL''@/0/g' \
+	      -e 's/@''GNULIB_FTELLO''@/0/g' \
+	      -e 's/@''GNULIB_FWRITE''@/1/g' \
+	      -e 's/@''GNULIB_GETC''@/1/g' \
+	      -e 's/@''GNULIB_GETCHAR''@/1/g' \
+	      -e 's/@''GNULIB_GETDELIM''@/0/g' \
+	      -e 's/@''GNULIB_GETLINE''@/0/g' \
+	      -e 's/@''GNULIB_OBSTACK_PRINTF''@/0/g' \
+	      -e 's/@''GNULIB_OBSTACK_PRINTF_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_PCLOSE''@/0/g' \
+	      -e 's/@''GNULIB_PERROR''@/0/g' \
+	      -e 's/@''GNULIB_POPEN''@/0/g' \
+	      -e 's/@''GNULIB_PRINTF''@/1/g' \
+	      -e 's/@''GNULIB_PRINTF_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_PUTC''@/1/g' \
+	      -e 's/@''GNULIB_PUTCHAR''@/1/g' \
+	      -e 's/@''GNULIB_PUTS''@/1/g' \
+	      -e 's/@''GNULIB_REMOVE''@/0/g' \
+	      -e 's/@''GNULIB_RENAME''@/0/g' \
+	      -e 's/@''GNULIB_RENAMEAT''@/0/g' \
+	      -e 's/@''GNULIB_SCANF''@/1/g' \
+	      -e 's/@''GNULIB_SNPRINTF''@/0/g' \
+	      -e 's/@''GNULIB_SPRINTF_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_STDIO_H_NONBLOCKING''@/0/g' \
+	      -e 's/@''GNULIB_STDIO_H_SIGPIPE''@/0/g' \
+	      -e 's/@''GNULIB_TMPFILE''@/0/g' \
+	      -e 's/@''GNULIB_VASPRINTF''@/0/g' \
+	      -e 's/@''GNULIB_VDPRINTF''@/0/g' \
+	      -e 's/@''GNULIB_VFPRINTF''@/1/g' \
+	      -e 's/@''GNULIB_VFPRINTF_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_VFSCANF''@/0/g' \
+	      -e 's/@''GNULIB_VSCANF''@/0/g' \
+	      -e 's/@''GNULIB_VPRINTF''@/1/g' \
+	      -e 's/@''GNULIB_VPRINTF_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_VSNPRINTF''@/0/g' \
+	      -e 's/@''GNULIB_VSPRINTF_POSIX''@/0/g' \
+	      < /home/xah/Downloads/emacs-24.2/lib/stdio.in.h | \
+	  sed -e 's|@''HAVE_DECL_FPURGE''@|1|g' \
+	      -e 's|@''HAVE_DECL_FSEEKO''@|1|g' \
+	      -e 's|@''HAVE_DECL_FTELLO''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETDELIM''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETLINE''@|1|g' \
+	      -e 's|@''HAVE_DECL_OBSTACK_PRINTF''@|1|g' \
+	      -e 's|@''HAVE_DECL_SNPRINTF''@|1|g' \
+	      -e 's|@''HAVE_DECL_VSNPRINTF''@|1|g' \
+	      -e 's|@''HAVE_DPRINTF''@|1|g' \
+	      -e 's|@''HAVE_FSEEKO''@|1|g' \
+	      -e 's|@''HAVE_FTELLO''@|1|g' \
+	      -e 's|@''HAVE_PCLOSE''@|1|g' \
+	      -e 's|@''HAVE_POPEN''@|1|g' \
+	      -e 's|@''HAVE_RENAMEAT''@|1|g' \
+	      -e 's|@''HAVE_VASPRINTF''@|1|g' \
+	      -e 's|@''HAVE_VDPRINTF''@|1|g' \
+	      -e 's|@''REPLACE_DPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_FCLOSE''@|0|g' \
+	      -e 's|@''REPLACE_FDOPEN''@|0|g' \
+	      -e 's|@''REPLACE_FFLUSH''@|0|g' \
+	      -e 's|@''REPLACE_FOPEN''@|0|g' \
+	      -e 's|@''REPLACE_FPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_FPURGE''@|0|g' \
+	      -e 's|@''REPLACE_FREOPEN''@|0|g' \
+	      -e 's|@''REPLACE_FSEEK''@|0|g' \
+	      -e 's|@''REPLACE_FSEEKO''@|0|g' \
+	      -e 's|@''REPLACE_FTELL''@|0|g' \
+	      -e 's|@''REPLACE_FTELLO''@|0|g' \
+	      -e 's|@''REPLACE_GETDELIM''@|0|g' \
+	      -e 's|@''REPLACE_GETLINE''@|0|g' \
+	      -e 's|@''REPLACE_OBSTACK_PRINTF''@|0|g' \
+	      -e 's|@''REPLACE_PERROR''@|0|g' \
+	      -e 's|@''REPLACE_POPEN''@|0|g' \
+	      -e 's|@''REPLACE_PRINTF''@|0|g' \
+	      -e 's|@''REPLACE_REMOVE''@|0|g' \
+	      -e 's|@''REPLACE_RENAME''@|0|g' \
+	      -e 's|@''REPLACE_RENAMEAT''@|0|g' \
+	      -e 's|@''REPLACE_SNPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_SPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_STDIO_READ_FUNCS''@|0|g' \
+	      -e 's|@''REPLACE_STDIO_WRITE_FUNCS''@|0|g' \
+	      -e 's|@''REPLACE_TMPFILE''@|0|g' \
+	      -e 's|@''REPLACE_VASPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VDPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VFPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VSNPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VSPRINTF''@|0|g' \
+	      -e 's|@''ASM_SYMBOL_PREFIX''@||g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r c++defs.h' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      -e '/definition of _GL_WARN_ON_USE/r warn-on-use.h'; \
+	} > stdio.h-t && \
+	mv stdio.h-t stdio.h
+rm -f stdlib.h-t stdlib.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_STDLIB_H''@|<stdlib.h>|g' \
+	      -e 's/@''GNULIB__EXIT''@/0/g' \
+	      -e 's/@''GNULIB_ATOLL''@/0/g' \
+	      -e 's/@''GNULIB_CALLOC_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_CANONICALIZE_FILE_NAME''@/0/g' \
+	      -e 's/@''GNULIB_GETLOADAVG''@/1/g' \
+	      -e 's/@''GNULIB_GETSUBOPT''@/0/g' \
+	      -e 's/@''GNULIB_GRANTPT''@/0/g' \
+	      -e 's/@''GNULIB_MALLOC_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_MBTOWC''@/0/g' \
+	      -e 's/@''GNULIB_MKDTEMP''@/0/g' \
+	      -e 's/@''GNULIB_MKOSTEMP''@/0/g' \
+	      -e 's/@''GNULIB_MKOSTEMPS''@/0/g' \
+	      -e 's/@''GNULIB_MKSTEMP''@/0/g' \
+	      -e 's/@''GNULIB_MKSTEMPS''@/0/g' \
+	      -e 's/@''GNULIB_PTSNAME''@/0/g' \
+	      -e 's/@''GNULIB_PUTENV''@/0/g' \
+	      -e 's/@''GNULIB_RANDOM_R''@/0/g' \
+	      -e 's/@''GNULIB_REALLOC_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_REALPATH''@/0/g' \
+	      -e 's/@''GNULIB_RPMATCH''@/0/g' \
+	      -e 's/@''GNULIB_SETENV''@/0/g' \
+	      -e 's/@''GNULIB_STRTOD''@/0/g' \
+	      -e 's/@''GNULIB_STRTOLL''@/0/g' \
+	      -e 's/@''GNULIB_STRTOULL''@/0/g' \
+	      -e 's/@''GNULIB_SYSTEM_POSIX''@/0/g' \
+	      -e 's/@''GNULIB_UNLOCKPT''@/0/g' \
+	      -e 's/@''GNULIB_UNSETENV''@/0/g' \
+	      -e 's/@''GNULIB_WCTOMB''@/0/g' \
+	      < /home/xah/Downloads/emacs-24.2/lib/stdlib.in.h | \
+	  sed -e 's|@''HAVE__EXIT''@|1|g' \
+	      -e 's|@''HAVE_ATOLL''@|1|g' \
+	      -e 's|@''HAVE_CANONICALIZE_FILE_NAME''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETLOADAVG''@|1|g' \
+	      -e 's|@''HAVE_GETSUBOPT''@|1|g' \
+	      -e 's|@''HAVE_GRANTPT''@|1|g' \
+	      -e 's|@''HAVE_MKDTEMP''@|1|g' \
+	      -e 's|@''HAVE_MKOSTEMP''@|1|g' \
+	      -e 's|@''HAVE_MKOSTEMPS''@|1|g' \
+	      -e 's|@''HAVE_MKSTEMP''@|1|g' \
+	      -e 's|@''HAVE_MKSTEMPS''@|1|g' \
+	      -e 's|@''HAVE_PTSNAME''@|1|g' \
+	      -e 's|@''HAVE_RANDOM_H''@|1|g' \
+	      -e 's|@''HAVE_RANDOM_R''@|1|g' \
+	      -e 's|@''HAVE_REALPATH''@|1|g' \
+	      -e 's|@''HAVE_RPMATCH''@|1|g' \
+	      -e 's|@''HAVE_DECL_SETENV''@|1|g' \
+	      -e 's|@''HAVE_STRTOD''@|1|g' \
+	      -e 's|@''HAVE_STRTOLL''@|1|g' \
+	      -e 's|@''HAVE_STRTOULL''@|1|g' \
+	      -e 's|@''HAVE_STRUCT_RANDOM_DATA''@|1|g' \
+	      -e 's|@''HAVE_SYS_LOADAVG_H''@|0|g' \
+	      -e 's|@''HAVE_UNLOCKPT''@|1|g' \
+	      -e 's|@''HAVE_DECL_UNSETENV''@|1|g' \
+	      -e 's|@''REPLACE_CALLOC''@|0|g' \
+	      -e 's|@''REPLACE_CANONICALIZE_FILE_NAME''@|0|g' \
+	      -e 's|@''REPLACE_MALLOC''@|0|g' \
+	      -e 's|@''REPLACE_MBTOWC''@|0|g' \
+	      -e 's|@''REPLACE_MKSTEMP''@|0|g' \
+	      -e 's|@''REPLACE_PUTENV''@|0|g' \
+	      -e 's|@''REPLACE_REALLOC''@|0|g' \
+	      -e 's|@''REPLACE_REALPATH''@|0|g' \
+	      -e 's|@''REPLACE_SETENV''@|0|g' \
+	      -e 's|@''REPLACE_STRTOD''@|0|g' \
+	      -e 's|@''REPLACE_UNSETENV''@|0|g' \
+	      -e 's|@''REPLACE_WCTOMB''@|0|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r c++defs.h' \
+	      -e '/definition of _Noreturn/r /home/xah/Downloads/emacs-24.2/build-aux/snippet/_Noreturn.h' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      -e '/definition of _GL_WARN_ON_USE/r warn-on-use.h'; \
+	} > stdlib.h-t && \
+	mv stdlib.h-t stdlib.h
+/bin/mkdir -p sys
+rm -f sys/stat.h-t sys/stat.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_SYS_STAT_H''@|<sys/stat.h>|g' \
+	      -e 's/@''GNULIB_FCHMODAT''@/0/g' \
+	      -e 's/@''GNULIB_FSTAT''@/0/g' \
+	      -e 's/@''GNULIB_FSTATAT''@/0/g' \
+	      -e 's/@''GNULIB_FUTIMENS''@/0/g' \
+	      -e 's/@''GNULIB_LCHMOD''@/0/g' \
+	      -e 's/@''GNULIB_LSTAT''@/1/g' \
+	      -e 's/@''GNULIB_MKDIRAT''@/0/g' \
+	      -e 's/@''GNULIB_MKFIFO''@/0/g' \
+	      -e 's/@''GNULIB_MKFIFOAT''@/0/g' \
+	      -e 's/@''GNULIB_MKNOD''@/0/g' \
+	      -e 's/@''GNULIB_MKNODAT''@/0/g' \
+	      -e 's/@''GNULIB_STAT''@/0/g' \
+	      -e 's/@''GNULIB_UTIMENSAT''@/0/g' \
+	      -e 's|@''HAVE_FCHMODAT''@|1|g' \
+	      -e 's|@''HAVE_FSTATAT''@|1|g' \
+	      -e 's|@''HAVE_FUTIMENS''@|1|g' \
+	      -e 's|@''HAVE_LCHMOD''@|1|g' \
+	      -e 's|@''HAVE_LSTAT''@|1|g' \
+	      -e 's|@''HAVE_MKDIRAT''@|1|g' \
+	      -e 's|@''HAVE_MKFIFO''@|1|g' \
+	      -e 's|@''HAVE_MKFIFOAT''@|1|g' \
+	      -e 's|@''HAVE_MKNOD''@|1|g' \
+	      -e 's|@''HAVE_MKNODAT''@|1|g' \
+	      -e 's|@''HAVE_UTIMENSAT''@|1|g' \
+	      -e 's|@''REPLACE_FSTAT''@|0|g' \
+	      -e 's|@''REPLACE_FSTATAT''@|0|g' \
+	      -e 's|@''REPLACE_FUTIMENS''@|0|g' \
+	      -e 's|@''REPLACE_LSTAT''@|0|g' \
+	      -e 's|@''REPLACE_MKDIR''@|0|g' \
+	      -e 's|@''REPLACE_MKFIFO''@|0|g' \
+	      -e 's|@''REPLACE_MKNOD''@|0|g' \
+	      -e 's|@''REPLACE_STAT''@|0|g' \
+	      -e 's|@''REPLACE_UTIMENSAT''@|0|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r c++defs.h' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      -e '/definition of _GL_WARN_ON_USE/r warn-on-use.h' \
+	      < /home/xah/Downloads/emacs-24.2/lib/sys_stat.in.h; \
+	} > sys/stat.h-t && \
+	mv sys/stat.h-t sys/stat.h
+rm -f time.h-t time.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_TIME_H''@|<time.h>|g' \
+	      -e 's/@''GNULIB_MKTIME''@/1/g' \
+	      -e 's/@''GNULIB_NANOSLEEP''@/0/g' \
+	      -e 's/@''GNULIB_STRPTIME''@/0/g' \
+	      -e 's/@''GNULIB_TIMEGM''@/0/g' \
+	      -e 's/@''GNULIB_TIME_R''@/1/g' \
+	      -e 's|@''HAVE_DECL_LOCALTIME_R''@|0|g' \
+	      -e 's|@''HAVE_NANOSLEEP''@|1|g' \
+	      -e 's|@''HAVE_STRPTIME''@|1|g' \
+	      -e 's|@''HAVE_TIMEGM''@|1|g' \
+	      -e 's|@''REPLACE_LOCALTIME_R''@|0|g' \
+	      -e 's|@''REPLACE_MKTIME''@|0|g' \
+	      -e 's|@''REPLACE_NANOSLEEP''@|GNULIB_PORTCHECK|g' \
+	      -e 's|@''REPLACE_TIMEGM''@|GNULIB_PORTCHECK|g' \
+	      -e 's|@''PTHREAD_H_DEFINES_STRUCT_TIMESPEC''@|0|g' \
+	      -e 's|@''SYS_TIME_H_DEFINES_STRUCT_TIMESPEC''@|0|g' \
+	      -e 's|@''TIME_H_DEFINES_STRUCT_TIMESPEC''@|1|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r c++defs.h' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      -e '/definition of _GL_WARN_ON_USE/r warn-on-use.h' \
+	      < /home/xah/Downloads/emacs-24.2/lib/time.in.h; \
+	} > time.h-t && \
+	mv time.h-t time.h
+rm -f unistd.h-t unistd.h && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''HAVE_UNISTD_H''@|1|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@||g' \
+	      -e 's|@''NEXT_UNISTD_H''@|<unistd.h>|g' \
+	      -e 's/@''GNULIB_CHDIR''@/0/g' \
+	      -e 's/@''GNULIB_CHOWN''@/0/g' \
+	      -e 's/@''GNULIB_CLOSE''@/0/g' \
+	      -e 's/@''GNULIB_DUP''@/0/g' \
+	      -e 's/@''GNULIB_DUP2''@/1/g' \
+	      -e 's/@''GNULIB_DUP3''@/0/g' \
+	      -e 's/@''GNULIB_ENVIRON''@/0/g' \
+	      -e 's/@''GNULIB_EUIDACCESS''@/0/g' \
+	      -e 's/@''GNULIB_FACCESSAT''@/0/g' \
+	      -e 's/@''GNULIB_FCHDIR''@/0/g' \
+	      -e 's/@''GNULIB_FCHOWNAT''@/0/g' \
+	      -e 's/@''GNULIB_FDATASYNC''@/0/g' \
+	      -e 's/@''GNULIB_FSYNC''@/0/g' \
+	      -e 's/@''GNULIB_FTRUNCATE''@/0/g' \
+	      -e 's/@''GNULIB_GETCWD''@/0/g' \
+	      -e 's/@''GNULIB_GETDOMAINNAME''@/0/g' \
+	      -e 's/@''GNULIB_GETDTABLESIZE''@/0/g' \
+	      -e 's/@''GNULIB_GETGROUPS''@/0/g' \
+	      -e 's/@''GNULIB_GETHOSTNAME''@/0/g' \
+	      -e 's/@''GNULIB_GETLOGIN''@/0/g' \
+	      -e 's/@''GNULIB_GETLOGIN_R''@/0/g' \
+	      -e 's/@''GNULIB_GETPAGESIZE''@/0/g' \
+	      -e 's/@''GNULIB_GETUSERSHELL''@/0/g' \
+	      -e 's/@''GNULIB_GROUP_MEMBER''@/0/g' \
+	      -e 's/@''GNULIB_LCHOWN''@/0/g' \
+	      -e 's/@''GNULIB_LINK''@/0/g' \
+	      -e 's/@''GNULIB_LINKAT''@/0/g' \
+	      -e 's/@''GNULIB_LSEEK''@/0/g' \
+	      -e 's/@''GNULIB_PIPE''@/0/g' \
+	      -e 's/@''GNULIB_PIPE2''@/0/g' \
+	      -e 's/@''GNULIB_PREAD''@/0/g' \
+	      -e 's/@''GNULIB_PWRITE''@/0/g' \
+	      -e 's/@''GNULIB_READ''@/0/g' \
+	      -e 's/@''GNULIB_READLINK''@/1/g' \
+	      -e 's/@''GNULIB_READLINKAT''@/0/g' \
+	      -e 's/@''GNULIB_RMDIR''@/0/g' \
+	      -e 's/@''GNULIB_SLEEP''@/0/g' \
+	      -e 's/@''GNULIB_SYMLINK''@/1/g' \
+	      -e 's/@''GNULIB_SYMLINKAT''@/0/g' \
+	      -e 's/@''GNULIB_TTYNAME_R''@/0/g' \
+	      -e 's/@''GNULIB_UNISTD_H_GETOPT''@/1/g' \
+	      -e 's/@''GNULIB_UNISTD_H_NONBLOCKING''@/0/g' \
+	      -e 's/@''GNULIB_UNISTD_H_SIGPIPE''@/0/g' \
+	      -e 's/@''GNULIB_UNLINK''@/0/g' \
+	      -e 's/@''GNULIB_UNLINKAT''@/0/g' \
+	      -e 's/@''GNULIB_USLEEP''@/0/g' \
+	      -e 's/@''GNULIB_WRITE''@/0/g' \
+	      < /home/xah/Downloads/emacs-24.2/lib/unistd.in.h | \
+	  sed -e 's|@''HAVE_CHOWN''@|1|g' \
+	      -e 's|@''HAVE_DUP2''@|1|g' \
+	      -e 's|@''HAVE_DUP3''@|1|g' \
+	      -e 's|@''HAVE_EUIDACCESS''@|1|g' \
+	      -e 's|@''HAVE_FACCESSAT''@|1|g' \
+	      -e 's|@''HAVE_FCHDIR''@|1|g' \
+	      -e 's|@''HAVE_FCHOWNAT''@|1|g' \
+	      -e 's|@''HAVE_FDATASYNC''@|1|g' \
+	      -e 's|@''HAVE_FSYNC''@|1|g' \
+	      -e 's|@''HAVE_FTRUNCATE''@|1|g' \
+	      -e 's|@''HAVE_GETDTABLESIZE''@|1|g' \
+	      -e 's|@''HAVE_GETGROUPS''@|1|g' \
+	      -e 's|@''HAVE_GETHOSTNAME''@|1|g' \
+	      -e 's|@''HAVE_GETLOGIN''@|1|g' \
+	      -e 's|@''HAVE_GETPAGESIZE''@|1|g' \
+	      -e 's|@''HAVE_GROUP_MEMBER''@|1|g' \
+	      -e 's|@''HAVE_LCHOWN''@|1|g' \
+	      -e 's|@''HAVE_LINK''@|1|g' \
+	      -e 's|@''HAVE_LINKAT''@|1|g' \
+	      -e 's|@''HAVE_PIPE''@|1|g' \
+	      -e 's|@''HAVE_PIPE2''@|1|g' \
+	      -e 's|@''HAVE_PREAD''@|1|g' \
+	      -e 's|@''HAVE_PWRITE''@|1|g' \
+	      -e 's|@''HAVE_READLINK''@|1|g' \
+	      -e 's|@''HAVE_READLINKAT''@|1|g' \
+	      -e 's|@''HAVE_SLEEP''@|1|g' \
+	      -e 's|@''HAVE_SYMLINK''@|1|g' \
+	      -e 's|@''HAVE_SYMLINKAT''@|1|g' \
+	      -e 's|@''HAVE_UNLINKAT''@|1|g' \
+	      -e 's|@''HAVE_USLEEP''@|1|g' \
+	      -e 's|@''HAVE_DECL_ENVIRON''@|1|g' \
+	      -e 's|@''HAVE_DECL_FCHDIR''@|1|g' \
+	      -e 's|@''HAVE_DECL_FDATASYNC''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETDOMAINNAME''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETLOGIN_R''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETPAGESIZE''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETUSERSHELL''@|1|g' \
+	      -e 's|@''HAVE_DECL_TTYNAME_R''@|1|g' \
+	      -e 's|@''HAVE_OS_H''@|0|g' \
+	      -e 's|@''HAVE_SYS_PARAM_H''@|0|g' \
+	  | \
+	  sed -e 's|@''REPLACE_CHOWN''@|0|g' \
+	      -e 's|@''REPLACE_CLOSE''@|0|g' \
+	      -e 's|@''REPLACE_DUP''@|0|g' \
+	      -e 's|@''REPLACE_DUP2''@|0|g' \
+	      -e 's|@''REPLACE_FCHOWNAT''@|0|g' \
+	      -e 's|@''REPLACE_GETCWD''@|0|g' \
+	      -e 's|@''REPLACE_GETDOMAINNAME''@|0|g' \
+	      -e 's|@''REPLACE_GETLOGIN_R''@|0|g' \
+	      -e 's|@''REPLACE_GETGROUPS''@|0|g' \
+	      -e 's|@''REPLACE_GETPAGESIZE''@|0|g' \
+	      -e 's|@''REPLACE_LCHOWN''@|0|g' \
+	      -e 's|@''REPLACE_LINK''@|0|g' \
+	      -e 's|@''REPLACE_LINKAT''@|0|g' \
+	      -e 's|@''REPLACE_LSEEK''@|0|g' \
+	      -e 's|@''REPLACE_PREAD''@|0|g' \
+	      -e 's|@''REPLACE_PWRITE''@|0|g' \
+	      -e 's|@''REPLACE_READ''@|0|g' \
+	      -e 's|@''REPLACE_READLINK''@|0|g' \
+	      -e 's|@''REPLACE_RMDIR''@|0|g' \
+	      -e 's|@''REPLACE_SLEEP''@|0|g' \
+	      -e 's|@''REPLACE_SYMLINK''@|0|g' \
+	      -e 's|@''REPLACE_TTYNAME_R''@|0|g' \
+	      -e 's|@''REPLACE_UNLINK''@|0|g' \
+	      -e 's|@''REPLACE_UNLINKAT''@|0|g' \
+	      -e 's|@''REPLACE_USLEEP''@|0|g' \
+	      -e 's|@''REPLACE_WRITE''@|0|g' \
+	      -e 's|@''UNISTD_H_HAVE_WINSOCK2_H''@|0|g' \
+	      -e 's|@''UNISTD_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS''@|0|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r c++defs.h' \
+	      -e '/definition of _GL_ARG_NONNULL/r arg-nonnull.h' \
+	      -e '/definition of _GL_WARN_ON_USE/r warn-on-use.h'; \
+	} > unistd.h-t && \
+	mv unistd.h-t unistd.h
+make  all-am
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lib'
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT allocator.o -MD -MP -MF .deps/allocator.Tpo -c -o allocator.o allocator.c
+mv -f .deps/allocator.Tpo .deps/allocator.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT careadlinkat.o -MD -MP -MF .deps/careadlinkat.Tpo -c -o careadlinkat.o careadlinkat.c
+mv -f .deps/careadlinkat.Tpo .deps/careadlinkat.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT md5.o -MD -MP -MF .deps/md5.Tpo -c -o md5.o md5.c
+mv -f .deps/md5.Tpo .deps/md5.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT sha1.o -MD -MP -MF .deps/sha1.Tpo -c -o sha1.o sha1.c
+mv -f .deps/sha1.Tpo .deps/sha1.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT sha256.o -MD -MP -MF .deps/sha256.Tpo -c -o sha256.o sha256.c
+mv -f .deps/sha256.Tpo .deps/sha256.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT sha512.o -MD -MP -MF .deps/sha512.Tpo -c -o sha512.o sha512.c
+mv -f .deps/sha512.Tpo .deps/sha512.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT dtoastr.o -MD -MP -MF .deps/dtoastr.Tpo -c -o dtoastr.o dtoastr.c
+mv -f .deps/dtoastr.Tpo .deps/dtoastr.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT filemode.o -MD -MP -MF .deps/filemode.Tpo -c -o filemode.o filemode.c
+mv -f .deps/filemode.Tpo .deps/filemode.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT strftime.o -MD -MP -MF .deps/strftime.Tpo -c -o strftime.o strftime.c
+mv -f .deps/strftime.Tpo .deps/strftime.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT getopt.o -MD -MP -MF .deps/getopt.Tpo -c -o getopt.o getopt.c
+mv -f .deps/getopt.Tpo .deps/getopt.Po
+gcc -std=gnu99 -DHAVE_CONFIG_H -I. -I../src -I/home/xah/Downloads/emacs-24.2/src     -g -O2 -MT getopt1.o -MD -MP -MF .deps/getopt1.Tpo -c -o getopt1.o getopt1.c
+mv -f .deps/getopt1.Tpo .deps/getopt1.Po
+rm -f libgnu.a
+ar cru libgnu.a allocator.o careadlinkat.o md5.o sha1.o sha256.o sha512.o dtoastr.o filemode.o  strftime.o getopt.o getopt1.o
+ranlib libgnu.a
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lib'
+make[1]: Leaving directory `/home/xah/Downloads/emacs-24.2/lib'
+cd lib-src; make all                            \
+	  CC='gcc -std=gnu99' CFLAGS='-g -O2' CPPFLAGS='' \
+	  LDFLAGS='-Wl,-znocombreloc ' MAKE='make'
+make[1]: Entering directory `/home/xah/Downloads/emacs-24.2/lib-src'
+gcc -std=gnu99 -c   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib   -g -O2 -DCONFIG_BROKETS -DINHIBIT_STRING_HEADER \
+	  /home/xah/Downloads/emacs-24.2/lib-src/../src/regex.c
+/home/xah/Downloads/emacs-24.2/lib-src/../src/regex.c: In function ¡®xrealloc¡¯:
+/home/xah/Downloads/emacs-24.2/lib-src/../src/regex.c:226:13: warning: ignoring return value of ¡®write¡¯, declared with attribute warn_unused_result [-Wunused-result]
+/home/xah/Downloads/emacs-24.2/lib-src/../src/regex.c: In function ¡®xmalloc¡¯:
+/home/xah/Downloads/emacs-24.2/lib-src/../src/regex.c:208:13: warning: ignoring return value of ¡®write¡¯, declared with attribute warn_unused_result [-Wunused-result]
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 -DEMACS_NAME="\"GNU Emacs\"" \
+	  -DVERSION="\"24.2\"" /home/xah/Downloads/emacs-24.2/lib-src/etags.c \
+	  regex.o ../lib/libgnu.a  -o etags
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 -DCTAGS -DEMACS_NAME="\"GNU Emacs\"" \
+	  -DVERSION="\"24.2\"" /home/xah/Downloads/emacs-24.2/lib-src/etags.c \
+	  regex.o ../lib/libgnu.a  -o ctags
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 /home/xah/Downloads/emacs-24.2/lib-src/emacsclient.c \
+	   -DVERSION="\"24.2\"" \
+	   ../lib/libgnu.a  -o emacsclient
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 -DVERSION="\"24.2\"" \
+	  /home/xah/Downloads/emacs-24.2/lib-src/ebrowse.c ../lib/libgnu.a  -o ebrowse
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 /home/xah/Downloads/emacs-24.2/lib-src/profile.c ../lib/libgnu.a  -o profile
+gcc -std=gnu99 -c   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib   -g -O2  /home/xah/Downloads/emacs-24.2/lib-src/pop.c
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2  /home/xah/Downloads/emacs-24.2/lib-src/movemail.c pop.o \
+	  ../lib/libgnu.a  -llockfile        -o movemail
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 /home/xah/Downloads/emacs-24.2/lib-src/hexl.c ../lib/libgnu.a  -o hexl
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 -DHAVE_SHARED_GAME_DIR="\"/usr/local/var/games/emacs\"" \
+	  /home/xah/Downloads/emacs-24.2/lib-src/update-game-score.c ../lib/libgnu.a  -o update-game-score
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 -o test-distrib /home/xah/Downloads/emacs-24.2/lib-src/test-distrib.c
+./test-distrib /home/xah/Downloads/emacs-24.2/lib-src/testfile
+gcc -std=gnu99   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -DHAVE_CONFIG_H -I. -I../src -I../lib -I/home/xah/Downloads/emacs-24.2/lib-src -I/home/xah/Downloads/emacs-24.2/lib-src/../src -I/home/xah/Downloads/emacs-24.2/lib-src/../lib  -Wl,-znocombreloc   -g -O2 /home/xah/Downloads/emacs-24.2/lib-src/make-docfile.c ../lib/libgnu.a  \
+	  -o make-docfile
+[ "`/bin/pwd`" = "`(cd /home/xah/Downloads/emacs-24.2/lib-src && /bin/pwd)`" ] || cp -p /home/xah/Downloads/emacs-24.2/lib-src/rcs-checkin rcs-checkin
+touch stamp-rcs-checkin
+[ "`/bin/pwd`" = "`(cd /home/xah/Downloads/emacs-24.2/lib-src && /bin/pwd)`" ] || cp -p /home/xah/Downloads/emacs-24.2/lib-src/grep-changelog grep-changelog
+touch stamp-grep-changelog
+[ "`/bin/pwd`" = "`(cd /home/xah/Downloads/emacs-24.2/lib-src && /bin/pwd)`" ] || cp -p /home/xah/Downloads/emacs-24.2/lib-src/rcs2log rcs2log
+touch stamp-rcs2log
+[ "`/bin/pwd`" = "`(cd /home/xah/Downloads/emacs-24.2/lib-src && /bin/pwd)`" ] || cp -p /home/xah/Downloads/emacs-24.2/lib-src/vcdiff vcdiff
+touch stamp-vcdiff
+make[1]: Leaving directory `/home/xah/Downloads/emacs-24.2/lib-src'
+boot=bootstrap-emacs;                         \
+	if [ ! -x "src/$boot" ]; then                                     \
+	    cd src; make all                                    \
+	      CC='gcc -std=gnu99' CFLAGS='-g -O2' CPPFLAGS=''         \
+	      LDFLAGS='-Wl,-znocombreloc ' MAKE='make' BOOTSTRAPEMACS="$boot"; \
+	fi;
+make[1]: Entering directory `/home/xah/Downloads/emacs-24.2/src'
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/pre-crt0.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 pre-crt0.c
+touch stamp-oldxmenu
+../lib-src/make-docfile -d /home/xah/Downloads/emacs-24.2/src -g dosfns.o msdos.o xterm.o xfns.o xmenu.o xselect.o xrdb.o xsmfns.o fringe.o image.o fontset.o dbusbind.o nsterm.o nsfns.o nsmenu.o nsselect.o nsimage.o nsfont.o w32.o w32console.o w32fns.o w32heap.o w32inevt.o w32menu.o w32proc.o w32reg.o w32select.o w32term.o w32xfns.o w16select.o widget.o xfont.o ftfont.o xftfont.o ftxfont.o gtkutil.o xsettings.o xgselect.o termcap.o dispnew.o frame.o scroll.o xdisp.o menu.o xmenu.o window.o charset.o coding.o category.o ccl.o character.o chartab.o bidi.o cm.o term.o terminal.o xfaces.o xterm.o xfns.o xselect.o xrdb.o fontset.o xsmfns.o fringe.o image.o xsettings.o xgselect.o gtkutil.o  dbusbind.o emacs.o keyboard.o macros.o keymap.o sysdep.o buffer.o filelock.o insdel.o marker.o minibuf.o fileio.o dired.o cmds.o casetab.o casefiddle.o indent.o search.o regex.o undo.o alloc.o data.o doc.o editfns.o callint.o eval.o floatfns.o fns.o font.o print.o lread.o syntax.o unexelf.o bytecode.o process.o gnutls.o callproc.o region-cache.o sound.o atimer.o doprnt.o intervals.o textprop.o composite.o xml.o     xfont.o ftfont.o xftfont.o ftxfont.o  > gl-tmp
+/home/xah/Downloads/emacs-24.2/src/../build-aux/move-if-change gl-tmp globals.h
+echo timestamp > gl-stamp
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/dispnew.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 dispnew.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/frame.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 frame.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/scroll.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 scroll.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xdisp.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xdisp.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/menu.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 menu.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xmenu.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xmenu.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/window.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 window.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/charset.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 charset.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/coding.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 coding.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/category.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 category.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/ccl.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 ccl.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/character.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 character.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/chartab.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 chartab.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/bidi.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 bidi.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/cm.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 cm.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/term.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 term.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/terminal.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 terminal.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xfaces.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xfaces.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xterm.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xterm.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xfns.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xfns.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xselect.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xselect.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xrdb.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xrdb.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/fontset.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 fontset.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xsmfns.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xsmfns.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/fringe.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 fringe.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/image.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 image.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xsettings.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xsettings.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xgselect.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xgselect.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/gtkutil.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 gtkutil.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/dbusbind.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 dbusbind.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/emacs.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 emacs.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/keyboard.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 keyboard.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/macros.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 macros.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/keymap.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 keymap.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/sysdep.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 sysdep.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/buffer.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 buffer.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/filelock.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 filelock.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/insdel.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 insdel.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/marker.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 marker.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/minibuf.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 minibuf.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/fileio.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 fileio.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/dired.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 dired.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/cmds.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 cmds.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/casetab.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 casetab.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/casefiddle.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 casefiddle.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/indent.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 indent.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/search.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 search.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/regex.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 regex.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/undo.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 undo.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/alloc.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 alloc.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/data.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 data.c
+echo "#define BUILDOBJ \"dispnew.o frame.o scroll.o xdisp.o menu.o xmenu.o window.o charset.o coding.o category.o ccl.o character.o chartab.o bidi.o cm.o term.o terminal.o xfaces.o xterm.o xfns.o xselect.o xrdb.o fontset.o xsmfns.o fringe.o image.o xsettings.o xgselect.o gtkutil.o  dbusbind.o emacs.o keyboard.o macros.o keymap.o sysdep.o buffer.o filelock.o insdel.o marker.o minibuf.o fileio.o dired.o cmds.o casetab.o casefiddle.o indent.o search.o regex.o undo.o alloc.o data.o doc.o editfns.o callint.o eval.o floatfns.o fns.o font.o print.o lread.o syntax.o unexelf.o bytecode.o process.o gnutls.o callproc.o region-cache.o sound.o atimer.o doprnt.o intervals.o textprop.o composite.o xml.o     xfont.o ftfont.o xftfont.o ftxfont.o  terminfo.o lastfile.o    vm-limit.o   " "\"" > buildobj.h
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/doc.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 doc.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/editfns.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 editfns.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/callint.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 callint.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/eval.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 eval.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/floatfns.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 floatfns.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/fns.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 fns.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/font.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 font.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/print.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 print.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/lread.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 lread.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/syntax.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 syntax.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/unexelf.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 unexelf.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/bytecode.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 bytecode.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/process.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 process.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/gnutls.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 gnutls.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/callproc.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 callproc.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/region-cache.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 region-cache.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/sound.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 sound.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/atimer.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 atimer.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/doprnt.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 doprnt.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/intervals.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 intervals.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/textprop.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 textprop.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/composite.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 composite.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xml.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xml.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xfont.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xfont.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/ftfont.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 ftfont.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/xftfont.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 xftfont.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/ftxfont.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 ftxfont.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/terminfo.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 terminfo.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/lastfile.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 lastfile.c
+gcc -std=gnu99 -c  -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/vm-limit.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2 vm-limit.c
+gcc -std=gnu99 -nostdlib -Demacs -DHAVE_CONFIG_H  -I. -I/home/xah/Downloads/emacs-24.2/src -I../lib -I/home/xah/Downloads/emacs-24.2/src/../lib   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -I/usr/include/freetype2    -I/usr/include/alsa   -pthread -I/usr/include/librsvg-2.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/freetype2    -I/usr/include/libxml2   -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include   -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include   -pthread -I/usr/include/dbus-1.0 -I/usr/lib/i386-linux-gnu/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/gconf/2   -I/usr/include/freetype2    -I/usr/include/freetype2    -MMD -MF deps/.d -MP   -Wimplicit-function-declaration -Wold-style-definition -Wdeclaration-after-statement  -g -O2   -Wl,-znocombreloc  \
+	  -o temacs pre-crt0.o /usr/lib/gcc/i686-linux-gnu/4.6.1/../../../i386-linux-gnu/crt1.o /usr/lib/gcc/i686-linux-gnu/4.6.1/../../../i386-linux-gnu/crti.o dispnew.o frame.o scroll.o xdisp.o menu.o xmenu.o window.o charset.o coding.o category.o ccl.o character.o chartab.o bidi.o cm.o term.o terminal.o xfaces.o xterm.o xfns.o xselect.o xrdb.o fontset.o xsmfns.o fringe.o image.o xsettings.o xgselect.o gtkutil.o  dbusbind.o emacs.o keyboard.o macros.o keymap.o sysdep.o buffer.o filelock.o insdel.o marker.o minibuf.o fileio.o dired.o cmds.o casetab.o casefiddle.o indent.o search.o regex.o undo.o alloc.o data.o doc.o editfns.o callint.o eval.o floatfns.o fns.o font.o print.o lread.o syntax.o unexelf.o bytecode.o process.o gnutls.o callproc.o region-cache.o sound.o atimer.o doprnt.o intervals.o textprop.o composite.o xml.o     xfont.o ftfont.o xftfont.o ftxfont.o  terminfo.o lastfile.o    vm-limit.o   ../lib/libgnu.a    -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lSM -lICE -ltiff -ljpeg -lpng -lz -lm -lgif -lXpm -lX11 -lXrender -lXft   -lasound   -pthread -lrsvg-2 -lm -lgio-2.0 -lgdk_pixbuf-2.0 -lcairo -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lrt -lglib-2.0    -ldbus-1 -lpthread -lrt   -lxml2   -lgpm   -lncurses  -pthread -lgio-2.0 -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lgconf-2 -lglib-2.0    -lfreetype   -lfontconfig   -lz -lotf -lfreetype   -lm17n-flt -lm17n-core    -lpthread   -lm -lgcc -lc -lgcc /usr/lib/gcc/i686-linux-gnu/4.6.1/../../../i386-linux-gnu/crtn.o 
+cd ../lisp; make -w update-subdirs
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+cd /home/xah/Downloads/emacs-24.2/lisp; subdirs=`(find . -type d -print)`; for file in $subdirs; do case $file in */.* | */.*/* | */=* | */cedet* ) ;; *) wins="$wins $file" ;; esac; done; \
+	for file in $wins; do \
+	   /home/xah/Downloads/emacs-24.2/update-subdirs $file; \
+	done;
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+if test "no" = "yes"; then \
+	  ln -f temacs bootstrap-emacs; \
+	else \
+	  `/bin/pwd`/temacs --batch --load loadup bootstrap || exit 1; \
+	  mv -f emacs bootstrap-emacs; \
+	fi
+Loading loadup.el (source)...
+Using load-path (/home/xah/Downloads/emacs-24.2/lisp /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp /home/xah/Downloads/emacs-24.2/lisp/language /home/xah/Downloads/emacs-24.2/lisp/international /home/xah/Downloads/emacs-24.2/lisp/textmodes)
+Loading emacs-lisp/byte-run...
+Loading emacs-lisp/backquote...
+Loading subr...
+Loading version.el (source)...
+Loading widget...
+Loading custom...
+Loading emacs-lisp/map-ynp...
+Loading cus-start...
+Loading international/mule...
+Loading international/mule-conf...
+Loading env...
+Loading format...
+Loading bindings...
+Loading window...
+Loading files...
+Loading cus-face...
+Loading faces...
+Loading button...
+Loading startup...
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Loading minibuffer...
+Loading abbrev...
+Loading simple...
+Loading help...
+Loading jka-cmpr-hook...
+Loading epa-hook...
+Loading international/mule-cmds...
+Loading case-table...
+Loading /home/xah/Downloads/emacs-24.2/lisp/international/charprop.el (source)...
+Loading international/characters...
+Loading composite...
+Loading language/chinese...
+Loading language/cyrillic...
+Loading language/indian...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/sinhala.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/english.el (source)...
+Loading language/ethiopic...
+Loading language/european...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/czech.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/slovak.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/romanian.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/greek.el (source)...
+Loading language/hebrew...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/japanese.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/international/cp51932.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/international/eucjp-ms.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/korean.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/lao.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/tai-viet.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/thai.el (source)...
+Loading language/tibetan...
+Loading language/vietnamese...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/misc-lang.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/utf-8-lang.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/georgian.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/khmer.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/burmese.el (source)...
+Loading /home/xah/Downloads/emacs-24.2/lisp/language/cham.el (source)...
+Loading indent...
+Loading frame...
+Loading term/tty-colors...
+Loading font-core...
+Loading facemenu...
+Loading emacs-lisp/syntax...
+Loading font-lock...
+Loading jit-lock...
+Loading mouse...
+Loading scroll-bar...
+Loading select...
+Loading emacs-lisp/timer...
+Loading isearch...
+Loading rfn-eshadow...
+Loading menu-bar...
+Loading /home/xah/Downloads/emacs-24.2/lisp/paths.el (source)...
+Loading emacs-lisp/lisp...
+Loading textmodes/page...
+Loading register...
+Loading textmodes/paragraphs...
+Loading emacs-lisp/lisp-mode...
+Loading textmodes/text-mode...
+Loading textmodes/fill...
+Loading replace...
+Loading buff-menu...
+Loading fringe...
+Loading image...
+Loading international/fontset...
+Loading dnd...
+Loading tool-bar...
+Loading dynamic-setting...
+Loading x-dnd...
+Loading term/common-win...
+Loading term/x-win...
+Loading mwheel...
+Loading emacs-lisp/float-sup...
+Loading vc/vc-hooks...
+Loading vc/ediff-hook...
+Loading tooltip...
+Finding pointers to doc strings...
+Finding pointers to doc strings...done
+Dumping under the name emacs
+43515 pure bytes used
+cd ../lisp; make -w compile-first EMACS=/home/xah/Downloads/emacs-24.2/src/bootstrap-emacs
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Nothing to be done for `compile-first'.
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+cd ../lisp; make -w autoloads EMACS=/home/xah/Downloads/emacs-24.2/src/bootstrap-emacs
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+cd /home/xah/Downloads/emacs-24.2/lisp && chmod +w ps-print.el emulation/tpu-edt.el emacs-lisp/cl-loaddefs.el mail/rmail.el dired.el ibuffer.el htmlfontify.el emacs-lisp/eieio.el
+cd /home/xah/Downloads/emacs-24.2/lisp; subdirs=`(find . -type d -print)`; for file in $subdirs; do case $file in */.* | */.*/* | */=* | */obsolete | */term ) ;; *) wins="$wins $file" ;; esac; done; \
+	echo Directories: $wins; \
+	EMACSLOADPATH=/home/xah/Downloads/emacs-24.2/lisp LC_ALL=C /home/xah/Downloads/emacs-24.2/src/bootstrap-emacs -batch --no-site-file --no-site-lisp -l autoload --eval '(setq generated-autoload-file "/home/xah/Downloads/emacs-24.2/lisp/loaddefs.el")' -f batch-update-autoloads $wins
+Directories: . ./erc ./nxml ./language ./emacs-lisp ./progmodes ./international ./gnus ./url ./mh-e ./vc ./textmodes ./calc ./cedet ./cedet/ede ./cedet/semantic ./cedet/semantic/bovine ./cedet/semantic/wisent ./cedet/semantic/symref ./cedet/semantic/analyze ./cedet/semantic/decorate ./cedet/srecode ./org ./emulation ./calendar ./eshell ./net ./play ./mail
+Saving file /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/byte-run.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/byte-run.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/backquote.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/backquote.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/subr.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+
+In declare-function:
+subr.el:39:11:Warning: macro declare-function used to take 2+ arguments, now
+    takes 2-4
+Wrote /home/xah/Downloads/emacs-24.2/lisp/subr.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/widget.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/widget.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/custom.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/custom.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/map-ynp.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/map-ynp.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/cus-start.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/cus-start.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/international/mule.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/international/mule.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/international/mule-conf.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/international/mule-conf.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/env.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/env.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/format.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/format.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/bindings.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+
+In mode-line-toggle-read-only:
+bindings.el:42:46:Warning: `toggle-read-only' used from Lisp code
+That command is designed for interactive use only
+Wrote /home/xah/Downloads/emacs-24.2/lisp/bindings.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/files.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+
+In find-file-read-only:
+files.el:1462:44:Warning: `toggle-read-only' used from Lisp code
+That command is designed for interactive use only
+
+In find-file-read-only-other-window:
+files.el:1479:44:Warning: `toggle-read-only' used from Lisp code
+That command is designed for interactive use only
+
+In find-file-read-only-other-frame:
+files.el:1496:44:Warning: `toggle-read-only' used from Lisp code
+That command is designed for interactive use only
+Wrote /home/xah/Downloads/emacs-24.2/lisp/files.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/cus-face.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/cus-face.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/faces.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/faces.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/button.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/button.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/startup.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/startup.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/minibuffer.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/minibuffer.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/abbrev.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/abbrev.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/simple.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+
+In completion-list-mode-finish:
+simple.el:6312:25:Warning: `toggle-read-only' used from Lisp code
+That command is designed for interactive use only
+Wrote /home/xah/Downloads/emacs-24.2/lisp/simple.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/help.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/help.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/jka-cmpr-hook.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/jka-cmpr-hook.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/epa-hook.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/epa-hook.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/international/mule-cmds.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/international/mule-cmds.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/case-table.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/case-table.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/international/characters.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/international/characters.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/composite.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/composite.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/chinese.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/chinese.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/cyrillic.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/cyrillic.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/indian.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/indian.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/ethiopic.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/ethiopic.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/european.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/european.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/hebrew.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/hebrew.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/tibetan.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/tibetan.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/language/vietnamese.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/language/vietnamese.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/indent.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/indent.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/window.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/window.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/frame.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/frame.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/term/tty-colors.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/term/tty-colors.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/font-core.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/font-core.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/facemenu.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/facemenu.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/syntax.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/syntax.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/font-lock.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/font-lock.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/jit-lock.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/jit-lock.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/mouse.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/mouse.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/scroll-bar.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/scroll-bar.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/select.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/select.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/timer.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/timer.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/isearch.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/isearch.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/rfn-eshadow.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/rfn-eshadow.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/menu-bar.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/menu-bar.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/lisp.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+
+In beginning-of-defun-raw:
+lisp.el:291:27:Warning: `font-lock-beginning-of-syntax-function' is an
+    obsolete variable (as of 23.3); use `syntax-begin-function' instead.
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/lisp.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/textmodes/page.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/textmodes/page.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/register.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/register.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/textmodes/paragraphs.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/textmodes/paragraphs.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/lisp-mode.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/lisp-mode.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/textmodes/text-mode.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/textmodes/text-mode.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/textmodes/fill.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/textmodes/fill.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/replace.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/replace.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/buff-menu.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+
+In Buffer-menu-toggle-read-only:
+buff-menu.el:612:36:Warning: `toggle-read-only' used from Lisp code
+That command is designed for interactive use only
+Wrote /home/xah/Downloads/emacs-24.2/lisp/buff-menu.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/fringe.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/fringe.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/image.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/image.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/international/fontset.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/international/fontset.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/dnd.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/dnd.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/tool-bar.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/tool-bar.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/dynamic-setting.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/dynamic-setting.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/x-dnd.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/x-dnd.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/term/common-win.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/term/common-win.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/term/x-win.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/term/x-win.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/w32-vars.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/w32-vars.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/term/w32-win.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/term/w32-win.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/ls-lisp.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/ls-lisp.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/disp-table.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/disp-table.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/dos-w32.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/dos-w32.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/w32-fns.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/w32-fns.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/dos-fns.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/dos-fns.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/dos-vars.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/dos-vars.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/term/pc-win.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/term/pc-win.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/term/internal.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/term/internal.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/term/ns-win.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+
+In toplevel form:
+ns-win.el:553:1:Warning: global/dynamic var `parameters' lacks a prefix
+Wrote /home/xah/Downloads/emacs-24.2/lisp/term/ns-win.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/mwheel.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/mwheel.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/emacs-lisp/float-sup.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/emacs-lisp/float-sup.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/vc/vc-hooks.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/vc/vc-hooks.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/vc/ediff-hook.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/vc/ediff-hook.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+Compiling /home/xah/Downloads/emacs-24.2/src/../lisp/tooltip.el
+Reloading stale loaddefs.el
+Loading /home/xah/Downloads/emacs-24.2/lisp/loaddefs.el (source)...
+Wrote /home/xah/Downloads/emacs-24.2/lisp/tooltip.elc
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+rm -f ../etc/DOC
+../lib-src/make-docfile -d /home/xah/Downloads/emacs-24.2/src dosfns.o msdos.o xterm.o xfns.o xmenu.o xselect.o xrdb.o xsmfns.o fringe.o image.o fontset.o dbusbind.o nsterm.o nsfns.o nsmenu.o nsselect.o nsimage.o nsfont.o w32.o w32console.o w32fns.o w32heap.o w32inevt.o w32menu.o w32proc.o w32reg.o w32select.o w32term.o w32xfns.o w16select.o widget.o xfont.o ftfont.o xftfont.o ftxfont.o gtkutil.o xsettings.o xgselect.o termcap.o dispnew.o frame.o scroll.o xdisp.o menu.o xmenu.o window.o charset.o coding.o category.o ccl.o character.o chartab.o bidi.o cm.o term.o terminal.o xfaces.o xterm.o xfns.o xselect.o xrdb.o fontset.o xsmfns.o fringe.o image.o xsettings.o xgselect.o gtkutil.o  dbusbind.o emacs.o keyboard.o macros.o keymap.o sysdep.o buffer.o filelock.o insdel.o marker.o minibuf.o fileio.o dired.o cmds.o casetab.o casefiddle.o indent.o search.o regex.o undo.o alloc.o data.o doc.o editfns.o callint.o eval.o floatfns.o fns.o font.o print.o lread.o syntax.o unexelf.o bytecode.o process.o gnutls.o callproc.o region-cache.o sound.o atimer.o doprnt.o intervals.o textprop.o composite.o xml.o     xfont.o ftfont.o xftfont.o ftxfont.o  > ../etc/DOC
+../lib-src/make-docfile -a ../etc/DOC -d /home/xah/Downloads/emacs-24.2/src/../lisp `sed -n -e 's| \\\\||' -e 's|^[ 	]*$(lispsource)/||p' /home/xah/Downloads/emacs-24.2/src/lisp.mk`
+if test "no" = "yes"; then \
+	  ln -f temacs emacs; \
+	  EMACSLOADPATH=/home/xah/Downloads/emacs-24.2/src/../lisp ./emacs -batch \
+	    -f list-load-path-shadows || true; \
+	else \
+	  LC_ALL=C `/bin/pwd`/temacs -batch -l loadup dump || exit 1; \
+	  ln -f emacs bootstrap-emacs; \
+	  ./emacs -batch -f list-load-path-shadows || true; \
+	fi
+Loading loadup.el (source)...
+Using load-path (/home/xah/Downloads/emacs-24.2/lisp)
+Loading emacs-lisp/byte-run...
+Loading emacs-lisp/backquote...
+Loading subr...
+Loading version.el (source)...
+Loading widget...
+Loading custom...
+Loading emacs-lisp/map-ynp...
+Loading cus-start...
+Loading international/mule...
+Loading international/mule-conf...
+Loading env...
+Loading format...
+Loading bindings...
+Loading window...
+Loading files...
+Loading cus-face...
+Loading faces...
+Loading button...
+Loading startup...
+Loading loaddefs.el (source)...
+Loading minibuffer...
+Loading abbrev...
+Loading simple...
+Loading help...
+Loading jka-cmpr-hook...
+Loading epa-hook...
+Loading international/mule-cmds...
+Loading case-table...
+Loading international/charprop.el (source)...
+Loading international/characters...
+Loading composite...
+Loading language/chinese...
+Loading language/cyrillic...
+Loading language/indian...
+Loading language/sinhala.el (source)...
+Loading language/english.el (source)...
+Loading language/ethiopic...
+Loading language/european...
+Loading language/czech.el (source)...
+Loading language/slovak.el (source)...
+Loading language/romanian.el (source)...
+Loading language/greek.el (source)...
+Loading language/hebrew...
+Loading language/japanese.el (source)...
+Loading international/cp51932.el (source)...
+Loading international/eucjp-ms.el (source)...
+Loading language/korean.el (source)...
+Loading language/lao.el (source)...
+Loading language/tai-viet.el (source)...
+Loading language/thai.el (source)...
+Loading language/tibetan...
+Loading language/vietnamese...
+Loading language/misc-lang.el (source)...
+Loading language/utf-8-lang.el (source)...
+Loading language/georgian.el (source)...
+Loading language/khmer.el (source)...
+Loading language/burmese.el (source)...
+Loading language/cham.el (source)...
+Loading indent...
+Loading frame...
+Loading term/tty-colors...
+Loading font-core...
+Loading facemenu...
+Loading emacs-lisp/syntax...
+Loading font-lock...
+Loading jit-lock...
+Loading mouse...
+Loading scroll-bar...
+Loading select...
+Loading emacs-lisp/timer...
+Loading isearch...
+Loading rfn-eshadow...
+Loading menu-bar...
+Loading paths.el (source)...
+Loading emacs-lisp/lisp...
+Loading textmodes/page...
+Loading register...
+Loading textmodes/paragraphs...
+Loading emacs-lisp/lisp-mode...
+Loading textmodes/text-mode...
+Loading textmodes/fill...
+Loading replace...
+Loading buff-menu...
+Loading fringe...
+Loading image...
+Loading international/fontset...
+Loading dnd...
+Loading tool-bar...
+Loading dynamic-setting...
+Loading x-dnd...
+Loading term/common-win...
+Loading term/x-win...
+Loading mwheel...
+Loading emacs-lisp/float-sup...
+Loading vc/vc-hooks...
+Loading vc/ediff-hook...
+Loading tooltip...
+Finding pointers to doc strings...
+Finding pointers to doc strings...done
+Dumping under the name emacs
+1462071 pure bytes used
+Adding name emacs-24.2.1
+make[1]: Leaving directory `/home/xah/Downloads/emacs-24.2/src'
+if [ -r .bzr/checkout/dirstate ]; then 			\
+	    vcswitness="`pwd`/.bzr/checkout/dirstate"; 	\
+	fi; 							\
+	cd src; make all                            \
+	  CC='gcc -std=gnu99' CFLAGS='-g -O2' CPPFLAGS='' \
+	  LDFLAGS='-Wl,-znocombreloc ' MAKE='make' BOOTSTRAPEMACS=""	\
+	  VCSWITNESS="$vcswitness"
+make[1]: Entering directory `/home/xah/Downloads/emacs-24.2/src'
+make[1]: Leaving directory `/home/xah/Downloads/emacs-24.2/src'
+cd lisp; make all                            \
+	  CC='gcc -std=gnu99' CFLAGS='-g -O2' CPPFLAGS='' \
+	  LDFLAGS='-Wl,-znocombreloc ' MAKE='make'
+make[1]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Entering directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[2]: Nothing to be done for `compile-targets'.
+make[2]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+make[1]: Leaving directory `/home/xah/Downloads/emacs-24.2/lisp'
+(export PARALLEL; PARALLEL=0; cd leim; make all  \
+	  CC='gcc -std=gnu99' CFLAGS='-g -O2' CPPFLAGS='' \
+	  LDFLAGS='-Wl,-znocombreloc ' MAKE='make')
+make[1]: Entering directory `/home/xah/Downloads/emacs-24.2/leim'
+EMACSLOADPATH=/home/xah/Downloads/emacs-24.2/leim/../lisp LC_ALL=C ../src/emacs -batch --no-site-file --no-site-lisp -l /home/xah/Downloads/emacs-24.2/leim/../lisp/international/titdic-cnv \
+	  -f batch-titdic-convert -dir quail /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC; \
+	  echo "changed" > changed.tit
+Converting all tit files in the directory /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/4Corner.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/ARRAY30.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/CCDOSPY.tit to quail-package...
+Decoding with coding system euc-china...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/ECDICT.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/ETZY.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/PY-b5.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/Punct-b5.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/Punct.tit to quail-package...
+Decoding with coding system euc-china...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/QJ-b5.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/QJ.tit to quail-package...
+Decoding with coding system euc-china...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/SW.tit to quail-package...
+Decoding with coding system euc-china...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/TONEPY.tit to quail-package...
+Decoding with coding system euc-china...
+Processing header part...
+Formatting translation rules...
+Converting /home/xah/Downloads/emacs-24.2/leim/CXTERM-DIC/ZOZY.tit to quail-package...
+Decoding with coding system cn-big5...
+Processing header part...
+Formatting translation rules...
+Byte-compile the created files by:
+  % emacs -batch -f batch-byte-compile XXX.el
+Compiling quail/CCDOSPY.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/CCDOSPY.elc
+Compiling quail/Punct.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/Punct.elc
+Compiling quail/QJ.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/QJ.elc
+Compiling quail/SW.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/SW.elc
+Compiling quail/TONEPY.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/TONEPY.elc
+Compiling quail/4Corner.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/4Corner.elc
+Compiling quail/ARRAY30.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/ARRAY30.elc
+Compiling quail/ECDICT.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/ECDICT.elc
+Compiling quail/ETZY.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/ETZY.elc
+Compiling quail/Punct-b5.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/Punct-b5.elc
+Compiling quail/PY-b5.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/PY-b5.elc
+Compiling quail/QJ-b5.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/QJ-b5.elc
+Compiling quail/ZOZY.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/ZOZY.elc
+EMACSLOADPATH=/home/xah/Downloads/emacs-24.2/leim/../lisp LC_ALL=C ../src/emacs -batch --no-site-file --no-site-lisp -l /home/xah/Downloads/emacs-24.2/leim/../lisp/international/titdic-cnv \
+	  -f batch-miscdic-convert -dir quail /home/xah/Downloads/emacs-24.2/leim/MISC-DIC; \
+	  echo "changed" > changed.misc
+Converting CTLau-b5.html to CTLau-b5.el...
+Converting CTLau-b5.html to CTLau-b5.el...done
+Converting cangjie-table.cns to tsang-cns.el...
+Converting cangjie-table.cns to tsang-cns.el...done
+Converting cangjie-table.cns to quick-cns.el...
+Converting cangjie-table.cns to quick-cns.el...done
+Converting ziranma.cin to ZIRANMA.el...
+Converting ziranma.cin to ZIRANMA.el...done
+Converting cangjie-table.b5 to tsang-b5.el...
+Converting cangjie-table.b5 to tsang-b5.el...done
+Converting cangjie-table.b5 to quick-b5.el...
+Converting cangjie-table.b5 to quick-b5.el...done
+Converting CTLau.html to CTLau.el...
+Converting CTLau.html to CTLau.el...done
+Converting pinyin.map to PY.el...
+Converting pinyin.map to PY.el...done
+Compiling quail/tsang-b5.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/tsang-b5.elc
+Compiling quail/quick-b5.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/quick-b5.elc
+Compiling quail/tsang-cns.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/tsang-cns.elc
+Compiling quail/quick-cns.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/quick-cns.elc
+Compiling quail/PY.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/PY.elc
+Compiling quail/ZIRANMA.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/ZIRANMA.elc
+Compiling quail/CTLau.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/CTLau.elc
+Compiling quail/CTLau-b5.el
+Wrote /home/xah/Downloads/emacs-24.2/leim/quail/CTLau-b5.elc
+rm -f leim-list.el
+EMACSLOADPATH=/home/xah/Downloads/emacs-24.2/leim/../lisp LC_ALL=C ../src/emacs -batch --no-site-file --no-site-lisp  -l /home/xah/Downloads/emacs-24.2/leim/../lisp/international/quail \
+	  -f batch-byte-compile-if-not-done quail/CCDOSPY.el quail/Punct.el quail/QJ.el quail/SW.el quail/TONEPY.el quail/4Corner.el quail/ARRAY30.el quail/ECDICT.el quail/ETZY.el quail/Punct-b5.el quail/PY-b5.el quail/QJ-b5.el quail/ZOZY.el quail/tsang-b5.el quail/quick-b5.el quail/tsang-cns.el quail/quick-cns.el quail/PY.el quail/ZIRANMA.el quail/CTLau.el quail/CTLau-b5.el
+if [ x`(cd /home/xah/Downloads/emacs-24.2/leim && /bin/pwd)` = x`(/bin/pwd)` ] ; then \
+	  EMACSLOADPATH=/home/xah/Downloads/emacs-24.2/leim/../lisp LC_ALL=C ../src/emacs -batch --no-site-file --no-site-lisp -l /home/xah/Downloads/emacs-24.2/leim/../lisp/international/quail \
+	    --eval "(update-leim-list-file \".\")" ; \
+	else \
+	  EMACSLOADPATH=/home/xah/Downloads/emacs-24.2/leim/../lisp LC_ALL=C ../src/emacs -batch --no-site-file --no-site-lisp -l /home/xah/Downloads/emacs-24.2/leim/../lisp/international/quail \
+	    --eval "(update-leim-list-file \".\" \"/home/xah/Downloads/emacs-24.2/leim\")" ; \
+	fi
+Updating /home/xah/Downloads/emacs-24.2/leim/leim-list.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/CTLau.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/hanja-jis.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/cyril-jis.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/Punct.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/viqr.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/symbol-ksc.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/latin-alt.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/latin-pre.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/japanese.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/TONEPY.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/greek.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/Punct-b5.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/persian.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/sgml-input.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/czech.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ethiopic.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/CCDOSPY.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/quick-cns.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/lrt.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/thai.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/CTLau-b5.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/4Corner.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ARRAY30.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ETZY.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/welsh.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/QJ.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/lao.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ipa-praat.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/PY-b5.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/quick-b5.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/vntelex.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/croatian.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/pypunct-b5.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/cyrillic.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ZIRANMA.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/QJ-b5.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/georgian.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ipa.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/tsang-b5.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/tibetan.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/SW.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/hanja3.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/indian.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ZOZY.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/hebrew.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/arabic.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/sisheng.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/hangul.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/slovak.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/uni-input.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/ECDICT.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/tsang-cns.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/rfc1345.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/latin-ltx.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/py-punct.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/latin-post.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/hanja.el ...
+Checking /home/xah/Downloads/emacs-24.2/leim/quail/PY.el ...
+Saving file /home/xah/Downloads/emacs-24.2/leim/leim-list.el...
+Wrote /home/xah/Downloads/emacs-24.2/leim/leim-list.el
+Updating /home/xah/Downloads/emacs-24.2/leim/leim-list.el ... done
+sed -n '/^[^;]/ p' < /home/xah/Downloads/emacs-24.2/leim/leim-ext.el >> leim-list.el
+make[1]: Leaving directory `/home/xah/Downloads/emacs-24.2/leim'
