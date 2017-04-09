@@ -1,0 +1,4 @@
+Q : remove some package make apt-get has error like this :
+	you may need use 'apt-get -f install' to fix some package problem.
+A : use follow command to fix this problem
+	$ apt-get --fix-broken install

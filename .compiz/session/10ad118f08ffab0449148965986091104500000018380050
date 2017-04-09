@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<compiz_session id="10ad118f08ffab0449148965986091104500000018380050">
-  <window id="10ad118f08ffab0449148965988356540600000018380051" title="GitHub - syl20bnr/spacemacs: A community-driven Emacs distribution - The best editor is neither Emacs nor Vim, it's Emacs *and* Vim! - Vimperator" class="Firefox" name="Navigator" role="browser" command="firefox">
-    <geometry x="137" y="99" width="1229" height="669"/>
-    <maximized vert="yes" horz="yes"/>
-    <workspace index="0"/>
-  </window>
-</compiz_session>

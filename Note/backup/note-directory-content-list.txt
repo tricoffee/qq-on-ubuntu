@@ -117,6 +117,8 @@
 │   └── RMU900-learn.txt
 ├── linux
 │   ├── debian
+│   │   ├── apt-get
+│   │   │   └── apt-get-f-install.txt
 │   │   ├── input_method
 │   │   │   └── zh-input-method.txt
 │   │   └── window_manager
@@ -395,4 +397,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-59 directories, 336 files
+60 directories, 337 files

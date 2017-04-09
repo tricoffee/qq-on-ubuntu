@@ -16,5 +16,28 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin directories
-# PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# setup ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+# setup dwm
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export DESKTOP_ENV="DWM"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+synclient TapButton1=1
+synclient HorizEdgeScroll=1
+synclient RTCornerButton=2
+synclient RBCornerButton=3
+
+# /home/osily/software/bin/gp &
+
+# yong -d
+habak -ms /home/qq/Wallpapers/emacs-ref-with-desk.png/ &
+while true; do
+    xsetroot -name "`/home/qq/ShellScript/show-status-on-dwm.sh`"
+    sleep 20
+done &
