@@ -1,0 +1,150 @@
+xmodmap修改键映射
+标签： hyperx86c测试
+2010-01-07 17:28 9489人阅读 评论(2) 收藏 举报
+分类：
+Linux（11）
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+xmodmap修改键映射 by:lqk
+
+ 
+
+获取操作系统代码到功能的映射
+
+>xmodmap
+
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock        Caps_Lock (0x42)
+control     Control_L (0x25),  Control_R (0x69), 
+mod1        Alt_L (0x40), Alt_R (0x6c), Meta_L (0xcd)
+mod2        Num_Lock (0x4d)
+mod3     
+mod4        Super_L (0x85),  Super_R (0x86),  Super_L (0xce),  Hyper_L (0xcf)
+mod5        ISO_Level3_Shift (0x5c),  Mode_switch (0xcb)
+
+这里几个是功能键映射，前面3个可以直接看出来，mod1是alt功能，mod2是 Num_Lock，mod4是 super也就是窗口,mod5不知是什么。
+
+————————————————————————————————————————————————————————————
+
+获取物理按键到操作系统代码的映射
+
+>xmodmap pk | grep Alt_R
+
+108        0xffea (Alt_R)    0xffe8 (Meta_R)    0xffea (Alt_R)    0xffe8 (Meta_R)0xffea (Alt_R)    0xffe8 (Meta_R)   
+
+也可以xenv来测试。
+
+————————————————————————————————————————————————————————————
+
+xmodmap的键总共有3个层次的概念, 以键盘上右alt键为例子。
+
+1、键盘上那个物理按键代码 。（右alt键，物理键代码是0x6c，也就是108）
+
+2、物理按键按下去后操作系统内表示为什么代码。（0xffea (Alt_R), 可以看出Meta_R也绑定在右alt键上。）
+
+3、功能。（这里是mod1 也就是alt功能）
+
+这3个层次间存在两个映射，1和2，2和3。
+
+————————————————————————————————————————————————————————————
+
+键盘        操作系统代码  功能代码
+
+右alt键  -      Alt_R     -    mod1
+
+————————————————————————————————————————————————————————————
+
+ 
+
+ 
+
+ 
+
+1.改12映射，keycode 或 keysym可以改12间的映射。
+
+>sudo xmodmap -e "keycode 108 = Control_L NoSymbol Control_L NoSymbol Control_L"
+
+这条执行后，右alt键 映射为 Control_L了，但是使用中却没有效果。
+
+>xmodmap
+
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock        Caps_Lock (0x42)
+control     Control_L (0x25),  Control_R (0x69), 
+mod1        Alt_L (0x40), Control_L (0x6c), Meta_L (0xcd)
+mod2        Num_Lock (0x4d)
+mod3     
+mod4        Super_L (0x85),  Super_R (0x86),  Super_L (0xce),  Hyper_L (0xcf)
+mod5        ISO_Level3_Shift (0x5c),  Mode_switch (0xcb)
+
+发现mod1里面包含Control_L (0x6c)，也就是说 右alt键（0x6c），已经变成Control_L了，但是还是执行mod1（alt）的功能。但是远程的时候已经表现ctl功能了。
+
+ 
+
+ 
+
+
+2.改23映射，add和remove、clear可以改23间的映射。
+
+在～下建立.Xmodmap 文件。
+
+内容为：
+
+!Use right alt as left control
+remove mod1 = Alt_R
+add control = Alt_R
+>xmodmap ~/.Xmodmap
+
+可以正常使用右Alt键作为control使用了，Alt_R(操作系统内的表示)已经在control功能组了。
+
+>xmodma
+
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock        Caps_Lock (0x42)
+control     Control_L (0x25),  Control_R (0x69),  Alt_R (0x6c),
+mod1        Alt_L (0x40), Meta_L (0xcd)
+mod2        Num_Lock (0x4d)
+mod3     
+mod4        Super_L (0x85),  Super_R (0x86),  Super_L (0xce),  Hyper_L (0xcf)
+mod5        ISO_Level3_Shift (0x5c),  Mode_switch (0xcb)
+
+但是右Alt键在操作系统内还是Alt_R。这时候远程到另一台机子，你就会发现右Alt键还是alt功能。因为发给远程计算机的指令还是Alt_R的。
+
+ 
+
+
+3.只有12映射和23映射都改了才能实现右alt表现为control。
+
+最好先改23，再改12。
+
+在～下建立.Xmodmap 文件。
+
+内容为：
+
+!Use right alt as left control
+remove mod1 = Alt_R
+add control = Alt_R
+
+keycode 108 = Control_L
+
+>xmodmap ~/.Xmodmap
+
+ 
+
+ 
+
+如果先改12，再改23。
+
+!Use right alt as left control
+
+keycode 108 = Control_L
+
+remove mod1 = Control_L
+add control = Control_L
+
+因为要把右alt映射到Control_L，这时系统就有两个Control_L了，add control = Control_L会有歧义了。试了下，发现是add 两个都加上去，remove两个都去掉。
+
+ 
+
+[end]
