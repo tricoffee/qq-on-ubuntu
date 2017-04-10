@@ -1,5 +1,19 @@
 openConnection: connect: 沒有此一檔案或目錄
 cannot connect to brltty at :0
-upstart: logrotate main process (29764) killed by TERM signal
-upstart: bamfdaemon main process (29838) killed by TERM signal
+upstart: bamfdaemon main process (30586) killed by TERM signal
+upstart: hud main process (30673) killed by HUP signal
+upstart: unity-panel-service main process (30689) killed by HUP signal
+upstart: indicator-messages main process (30725) killed by HUP signal
+upstart: indicator-bluetooth main process (30726) killed by TERM signal
+upstart: indicator-power main process (30727) killed by TERM signal
+upstart: indicator-datetime main process (30731) killed by TERM signal
+upstart: indicator-keyboard main process (30733) killed by HUP signal
+upstart: indicator-sound main process (30734) killed by HUP signal
+upstart: indicator-printers main process (30735) killed by TERM signal
+upstart: indicator-session main process (30737) killed by TERM signal
+upstart: indicator-application main process (30746) killed by TERM signal
+upstart: indicator-application pre-stop process (2664) killed by HUP signal
+upstart: unity-settings-daemon main process (30675) killed by HUP signal
+upstart: gnome-session (Unity) main process (30684) killed by HUP signal
+upstart: unity7 main process (30794) terminated with status 1
 upstart: 從D-Bus匯流排中離線
