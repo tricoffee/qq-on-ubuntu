@@ -6,11 +6,12 @@
 #	ls | grep -E -v "(test|temp|tmp)"
 
 # use 'cp' command copy specify keyword file to specify directory
+
 	DIR=$1
 	KEYWORD=$2
 	DIST=$3
 	# 解析$@（参数列表）
-	
+
 	if [  $# < 3  ]
 	if [  $# == 3  ]
 	if [  $# > 3  ]
