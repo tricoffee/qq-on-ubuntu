@@ -1,0 +1,10 @@
+"3.15.0 (created: 2016/10/05 01:11:26)
+
+highlight Hint::after content: attr(number); font-size:13pt
+highlight Normal color: black; background: white; font-size:13pt
+set hintchars=abcdefghijklmnopqrstuvwxyz
+set gui=noaddons,nobookmarks,nonavigation
+set maxitems=7
+
+" source! /home/qq/.vimperatorrc.local
+" vim: set ft=vimperator:

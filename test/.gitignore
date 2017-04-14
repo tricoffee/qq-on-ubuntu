@@ -1,0 +1,48 @@
+# don't ignore follow file and dir
+
+# ignore some file and dir
+/Downloads/
+/Github/
+/Books/
+/桌面/
+.bash_history
+.bash_logout
+.bashrc
+/.cache/
+/.config/
+/.dbus/
+/.gconf/
+/.gnupg/
+.ICEauthority
+.lesshst
+/.local/
+/.mozilla/
+.pam_environment
+/.presage/
+/.wine/
+/.local/
+/.ssh/
+.sudo_as_admin_successful
+/*.txt
+/.npm/
+/.chewing/
+/.cinnamon/
+/.dmrc
+/.gnome2/
+/.gnome2_private/
+/.scim/
+/.compiz/
+.xinputrc
+.Xauthority
+
+# need to config
+# /.ecryptfs/
+/.ecryptfs
+# need to config
+# /.Private/
+/.Private
+# need to config
+# ./*.swp
+# ./*.bak
+/*.swp
+/*.bak

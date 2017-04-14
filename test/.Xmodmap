@@ -1,0 +1,3 @@
+!!! exchange Super and Menu
+keycode 134 = Menu NoSymbol Menu
+keycode 135 = Super_R NoSymbol Super_R

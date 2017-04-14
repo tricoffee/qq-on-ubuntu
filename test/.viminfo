@@ -1,0 +1,935 @@
+# 本 viminfo 檔案是由 Vim 7.4 所產生.
+# 如果想要自行修改請特別小心！
+
+# 'encoding' 在此檔建立時的值
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Last Search Pattern:
+~Msle0~/\<baidu\>
+
+# 前一組替代字串:
+$
+
+# 命令列 歷史記錄 (新到舊):
+:x
+:q
+:w
+:e backup.sh
+:set nu
+:e
+:set linum
+:j
+:wq
+:q!
+:e 
+:e /etc/profile
+
+# 搜尋字串 歷史記錄 (新到舊):
+? \<baidu\>
+? \<keywords\>
+?/TODO
+? \<LINENUM\>
+?/# 
+? \<元字符\>
+? \<网上的资源及本文参考文献\>
+? \<更新纪录\>
+? \<联系作者\>
+? \<还有些什么东西没提到\>
+? \<平衡组\>
+? \<处理选项\>
+? \<贪婪与懒惰\>
+? \<注释\>
+? \<负向零宽断言\>
+? \<零宽断言\>
+? \<后向引用\>
+? \<分组\>
+? \<反义\>
+? \<分枝条件\>
+? \<字符类\>
+? \<重复\>
+? \<字符转义\>
+? \<测试正则表达式\>
+? \<入门\>
+? \<正则表达式到底是什么东西\>
+? \<如何使用本教程\>
+? \<迭代文件中的行\>
+? \<数据流处理工具\>
+? \<文本替换利器\>
+? \<统计行和字符的工具\>
+? \<按列拼接文本\>
+? \<按列切分文本\>
+? \<进行转换\>
+? \<uniq\>
+? \<sort\>
+? \<xargs\>
+? \<grep\>
+? \<find\>
+? \<收集信息\>
+? \<杀死进程\>
+? \<记录日志\>
+? \<故障排查\>
+? \<磁盘管理\>
+? \<ftp\>
+? \<备份系统快照\>
+? \<归档工具\>
+? \<网站下载\>
+? \<目录操作\>
+? \<算术比较\>
+
+# 運算式 歷史記錄 (新到舊):
+
+# 輸入行  歷史記錄 (新到舊):
+
+# 輸入行  歷史記錄 (新到舊):
+
+# 暫存器:
+"0	LINE	0
+		echo -en "\n"
+""1	LINE	0
+	b0VIM 7.4nnnnnnnnnnnnnnM
+"2	LINE	0
+	
+"3	CHAR	0
+		
+		echo -e "\n\n========================================================"
+		echo -e "||  backup home folder to github remote repository !  ||"
+		echo -e "========================================================\n\n"
+		
+		echo -e "\n\n"
+	
+		echo -e "\n\n=========================================================================="
+		echo -e "||  now shell will change to old directory, press C^c to cancel action  ||"
+		echo -e "==========================================================================\n\n"
+	
+		sleep 10
+	
+	
+	
+"4	LINE	0
+		cd -
+"5	LINE	0
+	
+"6	CHAR	0
+		echo -e "\n\n========================================================"
+		echo -e "||  backup home folder to github remote repository !  ||"
+		echo -e "========================================================\n\n"
+		
+		echo -e "\n\n"
+	
+		echo -e "\n\n=========================================================================="
+		echo -e "||  now shell will change to old directory, press C^c to cancel action  ||"
+		echo -e "==========================================================================\n\n"
+	
+		sleep 10
+	
+	
+"7	CHAR	0
+	
+		echo -en "\n\n"
+		echo "========================================================"
+		echo "||  backup home folder to github remote repository !  ||"
+		echo "========================================================"
+	
+		echo -en "\n\n"
+		echo "=========================================================================="
+		echo "||  now shell will change to old directory, press C^c to cancel action  ||"
+		echo "=========================================================================="
+	
+		sleep 20
+"8	LINE	0
+	
+"9	LINE	0
+	# [end]
+"-	CHAR	0
+	\
+
+# 檔案標記:
+'0  1  0  ~/Note/ubuntu/install_ubuntu/reinstall-ubuntu-desktop-environment.txt
+'1  1  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+'2  47  0  ~/ShellScripts/backup.sh
+'3  1  0  ~/ShellScripts/run-personal-profile-in-rcLocal.sh
+'4  3  1  ~/ShellScripts/random-string.sh
+'5  1177  0  ~/.bash_history
+'6  62  59  ~/Github/bypy/setup.py
+'7  29  0  ~/ShellScripts/backup.sh
+'8  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+'9  2  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+
+# Jumplist (由新到舊):
+-'  1  0  ~/Note/ubuntu/install_ubuntu/reinstall-ubuntu-desktop-environment.txt
+-'  1  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+-'  47  0  ~/ShellScripts/backup.sh
+-'  1  0  ~/ShellScripts/backup.sh
+-'  1  0  ~/ShellScripts/run-personal-profile-in-rcLocal.sh
+-'  3  1  ~/ShellScripts/random-string.sh
+-'  1  0  ~/ShellScripts/random-string.sh
+-'  1177  0  ~/.bash_history
+-'  1  0  ~/.bash_history
+-'  62  59  ~/Github/bypy/setup.py
+-'  63  28  ~/Github/bypy/setup.py
+-'  1  0  ~/Github/bypy/setup.py
+-'  29  0  ~/ShellScripts/backup.sh
+-'  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+-'  2  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+-'  1  0  ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+-'  173  0  ~/isotostick.sh
+-'  1  0  ~/isotostick.sh
+-'  23  0  ~/ShellScripts/backup.sh
+-'  19  0  ~/ShellScripts/install-my-custom-sh-script.sh
+-'  1  0  ~/ShellScripts/install-my-custom-sh-script.sh
+-'  117  0  ~/.bashrc
+-'  1  0  ~/.bashrc
+-'  30  0  ~/ShellScripts/backup.sh
+-'  50  0  ~/ShellScripts/backup.sh
+-'  13  61  ~/ShellScripts/add-todo-list.sh
+-'  9  30  ~/ShellScripts/add-todo-list.sh
+-'  2  35  ~/ShellScripts/add-todo-list.sh
+-'  10  0  ~/ShellScripts/add-todo-list.sh
+-'  6  0  ~/ShellScripts/add-todo-list.sh
+-'  1  0  ~/ShellScripts/add-todo-list.sh
+-'  38  0  ~/ShellScripts/backup.sh
+-'  16  34  ~/ShellScripts/backup.sh
+-'  17  1  ~/ShellScripts/test.sh
+-'  15  1  ~/ShellScripts/test.sh
+-'  13  1  ~/ShellScripts/test.sh
+-'  12  0  ~/ShellScripts/test.sh
+-'  6  1  ~/ShellScripts/test.sh
+-'  5  1  ~/ShellScripts/test.sh
+-'  18  0  ~/ShellScripts/test.sh
+-'  1  0  ~/ShellScripts/test.sh
+-'  7  20  ~/ShellScripts/add-TODO-list.sh
+-'  1  0  ~/ShellScripts/add-TODO-list.sh
+-'  21  0  ~/TODO
+-'  1  0  ~/TODO
+-'  1  0  ~/ShellScripts/power-off-and-backup-on-gui.sh
+-'  11  0  ~/ShellScripts/install-my-custom-sh-script.sh
+-'  2  28  ~/ShellScripts/testbackup.sh
+-'  1  0  ~/ShellScripts/testbackup.sh
+-'  14  1  ~/ShellScripts/backup.sh
+-'  18  1  ~/ShellScripts/backup.sh
+-'  1  0  ~/ShellScripts/test
+-'  2  0  ~/ShellScripts/test
+-'  19  0  ~/ShellScripts/backup.sh
+-'  4  1  ~/ShellScripts/add-TODO-list.sh
+-'  8  11  ~/ShellScripts/add-TODO-list.sh
+-'  21  0  ~/ShellScripts/backup.sh
+-'  3  0  ~/ShellScripts/power-off-and-backup-on-gui.sh
+-'  10  5  ~/diff1
+-'  1  0  ~/diff1
+-'  8188  0  ~/Books/the-c-programming-language.txt
+-'  1  0  ~/Books/the-c-programming-language.txt
+-'  12522  0  ~/Books/the-c-programming-language.txt
+-'  9133  0  ~/Books/the-c-programming-language.txt
+-'  31  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  451  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  445  276  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  441  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  407  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  366  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  348  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  328  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  322  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  321  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  320  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  319  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  318  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  317  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  316  14  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  310  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  293  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  274  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  242  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  224  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  209  0  ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+-'  62  59  ~/Github/bypy/setup.py
+-'  63  28  ~/Github/bypy/setup.py
+-'  1  0  ~/Github/bypy/setup.py
+-'  1  0  ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+-'  1  0  ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+-'  173  0  ~/isotostick.sh
+-'  1  0  ~/isotostick.sh
+-'  19  0  ~/ShellScripts/install-my-custom-sh-script.sh
+-'  1  0  ~/ShellScripts/install-my-custom-sh-script.sh
+-'  47  0  ~/ShellScripts/backup.sh
+-'  1  0  ~/ShellScripts/backup.sh
+-'  1  0  ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+-'  47  0  ~/ShellScripts/backup.sh
+
+# 檔案內 Mark 記錄 (由新到舊):
+
+> ~/Note/ubuntu/install_ubuntu/reinstall-ubuntu-desktop-environment.txt
+	"	1	0
+
+> ~/Note/ubuntu/install_ubuntu/.how-to-install-ubuntu-1604-x64.txt.swp
+	"	1	0
+	.	1	0
+	+	1	0
+
+> ~/ShellScripts/backup.sh
+	"	47	0
+	^	29	31
+	.	32	0
+	+	38	8
+	+	19	8
+	+	38	0
+	+	38	0
+	+	18	0
+	+	11	0
+	+	18	0
+	+	11	0
+	+	19	0
+	+	13	0
+	+	19	1
+	+	15	0
+	+	19	1
+	+	17	0
+	+	14	32
+	+	15	0
+	+	17	0
+	+	16	40
+	+	17	0
+	+	18	0
+	+	14	0
+	+	13	0
+	+	19	0
+	+	18	0
+	+	12	0
+	+	38	71
+	+	38	0
+	+	38	64
+	+	38	0
+	+	38	0
+	+	38	62
+	+	38	0
+	+	38	0
+	+	38	8
+	+	38	0
+	+	38	0
+	+	38	61
+	+	38	0
+	+	38	10
+	+	38	52
+	+	38	11
+	+	38	57
+	+	38	0
+	+	38	12
+	+	38	62
+	+	38	61
+	+	38	63
+	+	38	12
+	+	38	51
+	+	38	53
+	+	10	6
+	+	14	36
+	+	17	0
+	+	16	0
+	+	17	0
+	+	16	44
+	+	38	0
+	+	38	79
+	+	38	83
+	+	38	0
+	+	38	39
+	+	38	0
+	+	38	14
+	+	38	0
+	+	51	0
+	+	38	1
+	+	38	0
+	+	38	0
+	+	38	0
+	+	49	0
+	+	50	0
+	+	39	0
+	+	37	0
+	+	48	7
+	+	28	0
+	+	29	41
+	+	28	45
+	+	30	45
+	+	29	30
+	+	43	13
+	+	38	13
+	+	27	0
+	+	31	0
+	+	32	0
+
+> ~/ShellScripts/run-personal-profile-in-rcLocal.sh
+	"	1	0
+
+> ~/ShellScripts/random-string.sh
+	"	1	8
+	^	1	3
+	.	1	8
+	+	1	1
+	+	2	0
+	+	3	0
+	+	1	8
+
+> ~/.bash_history
+	"	1177	0
+
+> ~/Github/bypy/setup.py
+	"	62	59
+
+> ~/Note/ubuntu/shell_command/screenshot-command-under-terminal.txt
+	"	1	0
+
+> ~/Note/ubuntu/install_ubuntu/how-to-install-ubuntu-1604-x64.txt
+	"	1	0
+	^	1	174461
+	.	1	174458
+	+	1	174458
+
+> ~/isotostick.sh
+	"	173	0
+
+> ~/ShellScripts/install-my-custom-sh-script.sh
+	"	19	0
+
+> ~/.bashrc
+	"	117	0
+
+> ~/ShellScripts/add-todo-list.sh
+	"	13	61
+	^	13	19
+	.	13	61
+	+	13	0
+	+	9	0
+	+	11	0
+	+	11	0
+	+	12	0
+	+	9	0
+	+	11	5
+	+	13	23
+	+	9	29
+	+	13	51
+	+	9	28
+	+	13	23
+	+	13	0
+	+	13	0
+	+	13	0
+	+	7	0
+	+	9	0
+	+	10	0
+	+	13	0
+	+	10	0
+	+	13	0
+	+	6	0
+	+	7	2
+	+	13	61
+
+> ~/ShellScripts/test.sh
+	"	19	0
+	^	24	9
+	.	29	7
+	+	20	0
+	+	20	45
+	+	20	7
+	+	20	16
+	+	20	7
+	+	20	0
+	+	20	16
+	+	20	4
+	+	20	0
+	+	20	0
+	+	20	0
+	+	20	28
+	+	20	54
+	+	20	11
+	+	20	8
+	+	20	37
+	+	20	0
+	+	30	0
+	+	25	0
+	+	24	0
+	+	23	0
+	+	24	10
+	+	20	10
+	+	22	66
+	+	25	10
+	+	27	84
+	+	18	0
+	+	19	8
+	+	24	8
+	+	25	6
+	+	26	6
+	+	27	6
+	+	22	6
+	+	21	6
+	+	20	6
+	+	25	0
+	+	29	7
+
+> ~/ShellScripts/test
+	"	1	0
+	^	2	10
+	.	2	9
+	+	2	9
+
+> ~/TODO
+	"	21	7
+	.	20	0
+	+	9	2
+	+	11	2
+	+	14	2
+	+	17	2
+	+	19	2
+	+	5	1
+	+	20	0
+	+	20	0
+	+	20	0
+	+	20	0
+	+	20	0
+	+	20	0
+	+	20	0
+
+> ~/ShellScripts/TODO
+	"	1	0
+	.	1	0
+	+	1	0
+
+> ~/ShellScripts/add-TODO-list.sh
+	"	7	20
+	^	5	26
+	.	8	0
+	+	8	0
+	+	8	0
+	+	7	1
+	+	7	1
+	+	8	23
+	+	8	0
+	+	8	8
+	+	8	1
+	+	8	1
+	+	8	0
+	+	8	0
+	+	4	0
+	+	4	0
+	+	6	0
+	+	3	6
+	+	4	2
+	+	7	1
+	+	7	0
+	+	4	2
+	+	7	0
+	+	7	1
+	+	4	1
+	+	7	1
+	+	7	1
+	+	6	12
+	+	7	0
+	+	5	0
+	+	6	0
+	+	4	2
+	+	7	1
+	+	4	1
+	+	7	20
+	+	5	25
+	+	8	0
+
+> ~/ShellScripts/power-off-and-backup-on-gui.sh
+	"	1	0
+
+> ~/ShellScripts/testbackup.sh
+	"	2	65
+	^	3	63
+	.	2	64
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	36
+	+	2	0
+	+	2	36
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	37
+	+	2	1
+	+	2	1
+	+	2	1
+	+	2	1
+	+	2	22
+	+	2	31
+	+	2	1
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	1
+	+	2	1
+	+	2	29
+	+	2	56
+	+	2	73
+	+	2	22
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	28
+	+	2	0
+	+	7	0
+	+	3	61
+	+	4	60
+	+	2	62
+	+	3	62
+	+	4	62
+	+	2	64
+
+> ~/ShellScripts/testbackup1.sh
+	"	1	0
+	.	7	6
+	+	4	0
+	+	25	0
+	+	7	6
+
+> ~/diff1
+	"	10	5
+	.	10	0
+	+	10	0
+
+> ~/Books/the-c-programming-language.txt
+	"	8188	0
+
+> ~/Note/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
+	"	31	0
+	^	450	0
+	.	30	0
+	+	458	47
+	+	461	0
+	+	459	0
+	+	460	4
+	+	38	1
+	+	34	0
+	+	31	1
+	+	32	0
+	+	33	1
+	+	53	1
+	+	53	0
+	+	52	0
+	+	39	0
+	+	50	0
+	+	54	0
+	+	54	0
+	+	36	0
+	+	64	1
+	+	62	0
+	+	95	1
+	+	93	0
+	+	113	1
+	+	111	0
+	+	150	1
+	+	148	0
+	+	159	1
+	+	158	0
+	+	179	1
+	+	177	0
+	+	196	1
+	+	194	0
+	+	224	1
+	+	222	0
+	+	209	1
+	+	207	0
+	+	242	1
+	+	240	0
+	+	274	1
+	+	272	0
+	+	293	1
+	+	291	0
+	+	310	1
+	+	308	0
+	+	328	1
+	+	326	0
+	+	348	1
+	+	346	0
+	+	366	1
+	+	364	0
+	+	407	1
+	+	405	0
+	+	441	1
+	+	439	0
+	+	451	1
+	+	449	0
+	+	30	0
+
+> ~/Note/ubuntu/shell_command/text-processing-tools.txt
+	"	198	0
+	^	491	15
+	.	165	0
+	+	23	1
+	+	22	0
+	+	100	0
+	+	101	1
+	+	127	1
+	+	153	1
+	+	164	1
+	+	180	1
+	+	215	1
+	+	242	1
+	+	263	1
+	+	262	0
+	+	269	1
+	+	268	0
+	+	316	1
+	+	453	1
+	+	24	0
+	+	102	0
+	+	128	0
+	+	154	0
+	+	181	0
+	+	216	0
+	+	243	0
+	+	264	0
+	+	270	0
+	+	317	0
+	+	454	0
+	+	491	14
+	+	490	0
+	+	454	0
+	+	164	0
+	+	165	0
+
+> ~/Note/ubuntu/shell_script_skills/shell-script-simple-tutorial.txt
+	"	1	0
+	^	33	4
+	.	334	0
+	+	1	86
+	+	1	36
+	+	449	24
+	+	451	0
+	+	451	4
+	+	450	0
+	+	451	10
+	+	393	0
+	+	451	0
+	+	389	0
+	+	390	0
+	+	388	0
+	+	25	1
+	+	24	0
+	+	48	1
+	+	85	1
+	+	124	1
+	+	152	1
+	+	205	1
+	+	235	1
+	+	234	0
+	+	261	1
+	+	281	1
+	+	280	0
+	+	298	1
+	+	320	1
+	+	333	1
+	+	345	1
+	+	344	0
+	+	368	1
+	+	26	0
+	+	49	0
+	+	86	0
+	+	26	0
+	+	27	0
+	+	28	0
+	+	29	0
+	+	30	0
+	+	32	0
+	+	33	0
+	+	34	0
+	+	27	3
+	+	28	3
+	+	29	3
+	+	30	3
+	+	32	3
+	+	34	3
+	+	33	3
+	+	206	0
+	+	262	0
+	+	282	0
+	+	334	0
+
+> ~/Note/ubuntu/shellScript/get-sh-argument.txt
+	"	1	0
+
+> ~/Note/ubuntu/command_line_interface/text-processing-tools.txt
+	"	487	0
+	^	487	0
+	.	487	0
+	+	501	0
+	+	501	0
+	+	489	0
+	+	480	0
+	+	480	0
+	+	480	0
+	+	485	0
+	+	486	0
+	+	480	0
+	+	487	0
+
+> ~/Note/ubuntu/Linux
+	"	504	12
+	^	504	15
+	.	504	12
+	+	1	26
+	+	504	12
+
+> ~/GuLong.txt
+	"	1	0
+
+> ~/gulong.txt
+	"	1	0
+
+> ~/ShellScripts/power-off-only.sh
+	"	2	1
+	.	2	0
+	+	2	0
+
+> ~/Note/VPN/openvpn.txt
+	"	3	0
+	^	3	0
+	.	3	0
+	+	321	40
+	+	324	4
+	+	3	0
+
+> /etc/openvpn/easy-rsa/vars
+	"	72	0
+	^	72	5
+	.	72	0
+	+	15	4
+	+	21	4
+	+	22	4
+	+	23	4
+	+	29	4
+	+	39	4
+	+	45	4
+	+	46	4
+	+	53	4
+	+	56	4
+	+	59	4
+	+	64	4
+	+	65	4
+	+	66	4
+	+	67	4
+	+	68	4
+	+	69	4
+	+	72	4
+	+	15	0
+	+	21	0
+	+	22	0
+	+	23	0
+	+	29	0
+	+	39	0
+	+	45	0
+	+	46	0
+	+	53	0
+	+	56	0
+	+	59	0
+	+	64	0
+	+	65	0
+	+	66	0
+	+	67	0
+	+	68	0
+	+	69	0
+	+	72	0
+
+> /etc/openvpn/easy-rsa/clean-all
+	"	14	0
+
+> /usr/local/bin/backup.sh
+	"	49	0
+	^	44	9
+	.	44	8
+	+	44	8
+
+> /usr/local/bin/power-off-on-gui.sh
+	"	1	0
+
+> ~/ShellScripts/get-ubuntu-startup-script-list.sh
+	"	4	16
+	^	6	2
+	.	6	1
+	+	1	7
+	+	6	23
+	+	7	29
+	+	6	7
+	+	1	8
+	+	6	0
+	+	7	0
+	+	1	7
+	+	5	4
+	+	6	0
+	+	3	1
+	+	4	49
+	+	5	1
+	+	6	1
+
+> ~/Github/dwm/config.def.h
+	"	1	0
+
+> /etc/rc.local
+	"	13	0
+	^	13	1
+	.	13	0
+	+	14	0
+	+	13	0
+
+> /etc/init/gdm3.conf
+	"	81	0
+
+> /etc/init.d/run-personal-profile.sh
+	"	1	7
+	^	2	25
+	.	1	7
+	+	1	10
+	+	2	18
+	+	1	7
+
+> /etc/init.d/checkfs.sh
+	"	1	0
+
+> /etc/X11/xinit/xinitrc
+	"	8	0
+
+> /etc/init.d/gdm3
+	"	96	0
+
+> /etc/gdm3/Xsession
+	"	21	28
+
+> /etc/profile
+	"	28	0
+	^	29	6
+	.	29	0
+	+	29	7
+	+	29	5
+	+	29	0
+
+> /etc/X11/Xsession
+	"	116	0
+	.	116	0
+	+	121	0
+	+	122	0
+	+	116	0
+	+	116	0
+	+	116	0
+	+	116	0
+
+> /etc/X11/Xsession.d/75dbus_dbus-launch
+	"	1	0
+
+> /etc/profile.d/run-local-profile.sh
+	"	2	16
+	^	2	17
+	.	2	16
+	+	2	16
