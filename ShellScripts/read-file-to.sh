@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# USEAGE=Useage: `basename $0` [-f] [filename] [-h] [num] or [-s] [num-num] or [-t] [num] [OUT_PUT_FILENAME]"
+# USEAGE="Useage: `basename $0` [-f] [filename] [-h|-s|-t] [num|num-num] [OUT_PUT_FILENAME]"
 
 	#if [  == h ] # head
 	#if [  == s ] # specified line
@@ -15,7 +15,7 @@
 	#else
 		#> stdout
 
-	while getopts :f:h:s:t: OPTION ; do #!!!!!!!!!!!
+	while getopts f:h:s:t OPTION ; do #!!!!!!!!!!!
 		case $OPTION in
 			f) INFILE="$OPTARG" ;;
 			h) READLINE="head $OPTARG" ;;
