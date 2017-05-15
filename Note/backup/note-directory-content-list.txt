@@ -43,6 +43,7 @@
 │   ├── emacs+w3m-2_utf-8.org
 │   ├── #ERC.org#
 │   ├── ERC.org
+│   ├── eww-useage.txt
 │   ├── frame_size.org
 │   ├── gdb_for_emacs.org
 │   ├── Gnu.org
@@ -156,6 +157,8 @@
 │       │   └── use-google-on-terminal.txt
 │       ├── file_manager
 │       │   └── linux-terminal-file-manager.txt
+│       ├── firefox
+│       │   └── install-adobe-flash-plugins.txt
 │       ├── fonts_setting
 │       │   └── wenquanyi-microhei.txt
 │       ├── install_ubuntu
@@ -403,4 +406,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-61 directories, 342 files
+62 directories, 344 files
