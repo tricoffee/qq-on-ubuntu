@@ -11,6 +11,7 @@
 /.cache/
 /.config/
 /.dbus/
+/.emacs.d/
 /.gconf/
 /.gnupg/
 .ICEauthority

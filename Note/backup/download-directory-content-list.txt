@@ -1,5 +1,8 @@
 adobe
+bcompare-4.2.1.22354_amd64.deb
 debian-live-8.7.1-amd64-gnome-desktop.iso
 examples.desktop
 Firefox-latest-x86_64.tar.bz2
 firefox.sh
+libqt4-opengl_4.8.7+dfsg-5ubuntu2_amd64.deb
+libqtwebkit4_2.3.2-0ubuntu11_amd64.deb

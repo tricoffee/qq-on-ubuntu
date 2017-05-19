@@ -28,6 +28,18 @@
 │   ├── dot-emacs.org
 │   ├── emacs_auto_notation.org
 │   ├── emacs-c++_IDE.txt
+│   ├── emacs.d_bak
+│   │   ├── init.el
+│   │   └── my_personal_setting
+│   │       ├── bingapiel
+│   │       │   ├── bing-api.el
+│   │       │   ├── bing-spell.el
+│   │       │   ├── bing-translate.el
+│   │       │   ├── ChangeLog
+│   │       │   ├── README.md
+│   │       │   └── youdao-translate.el
+│   │       └── sdcv
+│   │           └── sdcv-mode.el
 │   ├── emacs file.org
 │   ├── emacs_learnning.org
 │   ├── emacs-menu.org
@@ -406,4 +418,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-62 directories, 344 files
+66 directories, 352 files
