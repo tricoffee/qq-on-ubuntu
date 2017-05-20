@@ -1,21 +1,43 @@
 openConnection: connect: 沒有此一檔案或目錄
 cannot connect to brltty at :0
 upstart: unity7 main process ended, respawning
-upstart: bamfdaemon main process (1603) terminated with status 1
-upstart: hud main process (1631) terminated with status 1
-upstart: unity-settings-daemon main process (1633) killed by HUP signal
-upstart: at-spi2-registryd main process (1640) killed by HUP signal
-upstart: gnome-session (Unity) main process (1641) killed by HUP signal
-upstart: unity-panel-service main process (1643) terminated with status 1
-upstart: indicator-bluetooth main process (1743) killed by TERM signal
-upstart: indicator-power main process (1744) killed by TERM signal
-upstart: indicator-datetime main process (1747) killed by TERM signal
-upstart: indicator-keyboard main process (1751) terminated with status 1
-upstart: indicator-sound main process (1752) killed by HUP signal
-upstart: indicator-printers main process (1753) terminated with status 1
-upstart: indicator-session main process (1756) killed by TERM signal
-upstart: indicator-application main process (1788) killed by TERM signal
-upstart: unity7 pre-start process (5164) killed by TERM signal
-upstart: indicator-application pre-stop process (5177) killed by TERM signal
-upstart: gnome-session (Unity) pre-stop process (5179) killed by TERM signal
+upstart: upstart-udev-bridge main process ended, respawning
+upstart: dbus main process ended, respawning
+upstart: upstart-dbus-system-bridge main process ended, respawning
+upstart: upstart-dbus-session-bridge main process ended, respawning
+upstart: upstart-file-bridge main process ended, respawning
+upstart: bamfdaemon main process (2633) killed by TERM signal
+upstart: bamfdaemon main process ended, respawning
+upstart: hud main process (2643) killed by HUP signal
+upstart: unity-settings-daemon main process (2645) killed by HUP signal
+upstart: unity-settings-daemon main process ended, respawning
+upstart: gnome-session (Unity) main process (2680) killed by HUP signal
+upstart: unity-panel-service main process (2683) killed by HUP signal
+upstart: unity-panel-service main process ended, respawning
+upstart: indicator-messages main process ended, respawning
+upstart: indicator-bluetooth main process (2774) killed by TERM signal
+upstart: indicator-bluetooth main process ended, respawning
+upstart: indicator-power main process (2776) killed by TERM signal
+upstart: indicator-power main process ended, respawning
+upstart: indicator-datetime main process (2778) killed by TERM signal
+upstart: indicator-datetime main process ended, respawning
+upstart: indicator-keyboard main process ended, respawning
+upstart: indicator-sound main process (2782) killed by HUP signal
+upstart: indicator-sound main process ended, respawning
+upstart: indicator-printers main process (2783) killed by TERM signal
+upstart: indicator-printers main process ended, respawning
+upstart: indicator-session main process (2784) killed by TERM signal
+upstart: indicator-session main process ended, respawning
+upstart: indicator-application main process (2825) killed by TERM signal
+upstart: indicator-application main process ended, respawning
 upstart: 從D-Bus匯流排中離線
+upstart: unity-panel-service main process (8772) killed by TERM signal
+upstart: bamfdaemon main process (8770) killed by TERM signal
+upstart: indicator-messages main process (8773) killed by TERM signal
+upstart: indicator-bluetooth main process (8774) killed by TERM signal
+upstart: indicator-power main process (8775) killed by TERM signal
+upstart: indicator-datetime main process (8776) killed by TERM signal
+upstart: indicator-keyboard main process (8777) killed by TERM signal
+upstart: indicator-sound main process (8778) killed by TERM signal
+upstart: indicator-printers main process (8779) killed by TERM signal
+upstart: indicator-session main process (8780) killed by TERM signal
