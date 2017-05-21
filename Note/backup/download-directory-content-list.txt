@@ -1,8 +1,10 @@
-adobe
-bcompare-4.2.1.22354_amd64.deb
-debian-live-8.7.1-amd64-gnome-desktop.iso
-examples.desktop
+bcompare-4.2.2.22384_amd64.deb
 Firefox-latest-x86_64.tar.bz2
-firefox.sh
 libqt4-opengl_4.8.7+dfsg-5ubuntu2_amd64.deb
 libqtwebkit4_2.3.2-0ubuntu11_amd64.deb
+profile-env-2.txt
+profile-env.txt
+profile-exec-dir.txt
+profile-export-2.txt
+profile-export.txt
+xmodmap-keymap-list.txt

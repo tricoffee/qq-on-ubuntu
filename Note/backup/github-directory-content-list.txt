@@ -1,7 +1,1 @@
-bingapiel
-emacs.d_from_purcell
-emacs-sdcv
-qq-on-ubuntu
-sdcv-mode
 spacemacs
-tget

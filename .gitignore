@@ -36,14 +36,18 @@
 .xinputrc
 .Xauthority
 
-# need to config
-# /.ecryptfs/
 /.ecryptfs
-# need to config
-# /.Private/
 /.Private
-# need to config
 # ./*.swp
 # ./*.bak
 /*.swp
 /*.bak
+/下載/
+/公共/
+/圖片/
+/影片/
+/文件/
+/桌面/
+/模板/
+/音樂/
+
