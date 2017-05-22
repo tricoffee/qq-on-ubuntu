@@ -1,0 +1,12 @@
+
+# add 'init-my-setting.el' file in 'my_setting' directory, it will call 
+# 'shell-command-to-string' elisp function, when emacs startup, 'xmodmap'
+# command should read the '~/.xmodmaprc' to remap the keyboard.
+
+EMACS="$(which emacs)"
+USRMODMAP="$HOME/.xmodmaprc"
+if [ -x $EMACS ]; then
+    if [ -f "$USRMODMAP" ]; then
+        ${EMACS} &
+    fi
+fi
