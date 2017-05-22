@@ -32,3 +32,9 @@
   (spacemacs/setup-startup-hook)
   (require 'server)
   (unless (server-running-p) (server-start)))
+
+
+;; load my personal setting
+(add-to-list 'load-path (expand-file-name "my_setting" user-emacs-directory))
+;(load-file ~/.emacs.d/init-my-setting.el)
+(require 'init-my-setting)

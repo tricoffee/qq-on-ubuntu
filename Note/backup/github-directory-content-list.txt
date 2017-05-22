@@ -1,1 +1,3 @@
+emacs.d_fork_by_purcell
+purcell_emacs.d
 spacemacs

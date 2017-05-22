@@ -16,7 +16,4 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# setup xmodmap
-#    if [ -f "$HOME/.Xmodmap" ]; then
-#	xmodmap "$HOME/.Xmodmap"
-#    fi
+# my personal setup

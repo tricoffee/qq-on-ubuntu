@@ -1,2 +1,2 @@
 #!/bin/bash
-xmodmap /home/qq/.Xmodmap
+/usr/bin/xmodmap /home/qq/.xmodmaprc
