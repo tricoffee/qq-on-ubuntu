@@ -35,7 +35,6 @@
 /.compiz/
 .xinputrc
 .Xauthority
-
 /.ecryptfs
 /.Private
 # ./*.swp

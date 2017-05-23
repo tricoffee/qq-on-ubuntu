@@ -34,7 +34,6 @@
   (unless (server-running-p) (server-start)))
 
 
-;; load my personal setting
-(add-to-list 'load-path (expand-file-name "my_setting" user-emacs-directory))
-;(load-file ~/.emacs.d/init-my-setting.el)
-(require 'init-my-setting)
+;; load my personal config
+(add-to-list 'load-path (expand-file-name "my_config" user-emacs-directory))
+(require 'init-my-config)
