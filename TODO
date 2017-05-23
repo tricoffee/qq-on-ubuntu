@@ -6,3 +6,5 @@
 3. 2017年 05月 23日 星期二 18:19:59 CST - CONTENT : 配置 emacs 接收系统中文输入法输入的字词
 
 4. 2017年 05月 23日 星期二 21:03:55 CST - CONTENT : 使用 sort 命令读取 .gitignore 文件的内容，并按照字母顺序排序后重新写入 .gitignore 文件中去
+
+5. 2017年 05月 24日 星期三 00:08:05 CST - CONTENT : 优化 .bashrc 文件自定义函数调用：1. 在 .bashrc 文件中调用组织好的 .sh 文件；  2. 在 ~/ShellScripts/ 目录下，按照功能分类、组织 .sh 文件，例如：rm 命令相关的都放在 rm-function.sh 文件当中
