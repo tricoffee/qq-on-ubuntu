@@ -16,4 +16,12 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# my personal setup
+
+############################
+#    my personal config    
+############################
+
+# alias some emacsclient short name
+alias emt='emacsclient -t -a ""'  # open emacsclient with term
+alias emc='emacsclient -c -a ""'  # open emacsclient with GUI
+

@@ -7,6 +7,6 @@ EMACS="$(which emacs)"
 USRMODMAP="$HOME/.xmodmaprc"
 if [ -x $EMACS ]; then
     if [ -f "$USRMODMAP" ]; then
-        ${EMACS} &
+        ${EMACS} --daemon
     fi
 fi
