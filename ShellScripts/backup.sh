@@ -17,7 +17,7 @@
 	echo "[end]" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
  
 # cp emacs setting to ~/.emacs.d_bak directory
-	cp -b  ~/.emacs.d/init.el  ~/.emacs.d/my_config/  ~/.emacs.d_bak/
+	cp -b -r  ~/.emacs.d/init.el  ~/.emacs.d/my_config/  ~/.emacs.d_bak/
 
 # use 'git' command backup Home folder to remote repository of the github
 	# this two method to get machine version have equal result
