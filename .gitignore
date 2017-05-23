@@ -6,8 +6,6 @@
 /Books/
 /桌面/
 .bash_history
-.bash_logout
-.bashrc
 /.cache/
 /.config/
 /.dbus/
