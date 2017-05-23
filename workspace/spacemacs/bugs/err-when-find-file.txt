@@ -1,0 +1,13 @@
+spacemacs version : 0.200.9@24.5.1
+emacs version : Gnu Emacs 24.5.1
+OS : ubuntu 16.04
+
+
+problem description : 
+  there is a bug when i use 'C-c C-f'(find-file) open a file in any directory
+for example : 
+    ('my_config' directory has some file)
+    Find file: ~/.emacs.d/my_config/ <TAB>
+
+minibuffer report follow message :
+"Wrong type argument: char-to-string-p, t"
