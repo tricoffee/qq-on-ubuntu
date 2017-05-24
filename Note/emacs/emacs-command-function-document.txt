@@ -1,8 +1,0 @@
-emacs 帮助文档
-
-emacs 的帮助: C-h
-Help文档信息:C-h ?
-查询命令简介:C-h c 详细说明:C-h k
-查询函数/模式 C-h f 查看变量C-h v
-模糊查找:C-h a 后面加上搜索模式 /pattern/
-
