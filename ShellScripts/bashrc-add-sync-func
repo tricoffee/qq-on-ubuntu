@@ -1,0 +1,11 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# sync to dir
+function sync-two-dir(){
+	cp -a $1* $2
+	cp -a $2* $1
+}

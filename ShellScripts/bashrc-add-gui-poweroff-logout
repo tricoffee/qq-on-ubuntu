@@ -1,0 +1,21 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# gnome gui logout
+function gui-logout(){
+	gnome-session-quit --logout --no-prompt
+}
+
+# gnome power off
+function gui-power-off(){
+	gnome-session-quit --power-off --force --no-prompt 
+}
+
+# gnome poweroff and backup home dir to github remote repository
+function gui-power-off-and-backup(){
+	. ~/ShellScripts/basic_scripts/backup.sh
+	gnome-session-quit --power-off --force --no-prompt 
+}

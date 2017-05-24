@@ -1,0 +1,84 @@
+#
+# use chmod command to change all file under current directory 
+#
+# chmod 500 FILE  # -r-x------
+# chmod a-rwx,u=rx FILE  # -r-x------
+# chmod 700 FILE  # -rwx------
+# chmod a-rwx,u=rwx FILE  # -rwx------
+
+CHMOD_PATH="$1"
+if [ -z CHMOD_PATH ]; then
+	CHMOD_PATH="./"
+	echo test
+fi
+
+RO_USER="u=r,go="
+RO_NORMAL="u=r,go=r"
+SH_USER="u=rx,go="
+SH_NORMAL="u=rwx,go=rx"
+TXT_USER="u=rw,go="
+TXT_NORMAL="u=rw,go=r"
+DIR_USER="u=rwx,go="
+DIR_NORMAL="u=rwx,go=rx"
+
+# chmod single file
+function chmod-single-file-to-user-rx(){
+	chmod ${SH_USER} $1
+	ls -l $1
+}
+function chmod-single-file-to-user-rw(){
+	chmod ${TXT_USER} $1
+	ls -l $1
+}
+
+
+# chmod all file but not recursively
+function chmod-file-to-user-r(){
+	FILE_LIST=$(ls -l | grep "^\-" | awk '{print $9}')
+	chmod ${RO_USER} ${FILE_LIST}
+	ls -l ${FILE_LIST}
+}
+function chmod-file-to-user-rx(){
+	FILE_LIST=$(ls -l | grep "^\-" | awk '{print $9}')
+	chmod ${SH_USER} ${FILE_LIST}
+	ls -l ${FILE_LIST}
+}
+function chmod-file-to-user-rw(){
+	FILE_LIST=$(ls -l | grep "^\-" | awk '{print $9}')
+	chmod ${TXT_USER} ${FILE_LIST}
+	ls -l ${FILE_LIST}
+
+}
+
+
+# chmod all file recursively
+# chmod file to read and execution permission recursively
+function chmod-file-to-user-rx-recursively(){
+	if [ -n CHMOD_PATH ]; then
+	
+	fi
+	find ${CHMOD_PATH} -type f -exec chmod ${SH_USER} {} \;
+	find ${CHMOD_PATH} -type f -exec ls -l {} \;
+}
+# chmod file to read and write permission recursively
+function chmod-file-to-user-rw-recursively(){
+	find ${CHMOD_PATH} -type f -exec chmod ${TXT_USER} {} \;
+	find ${CHMOD_PATH} -type f -exec ls -l {} \;
+}
+
+
+# chmod all dir but not recursively
+# chmod current path dir to normal permission
+function chmod-dir-to-normal(){
+	DIR_LIST=$(ls -F | grep "/")
+	chmod 755 ${DIR_LIST}
+	ls -l ${DIR_LIST}
+}
+
+
+# chmod all dir recursively
+# chmod dir to normal permission recursively
+function chmod-dir-to-normal-recursively(){
+	find ${CHMOD_PATH} -type d -exec chmod ${DIR_NORMAL} {} \;
+	find ${CHMOD_PATH} -type d -exec ls -l -d {} \;
+}

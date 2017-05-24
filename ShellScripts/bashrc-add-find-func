@@ -1,0 +1,23 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# add find spicified process function
+function find-process(){
+    ps -aux | grep "$1"
+}
+
+# find some text on current directory recursively
+function find-text-in-cur-dir(){
+	find ./ -name "*.*" | grep -n -r -i --color=auto "$1"
+}
+
+function find-dir-recursion(){
+	find ./ -type d
+}
+
+function find-file-recursion(){
+	find ./ -type f
+}

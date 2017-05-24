@@ -1,0 +1,23 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# remove current path's all directory
+function rm-all-cur-dir(){
+	DIR_LIST=$(ls -F | grep "/")
+	echo ${DIR_LIST}
+	rm -r -i ${DIR_LIST}
+}
+
+# remove current path's all file
+# find specify file shell instruction example :
+#	ls -la | awk '{print $9}' | grep -E -v "(\.|Shell)"
+#	or
+#	ls | grep -E -v "(test|temp|tmp)"
+function rm-all-cur-file(){
+	FILE_NAME_LIST=$(ls -l | grep "^\-" | awk '{print $9}')
+	echo ${FILE_NAME_LIST}
+	rm -i ${FILE_NAME_LIST}
+}
