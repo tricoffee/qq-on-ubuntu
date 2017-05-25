@@ -1,0 +1,15 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# use wget to download entire website
+# this script use wget command to download entire specify website
+# useage : 
+#	$ wget-auto-download-website.sh [YOUR SPECIFY WEBSITE]
+
+function wget-download-website(){
+	# SPECIFY_WEBSITE=$1
+	wget -e robots=off -w 1 -c -np -k -L -p -m -P ~/Downloads/ $1    # ${SPECIFY_WEBSITE}
+}

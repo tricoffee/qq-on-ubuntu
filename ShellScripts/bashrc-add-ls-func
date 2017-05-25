@@ -1,0 +1,19 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# list current path's all directory
+function ls-all-dir(){
+	ls -F | grep "/"
+}
+
+# list current path's all file
+# find specify file shell instruction example :
+#	ls -la | awk '{print $9}' | grep -E -v "(\.|Shell)"
+#	or
+#	ls | grep -E -v "(test|temp|tmp)"
+function ls-all-file(){
+	ls -l | grep "^\-" | awk '{print $9}'
+}
