@@ -1,3 +1,5 @@
 emacs.d_changed_by_purcell
 emacs.d_fork_by_purcell
 spacemacs
+translate-shell
+vimperator-labs

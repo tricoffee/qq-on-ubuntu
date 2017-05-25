@@ -14,10 +14,10 @@ function find-text-in-cur-dir(){
 	find ./ -name "*.*" | grep -n -r -i --color=auto "$1"
 }
 
-function find-dir-recursion(){
+function find-dir-recursively(){
 	find ./ -type d
 }
 
-function find-file-recursion(){
+function find-file-recursively(){
 	find ./ -type f
 }

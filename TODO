@@ -10,3 +10,11 @@
 5. 2017年 05月 24日 星期三 00:08:05 CST - CONTENT : 优化 .bashrc 文件自定义函数调用：1. 在 .bashrc 文件中调用组织好的 .sh 文件；  2. 在 ~/ShellScripts/ 目录下，按照功能分类、组织 .sh 文件，例如：rm 命令相关的都放在 rm-function.sh 文件当中
 
 6. 2017年 05月 24日 星期三 22:55:08 CST - CONTENT : 1. 参考 emacs info 文档的格式组织 ~/Note 目录，同时修改 ~/.emacs.d/init.el 使得 emacs 启动时即加载该帮助文档； 2. 将 firefox 书签文件改写成 index.html 格式的文件，同时配置 vimperator 配置文件，使得 firefox 浏览器启动时即加载 修改后的 index.html 文件。
+
+7. 2017年 05月 25日 星期四 13:35:52 CST - CONTENT : .bashrc 中定义的 shell 函数无法在 emacs 中的 eshell 或是 shell 模式下使用，为什么 eshell 和shell 不加载 .bashrc 
+
+8. 2017年 05月 25日 星期四 16:45:10 CST - CONTENT : 写一个 elisp 插件，目标是：在 emacs 编辑文本文件时，可以使用 \!\@\#$\%\^ 等特殊字符，将其添加在某一行行首，或是使用特殊字符包括住某几个字时，可以使的该行或是被包括的文字的字号、字体粗细正斜、字体颜色 ‘实时的’ 产生自定义的变化。
+
+9. 2017年 05月 25日 星期四 18:36:47 CST - CONTENT : Use 'tree' command to get 'Downloads/' 'Books/' 'Github/' directory's info, and seve to 'Note/' directory. and use linux utility text process command seem like '~/Note/linux/ubuntu/shell/shell_command/text-processing-tools.txt' to sort the content and Keep duplicate content and update different content.
+
+10. 2017年 05月 25日 星期四 18:49:18 CST - CONTENT : 通过查看 vimperator 源码，为 vimperator 配置文件 ~/.vimperatorrc 添加新功能 ： 1. 添加快捷键 'C-o' 至击键序列，其功能是打开一个新的本地文件（参照 ALT-f ， Ctrl + O “打开文件”的功能）； 2. 添加当前浏览器所有标签至指定 bookmark 目录的快捷键至击键序列（参照 ~/Gitbug/vimperator/-labs/vimperator/config.js 文件中的 'BookmarkAdd' 关键字的实现）。
