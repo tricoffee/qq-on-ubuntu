@@ -89,4 +89,8 @@ Loading /home/qq/.emacs.d/layers/+distributions/spacemacs-base/keybindings.el (s
 Loading /home/qq/.emacs.d/.cache/spacemacs-buffer.el (source)...
 Loading /home/qq/.emacs.d/.cache/spacemacs-buffer.el (source)...done
 Spacemacs is ready.
-Restarting server
+Unable to start the daemon.
+Another instance of Emacs is running the server, either as daemon or interactively.
+You can use emacsclient to connect to that Emacs process.
+Wrote /home/qq/.emacs.d/.cache/places
+Error: server did not start correctly

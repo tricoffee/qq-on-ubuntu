@@ -205,9 +205,10 @@
 │       │   │   ├── login-shell_nologin-shell.txt
 │       │   │   └── shell-redirect.txt
 │       │   └── shell_script_skills
+│       │       ├── format-the-shell-scripts.txt
 │       │       ├── get-sh-argument.txt
 │       │       ├── shell-function.txt
-│       │       ├── shell-if-condition.txt
+│       │       ├── shell-if-condition-judgment.txt
 │       │       ├── shell-script-simple-tutorial.txt
 │       │       └── shell-variable.txt
 │       ├── ssh_server
@@ -426,4 +427,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-65 directories, 361 files
+65 directories, 362 files

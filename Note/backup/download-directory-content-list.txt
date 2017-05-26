@@ -6,9 +6,11 @@ gawk-4.0.2
 gawk-4.0.2.tar.gz
 libqt4-opengl_4.8.7+dfsg-5ubuntu2_amd64.deb
 libqtwebkit4_2.3.2-0ubuntu11_amd64.deb
+LINUX SHELL脚本攻略(中文版带书签).pdf
 profile-env-2.txt
 profile-env.txt
 profile-exec-dir.txt
 profile-export-2.txt
 profile-export.txt
+spacemacs.org
 xmodmap-keymap-list.txt

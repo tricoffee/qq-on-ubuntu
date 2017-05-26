@@ -16,15 +16,9 @@
 
 	# echo $MACHINE_VERSION
 
-
-unset TEST
-TEST=$1
-
-
-if [ -d $TEST ]; then
-	ls $TEST
-	echo "this is a dir"
+if [ ($# >= 0) $$ ($# <= 3)]
+then
+    echo $#
 else
-	ls $TEST
-	echo "this is a file"
+    echo "to many parameters"
 fi

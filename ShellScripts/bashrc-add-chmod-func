@@ -14,6 +14,7 @@ fi
 RO_USER="u=r,go="
 RO_NORMAL="u=r,go=r"
 SH_USER="u=rx,go="
+SH_USER_TEST="u=rwx,go="
 SH_NORMAL="u=rwx,go=rx"
 TXT_USER="u=rw,go="
 TXT_NORMAL="u=rw,go=r"
@@ -29,7 +30,10 @@ function chmod-single-file-to-user-rw(){
 	chmod ${TXT_USER} $1
 	ls -l $1
 }
-
+function chmod-single-file-to-user-rwx(){
+	chmod ${SH_USER_TEST} $1
+	ls -l $1
+}
 
 # chmod all file but not recursively
 function chmod-file-to-user-r(){

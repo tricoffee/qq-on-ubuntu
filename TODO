@@ -18,3 +18,5 @@
 9. 2017年 05月 25日 星期四 18:36:47 CST - CONTENT : Use 'tree' command to get 'Downloads/' 'Books/' 'Github/' directory's info, and seve to 'Note/' directory. and use linux utility text process command seem like '~/Note/linux/ubuntu/shell/shell_command/text-processing-tools.txt' to sort the content and Keep duplicate content and update different content.
 
 10. 2017年 05月 25日 星期四 18:49:18 CST - CONTENT : 通过查看 vimperator 源码，为 vimperator 配置文件 ~/.vimperatorrc 添加新功能 ： 1. 添加快捷键 'C-o' 至击键序列，其功能是打开一个新的本地文件（参照 ALT-f ， Ctrl + O “打开文件”的功能）； 2. 添加当前浏览器所有标签至指定 bookmark 目录的快捷键至击键序列（参照 ~/Gitbug/vimperator/-labs/vimperator/config.js 文件中的 'BookmarkAdd' 关键字的实现）。
+
+11. 2017年 05月 26日 星期五 17:56:53 CST - CONTENT : complete the '~/ShellScripts/basic_scripts/format-error' file
