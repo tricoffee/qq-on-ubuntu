@@ -35,10 +35,9 @@
 .Xauthority
 /.ecryptfs
 /.Private
-# ./*.swp
-# ./*.bak
 /*.swp
 /*.bak
+/.macromedia/
 /下載/
 /公共/
 /圖片/

@@ -12,8 +12,8 @@
 
 # 命令列 歷史記錄 (新到舊):
 :x
-:w
 :q
+:w
 :q!
 :%retab
 :set noexpandtab
@@ -36,8 +36,12 @@
 
 # 暫存器:
 ""1	LINE	0
+	# ./*.bak
+"2	LINE	0
+	# ./*.swp
+"3	LINE	0
 	
-"2	CHAR	0
+"4	CHAR	0
 	多文件编辑（偶的linux笔记）
 	 2014-01-27 02:43 10204人阅读 评论(0) 收藏 举报
 	 分类：
@@ -88,7 +92,7 @@
 	         说明：
 	
 	          
-"3	CHAR	0
+"5	CHAR	0
 	
 	                                                                                                                                                                                                                 顶
 	                                                                                                                                                                                                                     4
@@ -98,7 +102,7 @@
 	
 	                                                                                                                                                                                                                          
 	                                                                                                                                                                                                                           
-"4	CHAR	0
+"6	CHAR	0
 	
 	 顶
 	     5
@@ -146,13 +150,17 @@
 	 
 
 # 檔案標記:
-'0  70  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
-'1  1  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
-'2  17  8  ~/Note/linux/ubuntu/vim/vimrc-config.txt
-'3  7  1  ~/Note/linux/ubuntu/vim/vimrc-config.txt
-'4  197  0  ~/.vimrc
+'0  40  3  ~/.gitignore
+'1  70  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
+'2  1  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
+'3  17  8  ~/Note/linux/ubuntu/vim/vimrc-config.txt
+'4  7  1  ~/Note/linux/ubuntu/vim/vimrc-config.txt
+'5  197  0  ~/.vimrc
 
 # Jumplist (由新到舊):
+-'  40  3  ~/.gitignore
+-'  41  0  ~/.gitignore
+-'  1  0  ~/.gitignore
 -'  70  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
 -'  1  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
 -'  17  8  ~/Note/linux/ubuntu/vim/vimrc-config.txt
@@ -247,11 +255,15 @@
 -'  327  45  ~/.vimrc
 -'  116  0  ~/.vimrc
 -'  1  0  ~/.vimrc
--'  197  0  ~/.vimrc
--'  17  8  ~/Note/linux/ubuntu/vim/vimrc-config.txt
--'  8  0  ~/Note/linux/ubuntu/vim/vimrc-config.txt
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/.gitignore
+	"	40	3
+	^	40	13
+	.	40	3
+	+	38	0
+	+	40	3
 
 > ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
 	"	70	0
