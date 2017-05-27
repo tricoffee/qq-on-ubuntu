@@ -16,9 +16,10 @@
 
 	# echo $MACHINE_VERSION
 
-if [ ($# >= 0) $$ ($# <= 3)]
+if [ [ $# >= 0 ] && [ $# <= 3 ] ]
 then
     echo $#
+    ls $@
 else
     echo "to many parameters"
 fi
