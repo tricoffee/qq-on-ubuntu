@@ -1,0 +1,51 @@
+
+apt-get, dpkg : ubuntu 安装包 管理, apt-get purge/install -f
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+[原文] : http://blog.csdn.net/GW569453350game/article/details/49153391
+
+Fuck food：
+	dpkg -l    // 等于 --list，默认为列出所有已安装的package，或者使用 dpkg --get-selections | grep install
+	dpkg -l | grep boost    // 查找
+	dpkg -l *boost*    // 模式选择，列出所有与 *boost*  相关的已安装的或者未安装的package，
+			   //可以用来查看所需要的安装包，再 sudo apt-get install xxx
+	dpkg -L libboost1.54-dev    // 列已安装的package的文件位置
+
+其中：
+	-L|--listfiles <package> ... List files owned by package(s).
+	-l|--list [<pattern> ...] List packages concisely.
+
+
+apt-get：
+	// 卸载安装包，但是会保留配置文件， 例如/etc下某个文件夹
+	sudo apt-get remove xxx 
+	// 完全卸载安装包（包括删除配置文件）—— 删除某个package一般用这个命令
+	sudo apt-get purge xxx  
+
+	如果你有下载了一个 .deb 包， 可以通过 dpkg -i xxx.deb 来安装
+	但是可能会遇到缺少依赖项而出现error，此时你可以：
+	dpkg -i xxx.deb  # 安装
+	sudo apt-get install -f  # 自动安装依赖项, or --fix-broken install or --fix-missing install
+
+
+在 armhf 的 ubuntu下发现不能用 apt-get install 安装package：
+	查看DNS设置： /etc/resolv.conf
+	ping ports.ubuntu.com 可以知道ip地址
+	修改 /etc/hosts， 添加:
+	91.189.88.151 ports.ubuntu.com
+
+	若出现 “Failed to fetch … Hash Sum mismatch”：
+
+	sudo apt-get clean
+	sudo rm -rf /var/cache/apt/*
+	sudo rm -rf /var/lib/apt/lists/*
+	sudo apt-get update
+
+	This will manually purge the apt cache for ALL repositories on the system and they 
+	will be regenerated when “apt-get update” completes.
+
+
+关于 apt-get 的命令 可以执行 apt-get --help 查看
+
+
+ 
+ 
