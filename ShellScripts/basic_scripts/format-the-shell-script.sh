@@ -46,33 +46,75 @@ N_SPACES=$3
 ###################################
 
 #Determine the number of parameters
-if [ ($# >= 0) $$ ($# <= 3)]
 #Test the number of arguments
-if [ $# -gt 3 ]
-then
-	echo "To more argument, Please use follow formal : $ beauty.sh SOURCE TARGET"
-	exit
-fi
+case $# in
+	1)
+	#Test the FILENAME is a text file
+	    if [ ! -f $FILENAME ]
+	    then
+	    	echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
+	    	exit
+	    fi
+	    ;;
+	2)
+	#Test the FILENAME is a text file
+	if [ -f $FILENAME ]
+	then
+		#Test the FILEFORMATED file exists
+		if [ ! -e $FILEFORMATED ]
+		then
+			sleep 10
+		else
+			echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
+			exit
+		fi
+	else
+		echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
+		exit
+	fi
 
-#Test the FILENAME is a text file
-if [ ! -f $FILENAME ]
-then
-	echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-	exit
-fi
 
-#Test the FILEFORMATED file exists
-if [ -e $FILEFORMATED ]
-then
-	echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
-	exit
-fi
+	;;
+	3)
+	;;
+	*)
+	;;
 
-#Test the third argument
-if [ $3 -ne "More Then Zero SPACE" ]
+if ! [[ $# -ge 0 && $# -le 3 ]]
 then
-	echo "Please enter more then one SPACE."
+	echo "To more argument, Please use follow formal : $ beauty.sh SOURCE TARGET SPACE_NUM"
 	exit
+elif [ $# == 2 ]
+then
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#Test the third argument
+	if [ $3 -ne "More Then Zero SPACE" ]
+	then
+		echo "Please enter more then one SPACE."
+		exit
+	fi
+
+
+
+
+
 fi
 
 ###################################

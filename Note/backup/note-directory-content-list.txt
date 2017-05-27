@@ -153,6 +153,11 @@
 │   │   ├── use_google_api_translation.org
 │   │   └── zh-manpages.txt
 │   └── ubuntu
+│       ├── apt
+│       │   ├── apt-dpkg-common-problem.txt
+│       │   ├── apt-fix-depend-on-problem.txt
+│       │   ├── apt-usage.txt
+│       │   └── extract-deb-packege.txt
 │       ├── boot
 │       │   └── boot-directory-clean.txt
 │       ├── character_terminal
@@ -178,6 +183,8 @@
 │       │   └── ubuntu-connect-IOS-support.txt
 │       ├── keyboard
 │       │   └── use-xmodmap-to-remap-key.txt
+│       ├── man
+│       │   └── zh-manpages.txt
 │       ├── regular_expression
 │       │   └── regular-expression-simple-tutorial.txt
 │       ├── shell
@@ -207,6 +214,7 @@
 │       │   └── shell_script_skills
 │       │       ├── format-the-shell-scripts.txt
 │       │       ├── get-sh-argument.txt
+│       │       ├── shell-case.txt
 │       │       ├── shell-function.txt
 │       │       ├── shell-if-condition-judgment.txt
 │       │       ├── shell-script-simple-tutorial.txt
@@ -215,6 +223,9 @@
 │       │   └── build-ssh-server.txt
 │       ├── ubuntu_performance
 │       │   └── adjust-the-ubuntu-performance-yourself.txt
+│       ├── vim
+│       │   ├── vim-multiple-file-edit.txt
+│       │   └── vimrc-config.txt
 │       └── window_manager
 │           ├── DWM
 │           │   ├── dmenu-usage.txt
@@ -293,7 +304,7 @@
 │   ├── xmodmap-change-keymap-2.txt
 │   ├── xmodmap-change-keymap-3.txt
 │   ├── xmodmap-change-keymap.txt
-│   └── 关于connect- network is unreachable 问题的解决 - 咕唧咕唧的专栏 - 博客频道 - CSDN.NET.png
+│   └── 关于connect- network is unreachable 问题的解决.png
 ├── programming_IDE
 │   ├── emacs
 │   │   ├── auto-copy.org
@@ -427,4 +438,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-65 directories, 362 files
+68 directories, 370 files
