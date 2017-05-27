@@ -19,6 +19,8 @@ http://lib.csdn.net/
 http://www.runoob.com/
 # codecademy 编程学院
 https://www.codecademy.com/
+# 可视化正则表达式测试网站
+https://stackoverflow.com
 
 
 ### 现成的软件项目
