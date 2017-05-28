@@ -1,0 +1,34 @@
+;; for org-mode
+(setq load-path (cons "~/3rd/org-mode/lisp" load-path))
+(setq load-path (cons "~/3rd/org-mode/conrib/lisp" load-path))
+
+
+(require 'org-install)
+(require 'org-publish)
+(require 'org)
+
+                                                                                (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+(add-hook 'org-mode-hook 'turn-on-font-lock)
+(add-hook 'org-mode-hook 
+(lambda () (setq truncate-lines nil)))
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(setq org-agenda-files (list "~/org/work.org"
+                             "~/org/home.org"
+                             "~/org/misc.org"))
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+'(org-agenda-files (quote ("~/org/work.org" "~/org/home.org"  "~/org/misc.org"))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
+(setq org-log-done t) 

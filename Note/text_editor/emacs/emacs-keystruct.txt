@@ -1,0 +1,468 @@
+
+Emacs 快捷键
+
+
+快捷键组合：
+c-x ： Ctrl+x
+m-x： Alt+x
+
+1. 常用的缺省 Emacs 按键前缀
+
+C-c
+当前编辑模式特有的命令
+
+C-x
+文件和缓冲区命令
+
+C-h
+帮助命令
+
+M-x
+函数名称
+
+2. 常用的 Emacs 缓冲区和文件函数
+
+C-x C-s
+save-buffer
+将当前的缓冲区保存到磁盘。
+
+C-x s
+save-some-buffers
+要求将所有未保存的缓冲区保存到磁盘。
+
+C-x C-w
+write-file
+将当前缓冲区中的内容另存为其他名字的文件。
+
+C-x C-c
+save-buffers-kill-emacs
+要求将所有未保存的缓冲区保存到磁盘，并退出 Emacs。
+
+C-x C-z
+suspend-emacs
+挂起 Emacs 并使之成为一个后台进程。
+
+C-x C-b
+list-buffers
+列出所有缓冲区。
+
+C-x k
+kill-buffer
+杀死一个缓冲区（缺省情况下为当前的缓冲区）。
+
+C-x C-q
+vc-toggle-read-only
+切换当前缓冲区的可读状态（如果适用还可以执行版本控制）。
+
+C-x i
+insert-file
+在插入点插入某个文件的内容。
+
+M - <      移动到缓冲区开头
+M - >      移动到缓冲区末尾
+
+3. 有用的 Emacs 键盘输入（用于移动和导航）
+
+C-p ,UpArrow
+previous-line
+将插入点向上移动到上一行。
+
+C-n ,DownArrow
+next-line
+将插入点向下移动到下一行。
+
+C-f ,RightArrow
+forward-char
+将插入点移动到下一个字符。
+
+C-b ,LeftArrow
+back-char
+将插入点移动到上一个字符。
+
+M-f
+forward-word
+将插入点移动到下一个单词。
+
+M-b
+backward-word
+将插入点移动到上一个单词。
+
+C-v , PgDn
+scroll-up
+将文本向上滚动一屏。
+
+M-v , PgUp
+scroll-down
+将文本向下滚动一屏。
+
+Home
+beginning-of-buffer
+将插入点移到缓冲区的开始处。（在某些版本中，这个键被缺省定义为移动到当前行的开始处。）
+
+End
+end-of-buffer
+将插入点移到缓冲区的末尾。（在某些版本中，这个键被缺省定义为移动到当前行的末尾。）
+
+C-a
+beginning-of-line
+将插入点移到本行的开始处。
+
+C-e
+end-of-line
+将插入点移到本行的结尾。
+
+M-a
+beginning-of-sentence
+将插入点移到句子的开始处。
+
+M-e
+end-of-sentence
+将插入点移到句子的结尾处。
+
+C-{
+beginning-of-paragraph
+将插入点移到段落的开始处。
+
+C-}
+end-of-paragraph
+将插入点移到段落的结尾处。
+
+
+4. 常用 Emacs 编辑命令
+
+Ins
+overwrite-mode
+切换改写模式（缺省为关闭）。
+
+Backspace ,Del
+delete-backward-char
+	删除插入点前的字符。
+
+C-d
+delete-char
+删除插入点处的字符。
+
+M-d
+kill-word
+从插入点开始向前删除字符，直到单词末尾。
+
+M-Backspace ,M-Del
+backward-kill-word
+从插入点开始向回删除字符，直至单词的开始处。
+
+C-_
+undo
+撤消您的上一次键入或操作
+
+C-q 字符 或XXX
+quoted-insert
+在插入点插入按键本身代表的字符 或由八进制数字（XXX ）表示的字符。
+
+C-u 次数 命令
+universal-argument
+按总的次数 （缺省为 4 次）连续执行命令 。
+
+
+5. 用来标记和删除文本的 Emacs 函数
+
+C-Space
+set-mark-command
+在插入点设置标记。
+
+C-k
+kill-line
+删除从插入点到行末的所有文本。
+
+C-w
+kill-region
+删除区域。
+
+M-w
+kill-ring-save
+将区域保存在 kill ring 中，但不删除它。
+
+C-y
+yank
+恢复来自 kill ring 的文本。
+
+
+6. 鼠标操作
+
+B1
+这一命令将设置插入点位置；拖动鼠标左键以设置区域。
+
+B1-B1
+这一命令标记一个单词。
+
+B1-B1-B1
+这一命令标记一行。
+
+B2
+这一命令插入最近被杀死的内容，并把光标移动到插入内容的末尾。
+
+B3
+这一命令会设置并突出显示区域，然后无需删除就将其放在 kill 缓冲区中。如果某个区域已经被突出显示并设置，该区域的末尾将移动到您单击的位置。
+
+B3-B3
+这个命令将突出显示区域，然后删除它。如果某个区域已经被突出显示并设置，该区域的末尾将移动到您单击的位置，此后该区域将被删除。
+
+
+7. query-replace 函数的选项
+
+pre-keysturct : M-%
+
+空格、y
+替换这个匹配。
+
+Del、n
+跳过这一匹配到下一个匹配。
+
+Enter、q
+退出 query-replace 。
+
+.
+进行本次替换，然后退出 query-replace 。
+
+，
+进行本次替换，将光标移动到此处，然后退出 query-replace 。
+
+C-r
+指定递归编辑。
+
+C-w
+删除这个匹配并递归编辑。
+
+C-l
+重绘屏幕，并使这一行位于屏幕正中位置。
+
+!
+继续进行所有的替换，而无需再次询问。
+
+E
+编辑替换的字符串。
+
+^
+退回到前一次替换。
+
+ *** replace-regexp 和 query-replace-regexp 函数的工作方式是类似的，但是它们使用正则表达式作为要进行替换的字符串。 ***
+
+ 
+
+8. Emacs 搜索和替换命令
+
+C-s [字符串 ] [C-w ] [C-y ]
+isearch-forward
+前向增量地在整个缓冲区中搜索字符串（在缺省情况下，将搜索您上一次给出的搜索字符串，如果存在），C-w 使用从光标处到光标所在单词的词尾之间的文本，以及 C-y 使用从光标处到光标所在行的行尾之间的全部内容。
+
+C-r [字符串 ] [C-w ] [C-y ]
+isearch-backward
+后向增量地在整个缓冲区中搜索字符串 （在缺省情况下，将搜索您上一次给出的搜索字符串，如果存在），C-w 使用从光标处到光标所在单词的词尾之间的文本，C-y 使用从光标处到光标所在行的行尾之间的全部内容。
+
+C-s Enter C-w 单词或者短语
+word-search-forward
+在整个缓冲区中前向搜索给定的单词或者短语（不管它们之间如何分隔）。
+
+C-r Enter C-w 单词或者短语
+word-search-backward
+在整个缓冲区中后向搜索给定的单词或者短语（不管它们之间如何分隔）。
+
+C-M-s
+isearch-forward-regexp
+在整个缓冲区中前向增量搜索给定的正则表达式。
+
+C-M-r
+isearch-backward-regexp
+在整个缓冲区中后向增量搜索给定的正则表达式。
+
+replace-string
+从光标处到缓冲区末尾搜索给定的字符串，并使用给定的字符串来替换它。
+
+replace-regexp
+从光标处到缓冲区末尾搜索给定的正则表达式，并使用给定的字符串来替换它。
+
+M-%
+query-replace
+从光标处到缓冲区末尾搜索给定的字符串，对于搜索到的每个实例，询问是否使用给定的字符串来进行替换。
+
+C-M-%
+query-replace-regexp
+从光标处到缓冲区末尾搜索给定的正则表达式，对于搜索到的每个实例，询问是否使用给定的字符串来进行替换。
+
+
+9. 高级 Emacs 标记和选择命令
+
+C-u C-space
+移动到标记环中的前一个标记。
+
+C-x C-x
+exchange-point-and-mark
+交换光标和标记的位置。
+
+M-@
+mark-word
+标记从光标到当前词尾的所有文本。
+
+M-h
+mark-paragraph
+标记当前段落，不管光标处在什么位置。
+
+transient-mark-mode
+切换临时标记模式。
+
+C-x h
+mark-whole-buffer
+标记整个缓冲区，不管光标处在什么位置。
+
+M-B1
+设置二次选择的开始，拖曳鼠标以进行二次选择。
+
+M-B3
+设置二次选择的结尾。
+
+M-B1-B1
+将一个单词标记为二次选择。
+
+M-B1-B1-B1
+将一行标记为二次选择。
+
+
+10. 高级 Emacs 剪切和粘贴命令
+
+M-(num) C-k
+kill-line
+剪切行的整数 数目。如果是 0，剪切从光标到该行开头的全部内容；如果是负数，则反向剪切。
+
+M-k
+kill-sentence
+剪切从光标到句子的结尾处的内容。
+
+M-z
+zap-to-char
+删除从光标到指定的字符之间的所有文本。
+
+M-y
+yank-pop
+移动到剪切环中的下一个槽位。
+
+M-(num) C-y
+yank
+粘贴剪切环中指定槽位的内容。
+
+
+11. 使用书签的 Emacs 命令
+
+C-x r mBookmark
+bookmark-set
+设置一个名为 Bookmark 的书签。
+
+C-x r l
+bookmarks-bmenu-list
+列出所有已保存的书签。
+
+M-x bookmark-delete
+bookmark-delete
+删除一个书签。
+
+C-x r bBookmark
+bookmark-jump
+跳转至名为 Bookmark 的书签中所设置的位置。
+
+M-x bookmark-save
+bookmark-save
+将所有的书签保存到书签文件 ~/.emac.bmk 中。
+
+
+12. 常见的 Emacs 窗口操作命令
+
+C-x 2
+split-window-vertically
+从中间将当前窗口划分为两半，垂直地堆叠新的缓冲区。
+
+C-x 4 b
+switch-to-buffer-other-window
+垂直地将当前窗口划分为两半，提示输入缓冲区以使用底部的窗口，并将其作为活动窗口。
+
+C-x 4 C-o
+display-buffer
+在另一个窗口中显示一个缓冲区，提示输入缓冲区以使用另一个窗口，但保持当前窗口为活动窗口。（如果仅存在一个窗口，那么垂直地划分该窗口以显示另一个缓冲区。）
+
+C-x 4 f
+find-file-other-window
+在新的缓冲区中打开新的文件，在新的垂直窗口中绘制它。
+
+C-x 4 r
+find-file-read-only-other-window
+在一个新的只读缓冲区中打开新的文件，在新的垂直窗口中绘制它。
+
+C-M-v
+scroll-other-window
+滚动到下一个由 C-x o 切换到的窗口。
+
+scroll-all
+切换 scroll-all 次要模式。当它处于打开状态时，将同时滚动显示当前窗口中的缓冲区的所有窗口，并滚动均等的相应距离。
+
+C-x o
+other-window
+将光标移动到下一个窗口，并使其成为活动窗口。
+
+windmove-up
+移动到恰好位于当前窗口上方的窗口，如果它存在的话。
+
+windmove-down
+移动到恰好位于当前窗口下方的窗口，如果它存在的话。
+
+windmove-left
+移动到恰好位于当前窗口左边的窗口，如果它存在的话。
+
+windmove-right
+移动到恰好位于当前窗口右边的窗口，如果它存在的话。
+
+C-x 0
+delete-window
+删除当前窗口，并将光标移动到使用 C-x o 将切换到的下一个窗口。
+
+C-x 1
+delete-other-windows
+删除当前窗口之外的所有窗口。
+
+C-x 4 0
+kill-buffer-and-window
+删除当前窗口，并剪切它的缓冲区。
+
+C-x 3
+split-window-horizontally
+将当前窗口从中间划分为两半，水平地堆叠新的缓冲区。
+
+follow-mode
+切换 follow 次要模式。当它在缓冲区中处于打开状态时，将所有显示该缓冲区的窗口连接为一个较大的虚拟窗口。
+
+C-x ^
+enlarge-window
+使当前窗口增加一行的高度；在其之前使用一个负数，将使得当前窗口减少一行的高度。
+
+C-x }
+shrink-window-horizontally
+使当前活动窗口减少一列的宽度。
+
+C-x {
+enlarge-window-horizontally
+使当前活动窗口增加一列的宽度。
+
+C-x -
+shrink-window-if-larger-than-buffer
+将当前活动窗口的大小缩小到对于它所包含的缓冲区来说可能的最小尺寸。
+
+C-x +
+balance-windows
+平衡所有窗口的尺寸，使它们的大小大致相等。
+
+compare-windows
+将当前窗口与下一个窗口进行比较，在两个窗口中从光标处开始比较，并在两个缓冲区中将光标移动到第一个不同的字符处，直到到达缓冲区的末尾为止。
+
+ 
+
+设置EMACS变量
+1.有些变量可以包含数值或者字符串，而其他的变量则是“真”或者“假”：如果将一个变量的值设置为 nil ，那么它的值是“假”，值 t 表示“真”。
+2.使用 describe-variable 函数以得到变量的值。当您运行这个函数的时候，Emacs 将打开一个新窗口，该窗口中包含该变量的给定当前 
+   值。如果有的话，还将提供关于该变量的描述。这个函数与 C-h v 按键进行了绑定。
+3.使用M-x set-variable来进行变量设定

@@ -1,0 +1,21 @@
+emacs以root权限打开文件
+
+分类：问题解决 2013-01-23 22:14 31人阅读评论(0) 收藏举报
+
+     在ubuntu10.04下使用emacs23.1时，有时需要以root权限打开某些文件。操作步骤如下。
+
+     1、键入“C-x C-f”,此时出现如下图示。
+
+ [135895]
+
+    2、此时在适当位置输入“/sudo::/”,如下图所示。
+
+[135895]
+
+    3、此时点击回车键，输入密码，之后便可以root权限编辑文件。
+
+     参考文献：http://jerusalemdax.wordpress.com/2012/06/25/我的emacs/
+
+                         http://dengkefu.com/projects/emacs/
+
+                         http://blog.chinaunix.net/uid-20621049-id-84694.html

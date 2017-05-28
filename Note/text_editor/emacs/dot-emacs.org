@@ -1,0 +1,8 @@
+
+不重动 Emacs 让 .emacs 配置文件生效
+
+有四个函数可以做到：eval-last-sexp,eval-region,eval-buffer 和load-file
+M-x eval-last-sexp 使.emacs中光标前的那一条语句立刻生效。
+M-x eval-region 使.emacs中选中的region中的语句立刻生效。
+M-x eval-buffer 使当前的buffer中的设置语句立刻生效。
+M-x load-file ~/.emacs 载入.emacs文件，从而使其中的设置生效。
