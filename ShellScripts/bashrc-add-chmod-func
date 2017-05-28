@@ -83,11 +83,11 @@ function chmod-dir-to-normal(){
 function chmod-dir-to-normal-recursively(){
 	if [ -n "$CHMOD_PATH" ]; then
 		if [ -d $CHMOD_PATH ]; then
-			find ${CHMOD_PATH} -type d -exec chmod ${DIR_USER} {} \;
+			find ${CHMOD_PATH} -type d -exec chmod ${DIR_NORMAL} {} \;
 			find ${CHMOD_PATH} -type d -exec ls -l -d {} \;
 		else
 			CHMOD_PATH="./"
-			find ${CHMOD_PATH} -type d -exec chmod ${DIR_USER} {} \;
+			find ${CHMOD_PATH} -type d -exec chmod ${DIR_NORMAL} {} \;
 			find ${CHMOD_PATH} -type d -exec ls -l -d {} \;
 		fi
 	fi

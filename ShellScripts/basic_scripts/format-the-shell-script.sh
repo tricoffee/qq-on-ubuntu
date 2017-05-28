@@ -48,74 +48,52 @@ N_SPACES=$3
 #Determine the number of parameters
 #Test the number of arguments
 case $# in
+    0)
+        ;; # don't do anyting and excute normal process
 	1)
-	#Test the FILENAME is a text file
-	    if [ ! -f $FILENAME ]
-	    then
-	    	echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-	    	exit
-	    fi
-	    ;;
+        #Test the FILENAME is a text file
+        if [ ! -f $FILENAME ]
+        then
+            echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
+            exit
+        fi
+        ;; # don't do anyting and excute normal process
 	2)
-	#Test the FILENAME is a text file
-	if [ -f $FILENAME ]
-	then
-		#Test the FILEFORMATED file exists
-		if [ ! -e $FILEFORMATED ]
-		then
-			sleep 10
-		else
-			echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
-			exit
-		fi
-	else
-		echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-		exit
-	fi
-
-
-	;;
+        #Test the FILENAME is a text file
+        if [ -f $FILENAME ]
+        then
+            #Test the FILEFORMATED file exists
+            if [ ! -e $FILEFORMATED ]
+            then
+                ;; # don't do anyting and excute normal process
+            else
+                echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
+                exit
+            fi
+        else
+            echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
+            exit
+        fi
 	3)
-	;;
+        #Test the FILENAME is a text file
+        if [ ! -f $FILENAME ]
+        then
+            echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
+            exit
+        #Test the FILEFORMATED file exists
+        elif [ -e $FILEFORMATED ]
+        then
+            echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
+            exit
+        elif [  ]
+            exit
+        fi
+        ;;
 	*)
-	;;
-
-if ! [[ $# -ge 0 && $# -le 3 ]]
-then
-	echo "To more argument, Please use follow formal : $ beauty.sh SOURCE TARGET SPACE_NUM"
-	exit
-elif [ $# == 2 ]
-then
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#Test the third argument
-	if [ $3 -ne "More Then Zero SPACE" ]
-	then
-		echo "Please enter more then one SPACE."
-		exit
-	fi
-
-
-
-
-
-fi
+        echo "To many parameters !"
+        exit
+	    ;;
+esac
 
 ###################################
 # To be modified ...

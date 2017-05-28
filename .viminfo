@@ -8,25 +8,165 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/set t
+~Msle0~/\<VisualSelection\>
+
+# Last Substitute Search Pattern:
+~MSle0&let 
+
+# 前一組替代字串:
+$hello
 
 # 命令列 歷史記錄 (新到舊):
 :x
-:q
 :w
+:set iskeyword
+:set iskeyword+=-
+:help set-iskeyword
+:help set iskeyword
+:q
+:help \w
+:echo expand("<cword>")
+:help WORD
+:help cWORD
+:help expand()
+:help c-r
+:c-r
+:help expand<>
+:help <cword>
+:j
+:echo expand(
+:help quickref
+:quickref
+:help
+:help c-i
+:help c-o
+:help *
+:let iskeyword
+:iskeyword
+:echo iskeyword
 :q!
-:%retab
-:set noexpandtab
-:set expandtab
-:set ecpandatab
-:set ts=4
-::q
-:sp ~/Note/linux/ubuntu/vim/vimrc-config.txt
+:ReplaceCurStrBy
+:%s/let keyword = expand("<cword>")/-hello-/gc
+:%s/set keyword=expand("<cword>")/-hello-/gc
+:%s/expand("<cword>")/-hello-/gc
+:ReplaceCurStrBy 
+:ReplaceCurStrBy hello
+:redir:q
+:wq
+:C-r
+:p
+:exe '*'
+:exe "*"
+:exe *
+:help iskeyword
+:exe iskeyword
+:help set
+:help isk
+:execute "normal! vgvy"
+:exe
+:help exe
+:w temp
+:exe "menu Foo.Bar :" . "%s/let /hello /gc"
+:exe "menu Foo.Bar :" . %s/let /hello /gc
+:exe "menu Foo.Bar :"
+:emenu Foo.Bar
+:help emenu
+:help usr_40.txt
+:let 
+:reg $"
+:reg "
+:Replace
+:exe "normal! vgvy"
+:@"
+:read
+:Cmdlin
+:help cmdline
+:help function
+:help range
+:range
+:help a:direction
+:help direction
+:help a:
+:help substitute()
+:help substitute
+:help register
+:help @
+:help @"
+:help escape()
+:help escape
+:help l:
+:help l
+:help l:saved_reg
+:help q-args
+:q-args
+:viw
+:help /
 
 # 搜尋字串 歷史記錄 (新到舊):
-?/set t
-?/set ts
-?/ts
+? \<VisualSelection\>
+? \<ReplaceString\>
+?/WORD
+? \<<cword>\>
+? \<<cWORD>\>
+?/cword
+?/cursor
+? \<'ignorecase'\>
+? let
+? l:targetword
+? let keyword = expand("<cword>")
+? set keyword=expand("<cword>")
+? expand("<cword>")
+?/c-r
+? \<CTRL\>
+? \<47\>
+? \<saving\>
+?/*
+? \<'iskeyword'\>
+?/iskeyword
+?/set
+?/let
+?/hello
+?/emenu
+?/exe
+?/40.2
+?/command
+?/let 
+? \<TabLeave\>
+? \<hello_world\>
+? \<__hello_world_\>
+? \<map\>
+? let 
+?/set 
+?/cmdline
+?/range
+?/function
+? \<direction\>
+?/direction
+?/reg
+?/regist
+?/register
+?/@
+?/@"
+?/escape
+?/escspe
+?/world
+?/undo
+?/expand
+?/insert
+?//
+? \<text\>
+? \<Text\>
+?/hight
+?/27.4
+?/27
+? \<Matching\>
+? \<Examples\>
+?/cursor-po
+?/pattern
+?/
+? [0-9A-Za-z_]\{0,}
+? [0-9A-Za-z_]\{1,}
+? \{1,}[0-9A-Za-z_]
 
 # 運算式 歷史記錄 (新到舊):
 
@@ -35,235 +175,795 @@
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-""1	LINE	0
-	# ./*.bak
+""0	LINE	0
+	"set iskeyword+=
+"1	LINE	0
+	"set iskeyword=
 "2	LINE	0
-	# ./*.swp
+	"set iskeyword-=#
 "3	LINE	0
+	"command -nargs=1 ReplaceCurStrBy :%s//<args>/gc 
+"4	LINE	0
+	"command -nargs=1 ReplaceCurStrBy :%s//<args>/gc 
+"5	LINE	0
+	vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+"6	LINE	0
+	"command Replace :call VisualSelection('replace', '')<CR>
+"7	LINE	0
 	
-"4	CHAR	0
-	多文件编辑（偶的linux笔记）
-	 2014-01-27 02:43 10204人阅读 评论(0) 收藏 举报
-	 分类：
-	 Scripts（37） Linux（89）
+"8	LINE	0
 	
-	 在Linux下，假若需要对多个文件的内容进行相互对照和参考，或需要将一个文件的某部分内容复制或粘贴到另一个文件中，可通过vim同时打开这些相关文件进行编辑。
-	
-	 通过vim打开的每个文件都对应着一个buffer（buffer是系统为打开的文件分配的内存空间），每个buffer都有一个id。
-	
-	  
-	
-	  1.在同一窗口下显示多个文件
-	
-	  命令：vim filename1 filename2
-	
-	  说明：上述命令同时打开了filename1，filename2两个文件，不过文件filename1的内容将占据整个vim窗口，要想在各个文件之间进行切换，我们可通过如下命令
-	
-	  ：n    切换到下一个文件
-	
-	  ：N   切换到上一个文件
-	
-	  ：n filename2   切换到文件filename2
-	
-	  我们提到每个打开的文件都对应着一个buffer，故可通过切换buffer来达到切换文件的目的，如下
-	
-	  ：ls  列出vim打开的所有文件的信息，包括文件名，buffer id等
-	
-	  ：b2  切换到buffer id为2的buffer
-	
-	  :bn   切换到当前buffer的下一个buffer
-	
-	  :bp   切换当前buffer的前一个buffer
-	
-	  ：bd 关闭当前buffer，对应文件也随之关闭
-	
-	  ：bd2 关闭buffer id为2的buffer，对应文件也随之关闭
-	
-	  我们可通过安装miniBufExplorer插件来简化buffer的切换。不过该插件有时会导致语法高亮显示失效，我们可通过命令：syntax on来恢复高亮。
-	
-	  2.分割窗口，显示多个文件
-	
-	  对于在同一个窗口下打开多个文件，对于各文件之间内容的复制，剪切操作终究不方便，我们可使用命令对窗口进行分割，每个子窗口显示一个文件
-	
-	  命令：vim  -o filename1 filename2  水平分割窗口
-	
-	         vim  -O  filename1 filename2 垂直分割窗口
-	
-	         说明：
-	
-	          
-"5	CHAR	0
-	
-	                                                                                                                                                                                                                 顶
-	                                                                                                                                                                                                                     4
-	
-	                                                                                                                                                                                                                     踩
-	                                                                                                                                                                                                                         0
-	
-	                                                                                                                                                                                                                          
-	                                                                                                                                                                                                                           
-"6	CHAR	0
-	
-	 顶
-	     5
-	
-	     踩
-	         0
-	
-	          
-	          
-	
-	             上一篇
-	                 添加slave账户
-	                     下一篇
-	                         Python报错TypeError: 'str' object is not callable
-	
-	                           相关文章推荐
-	
-	                               • Linux下 将VIM的TAB设置为4个空格
-	                                   • vim tab设置为4个空格
-	                                       • vim tab设置为4个空格
-	                                           • vim设置tab为4个空格，同时忽略makefile文件
-	                                               • vim tab设置为4个空格
-	
-	                                                   • vim tab设置为4个空格
-	                                                       • vim tab设置为4个空格
-	                                                           • vim tab设置为4个空格
-	                                                               • vim tab设置为4个空格
-	                                                                   • ubuntu 16.04LTS vim 7.4 设置行号 TAB 变成 4个空格
-	
-	                                                                   猜你在找
-	                                                                       2016高薪Linux培训教程-vim命令和find命令入门到精通
-	                                                                           vim从入门到精通--基础命令使用
-	                                                                               vim从入门到精通(第2季)：使用插件定制自己的IDE开发环境
-	                                                                                   GVim使用分享
-	                                                                                       vim+sublime+atom打造高逼格的开发环境
-	                                                                                           Vimperator 黑客的上网工具
-	                                                                                               轻松掌握Linux操作系统技术视频课程（肖哥）
-	                                                                                                   Python项目实训
-	                                                                                                       Python编程基础视频教程(第三季)
-	                                                                                                           Python编程基础视频教程(第七季)
-	
-	                                                                                                           关闭
-	                                                                                                           查看评论
+"9	LINE	0
+	    command -nargs=1 ReplaceCurStrBy :%s//<args>/gc 
 "-	CHAR	0
-	 
+	[
 
 # 檔案標記:
-'0  40  3  ~/.gitignore
-'1  70  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
-'2  1  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
-'3  17  8  ~/Note/linux/ubuntu/vim/vimrc-config.txt
-'4  7  1  ~/Note/linux/ubuntu/vim/vimrc-config.txt
-'5  197  0  ~/.vimrc
+'0  384  14  ~/.vimrc
+'1  61  7  ~/test
+'2  215  0  ~/.vimrc
+'3  183  0  ~/.vimrc
+'4  337  24  ~/.vimrc
+'5  325  0  ~/.vimrc
+'6  77  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
+'7  1  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
+'8  47  398  ~/Note/text_editor/vim/vim-replace-string-command.txt
+'9  59  0  ~/hello
 
 # Jumplist (由新到舊):
--'  40  3  ~/.gitignore
--'  41  0  ~/.gitignore
--'  1  0  ~/.gitignore
--'  70  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
--'  1  0  ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
--'  17  8  ~/Note/linux/ubuntu/vim/vimrc-config.txt
--'  8  0  ~/Note/linux/ubuntu/vim/vimrc-config.txt
--'  7  1  ~/Note/linux/ubuntu/vim/vimrc-config.txt
--'  1  0  ~/Note/linux/ubuntu/vim/vimrc-config.txt
--'  197  0  ~/.vimrc
--'  166  4  ~/.vimrc
--'  152  4  ~/.vimrc
--'  132  0  ~/.vimrc
--'  131  0  ~/.vimrc
--'  53  2  ~/.vimrc
--'  201  0  ~/.vimrc
--'  277  7  ~/.vimrc
--'  145  19  ~/.vimrc
--'  125  59  ~/.vimrc
--'  123  22  ~/.vimrc
--'  111  24  ~/.vimrc
--'  101  30  ~/.vimrc
--'  46  4  ~/.vimrc
--'  28  22  ~/.vimrc
--'  13  50  ~/.vimrc
--'  358  47  ~/.vimrc
--'  348  9  ~/.vimrc
--'  333  36  ~/.vimrc
--'  327  45  ~/.vimrc
--'  116  0  ~/.vimrc
+-'  384  14  ~/.vimrc
+-'  385  0  ~/.vimrc
+-'  323  8  ~/.vimrc
+-'  322  35  ~/.vimrc
+-'  331  0  ~/.vimrc
+-'  387  33  ~/.vimrc
+-'  216  0  ~/.vimrc
+-'  215  0  ~/.vimrc
+-'  61  7  ~/test
+-'  62  7  ~/test
+-'  1  0  ~/test
+-'  214  37  ~/.vimrc
+-'  212  23  ~/.vimrc
+-'  136  21  ~/.vimrc
+-'  89  46  ~/.vimrc
+-'  87  38  ~/.vimrc
+-'  85  22  ~/.vimrc
 -'  1  0  ~/.vimrc
--'  197  0  ~/.vimrc
--'  166  4  ~/.vimrc
--'  152  4  ~/.vimrc
--'  132  0  ~/.vimrc
--'  131  0  ~/.vimrc
--'  53  2  ~/.vimrc
--'  201  0  ~/.vimrc
--'  277  7  ~/.vimrc
--'  145  19  ~/.vimrc
--'  125  59  ~/.vimrc
--'  123  22  ~/.vimrc
--'  111  24  ~/.vimrc
--'  101  30  ~/.vimrc
--'  46  4  ~/.vimrc
--'  28  22  ~/.vimrc
--'  13  50  ~/.vimrc
--'  358  47  ~/.vimrc
--'  348  9  ~/.vimrc
--'  333  36  ~/.vimrc
--'  327  45  ~/.vimrc
--'  116  0  ~/.vimrc
--'  1  0  ~/.vimrc
--'  197  0  ~/.vimrc
--'  166  4  ~/.vimrc
--'  152  4  ~/.vimrc
--'  132  0  ~/.vimrc
--'  131  0  ~/.vimrc
--'  53  2  ~/.vimrc
--'  201  0  ~/.vimrc
--'  277  7  ~/.vimrc
--'  145  19  ~/.vimrc
--'  125  59  ~/.vimrc
--'  123  22  ~/.vimrc
--'  111  24  ~/.vimrc
--'  101  30  ~/.vimrc
--'  46  4  ~/.vimrc
--'  28  22  ~/.vimrc
--'  13  50  ~/.vimrc
--'  358  47  ~/.vimrc
--'  348  9  ~/.vimrc
--'  333  36  ~/.vimrc
--'  327  45  ~/.vimrc
--'  116  0  ~/.vimrc
--'  1  0  ~/.vimrc
--'  197  0  ~/.vimrc
--'  166  4  ~/.vimrc
--'  152  4  ~/.vimrc
--'  132  0  ~/.vimrc
--'  131  0  ~/.vimrc
--'  53  2  ~/.vimrc
--'  201  0  ~/.vimrc
--'  277  7  ~/.vimrc
--'  145  19  ~/.vimrc
--'  125  59  ~/.vimrc
--'  123  22  ~/.vimrc
--'  111  24  ~/.vimrc
--'  101  30  ~/.vimrc
--'  46  4  ~/.vimrc
--'  28  22  ~/.vimrc
--'  13  50  ~/.vimrc
--'  358  47  ~/.vimrc
--'  348  9  ~/.vimrc
--'  333  36  ~/.vimrc
--'  327  45  ~/.vimrc
--'  116  0  ~/.vimrc
--'  1  0  ~/.vimrc
+-'  386  21  ~/.vimrc
+-'  390  4  ~/.vimrc
+-'  301  0  ~/test
+-'  386  4  ~/test
+-'  388  4  ~/test
+-'  385  4  ~/test
+-'  50  0  ~/test
+-'  49  0  ~/test
+-'  59  0  ~/test
+-'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  60  5  ~/test
+-'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
 
 # 檔案內 Mark 記錄 (由新到舊):
 
+> ~/.vimrc
+	"	384	14
+	^	383	15
+	.	384	14
+	+	1	0
+	+	1	0
+	+	1	0
+	+	322	0
+	+	325	0
+	+	322	0
+	+	325	0
+	+	322	0
+	+	325	0
+	+	322	0
+	+	325	0
+	+	322	0
+	+	325	0
+	+	322	0
+	+	325	0
+	+	325	0
+	+	322	0
+	+	325	0
+	+	325	0
+	+	322	0
+	+	325	10
+	+	325	0
+	+	325	8
+	+	325	0
+	+	325	0
+	+	325	0
+	+	325	0
+	+	322	0
+	+	325	0
+	+	325	37
+	+	325	55
+	+	325	0
+	+	325	0
+	+	325	0
+	+	325	0
+	+	325	0
+	+	325	0
+	+	325	0
+	+	394	0
+	+	382	0
+	+	385	0
+	+	391	0
+	+	385	26
+	+	386	16
+	+	390	0
+	+	390	8
+	+	390	27
+	+	390	23
+	+	390	0
+	+	390	4
+	+	390	0
+	+	390	0
+	+	390	3
+	+	379	0
+	+	390	19
+	+	325	0
+	+	323	0
+	+	323	36
+	+	390	34
+	+	390	32
+	+	390	0
+	+	390	20
+	+	390	4
+	+	390	0
+	+	390	0
+	+	390	4
+	+	390	0
+	+	390	0
+	+	390	7
+	+	387	0
+	+	390	0
+	+	387	31
+	+	214	0
+	+	215	0
+	+	214	0
+	+	215	0
+	+	323	0
+	+	387	0
+	+	387	36
+	+	388	20
+	+	385	19
+	+	323	0
+	+	325	0
+	+	323	0
+	+	325	0
+	+	324	0
+	+	323	1
+	+	324	8
+	+	389	67
+	+	385	0
+	+	385	0
+	+	385	0
+	+	385	30
+	+	385	13
+	+	385	30
+	+	385	15
+	+	385	1
+	+	385	0
+	+	383	14
+	+	384	14
+	a	365	4
+	m	322	40
+	t	311	0
+
+> /usr/share/vim/vim74/doc/pattern.txt
+	"	989	21
+
+> /usr/share/vim/vim74/doc/insert.txt
+	"	1289	8
+
+> /usr/share/vim/vim74/doc/os_dos.txt
+	"	83	64
+
+> /usr/share/vim/vim74/doc/help.txt
+	"	40	0
+
+> /usr/share/vim/vim74/doc/quickref.txt
+	"	1125	40
+
+> /usr/share/vim/vim74/doc/eval.txt
+	"	3275	3
+
+> /usr/share/vim/vim74/doc/cmdline.txt
+	"	183	14
+
+> /usr/share/vim/vim74/doc/motion.txt
+	"	403	27
+
+> ~/test
+	"	301	0
+	.	251	0
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	5
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	5
+	+	60	15
+	+	60	0
+	+	60	0
+	+	60	0
+	+	60	14
+	+	60	15
+	+	60	15
+	+	60	0
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	0
+	+	60	0
+	+	60	16
+	+	60	5
+	+	60	14
+	+	60	16
+	+	60	15
+	+	60	0
+	+	60	0
+	+	60	0
+	+	60	0
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	5
+	+	60	15
+	+	60	14
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	15
+	+	60	9
+	+	60	13
+	+	60	0
+	+	60	0
+	+	60	0
+	+	60	0
+	+	386	0
+	+	386	0
+	+	49	0
+	+	50	0
+	+	51	0
+	+	58	0
+	+	59	0
+	+	76	0
+	+	150	0
+	+	248	0
+	+	249	0
+	+	251	0
+
+> ~/Note/text_editor/vim/vim-basic-operate.txt
+	"	329	0
+	^	199	0
+	.	321	0
+	+	90	0
+	+	92	0
+	+	94	0
+	+	95	0
+	+	97	0
+	+	98	0
+	+	100	0
+	+	102	0
+	+	104	0
+	+	106	0
+	+	108	0
+	+	109	0
+	+	111	0
+	+	121	0
+	+	123	0
+	+	124	0
+	+	126	0
+	+	127	0
+	+	129	0
+	+	130	0
+	+	132	0
+	+	134	0
+	+	136	0
+	+	137	0
+	+	139	0
+	+	140	0
+	+	142	0
+	+	152	0
+	+	154	0
+	+	155	0
+	+	157	0
+	+	158	0
+	+	160	0
+	+	161	0
+	+	163	0
+	+	164	0
+	+	166	0
+	+	167	0
+	+	169	0
+	+	171	0
+	+	173	0
+	+	174	0
+	+	176	0
+	+	179	0
+	+	181	0
+	+	184	0
+	+	186	0
+	+	187	0
+	+	189	0
+	+	190	0
+	+	192	0
+	+	193	0
+	+	195	0
+	+	196	0
+	+	198	0
+	+	199	0
+	+	200	0
+	+	202	0
+	+	203	0
+	+	205	0
+	+	211	0
+	+	213	0
+	+	214	0
+	+	216	0
+	+	218	0
+	+	220	0
+	+	223	0
+	+	225	0
+	+	232	0
+	+	227	0
+	+	230	0
+	+	239	0
+	+	241	0
+	+	245	0
+	+	247	0
+	+	253	0
+	+	255	0
+	+	261	0
+	+	263	0
+	+	279	0
+	+	281	0
+	+	287	0
+	+	289	0
+	+	301	0
+	+	303	0
+	+	307	0
+	+	309	0
+	+	313	0
+	+	315	0
+	+	327	0
+	+	329	0
+	+	331	0
+	+	333	0
+	+	349	0
+	+	358	0
+	+	347	0
+	+	277	0
+	+	304	0
+	+	323	0
+	+	321	0
+
+> ~/Note/text_editor/vim/vim
+	"	1	0
+
+> ~/Note/text_editor/vim/vimrc-config.txt
+	"	25	0
+
+> ~/Note/text_editor/vim/vim-replace-string-command.txt
+	"	77	0
+	^	1	4
+	.	121	0
+	+	47	397
+	+	1	3
+	+	3	0
+	+	6	0
+	+	7	0
+	+	12	0
+	+	16	4
+	+	21	0
+	+	24	0
+	+	27	0
+	+	30	0
+	+	33	0
+	+	36	0
+	+	39	0
+	+	42	0
+	+	45	0
+	+	48	0
+	+	51	0
+	+	54	0
+	+	58	0
+	+	60	0
+	+	62	0
+	+	64	0
+	+	66	0
+	+	68	0
+	+	70	0
+	+	72	0
+	+	74	0
+	+	76	0
+	+	78	0
+	+	80	0
+	+	82	0
+	+	84	0
+	+	86	0
+	+	88	0
+	+	90	0
+	+	92	0
+	+	94	0
+	+	96	0
+	+	98	0
+	+	100	0
+	+	110	0
+	+	113	0
+	+	121	0
+
+> /usr/share/vim/vim74/doc/usr_40.txt
+	"	1	0
+
+> /usr/share/vim/vim74/doc/gui.txt
+	"	821	55
+
+> /usr/share/vim/vim74/doc/options.txt
+	"	1759	1
+
+> /usr/share/vim/vim74/doc/intro.txt
+	"	495	11
+
+> /usr/share/vim/vim74/doc/repeat.txt
+	"	235	0
+
+> /usr/share/vim/vim74/doc/sponsor.txt
+	"	26	0
+
+> /usr/share/vim/vim74/doc/change.txt
+	"	685	54
+
+> /usr/share/vim/vim74/doc/pi_netrw.txt
+	"	3124	43
+
+> /usr/share/vim/vim74/doc/usr_27.txt
+	"	282	0
+
+> /usr/share/vim/vim74/doc/map.txt
+	"	1387	0
+
+> ~/hello
+	"	59	0
+	^	59	0
+	.	397	0
+	+	59	0
+	+	59	0
+	+	60	0
+	+	77	0
+	+	224	0
+	+	250	0
+	+	251	0
+	+	253	0
+	+	384	0
+	+	387	0
+	+	388	0
+	+	396	0
+	+	397	0
+	+	412	0
+	+	59	0
+	+	59	0
+	+	59	0
+	+	60	0
+	+	77	0
+	+	224	0
+	+	250	0
+	+	251	0
+	+	253	0
+	+	384	0
+	+	387	0
+	+	388	0
+	+	396	0
+	+	397	0
+	+	412	0
+	+	59	0
+	+	60	0
+	+	77	0
+	+	224	0
+	+	250	0
+	+	251	0
+	+	253	0
+	+	384	0
+	+	387	0
+	+	388	0
+	+	396	0
+	+	397	0
+	+	412	0
+	+	59	0
+	+	59	0
+	+	60	0
+	+	59	0
+	+	60	0
+	+	77	0
+	+	224	0
+	+	250	0
+	+	251	0
+	+	253	0
+	+	384	0
+	+	387	0
+	+	388	0
+	+	396	0
+	+	397	0
+	+	412	0
+	+	59	0
+	+	60	0
+	+	77	0
+	+	224	0
+	+	250	0
+	+	251	0
+	+	253	0
+	+	384	0
+	+	387	0
+	+	388	0
+	+	396	0
+	+	397	0
+
+> /usr/share/vim/vim74/doc/editing.txt
+	"	674	6
+
+> ~/.spacemacs
+	"	314	20
+	^	314	21
+	.	314	20
+	+	314	20
+
+> ~/crush_message/emacs-daemon-startup-message.txt
+	"	18	0
+
+> ~/font.txt
+	"	1	0
+	^	3	0
+	.	1	0
+	+	1	0
+	+	8	1
+	+	9	2
+	+	2	13
+	+	1	0
+	+	1	0
+	+	1	0
+
+> ~/buffer
+	"	1	0
+
 > ~/.gitignore
-	"	40	3
+	"	19	0
 	^	40	13
 	.	40	3
 	+	38	0
 	+	40	3
+
+> ~/Note/linux/ubuntu/vim/vim-color-config.txt
+	"	79	224
+	^	79	227
+	.	79	224
+	+	79	224
+
+> /usr/share/vim/vim74/doc/quickfix.txt
+	"	129	18
+
+> ~/.vim_runtime/vimrcs/extended.vim
+	"	44	0
+
+> ~/.vim_runtime/vimrcs/filetypes.vim
+	"	1	0
+
+> ~/.vim_runtime/vimrcs/basic.vim
+	"	432	0
+
+> ~/Note/colors/rainbow-rgb-and-cmyk-encoding.txt
+	"	10	0
+	^	2	39
+	.	2	38
+	+	12	0
+	+	1	0
+	+	3	0
+	+	2	38
+
+> colors/rainbow-rgb-and-cmyk-encoding.txt
+	"	20	0
+	^	20	0
+	.	19	0
+	+	19	0
+
+> ~/ShellScripts/bashrc-add-chmod-func
+	"	90	44
+	^	86	54
+	.	90	54
+	+	86	53
+	+	90	54
+
+> Note/colors/rainbow-rgb-and-cmyk-encoding.txt
+	"	1	0
+	^	3	0
+	.	2	34
+	+	12	0
+	+	1	0
+	+	3	0
+	+	2	34
+
+> Note/colors/rainbow-rgb-abd
+	"	1	0
+
+> ~/.gconf/apps/gnome-terminal/Default/%gconf.xml
+	"	1	0
+
+> ~/Github/jellybeans.vim/ansi-term-colors.txt
+	"	8	0
+
+> ~/ShellScripts/test_scripts/test.sh
+	"	5	8
+	^	12	16
+	.	12	15
+	+	3	9
+	+	8	5
+	+	15	0
+	+	15	0
+	+	15	0
+	+	19	0
+	+	13	0
+	+	19	0
+	+	18	5
+	+	16	0
+	+	25	0
+	+	24	3
+	+	21	4
+	+	15	5
+	+	17	5
+	+	20	0
+	+	23	0
+	+	13	0
+	+	16	0
+	+	19	0
+	+	23	7
+	+	22	32
+	+	4	0
+	+	8	0
+	+	4	4
+	+	6	11
+	+	8	0
+	+	8	0
+	+	7	0
+	+	9	21
+	+	13	11
+	+	10	11
+	+	13	9
+	+	15	0
+	+	13	12
+	+	14	9
+	+	13	0
+	+	13	0
+	+	11	12
+	+	12	15
+
+> ~/ShellScripts/basic_scripts/format-the-shell-script.sh
+	"	76	8
+	^	96	4
+	.	98	0
+	+	68	0
+	+	77	0
+	+	79	0
+	+	84	2
+	+	85	0
+	+	88	0
+	+	88	3
+	+	89	0
+	+	89	0
+	+	90	0
+	+	54	0
+	+	55	8
+	+	56	8
+	+	57	8
+	+	58	8
+	+	59	8
+	+	60	8
+	+	62	0
+	+	68	62
+	+	79	0
+	+	81	0
+	+	78	0
+	+	83	8
+	+	84	15
+	+	79	14
+	+	84	14
+	+	89	0
+	+	86	0
+	+	88	0
+	+	82	12
+	+	88	0
+	+	87	0
+	+	88	15
+	+	91	0
+	+	51	5
+	+	53	9
+	+	52	0
+	+	53	0
+	+	52	0
+	+	95	4
+	+	60	0
+	+	95	0
+	+	93	33
+	+	94	8
+	+	96	3
+	+	98	0
 
 > ~/Note/linux/ubuntu/vim/vim-multiple-file-edit.txt
 	"	70	0
@@ -284,6 +984,3 @@
 	+	25	116
 	+	26	0
 	+	8	0
-
-> ~/.vimrc
-	"	197	0

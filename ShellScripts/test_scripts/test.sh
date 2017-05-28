@@ -1,15 +1,24 @@
 #!/bin/bash
 
-if ! [[ $# -ge 0 && $# -le 3 ]]
-then
-    echo "to many parameters"
-elif [ $# == 1 ]
-then
-    echo "there have $# parameter"
-elif [ $# == 2 ]
-then
-    echo "there have $# parameter"
-elif [ $# == 3 ]
-then
-    echo "there have $# parameter"
-fi
+case $# in
+    0)
+        echo "there have $# parameter"
+        exit
+        ;;
+    1)
+        if [ $1 == 1 ]
+        then
+            #:
+            null
+        fi
+        ;;
+    2)
+        echo "there have $# parameter"
+        ;;
+    3)
+        echo "there have $# parameter"
+        ;;
+    *)
+        echo "To many parameters"
+        ;;
+esac

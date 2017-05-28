@@ -11,63 +11,8 @@
 │   ├── note-directory-content-list.txt
 │   └── old_disk_data
 │       └── temp.txt
-├── emacs
-│   ├── auto-copy.org
-│   ├── calender.org
-│   ├── can not open emacs on server.txt
-│   ├── c_c++_mode.org
-│   ├── color-theme.org
-│   ├── copy_and_paste.org
-│   ├── ctrl_caps_swap.org
-│   ├── custom-elisp
-│   │   └── org-mode.el.txt
-│   ├── dot-emacs.org
-│   ├── emacs_auto_notation.org
-│   ├── emacs-c++_IDE.txt
-│   ├── emacs.d_bak
-│   │   ├── init.el
-│   │   └── my_personal_setting
-│   │       ├── bingapiel
-│   │       └── sdcv
-│   │           └── sdcv-mode.el
-│   ├── emacs file.org
-│   ├── emacs-help-command.txt
-│   ├── emacs-keystruct.txt
-│   ├── emacs_learnning.org
-│   ├── emacs-menu.org
-│   ├── #emacs-peizhi.txt#
-│   ├── emacs-profile_bak.txt
-│   ├── emacs-profile.txt
-│   ├── emacs_shell_grabled.org
-│   ├── emacs-skills.txt
-│   ├── emacs.txt
-│   ├── emacs+w3m-1.txt
-│   ├── emacs+w3m-1_utf-8.txt
-│   ├── emacs+w3m-2.txt
-│   ├── emacs+w3m-2_utf-8.org
-│   ├── #ERC.org#
-│   ├── ERC.org
-│   ├── eww
-│   │   └── eww-config.txt
-│   ├── eww-useage.txt
-│   ├── frame_size.org
-│   ├── gdb_for_emacs.org
-│   ├── Gnu.org
-│   ├── install-emacs-log.txt
-│   ├── lisp.txt
-│   ├── mplayer-useage.txt
-│   ├── org-mode_and_todo-mode.org
-│   ├── readOnlyOpenEmacs.txt
-│   ├── redirect_backup_file.org
-│   ├── root_open_file.org
-│   ├── sdcv.org
-│   ├── translucent.org
-│   ├── use_emacs_reading_source_code.org
-│   ├── use_manpage_in_emacs.org
-│   ├── w3m.org
-│   ├── w3m.txt
-│   ├── why_use_emacs.org
-│   └── !!!!!!---windows-home-path.txt
+├── colors
+│   └── rainbow-rgb-and-cmyk-encoding.txt
 ├── exercise
 │   └── exercise.txt
 ├── Fun
@@ -223,9 +168,6 @@
 │       │   └── build-ssh-server.txt
 │       ├── ubuntu_performance
 │       │   └── adjust-the-ubuntu-performance-yourself.txt
-│       ├── vim
-│       │   ├── vim-multiple-file-edit.txt
-│       │   └── vimrc-config.txt
 │       └── window_manager
 │           ├── DWM
 │           │   ├── dmenu-usage.txt
@@ -411,6 +353,70 @@
 │   └── test work function.txt
 ├── testWork
 │   └── test-flow.txt
+├── text_editor
+│   ├── emacs
+│   │   ├── auto-copy.org
+│   │   ├── calender.org
+│   │   ├── can not open emacs on server.txt
+│   │   ├── c_c++_mode.org
+│   │   ├── color-theme.org
+│   │   ├── copy_and_paste.org
+│   │   ├── ctrl_caps_swap.org
+│   │   ├── custom-elisp
+│   │   │   └── org-mode.el.txt
+│   │   ├── dot-emacs.org
+│   │   ├── emacs_auto_notation.org
+│   │   ├── emacs-c++_IDE.txt
+│   │   ├── emacs.d_bak
+│   │   │   ├── init.el
+│   │   │   └── my_personal_setting
+│   │   │       ├── bingapiel
+│   │   │       └── sdcv
+│   │   │           └── sdcv-mode.el
+│   │   ├── emacs file.org
+│   │   ├── emacs-help-command.txt
+│   │   ├── emacs-keystruct.txt
+│   │   ├── emacs_learnning.org
+│   │   ├── emacs-menu.org
+│   │   ├── #emacs-peizhi.txt#
+│   │   ├── emacs-profile_bak.txt
+│   │   ├── emacs-profile.txt
+│   │   ├── emacs_shell_grabled.org
+│   │   ├── emacs-skills.txt
+│   │   ├── emacs.txt
+│   │   ├── emacs+w3m-1.txt
+│   │   ├── emacs+w3m-1_utf-8.txt
+│   │   ├── emacs+w3m-2.txt
+│   │   ├── emacs+w3m-2_utf-8.org
+│   │   ├── #ERC.org#
+│   │   ├── ERC.org
+│   │   ├── eww
+│   │   │   └── eww-config.txt
+│   │   ├── eww-useage.txt
+│   │   ├── frame_size.org
+│   │   ├── gdb_for_emacs.org
+│   │   ├── Gnu.org
+│   │   ├── install-emacs-log.txt
+│   │   ├── lisp.txt
+│   │   ├── mplayer-useage.txt
+│   │   ├── org-mode_and_todo-mode.org
+│   │   ├── readOnlyOpenEmacs.txt
+│   │   ├── redirect_backup_file.org
+│   │   ├── root_open_file.org
+│   │   ├── sdcv.org
+│   │   ├── translucent.org
+│   │   ├── use_emacs_reading_source_code.org
+│   │   ├── use_manpage_in_emacs.org
+│   │   ├── w3m.org
+│   │   ├── w3m.txt
+│   │   ├── why_use_emacs.org
+│   │   └── !!!!!!---windows-home-path.txt
+│   └── vim
+│       ├── vim-basic-operate.txt
+│       ├── vim-color-config.txt
+│       ├── vim-multiple-file-edit.txt
+│       ├── vimrc-config.txt
+│       └── vim-replace-string-command.txt
 ├── virtualbox
 │   ├── modify-vboxharddisk-size.txt
 │   └── vbox.txt
@@ -438,4 +444,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-68 directories, 370 files
+70 directories, 374 files

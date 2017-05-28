@@ -51,7 +51,7 @@ filetype plugin on
 filetype indent on
 
 " Set to auto read when a file is changed from the outside
-set autoread
+set autoread        " auto refresh current buffer
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -93,7 +93,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -109,7 +109,7 @@ set ignorecase
 set smartcase
 
 " Highlight search results
-set hlsearch
+set hlsearch 
 
 " Makes search act like search in modern browsers
 set incsearch 
@@ -153,7 +153,8 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme desert
+    "colorscheme desert
+    colorscheme jellybeans
 catch
 endtry
 
@@ -217,9 +218,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -236,11 +234,12 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
+" Switch to next or previous buffer
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>tn :tabnew<cr>      " open a new empty buffer
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
@@ -320,7 +319,9 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 map <leader>g :Ag 
 
 " When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+"vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+"command -nargs=1 ReplaceCurStrBy :call ReplaceCurStrBy('')<CR>
+command ReplaceCurStrBy :call ReplaceCurStrBy('')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
@@ -334,7 +335,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 "   <leader>p
 "
 map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg        " open a new buffer with current text content
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
@@ -378,6 +379,15 @@ function! CmdLine(str)
     emenu Foo.Bar
     unmenu Foo
 endfunction 
+
+"set iskeyword+=
+"set iskeyword-=
+function! ReplaceCurStrBy(str) range
+    let l:keyword = @"
+    let l:targetword = expand("<cword>")
+    echo l:targetword
+    execute "%s" . "/" . l:targetword . "/" . "-hello-" . "/" . "gc"
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
