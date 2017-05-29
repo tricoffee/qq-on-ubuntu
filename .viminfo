@@ -8,27 +8,318 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<VisualSelection\>
+~MSle0~/index()
 
 # Last Substitute Search Pattern:
-~MSle0&let 
+~MSle0&targetword
 
 # 前一組替代字串:
-$hello
+$TargetWord
 
 # 命令列 歷史記錄 (新到舊):
-:x
+:q
+:set nu
 :w
+:help get()
+:help idx
+:help {idx}
+:help variable
+:DelBuf
+:buffers
+:bdelete 3
+:tabnext 3
+:tabnext 
+:tabnext 2
+:help for
+:help remove()
+:help tabpagebuflist()
+:help tabpagenr()
+:help if
+:help :tabclose
+:help :bdelete
+:help buffer
+:help unlisted
+:help :bmodified
+:bufdo bmodified
+:help :bufdo
+:help :bufdo bdelete
+:help bdelete
+:help bunload
+:help bufdo
+:help bdelete()
+:bufdo bdelete 20 21 22 23
+:tabnext
+:bufdo bdelete 16 19
+:bufdo bdelete 17 18
+:bufdo bdelete 5
+:bufdo bdelete 15
+:bufdo bdelete 13
+:bufdo bdelete 12
+:bufdo bdelete 8
+:bufdo bdelete 14
+:bufdo buffers
+:bufdo bunload 11 9 12
+:bufdo bunload 10
+:bufdo bunload 6 8
+:bufdo bunload 5
+:bufdo bunload 7
+:bufdo bunload 3
+:bufdo bunload 4
+:bufdo bnext
+:bufdo bNext
+:buffer
+:bufdo bunload 2
+:let buflist=[] for i in range(tabpagenr('$')) call extend(buflist, tabpagebuflist(i + 1)) endfor
+:tabmove 
+:let buflist
+:bdelete 2 4 6
+:bdelete
+::q
+:q!
+:del
+:EL
+:Q
+:tabnext 1
+::
+:w! hello-save
+:tabonly
+:tabprevious
+:tabclose
+:w! test1
+:w! test
+:tablast
+:bnext
+:bprevious
+:tabnext n
+:bprevious 2
+:bnext 4
+:e hello-save
+:tabnext 4
+:tabo
+:.,.+2tabnext 3
+:.,$-bdelete
+:new hello-save
+:w hello-save!
+:p
+:%bdelete
+:w hello-save
+:tabnext 7
+:bufdo bdelete
+:b
+:tabnext 5
+:echo bufnr("%")
+:echo bufnr()
+:bfirst
+:bufdo blast
+:bufdo bdelete 
+:bdelete %
+:bdelete !%
+:!'%'bdelete
+:! :nq"%"bdelete
+:! "%"bdelete
+:! %bdelete
+:!/%bdelete
+:\!%bdelete
+:!\%bdelete
+:!%bdelete
+:vsplit
+:sp
+:Del
+:echo "buffer number is " . winbufnr(winnr())
+:help winbufnr()
+:echo "number is " . (bufwinnr(1))
+:echo "number is " . bufwinnr(1)
+:echo "number is " . bufwinnr(winbufnr(winnr()))
+:echo "buffer number is " . bufwinnr(winbufnr(winnr()))
+:echo "file name is " . bufname(winbufnr(winnr()))
+:echo "num is " . winbufnr(winnr())
+:help tabpagebuflist(
+:echo "num is : " . winnr()
+:0
+:au * <buffer>
+:au BufAdd
+:au <buffer>
+:autocmd-buffer-local
+:help buffer-local
+:set buffer-local
+:echo buffer-local
+:echo "the number in the current window is " . tabpagebuflist(1)
+:echo "the number in the current window is " . tabpagebuflist(0)
+:echo "the number in the current window is " . winbufnr(0)
+:echo "the file in the current window is " . bufname(winbufnr(0))
+:echo "the file in the current window is " . bufname(winbufnr(1))
+:echo "the file in the current window is " . bufname(winbufnr(2))
+:tabnext ,t,
+:help while
+:help autocommand
+:au BufDelete <buffer>
+:au BufUnload <buffer>
+:au BufUnload <!buffer>
+:au BufUnload *
+:au BufUnload
+:au BufDelete
+:autocmd User
+:au! * <buffer>
+:DoMatchPar
+:bufdo bdelete !1
+:x
+:tabnew
+:buffer #
+:bufdo Next
+:buffer 1
+:bufdo next
+:help 'buflisted'
+:help buflisted()
+:GetScripts
+:number
+:bufdo @
+:echo bufnr("buffer-variable")
+:bufdo bunload
+:win
+:help function
+:help builtin
+:help builtin function
+:help help
+:help
+:help 
+:echo g:actual_curbuf
+:set g:actual_curbuf
+:set g+
+:help curbuf
+:echo b:curBufNum
+:let bcurbufnum = bufnr("buffer-variable")
+:let b:curBufNum = bufnr("buffer-variable") 
+:let b:curBufNum = bufnr("buffer-variable") execute "echo " b:curBufNum 
+:let b:curBufNum = bufnr("buffer-variable") && execute "echo " b:curBufNum 
+:execute "set iskeyword"
+:execute "echo iskeyword"
+:execute echo iskeyword
+:execute echo
+:let b:curBufNum = bufnr("buffer-variable") && execute("echo " . b:curBufNum)
+:let b:curBufNum = bufnr("buffer-variable") && execute("echo ".b:curBufNum)
+:echo b:curbufnum
+:let b:curbufnum = 2
+:let b:curBufNum = bufnr("buffer-variable") && execute("echo " b:curBufNum)
+:let b:curBufNum = bufnr("buffer-variable") && echo b:curBufNum
+:echo t:curBufNum
+:echo w:curBufNum
+:tabNext
+:echo g:curBufNum
+:exit
+:get g:curBufNum
+:ReplaceCurStrBy
+:#
+:bufdo bdelete 2
+:bufdo bunload 
+:hello
+:Bclose
+:unload
+:help unload
+:help :bdellete
+:bufdo close 3
+:close
+:bufdo Nexplore
+:windo cexpr
+:help tab
+:help tab.txt
+:help tabs.txt
+:hidden-buffer
+:help window
+:function
+:help command
+:help builtin command
+:help intro
+:help index
+:help-tags
+:help bclose
+:help bufferclose
+:tabmove 0
+:tabmove 1
+:tabmove 4
+:tabmove 3
+:tabmove 2
+:bufdo
+:bufdo Bclose 2
+:Bclose 4
+:bufdo bdelete 6
+:Bclose 8
+:Bclose 7
+:tabclose 7
+:tabclose 6
+:tabedit /home/qq/Note/text_editor/vim/vim-basic-operate.txt
+:help try
+:set 
+:help expand()
+:help iskeyword
+:help [0-9
+:help 0-9
+:help cword
+:help isk
+:0-9
+:cword
+:help CR
+:help cr
+:help <cr>
+:help <CR>
+:help let
+:help mapleader
+:help input()
+:%s/targetword/TargetWord/g
+:W
+:help call
+:help echo
+:help line
+:help newline()
+:help newline
+:help call()
+:w input-help.txt
+:help input
+:help channel
+:help ()
+:index
+:help help-tags
+:help usr_01
+:echo GetVimIndent()
+:function-nargs
+:help function-args
+:help -nargs
+:help a:
+:help execute
+:!gedit execute-help.txt
+:tabedit /home/qq/
+:w hello
+:new
+:New
+:ReplaceCurStrBy hellp
+:RmVimball
+:%s/the/-hello-/gcp
+:re
+:ReplaceCurStrBy hello
+:ReplaceCurStrByhello
+:gedit ./e
+:list
+:wq
+:write
+:Bclose 6
+:badd
+:w execute-help.txt
+:'<,'>
+:tabedit /home/qq/execute-help.txt
+:!ls
+:! gedit BookMark/
+:'<,'>w
+:help l:
+:help keyword
 :set iskeyword
+:echo expand("<cword>")
+:source .vimrc
+:echo expand("<>")
 :set iskeyword+=-
 :help set-iskeyword
 :help set iskeyword
-:q
 :help \w
-:echo expand("<cword>")
 :help WORD
 :help cWORD
-:help expand()
 :help c-r
 :c-r
 :help expand<>
@@ -37,31 +328,23 @@ $hello
 :echo expand(
 :help quickref
 :quickref
-:help
 :help c-i
 :help c-o
 :help *
 :let iskeyword
 :iskeyword
 :echo iskeyword
-:q!
-:ReplaceCurStrBy
 :%s/let keyword = expand("<cword>")/-hello-/gc
 :%s/set keyword=expand("<cword>")/-hello-/gc
 :%s/expand("<cword>")/-hello-/gc
 :ReplaceCurStrBy 
-:ReplaceCurStrBy hello
 :redir:q
-:wq
 :C-r
-:p
 :exe '*'
 :exe "*"
 :exe *
-:help iskeyword
 :exe iskeyword
 :help set
-:help isk
 :execute "normal! vgvy"
 :exe
 :help exe
@@ -81,12 +364,10 @@ $hello
 :read
 :Cmdlin
 :help cmdline
-:help function
 :help range
 :range
 :help a:direction
 :help direction
-:help a:
 :help substitute()
 :help substitute
 :help register
@@ -94,7 +375,6 @@ $hello
 :help @"
 :help escape()
 :help escape
-:help l:
 :help l
 :help l:saved_reg
 :help q-args
@@ -103,16 +383,161 @@ $hello
 :help /
 
 # 搜尋字串 歷史記錄 (新到舊):
+?/index()
+? \<index(\>
+? \<{list},\>
+?/get(
+? \<get()\>
+?/{idx}
+? \<{idx}\>
+?/get()
+?/list
+?/Builtin Functions
+?/set 
+? \<curBufNum\>
+? \<item\>
+?/let 
+? \<buflist\>
+?/if
+?/if 
+?/unlisted-buffer
+?/help buffer.txt
+? \<unlisted-buffer\>
+? \<:buffer-!\>
+?/remove()
+?/{list}
+? \<:buffer\>
+? \<echo\>
+? \<execute\>
+?/execute
+? \<command\>
+? \<Bclose\>
+? \<Command\>
+? \<DelWithOutCurBuf\>
+? \<DelAndKepCurBuf\>
+?/bufwinnr(
+?/winbufnr(
+?/bufnr
+?/buffer number
+?/curtab
+?/tabs number
+?/tab number
+?/tab
+?/tabpagebuflist
+?/tabbuflist
+? \<tabpagebuflist()\>
+?/\*tabpagebuflist(
+?/Variables
+?/Internal variable
+?/winnr()
+?/bufwinnr()
+?/winnr
+?/current tab
+?/tabnr
+? \<{tabnr},\>
+?/gettabwinvar(
+?/n
+?/gettabwinvar()
+?/wintab
+?/current window
+?/winbufnr()
+?/buffer-local
+?/current
+?/current-tab
+?/tabpagebuflist()
+?/buffer
+? \<winbufnr(\>
+? \<tabpagebuflist(\>
+?/#
+? \<'buflisted'\>
+?/h
+? \<range\>
+? \<function\>
+??let b:curBufNum = bufnr("buffer-variable") nexecute "echo " b:curBufNum
+? \<endfunction\>
+?/function
+??function! CmdLine(str)n    exe "menu Foo\.Bar :" \. a:strn    emenu Foo\.Barn    unmenu Foone
+?/7. 
+? \<commands\>
+? \<Commands\>
+?/bufnr()
+?/&&
+? \<b\>
+?/current buffer
+? \<ch_getbufnr(\>
+?/bufnr(
+?/ch_getbufnr()
+?/bufnum
+?/tabbuf
+?/winbufnr
+?/tabs
+?/bclose
+?/bk
+?/tabnext
+?/tabclose
+?/undo
+?/leader
+? \<<cword>\>
+? \<<cWORD>\>
+? \<'iskeyword'\>
+? \<:<cWORD>\>
+? \<:<cword>\>
+?/isk
+?/0-9
+?/\w
+?/cword
+?/<cr>
+? \<<CR>\>
+?/\*<CR>
+?/return
+? \<TargetWord\>
+? targetword
+? \<targetword\>
+?/gg
+?/Defining functions
+?/call
+?/line
+?/builtin
+?/input
+?/read
+?/enter
+?/channel
+? \<Builtin\>
+?/()
+?/Normal mode
+? \<extra_filter\>
+? \<direction\>
+?/try
+?  Executes 
+?/new
+?  the 
+?  execute 
+?  l:targetword 
+? the
+? let
+? Enable
+??re	
+?/let
+? from
+? that
+? string
+? Executes
+? \<Executes\>
+? \<the\>
+? between
+? operator
+? expr1
+?  expr1 
+? l:targetword
+?/variable
+?/keyword
+?/iskeyword
+?/iskey
 ? \<VisualSelection\>
 ? \<ReplaceString\>
 ?/WORD
-? \<<cword>\>
-? \<<cWORD>\>
-?/cword
 ?/cursor
 ? \<'ignorecase'\>
-? let
-? l:targetword
 ? let keyword = expand("<cword>")
 ? set keyword=expand("<cword>")
 ? expand("<cword>")
@@ -121,26 +546,19 @@ $hello
 ? \<47\>
 ? \<saving\>
 ?/*
-? \<'iskeyword'\>
-?/iskeyword
 ?/set
-?/let
 ?/hello
 ?/emenu
 ?/exe
 ?/40.2
 ?/command
-?/let 
 ? \<TabLeave\>
 ? \<hello_world\>
 ? \<__hello_world_\>
 ? \<map\>
 ? let 
-?/set 
 ?/cmdline
 ?/range
-?/function
-? \<direction\>
 ?/direction
 ?/reg
 ?/regist
@@ -150,7 +568,6 @@ $hello
 ?/escape
 ?/escspe
 ?/world
-?/undo
 ?/expand
 ?/insert
 ?//
@@ -171,349 +588,455 @@ $hello
 # 運算式 歷史記錄 (新到舊):
 
 # 輸入行  歷史記錄 (新到舊):
+@:q
+@hello
+@executes
+@the
+@ 
 
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-""0	LINE	0
-	"set iskeyword+=
+"0	CHAR	0
+	index
 "1	LINE	0
-	"set iskeyword=
+	    endfor
 "2	LINE	0
-	"set iskeyword-=#
+	        endif
 "3	LINE	0
-	"command -nargs=1 ReplaceCurStrBy :%s//<args>/gc 
+	            break
 "4	LINE	0
-	"command -nargs=1 ReplaceCurStrBy :%s//<args>/gc 
+	        if item == b:curBufNum
 "5	LINE	0
-	vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+	        let i+=1
 "6	LINE	0
-	"command Replace :call VisualSelection('replace', '')<CR>
+	    for item in buflist
 "7	LINE	0
 	
 "8	LINE	0
-	
+	    
 "9	LINE	0
-	    command -nargs=1 ReplaceCurStrBy :%s//<args>/gc 
-"-	CHAR	0
-	[
+	
+""-	CHAR	0
+	1
 
 # 檔案標記:
-'0  384  14  ~/.vimrc
-'1  61  7  ~/test
-'2  215  0  ~/.vimrc
-'3  183  0  ~/.vimrc
-'4  337  24  ~/.vimrc
-'5  325  0  ~/.vimrc
-'6  77  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
-'7  1  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
-'8  47  398  ~/Note/text_editor/vim/vim-replace-string-command.txt
-'9  59  0  ~/hello
+'0  268  26  ~/.vimrc
+'1  106  0  ~/.vimrc
+'2  284  0  ~/.vimrc
+'3  284  0  ~/.vimrc
+'4  294  15  ~/.vimrc
+'5  445  4  ~/.vimrc
+'6  441  8  ~/.vimrc
+'7  228  0  ~/.vimrc
+'8  1  0  ~/execute-help.txt
+'9  433  7  ~/.vimrc
 
 # Jumplist (由新到舊):
--'  384  14  ~/.vimrc
--'  385  0  ~/.vimrc
--'  323  8  ~/.vimrc
--'  322  35  ~/.vimrc
--'  331  0  ~/.vimrc
--'  387  33  ~/.vimrc
--'  216  0  ~/.vimrc
--'  215  0  ~/.vimrc
--'  61  7  ~/test
--'  62  7  ~/test
--'  1  0  ~/test
--'  214  37  ~/.vimrc
--'  212  23  ~/.vimrc
--'  136  21  ~/.vimrc
--'  89  46  ~/.vimrc
--'  87  38  ~/.vimrc
--'  85  22  ~/.vimrc
+-'  268  26  ~/.vimrc
+-'  192  0  ~/.vimrc
+-'  106  0  ~/.vimrc
+-'  103  0  ~/.vimrc
+-'  102  0  ~/.vimrc
+-'  99  0  ~/.vimrc
+-'  96  0  ~/.vimrc
+-'  93  0  ~/.vimrc
+-'  89  4  ~/.vimrc
+-'  87  4  ~/.vimrc
+-'  85  0  ~/.vimrc
+-'  82  0  ~/.vimrc
+-'  77  0  ~/.vimrc
+-'  73  0  ~/.vimrc
+-'  72  2  ~/.vimrc
+-'  54  0  ~/.vimrc
+-'  53  2  ~/.vimrc
+-'  47  0  ~/.vimrc
+-'  388  32  ~/.vimrc
+-'  329  0  ~/.vimrc
+-'  326  0  ~/.vimrc
+-'  314  2  ~/.vimrc
+-'  313  2  ~/.vimrc
+-'  275  19  ~/.vimrc
+-'  240  10  ~/.vimrc
+-'  257  21  ~/.vimrc
+-'  254  10  ~/.vimrc
+-'  253  11  ~/.vimrc
+-'  252  10  ~/.vimrc
+-'  274  11  ~/.vimrc
+-'  242  1  ~/.vimrc
+-'  241  4  ~/.vimrc
+-'  76  0  ~/.vimrc
+-'  59  0  ~/.vimrc
+-'  58  0  ~/.vimrc
+-'  500  3  ~/.vimrc
+-'  499  3  ~/.vimrc
+-'  484  4  ~/.vimrc
+-'  483  4  ~/.vimrc
+-'  475  4  ~/.vimrc
+-'  474  4  ~/.vimrc
+-'  471  4  ~/.vimrc
+-'  464  6  ~/.vimrc
+-'  446  8  ~/.vimrc
+-'  444  4  ~/.vimrc
+-'  441  8  ~/.vimrc
+-'  439  4  ~/.vimrc
+-'  435  4  ~/.vimrc
+-'  434  4  ~/.vimrc
+-'  301  14  ~/.vimrc
+-'  299  0  ~/.vimrc
+-'  298  2  ~/.vimrc
+-'  256  4  ~/.vimrc
 -'  1  0  ~/.vimrc
--'  386  21  ~/.vimrc
--'  390  4  ~/.vimrc
--'  301  0  ~/test
--'  386  4  ~/test
--'  388  4  ~/test
--'  385  4  ~/test
--'  50  0  ~/test
--'  49  0  ~/test
--'  59  0  ~/test
--'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  60  5  ~/test
--'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  210  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  329  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  322  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  323  0  ~/Note/text_editor/vim/vim-basic-operate.txt
--'  305  0  ~/Note/text_editor/vim/vim-basic-operate.txt
+-'  251  16  ~/.vimrc
+-'  250  10  ~/.vimrc
+-'  249  9  ~/.vimrc
+-'  248  10  ~/.vimrc
+-'  245  16  ~/.vimrc
+-'  197  6  ~/.vimrc
+-'  169  3  ~/.vimrc
+-'  164  0  ~/.vimrc
+-'  153  3  ~/.vimrc
+-'  151  0  ~/.vimrc
+-'  319  17  ~/.vimrc
+-'  344  0  ~/.vimrc
+-'  376  16  ~/.vimrc
+-'  440  4  ~/.vimrc
+-'  445  4  ~/.vimrc
+-'  477  4  ~/.vimrc
+-'  479  8  ~/.vimrc
+-'  488  15  ~/.vimrc
+-'  490  4  ~/.vimrc
+-'  502  3  ~/.vimrc
+-'  508  3  ~/.vimrc
+-'  512  3  ~/.vimrc
+-'  518  2  ~/.vimrc
+-'  519  21  ~/.vimrc
+-'  86  0  ~/.vimrc
+-'  135  0  ~/.vimrc
+-'  236  0  ~/.vimrc
+-'  278  0  ~/.vimrc
+-'  237  0  ~/.vimrc
+-'  238  0  ~/.vimrc
+-'  239  0  ~/.vimrc
+-'  243  0  ~/.vimrc
+-'  244  1  ~/.vimrc
+-'  3  0  ~/test
+-'  2  0  ~/test
+-'  1  0  ~/test
+-'  1  0  ~/hello-save
+-'  373  0  ~/test
+-'  3  0  ~/hello-save!
+-'  391  4  ~/test
+-'  3  0  ~/test
+-'  4  0  ~/test
 
 # 檔案內 Mark 記錄 (由新到舊):
 
 > ~/.vimrc
-	"	384	14
-	^	383	15
-	.	384	14
-	+	1	0
-	+	1	0
-	+	1	0
-	+	322	0
-	+	325	0
-	+	322	0
-	+	325	0
-	+	322	0
-	+	325	0
-	+	322	0
-	+	325	0
-	+	322	0
-	+	325	0
-	+	322	0
-	+	325	0
-	+	325	0
-	+	322	0
-	+	325	0
-	+	325	0
-	+	322	0
-	+	325	10
-	+	325	0
-	+	325	8
-	+	325	0
-	+	325	0
-	+	325	0
-	+	325	0
-	+	322	0
-	+	325	0
-	+	325	37
-	+	325	55
-	+	325	0
-	+	325	0
-	+	325	0
-	+	325	0
-	+	325	0
-	+	325	0
-	+	325	0
-	+	394	0
-	+	382	0
-	+	385	0
-	+	391	0
-	+	385	26
-	+	386	16
-	+	390	0
-	+	390	8
-	+	390	27
-	+	390	23
-	+	390	0
-	+	390	4
-	+	390	0
-	+	390	0
-	+	390	3
-	+	379	0
-	+	390	19
-	+	325	0
-	+	323	0
-	+	323	36
-	+	390	34
-	+	390	32
-	+	390	0
-	+	390	20
-	+	390	4
-	+	390	0
-	+	390	0
-	+	390	4
-	+	390	0
-	+	390	0
-	+	390	7
-	+	387	0
-	+	390	0
-	+	387	31
-	+	214	0
-	+	215	0
-	+	214	0
-	+	215	0
-	+	323	0
-	+	387	0
-	+	387	36
-	+	388	20
-	+	385	19
-	+	323	0
-	+	325	0
-	+	323	0
-	+	325	0
-	+	324	0
-	+	323	1
-	+	324	8
-	+	389	67
-	+	385	0
-	+	385	0
-	+	385	0
-	+	385	30
-	+	385	13
-	+	385	30
-	+	385	15
-	+	385	1
-	+	385	0
-	+	383	14
-	+	384	14
-	a	365	4
-	m	322	40
-	t	311	0
-
-> /usr/share/vim/vim74/doc/pattern.txt
-	"	989	21
-
-> /usr/share/vim/vim74/doc/insert.txt
-	"	1289	8
-
-> /usr/share/vim/vim74/doc/os_dos.txt
-	"	83	64
-
-> /usr/share/vim/vim74/doc/help.txt
-	"	40	0
-
-> /usr/share/vim/vim74/doc/quickref.txt
-	"	1125	40
+	"	268	26
+	^	256	38
+	.	262	26
+	+	251	0
+	+	251	12
+	+	251	29
+	+	251	24
+	+	251	11
+	+	278	0
+	+	251	16
+	+	248	15
+	+	251	0
+	+	251	0
+	+	249	0
+	+	248	18
+	+	250	0
+	+	251	0
+	+	251	16
+	+	251	17
+	+	251	0
+	+	251	0
+	+	251	0
+	+	251	0
+	+	257	21
+	+	251	0
+	+	258	0
+	+	277	0
+	+	257	8
+	+	251	0
+	+	241	18
+	+	251	0
+	+	251	0
+	+	251	3
+	+	252	0
+	+	251	16
+	+	251	15
+	+	251	10
+	+	257	0
+	+	252	0
+	+	257	0
+	+	251	0
+	+	252	3
+	+	257	0
+	+	253	11
+	+	252	10
+	+	254	10
+	+	257	39
+	+	257	22
+	+	257	9
+	+	257	8
+	+	256	11
+	+	257	8
+	+	256	12
+	+	257	0
+	+	257	11
+	+	257	12
+	+	257	29
+	+	257	16
+	+	257	3
+	+	257	0
+	+	257	0
+	+	257	9
+	+	257	16
+	+	257	17
+	+	279	0
+	+	258	0
+	+	257	0
+	+	257	0
+	+	257	0
+	+	257	11
+	+	257	0
+	+	258	0
+	+	257	0
+	+	259	0
+	+	257	0
+	+	262	0
+	+	263	0
+	+	262	4
+	+	257	8
+	+	251	0
+	+	241	5
+	+	262	25
+	+	275	19
+	+	274	22
+	+	275	20
+	+	276	9
+	+	268	29
+	+	268	15
+	+	268	36
+	+	269	0
+	+	273	0
+	+	270	0
+	+	273	0
+	+	270	14
+	+	271	9
+	+	272	14
+	+	275	8
+	+	268	18
+	+	269	0
+	+	268	29
+	+	257	0
+	+	256	37
+	+	262	26
+	a	415	4
+	m	372	40
+	t	361	0
 
 > /usr/share/vim/vim74/doc/eval.txt
-	"	3275	3
-
-> /usr/share/vim/vim74/doc/cmdline.txt
-	"	183	14
-
-> /usr/share/vim/vim74/doc/motion.txt
-	"	403	27
+	"	4401	2
 
 > ~/test
-	"	301	0
-	.	251	0
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	5
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	5
-	+	60	15
-	+	60	0
-	+	60	0
-	+	60	0
-	+	60	14
-	+	60	15
-	+	60	15
-	+	60	0
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	0
-	+	60	0
-	+	60	16
-	+	60	5
-	+	60	14
-	+	60	16
-	+	60	15
-	+	60	0
-	+	60	0
-	+	60	0
-	+	60	0
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	5
-	+	60	15
-	+	60	14
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	15
-	+	60	9
-	+	60	13
-	+	60	0
-	+	60	0
-	+	60	0
-	+	60	0
-	+	386	0
-	+	386	0
-	+	49	0
-	+	50	0
-	+	51	0
+	"	3	0
+	.	1	0
+	+	58	14
+	+	58	15
+	+	58	15
 	+	58	0
-	+	59	0
-	+	76	0
-	+	150	0
-	+	248	0
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	0
+	+	58	0
+	+	58	16
+	+	58	5
+	+	58	14
+	+	58	16
+	+	58	15
+	+	58	0
+	+	58	0
+	+	58	0
+	+	58	0
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	5
+	+	58	15
+	+	58	14
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	15
+	+	58	9
+	+	58	13
+	+	58	0
+	+	58	0
+	+	58	0
+	+	58	0
+	+	384	0
+	+	384	0
+	+	47	0
+	+	48	0
+	+	49	0
+	+	56	0
+	+	57	0
+	+	74	0
+	+	148	0
+	+	246	0
+	+	247	0
 	+	249	0
-	+	251	0
+	+	47	0
+	+	48	0
+	+	49	0
+	+	56	0
+	+	57	0
+	+	74	0
+	+	148	0
+	+	246	0
+	+	247	0
+	+	249	0
+	+	299	0
+	+	300	0
+	+	305	0
+	+	306	0
+	+	383	0
+	+	384	0
+	+	386	0
+	+	391	0
+	+	393	0
+	+	394	0
+	+	402	0
+	+	403	0
+	+	415	0
+	+	418	0
+	+	419	0
+	+	47	0
+	+	383	0
+	+	384	0
+	+	386	0
+	+	391	0
+	+	393	0
+	+	394	0
+	+	402	0
+	+	403	0
+	+	415	0
+	+	418	0
+	+	419	0
+	+	432	0
+	+	386	0
+	+	386	0
+	+	391	24
+	+	392	0
+	+	1	0
+
+> /usr/share/vim/vim74/doc/windows.txt
+	"	1055	40
+
+> /usr/share/vim/vim74/doc/tabpage.txt
+	"	158	0
+
+> ~/hello-save
+	"	1	0
+	^	2	13
+	.	2	12
+	+	2	12
+
+> /usr/share/vim/vim74/doc/autocmd.txt
+	"	1077	1
+
+> ~/temp
+	"	1	0
+	^	6	1
+	.	1	0
+	+	1	0
+	+	4	12
+	+	2	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	1	0
+	+	4	0
+	+	6	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	6	0
+	+	1	0
+	+	4	0
+	+	6	0
+	+	1	0
+	+	4	0
+	+	6	0
+	+	1	0
+	+	4	0
+	+	6	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+	+	4	0
+	+	1	0
+
+> /usr/share/vim/vim74/doc/options.txt
+	"	3207	14
+
+> /usr/share/vim/vim74/doc/help.txt
+	"	78	0
+
+> /usr/share/vim/vim74/doc/helphelp.txt
+	"	6	0
+
+> /usr/share/vim/vim74/doc/term.txt
+	"	18	0
+
+> /usr/share/vim/vim74/doc/intro.txt
+	"	561	3
+
+> /usr/share/vim/vim74/doc/netbeans.txt
+	"	844	10
+
+> /usr/share/vim/vim74/doc/tags
+	"	69	0
+
+> /usr/share/vim/vim74/doc/index.txt
+	"	108	4
+
+> /usr/share/vim/vim74/doc/map.txt
+	"	1	0
 
 > ~/Note/text_editor/vim/vim-basic-operate.txt
-	"	329	0
+	"	1	0
 	^	199	0
 	.	321	0
 	+	90	0
@@ -617,6 +1140,83 @@ $hello
 	+	323	0
 	+	321	0
 
+> ~/execute-help.txt
+	"	1	0
+	^	1	0
+	.	1	0
+	+	6	0
+	+	1	0
+
+> /usr/share/vim/vim74/doc/usr_01.txt
+	"	1	0
+
+> /usr/share/vim/vim74/doc/channel.txt
+	"	7	37
+
+> /usr/share/vim/vim74/doc/motion.txt
+	"	312	0
+
+> /usr/share/vim/vim74/doc/quickfix.txt
+	"	129	18
+
+> /usr/share/vim/vim74/doc/cmdline.txt
+	"	805	10
+
+> ~/help.txt
+	"	1	0
+	.	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+
+> ~/Note/text_editor/vim/vim-multiple-file-edit.txt
+	"	90	0
+
+> ~/ls
+	"	1	0
+
+> ~/Github/vimperator-labs/common/components/protocols.js
+	"	1	0
+
+> ~/Github/translate-shell/translate.awk
+	"	1	0
+
+> ~/Github/translate-shell/translate
+	"	1	0
+
+> ~/Github/ShellScriptFormatter/beauty.sh
+	"	1	0
+
+> ~/Github/ShellScriptFormatter/samples.sh
+	"	1	0
+
+> ~/Github/spacemacs/init.el
+	"	1	0
+
+> ~/Github/vimrc/vimrcs/basic.vim
+	"	1	0
+
+> ~/Github/trans
+	"	1	0
+
+> ~/General
+	"	1	0
+
+> ~/Colors
+	"	1	0
+
+> /usr/share/vim/vim74/doc/pattern.txt
+	"	989	21
+
+> /usr/share/vim/vim74/doc/insert.txt
+	"	1289	8
+
+> /usr/share/vim/vim74/doc/os_dos.txt
+	"	83	64
+
+> /usr/share/vim/vim74/doc/quickref.txt
+	"	1125	40
+
 > ~/Note/text_editor/vim/vim
 	"	1	0
 
@@ -678,12 +1278,6 @@ $hello
 > /usr/share/vim/vim74/doc/gui.txt
 	"	821	55
 
-> /usr/share/vim/vim74/doc/options.txt
-	"	1759	1
-
-> /usr/share/vim/vim74/doc/intro.txt
-	"	495	11
-
 > /usr/share/vim/vim74/doc/repeat.txt
 	"	235	0
 
@@ -698,9 +1292,6 @@ $hello
 
 > /usr/share/vim/vim74/doc/usr_27.txt
 	"	282	0
-
-> /usr/share/vim/vim74/doc/map.txt
-	"	1387	0
 
 > ~/hello
 	"	59	0
@@ -816,9 +1407,6 @@ $hello
 	^	79	227
 	.	79	224
 	+	79	224
-
-> /usr/share/vim/vim74/doc/quickfix.txt
-	"	129	18
 
 > ~/.vim_runtime/vimrcs/extended.vim
 	"	44	0
