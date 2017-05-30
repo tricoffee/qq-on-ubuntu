@@ -1,0 +1,26 @@
+
+1. 在本地仓库中删除了某些文件以后想要恢复文件 ：
+
+    $ git status
+
+   如果删除操作未提交至暂存区中的话（未使用 git add -A 命令），直接使用 ：
+
+    $ git checkout FILENAME
+    or
+    $ git checkout *
+
+   如果删除操作以提交至暂存区中的话（ git add -A 命令），使用 ：
+
+    $ git reset HEAD FILENAME
+    or 
+    $ git reset HEAD
+
+   然后，
+
+    $ git checkout FILENAME
+    or 
+    $ git checkout *
+
+   即可恢复 rm 命令删除的文件。
+
+
