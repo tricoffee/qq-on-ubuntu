@@ -1,0 +1,19 @@
+ 
+有两种方法
+第一种
+Bash代码  收藏代码
+
+    dpkg -x xx.deb /tmp/oo  
+
+
+第二种
+Bash代码  收藏代码
+
+    ar -vx xx.deb  
+
+
+这会解压出3个文件debian-binary，control.tar.gz，data.tar.gz
+然后再
+Bash代码  收藏代码
+
+    tar -xzvf data.tar.gz  

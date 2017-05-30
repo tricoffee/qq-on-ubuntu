@@ -1,0 +1,11 @@
+linux下.run文件的安装与卸载
+.run文件的安装很简单，只需要为该文件增加可执行属性，即可执行安装
+以 virtualbox 的安装文件 virtualbox-3.1.6-59338-Linux_x86.run为例，只需要输入命令：
+chmod +x  virtualBox-3.1.6-59338-Linux_x86.run
+./virtualbox-3.1.6-59338-Linux_x86.run
+即可安装。
+
+卸载的方法网上说法大至分两种：
+一种是说用 sh  virtualbox-3.1.6-59338-Linux_x86.run --uninstall，但是对于我这个virtualbox安装文件行不通
+另一种是说进入到安装目录下，有个 uninstall 文件，输入./uninstall即可卸载，但不知道安装到哪了
+于是我就用locate virtualbox | grep uninstall 找到这个文件，执行./uninstall就ok了

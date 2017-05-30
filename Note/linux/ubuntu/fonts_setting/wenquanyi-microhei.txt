@@ -12,3 +12,6 @@
   sudo fc-cache -fv
 
 4. 在firefox、gnome-terminal等应用程序中设置字体为“文泉驿微米黑”即可
+
+5. 在linux系统中查看系统支持字体的方法 
+  $ fc-list :lang=zh    # ':lang=zh' 参数指定查看中文字体

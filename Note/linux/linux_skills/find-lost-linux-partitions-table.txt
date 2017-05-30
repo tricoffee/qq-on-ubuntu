@@ -1,0 +1,13 @@
+  作者: wlike  出自: http://www.linuxdiyf.com                                                                       
+
+  在一次不小心的操作中把Linux的扩展分区表删了，其中扩展分区有3个逻辑分区，有个逻辑分区是Mount到根目录的。           
+  幸好当时机器没有重启，如果重启机器了那么机器上的东西会全部丢失。                                                  
+  在咨询相关人士后，有人提供可以采用fdisk按以前的大小重建分区就能找回来。但是仔细分析后，如果重建分区后，并不知道以 
+  前的分区size，文件分配表肯定会丢失。这样肯定不是我想要的结果，                                                    
+  登录上机器后，cat /proc/partitions 发现以前的分区信息还在，这时候想利用parted恢复分区表，在创建分区表后，parted无 
+  法正确识别原有分区表类型，只好把新创建的分区表删了。这时候心想肯定死定了。                                        
+  怀着最后一丝希望搜索：linux parted ，找到了一线希望，发现有人建议使用testdisk来恢复分区表。下载testdisk在Linux下的
+  二进制代码后，testdisk提示：kernel too old，心想，难道testdisk linux版本是在高版本内核上编译的？幸好testdisk是基于
+  gpl协议发行的，下载linux源代码后，make、make install。再运行，OK！能够正常运行了！                                
+  启动testdisk后，按菜单提示使用恢复功能。经过几分钟后，testdisk找到了全部被删除的分区表。                          
+

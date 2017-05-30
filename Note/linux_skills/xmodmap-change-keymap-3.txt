@@ -1,0 +1,52 @@
+使用xmodmap修改键盘映射
+三种代码及其获取方式
+
+首先这里有三个概念：
+
+    键盘物理按键代码
+    操作系统代码
+    功能代码
+
+这里以左Ctrl键为例。
+获取键盘物理按键代码
+
+xmodmap -pke | grep 'Control_L'
+
+可以看到输出为
+
+keycode 37 = Control_L NoSymbol Control_L
+
+说明左Ctrl键的键盘物理按键代码为37
+获取操作系统代码
+
+由上一步可知左Ctrl键的操作系统代码是Control_L
+获取功能代码
+
+xmodmap
+
+可以看到输出为
+
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock        Caps_Lock (0x42)
+control     Control_L (0x25),  Control_R (0x69)
+mod1        Alt_L (0x40),  Overlay1_Enable (0x6c),  Meta_L (0xcd)
+mod2        Num_Lock (0x4d)
+mod3      
+mod4        Super_L (0x85),  Super_R (0x86),  Super_L (0xce),  Hyper_L (0xcf)
+mod5        ISO_Level3_Shift (0x5c),  Mode_switch (0xcb)
+
+以上输出的意思是功能对应操作系统代码，比如control功能对应操作系统的Control_L和Control_R这两个代码。即当操作系统执行Control_L和Control_R两个命令时，所执行的功能是control这个功能。
+修改键盘映射
+
+经由上述分析，假如我们想将左Super键（133）的功能改为ctrl，那么我们应该先改变键盘物理按键到操作系统按键代码的映射，再改变操作系统按键代码到实际功能的映射。
+
+ xmodmap -e 'keycode 133 = Control_L' && xmodmap -e 'remove mod4 = Control_L' && xmodmap -e 'add control = Control_L'
+
+
+
+=============================
+如有错误，望指正。谢谢。
+
+
+
+[end]

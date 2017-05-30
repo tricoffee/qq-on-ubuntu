@@ -1,0 +1,27 @@
+ Emacs注释代码
+2011-05-03 02:25:37
+标签：emacs 职场 休闲 emacs技巧
+Emacs注释代码
+ 
+写程序的，要经常和注释打交道，注释和反注释一段代码是家常便饭。可惜，
+Emacs 虽然有这个功能，默认的配置却并不好用：
+注释/反注释这两个功能默认没有绑定快捷键需要先选中一段区域才能调用
+注释功能，哪怕只想注释/反注释当前行.好在有一个 Alt-; 的快捷键，默
+认绑定了 comment-dwim，能注释/反注释当前激活的区域。如果没有激活
+区域，就在当前行末加注释其实 Alt-; 默认绑定的 comment-dwim 已经
+很理想了，可是，还是不够 dwim ( Do What I Mean )。能不能变成，
+如果没有激活的区域，就注释/反注释当前行，仅当在行尾的时候才在行尾加注释呢？
+
+下面的配置就是参考别人配置写的 “照我说的做”注释函数:
+
+(defun qiang-comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command. If no region is selected 
+   and current line is not blank and we are not at the end of the line, 
+   then comment current line. Replaces default behaviour of comment-dwim, 
+   when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(global-set-key "\M-;" 'qiang-comment-dwim-line) 

@@ -1,0 +1,106 @@
+GNU Go 3.8
+
+Usage: gnugo [-opts]
+
+Examples:
+  gnugo --mode gtp --level 5
+         To play against gnugo in level 5 from a GTP client
+  gnugo --mode ascii -l game.sgf -L 123
+         Resume game at move 123 in ASCII mode
+  gnugo --score estimate -l game.sgf
+         Give a rough score estimate of the end position in game.sgf
+
+Main Options:
+       --mode <mode>     Force the playing mode ('ascii', 'gmp', 'sgmp',
+                         or 'gtp'). Default is ASCII.
+                         If no terminal is detected GMP (Go Modem Protocol)
+                         will be assumed.
+       --quiet  --silent Don't print copyright and informational messages
+       --level <amount>  strength (default 10)
+       --never-resign    Forbid GNU Go to resign
+       --resign-allowed  Allow resignation (default)
+   -l, --infile <file>   Load name sgf file
+   -L, --until <move>    Stop loading just before move is played. <move>
+                         can be the move number or location (eg L10).
+   -o, --outfile <file>  Write sgf output to file
+       --printsgf <file>     Write position as a diagram to file (use with -l)
+
+Scoring:
+   --score estimate      estimate score at loaded position
+   --score finish        generate moves to finish game, then score
+   --score aftermath     generate moves to finish, use best algorithm
+
+Game Options:
+Used with --mode ascii (or other modes for non-interactive settings)
+   --boardsize num   Set the board size to use (1--19)
+   --color <color>   Choose your color ('black' or 'white')
+   --handicap <num>  Set the number of handicap stones (0--9)
+   --komi <num>      Set the komi
+   --clock <sec>     Initialize the timer.
+   --byo-time <sec>  Initialize the byo-yomi timer.
+   --byo-period <stones>  Initialize the byo-yomi period.
+
+   --japanese-rules     (default)
+   --chinese-rules
+   --forbid-suicide      Forbid suicide. (default)
+   --allow-suicide       Allow suicide except single-stone suicide.
+   --allow-all-suicide   Allow all suicide moves.
+   --simple-ko           Forbid simple ko recapture. (default)
+   --no-ko               Allow any ko recapture.
+   --positional-superko  Positional superko restrictions.
+   --situational-superko Situational superko restrictions.
+
+   --play-out-aftermath
+   --capture-all-dead
+
+   --min-level <amount>         minimum level for adjustment schemes
+   --max-level <amount>         maximum level for adjustment schemes
+   --autolevel                  adapt gnugo level during game to respect
+                                the time specified by --clock <sec>.
+
+Connection options
+   --gtp-input <file>Read gtp commands from file instead of stdin
+   --gtp-connect [HOST:]PORT
+                     Connect to given host (127.0.0.1 if omitted) and port
+                     and receive GTP commands on the established connection
+   --gtp-listen [HOST:]PORT
+                     Wait for the first TCP/IP connection on the given port
+                     (if HOST is specified, only to that host)
+   --gtp-version
+
+Experimental options:
+   --with-break-in         use the break-in code (on at level 10 by default)
+   --without-break-in      do not use the break-in code
+   --cosmic-gnugo          use center oriented influence
+   --no-cosmic-gnugo       don't use center oriented influence (default)
+   --large-scale           look for large scale captures
+   --no-large-scale        don't seek large scale captures (default)
+   --nofusekidb            turn off fuseki database
+   --nofuseki              turn off fuseki moves entirely
+   --nojosekidb            turn off joseki database
+   --mirror                try to play mirror go
+   --mirror-limit <n>      stop mirroring when n stones on board
+
+   --monte-carlo           enable Monte Carlo move generation (9x9 or smaller)
+   --mc-games-per-level <n> number of Monte Carlo simulations per level
+   --mc-list-patterns      list names of builtin Monte Carlo patterns
+   --mc-patterns <name>    choose a built in Monte Carlo pattern database
+   --mc-load-patterns <filename> read Monte Carlo patterns from file
+   --alternate-connections
+   --experimental-connections
+   --experimental-owl-ext
+   --experimental-semeai
+   --standard-connections
+   --standard-semeai
+   --oracle                Read the documentation
+
+Cache size (higher=more memory usage, faster unless swapping occurs):
+   -M, --cache-size <megabytes>  RAM cache for read results (default  8.0 Mb)
+
+Informative Output:
+   -v, --version         Display the version and copyright of GNU Go
+   --options             Display configure options
+   -h, --help            Display this help message
+       --help debug      Display help about debugging options
+       --copyright       Display copyright notice
+

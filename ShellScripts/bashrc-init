@@ -1,0 +1,17 @@
+# this scrpit will init my cuntom shell function
+# it will load some shell function define inside 
+# of the ~/ShellScripts/ dir 
+
+SCRIPT_PATH=${HOME}/ShellScripts
+SCRIPT_NAME="bashrc-add-*"
+BASH_SCRIPT=$(echo ${SCRIPT_PATH}/${SCRIPT_NAME})
+
+# echo $BASH_SCRIPT 
+
+for TEMP in $BASH_SCRIPT 
+do
+	if [ -f ${TEMP} ]; then 
+		. ${TEMP}
+		# echo "test to detect : ${TEMP}"
+	fi
+done

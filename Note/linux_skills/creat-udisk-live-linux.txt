@@ -1,0 +1,6 @@
+使用 dd 命令可以将U盘制作成U盘启动盘
+
+具体方法:
+  $ dd if=[iso file path] of=/dev/[udisk file]
+  比如说，dd if=~/redhat.iso of=/dev/sdb（这里我试过 dd 到U盘的逻辑分区，但是重启后无法使用，后来直接 dd linux
+  			 				 			 镜像到sdb中，可以使用，但U盘原分区表会被擦除，并且U盘只被识别成iso文件）

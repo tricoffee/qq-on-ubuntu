@@ -1,0 +1,124 @@
+* calender基本命令
+打开日历,设置日历以周几为第一天
+M-x calendar
+variable calendar-week-start
+
+移动一个月，三个月，一年
+M-{ M-}
+C-v M-v
+C-x [ C-x ]
+
+移动到周首末，月首末，年首末
+C-a C-e
+M-a M-e
+M-< M->
+
+左右滚动日历
+C-x < C-x >
+
+移动到指定日
+g d
+
+查询三个月内的节假日，查询当日节假日信息，高亮显示/隐藏节假日
+a
+h
+x
+u
+
+按日周月年插入日程，插入周年日程，插入循环日程
+i d
+i w
+i m
+i y
+i a
+i c
+i b
+
+查看当日日程，查看日程文件
+d
+s
+
+查看当天是一年当中的第几天和当年还剩多少天，查看其他日历
+p d
+p o
+
+查看月相,查看日出日落时间
+M
+S
+
+查看当前选中区域的天数
+M-=
+
+
+* 用Emacs做日程安排
+
+toptodo模式emacs的todo模式可以用来做日程安排，它用三个文件do、done、top分别记录要做的事情、已完成的事情和优先要做的事情。在.emacs
+中设置下面三个文件：(setq todo-file-do "~/todo/do")
+(setq todo-file-done "~/todo/done")
+(setq todo-file-top "~/todo/top")
+
+　　在do文件中每件事情分别属于一个 category ，加入事情的时候会让你选择属于那个category，如果没有合适的category，可以用 
+todo-add-category 命令新建一个category；category中的事情按重要性排列，最重要的事情放在最上面，加入事情的时候会有提示；top文件只显
+示do文件中的每个category的第一件事情。
+
+　　对do文件，常用的命令如下：
+
+i 加入一件事情 e 编辑一件事情 k 删除一件事情，不加入done文件 d/f 删除完成的事情，加入done文件，同时可以加入评论 +/- 在不同category
+之间切换 j 跳转到某个category top约会提醒todo模式并不能在某个时间提醒你做一件事情，这个功能可以通过约会提醒来实现。在.emacs中加入
+：(setq appt-issue-message t)
+
+这样就打开了约会提醒功能，分别用 appt-add 和 appt-delete 命令来添加和删除提醒。
+
+topcalendar和diary上面的todo模式和约会提醒都非常适合于短期的日程安排，如果要进行较长时间的日程安排呢？比如，下周五要交图形学作业，
+下个月13号有一个很好的讲座要听，这些用todo模式和约会提醒就不太适合了，这时可以使用 calendar 和 diary 。top设置calendar下面是我对自
+己的calendar的一些设置：;; 让emacs能计算日出日落的时间，在 calendar 上用 S 即可看到
+(setq calendar-latitude +39.54)
+(setq calendar-longitude +116.28)
+(setq calendar-location-name "北京")
+
+;; 设置阴历显示，在 calendar 上用 pC 显示阴历
+(setq chinese-calendar-celestial-stem
+["甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"])
+(setq chinese-calendar-terrestrial-branch
+["子" "丑" "寅" "卯" "辰" "巳" "戊" "未" "申" "酉" "戌" "亥"])
+
+;; 设置 calendar 的显示
+(setq calendar-remove-frame-by-deleting t)
+(setq calendar-week-start-day 1) ; 设置星期一为每周的第一天
+(setq mark-diary-entries-in-calendar t) ; 标记calendar上有diary的日期
+(setq mark-holidays-in-calendar nil) ; 为了突出有diary的日期，calendar上不标记节日
+(setq view-calendar-holidays-initially nil) ; 打开calendar的时候不显示一堆节日
+
+;; 去掉不关心的节日，设定自己在意的节日，在 calendar 上用 h 显示节日
+(setq christian-holidays nil)
+(setq hebrew-holidays nil)
+(setq islamic-holidays nil)
+(setq solar-holidays nil)
+(setq general-holidays '((holiday-fixed 1 1 "元旦")
+(holiday-fixed 2 14 "情人节")
+(holiday-fixed 3 14 "白色情人节")
+(holiday-fixed 4 1 "愚人节")
+(holiday-fixed 5 1 "劳动节")
+(holiday-float 5 0 2 "母亲节")
+(holiday-fixed 6 1 "儿童节")
+(holiday-float 6 0 3 "父亲节")
+(holiday-fixed 7 1 "建党节")
+(holiday-fixed 8 1 "建军节")
+(holiday-fixed 9 10 "教师节")
+(holiday-fixed 10 1 "国庆节")
+(holiday-fixed 12 25 "圣诞节")))
+
+　　上面设定的节日分为下面两种种：
+
+holiday-fixed m d 固定阳历节日， m 月 d 日 holiday-float m w n 浮动阳历节日， m 月的第 n 个星期 w%7 （星期0就是星期日） top设置
+diary在.emacs中设置diary文件：(setq diary-file "~/diary/diary")
+(setq diary-mail-addr "bethoven@163.com")
+(add-hook 'diary-hook 'appt-make-list)
+top常用操作在calendar上，常用的命令如下： . 跳回当前天 o 跳到某一个月 g d 跳到某年某月某日 g c 跳到某年某星期的星期几 g C 跳到阴历
+的某一天 pC 显示当前的阴历日期 h 显示当前节日 i d 加入当前这一天的日程安排 i w 加入每周这一天的日程安排 i m 加入每月这一天的日程安
+排 i y 加入每年这一天的日程安排 i a 加入周年纪念（anniversary），比如生日等 d 察看当前日期的diary top快速访问do文件和calendar上面
+介绍的内容已经足以满足日程管理的需要了，现在需要进行最后一步设置，来使访问do文件和calendar变得容易。我自己的设置是把 calendar 命令
+绑定到F11上，这样只要按一下F11，就可以打开calendar，快速察看日程安排；把 list-bookmarks 命令绑定到F12上，然后在访问do文件的时候，
+用 M-x bookmark-set 或者 C-x rm 设置上书签，这样按一下F12就可以容易的打开do文件了。如果要删除书签可以在书签列表上用 M-x
+bookmark-delete 。在.emacs中加入：(global-set-key (kbd "<f11>") 'calendar)
+(global-set-key (kbd "<f12>") 'list-bookmarks)

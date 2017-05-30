@@ -1,0 +1,113 @@
+ 
+北京自动集成环境即将搭建完成，以后 UT7310（Android 和 QT）的 git 库将不再使用原来重庆服务器上的。账户已经为大家添加完毕，请大家按照以下操作步骤来激活账户、下载和提交代码：
+ 
+
+
+1.   Linux环境下生成密钥，如已经生成可省去此步骤
+$ ssh-keygen -t rsa
+会看到
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/yourname/.ssh/id_rsa):（直接敲回车）
+Enter passphrase (empty for no passphrase):（输入你的密码）
+Enter same passphrase again:（再次输入密码）
+Your identification has been saved in /home/yourname/.ssh/id_rsa.
+Your public key has been saved in /home/yourname/.ssh/id_rsa.pub.
+The key fingerprint is:
+4d:bc:ec:ca:95:d3:07:df:77:4b:d0:39:5f:5e:13:2e yourname@cyitbj-server3
+The key's randomart image is:
++--[ RSA 2048]----+
+|                 |
+|         .       |
+|          o    . |
+|         + .  o o|
+|        S + .E *o|
+|         . o ooo*|
+|          = . o.*|
+|       . o . .. +|
+|        o      . |
++-----------------+
+ 
+查看密钥
+$ cat .ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEApG/LRNZ20KaH8gSlq6iRRW1LEky2c60N/txJY17ykhXYXvx80oceraNNQhCoBv2KZ/xBVPL5fsgJaMhimBFQ9aRFcauKLXCcjAFfV7jUIySKyarN50q6AVaYObYZpBCgPb9qitqLxPs+rMScpT21Hle5cB/0KJKe7S14nFgQNEsMmEq0p1o+7b5NHpDIk31Ns4fqhCZuHwy9tzh1SxfuryTJO/68OxpIlGlKQorAXj6T/D9drvUAvzkG7C2EcMVSRt1NwOp0BmiHZQtNOdb5A4tEjHL8Zb8gKyKZgWa9nm1/v49s1RpptjeL+4jSsFn/V/14eaw2s8f4d1KOU3clRw== yourname@cyitbj-server3
+ 
+
+
+2.   邮箱注册
+登陆http://192.168.70.201:8765
+第一次登陆会让你输入 Full Name、Email(系统会给你发一封确认邮件，点击邮件中的链接即可激活账户) 和 SSH Public Key（即刚才生成的密钥，复制过来即可）
+也可以点右上角的 Settings 进行设置
+
+ 
+
+3.   下载代码
+Android: 
+$ git clone ssh://yourname@192.168.70.201:29418/br_Dev_C6310_Android_2.3_UT7310B
+QT: 
+$ git clone ssh://yourname@192.168.70.201:29418/br_Dev_C6310_QT_4.8.2_UT7310 
+yourname 是你的姓名全拼（刘辉的是liuhui3,周俊扬的是s_zhoujunyang）
+
+
+ 
+4.   修改配置文件 
+$ git config remote.origin.push refs/heads/*:refs/for/*
+或者直接修改 .git/config 文件
+$ vim .git/config
+将下面的内容拷贝进去
+[user]
+        name = yourname
+        email = yourname@cqcyit.com
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[remote "origin"]
+        fetch = +refs/heads/*:refs/remotes/origin/*
+        url = ssh://yourname@192.168.70.201:29418/br_Dev_C6310_Android_2.3_UT7310B.git
+        push = refs/heads/*:refs/for/*
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
+
+
+ 
+5.第一次使用代码前要先 git checkout -b develop origin/develop ; git reset --hard HEAD ; git pull
+切换到 develop 分支再 reset + pull 才能得到最新的代码。
+
+* 第一次下载代码后要编译通过以查看一下代码是否正常，编译Qt需要配置一些依赖的工具包: 
+  autoconf_2.65-3ubuntu1_all.deb  autotools-dev_20090611.1_all.deb  
+  libtool_2.4.2-1ubuntu1_i386.deb automake_1.11.1-1_all.deb 
+  libltdl-dev_2.4.2-1ubuntu1_i386.deb
+
+
+另外，每次修改代码之前先 git pull 一下，将代码更新到最新，养成经常更新代码的习惯。
+ 
+修改完代码后提交：
+$ git add .
+$ git log
+$ git commit
+ 
+注意：
+commit message 格式如下（“R号”每次commit之前使用 git log 命令查看，在上一次的基础上加一）：
+ 
+    R2408:旋转充电界面图像
+    BUGID:none
+    Author:liuhui,qiaoqiang
+    自测报告(Self-testing report) :
+    自测1
+    1. 掉电模式下，插着USB或充电器，按power键开机。
+    预期结果:
+    1. 进入充电界面,且图像时正的。
+ 
+$ git push origin
+（如果是在分支上提交代码使用 $ git push origin yourbranch:refs/for/master）
+ 
+成功的话会看到类似：
+remote:   http://192.168.70.201:8765/4
+ 
+
+
+6.  使用浏览器打开上面的地址http://192.168.70.201:8765/4
+Add Reviewer 按钮前面输入审核人的邮箱地址，如sunhuchang@cqcyit.com，点击 Add Reviewer 按钮，系统会自动发送一封邮件通知 reviewer 审核。
+ 

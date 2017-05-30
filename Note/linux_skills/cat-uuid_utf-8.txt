@@ -1,0 +1,26 @@
+Linux下查看UUID方法
+2010年03月12日 16:00 来源：ChinaUnix文档频道 作者：Send_linux 编辑：周荣茂
+
+1. sudo blkid
+　　/dev/sda1: UUID="9ADAAB4DDAAB250B" TYPE="ntfs"
+　　/dev/sdb1: UUID="B2FCDCFBFCDCBAB5" TYPE="ntfs"
+　　/dev/sdb5: UUID="46FC5C74FC5C5FEB" TYPE="ntfs"
+　　/dev/sdb6: TYPE="swap" UUID="2cec6109-5bcf-45a3-ba1b-978b041c037f"
+　　/dev/sdb8: UUID="9ee6f22d-b394-422c-9b4a-1525a3220942" SEC_TYPE="ext2" TYPE="ext3"
+　　/dev/sdb7: UUID="4bcb9381-6e25-4304-8743-f882039ff3ad" TYPE="ext3"
+
+2. ls -l /dev/disk/by-uuid
+　　lrwxrwxrwx 1 root root 10 2008-05-15 22:37 2cec6109-5bcf-45a3-ba1b-978b041c037f -> ../../sdb6
+　　lrwxrwxrwx 1 root root 10 2008-05-15 22:37 46FC5C74FC5C5FEB -> ../../sdb5
+　　lrwxrwxrwx 1 root root 10 2008-05-15 22:37 4bcb9381-6e25-4304-8743-f882039ff3ad -> ../../sdb7
+　　lrwxrwxrwx 1 root root 10 2008-05-15 22:37 9ee6f22d-b394-422c-9b4a-1525a3220942 -> ../../sdb8
+
+3. sudo vol_id /dev/sda1
+　　ID_FS_USAGE=filesystem
+　　ID_FS_TYPE=reiserfs
+　　ID_FS_VERSION=3.6
+　　ID_FS_UUID=be6d8295-a1c4-48e9-b68d-f4b043cd5f2c
+　　ID_FS_UUID_ENC=be6d8295-a1c4-48e9-b68d-f4b043cd5f2c
+　　ID_FS_LABEL=
+　　ID_FS_LABEL_ENC=
+　　ID_FS_LABEL_SAFE=

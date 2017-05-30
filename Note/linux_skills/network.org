@@ -1,0 +1,244 @@
+connect: network is unreachable 错误  
+
+2011-07-29 16:07:34|  分类： linux |  标签：网络   |字号 订阅
+nslookup 能通 
+ ping 不通  出现ping 外网  connect: network is unreachable 这个提示
+
+
+这条命令就可以搞定 哈哈
+
+route add default  gw 192.168.1.1
+
+后面那是你的网关。
+
+现在 route 一下
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+192.168.1.0     *               255.255.255.0   U     0      0        0 eth0
+default         my.router       0.0.0.0         UG    0      0        0 eth0
+
+之前如果没有添加 的话， 只有上面的第一条。  第二条是新加进去的。
+如果还访问不了， 哪你的情况可能有点特殊哦。
+
+
+
+这样重启以后 就不能 用了。
+修改
+编辑  /etc/network/interfaces
+添加 gateway  192.168.1.1
+or
+在/etc/sysconfig/network中添加:
+GATEWAY=your IP
+
+
+
+
+
+
+
+connect: network is unreachable
+配置linux网络时候，可以ping通局域网，ping外网时提示： connect: network is unreachable
+这条命令就可以搞定：
+route add default   gw 192.168.1.1
+后面那是你的网关。
+
+现在 route 一下
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref     Use Iface
+192.168.1.0     *               255.255.255.0   U     0       0         0 eth0
+default         my.router       0.0.0.0         UG     0       0         0 eth0
+
+之前如果没有添加 的话， 只有上面的第一条。   第二条是新加进去的。
+如果还访问不了， 哪你的情况可能有点特殊哦。
+
+这样重启以后 就不能 用了。
+修改
+编辑   /etc/network/interfaces
+添加 gateway   192.168.1.1 [你自己的网关地址]
+
+
+
+
+
+
+
+linux网络配置 connect: network is unreachable
+2010-04-25 11:11提问者： 绿叶厚土 |浏览次数：11657次
+刚装完机
+已经设了/etc/sysconfig/network-scripts/ifcfg-eth0的ip
+        /etc/sysconfig/network的网关
+        /etc/resolt.conf的dns
+并且service network restart 成功了
+ping 网关，回路可以通
+ping dns ——》connect: network is unreachable 
+
+有效路由为：
+netstat -nr
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 lo
+127.0.0.0       0.0.0.0         255.0.0.0       U         0 0          0 lo
+问题补充：
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 eth0
+127.0.0.0       0.0.0.0         255.0.0.0       U         0 0          0 eth0 
+
+ping 本地主机，其他主机可以通
+ping dns 不通
+防火墙也关了
+
+
+
+
+
+
+
+
+
+
+
+
+
+linux网络配置（关于connect: network is unreachable）(网上转贴）
+前几天公司要换路由器。为了省钱，想用linux来试试看，结果装了两块网卡，就变成ping得通网卡，ping不出外网，DNS也结析不了。后来看了网上面的做法，解决了问题，现在提供方法
+
+1.netconfig
+设置ip
+
+2.service network restart  (这一步我认为很重要，这一步做完之后，可以试一试下看能不能ping得通网络)
+
+3.dmesg | tail 或 cat /etc/modules.conf 看网卡认出来没
+直接编辑 vi /etc/sysconfig/network-scripts/ifcfg-eth0 后再重起或ifconfig eth0 down ,ifconfig eth0 up
+
+4.手工配置ip看能不能配置上
+ifconfig eth0 172.18.128.143 netmask 255.255.255.0 broadcast 172.18.128.255
+route add default gw 172.18.128.1(同一网段可以不要)
+后再ping一下看
+再ifconfig eth0 看一下
+
+
+
+
+
+
+
+
+
+ vmware非正常关机导致debian无法联网，提示connect: network is unreachable的解决
+2011-03-28 08:04 1685人阅读 评论(0) 收藏 举报
+启动vm里的debian，发现无法ssh上去，到虚拟机里一看发现网卡没启动，ping网关提示connect: network is unreachable，无法联网。
+ 
+解决方法：
+1、手工配置ip、网关
+debian-vm:~# ifconfig eth0 192.168.206.200 netmask 255.255.255.0     
+debian-vm:~# route add default gw 192.168.206.1
+ 
+2、这样就可以联网了，但是重启后有不能联网了，/etc/network/interfaces 配置文件也存在。不能联网的原因是因为非正常关机导致ifup脚本丢失，所以执行第一步，然后
+debian-vm:~# apt-get update
+debian-vm:~# apt-get install ifupdown
+这样就ok了，重启也没问题了。
+
+
+
+
+
+
+
+
+
+ vmware非正常关机导致debian无法联网，提示connect: network is unreachable的解决
+2011-03-28 08:04 1685人阅读 评论(0) 收藏 举报
+启动vm里的debian，发现无法ssh上去，到虚拟机里一看发现网卡没启动，ping网关提示connect: network is unreachable，无法联网。
+ 
+解决方法：
+1、手工配置ip、网关
+debian-vm:~# ifconfig eth0 192.168.206.200 netmask 255.255.255.0     
+debian-vm:~# route add default gw 192.168.206.1
+ 
+2、这样就可以联网了，但是重启后有不能联网了，/etc/network/interfaces 配置文件也存在。不能联网的原因是因为非正常关机导致ifup脚本丢失，所以执行第一步，然后
+debian-vm:~# apt-get update
+debian-vm:~# apt-get install ifupdown
+这样就ok了，重启也没问题了。
+
+
+
+
+centos 里面。。。Centos ping DNS报connect: network is unreachable (2012-10-26 17:38:13)转载▼
+标签： 杂谈	
+route add default   gw  192.168.1.1  下次在启动的时候就不管用了哦。。
+
+常用配置
+
+1. 配置网卡 
+
+修改对应网卡的IP地址的配置文件 
+# vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+修改以下内容 
+DEVICE=eth0(描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0) 
+BOOTPROTO=static(设置网卡获得ip地址的方式，可能的选项为static，dhcp或bootp，分别对应静态指定的ip地址，通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址) 
+BROADCAST=192.168.0.255(对应的子网广播地址) 上次配置死在了这里。。纠结ing就是他的原因
+HWADDR=00:07:E9:05:E8:B4 (对应的网卡物理地址) 
+IPADDR=12.168.1.2(如果设置网卡获得ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址) 
+IPV6INIT=no 
+IPV6_AUTOCONF=no 
+NETMASK=255.255.255.0(网卡对应的网络掩码) 
+NETWORK=192.168.1.0(网卡对应的网络地址) 
+ONBOOT=yes(系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备) 
+
+2. 修改网关 
+
+修改对应网卡的网关的配置文件 
+# vi /etc/sysconfig/network 
+修改以下内容 
+NETWORKING=yes(表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动) 
+HOSTNAME=centos(设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应) 
+GATEWAY=192.168.1.1(设置本机连接的网关的IP地址。例如，网关为10.0.0.2) 
+
+3. 修改DNS 
+
+修改对应网卡的DNS的配置文件 
+# vi /etc/resolv.conf 
+修改以下内容 
+nameserver 202.101.224.68(域名服务器) 
+nameserver 202.101.224.69(域名服务器) 
+
+4. 重新启动网络配置 
+
+# service network restart 
+或 
+# /etc/init.d/network restart 
+
+
+5. 修改IP地址 
+
+即时生效: 
+# ifconfig eth0 192.168.0.2 netmask 255.255.255.0 
+启动生效: 
+修改/etc/sysconfig/network-scripts/ifcfg-eth0 
+修改网关default gateway 
+即时生效: 
+# route add default gw 192.168.0.1 dev eth0 
+启动生效: 
+修改/etc/sysconfig/network 
+修改dns 
+修改/etc/resolv.conf 
+修改host name 
+修改后可即时生效，启动同样有效即时生效: 
+# hostname centos1 
+启动生效: 
+修改/etc/sysconfig/network 
+
+6. 网络命令 
+
+ifdown eth0 关闭网络 
+ifconfig eth0 down 关闭网络 
+ifup eth0 开启网络 
+ifconfig eth0 up 开启网络 
+
+service network start     //启动网络服务 
+service network stop     //停止网络服务 
+service network restart    //重启网络服务 
+service network status     //查看网络服务状态
+

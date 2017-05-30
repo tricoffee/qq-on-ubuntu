@@ -16,28 +16,12 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# setup ibus
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
 
-# setup dwm
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export DESKTOP_ENV="DWM"
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+############################
+#    my personal config    
+############################
 
-synclient TapButton1=1
-synclient HorizEdgeScroll=1
-synclient RTCornerButton=2
-synclient RBCornerButton=3
+# alias some emacsclient short name
+alias emt='emacsclient -t -a ""'  # open emacsclient with term
+alias emc='emacsclient -c -a ""'  # open emacsclient with GUI
 
-# /home/osily/software/bin/gp &
-
-# yong -d
-habak -ms /home/qq/Wallpapers/emacs-ref-with-desk.png/ &
-while true; do
-    xsetroot -name "`/home/qq/ShellScript/show-status-on-dwm.sh`"
-    sleep 20
-done &

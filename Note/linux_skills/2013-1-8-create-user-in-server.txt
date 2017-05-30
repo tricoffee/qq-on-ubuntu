@@ -1,0 +1,13 @@
+在服务器上创建新的用户
+
+使用useradd命令
+
+$mkdir username
+#useradd -d dir(新用户登录路径) -s /bin/bash（shell解析器） username(用户名)
+#passwd username 为新用户创建口令
+
+#chown -R [user]:[user] [userdir] 改变新建目录及子目录的权限
+
+最后将root路径中的 .bashrc .profile 文件拷贝到新创建的用户主目录下
+
+重新登录新建的用户，即可。

@@ -1,0 +1,9 @@
+ShellScriptFormatter
+emacs.d_changed_by_purcell
+emacs.d_fork_by_purcell
+jellybeans.vim
+spacemacs
+trans
+translate-shell
+vimperator-labs
+vimrc

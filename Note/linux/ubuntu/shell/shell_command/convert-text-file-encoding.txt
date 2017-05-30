@@ -1,0 +1,4 @@
+1. 使用enca命令查看待转换的目标文件的编码格式
+	$ enca FILENAME.txt
+2. 使用iconv命令将待转换文件转换至需要的格式
+	$ iconv -f FROM_ENCODING -t TO_ENCODING < INPUTFILE.txt > OUTPUTFILE.txt

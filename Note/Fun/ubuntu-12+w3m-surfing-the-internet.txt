@@ -1,0 +1,244 @@
+熟练使用emacs-w3m三部曲
+
+分类：耶！Linux 2012-11-29 23:33 68人阅读评论(0) 收藏举报
+一：安装emacs-w3m
+
+首先，我说说为什么要用emacs-w3m。
+
+理由有三：
+
+第一，平时在emacs里面编辑文档的时候，经常要上网查询一些资料，如果再打开firefox或者谷歌浏览器，不仅费时费力，而且经常会出现一个问题，
+就是浏览器和emacs两者的窗口经常相互干扰：当我编辑文档的时候看不见浏览器里面的内容，而当我看浏览器的时候又无法编辑文档。
+
+第二，w3m是个文本浏览器，当我看到网页里面合适的内容，可以方便的复制粘贴（我可不提倡抄袭哦^_^），这一点放在firefox或者谷歌的话，就得
+用鼠标一阵左右键了。
+
+第三点，这个是最重要的，生活在emacs里面是我的追求，尽管不乏偏执，但是这仍旧是一种追求，所以w3m必然不能缺少。
+
+安装的时候，我上网找了好多关于“emacs w3m”的资料，普遍发现内容陈旧，而且很多抄都抄错了。我现在的系统是ubuntu 12.04 LTS + emacs23，够
+新吧，所以对于你肯定是有所帮助的。
+
+第一步：安装必需的依赖文件
+
+首先在你的系统里查询是否有下列文件包。
+
+*cvs
+*autoconf
+*libgc-dev
+*libncurses5-dev
+
+查询的方法很简单，例如在终端输入：
+
+dpkg -l 'cvs'
+
+它就会自动查看是否已经安装cvs，如果没有，你需要使用下面的指令安装：
+
+sudo apt-get install cvs
+
+上面的几个都可以使用这种方法来确定是否有该安装包。
+
+第二步：安装w3m
+
+首先：回到主目录
+
+cd
+
+其次：使用cvs下载源码包，输入下面的命令：
+cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m login
+它会要求你输入密码，直接回车即可。然后在输入下面的命令：
+ cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m checkout w3m
+这一步会下载w3m安装包，可能会浪费点时间，别着急。
+
+然后：安装w3m
+
+cd w3m
+
+./configure
+sudo make
+sudo make install
+
+这几步都是常见的安装命令，无错误之后就表示w3m已经安装完毕。
+
+最后：验证w3m是否正确安装。
+
+在终端输入w3m http://www.google.com
+
+如果出现谷歌的搜索界面就表示成功了，这个时候可能中文显示是乱码，别着急，后面我会解决这个问题。
+
+第三步：安装emacs-w3m
+
+首先：仍旧是回到主目录：
+
+cd
+
+其次，使用cvs下载安装包(这一步和w3m安装差不多)
+
+cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login
+
+要你输入密码，直接回车。接着输入下面的命令：
+
+cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
+这一步需要下载安装包，需要一段时间，当下载完毕的时候，进入emacs-w3m:
+
+cd emacs-w3m
+
+然后：安装emacs-w3m
+
+autoconf
+
+./configure
+sudo make 
+sudo make install
+
+这些步骤下来不出现问题就表明emacs-w3m安装成功。
+
+最后，进入emacs，输入M-x w3m,即可看到w3m界面。
+
+二：编辑emacs-w3m的lisp代码
+
+要想使emacs中的w3m顺利的工作，相应的lisp代码是必不可少的，这有点像硬件的驱动程序。。。。
+
+下面是我的~/.emacs中关于emacs-w3m部分。
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;  设置emacs-w3m浏览器
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'load-path "~/emacs-w3m/")
+(require 'w3m-load)
+(require 'mime-w3m)
+(autoload 'w3m "w3m" "interface for w3m on emacs" t) 
+
+;; 设置w3m主页
+(setq w3m-home-page "http://www.google.com")
+
+;; 默认显示图片
+(setq w3m-default-display-inline-images t)
+(setq w3m-default-toggle-inline-images t)
+
+;; 使用cookies
+(setq w3m-use-cookies t)
+
+;;设定w3m运行的参数，分别为使用cookie和使用框架  
+(setq w3m-command-arguments '("-cookie" "-F"))               
+
+;; 使用w3m作为默认浏览器
+(setq browse-url-browser-function 'w3m-browse-url)                
+(setq w3m-view-this-url-new-session-in-background t)
+
+;;显示图标                                                      
+(setq w3m-show-graphic-icons-in-header-line t)                  
+(setq w3m-show-graphic-icons-in-mode-line t) 
+
+;;C-c C-p 打开，这个好用                                        
+(setq w3m-view-this-url-new-session-in-background t)  
+
+(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)                                    
+(defun remove-w3m-output-garbages ()                            
+"去掉w3m输出的垃圾."                                            
+(interactive)                                                   
+(let ((buffer-read-only))                                       
+(setf (point) (point-min))                                      
+(while (re-search-forward "[\200-\240]" nil t)                  
+(replace-match " "))                                            
+(set-buffer-multibyte t))                                       
+(set-buffer-modified-p nil))
+
+问题：
+
+由于w3m-el和emacs23并不能充分匹配，有的时候会出现中文乱码问题。这个时候你需要卸载w3m-el包，同时安装w3m-el-snapshot包。
+
+命令如下：
+
+sudo apt-get remove w3m-el
+sudo apt-get install w3m-el-snapshot
+
+三：emacs-w3m快捷键操作
+
+下面是一些常用的快捷键
+
+1：基本操作
+
+Q:关闭窗口
+
+q:直接离开
+
+C-x-k:关闭当前标签页
+
+U：打开URL
+
+V：打开文件 
+
+G：在标签页中打开一个网址
+
+S：用google进行搜索
+
+B：后退
+
+N：前进
+
+H：主页
+
+R：刷新  
+
+RET：打开链接
+
+2：页面操作
+
+其实还有hjkl四个快捷键作为上下左右，但是对于emacser,还是使用emacs自带的更方便一点。。。
+
+C-n 向下一行
+
+C-P 向上一行
+
+C-b 向后
+
+C-f 向前
+
+C-v 向下滚屏
+
+M-v向上滚屏
+
+>：想左滚屏
+
+<：向右滚屏
+
+,：向左滚动一格
+
+.：向右滚动一格
+
+3：书签
+
+a：添加当前页到书签
+
+M-a：添加该URL到书签
+
+v:显示书签
+
+E：编辑书签
+
+C-k：删除书签
+
+C-_：撤销书签
+
+4：使用百度谷歌搜索
+
+在出现的搜索框回车，然后在buffer会出现TEXT，在它后边输入你想要搜索的东东，然后回车，它就会出现在搜索框，之后再点击搜索的图标即可。
+
+其它的类似的搜索都可以这样办，你可通过这种方式登录chinaunix           
+
+5：其它重要操作
+
+M:用外部浏览器打开当前页面
+
+ESC M ：用外部浏览器打开链接
+
+C-c C-k：停止载入
+
+6：贴一张我的成果：emacs-w3m浏览我的chinaunix博客
+
+[26185912_1340099168G6Xg]                                   
+
+原文链接 http://blog.chinaunix.net/uid/26185912/frmd/159669.html

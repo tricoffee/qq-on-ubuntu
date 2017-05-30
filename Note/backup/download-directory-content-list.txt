@@ -1,3 +1,12 @@
-dwm-6.0
-dwm-6.0.tar.gz
-sogoupinyin_2.1.0.0082_amd64.deb
+Emacs-Mind-Image.zip
+Firefox-latest-x86_64.tar.bz2
+LINUX SHELL脚本攻略(中文版带书签).pdf
+bcompare-4.2.2.22384_amd64.deb
+emacs
+gawk-4.0.2
+gawk-4.0.2.tar.gz
+libqt4-opengl_4.8.7+dfsg-5ubuntu2_amd64.deb
+libqtwebkit4_2.3.2-0ubuntu11_amd64.deb
+manpages-zh_1.5.2-1.1_all.deb
+spacemacs.org
+usr

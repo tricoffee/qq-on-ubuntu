@@ -1,0 +1,78 @@
+GNU Emacs的自动自动备份  
+
+2008-11-15 01:04:56|  分类： Linux学习心得 |  标签： |字号大中小 订阅
+
+文件的备份并不是必须的。要Emacs关闭自动备份的功能，你可以将make-backup-files 变量值设为nil，当然它的默认值一般都是t，也就是自动备
+份文件。
+
+　　在你使用版本控制系统的时候，Emacs是否自动备份文件要看vc-make-backup-files的值。默认的是nil，即不备份文件，因为版本控制系统会保
+存原来所有版本的文件，这里的自动备份就显得多余了。
+
+　　backup-enable-predicate变量的默认值可以保证Emacs不会在零时文件目录下备份文件。零时文件目录由temporary-file-directory和
+small-temporary-file-directory两个变量来指定。
+
+　　Emacs可以只自动备份一次文件，也可以为每个文件同时保存多个备份。
+
+　　Emacs只在你打开文件后第一次保存的时候备份文件。也就是说，不管你其后保存了多少次文件，备份文件中的内容总是你这次打开文件前的内
+容。但是当你关闭这个文件又打开之后，Emacs又会生成一个新的备份文件。
+
+　　你可以要来Emacs来备份文件。用"C-u C-x C-s"来保存文件，你下次保存文件的时候，Emacs将备份这次你保存的内容；用"C-u C-u C-x C-s"来
+保存文件，将保存文件并且把原来文件的内容备份；用"C-u C-u C-u C-x C-s"来保存文件，将同时做以上两个的工作，保存文件并将原来的内容备
+份，而且在下一次保存文件的时候再做备份。
+
+自动备份的目录
+
+　　默认的情况下，Emacs能够自动的备份文件。Emacs自动备份的文件以"~"结尾，与你原来的文件在同一目录，比如说：你正在编辑一个文件，它
+的名字是README，那么当你保存这个文件的时候，Emacs会自动保存这个文件上一次的一个副本，它的名字是README~，而且和README在同一目录下。
+
+　　这种默认的备份方式可以使你很方便的返回你原来的工作。但是这种方式是十分原始和低效的。因为你会发现，它只能让你回到上一次编辑的文
+件，而再之前的保存都不能够恢复了；而且由于备份文件和原文件在同一目录，时间一长，你的目录将会十分的混乱。因此，许多人倾向于把备份的
+文件放在一个特定的目录里面加以保存。幸运的是，Emacs的高度可定制性能够完成这项功能。
+
+　　你可以通过修改变量make-backup-file-name-function来指定不同的备份函数。要将备份文件放在不同的目录中，要修改
+backup-directory-alist来指定目录。典型的修改方法是，添加“("." . DIR)”到bakcup-directory-alist来将所有的备份文件放在DIR目录中，当不
+同目录中有同名文件的时候，Emacs会自动修改备份文件的文件名，使它们不会产生冲突。你也可以添加“("." . ".~")”到backup-directory-alist
+来将文件备份在隐藏的子目录".~"下。
+
+单一备份和多次备份
+
+　　多次备份文件可以保存文件的一系列备份，它的备份文件以".~N~"的形式出现。比如"README.~1~"、"README.~2~"等等。
+
+　　Emacs执行的是单一备份还是多次的备份，是由变量version-control来决定的。值为"t"表示执行多次备份；值为"nil"表示如果文件存在多次备
+份的文件时，执行多次备份，否则执行单一的备份；值为"never"表示执行单一备份。
+
+　　你可以为不同的mode使用不同的version-control。你也可以设定环境变量VERSION_CONTROL来告诉Emacs如何备份文件，Emacs将在启动的时候根
+据VERSION_CONTROL的值来决定变量version-control的值。VERSION_CONTROL是"t"或者"numbered"的时候，version-control自动被设置成"t"；
+VERSION_CONTROL是"nil"或者"existing"的时候，version-control自动被设置成"nil"；VERSION_CONTROL被设置成"never"或者"simple"的时候，
+version-control被自动设置成"never"。
+
+备份的自动删除
+
+　　Emacs的自动备份系统能够自动删除备份文件，只保留最开始的几个备份文件和最近的几个备份文件。
+
+　　变量kept-old-versions指定保存多少最开始的备份文件，变量kept-new-versions指定保存多少最近的备份文件，它们默认都是2。最近的备份
+文件的记数，可以通过变量kept-old-version得到。
+
+　　如果delete-old-version变量是"t"，Emacs自动删除旧的备份文件，如果是"nil"，Emacs会在删除之前询问是否要删除，如果是其它的值，
+Emacs不会自动删除旧的备份文件。
+
+　　在Dired模式下，用"."也可以删除旧的备份文件。
+
+典型的设置
+
+　　典型的设置：
+
+　　(setq
+    backup-by-copying t ; 自动备份
+    backup-directory-alist
+    '(("." . "~/.saves")) ; 自动备份在目录"~/.saves"下
+    delete-old-versions t ; 自动删除旧的备份文件
+    kept-new-versions 6 ; 保留最近的6个备份文件
+    kept-old-versions 2 ; 保留最早的2个备份文件
+    version-control t) ; 多次备份
+	(setq backup-by-copying t)
+
+其它备份
+
+　　要想使用更加强大的备份功能，还可以用backup-dir.el。
+

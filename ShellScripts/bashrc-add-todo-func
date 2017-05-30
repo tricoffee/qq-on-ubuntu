@@ -1,0 +1,16 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# this function to echo some word to TODO file
+function todo-update-list(){
+	LF='\n'
+	SPACE=' '
+	LINENUM=$(grep "[0-9]\.\s" ~/TODO | wc -l)
+
+	let LINENUM+=1
+
+	echo -e "${LF}${LINENUM}.${SPACE}$(date) - CONTENT : $1" >> ~/TODO
+}

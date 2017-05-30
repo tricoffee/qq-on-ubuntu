@@ -1,0 +1,62 @@
+关于wine运行qvod(快播)的初步尝试
+
+如题，初步尝试而已
+如果只是用它来download电影的话，还是可以实现的
+但是你如果想拿它来边下变看，其实也不是完全不可以，调用 mplayer 罢
+
+#OK. 开工....
+wine + IE + qvod
+#哈哈！一个网站 : http://www.hdqvod.com/
+#01为了保证会有个干净的环境
+先：
+$rm -rfv ~/.ies4linux && mv -v ~/{.wine,.wine_bak}
+#
+#好了，开始！
+
+#02 准备安装ies4linux
+$pacman -S cabextract unzip
+
+#03 安装ies4linux
+$wget -c http://www.tatanka.com.br/ies4linux/downloads/ies4linux-latest.tar.gz
+$tar xvf ies4linux-latest.tar.gz && cd ies4linux-2*
+#将 lib/messages.txt 中的 tw . zhtw TW 改成 zh tw zhtw TW
+#将 lib/functions.sh 中的 pid=(wget ...) 改成 pid=(LANG=C wget ...)
+#将 lib/install.sh 中下载swflash.cab 的地址改成别个
+#比如自己架建的服务器 http://localhost/swflash.cab
+$./ies4linux --no-gui
+#如无意外，运行 ie6 ，应该可以了。
+#建议备份一下 cp -av ~/.ies4linux ~/.ies4linux_bak
+#好，如果上面OK，那就继续搞下面的。
+
+#04 下载 qvod的标准版，不要下加强版
+#安装它, 可以运行IE , 在IE中打开，运行QvodSetup3.exe ，或者如下：
+$WINEPREFIX=~/.ies4linux/ie6 wine tmp/QvodSetup3.exe
+#安装完之后会显示乱码，当然把界面改成英文就可以了
+#或者复制宋体到 ~/.ies4linux/ie6/drive_c/windows/Fonts/
+
+#05运行....
+#那么以后想启动qvod，可以先打开 ie6，然后打开 qvod的执行文件 QvodPlayer.exe就可以了
+#当然这样也可以：
+$WINEPREFIX=~/.ies4linux/ie6 wine ~/.ies4linux/ie6/....../QvodPlayer.exe
+#其实没必要，因为IE会在需要的时候运行qvod的
+
+#备注：当用IE打开网页的时候，虽然在 qvod 里面看不到，但是它的确是在下载中....
+#另外，其实网络任务那里还是有任务在的，看不到而已，不过单击右键还是可以选项的。
+#我建议把界面改成英文
+#可以 cd ~/.ies4linux/ie6/drive_c/Media && ls
+#或者装个 conky 监视网络就OK了！
+
+!! 建议一切OK之后，备份一下 cp -a ~/.ies4linux ~/.ies4linux_qvod_OK
+!! 还有以后运行winecfg时，创建的 ~/.wine 也许有影响的，貌似吧，maybe
+# 总之我是 sudo touch ~/.wine ，然后又改了权限，这方法是笨了点，以防万一.
+
+[Jump2] 这几天刚用这个把高清版的夺宝奇兵1234看了一遍，还算可以。
+
+
+如果只是想下迅雷链接的话。。。
+把这个复制到.bashrc里去
+tdown()
+{
+echo $1 | sed 's/thunder:\/\///g' | base64 -d | sed -r 's/^AA(.*)ZZ$/\1\n/g'
+}
+要用的时候直接tdown <链接>|xargs wget

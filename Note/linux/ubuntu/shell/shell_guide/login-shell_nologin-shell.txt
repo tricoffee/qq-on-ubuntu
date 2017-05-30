@@ -1,0 +1,249 @@
+linux中各个shell配置脚本文件的作用域和启动时间
+
+版权声明：本文为ListenerRi原创, 转载请注明出处
+
+########################部分资料来自于网络，添加和修改了一些个人的理解########################
+
+
+先说明三个概念（注意字符界面系统和图形化界面系统的区别）：
+
+1、登录shell（交互式）
+
+正常登录程序启动的shell.既登录成功后紧接着给登录用户启动的shell.
+
+(个人理解，如果你没有使用图形化的桌面环境，而是使用的字符界面的系统，那么你刚刚登录后的，出现命令提示符的shell就是‘登录shell’
+
+但如果你使用的是图形化的桌面环境(startx)那么这个登录shell就是承载了你系统的所有环境配置的shell，你在桌面环境下虽然看不到命令提示符，但它确实始终都在，
+
+并且你所看到的整个图形化的界面就在这个shell中
+
+另外登录shell会执行/etc/profile)
+
+2、非登录交互式shell
+
+这个shell的工作方式是交互式的，等用户输入，然后执行，再等用户输入。显然登录shell就是一个交互式shell。
+
+如下,我们可获得一个非登录交互式shell:
+[plain] view plain copy
+
+    [root@localhost ~]# bash    （个人理解，运行‘bash’后就会新启动一个交互式shell，然而这个shell并没有输入用户名和密码所以它就是非登录交互式shell）  
+    [root@localhost ~]# pwd  
+    /root  
+    [root@localhost ~]#  
+
+(个人理解，上面是字符界面系统环境下的启动非登录交互式shell
+
+而当你在图形化桌面环境下，当你按Ctrl+Alt+T来启动一个终端后等待你输入命令时、这个终端不需要输入用户和密码来登录、它其实就是一个非登录交互式shell)
+
+
+3、非交互式shell（非登录）
+
+为运行一个shell脚本启动的shell.
+
+（个人理解，如：source /etc/rc.local、系统会自动新启动一个shell来运行rc.local直到执行完毕后自动退出新启动的shell、
+
+这个过程中，你没有看到的，不需要你对其进行任何操作的shell就是非交互式shell）
+
+
+在 刚登录Linux时，首先启动 /etc/profile 文件，然后再启动用户目录下的 ~/.bash_profile、~/.bash_login或 ~/.profile文件中的其中一个
+
+执行的顺序为：~/.bash_profile、~/.bash_login、 ~/.profile
+
+如果 ~/.bash_profile文件存在的话，一般还会执行~/.bashrc文件。因为在 ~/.bash_profile文件中一般会有下面的代码：
+
+[html] view plain copy
+
+    if [ -f ~/.bashrc ] ; then  
+    　. ./bashrc  
+    fi  
+
+
+~/.bashrc中，一般还会有以下代码：
+
+[plain] view plain copy
+
+    if [ -f /etc/bashrc ] ; then  
+    　. /etc/bashrc  
+    fi  
+
+
+所以，~/.bashrc会调用 /etc/bashrc文件。
+
+最后，在退出shell时，还会执行~/.bash_logout文件
+
+执 行顺序为：
+
+/etc/profile -> (~/.bash_profile | ~/.bash_login |~/.profile) -> ~/.bashrc ->/etc/bashrc ->~/.bash_logout
+
+
+关于各个文件的作用域，在网上找到了以下说明：
+（1）/etc/profile:  此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行.并从/etc/profile.d目录的配置文件中搜集shell的设置。
+
+（2）/etc/bashrc: 为每一个运行bash shell的用户执行此文件.当bashshell被打开时,该文件被读取。
+
+（3）~/.bash_profile:每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,并执行用户的.bashrc文件。
+
+（4）~/.bashrc: 该文件包含专用于你的bashshell的bash信息,当登录时以及每次打开新的shell时,该该文件被读取。
+
+（5）~/.bash_logout: 当每次退出系统(退出bash shell)时,执行该文件.另外,/etc/profile中设定的变量(全局)的可以作用于任何用户,而~/.bashrc等中设定的变量(局部)只能继承/etc/profile中的变量,他们是"父子"关系。
+
+（6）~/.bash_profile 是交互式、login 方式进入 bash 运行的~/.bashrc 是交互式 non-login方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。
+
+
+跟shell环境配置相关的文件以下几个：
+
+/etc/profile
+
+/etc/profile.d/*.sh
+
+/etc/bashrc
+
+~/.bash_profile
+
+~/.bashrc
+
+有时你会发现使用alias命令来定义一个别名，有时好像在任意一个文件里定义都可以起作用，有时好像又不起作用，那是为什么呢？
+
+这些配置文件各自互责了什么工作？相互的关系是怎么样的？跟前面介绍的不同种类的shell的关系是如何的呢？
+
+下面在每个文件分别添加alias命令，并分别在登录式shell和非登录交互式shell以及非交互式shell中来进行说明。
+
+####################################################################
+
+/etc/profile
+Linux规定，当启动一个登录shell会执行‘/etc/profile’这个脚本. 测试过程如下：
+
+把LIST的定义加到/etc/profile文件的未尾并保存. 如下:
+
+[plain] view plain copy
+
+    alias LIST='ls -l'  
+
+
+把所有其它shell配置文件或目录改名，这样系统就找不到那些shell脚本了，不会执行，重而避免其它配置文件的干扰。如下：
+[plain] view plain copy
+
+    # mkdir /etc/profile.d.bak  
+    # mv /etc/profile.d/* -t /etc/profile.d.bak/  
+    # mv /etc/bashrc /etc/bashrc.bak  
+    # mv ~/.bash_profile ~/.bash_profile.bak  
+    # mv ~/.bashrc ~/.bashrc.bak  
+
+1、在字符环境系统下的登录shell中(图形化界面系统无法做如下测试，因为你无法对这个看不到但确实存在的登录式shell进行操作)，测试过程如下：
+
+[plain] view plain copy
+
+    Last login: Wed Nov 19 10:22:23 2008 from 192.168.0.97  
+    -bash-3.1# LIST  
+    total 160  
+    drwxr-xr-x  2 root root  4096 Aug14 12:24 Desktop  
+    -rw-r--r--  1 root root  3211Nov  6 10:15 Session.vim  
+    ......................省略部分输出........................  
+    -rwxrwxrwx  1 rootroot    65 Nov19 10:11 t.sh  
+    drwxr-xr-x 14 root root  4096Nov  5 15:34 test  
+    -bash-3.1#  
+
+显然启动一个登录shell时，shell配置文件/etc/profile会起作用
+
+
+2、在字符环境系统下启动一个非登录交互式shell(图形化界面可以Ctrl+Alt+T启动一个终端来做如下测试)，测试过程如下：
+
+[plain] view plain copy
+
+    [root@localhost ~]# bash  
+    bash-3.1# LIST  
+    bash: LIST: command not found  
+    bash-3.1# exit  
+    exit  
+    [root@localhost ~]#  
+
+显然启动一个普通非登录交互式shell的时候, shell配置文件/etc/profile不起作用
+
+
+3、下面启动一个非交互式shell, 测试过程如下：
+
+为了验证先写一个测试脚本，如下：
+
+[plain] view plain copy
+
+    #!/bin/bash  
+    LIST  
+
+把这个脚本保存为t.sh并加下可执行权限并执行:
+[plain] view plain copy
+
+    [root@localhost ~]# chmod a x t.sh  
+    [root@localhost ~]#./t.sh         
+    ./t.sh: line 2: LIST: command not found  
+    [root@localhost ~]#  
+
+显然启动一个非交互式shell时，shell配置文件/etc/profile不起作用
+
+####################################################################
+
+~/.bash_profile
+
+这个文件跟/etc/profile起作用的时机是一样的，都是只在启动一个登录shell的时候才会被source，
+
+跟/etc/profile不同的是，这里的配置只影响单个用户，不对其它用户产生影响。
+
+####################################################################
+/etc/bashrc与~/.bashrc
+
+从字面上我们可以理解这两个文件应该跟根bash相关，即只要你启动了一个bash类型的shell这两文件的配置就会被执行从而发生作用。
+
+如果你的shell是sh、csh或是ksh这两个文件将不起作用。
+
+按前面的介绍，可能很会猜测/etc/bashrc与~/.bashrc的关系跟/etc/profile与~/.bash_profile的关系一样，一个是全局的，一个是针对单个用户的。
+
+从结果上看确实是这样的，但实现过程却是不一样的。启动一个bash时首先直接source ~/.bashrc，而这~/.bashrc里面会source /etc/bashrc。
+
+（个人理解，每当你启动一个bash(shell)，也就是每当你在字符界面执行一次‘bash’命令来启动一个shell或在图形界面输入Ctrl+Alt+T启动一个终端时，
+
+都会为这个新启动的非登录交互式shell，source执行一遍~/.bashrc和/etc/bashrc）
+
+####################################################################
+
+/etc/profile.d/*.sh
+
+这里的脚本会在/etc/profile里或是~/.bashrc里同时source执行,所以这里的设置都是一些不同分类的全局环境设置。
+
+####################################################################
+
+
+总结：
+
+一个登录shell(bash)的环境初始全过程是：
+
+[plain] view plain copy
+
+    /etc/profile  
+        |  
+       --/etc/profile.d/*  
+    ~/.bash_profile  
+        |  
+        --~/.bashrc  
+                |  
+                --/etc/bashrc  
+                    |  
+                    --/etc/profile.d/*  
+
+
+一个普通交互式bash(非登录)的初始全过程是:
+
+[plain] view plain copy
+
+    ~/.bashrc  
+        |  
+       --/etc/bashrc  
+          |  
+          --/etc/profile.d/*  
+
+
+对于非交互式bash的初始全过程是:
+不重新source 任何新的shell脚本，只继承当前shell的设置.
+
+########################如有错误请指出##############################
+
+
+[end]

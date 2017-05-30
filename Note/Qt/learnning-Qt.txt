@@ -1,0 +1,5 @@
+
+
+0, 所有的Qt应用程序当中都有Qapplication这个类，Qapplication类包含了各种各样的应用程序所需的资源，比如说默认的光标和字符。
+
+1， 如果你要使用按钮的功能，就可以使用Qpushbutton这个类，Qpushbutton继承自Qwidget类

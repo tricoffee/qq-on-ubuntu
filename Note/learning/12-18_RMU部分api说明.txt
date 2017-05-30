@@ -1,0 +1,129 @@
+/*******************************************************************************
+ * Function:        int  RmuWriteDataSingle(int fd, u8_t* uAccessPwd, u8_t uBank, u8_t* uPtr,
+ *                     u8_t uCnt, u8_t* uWriteData, u8_t* uUii, u8_t* uLenUii, u8_t* uErrorCode, u8_t flagCrc)
+ *
+ * Input:
+ *  int fd: 串口fd
+ *  u8_t* uAccessPwd: 标签的 ACCESS PASSWORD。
+ *  u8_t uBank: 标签的数据段类型
+ *  u8_t* uPtr: 起始地址的偏移量
+ *  u8_t uCnt: 写入数据的长度(两个字节为单位),
+ *  u8_t* uWriteData:  需要写入的数据。
+ *  u8_t* uUii: 返回值,写入的标签的 UII。至少66个字节
+ *  u8_t* uLenUii: 返回值,UII 长度。
+ *  u8_t* uErrorCode : :标签返回的 Error Code。只在函数返回失败,且 uErrorCode 不等于 0xFF 时有,
+ *  u8_t flagCrc:  CRC16 验证功能。1:使用 CRC 功能;0:不使用 CRC 功能。
+ *
+ * Output:          0: Write data succeed
+ *			-1: Write data  failed
+ *
+ * Note:            This function use wiegend-26 Protocol read tag info once
+ *
+ *                                         RMU read data single
+ *
+*******************************************************************************/
+int  RmuWriteDataSingle (int fd, u8_t* uAccessPwd, u8_t uBank, u8_t* uPtr, u8_t uCnt, u8_t* uWriteData, u8_t* uUii, u8_t* uLenUii, u8_t* uErrorCode, u8_t flagCrc)
+
+
+
+
+
+
+
+/*******************************************************************************
+ * Function:   int  RmuKillTag (int fd, u8_t* uKillPwd, u8_t* uUii, u8_t* uErrorCode, u8_t flagCrc)
+ *
+ * Input:
+ *  int fd: 串口fd
+ *  u8_t* uKillPwd, 标签的 Kill Password(32 位)
+ *  u8_t* uUii, 标签的 UII。
+ *  u8_t* uErrorCode, 标签返回的 Error Code。只在函数返回失败,且 uErrorCode 不等于 0xFF 时有
+ *  u8_t flagCrc, 是否使用 CRC16 验证功能。1:使用 CRC 功能;0:不使用 CRC 功能。
+ *
+ * Output:          0: 成功销毁指定标签
+ *			-1:销毁指定标签失败
+ *			
+ * Note:            该函数销毁指定标签。
+ *
+*******************************************************************************/
+int  RmuKillTag (int fd, u8_t* uKillPwd, u8_t* uUii, u8_t* uErrorCode, u8_t flagCrc)
+
+
+
+
+
+
+
+/*******************************************************************************
+ * Function:   RmuLockMem (int fd, u8_t* uAccessPwd, u8_t* uLockData, u8_t* uUii, u8_t* uErrorCode, u8_t flagCrc)
+ *
+ * Input:
+ *  int fd: 串口fd
+ *  u8_t* uAccessPwd:标签的 ACCESS PASSWORD
+ *  u8_t* uLockData:命令的 LOCKDATA 数据段(3 字节)
+ *  u8_t* uUii, 标签的 UII。
+ *  u8_t* uErrorCode, 标签返回的 Error Code。只在函数返回失败,且 uErrorCode 不等于 0xFF 时有
+ *  u8_t flagCrc, 是否使用 CRC16 验证功能。1:使用 CRC 功能;0:不使用 CRC 功能。
+ *
+ * Output:          0: 成功锁定标签的指定数据段
+ *			-1:锁定标签的指定数据段失败
+ *			
+ * Note:            锁定标签的指定数据段
+ *
+*******************************************************************************/
+int  RmuLockMem (int fd, u8_t* uAccessPwd, u8_t* uLockData, u8_t* uUii, u8_t* uErrorCode, u8_t flagCrc)
+
+
+
+
+
+
+/*******************************************************************************
+ * Function:        int  RmuWriteData (int fd, u8_t* uAccessPwd, u8_t uBank, u8_t* uPtr, u8_t uCnt, 
+  *                            u8_t* uUii, u8_t* uWriteData, u8_t* uErrorCode, u8_t flagCrc)
+ *
+ * Input:
+ *  int fd: 串口fd
+ *  u8_t* uAccessPwd: 标签的 ACCESS PASSWORD。
+ *  u8_t uBank: 标签的数据段类型
+ *  u8_t* uPtr: 起始地址的偏移量
+ *  u8_t uCnt: 写入数据的长度(两个字节为单位),
+ *  u8_t* uUii: 标签的 UII。至少66个字节 
+ *  u8_t* uWriteData:  需要写入的数据。
+ *  u8_t* uErrorCode : :标签返回的 Error Code。只在函数返回失败,且 uErrorCode 不等于 0xFF 时有,
+ *  u8_t flagCrc:  CRC16 验证功能。1:使用 CRC 功能;0:不使用 CRC 功能。
+ *
+ * Output:          0: 成功写入标签数据
+ *			-1: 写入标签数据失败
+ *
+ * Note:            函数写入标签数据
+ *
+*******************************************************************************/
+int  RmuWriteData (int fd, u8_t* uAccessPwd, u8_t uBank, u8_t* uPtr, u8_t uCnt, u8_t* uUii, u8_t* uWriteData, u8_t* uErrorCode, u8_t flagCrc)
+
+
+
+
+
+
+/*******************************************************************************
+ * Function:        int  RmuEraseData (int fd, u8_t* uAccessPwd, u8_t uBank, u8_t* uPtr, u8_t uCnt, u8_t* uUii, u8_t* uErrorCode, u8_t flagCrc)
+ *
+ * Input:
+ *  int fd: 串口fd
+ *  u8_t* uAccessPwd: 标签的 ACCESS PASSWORD。
+ *  u8_t uBank: 标签的数据段类型
+ *  u8_t* uPtr: 起始地址的偏移量
+ *  u8_t uCnt: 写入数据的长度(两个字节为单位),
+ *  u8_t* uUii: 标签的 UII。至少66个字节
+ *  u8_t* uErrorCode : :标签返回的 Error Code。只在函数返回失败,且 uErrorCode 不等于 0xFF 时有,
+ *  u8_t flagCrc:  CRC16 验证功能。1:使用 CRC 功能;0:不使用 CRC 功能。
+ *
+ * Output:          0: 成功擦除标签数据
+ *			-1: 擦除标签数据失败
+ *
+ * Note:           擦除标签数据
+ *
+*******************************************************************************/
+int  RmuEraseData (int fd, u8_t* uAccessPwd, u8_t uBank, u8_t* uPtr, u8_t uCnt,
+		   u8_t* uUii, u8_t* uErrorCode, u8_t flagCrc)

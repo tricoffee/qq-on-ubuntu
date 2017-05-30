@@ -1,0 +1,177 @@
+
+sdcv for windows 移植记录
+2010-11-19 20:54 868人阅读 评论(3) 收藏 举报
+windowspropertiesincludestringdependencieslibrary
+
+第一步： 添加项目
+
+ 
+
+1. 下载sdcv源码并解压缩
+
+ 
+
+2. 新建一个解决方案（solution）sdcvforwin, 以sdcv项目（project）作为启动项目，将下载sdcv源码src目录下的代码导入。（选择win32 console application, 不要选择win32 Project,否则到最后会出现链接错误。要注意勾选empty project项，否则vs会自动生成头文件。)
+
+ 
+
+3. 添加一个静态库（static library)项目lib, 将源码src/lib目录下的代码导入。并设置sdcv项目的属性（properties），选择common Properties里面的framework and references, 添加引用add new reference将lib添加。
+
+ 
+
+第二步： 编译lib静态库。
+
+ 
+
+文件添加好，就可以编译了，接下来一边编译一边改代码就可以了。
+
+ 
+
+1. 到gnuwin32.sourceforge.net/packages/zlib.htm，看到download项下面的developer files，把它下载下来。在solution目录下面新建一个文件夹，叫include。把zlib-1.2.3-lib.zip（developer files)解压缩，把里面的include的目录的头文件复制到solution文件夹的include文件夹里面。
+
+到glib官网把下面两个文件下载下来。
+
+http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.12/glib-2.12.11.zip
+
+http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.12/glib-dev-2.12.11.zip
+
+解压缩，并把glib-dev/include/glib-2.0里面的所有文件复制到($SolutionDir)/include文件夹下面。再将glib-dev/lib/glib-2.0/include里面的glibconfig.h复制到$(SolutionDir)/include下面。
+
+ 
+
+ 
+
+2. 到lib属性里面的configuration properties里面的c/c++项里面的general，在additional include directories添加$(SolutionDir)/include, $(SolutionDir)是vc设置的一个变量，代表解决方案所在的文件夹。
+
+ 
+
+3. 这时候再编译会提示找不到unistd.h文件，这个文件在移植中不重要，可以直接把#include <unistd.h>注释掉，或者提供一个空的unistd.h文件。
+
+ 
+
+4. 再编译会出现提示'CreateFileW'不能转换参数，这是因为设置了unicode字符集，可以在configuration Properties 将character set改为not set
+
+ 
+
+5. lib.cpp里面会出现很多错误提示，接下来慢慢改这些错误：
+
+(1) inline const gchar *offset_index::read_first_on_page_key(glong page_idx)函数里面std::min 把它改为min
+
+ 
+
+(2) bool Libs::LookupWithFuzzy(const gchar *sWord, gchar *reslist[], gint reslist_size)函数里面用了一个参数来初始化数组，把它改为用malloc，别忘了在函数退出的时候用free。
+
+ 
+
+6. 这时候再编译，dictziplib.cpp出问题了
+
+(1) S_ISREG没有定义，在开头加一句
+
+#define         S_ISREG(m)      (((m) & S_IFMT) == S_IFREG)
+
+ 
+
+(2)在开头加一句#include <io.h>可以解决open,close,dictDtat:close的问题
+
+ 
+
+到这里，lib静态库就编译成功了。
+
+ 
+
+第三步： 编译sdcv项目
+
+ 
+
+1. 编译提示找不到头文件strings.h,直接改为string.h
+
+ 
+
+2. 添加include目录同上一步第2小节。
+
+ 
+
+3. 提示找不到libintl.h,直接注释掉#include <libintl.h>
+
+顺便将gi18n.h里面的#define _(String) gettext (String)
+
+改为#define _(String) (String)
+
+ 
+
+4. 把$(SolutionDir)/lib 添加到sdcv的Addtional Include Directories.接下来是sdcv.cpp, 把#include <getopt.h> 改为#include "getopt.h"
+
+ 
+
+5. 接下来又是'CreateFileW' 错误，把lib/mapfile.hpp里面的CreateFile改为CreateFileA.
+
+ 
+
+6. 把sdcv.cpp 的Version改为随便一个字符串。提示未定义标示符'S_IRWX'把g_mkdir(conf_dir.c_str(), S_IRWXU）== -1改为_mkdir(conf_dir.c_str())== -1,并在开头添加#include <direct.h>.
+
+ 
+
+7. 接下来是libwrapper.cpp, 在void Library::LookupData(const string &str, TSearchResultList& res_list)函数里，定义数组的长度是函数ndicts，和vc语法不兼容，改用malloc和free。
+
+对“popen" identifier not found错误，把popen改为_popen就好。
+
+ 
+
+到这一步，接下来的build的时候就只有连接错误了。
+
+ 
+
+第四步：添加静态库
+
+ 
+
+接下来build的时候出现的，就只是一些warning和长长的Lnk错误，只要将静态库添加就好了。
+
+ 
+
+需要两个静态库，一个是glib-2.0.lib,在glib-2.12.11.zip里面的bin文件夹里，一个是zlib.lib在zlib-1.2.3-lib的lib文件夹了，在$(SolutionDir)文件夹下面建立一个staticlib文件夹，将两个lib文件放进去，再在sdcv项目properties，configuration properties 里面的linker选项里面的general选项，在Additional library Directories里面添加两个目录$(SolutionDir)/staticlib/, $(SolutionDir)/Debug/.
+
+再在input选项下面的Additional Dependencies项添加
+
+glib-2.0.lib
+
+zlib.lib
+
+lib.lib
+
+三项。
+
+ 
+
+好了，现在就build成功了。但下载还不能成功运行，需要几个dll库。
+
+ 
+
+第五步: 一些运行需要的相关设置
+
+ 
+
+接下来需要一些dll文件来运行sdcv.exe文件。
+
+(1) libglib-2.0-0.dll 在glib-2.12.11/bin里
+
+(2) iconv.dll intl.dll网上下载。
+
+(3）最后还需要zlib.dll文件，在zlib-1.2.3-bin就在上文提到的zlib for windows网站里。注意，这个文件可能系统里面已经有了，但是还是应该去zlibforwindows网站里面下载，不同版本可能导致sdcv运行出错。应该确认系统path环境变量里面.在第一位，因为程序是按照顺序查找path的。
+
+ 
+
+最后，把网上下载下来的字典解压到一个目录：
+
+运行 sdcv --data-dir 字典目录 就可以查单词了。但是这里还有一个不完美的地方，就是音标不能显示。
+
+ 
+
+因为中文windows本地编码是gb，而gb里面没有显示音标的编码，所以如果要显示音标，还需要改动一下程序。至于怎么改，下次再写吧。
+
+更多 0
+
+    上一篇搞定sdcv显示音标的问题了。
+    下一篇sdcv for windows音标显示问题。
+
+

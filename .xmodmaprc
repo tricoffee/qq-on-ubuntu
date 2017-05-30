@@ -1,0 +1,9 @@
+!!! exchange Super and Menu
+! keycode 134 = Menu NoSymbol Menu
+! keycode 135 = Super_R NoSymbol Super_R
+
+remove mod4 = Super_R
+ keycode 134 = Menu NoSymbol Menu
+! keysym Super_R = Menu
+! keysym Menu = Super_R
+

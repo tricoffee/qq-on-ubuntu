@@ -1,0 +1,36 @@
+#install sdcv
+sudo apt-get install sdcv
+
+#install emacs
+sudo apt-get install emacs23
+
+#install linux kde ibus
+#   从昨天开始就一直在为ibus头大，所有的框架全部装好，拼音输入也装好，一切都没有问题，
+#   但是就是无法启用ibus，一直查到几天，就在几分钟前，终于搞定，偷懒，直接复制上来了。
+#安裝IBus框架：
+#在终端输入:
+sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
+#[编辑] 启用IBus框架：
+#在终端输入:
+im-switch -s ibus
+#重新启动X（也可以重启电脑）
+#[编辑] 安装拼音引擎：
+#在终端输入:
+sudo apt-get install ibus-pinyin
+#[编辑] 安装五笔引擎：
+#在终端输入:
+#sudo apt-get install ibus-table-wubi
+#[编辑] 设置IBus框架：
+#在终端输入:
+ibus-setup
+#[编辑] Kubuntu下使用IBus：
+#在终端输入:
+sudo apt-get install gnome-icon-theme
+#其他同上
+#[编辑] 找回消失的IBus图标：
+#在终端输入:
+ibus-daemon -drx
+#    最后一条命令 
+#ibus-daemon -drx
+#    很给力，最后，是执行了这条命令，ibus才启用成功。
+#    今晚可以睡个好觉了

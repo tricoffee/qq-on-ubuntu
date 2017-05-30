@@ -1,0 +1,12 @@
+
+##################################
+## my custom shell function
+##################################
+
+## remove some git tracked file in current repository
+# 使用'git rm -r --cached'命令删除已经用'git add'提交的本地缓存
+# usage : git rm -r --cached YOU_WANT_REMOVE_FILE
+
+function git-rm-tracked-and-repo-files(){
+	git rm -r --cached $@
+}

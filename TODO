@@ -1,41 +1,22 @@
-1. 继续测试.gitignore文件的属性
-	1)使用'!/DIR/'表达式可以对过滤这个目录的行为取反
-	2)使用'man gitignore'命令查询过滤规则
 
-2. 尝试修正ideviceinstaller编译时main函数中比较一个有符号整形数和无符号整形数的错误
+1. 2017年 05月 23日 星期二 18:16:30 CST - CONTENT : 将 emacs --daemon 命令加入到 .xsessionrc 中，使得开机启动一个 emacs 守护进程，同时运行 init-my-config.el 中的 xmodmap 命令
 
-3. 为emacs添加cscope插件
+2. 2017年 05月 23日 星期二 18:18:24 CST - CONTENT : 找出 gnome 桌面的“设置“菜单中的”键盘快捷键”配置文件，并修改之，手动添加快捷键
 
-4. 2017年 02月 12日 星期日 12:53:53 CST ~~~ CONTENT : 调试github博客，修改happypeter的博客框架
+3. 2017年 05月 23日 星期二 18:19:59 CST - CONTENT : 配置 emacs 接收系统中文输入法输入的字词
 
-5. 2017年 02月 12日 星期日 15:23:03 CST ~~~ CONTENT : 配置emacs blackboard theme找出其中过期的函数在emacs 24
-						   当中对应的函数是什么
+4. 2017年 05月 23日 星期二 21:03:55 CST - CONTENT : 使用 sort 命令读取 .gitignore 文件的内容，并按照字母顺序排序后重新写入 .gitignore 文件中去
 
-6. 2017年 02月 12日 星期日 16:03:31 CST ~~~ CONTENT : 调试.emacs.d/init-my-config.el中的"eshell color config"
-						   配置中过期的elisp函数在emacs24中对应的函数是什么
+5. 2017年 05月 24日 星期三 00:08:05 CST - CONTENT : 优化 .bashrc 文件自定义函数调用：1. 在 .bashrc 文件中调用组织好的 .sh 文件；  2. 在 ~/ShellScripts/ 目录下，按照功能分类、组织 .sh 文件，例如：rm 命令相关的都放在 rm-function.sh 文件当中
 
-7. 2017年 02月 12日 星期日 16:10:50 CST ~~~ CONTENT : 找一下为什么使用qq用户名登陆时无法自动加载.profile文件
+6. 2017年 05月 24日 星期三 22:55:08 CST - CONTENT : 1. 参考 emacs info 文档的格式组织 ~/Note 目录，同时修改 ~/.emacs.d/init.el 使得 emacs 启动时即加载该帮助文档； 2. 将 firefox 书签文件改写成 index.html 格式的文件，同时配置 vimperator 配置文件，使得 firefox 浏览器启动时即加载 修改后的 index.html 文件。
 
-8. 2017年 02月 14日 星期二 21:57:53 CST ~~~ CONTENT : 利用ShellScripts/get-ubuntu-startup-script-list.sh标记出ubuntu启动过程中运行的脚本
+7. 2017年 05月 25日 星期四 13:35:52 CST - CONTENT : .bashrc 中定义的 shell 函数无法在 emacs 中的 eshell 或是 shell 模式下使用，为什么 eshell 和shell 不加载 .bashrc 
 
-9. 2017年 03月 04日 星期六 13:15:44 CST - CONTENT : 使用linux命令将pdf转换至文本文件，或者html文件，看能不能用w3m打开本地的html文件
+8. 2017年 05月 25日 星期四 16:45:10 CST - CONTENT : 写一个 elisp 插件，目标是：在 emacs 编辑文本文件时，可以使用 \!\@\#$\%\^ 等特殊字符，将其添加在某一行行首，或是使用特殊字符包括住某几个字时，可以使的该行或是被包括的文字的字号、字体粗细正斜、字体颜色 ‘实时的’ 产生自定义的变化。
 
-10. 2017年 03月 05日 星期日 06:46:53 CST - CONTENT : 如何设置ssh安全无密码登陆
+9. 2017年 05月 25日 星期四 18:36:47 CST - CONTENT : Use 'tree' command to get 'Downloads/' 'Books/' 'Github/' directory's info, and seve to 'Note/' directory. and use linux utility text process command seem like '~/Note/linux/ubuntu/shell/shell_command/text-processing-tools.txt' to sort the content and Keep duplicate content and update different content.
 
-11. 2017年 03月 05日 星期日 07:30:18 CST - CONTENT : 使用u盘ubuntu时如何将/tmp目录浏览器缓存目录以及/var目录等缓存目录挂载到内存中去
+10. 2017年 05月 25日 星期四 18:49:18 CST - CONTENT : 通过查看 vimperator 源码，为 vimperator 配置文件 ~/.vimperatorrc 添加新功能 ： 1. 添加快捷键 'C-o' 至击键序列，其功能是打开一个新的本地文件（参照 ALT-f ， Ctrl + O “打开文件”的功能）； 2. 添加当前浏览器所有标签至指定 bookmark 目录的快捷键至击键序列（参照 ~/Gitbug/vimperator/-labs/vimperator/config.js 文件中的 'BookmarkAdd' 关键字的实现）。
 
-12. 2017年 03月 05日 星期日 17:02:01 CST - CONTENT : 配置emacs使得他打开以“.en-text”、“.zh-text”为结尾的文件时有跟word一样的行为和编辑文字方式，该模式暂命名为“word-mode”。
-
-13. 2017年 03月 05日 星期日 22:26:12 CST - CONTENT : 使用emacs调用google翻译api翻译选中的整个缓冲区中的文字，并且以一个段落的原文下面接该段落的翻译结果的格式输出至一个新的emacs缓冲区中去。
-
-14. 2017年 03月 09日 星期四 19:03:16 CST - CONTENT : reinstall ubuntu-desktop, install ubuntu from hard disk.
-
-15. 二  3月 28 08:49:37 CST 2017 - CONTENT : test the backup.sh script 
-
-<<<<<<< HEAD
-16. 二  3月 28 20:33:50 CST 2017 - CONTENT : find a device who can make the usb-device to bluetooth-device
-=======
-16. 2017年 03月 31日 星期五 10:24:09 CST - CONTENT : setup debian language enviorment, and reinstall debian desktop enviorment
-
-17. 2017年 03月 31日 星期五 10:30:16 CST - CONTENT : ubuntu zh-pinyin input method configure and setup
->>>>>>> 29336b28430e33932bb34d94034deea3a2b389f1
+11. 2017年 05月 26日 星期五 17:56:53 CST - CONTENT : complete the '~/ShellScripts/basic_scripts/format-error' file

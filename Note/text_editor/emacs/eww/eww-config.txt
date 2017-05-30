@@ -1,0 +1,160 @@
+*** emacs中的web浏览器--eww ***
+
+
+1 简介
+
+EWW,全称the Emacs Web Wowser,是Emacs24.4开始自带的一款web浏览器. 要使用EWW,需要有libxml2的支持.
+
+在ubuntu下,可以使用`sudo apt-get install libxml2`来安装
+
+在windows下,可以去http://ncu.dl.sourceforge.net/project/ezwinports/libxml2-2.7.8-w32-bin.zip 下载libxml2
+
+2 基本操作
+
+    浏览网页
+
+    要浏览网页很简单,只需要执行M-x eww,然后输入网址,回车就行了. 若输入的不像是URL或者主机名,则eww会自动搜索关键字,至于使用哪个搜索引擎,则由变量`eww-search-prefix`来决定. 默认是https://duckduckgo.com
+
+    若想浏览本地页面,则有两种方法:
+
+    一种是执行M-x eww,在输入网址时使用file://xxx 的url
+
+    另一种是执行M-x eww-open-file,然后像find-file一样选择要打开的本地文件就行.
+
+    eww-mode的操作
+    按键	函数	作用
+    q	eww-quit	退出eww
+    g	eww-reload	重载该页面
+    w	eww-copy-page-url	拷贝当前URL到kill ring
+    d	eww-download	下载光标所在的URL,下载的目录存在变量`eww-download-directory`中,默认为~/Downloads
+    l	eww-back-url	回退上一个URL
+    r	eww-forward-url	前进到下一个URL
+    H	eww-list-histories	显示浏览历史
+    b	eww-add-bookmark	加书签
+    B	eww-list-bookmarks	显示书签列表
+    &	eww-browse-with-external-browser	使用外部浏览器打开当前浏览的URL,外部浏览器由变量`shr-external-browser`决定
+    v	eww-view-source	查看页面源代码
+    C	eww-cookie-list	列示Cookie
+
+3 配置
+
+    eww-search-prefix
+
+    若输入給eww的字符串不像是URL或主机名,则会使用eww-search-prefix作为搜索引擎.
+
+    eww-download-directory
+
+    配置eww的下载目录
+
+    shr-external-browser
+
+    该变量指定了eww使用的外部浏览器
+
+    eww-use-external-browser-for-content-type
+
+    当打开指定类型的content时,自动使用外部浏览器打开.
+
+    eww-header-line-format
+
+    该变量指示了eww buffer的head line以什么格式来显示
+
+    它是一个格式字符串,其中%t表示website的标题,%u表示访问的URL
+
+    shr-max-image-proportion
+
+    该值为一个不超过1的浮点数,表示当显示图片时,图片的大小不能超过整个eww window的shr-max-imag-proportion倍
+
+    shr-blocked-images
+
+    该变量为一个正则表达式,若图片的URL匹配该表达式,则该图片被屏蔽.
+
+
+
+
+*** emacs内置浏览器EWW ***
+
+
+正文:
+
+    概要
+    基本使用
+    理解 eww 的工作方式
+    eww 的使用场景
+    参考资料
+
+概要
+
+EWW, 是 Emacs Web Wowser 的缩写(下边也写作 eww), Wowser 直译是"令人印象深刻的事物"的意思. 是 2013 年出现, Emacs 24.4 开始内置的文本型浏览器. 以下的使用基于 Emacs 24.4 或者以上版本.
+
+不同于传统的 Emacs 常见浏览器方案 w3m 需要外部工具支持, eww 不需要外部工具支持. 另外不支持 js 以及外部引入 css , 损失了页面效果的同时, 也减少了很多 http 请求, 加载速度非常快.
+基本使用
+
+M-x eww ENTER emacsist.com 即可访问 Emacs 爱好者站点 Emacsist.com . 打开网页以后, 显示界面上一般按单个字母即可进行操作, 比如 q 为退出, 也支持简单的书签和浏览历史等功能, 如果当前网页用 eww 查看起来实在糟糕, 则可以用按 & 调用 eww-browse-with-external-browser 的配置在外部浏览器打开当前页面. 更详细的操作指引可以 C-h m 查看.
+
+如果默认的按键不符合操作习惯, 可以参考下面的这样的方式去配置修改:
+
+(with-eval-after-load 'eww
+  (custom-set-variables
+   '(eww-search-prefix "https://www.google.com.hk/search?q="))
+
+  (define-key eww-mode-map (kbd "h") 'backward-char)
+  (define-key eww-mode-map (kbd "n") 'next-line)
+  (define-key eww-mode-map (kbd "s") 'forward-char)
+  (define-key eww-mode-map (kbd "t") 'previous-line)
+
+  (define-key eww-mode-map (kbd "H") 'eww-back-url)
+  (define-key eww-mode-map (kbd "S") 'eww-forward-url)
+
+  (define-key eww-mode-map (kbd "b") 'eww-history-browse)
+  (define-key eww-mode-map (kbd "c") 'eww-browse-with-external-browser)
+  (define-key eww-mode-map (kbd "i") 'eww)
+  (define-key eww-mode-map (kbd "m") 'eww-lnum-follow)
+  (define-key eww-mode-map (kbd "z") 'eww-lnum-universal)
+
+  (define-key eww-mode-map (kbd "M-n") 'nil)
+  (define-key eww-mode-map (kbd "M-p") 'nil)
+
+  (define-key eww-mode-map (kbd "<C-S-iso-lefttab>") 'eww-previous-buffer)
+  (define-key eww-mode-map (kbd "<C-tab>")           'eww-next-buffer)
+  )
+
+实际对比 Emacsist.com 在 chrome 等浏览器效果, 会发现因为使用外部 css 控制页面布局, 变形还是比较大, 不过因为做过特殊适配, 基本能比较整齐的显示. 如果尝试访问我的 blog: blog.hickwu.com , 由于页面布局简单, 显示效果基本跟 chrome 上差不多. 具体参见 eww1.gif
+
+eww1.gif
+
+默认配置下, 如果 M-x eww 回车后输入的内容被检测出来是网址,自动打开, 否则会调用 DuckDuckGo 进行搜索. 前文的 eww-search-preifx 配置即为修改默认搜索方式. 要打开本地文件用 file:// 开头或者 M-x eww-open-file .
+
+另外配合 ace-link 等能很方便的切换以 ace-jump 的方式定位和跳转链接, 如下图 eww2.gif 中使用 ace-link-eww 以后, 按 l 即可跳转到文章"ace-jump-mode高效移动光标".
+
+eww2.gif
+理解 eww 的工作方式
+
+eww 是基于另外一个项目 shr.el 构建的, 当然也依赖 libxml2 库, 自己编译 Emacs 的时候注意相关选项.
+
+eww 支持 cookie 的, 它的一些网络操作走的是 url.el , 更多功能可以参考 url package . eww 针对图片也有特殊处理, 可以设置 shr-max-image-proportion 定义图片显示尺寸以及 shr-blocked-images 屏蔽部分图片等.
+
+需要设置代理服务器的也是走 url.el 的方式, 可以设置不代理的规则等, 基本用法如下:
+
+(setq url-proxy-services '(("no_proxy" . "work\\.com")
+                       ("http" . "proxy.somedomain.com:8888")))
+
+url-cookie-list 命令可以列出来 Emacs 保存的 cookie 列表, 定义在 url-cookie.el 中, 其中还有定义 url-cookie-retrieve 等函数, elisp 程序获得可以类似这样 (url-cookie-retrieve "127.0.0.1" "/") 的用法. cookie 实际保存在变量 url-cookie-file 对应的文件, 大概内容如下:
+
+(setq url-cookie-storage
+ '((".weibo.cn"
+  [url-cookie "httponly" nil "28-Apr-2015 15:33:47.00 GMT" "/" ".weibo.cn" nil]
+  [url-cookie "_T_WM" "XXXXXXXXXXXXXX" "28-Apr-2015 15:33:47.00 GMT" "/" ".weibo.cn" nil])
+ ("192.168.3.222"
+  [url-cookie "cookie_id" "142355712384279893" "10-Feb-2016 08:32:03.00 GMT" "/" "192.168.3.222" nil]))
+)
+
+        转载请注明出处 http://blog.hickwu.com/posts/338 by Hick
+
+另外根据查找的资料, eww 支持 html 表单的文件上传, 各种平台的体验情况未知, 参考 http://lists.gnu.org/archive/html/bug-gnu-emacs/2013-12/msg01389.html
+eww 的使用场景
+
+有些 Emacs 爱好者习惯用 gnus 等在 Emacs 里收邮件, 可以配合 eww 去查看 html 邮件.
+
+用来访问一些比较简单的网站比如 hackernews 等效果都还可以, 另外一些编程语言的手册等基本还是可以用 eww 来查看.
+
+对一些纯文本格式比如 org/markdown 转化成 html 的预览效果一般也还能接受. 涉及自动刷新等, 也有人在摸索了, 具体可以参考 How do I auto-refresh eww pages?

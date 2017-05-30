@@ -1,0 +1,180 @@
+ linux目录挂载
+2012-01-01 20:55 1533人阅读 评论(0) 收藏 举报
+linuxbranchubuntufile磁盘system
+目录(?)[+]
+ 
+修改/usr的挂载点 －－ linux
+昨天由于ubuntu的/分区空间紧张，决定把/usr挂载到别的分区。
+挂载步骤(root权限执行)：
+1.   init  1  －－ 切换到单用户模式。
+2.   cp -ax /usr/*  /mnt/tmp  (tmp为新的/usr分区)。 －－ 拷贝现在/usr下的内容到待切换的分区。
+3.   ls -l /dev/disk/by-uuid    －－ 查看分区的UUID。
+4.   修改/etc/fstab中/usr的挂载方式，挂接到新的/usr分区。
+5.   mv /usr /usr.old   －－ 重命名现有的/usr为/usr.old, 为第6步做准备，重启动后可以删除之。
+6.   mkdir /usr   －－ 创建新的/usr挂载点，启动时自动挂载/usr分区到此处。
+7.   restart
+linux一个目录挂载两个分区
+
+aufs (another union file system), 从名字上就可以看出， 它的作用是合并几个文件夹到一个目录中， 使得这些文件夹（分散或者不是分散的）合并到同一个目录中。更神奇的是， 可以改变文件夹的属性， 将只读的变成可写（只是看起来可写， 修改的东西被保存在另外的地方， 不会对原来的只读文件夹造成损害。
+
+先看一个例子， 参考了http://www.linuxfans.org/bbs/thread-173965-1-2.html：
+mkdir /tmp/rwdir /tmp/union
+mount -t aufs -o br:/tmp/rwdir:/home=ro none /tmp/union 上面mount的命令解释如下， 以aufs的格式将none（这里通常是一个设备名，比如/dev/sda， 或者一个iso文件等，none表示空设备） 挂载到/tmp/union目录底下
+
+－o 后面跟的是aufs对应的选项， br表示分支（branch, 也就是要合并的文件夹， 格式为br: BRANCH[:BRANCH], 其中的BRANCH实际上是一个文件夹加选项(选项可以忽略）， 从上面的例子对应来看， BRANCH 可以当当是文件夹/tmp/rwdir， 也可以是文件夹加属性/home=ro, 其中＝ro表示/home挂载为只读（这样对home作的改变都不会真正出现在home中）
+
+命令执行往后， union底下不是出现了rwdir跟home两个目录， 而是rwdir跟home底下的内容都变成union底下的内容， 比如rwdir只有file1， home只有file2， 那么union底下出现的内容是file1跟file2
+
+现在假设home底下有svn目录，目录底下有文件file3
+cd union
+touch file4
+rm svn/file3
+sudo umount union
+对union进行了一些读写操作后， 将union umount掉， 现在再来看rwdir跟home的变化
+home被挂载为只读，所以在union中删了它的文件，实际上它并没有改变， 等下我们会说它的改变保存在哪里
+rwdir可写， 我们发现它下面多了file4, 以及svn目录， 如果你用ls －a， 会发现一个隐藏文件， 对了，这个隐藏文件就是上面删除对应的记录
+
+总的来说， 我们可以将一个只读文件夹跟一个可写文件夹用aufs合并到另外一个文件夹， 这样我们就可以对只读文件夹进行操作， 并把修改的内容保存在另外一个文件中
+
+开始可能只挂载了一些目录，我们可以进行追加操作
+mount -t aufs -o br:/tmp/rwdir none /tmp/union 现在我们想将home追加上， 可以这么做
+mount -o remount,append:/home=ro /tmp/union
+append:BRANCH 是aufs的选项， 这样的结果跟上面一致
+ 
+
+Ubuntu重新挂载 /home （有关mount和fstab）
+ls -all /dev/disk/by-uuid
+对 Linux 毫无概念的用户安装 Ubuntu 时多半仅仅挂载主目录和交换区（/swap）。
+
+然而，这种挂载方式在长久应用中是不可取的，/home 目录包含了几乎所有的用户文档（类似 Windows 系统中的“我的文档”等），/usr 包含了用户所安装应用程序，这些不适于与系统文件混杂一处。
+
+欲图重设 /home 等挂载点，可先为其划分新的分区之后修改与挂载点相关的系统设置。
+
+新建分区
+
+如果你有一块空白的磁盘或者已经从 Windows 系统中划分出新的分区，那么可以跳过了。如果你需要在 Ubuntu 系统磁盘中（即原有的 / 所挂载的分区），那么可以由 Ubuntu Live CD 启动并使用 GPart 磁盘管理工具来处理。
+
+准备 Ubuntu Live CD 或籍此创建的可启动 U 盘；
+设定 BIOS 由以上设备启动计算机；
+成功进入 Ubuntu Live 模式桌面；
+主菜单－System－Administration-Partition Editor；
+选定 / 所在的磁盘设备，并选定 / 所在分区；
+在以上分区图示上执行右键命令 Resize，解脱出 /home 所在分区所需空间；
+使用获取的为划分空间创建新的分区，分区格式 ext4、ext3、ntfs 均可；
+执行以上方案；
+经历漫长的过程之后，完成磁盘编辑；50G 分区耗费 1 小时，300G 分区耗费 4 小时
+重启计算机，进入硬盘中的 Ubuntu 系统；
+转移用户文件
+
+该过程目的是将现有 /home 目录中的所有文件备份到新建的分区中。
+
+挂载新分区于 /media/home
+拷贝 /home/ 及其所有下级文件至 /media/home/，注意拷贝隐藏文件与目录（多为程序配置）；
+编辑挂载设置
+
+此过程通过修改 fstab 信息来重设 /home 挂载点位置，这里我们需要知道 Linux 下的磁盘与分区标识规则。
+
+查看磁盘与分区的标识信息
+
+[code]ls -all /dev/disk/by-uuid[/code]
+
+示例如下：
+
+drwxr-xr-x 2 root root 180 2009-04-29 23:13 .
+drwxr-xr-x 6 root root 120 2009-04-29 23:13 ..
+lrwxrwxrwx 1 root root 10 2009-04-29 23:13 12FEDB1DFEDAF845 -> ../../sdd1
+lrwxrwxrwx 1 root root 10 2009-04-29 23:13 ab0d0ae1-da1f-49ce-91cc-42ffa03114d0 -> ../../sda7
+lrwxrwxrwx 1 root root 10 2009-04-29 23:13 BC8290BF82907F96 -> ../../sda1
+lrwxrwxrwx 1 root root 10 2009-04-29 23:13 C128A5C97B468FC6 -> ../../sda5
+lrwxrwxrwx 1 root root 10 2009-04-29 23:13 c80627f3-419d-405d-a987-dafbf1ed86c2 -> ../../sda8
+lrwxrwxrwx 1 root root 10 2009-04-29 23:13 D4CCB757CCB7331A -> ../../sdb2
+lrwxrwxrwx 1 root root 10 2009-04-29 23:13 D648CC1148CBEE75 -> ../../sdc1
+12FEDB1DFEDAF845 等字符串称为 UUID
+
+编辑 fstab 信息
+
+[code]sudo gedit /etc/fstab[/code]
+
+示例如下：
+
+# /etc/fstab: static file system information.
+#
+# Use ‘vol_id –uuid’ to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+#
+proc /proc proc defaults 0 0
+# / was on /dev/sda7 during installation
+UUID=ab0d0ae1-da1f-49ce-91cc-42ffa03114d0 / ext4 relatime,errors=remount-ro 0 1
+/dev/sda6 none swap sw 0 0
+UUID=c80627f3-419d-405d-a987-dafbf1ed86c2 /home ext4 defaults 0 2
+UUID=12FEDB1DFEDAF845 /media/Media ntfs-3g defaults 0 0
+UUID=C128A5C97B468FC6 /media/Documents ntfs-3g defaults 0 0
+UUID=D648CC1148CBEE75 /media/DataI ntfs-3g defaults 0 0
+UUID=D4CCB757CCB7331A /media/DataII ntfs-3g defaults 0 0
+UUID=BC8290BF82907F96 /media/Vista ntfs-3g defaults 0 0
+
+我们看到，主要信息分为六列：
+
+file system – 挂载设备，我们可以用 UUID 来标识
+mount point – 挂载点，如我们所需的 /home
+type – 分区文件系统，如 ext4、ext3、ntfs-3g、vfat 等
+options – 使用该分区的方式
+dump – dump 备份工具
+pass – 系统扫描检测
+
+添加 /home 挂载点设置
+
+例如：UUID=c80627f3-419d-405d-a987-dafbf1ed86c2 /home ext4 defaults 0 2
+
+重启计算机。
+
+ 
+
+
+
+
+
+
+
+
+
+新硬盘中挂载/usr和/home[转]
+
+新硬盘中挂载/usr和/home
+
+2004-05-10, by flyonsnow
+
+使用fdisk来分区，在/sbin目录下
+./fdisk  /dev/hdb
+用相关命令来执行分区。(注意的是要选择primary分区)
+然后按w写分区表
+
+下面格式化，我的硬盘在分了30g给windows
+在选择primary分区时候，我给了分区号为2,因此
+ ./mkfs.ext2 /dev/hdb2
+
+然后将新的硬盘挂载到 mount /dev/hdb2  /mnt/newdisk
+
+下面我将/usr和/home转入新硬盘中：
+首先： cp -a /usr /mnt/newdisk
+       cp -a /home /mnt/newdisk
+然后，为了防止万一，将原来的/usr，/home备份
+      mv  usr  usr2
+      mv  home home2
+建立新的/home和/usr，并映射到目标硬盘中  
+
+     mkdir  usr
+     mkdir  home
+     mount --bind /mnt/newdisk/home/  /home
+     mount --bind /mnt/newdisk/usr/  /usr
+这时候看你的/etc/mtab，这是根据你目前修改的临时的fstab
+按照vmtab的格式，修改fstab，注意先挂载新硬盘，然后在关联
+home和usr分区，我的fstab添加的是
+/dev/hdb2               /mnt/newdisk            ext2    defaults        0 0
+/mnt/newdisk/home       /home                   none    rw,bind         0 0
+/mnt/newdisk/usr        /usr                    none    rw,bind         0 0
+
+
+posted on 2007-09-02 12:53 SodaR FisH (苏达小鱼) 阅读(362) 评论(0)  编辑  收藏 所属分类: Linux

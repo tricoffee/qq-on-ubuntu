@@ -1,0 +1,5 @@
+
+测试android和qt录音效果
+圆mic的耳机在Qt上面可以使用mp3格式录音，不能使用wav格式录音；在android上不可用
+方mic耳机在Qt上面mp3格式不可用，wav格式不可用；在android上可用
+

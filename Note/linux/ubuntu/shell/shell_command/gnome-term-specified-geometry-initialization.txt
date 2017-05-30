@@ -1,0 +1,7 @@
+
+# gnome-terminal --geometry width+height+X_Right_Offset+Y_Down_Offset
+# gnome-terminal --geometry width+height-X_Light_Offset-Y_Up_Offset
+# 使用 xrandr 获得屏幕分辨率信息
+
+# 将如下命令添加到 ‘设置’ ---> ‘键盘’ ---> ‘快捷键’ 中 
+	gnome-terminal --geometry 66x42+1366+0 --hide-menubar 

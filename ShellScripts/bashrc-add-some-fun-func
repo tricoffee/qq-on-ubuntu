@@ -1,0 +1,19 @@
+
+###########################
+#    my personal config
+###########################
+
+##  add some useful function
+# put random english or chinese to terminal
+function random-string(){
+	NUM=$(date +%s%N)
+	RESOUT=`expr $NUM % 10 % 2`
+	# echo $NUM
+	# echo $RESOUT
+	if [ $RESOUT == 0 ]; then
+		fortune
+	fi
+	if [ $RESOUT == 1 ]; then
+		fortune-zh
+	fi
+}

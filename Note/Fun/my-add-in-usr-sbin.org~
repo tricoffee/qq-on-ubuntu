@@ -1,0 +1,5 @@
+我自己添加的文件保存在/usr/sbin/目录下
+
+* hibernate
+    hibernate
+    使用 pm-hibernate 命令使机器进入休眠状态，系统将数据保存到硬盘上然后断电，下次开机恢复休眠时的系统状态。

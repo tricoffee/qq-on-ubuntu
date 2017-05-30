@@ -1,0 +1,14 @@
+
+1. 下载 manpages-zh 源码包
+	$ sudo apt download -d manpages-zh
+
+2. 解压缩 .deb 包
+	$ sudo dpkg -x manpages-zh.deb ./
+得到如下目录 ：
+	usr/
+
+3. 安装中文 manpage 
+	$ sudo cp -a usr/share/man/ /usr/share/
+在 .bashrc 中添加如下命令别名 :
+	alias zhman='man -M /usr/share/man/zh-TW'
+之后就可以使用 'zhman' 命令查看中文版手册了

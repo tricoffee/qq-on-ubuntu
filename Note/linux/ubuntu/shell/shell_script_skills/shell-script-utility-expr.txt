@@ -1,0 +1,352 @@
+
+Shell正则表达式之grep、sed、awk实操笔记
+
+
+这篇文章主要介绍了Shell正则表达式之grep、sed、awk实操笔记,本文使用grep、sed、awk配合正则达到了一些需求和目的,需要的朋友可以参考下
+
+最近一直在研究shell脚本这块，刚好闲下来整了下自己手头上比较好的资料中的一些范例，以下是我整理的鸟哥私房菜里面正则表达式里面比较基础的一些语法详解，适合新手查阅。
+
+首先先复制一段范例：
+复制代码 代码如下:
+
+# vi regular_express.txt
+-------------------------------
+"Open Source" is a good mechanism to develop programs.
+apple is my favorite food.
+Football game is not use feet only.
+this dress doesn't fit me.
+However, this dress is about $ 3183 dollars.
+GNU is free air not free beer.
+Her hair is very beauty.
+I can't finish the test.
+Oh! The soup taste good.
+motorcycle is cheap than car.
+This window is clear.
+the symbol '*' is represented as start.
+Oh!My god!
+The gd software is a library for drafting programs.
+You are the best is mean you are the no. 1.
+The world <Happy> is the same with "glad".
+I like dog.
+google is the best tools for search keyword.
+goooooogle yes!
+go! go! Let's go.
+# I am VBird
+--------------------------------
+
+设置语系为C
+复制代码 代码如下:
+#export LANG=C
+
+grep
+
+1.搜寻特定字符串"the"
+注: n为显示行号
+复制代码 代码如下:
+# grep -n 'the' regular_express.txt
+
+2.反向搜寻特定字符串"the"
+复制代码 代码如下:
+# grep -vn 'the' regular_express.txt
+
+3.取得任意大小写"the"的这个字符串
+复制代码 代码如下:
+# grep -in 'the' regular_express.txt
+
+4.利用括号 [] 来搜寻集合字符
+搜索test或taste这两个单词时，发现他们有共同的't?st',所以可以这么搜寻
+复制代码 代码如下:
+# grep -n 't[ae]st' regular_express.txt
+
+这样其实就是在找t[a]st和t[e]st这两个分开的字符
+如果搜索有 oo 的字符时，则可以使用：
+复制代码 代码如下:
+# grep -n 'oo' regular_express.txt
+
+如果搜索oo时不想搜到 oo 前面有 g 的话，我们可以利用反向选择[^]来达成:
+复制代码 代码如下:
+# grep -n '[^g]oo'  regular_express.txt
+
+如果搜索oo前面不想有小写字符，则：
+复制代码 代码如下:
+# grep -n '[^a-z]oo' regular_express.txt
+
+注: 大写英文/小写英文/数字 可以使用 [a-z]/[A-Z]/[0-9]等方式来书写，也可以写在一起
+[a-zA-Z0-9]表示要求字符串是数字以及英文
+如果我们要取得有数字的那行,则：
+复制代码 代码如下:
+# grep -n '[0-9]' regular_express.txt
+
+注：但考虑到语系对编码顺序的影响，因此除了连续编码使用减号[-]外，也可以用[:lower:]代替a-z 以及 [:digit:] 代替0-9 使用
+复制代码 代码如下:
+# grep -n '[^[:lower:]]oo' regular_express.txt
+# grep -n '[[:digit:]]' regular_express.txt
+
+5.显示行首为'the'的字符串
+复制代码 代码如下:
+# grep -n '^the' regular_express.txt
+
+显示行首是小写字符
+复制代码 代码如下:
+# grep -n '^[a-z]' regular_express.txt
+
+6.显示行尾为点 . 的那一行
+复制代码 代码如下:
+# grep -n '\.$' regular_express.txt
+
+7.显示5-9行数据
+复制代码 代码如下:
+# cat -An regular_express.txt |head -n 10 |tail -n 6
+
+8.显示空白行
+复制代码 代码如下:
+# grep -n '^$' regular_express.txt
+
+9.找出g??d字符串，起头g结束d的四个字符串
+复制代码 代码如下:
+# grep -n 'g..d' regular_express.txt
+
+10. o*代表空字符(就是有没有字符都可以)或者一个到N个o字符，所以grep -n 'o*' regular_express.txt就会把所有行全部打印出来，
+11.oo*代表o+空字符或者一个到N个o字符,所以grep -n 'oo*' regular_express.txt就会把o,oo,ooo等的行全部打印出来
+12."goo*g"代表gog,goog,gooog...等
+复制代码 代码如下:
+# grep -n 'goo*g' regular_express.txt
+
+13.找出含g...g字符串的行
+注: .代表任意字符, .*则就代表空字符或者一个到N个任意字符
+复制代码 代码如下:
+# grep -n 'g.*g' regular_express.txt
+
+14.找出含有数字的行
+复制代码 代码如下:
+# grep -n '[0-9][0-9]*' regular_express.txt
+
+或# grep -n '[0-9]' regular_express.txt
+
+15.找出含两个o的字符串
+注:{}因为在shell里有特殊意义，所以需要加跳脱符\来让其失去意义
+复制代码 代码如下:
+# grep -n 'o\{2\}'  regular_express.txt
+
+找出g后含2到5个o然后以g结尾的字符串
+复制代码 代码如下:
+# grep -n 'go\{2,5\}g'  regular_express.txt
+
+找出g后含2以上的o然后以g结尾的字符串
+复制代码 代码如下:
+# grep -n 'go\{2,\}g'  regular_express.txt
+
+总结：
+^word     表示带搜寻的字符串(word)在行首
+word$     表示带搜寻的字符串(word)在行尾
+.         表示1个任意字符
+\         表示转义字符，在特殊字符前加\会将原本的特殊字符意义去除
+*         表示重复0到无穷多个前一个RE(正则表达式)字符
+[list]    表示搜索含有list的字符串
+[n1-n2]   表示搜索指定的字符串范围,例如[0-9] [a-z] [A-Z]等
+[^list]   表示反向字符串的范围,例如[0-9]表示非数字字符，[A-Z]表示非大写字符范围
+\{n,m\}   表示找出n到m个前一个RE字符
+\{n,\}    表示n个以上的前一个RE字符
+egrep总结:
++    表示重复一个或一个以上的前一个RE字符
+范例:egrep 'go+d' regular_express.txt
+表示搜寻(god)(good)(goood)...等等字符串，o+代表[一个以上的o]
+?    表示重复零个或一个的前一个RE字符
+范例:egrep 'go?d' regular_express.txt
+表示搜寻(gd)(god)字符串，o?代表[空的或1个o]
+注:egrep下'go+d'和'go?d'的结果集合就等于grep下的'go*d'
+|    表示用或(or)的方式找出数个字符串
+范例:egrep 'gd|good|dog' regular_express.txt
+表示搜寻(gd)或(god)或(god)字符串，|代表或
+()    表示找出群组字符串
+范例:egrep 'g(la|oo)d' regular_express.txt
+表示搜寻(glad)或(good)字符串
+()    +表示找出多个重复群组的判别
+范例: echo 'AxyzxyzxyzxyzxyzC'|egrep 'A(xyz)+C'
+表示搜寻开头是A结尾是C，中间有一个以上的'xyz'字符串
+
+sed:
+
+插入：
+
+1.将/etc/passwd 的内容列出并打印行号，同时,将2-5行删除显示
+复制代码 代码如下:
+# nl /etc/passwd | sed '2,5d'
+
+注: sed是sed -e的简写, 后接单引号
+同上删除第2行
+复制代码 代码如下:
+# nl /etc/passwd | sed '2d'
+
+同上删除第三行到最后一行
+复制代码 代码如下:
+# nl /etc/passwd | sed '3,$d'
+
+2.在第二行后加上一行test
+
+复制代码 代码如下:
+# nl /etc/passwd | sed '2a test'
+
+在第二行前加上一行test
+复制代码 代码如下:
+# nl /etc/passwd | sed '2i test'
+
+在第二行后加入两行test
+复制代码 代码如下:
+# nl /etc/passwd | sed '2a test \
+> test'
+
+替换行:
+
+3.将2-5行内容取代为 No 2-5 number
+
+复制代码 代码如下:
+# nl /etc/passwd | sed '2,5c No 2-5 number'
+
+4 列出/etc/passwd 内第5-7行
+复制代码 代码如下:
+# nl /etc/passwd |sed -n '5,7p'
+
+替换字符串:
+
+sed 's/被替换字符串/新字符串/g'
+
+1.获取本机IP的行
+复制代码 代码如下:
+# /sbin/ifconfig eth0 |grep 'inet addr'
+
+将IP前面的部分予以删除
+复制代码 代码如下:
+# /sbin/ifconfig eth0 |grep 'inet addr'| sed 's/^.*addr://g'
+
+将IP后面的部分删除
+复制代码 代码如下:
+# /sbin/ifconfig eth0 |grep 'inet addr'| sed 's/^.*addr://g'| sed 's/Bcast:.*$//g'
+-------------------
+192.168.100.74
+-------------------
+
+2.用grep将关键词MAN所在行取出来
+复制代码 代码如下:
+# cat /etc/man.config |grep 'MAN'
+
+删除批注行
+复制代码 代码如下:
+# cat /etc/man.config |grep 'MAN'| sed 's/^#.*$//g'
+
+删除空白行
+复制代码 代码如下:
+# cat /etc/man.config |grep 'MAN'| sed 's/^#.*$//g'| sed '/^$/d'
+
+3.利用sed将regular_express.txt内每一行若为.的换成!
+注：-i参数会直接修改文本，而并非直接输出
+复制代码 代码如下:
+# sed -i 's/.*\.$/\!/g' regular_express.txt
+
+4.利用sed在文本最后一行加入 #This is a test
+注: $代表最后一行 a代表行后添加
+复制代码 代码如下:
+# sed -i '$a #This is a test' regular_express.txt
+
+将selinux配置文件enforcing改成disabled
+复制代码 代码如下:
+# sed -i '6,6c SELINUX=disabled' /etc/selinux/config
+
+延伸正规表示法:
+复制代码 代码如下:
+# grep -v '^$' regular_express.txt |grep -v '^#'
+
+延伸写法:
+复制代码 代码如下:
+# egrep -v '^$'|'^#' regular_express.txt
+
+1. +表示重复一个或一个以上的前一个RE字符
+
+例如：egrep -n 'go+d' regular_express.txt
+普通写法: grep -n 'goo*d' regular_express.txt
+
+2. ?表示重复零个或一个前一个RE字符
+
+例如: egrep -n 'go?d' regular_express.txt
+
+3. |表示用或的方式找出数个字符串
+
+例如: egrep -n 'gd|good' regular_express.txt
+
+4. ()表示找出群组字符串
+
+例如: egrep -n 'g(la|oo)d' regular_express.txt
+也就是搜寻(glad)或good这两个字符串
+
+5. ()+多个重复群组判别
+
+例如: echo 'AxyzxyzxyzxyzC'|egrep 'A(xyz)+C'
+
+也就是要找开头是A结尾是C 中间有一个以上的'xyz'字符串的意思
+
+awk:
+
+1.用last取出登陆数据前五行
+复制代码 代码如下:
+# last -n 5
+
+取出账号与登陆者IP，且账号与IP之间以TAB隔开
+复制代码 代码如下:
+# last -n 5 |awk '{print $1 "\t" $3}'
+
+注:$1代表用空格或TAB隔开的第一个字段，以此类推。。
+  $0代表该行全部字段
+复制代码 代码如下:
+# last -n 5 |awk '{print $1 "\t lines:" NR "\t columes:" NF}'
+
+注: NF代表每一行的$0的字段总数
+   NR代表目前awk所处的是第几行数据
+   FS代表目标分隔符，默认为空格
+
+2.在/etc/passwd中以:来作为分段字符，则我们要查阅第三栏小于10以下的数据，并只列出账号与第三栏
+复制代码 代码如下:
+# cat /etc/passwd | awk '{FS=":"} $3<10 {print $1 "\t \t"$3}'
+
+注：查询结果未显示第一行数据，是因为我们虽然定义了FS=":" 但却只能在第二行生效
+想读取第一行就需要BEGIN这个关键词:
+复制代码 代码如下:
+# cat /etc/passwd | awk 'BEGIN {FS=":"} $3<10 {print $1 "\t \t"$3}'
+
+df:
+比较两个文件的差异:
+复制代码 代码如下:
+# diff /etc/rc3.d/ /etc/rc5.d/
+-------------------
+Only in /etc/rc3.d/: K30spice-vdagentd
+Only in /etc/rc5.d/: S70spice-vdagentd
+-------------------
+
+实例：
+1。统计TCP连接状态
+复制代码 代码如下:
+# netstat -na | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+/^tcp/
+
+过滤出以tcp开头的行，“^”为正则表达式用法，以...开头，这里是过滤出以tcp开头的行。
+S[]
+定义了一个名叫S的数组，在awk中，数组下标通常从 1 开始，而不是 0。
+NF
+当前记录里域个数，默认以空格分隔，如上所示的记录，NF域个数等于
+$NF
+表示一行的最后一个域的值，如上所示的记录，$NF也就是$6，表示第6个字段的值，也就是SYN_RECV或TIME_WAIT等。
+S[$NF]
+表示数组元素的值，如上所示的记录，就是S[TIME_WAIT]状态的连接数
+++S[$NF]
+表示把某个数加一，如上所示的记录，就是把S[TIME_WAIT]状态的连接数加一
+结果就是显示S数组中最终的数组值
+例：S[TIME_WAIT]=最终值 S[TESTABLISHED]=最终值
+END
+for(key in S)
+遍历S[]数组
+print key,”\t”,S[key]
+打印数组的键和值，中间用\t制表符分割，显示好一些。
+
+PS：关于正则，本站还提供了2款非常简便实用的正则表达式在线工具供大家参考使用：
+
+
+[end]
