@@ -232,54 +232,7 @@ map <C-l> <C-W>l
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Keep the current buffer
-command DelBuf :call DelWithOutCurBuf()<CR>
-":echo "The number in the current window is " . winnr(0)
-":echo "The number in the current buffer is " . bufnr("%")
-
-function! DelWithOutCurBuf() range
-    let b:curBufNum = bufnr("%") 
-    " To get a list of all buffers in all tabs use this: >
-	let buflist = []
-
-	for i in range(tabpagenr('$'))
-	   call extend(buflist, tabpagebuflist(i + 1))
-	endfor
-
-    echo "buflist\n"
-    echo buflist
-    echo "buflist\n"
-
-    echo "curBufNum\n"
-    echo b:curBufNum
-    echo "curBufNum\n"
-
-    let i = index(buflist, b:curBufNum)
-
-    echo "i is : \n"
-    echo i
-    echo "=======\n"
-
-    call remove(buflist, i)
-
-    echo "buflist\n"
-    echo buflist
-    echo "buflist\n"
-    
-    let index = get(buflist, )
-
-    echo "index\n"
-    echo index
-    echo "index\n"
-
-    for item in buflist
-        "bufdo bd item
-    endfor
-
-endfunction 
-
-map <leader>bk :
-" bufdo bd (without cur buf)<cr>
-" bufdo bunload (without cur buf)<cr>
+command DelWithOutCurBuf :call KeepCurrentBuf()
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -370,7 +323,7 @@ map <leader>g :Ag
 
 " When you press <leader>r you can search and replace the selected text
 "vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
-command ReplaceCurStrBy :call ReplaceCurStrBy()<CR>
+command ReplaceCurStrBy :call ReplaceCurStrBy()
 "command -nargs=1 ReplaceCurStrBy :call ReplaceCurStrBy('<args>')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
@@ -430,42 +383,6 @@ function! CmdLine(str)
     unmenu Foo
 endfunction 
 
-function! ReplaceCurStrBy() range
-    let l:SourceWord = ""
-    let l:TargetWord = expand("<cword>")
-    echo l:TargetWord
-    echo l:SourceWord
-
-    let l:TargetWord = input("Replace string (default : " . l:TargetWord . "): ")
-    if l:TargetWord == ""
-        let l:TargetWord = expand("<cword>")
-    endif
-
-    let l:SourceWord = input("Replace string CurStr with: " . l:SourceWord)
-    if l:TargetWord == ""
-        let l:SourceWord = "Dist string can not be empty !" 
-        echo l:SourceWord
-    endif
-
-    echo "\n"
-    echo l:TargetWord
-    echo l:SourceWord
-
-    "execute "%s/" l:TargetWord "/" a:str "/gcp"
-    "execute "%s/" l:TargetWord "/" "-hello-" "/gcp"
-    
-    " :ReplaceCurStrBy
-    " :Replace string (default : CurStr):
-    " :Replace string CurStr with:
-    
-    "   :nmap \x :call GetFoo()<CR>:exe "/" . Foo<CR>
-    "   :function GetFoo()
-	"	:  call inputsave()
-	"	:  let g:Foo = input("enter search pattern: ")
-	"	:  call inputrestore()
-	"	:endfunction
-
-endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -513,6 +430,49 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+
+"
+" my personal custem functions
+"
+function! KeepCurrentBuf() range
+    let b:curBufNum = bufnr("%") 
+    " To get a list of all buffers in all tabs use this: >
+	let buflist = []
+
+	for i in range(tabpagenr('$'))
+	   call extend(buflist, tabpagebuflist(i + 1))
+	endfor
+
+    let i = index(buflist, b:curBufNum)
+    call remove(buflist, i)
+
+    let bufString = join(buflist)	" create string from list items
+
+    "This command will delete the following number of buffers"
+    echo "These numbered buffers : ".bufString
+    echo "Will be Deleted."
+    execute("bdelete " . bufString)
+endfunction 
+
+function! ReplaceCurStrBy() range
+    let l:SourceWord = expand("<cword>")
+    let l:TargetWord = ""
+
+    let l:SourceWord = input("Replace string (default : " . l:SourceWord . "): ")
+    if l:SourceWord == ""
+        let l:SourceWord = expand("<cword>")
+    endif
+
+    let l:TargetWord = input("Replace string CurStr with: " . l:TargetWord)
+    if l:TargetWord == ""
+        redraw | echo "TargetWord is empty, Please input enter a valid String !"
+        return
+    endif
+
+    execute("%s/".l:SourceWord."/".l:TargetWord."/gcp")
+endfunction
+
 
 " Make VIM remember position in file after reopen
 " if has("autocmd")

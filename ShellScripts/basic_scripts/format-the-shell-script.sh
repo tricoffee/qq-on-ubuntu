@@ -38,59 +38,68 @@ FILENAME=$1
 FILEFORMATED=$2
 N_SPACES=$3
 
-
-
-
 ###################################
 # To be modified ...
 ###################################
-
+#Default out file
+function tryDefaultOutFile(){
+    if [ "$FILEFORMATED" = "" ]
+    then
+         FILEFORMATED=$FILENAME"_beauty"
+    fi
+        
+    : > $FILEFORMATED
+}
 #Determine the number of parameters
+function isNotTextFile(){
+    if [ ! -f $FILENAME ]
+    then
+        echo "Source file : \"$FILENAME\" is not invalid file type."
+        echo " --- It's not a shell script file --- "
+        exit
+    fi
+}
+function isExistFileName(){
+    #Test the FILEFORMATED file exists
+    if [ -e $FILEFORMATED ]
+    then
+        echo "Target file : \"$FILEFORMATED\" is exist."
+        echo "Please enter a not exist name."
+        exit
+    fi
+}
+# match speicified spaces
+function isMatchToSpace(){
+    if [[ "$N_SPACES" = "" ]]
+    then
+         N_SPACES="    "
+    elif [[ "$N_SPACES" = "-nspace=*" ]]
+        截取字符串
+        等号后面字符转数字 --- 使用 builtin function
+
+    fi
+}
+
+
 #Test the number of arguments
 case $# in
-    0)
-        ;; # don't do anyting and excute normal process
 	1)
-        #Test the FILENAME is a text file
-        if [ ! -f $FILENAME ]
-        then
-            echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-            exit
-        fi
-        ;; # don't do anyting and excute normal process
+        isNotTextFile()
+        tryDefaultOutFile()
+        ;; 
 	2)
-        #Test the FILENAME is a text file
-        if [ -f $FILENAME ]
-        then
-            #Test the FILEFORMATED file exists
-            if [ ! -e $FILEFORMATED ]
-            then
-                ;; # don't do anyting and excute normal process
-            else
-                echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
-                exit
-            fi
-        else
-            echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-            exit
-        fi
+        isNotTextFile()
+        isExistFileName()
+        tryDefaultOutFile()
+        ;;
 	3)
-        #Test the FILENAME is a text file
-        if [ ! -f $FILENAME ]
-        then
-            echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-            exit
-        #Test the FILEFORMATED file exists
-        elif [ -e $FILEFORMATED ]
-        then
-            echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
-            exit
-        elif [  ]
-            exit
-        fi
+        isNotTextFile()
+        isExistFileName()
+        isMatchToSpace()
+        tryDefaultOutFile()
         ;;
 	*)
-        echo "To many parameters !"
+        echo "Useage : $0 InputFile OutputFile SpaceNum"
         exit
 	    ;;
 esac
@@ -101,27 +110,6 @@ esac
 
 
 
-
-#Default out file
-if [ "$FILEFORMATED" = "" ]
-then
-	 FILEFORMATED=$FILENAME"_beauty"
-fi
-	
-: > $FILEFORMATED
-
-#Default tab spaces
-if [ "$N_SPACES" = "" ]
-then
-	 N_SPACES="    "
-else
-	i=0
-	while [ $i -lt $N_SPACES ]
-	do		
-		N_SPACES="${N_SPACES} "
-		i=`expr $i + 1`		
-	done
-fi
 
 if_counter=0
 

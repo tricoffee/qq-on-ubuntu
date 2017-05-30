@@ -1,16 +1,18 @@
 #!/bin/bash
 
+N_SPACES=$1
+
 case $# in
-    0)
-        echo "there have $# parameter"
-        exit
-        ;;
     1)
-        if [ $1 == 1 ]
+        echo "out of if----------"
+        if [[ $N_SPACES = [\s+] ]]
         then
-            #:
-            null
+            echo "---------------"
+            echo "---$N_SPACES---"
+            echo "---------------"
+            exit
         fi
+        echo "out of fi----------"
         ;;
     2)
         echo "there have $# parameter"
@@ -19,6 +21,6 @@ case $# in
         echo "there have $# parameter"
         ;;
     *)
-        echo "To many parameters"
+        echo "Usage : $0 Parameters"
         ;;
 esac
