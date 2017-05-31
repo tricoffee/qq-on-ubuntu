@@ -19,12 +19,7 @@ function emacs-kill-daemon(){
 
 # add restart emacs daemon function
 function emacs-restart-daemon(){
-    emacsclient -e "(kill-emacs)"
-    emacs_pid=$( ps -C 'emacs --daemon' -o pid= )
-    if [[ -n "${emacs_pid}" ]];then
-        kill -9 "${emacs_pid}"
-    fi
-
-    emacs --daemon 2> ${HOME}/crush_message/emacs-daemon-startup-message.txt &
+    emacs-kill-daemon
+    emacs-start-daemon
 }
 

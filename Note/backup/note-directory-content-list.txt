@@ -83,21 +83,79 @@
 │   │       ├── more-then-40-WM-evaluation.txt
 │   │       ├── sawfish.txt
 │   │       └── temp
+│   ├── linux_kernel
+│   │   ├── kernel-document.txt
+│   │   ├── linux-kernel.txt
+│   │   ├── old_version.png
+│   │   └── version-2.6.36.png
 │   ├── linux_skills
 │   │   ├── 10-23_XGcom.txt
+│   │   ├── #12-18_create_desktop_icon.txt#
 │   │   ├── 12-18_create_desktop_icon.txt
+│   │   ├── 12-18_create_desktop_icon.txt~
+│   │   ├── 12-18_indent参数.txt
 │   │   ├── 2013-1-11-easy-login-server.txt
+│   │   ├── 2013-1-11-easy-login-server.txt~
+│   │   ├── 2013-1-11-wget.txt
+│   │   ├── 2013-1-11-wget.txt~
+│   │   ├── 2013-1-8-android-disquisition.txt
+│   │   ├── 2013-1-8-android-disquisition.txt~
 │   │   ├── 2013-1-8-create-user-in-server.txt
+│   │   ├── 2013-1-8-create-user-in-server.txt~
 │   │   ├── 2013-1-8-how-to-work.txt
+│   │   ├── 2013-1-8-how-to-work.txt~
+│   │   ├── apt-get_useage.txt
+│   │   ├── bash_commond.txt
+│   │   ├── bluetooth.txt
+│   │   ├── cat-uuid_utf-8.txt
 │   │   ├── commandLine_start_ubuntu.org
 │   │   ├── c_program_package_gnome-open.org
+│   │   ├── creat-udisk-live-linux.txt
+│   │   ├── dd-command.org
+│   │   ├── decompress-file.txt
+│   │   ├── find_grep_command.txt
 │   │   ├── find-lost-linux-partitions-table.txt
+│   │   ├── format-disk-command_utf-8.txt
+│   │   ├── ftp_command_config.txt
+│   │   ├── GB-to-utf.txt
+│   │   ├── git_command.txt
+│   │   ├── gnome-terminal_skills
+│   │   ├── ibus_config.txt
+│   │   ├── iconv_all-dir_files.txt
 │   │   ├── kernel-partition-tables.org
+│   │   ├── kernel-partition-tables.org~
+│   │   ├── linux_file_decompress.txt
+│   │   ├── linux_remove_run_file.txt
+│   │   ├── linux_rename_filename.txt
+│   │   ├── linux_replace_file_context.txt
+│   │   ├── linux_user_management.txt
 │   │   ├── minicom.org
+│   │   ├── modify-hoseName.txt
+│   │   ├── mount.org
+│   │   ├── mount.org~
+│   │   ├── mount_utf-8.txt
+│   │   ├── mplayer.txt
+│   │   ├── network_is_unreachable.txt
+│   │   ├── network.org
 │   │   ├── open_docx_format_file.org
+│   │   ├── remount-dir_utf-8.txt
+│   │   ├── sudo_command.txt
 │   │   ├── suspend_and_hibernate.org
+│   │   ├── tar_useage.txt
+│   │   ├── ubuntu_suspend_and_hibernate.org
+│   │   ├── ubuntu_uninstall_unity.txt
+│   │   ├── ubuntu_uninstall_unity.txt~
+│   │   ├── ubuntu-use-xmodmap-change-keymap-2.txt
+│   │   ├── ubuntu-use-xmodmap-change-keymap.txt
 │   │   ├── use_google_api_translation.org
-│   │   └── zh-manpages.txt
+│   │   ├── wget.org
+│   │   ├── xmodmap-change-keymap-2.txt
+│   │   ├── xmodmap-change-keymap-3.txt
+│   │   ├── xmodmap-change-keymap.txt
+│   │   ├── zh-manpages.txt
+│   │   └── 关于connect- network is unreachable 问题的解决.png
+│   ├── system_management
+│   │   └── get-system-info-utility-command.txt
 │   └── ubuntu
 │       ├── apt
 │       │   ├── apt-dpkg-common-problem.txt
@@ -131,6 +189,8 @@
 │       │   └── use-xmodmap-to-remap-key.txt
 │       ├── man
 │       │   └── zh-manpages.txt
+│       ├── mouse
+│       │   └── touchpad-enable.txt
 │       ├── regular_expression
 │       │   └── regular-expression-simple-tutorial.txt
 │       ├── shell
@@ -162,6 +222,7 @@
 │       │       ├── get-sh-argument.txt
 │       │       ├── shell-case.txt
 │       │       ├── shell-function.txt
+│       │       ├── shell-history-format.txt
 │       │       ├── shell-if-condition-judgment.txt
 │       │       ├── shell-script-simple-tutorial.txt
 │       │       ├── shell-script-utility-expr.txt
@@ -179,76 +240,6 @@
 │           ├── more-then-40-WM-evaluation.txt
 │           ├── sawfish.txt
 │           └── temp
-├── linux_kernel
-│   ├── kernel-document.txt
-│   ├── linux-kernel.txt
-│   ├── old_version.png
-│   └── version-2.6.36.png
-├── linux_skills
-│   ├── 10-23_XGcom.txt
-│   ├── #12-18_create_desktop_icon.txt#
-│   ├── 12-18_create_desktop_icon.txt
-│   ├── 12-18_create_desktop_icon.txt~
-│   ├── 12-18_indent参数.txt
-│   ├── 2013-1-11-easy-login-server.txt
-│   ├── 2013-1-11-easy-login-server.txt~
-│   ├── 2013-1-11-wget.txt
-│   ├── 2013-1-11-wget.txt~
-│   ├── 2013-1-8-android-disquisition.txt
-│   ├── 2013-1-8-android-disquisition.txt~
-│   ├── 2013-1-8-create-user-in-server.txt
-│   ├── 2013-1-8-create-user-in-server.txt~
-│   ├── 2013-1-8-how-to-work.txt
-│   ├── 2013-1-8-how-to-work.txt~
-│   ├── apt-get_useage.txt
-│   ├── bash_commond.txt
-│   ├── bluetooth.txt
-│   ├── cat-uuid_utf-8.txt
-│   ├── commandLine_start_ubuntu.org
-│   ├── c_program_package_gnome-open.org
-│   ├── creat-udisk-live-linux.txt
-│   ├── dd-command.org
-│   ├── decompress-file.txt
-│   ├── find_grep_command.txt
-│   ├── find-lost-linux-partitions-table.txt
-│   ├── format-disk-command_utf-8.txt
-│   ├── ftp_command_config.txt
-│   ├── GB-to-utf.txt
-│   ├── git_command.txt
-│   ├── gnome-terminal_skills
-│   ├── ibus_config.txt
-│   ├── iconv_all-dir_files.txt
-│   ├── kernel-partition-tables.org
-│   ├── kernel-partition-tables.org~
-│   ├── linux_file_decompress.txt
-│   ├── linux_remove_run_file.txt
-│   ├── linux_rename_filename.txt
-│   ├── linux_replace_file_context.txt
-│   ├── linux_user_management.txt
-│   ├── minicom.org
-│   ├── modify-hoseName.txt
-│   ├── mount.org
-│   ├── mount.org~
-│   ├── mount_utf-8.txt
-│   ├── mplayer.txt
-│   ├── network_is_unreachable.txt
-│   ├── network.org
-│   ├── open_docx_format_file.org
-│   ├── remount-dir_utf-8.txt
-│   ├── sudo_command.txt
-│   ├── suspend_and_hibernate.org
-│   ├── tar_useage.txt
-│   ├── ubuntu_suspend_and_hibernate.org
-│   ├── ubuntu_uninstall_unity.txt
-│   ├── ubuntu_uninstall_unity.txt~
-│   ├── ubuntu-use-xmodmap-change-keymap-2.txt
-│   ├── ubuntu-use-xmodmap-change-keymap.txt
-│   ├── use_google_api_translation.org
-│   ├── wget.org
-│   ├── xmodmap-change-keymap-2.txt
-│   ├── xmodmap-change-keymap-3.txt
-│   ├── xmodmap-change-keymap.txt
-│   └── 关于connect- network is unreachable 问题的解决.png
 ├── programming_IDE
 │   ├── emacs
 │   │   ├── auto-copy.org
@@ -416,6 +407,7 @@
 │   └── vim
 │       ├── vim-basic-operate.txt
 │       ├── vim-color-config.txt
+│       ├── vim-get-current-dir-file.txt
 │       ├── vim-multiple-file-edit.txt
 │       ├── vimrc-config.txt
 │       └── vim-replace-string-command.txt
@@ -446,4 +438,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-70 directories, 376 files
+71 directories, 367 files

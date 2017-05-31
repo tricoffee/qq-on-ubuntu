@@ -6,7 +6,9 @@
 ##  add some useful function
 # add find spicified process function
 function find-process(){
+    echo -e $PS_INFO
     ps -aux | grep "$1"
+
 }
 
 # find some text on current directory recursively

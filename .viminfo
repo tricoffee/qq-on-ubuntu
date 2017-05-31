@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/bookmarks.js
+~MSle0~/if 
 
 # Last Substitute Search Pattern:
 ~MSle0&targetword
@@ -18,7 +18,137 @@ $TargetWord
 
 # 命令列 歷史記錄 (新到舊):
 :q
+:q!
+:w
+:help function
+:if 1 != empty(expand("%:e")) | pwd | endif
+:if 1 == empty(expand("%:e")) | echo expand("%") | endif
+:if 1 == empty(expand("%:e")) | echo expand("%:e") | endif
+:echo expand("%:e")
+:expand(")
+:if 1 == empty(expand("%:e")) | echo "expand("%:e")" | endif
+:if 1 != empty(expand("%:e")) | echo "expand("%:e")" | endif
+:if 1 != empty(expand("%:e")) | echo "expand("%:e")"
+:if 1 == has_key(getbufvar(bufnr("%"), ""), 'current_syntax') | echo "true" | endif
+:if 1 == has_key(getbufvar(bufnr("%"), ""), 'current_syntax') | echo true | endif
+:if 1 = has_key(getbufvar(bufnr("%"), ""), 'current_syntax') | echo true | endif
+:if 1 == has_key(getbufvar(burnr("%"), ""), 'current_syntax') | echo true | endif
+:if 1 = has_key(getbufvar(burnr("%"), ""), 'current_syntax') | echo true | endif
+:if 1 = has_key(getbufvar(burnr("%"), ""), 'current_syntax') echo true endif
+:help boolean
+:help if
+:help bufnr
+:help buflisted
+:help has_key()
+:help empty
+:tabedit /home/qq/Note/text_editor/vim/vim-get-current-dir-file.txt
+:echo expand("%:r")
+:echo expand("%")
+:echo expand(%)
+:echo b:commentStyle
+:let b:commentStyle = get(b:langCommentStyleDict, b:curLanguage)
+:let b:commentStyle = get(b:langCommentStyleDict, 'b:curLanguage')
+:echo b:curLanguage
+:let b:curLanguage = get(getbufvar(bufnr("%"), ""), 'current_syntax')
+:echo b:langCommentStyleDict
+:let b:langCommentStyleDict = {'C': '//', 'shell': '#', 'vim': '"'}
+:set b:langCommentStyleDict = {'C': '//', 'shell': '#', 'vim': '"'}
+:echo getbufvar(1, "")
+:echo b:langCommentStyleDict = {'C': '//', 'shell': '#', 'vim': '"'}
+:let b:commentStyle = get(getbufvar(bufnr("%"), ""), b:curLanguage, 1)
+:get()
+:help variable
+:let b:commentStyle = get(getbufvar(bufnr("%"), ""), b:curLanguage)
+:let b:commentStyle = get(getbufvar(bufnr("%"), ""), 'b:curLanguage')
+:echo commentStyle
+:let b:cur
+:let l:curLanguage = get(getbufvar(bufnr("%"), ""), 'current_syntax')
+:echo get(getbufvar(bufnr("%"), ""), 'current_syntax')
+:echo has_key(getbufvar(bufnr("%"), ""), 'current_syntax')
+:echo has_key(getbufvar(bufnr("%"), ""), "current_syntax")
+:echo haskey(getbufvar(1,""), 'vim')
+:echo haskey(getbufvar(1,""), "current_syntax")
+:echo haskey(getbufvar(1,""), 'current_syntax')
+:echo get(getbufvar(bufnr("%"), ""), "current_syntax")
+:echo items(getbufvar(1,""))
+:echo keys(getbufvar(1,""))
+:key()
+:help for
+:echo getbufvar(1,"")
+:let mydict = {1: 'one', 2: 'two'}
+:echo get(getbufvar(bufnr("%"), ""), "current_syntex")
+:echo get(getbufvar(bufnr("%"), ""), 'current_syntex')
+:echo get(getbufvar(bufnr("%"), ""), current_syntex)
+:echo 】vim行首加入某字符
+:echo
+:cu
+:help eval
+:echo current_syntex
+:help undo_indent
+:help undoindent
+:echo getbufvar(1,"current")
+:echo getbufvar(1,"current_filetype")
+:echo getbufvar(1,"FileType")
+:echo getbufvar(1,"filetype")
+:echo getbufvar(1,"*current*")
+:echo getbufvar(1,)
+:echo getbufvar(1)
+:echo FileType
+:help comment
+:filetype detect
+:filetype
+:help filetype
+:eval
+:help switch
+:switch
+:help case
+:tabedit /home/qq/Note/text_editor/vim/vim-replace-string-command.txt
+:echo expand("%:t")
+:wq
+:tabnext 
+:tabnext 2
+:tabedit /home/qq/ShellScripts/bashrc-add-env-setting
+:tabedit /home/qq/ShellScripts/bashrc-add-find-func
+:w ShellScripts/bashrc-add-env-setting
+:e ShellScripts/bashrc-add-alias-name
+:vsplit
+:! shell
+:tabedit /home/qq/ShellScripts/bashrc-add-alias-name
+:e ShellScripts/bashrc-add-find-func
+:help clipboard
+:call ShowCurFileFullPath()
+:x
+:echo getcwd()
+:echo expand("%:h")
+:help getcwd()
+:getcwd
+:help pwd
+:help pwd()
+:show
+:pwd
+:echo expand("%%")
+:echo expand("%:%")
+:files %
+:files
+:file
+:<
+:*
+:&
+:#
+:%:e
+:%:h
+:%%
+:%
+:let v:fname_in
+:echo v:fname_in
+:set v:fname_in
+:help fname
+:help fnale
+:help filaname
+:e .vimrc
+:tabedit /home/qq/ShellScripts/bashrc-add-emacs-func
 :set nu
+:'<,'>
 :tabedit /home/qq/Github/vimperator-labs/common/content/bookmarks.js
 :buffers
 :b
@@ -33,16 +163,11 @@ $TargetWord
 :!man type
 :! man type
 :! man bash
-:w
 :b 1
-:tabnext 
 :e ../test_scripts/test.sh
-:q!
 :tabedit /home/qq/Github/ShellScriptFormatter/../../Note/linux/ubuntu/shell/shell_script_skills/./shell-function.txt
-:wq
 :w test-samples
 :tabedit /home/qq/ShellScripts/basic_scripts/../test_scripts/test.sh
-:vsplit
 :vsplit ../test_scripts/test.sh
 :e ../test_scripts/temp.sh
 :e ~/Note/linux/ubuntu/shell/shell_script_skills/./shell-if-condition-judgment.txt
@@ -52,7 +177,6 @@ $TargetWord
 :DelWithOutCurBuf
 :tabedit /home/qq/ShellScripts/basic_scripts/../../.vimrc
 :tabnext 1
-:tabnext 2
 :tabedit /home/qq/ShellScripts/basic_scripts/format-error
 :tabedit /home/qq/ShellScripts/basic_scripts/ ~/.vimrc
 :!gedit ~/Note/linux/ubuntu/shell/shell_script_skills/shell-script-utility-expr.txt
@@ -80,10 +204,8 @@ $TargetWord
 :help bdelete
 :help bufdo
 :breaklist
-:help eval
 :help list functions
 :help join(
-:help empty
 :help is_empty
 :help isempty()
 :help inputsave()
@@ -92,7 +214,6 @@ $TargetWord
 :bdelete
 :help join()
 :help evla
-:eval
 :help
 :help 'nobuflisted'
 :.,.+887help
@@ -101,7 +222,6 @@ $TargetWord
 :help buflisted()
 :help bufhid()
 :help bufhidden()
-:help buflisted
 :ReplaceCurStrBy
 :echo hello
 :echo-redraw hello
@@ -148,13 +268,10 @@ $TargetWord
 :help get()
 :help idx
 :help {idx}
-:help variable
 :bdelete 3
-:help for
 :help remove()
 :help tabpagebuflist()
 :help tabpagenr()
-:help if
 :help :tabclose
 :help buffer
 :help unlisted
@@ -269,7 +386,6 @@ $TargetWord
 :au! * <buffer>
 :DoMatchPar
 :bufdo bdelete !1
-:x
 :tabnew
 :buffer #
 :bufdo Next
@@ -280,7 +396,6 @@ $TargetWord
 :echo bufnr("buffer-variable")
 :bufdo bunload
 :win
-:help function
 :help builtin
 :help builtin function
 :help help
@@ -310,7 +425,6 @@ $TargetWord
 :echo g:curBufNum
 :exit
 :get g:curBufNum
-:#
 :bufdo bdelete 2
 :bufdo bunload 
 :hello
@@ -403,86 +517,83 @@ $TargetWord
 :Bclose 6
 :badd
 :w execute-help.txt
-:'<,'>
-:tabedit /home/qq/execute-help.txt
-:!ls
-:! gedit BookMark/
-:'<,'>w
-:help l:
-:help keyword
-:set iskeyword
-:echo expand("<cword>")
-:source .vimrc
-:echo expand("<>")
-:set iskeyword+=-
-:help set-iskeyword
-:help set iskeyword
-:help \w
-:help WORD
-:help cWORD
-:help c-r
-:c-r
-:help expand<>
-:help <cword>
-:j
-:echo expand(
-:help quickref
-:quickref
-:help c-i
-:help c-o
-:help *
-:let iskeyword
-:iskeyword
-:echo iskeyword
-:%s/let keyword = expand("<cword>")/-hello-/gc
-:%s/set keyword=expand("<cword>")/-hello-/gc
-:%s/expand("<cword>")/-hello-/gc
-:ReplaceCurStrBy 
-:redir:q
-:C-r
-:exe '*'
-:exe "*"
-:exe *
-:exe iskeyword
-:help set
-:execute "normal! vgvy"
-:exe
-:help exe
-:w temp
-:exe "menu Foo.Bar :" . "%s/let /hello /gc"
-:exe "menu Foo.Bar :" . %s/let /hello /gc
-:exe "menu Foo.Bar :"
-:emenu Foo.Bar
-:help emenu
-:help usr_40.txt
-:let 
-:reg $"
-:reg "
-:Replace
-:exe "normal! vgvy"
-:@"
-:read
-:Cmdlin
-:help cmdline
-:help range
-:range
-:help a:direction
-:help direction
-:help substitute()
-:help substitute
-:help register
-:help @
-:help @"
-:help escape()
-:help escape
-:help l
-:help l:saved_reg
-:help q-args
-:q-args
-:viw
-:help /
 
 # 搜尋字串 歷史記錄 (新到舊):
+?/if 
+? \<boolean\>
+?/ture
+?/Builtin Functions
+? \<has_key()\>
+?/if
+?/empty(
+?/empty
+? \<commentStyle\>
+? \<curLanguage\>
+? \<langCommentStyleDict\>
+?/Dictionary
+?/Variable types
+?/variable
+? \<dictionary\>
+?/dict
+?/get()
+? \<String\>
+? \<langCommentStyle\>
+? \<curBufVarDict\>
+? \<current_syntax\>
+? \<getbufvar\>
+?/has_key(
+?/has_key()
+?/keys()
+?/values()
+?/{dict}
+?/has_hey()
+?/getcharsearch()
+?/setcharsearch(
+?/items(
+? \<curLangList\>
+? \<Dictionary\>
+?/{key}
+? \<{dict}])\>
+?/bufnr
+?/curbufnr
+? \<Dictionaries\>
+?/help eval
+?/var(
+?/ver(
+?/var
+?/file type
+?/filetype
+?/file
+? \<curLangCommentStyle\>
+? \<CurLangCommentStyle\>
+?/let 
+?/repeat
+? \<Lists\>
+? \<SPACE\>
+? \<4_SPACE\>
+?/\${4_SPACE}
+?/行首
+?/echo 
+?/tab
+?/path
+?/findfile()
+?/alias emc=\'emacsclient -c -a
+?/alias emt=\'emacsclient -t -a
+? \<emacs\>
+?/    emacs --daemon 2> \${HOME}\/crush_message\/emacs-daemon-startup-message\.txt &
+?/        kill -9 "\${emacs_pid}"
+?/    if \[\[ -n "\${emacs_pid}" \]\];then
+?/    emacs_pid=\$( ps -C \'emacs --daemon\' -o pid= )
+?/    emacsclient -e "(kill-emacs)"
+?/    emacsclient -e "(kill-emacs)"n    emacs_pid=\$( ps -C \'emacs --daemon\' -o pid= )n    if \[\[ -n "\${emacs_pid}" \]\];thenn        kill -9 "\${emacs_pid}"n    fin
+?/Emacs
+?/emacs
+? \<modprobe\>
+?/mouse
+??\/home\/qq\/profile_shell_env\/
+? \<HOME\>
+? \<home\>
+?/\/home\/qq\/profile_shell_env\/
 ?/bookmarks.js
 ?/bookmark
 ?/command
@@ -550,7 +661,6 @@ $TargetWord
 ?/getbufline()
 ? \<getbufline(\>
 ? \<foldtext()\>
-?/Builtin Functions
 ?/CmdLine
 ?/return
 ?/execute(
@@ -565,7 +675,6 @@ $TargetWord
 ?/string function
 ?/list
 ?/^string
-? \<String\>
 ?/^list
 ?/^string 
 ?/^*functions
@@ -586,9 +695,7 @@ $TargetWord
 ?/string is empty
 ?/string empty
 ?/input()
-?/empty(
 ? \<ReplaceCurStrBy\>
-?/let 
 ?/get
 ?/getch
 ?/curBuf
@@ -615,7 +722,6 @@ $TargetWord
 ?/^'buf
 ?/^buf
 ?/buflisted
-?/bufnr
 ?/buffer option
 ?/setbufvar()
 ?/Bclose
@@ -632,12 +738,9 @@ $TargetWord
 ? \<get()\>
 ?/{idx}
 ? \<{idx}\>
-?/get()
 ?/set 
 ? \<curBufNum\>
 ? \<item\>
-?/if
-?/if 
 ?/unlisted-buffer
 ?/help buffer.txt
 ? \<unlisted-buffer\>
@@ -656,7 +759,6 @@ $TargetWord
 ?/curtab
 ?/tabs number
 ?/tab number
-?/tab
 ?/tabpagebuflist
 ?/tabbuflist
 ? \<tabpagebuflist()\>
@@ -759,7 +861,6 @@ $TargetWord
 ? expr1
 ?  expr1 
 ? l:targetword
-?/variable
 ?/keyword
 ?/iskeyword
 ?/iskey
@@ -826,155 +927,519 @@ $TargetWord
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-"0	CHAR	0
-	isExistFileName(){
+""0	CHAR	0
+	l:langCommentStyleDict
 "1	LINE	0
-	            ;; # don't do anyting and excute normal process
-"2	LINE	0
 	
-"3	CHAR	0
-	echo "Target file : \"$FILEFORMATED\" is exist, Please change to another target name."
-	            exit
+"2	LINE	0
+	        if
+"3	LINE	0
 	
 "4	LINE	0
-	                    fi
+	
 "5	LINE	0
-	       
+	
 "6	LINE	0
-	        #Test the FILEFORMATED file exists
+	
 "7	LINE	0
 	
-"8	CHAR	0
-	echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-	            exit
+"8	LINE	0
 	
-"9	CHAR	0
-	        if [ ! -f $FILENAME ]
-	        then
-	            echo "Source file : \"$FILENAME\" is not legal file type, Please input a shell script file."
-	            exit
-	        fi
-""-	CHAR	0
-	.
+"9	LINE	0
+	
+"-	CHAR	0
+	l
 
 # 檔案標記:
-'0  22  0  ~/TODO
-'1  18  26  ~/Github/vimperator-labs/dir-struct.txt
-'2  176  12  ~/Github/vimperator-labs/common/content/events.js
-'3  80  12  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
-'4  1  0  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
-'5  79  8  ~/Github/vimperator-labs/vimperator/content/config.js
-'6  640  27  ~/Github/vimperator-labs/common/content/bookmarks.js
-'7  621  24  ~/Github/vimperator-labs/common/content/bookmarks.js
-'8  127  0  ~/ShellScripts/basic_scripts/format-the-shell-script.sh
-'9  1  0  ~/ShellScripts/test_scripts/temp.sh
+'0  1  4  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
+'1  47  263  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
+'2  22  0  ~/TODO
+'3  495  54  ~/.vimrc
+'4  446  0  ~/.vimrc
+'5  444  40  ~/.vimrc
+'6  439  0  ~/.vimrc
+'7  29  8  ~/.vimrc
+'8  1  0  ~/all-emacs-name-file.txt
+'9  23  21  ~/ShellScripts/bashrc-add-emacs-func
 
 # Jumplist (由新到舊):
+-'  1  4  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
+-'  47  263  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
 -'  22  0  ~/TODO
--'  18  26  ~/Github/vimperator-labs/dir-struct.txt
--'  165  4  ~/Github/vimperator-labs/dir-struct.txt
--'  23  26  ~/Github/vimperator-labs/dir-struct.txt
--'  22  26  ~/Github/vimperator-labs/dir-struct.txt
--'  15  30  ~/Github/vimperator-labs/dir-struct.txt
--'  202  0  ~/Github/vimperator-labs/dir-struct.txt
--'  148  34  ~/Github/vimperator-labs/dir-struct.txt
--'  120  26  ~/Github/vimperator-labs/dir-struct.txt
--'  82  34  ~/Github/vimperator-labs/dir-struct.txt
--'  60  38  ~/Github/vimperator-labs/dir-struct.txt
--'  17  26  ~/Github/vimperator-labs/dir-struct.txt
--'  93  30  ~/Github/vimperator-labs/dir-struct.txt
--'  70  34  ~/Github/vimperator-labs/dir-struct.txt
--'  47  31  ~/Github/vimperator-labs/dir-struct.txt
--'  42  26  ~/Github/vimperator-labs/dir-struct.txt
--'  79  0  ~/Github/vimperator-labs/dir-struct.txt
--'  50  0  ~/Github/vimperator-labs/dir-struct.txt
--'  1  0  ~/Github/vimperator-labs/dir-struct.txt
--'  176  12  ~/Github/vimperator-labs/common/content/events.js
--'  1  0  ~/Github/vimperator-labs/common/content/events.js
--'  80  12  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
--'  62  12  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
--'  1  0  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
--'  79  8  ~/Github/vimperator-labs/vimperator/content/config.js
--'  42  8  ~/Github/vimperator-labs/vimperator/content/config.js
--'  1  0  ~/Github/vimperator-labs/vimperator/content/config.js
--'  640  27  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  622  28  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  614  59  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  613  20  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  610  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  596  27  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  591  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  584  78  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  583  72  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  574  27  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  558  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  549  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  541  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  526  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  506  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  503  14  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  473  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  455  23  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  450  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  44  38  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  24  54  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  19  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  13  10  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  1  0  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  95  28  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  18  26  ~/Github/vimperator-labs/dir-struct.txt
--'  165  4  ~/Github/vimperator-labs/dir-struct.txt
--'  23  26  ~/Github/vimperator-labs/dir-struct.txt
--'  22  26  ~/Github/vimperator-labs/dir-struct.txt
--'  15  30  ~/Github/vimperator-labs/dir-struct.txt
--'  202  0  ~/Github/vimperator-labs/dir-struct.txt
--'  148  34  ~/Github/vimperator-labs/dir-struct.txt
--'  120  26  ~/Github/vimperator-labs/dir-struct.txt
--'  82  34  ~/Github/vimperator-labs/dir-struct.txt
--'  60  38  ~/Github/vimperator-labs/dir-struct.txt
--'  17  26  ~/Github/vimperator-labs/dir-struct.txt
--'  93  30  ~/Github/vimperator-labs/dir-struct.txt
--'  70  34  ~/Github/vimperator-labs/dir-struct.txt
--'  47  31  ~/Github/vimperator-labs/dir-struct.txt
--'  42  26  ~/Github/vimperator-labs/dir-struct.txt
--'  79  0  ~/Github/vimperator-labs/dir-struct.txt
--'  50  0  ~/Github/vimperator-labs/dir-struct.txt
--'  1  0  ~/Github/vimperator-labs/dir-struct.txt
--'  176  12  ~/Github/vimperator-labs/common/content/events.js
--'  1  0  ~/Github/vimperator-labs/common/content/events.js
--'  80  12  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
--'  62  12  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
--'  1  0  ~/Github/vimperator-labs/common/locale/en-US/gui.xml
--'  79  8  ~/Github/vimperator-labs/vimperator/content/config.js
--'  42  8  ~/Github/vimperator-labs/vimperator/content/config.js
--'  1  0  ~/Github/vimperator-labs/vimperator/content/config.js
--'  640  27  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  622  28  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  614  59  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  613  20  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  610  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  596  27  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  591  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  584  78  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  583  72  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  574  27  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  558  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  549  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  541  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  526  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  506  12  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  503  14  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  473  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  455  23  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  450  8  ~/Github/vimperator-labs/common/content/bookmarks.js
--'  44  38  ~/Github/vimperator-labs/common/content/bookmarks.js
+-'  495  54  ~/.vimrc
+-'  272  17  ~/.vimrc
+-'  164  0  ~/.vimrc
+-'  151  0  ~/.vimrc
+-'  135  0  ~/.vimrc
+-'  86  0  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  491  38  ~/.vimrc
+-'  487  10  ~/.vimrc
+-'  488  29  ~/.vimrc
+-'  486  18  ~/.vimrc
+-'  482  10  ~/.vimrc
+-'  504  39  ~/.vimrc
+-'  502  36  ~/.vimrc
+-'  483  10  ~/.vimrc
+-'  485  46  ~/.vimrc
+-'  520  22  ~/.vimrc
+-'  51  9  ~/.vimrc
+-'  50  0  ~/.vimrc
+-'  49  9  ~/.vimrc
+-'  507  11  ~/.vimrc
+-'  503  13  ~/.vimrc
+-'  508  14  ~/.vimrc
+-'  480  4  ~/.vimrc
+-'  479  4  ~/.vimrc
+-'  441  4  ~/.vimrc
+-'  440  4  ~/.vimrc
+-'  417  3  ~/.vimrc
+-'  416  3  ~/.vimrc
+-'  401  4  ~/.vimrc
+-'  400  4  ~/.vimrc
+-'  392  4  ~/.vimrc
+-'  391  4  ~/.vimrc
+-'  388  4  ~/.vimrc
+-'  254  14  ~/.vimrc
+-'  252  0  ~/.vimrc
+-'  251  2  ~/.vimrc
+-'  76  0  ~/.vimrc
+-'  1  0  ~/ShellScripts/basic_scripts/backup.sh
+-'  146  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
+-'  77  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
+-'  1  1  ~/all-emacs-name-file.txt
+-'  2  0  ~/.xsessionrc
+-'  1  0  ~/.xsessionrc
+-'  33  0  ~/.profile
+-'  26  0  ~/.profile
+-'  25  0  ~/.profile
+-'  30  0  ~/ShellScripts/bashrc-add-emacs-func
+-'  1  0  ~/ShellScripts/bashrc-add-emacs-func
+-'  1  0  ~/ShellScripts/bashrc-add-alias-name
+-'  16  0  ~/ShellScripts/bashrc-init
+-'  1  0  ~/ShellScripts/bashrc-init
+-'  123  0  ~/.bashrc
+-'  1  0  ~/.bashrc
+-'  4  8  ~/ShellScripts/bashrc-add-kernel-module-func
+-'  6  9  ~/ShellScripts/bashrc-add-kernel-module-func
+-'  7  8  ~/ShellScripts/bashrc-add-kernel-module-func
+-'  8  0  ~/ShellScripts/bashrc-add-kernel-module-func
+-'  27  0  /etc/profile
+-'  28  3  /etc/profile
+-'  142  13  ~/modprobe.txt
+-'  16011  48  ~/modprobe.txt
+-'  16009  48  ~/modprobe.txt
+-'  13690  46  ~/modprobe.txt
+-'  13057  28  ~/modprobe.txt
+-'  13027  30  ~/modprobe.txt
+-'  495  54  ~/.vimrc
+-'  272  17  ~/.vimrc
+-'  164  0  ~/.vimrc
+-'  151  0  ~/.vimrc
+-'  135  0  ~/.vimrc
+-'  86  0  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  491  38  ~/.vimrc
+-'  487  10  ~/.vimrc
+-'  488  29  ~/.vimrc
+-'  486  18  ~/.vimrc
+-'  482  10  ~/.vimrc
+-'  504  39  ~/.vimrc
+-'  502  36  ~/.vimrc
+-'  483  10  ~/.vimrc
+-'  485  46  ~/.vimrc
+-'  520  22  ~/.vimrc
+-'  51  9  ~/.vimrc
+-'  50  0  ~/.vimrc
+-'  49  9  ~/.vimrc
+-'  507  11  ~/.vimrc
+-'  503  13  ~/.vimrc
+-'  508  14  ~/.vimrc
+-'  480  4  ~/.vimrc
+-'  479  4  ~/.vimrc
+-'  441  4  ~/.vimrc
+-'  440  4  ~/.vimrc
+-'  417  3  ~/.vimrc
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
+	"	1	4
+	^	47	264
+	.	47	263
+	+	47	263
 
 > ~/TODO
 	"	22	0
 	.	23	0
 	+	23	0
+
+> ~/.vimrc
+	"	495	54
+	^	495	55
+	.	495	54
+	+	513	41
+	+	479	19
+	+	480	12
+	+	508	24
+	+	480	20
+	+	479	22
+	+	508	0
+	+	507	31
+	+	508	0
+	+	508	35
+	+	511	8
+	+	508	0
+	+	507	15
+	+	510	70
+	+	507	30
+	+	503	17
+	+	507	9
+	+	482	0
+	+	503	38
+	+	482	0
+	+	446	0
+	+	445	0
+	+	475	0
+	+	446	0
+	+	445	0
+	+	483	19
+	+	503	7
+	+	483	41
+	+	482	44
+	+	503	6
+	+	507	10
+	+	483	25
+	+	503	13
+	+	502	37
+	+	503	18
+	+	503	0
+	+	505	12
+	+	503	12
+	+	504	18
+	+	503	19
+	+	507	17
+	+	503	23
+	+	507	21
+	+	482	4
+	+	502	4
+	+	502	32
+	+	486	0
+	+	486	33
+	+	486	21
+	+	482	80
+	+	502	4
+	+	502	4
+	+	501	0
+	+	502	4
+	+	502	4
+	+	502	4
+	+	502	4
+	+	502	4
+	+	502	4
+	+	502	4
+	+	502	4
+	+	502	4
+	+	485	15
+	+	483	49
+	+	485	46
+	+	486	0
+	+	501	8
+	+	483	0
+	+	502	4
+	+	483	0
+	+	484	0
+	+	502	3
+	+	502	4
+	+	502	52
+	+	504	60
+	+	503	0
+	+	487	8
+	+	488	0
+	+	501	0
+	+	489	0
+	+	489	7
+	+	487	56
+	+	488	29
+	+	489	0
+	+	497	12
+	+	491	0
+	+	492	10
+	+	491	56
+	+	485	10
+	+	487	14
+	+	491	8
+	+	492	8
+	+	491	13
+	+	492	17
+	+	494	21
+	+	482	62
+	+	494	63
+	+	496	53
+	+	494	55
+	+	495	54
+	a	368	4
+	m	325	40
+	t	314	0
+
+> ~/Note/text_editor/vim/vim-replace-string-command.txt
+	"	77	0
+	^	167	0
+	.	140	0
+	+	47	397
+	+	1	3
+	+	3	0
+	+	6	0
+	+	7	0
+	+	12	0
+	+	16	4
+	+	21	0
+	+	24	0
+	+	27	0
+	+	30	0
+	+	33	0
+	+	36	0
+	+	39	0
+	+	42	0
+	+	45	0
+	+	48	0
+	+	51	0
+	+	54	0
+	+	58	0
+	+	60	0
+	+	62	0
+	+	64	0
+	+	66	0
+	+	68	0
+	+	70	0
+	+	72	0
+	+	74	0
+	+	76	0
+	+	78	0
+	+	80	0
+	+	82	0
+	+	84	0
+	+	86	0
+	+	88	0
+	+	90	0
+	+	92	0
+	+	94	0
+	+	96	0
+	+	98	0
+	+	100	0
+	+	110	0
+	+	113	0
+	+	121	0
+	+	166	0
+	+	137	0
+	+	138	0
+	+	139	0
+	+	140	0
+	+	140	0
+
+> /usr/share/vim/vim74/doc/eval.txt
+	"	7851	0
+
+> /usr/share/vim/vim74/doc/change.txt
+	"	398	7
+
+> /usr/share/vim/vim74/doc/options.txt
+	"	2342	24
+
+> /usr/share/vim/vim74/doc/filetype.txt
+	"	293	2
+
+> /usr/share/vim/vim74/doc/cmdline.txt
+	"	441	1
+
+> /usr/share/vim/vim74/doc/usr_41.txt
+	"	2242	10
+
+> ~/Note/text_editor/vim/vim-get-current-dir-file.txt
+	"	1	0
+	.	18	0
+	+	33	0
+	+	32	0
+	+	33	0
+	+	32	4
+	+	6	54
+	+	7	80
+	+	8	25
+	+	9	27
+	+	10	78
+	+	11	59
+	+	13	0
+	+	13	0
+	+	3	0
+	+	3	0
+	+	18	0
+	+	19	0
+	+	20	0
+	+	21	0
+	+	22	0
+	+	2	0
+	+	3	0
+	+	28	0
+	+	26	0
+	+	22	0
+	+	21	0
+	+	20	0
+	+	19	0
+	+	18	0
+
+> ~/ShellScripts/basic_scripts/backup.sh
+	"	1	0
+
+> ~/all-emacs-name-file.txt
+	"	1	1
+
+> ~/ShellScripts/bashrc-add-find-func
+	"	10	0
+	^	11	0
+	.	11	0
+	+	9	11
+	+	11	0
+
+> ~/ShellScripts/bashrc-add-alias-name
+	"	6	7
+	^	6	8
+	.	6	7
+	+	8	0
+	+	5	26
+	+	6	7
+
+> ~/ShellScripts/bashrc-add-env-setting
+	"	1	0
+	^	7	46
+	.	7	48
+	+	7	101
+	+	7	0
+	+	6	10
+	+	7	114
+	+	7	1
+	+	7	13
+	+	7	8
+	+	7	0
+	+	7	0
+	+	7	23
+	+	7	22
+	+	7	0
+	+	7	47
+	+	7	17
+	+	7	47
+	+	7	0
+	+	7	31
+	+	7	0
+	+	7	0
+	+	7	0
+	+	7	25
+	+	7	0
+	+	7	0
+	+	7	0
+	+	7	17
+	+	7	14
+	+	7	0
+	+	7	0
+	+	7	25
+	+	7	0
+	+	8	0
+	+	7	0
+	+	7	0
+	+	7	0
+	+	7	0
+	+	7	0
+	+	7	0
+	+	7	32
+	+	7	0
+	+	8	0
+	+	7	48
+
+> /usr/share/vim/vim74/doc/gui.txt
+	"	455	0
+
+> /usr/share/vim/vim74/doc/editing.txt
+	"	1340	61
+
+> ~/Note/linux/ubuntu/shell/shell_command/text-processing-tools.txt
+	"	458	0
+
+> ~/ShellScripts/bashrc-add-emacs-func
+	"	23	21
+	.	23	21
+	+	22	20
+	+	23	21
+
+> ~/.xsessionrc
+	"	2	0
+
+> ~/.profile
+	"	33	0
+	^	31	0
+	.	34	0
+	+	32	3
+	+	32	0
+	+	28	45
+	+	30	42
+	+	31	0
+	+	34	0
+
+> ~/.bashrc
+	"	123	0
+
+> ~/ShellScripts/bashrc-init
+	"	12	1
+
+> /etc/bash.bashrc
+	"	68	0
+
+> ~/ShellScripts/bashrc-add-kernel-module-func
+	"	4	8
+	^	7	8
+	.	4	0
+	+	3	0
+	+	2	35
+	+	5	0
+	+	6	20
+	+	8	0
+	+	3	7
+	+	4	7
+	+	7	7
+	+	4	0
+
+> /etc/profile
+	"	27	0
+	.	28	0
+	+	28	3
+	+	28	0
+	+	28	0
+
+> ~/modprobe.txt
+	"	142	13
+
+> ~/Note/linux/system_management/get-system-info-utility-command.txt
+	"	35	0
+	.	45	0
+	+	45	8
+	+	47	0
+	+	46	4
+	+	2	0
+	+	45	0
+	+	45	0
+	+	45	0
+	+	45	0
+	+	45	0
+	+	45	0
+	+	45	0
+
+> ~/env.txt
+	"	22	0
+
+> ~/Note/linux/ubuntu/mouse/psmouse-enable.txt
+	"	33	0
+	^	33	9
+	.	34	0
+	+	33	8
+	+	34	0
 
 > ~/Github/vimperator-labs/dir-struct.txt
 	"	18	26
@@ -1307,114 +1772,6 @@ $TargetWord
 	+	81	258
 	+	2	0
 
-> ~/.vimrc
-	"	70	0
-	^	454	25
-	.	454	25
-	+	438	0
-	+	435	1
-	+	436	0
-	+	437	0
-	+	437	0
-	+	438	0
-	+	437	0
-	+	436	29
-	+	438	0
-	+	387	0
-	+	458	0
-	+	474	0
-	+	474	3
-	+	237	0
-	+	447	0
-	+	448	0
-	+	446	0
-	+	449	0
-	+	450	0
-	+	455	0
-	+	456	0
-	+	449	0
-	+	455	0
-	+	456	0
-	+	474	0
-	+	461	0
-	+	469	33
-	+	326	46
-	+	469	0
-	+	468	22
-	+	468	25
-	+	468	4
-	+	469	26
-	+	469	0
-	+	469	35
-	+	472	0
-	+	469	8
-	+	472	4
-	+	469	4
-	+	468	14
-	+	469	0
-	+	469	34
-	+	474	0
-	+	473	47
-	+	459	0
-	+	459	20
-	+	459	0
-	+	460	0
-	+	462	0
-	+	462	0
-	+	462	10
-	+	463	9
-	+	464	14
-	+	467	10
-	+	468	9
-	+	469	14
-	+	469	14
-	+	472	0
-	+	472	0
-	+	473	47
-	+	462	62
-	+	467	64
-	+	469	69
-	+	471	14
-	+	469	0
-	+	471	0
-	+	469	0
-	+	470	0
-	+	470	0
-	+	469	8
-	+	470	0
-	+	470	0
-	+	469	16
-	+	470	8
-	+	469	8
-	+	470	0
-	+	470	0
-	+	470	0
-	+	470	0
-	+	470	0
-	+	469	0
-	+	474	0
-	+	462	0
-	+	472	0
-	+	453	15
-	+	453	0
-	+	452	11
-	+	451	0
-	+	455	0
-	+	453	17
-	+	455	4
-	+	452	42
-	+	453	27
-	+	455	0
-	+	453	27
-	+	452	67
-	+	453	16
-	+	452	61
-	+	453	32
-	+	454	25
-	a	368	4
-	m	325	40
-	t	314	0
-
 > ~/ShellScripts/basic_scripts/format-error
 	"	1	0
 
@@ -1673,12 +2030,6 @@ $TargetWord
 > /usr/share/vim/vim74/doc/pattern.txt
 	"	1365	2
 
-> /usr/share/vim/vim74/doc/eval.txt
-	"	8520	8
-
-> /usr/share/vim/vim74/doc/options.txt
-	"	1308	3
-
 > /usr/share/vim/vim74/doc/help.txt
 	"	1	0
 
@@ -1789,9 +2140,6 @@ $TargetWord
 > /usr/share/vim/vim74/doc/quickfix.txt
 	"	129	18
 
-> /usr/share/vim/vim74/doc/cmdline.txt
-	"	805	10
-
 > ~/help.txt
 	"	1	0
 	.	1	0
@@ -1840,233 +2188,3 @@ $TargetWord
 
 > ~/Note/text_editor/vim/vim
 	"	1	0
-
-> ~/Note/text_editor/vim/vimrc-config.txt
-	"	25	0
-
-> ~/Note/text_editor/vim/vim-replace-string-command.txt
-	"	77	0
-	^	1	4
-	.	121	0
-	+	47	397
-	+	1	3
-	+	3	0
-	+	6	0
-	+	7	0
-	+	12	0
-	+	16	4
-	+	21	0
-	+	24	0
-	+	27	0
-	+	30	0
-	+	33	0
-	+	36	0
-	+	39	0
-	+	42	0
-	+	45	0
-	+	48	0
-	+	51	0
-	+	54	0
-	+	58	0
-	+	60	0
-	+	62	0
-	+	64	0
-	+	66	0
-	+	68	0
-	+	70	0
-	+	72	0
-	+	74	0
-	+	76	0
-	+	78	0
-	+	80	0
-	+	82	0
-	+	84	0
-	+	86	0
-	+	88	0
-	+	90	0
-	+	92	0
-	+	94	0
-	+	96	0
-	+	98	0
-	+	100	0
-	+	110	0
-	+	113	0
-	+	121	0
-
-> /usr/share/vim/vim74/doc/usr_40.txt
-	"	1	0
-
-> /usr/share/vim/vim74/doc/gui.txt
-	"	821	55
-
-> /usr/share/vim/vim74/doc/repeat.txt
-	"	235	0
-
-> /usr/share/vim/vim74/doc/sponsor.txt
-	"	26	0
-
-> /usr/share/vim/vim74/doc/change.txt
-	"	685	54
-
-> /usr/share/vim/vim74/doc/pi_netrw.txt
-	"	3124	43
-
-> /usr/share/vim/vim74/doc/usr_27.txt
-	"	282	0
-
-> ~/hello
-	"	59	0
-	^	59	0
-	.	397	0
-	+	59	0
-	+	59	0
-	+	60	0
-	+	77	0
-	+	224	0
-	+	250	0
-	+	251	0
-	+	253	0
-	+	384	0
-	+	387	0
-	+	388	0
-	+	396	0
-	+	397	0
-	+	412	0
-	+	59	0
-	+	59	0
-	+	59	0
-	+	60	0
-	+	77	0
-	+	224	0
-	+	250	0
-	+	251	0
-	+	253	0
-	+	384	0
-	+	387	0
-	+	388	0
-	+	396	0
-	+	397	0
-	+	412	0
-	+	59	0
-	+	60	0
-	+	77	0
-	+	224	0
-	+	250	0
-	+	251	0
-	+	253	0
-	+	384	0
-	+	387	0
-	+	388	0
-	+	396	0
-	+	397	0
-	+	412	0
-	+	59	0
-	+	59	0
-	+	60	0
-	+	59	0
-	+	60	0
-	+	77	0
-	+	224	0
-	+	250	0
-	+	251	0
-	+	253	0
-	+	384	0
-	+	387	0
-	+	388	0
-	+	396	0
-	+	397	0
-	+	412	0
-	+	59	0
-	+	60	0
-	+	77	0
-	+	224	0
-	+	250	0
-	+	251	0
-	+	253	0
-	+	384	0
-	+	387	0
-	+	388	0
-	+	396	0
-	+	397	0
-
-> /usr/share/vim/vim74/doc/editing.txt
-	"	674	6
-
-> ~/.spacemacs
-	"	314	20
-	^	314	21
-	.	314	20
-	+	314	20
-
-> ~/crush_message/emacs-daemon-startup-message.txt
-	"	18	0
-
-> ~/font.txt
-	"	1	0
-	^	3	0
-	.	1	0
-	+	1	0
-	+	8	1
-	+	9	2
-	+	2	13
-	+	1	0
-	+	1	0
-	+	1	0
-
-> ~/buffer
-	"	1	0
-
-> ~/.gitignore
-	"	19	0
-	^	40	13
-	.	40	3
-	+	38	0
-	+	40	3
-
-> ~/Note/linux/ubuntu/vim/vim-color-config.txt
-	"	79	224
-	^	79	227
-	.	79	224
-	+	79	224
-
-> ~/.vim_runtime/vimrcs/extended.vim
-	"	44	0
-
-> ~/.vim_runtime/vimrcs/filetypes.vim
-	"	1	0
-
-> ~/.vim_runtime/vimrcs/basic.vim
-	"	432	0
-
-> ~/Note/colors/rainbow-rgb-and-cmyk-encoding.txt
-	"	10	0
-	^	2	39
-	.	2	38
-	+	12	0
-	+	1	0
-	+	3	0
-	+	2	38
-
-> colors/rainbow-rgb-and-cmyk-encoding.txt
-	"	20	0
-	^	20	0
-	.	19	0
-	+	19	0
-
-> Note/colors/rainbow-rgb-and-cmyk-encoding.txt
-	"	1	0
-	^	3	0
-	.	2	34
-	+	12	0
-	+	1	0
-	+	3	0
-	+	2	34
-
-> Note/colors/rainbow-rgb-abd
-	"	1	0
-
-> ~/.gconf/apps/gnome-terminal/Default/%gconf.xml
-	"	1	0
-
-> ~/Github/jellybeans.vim/ansi-term-colors.txt
-	"	8	0

@@ -2,6 +2,9 @@
 ###########################
 #    my personal config
 ###########################
+## define some enviornment variable
+PS_INFO="USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
+
 
 ## alias some name
 # alias some emacsclient short name

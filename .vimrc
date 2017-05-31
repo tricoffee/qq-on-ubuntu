@@ -435,6 +435,87 @@ endfunction
 "
 " my personal custem functions
 "
+
+function! ShowCurFileFullPath()
+    let l:fileFullName = expand("%")
+    let l:curPath = getcwd()
+
+    echo "curret full path and file name is :"
+    echo l:curPath . "/" . l:fileFullName
+
+                                        *clipboard*
+            There is a special register for storing this selection, it is the "*
+            register.  Nothing is put in here unless the information about what text is
+            selected is about to change (e.g. with a left mouse click somewhere), or when
+            another application wants to paste the selected text.  Then the text is put
+            in the "* register.  For example, to cut a line and make it the current
+            selection/put it on the clipboard: >
+
+                "*dd
+
+            Similarly, when you want to paste a selection from another application, e.g.,
+            by clicking the middle mouse button, the selection is put in the "* register
+            first, and then 'put' like any other register.  For example, to put the
+            selection (contents of the clipboard): >
+
+                "*p
+
+            When using this register under X11, also see |x11-selection|.  This also
+            explains the related "+ register.
+
+            Note that when pasting text from one Vim into another separate Vim, the type
+            of selection (character, line, or block) will also be copied.  For other
+            applications the type is always character.  However, if the text gets
+            transferred via the |x11-cut-buffer|, the selection type is ALWAYS lost.
+
+            When the "unnamed" string is included in the 'clipboard' option, the unnamed
+            register is the same as the "* register.  Thus you can yank to and paste the
+            selection without prepending "* to commands.
+
+
+endfunction 
+
+function! AutoComment()
+    let l:startLinum = 
+    let l:endLinum = 
+
+    let l:langCommentStyleDict = {'C': '//', 'shell': '#', 'sh': '#', 'lisp': ';', 'vim': '"'}
+    let l:curBufVarDict = getbufvar(burnr("%"), "")
+
+    if 1 == has_key(l:curBufVarDict, 'current_syntax')   " if has 'current_syntax', return 1.
+        let l:curLanguage = get(getbufvar(bufnr("%"), ""), 'current_syntax') 
+        if 1 == has_key(l:langCommentStyleDict, l:curLanguage)
+            let l:commentStyle = get(getbufvar(bufnr("%"), ""), 'current_syntax') 
+        endif
+    else 
+        if 1 == empty(expand("%:e"))    " if empty, return 1.
+            return
+        else
+            " traversal 'l:langCommentStyleDict' Dict, 
+            " find the editing file on current buffer's
+            " suffix name is correspond to what {key}.
+        endif
+    endif
+
+
+
+        for item in l:curLangList
+        if l:curLanguage
+            let l:commentStyle = get(l:langCommentStyleDict, )
+        endif
+
+    if ! l:curLanguage
+        let l:commentStyle = input()
+    else
+        echo "The current language's comment style is : CURCOMMENTSTYLE"
+    endif
+    ": 2,50 s/^/\/\//g  在2~50行首添加//号注释
+    "   如何获得 startline，endline ？
+    execute("startline"."endline"."s/".l:SourceWord."/".l:TargetWord."/gcp")
+
+
+endfunction
+
 function! KeepCurrentBuf() range
     let b:curBufNum = bufnr("%") 
     " To get a list of all buffers in all tabs use this: >
