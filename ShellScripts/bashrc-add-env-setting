@@ -1,0 +1,16 @@
+
+###########################
+#    my personal config
+###########################
+## define some enviornment variable
+SPACE='\040'
+PS_INFO="USER \040\040\040\040 PID \040 %CPU\040%MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
+
+
+## alias some name
+# alias some emacsclient short name
+alias emt='emacsclient -t -a ""'  # open emacsclient with term
+alias emc='emacsclient -c -a ""'  # open emacsclient with GUI
+
+# alias manpages chinese version
+alias zhman='man -M /usr/share/man/zh_TW'

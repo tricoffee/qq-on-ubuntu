@@ -1,0 +1,286 @@
+
+FTP命令及参数详解
+分类： 其它 2008-07-21 14:55 4849人阅读 评论(0) 收藏 举报
+ftp服务器服务器commandwindowsmicrosoftinternet
+ftp命令及参数详解
+ 
+
+ftp
+   ftp [-v] [-n] [-i] [-d] [-g] [-s:filename] [-a] [-w:windowsize] [computer]
+参数
+-v 禁止显示远程服务器响应。
+-n 禁止自动登录到初始连接。
+-I 多个文件传送时关闭交互提示。
+-d 启用调试、显示在客户端和服务器之间传递的所有 ftp 命令。
+-g 禁用文件名组，它允许在本地文件和路径名中使用通配符字符（* 和 ?）。（请参阅联机“命令参考”中的 glob 命令。）
+-s: filename指定包含 ftp 命令的文本文件；当 ftp 启动后，这些命令将自动运行。该参数中不允许有空格。使用该开关而不是重定向 (>)。
+-a 在捆绑数据连接时使用任何本地接口。
+-w:windowsize 替代默认大小为 4096 的传送缓冲区。
+     Computer 指定要连接到远程计算机的计算机名或 IP 地址。如果指定，计算机必须是行的最后一个参数。
+下面是一些常用命令：
+！：   从ftp子系统退出到系统外壳
+？：     显示ftp说明，跟help一样
+append: 添加文件，格式为：append 本地文件远程文件
+cd：   更换远程目录
+lcd：  更换本地目录，若无参数，将显示当前目录
+open： 与指定的ftp服务器连接 open computer [port]
+close：结束与远程服务器的 FTP 会话并返回命令解释程序
+bye：     结束与远程计算机的 FTP 会话并退出 ftp
+dir：  结束与远程计算机的 FTP 会话并退出 ftp
+get 和 recv：使用当前文件转换类型将远程文件复制到本地计算机 get remote-file [local-file]
+send 和 put： 上传文件：send local-file [remote-file]
+其它命令请参考帮助文件。
+例子：
+C:/>ftp
+ftp> open ftp.zju.edu.cn
+Connected to alpha800.zju.edu.cn.
+220 ProFTPD 1.2.0pre9 Server (浙江大学自由软件服务器) [alpha800.zju.edu.cn]
+User (alpha800.zju.edu.cn:(none)): anonymous
+331 Anonymous login ok, send your complete e-mail address as password.
+Password:
+230 Anonymous access granted, restrictions apply.
+ftp> dir //查看本目录下的内容：
+…
+ftp> cd pub //切换目录
+250 CWD command successful.
+ftp> dir
+200 PORT command successful.
+150 Opening ASCII mode data connection for file list.
+…
+ftp> cd microsoft
+250 CWD command successful.
+ftp> dir
+200 PORT command successful.
+150 Opening ASCII mode data connection for file list.
+-rw-r--r--     1 ftp        ftp          288632 Dec 8 1999 chargeni.exe
+226 Transfer complete.
+ftp: 69 bytes received in 0.01Seconds 6.90Kbytes/sec.
+ftp> lcd e:/     //本地目录切换
+Local directory now E:/.
+ftp> get chargeni.exe     //下载文件
+200 PORT command successful.
+150 Opening ASCII mode data connection for chargeni.exe (288632 bytes).
+226 Transfer complete.
+ftp: 289739 bytes received in 0.36Seconds 802.60Kbytes/sec.
+ftp> bye           //离开
+221 Goodbye.
+Nbtstat.exe
+该诊断命令使用 NBT（TCP/IP 上的 NetBIOS）显示协议统计和当前 TCP/IP 连接。该命令只有在安装了 TCP/IP 协议之后才可用。
+nbtstat [-a remotename] [-A IP address] [-c] [-n] [-R] [-r] [-S] [-s] [interval]
+参数
+-a remotename 使用远程计算机的名称列出其名称表。
+-A IP address 使用远程计算机的 IP 地址并列出名称表。
+-c 给定每个名称的 IP 地址并列出 NetBIOS 名称缓存的内容。
+-n 列出本地 NetBIOS 名称。“已注册”表明该名称已被广播 (Bnode) 或者 WINS（其他节点类型）注册。
+-R 清除 NetBIOS 名称缓存中的所有名称后，重新装入 Lmhosts 文件。
+-r 列出 Windows 网络名称解析的名称解析统计。在配置使用 WINS 的 Windows 2000 计算机上，此选项返回要通过广播或 WINS 来解析和注册的名称数。
+-S 显示客户端和服务器会话，只通过 IP 地址列出远程计算机。
+-s 显示客户端和服务器会话。尝试将远程计算机 IP 地址转换成使用主机文件的名称。
+interval重新显示选中的统计，在每个显示之间暂停 interval 秒。按 CTRL+C 停止重新显示统计信息。如果省略该参数，nbtstat 打印一次当前的配置信息。
+例子：
+C:/>nbtstat –A 周围主机的ip地址
+C:/>nbtstat –c
+C:/>nbtstat –n
+C:/>nbtstat -S
+本地连接:
+Node IpAddress: [10.111.142.71] Scope Id: []
+                       NetBIOS Connection Table
+      Local Name               State      In/Out Remote Host             Input     Output
+JJY              <03> Listening
+另外可以加上间隔时间，以秒为单位
+5、net：
+许多 Windows 2000 网络命令都以词 net 开头。这些 net 命令有一些公用属性：
+键入 net /? 可以看到所有可用的 net 命令的列表。
+键入 net help command，可以在命令行获得 net 命令的语法帮助。例如，关于 net accounts 命令的帮助信息，请键入 net help accounts。
+所有 net 命令都接受 /yes 和 /no 选项（可以缩写为 /y 和 /n）。/y 选项向命令产生的任何交互式提示自动回答“是”，而 /n 回答“否”。
+例如，net stop server 通常提示您确认要停止基于“服务器”服务的所有服务；
+而 net stop server /y 对该提示自动回答“是”，然后“服务器”服务关闭。
+例如：
+Net send：（可能许多人已经用过，或者感到厌烦，索性把服务给关了）
+net send {name | * | /domain[:name] | /usersmessage}
+Net stop：停止 Windows 2000 网络服务。
+net stop service
+例如：C:/>net stop messenger
+Messenger 服务正在停止.
+Messenger 服务已成功停止。
+此时再打入net send 本机名消息，就没用了；相应的，要打开这个服务，只需把stop改为start，就可以了。
+Net start FTP Publishing Service
+启动 FTP 发布服务。该命令只有在安装了 Internet 信息服务后才可用。
+net start "ftp publishing service"
+类似的命令有很多，请参考帮助文件。
+ 
+----------------------------------------------------
+ 
+
+FTP命令是Internet用户使用最频繁的命令之一，不论是在DOS还是UNIX操作系统下使用FTP，都会遇到大量的FTP内部命令。熟悉并灵活应用FTP的内部命令，可以大大方便使用者，并收到事半功倍之效。
+
+ 
+
+　　FTP的命令行格式为：ftp -v -d -i -n -g [主机名]，其中
+
+ 
+
+　　-v显示远程服务器的所有响应信息；
+
+　　-n限制ftp的自动登录，即不使用；
+
+　　.n etrc文件；
+
+　　-d使用调试方式；
+
+　　-g取消全局文件名。
+
+ 
+
+　　ftp使用的内部命令如下(中括号表示可选项):
+
+ 
+
+　　1.![cmd[args]]：在本地机中执行交互shell，exit回到ftp环境，如：!ls*.zip.
+
+　　2.$ macro-ame[args]：执行宏定义macro-name.
+
+　　3.account[password]：提供登录远程系统成功后访问系统资源所需的补充口令。
+
+　　4.append local-file[remote-file]：将本地文件追加到远程系统主机，若未指定远程系统文件名，则使用本地文件名。
+
+　　5.ascii：使用ascii类型传输方式。
+
+　　6.bell：每个命令执行完毕后计算机响铃一次。
+
+　　7.bin：使用二进制文件传输方式。
+
+　　8.bye：退出ftp会话过程。
+
+　　9.case：在使用mget时，将远程主机文件名中的大写转为小写字母。
+
+　　10.cd remote-dir：进入远程主机目录。
+
+　　11.cdup：进入远程主机目录的父目录。
+
+　　12.chmod mode file-name：将远程主机文件file-name的存取方式设置为mode，如：chmod 777 a.out。
+
+　　13.close：中断与远程服务器的ftp会话(与open对应)。
+
+　　14.cr：使用asscii方式传输文件时，将回车换行转换为回行。
+
+　　15.delete remote-file：删除远程主机文件。
+
+　　16.debug[debug-value]：设置调试方式，显示发送至远程主机的每条命令，如：deb up 3，若设为0，表示取消debug。
+
+　　17.dir[remote-dir][local-file]：显示远程主机目录，并将结果存入本地文件local-file。
+
+　　18.disconnection：同close。
+
+　　19.form format：将文件传输方式设置为format，缺省为file方式。
+
+　　20.get remote-file[local-file]：将远程主机的文件remote-file传至本地硬盘的local-file。
+
+　　21.glob：设置mdelete，mget，mput的文件名扩展，缺省时不扩展文件名，同命令行的-g参数。
+
+　　22.hash：每传输1024字节，显示一个hash符号(#)。
+
+　　23.help[cmd]：显示ftp内部命令cmd的帮助信息，如：help get。
+
+　　24.idle[seconds]：将远程服务器的休眠计时器设为[seconds]秒。
+
+　　25.image：设置二进制传输方式(同binary)。
+
+　　26.lcd[dir]：将本地工作目录切换至dir。
+
+　　27.ls[remote-dir][local-file]：显示远程目录remote-dir，并存入本地文件local-file。
+
+　　28.macdef macro-name：定义一个宏，遇到macdef下的空行时，宏定义结束。
+
+　　29.mdelete[remote-file]：删除远程主机文件。
+
+　　30.mdir remote-files local-file：与dir类似，但可指定多个远程文件，如：mdir *.o.*.zipoutfile
+
+　　31.mget remote-files：传输多个远程文件。
+
+　　32.mkdir dir-name：在远程主机中建一目录。
+
+　　33.mls remote-file local-file：同nlist，但可指定多个文件名。
+
+　　34.mode[modename]：将文件传输方式设置为modename，缺省为stream方式。
+
+　　35.modtime file-name：显示远程主机文件的最后修改时间。
+
+　　36.mput local-file：将多个文件传输至远程主机。
+
+　　37.newer file-name：如果远程机中file-name的修改时间比本地硬盘同名文件的时间更近，则重传该文件。
+
+　　38.nlist[remote-dir][local-file]：显示远程主机目录的文件清单，并存入本地硬盘的local-file。
+
+　　39.nmap[inpattern outpattern]：设置文件名映射机制，使得文件传输时，文件中的某些字符相互转换，如：nmap $1.$2.$3[$1，$2].[$2，$3]，则传输文件a1.a2.a3时，文件名变为a1，a2。该命令特别适用于远程主机为非UNIX机的情况。
+
+　　40.ntrans[inchars[outchars]]：设置文件名字符的翻译机制，如ntrans 1R，则文件名LLL将变为RRR。
+
+　　41.open host[port]：建立指定ftp服务器连接，可指定连接端口。
+
+　　42.passive：进入被动传输方式。
+
+　　43.prompt：设置多个文件传输时的交互提示。
+
+　　44.proxy ftp-cmd：在次要控制连接中，执行一条ftp命令，该命令允许连接两个ftp服务器，以在两个服务器间传输文件。第一条ftp命令必须为open，以首先建立两个服务器间的连接。
+
+　　45.put local-file[remote-file]：将本地文件local-file传送至远程主机。
+
+　　46.pwd：显示远程主机的当前工作目录。
+
+　　47.quit：同bye，退出ftp会话。
+
+　　48.quote arg1，arg2...：将参数逐字发至远程ftp服务器，如：quote syst.
+
+　　49.recv remote-file[local-file]：同get。
+
+　　50.reget remote-file[local-file]：类似于get，但若local-file存在，则从上次传输中断处续传。
+
+　　51.rhelp[cmd-name]：请求获得远程主机的帮助。
+
+　　52.rstatus[file-name]：若未指定文件名，则显示远程主机的状态，否则显示文件状态。
+
+　　53.rename[from][to]：更改远程主机文件名。
+
+　　54.reset：清除回答队列。
+
+　　55.restart marker：从指定的标志marker处，重新开始get或put，如：restart 130。
+
+　　56.rmdir dir-name：删除远程主机目录。
+
+　　57.runique：设置文件名唯一性存储，若文件存在，则在原文件后加后缀..1，.2等。
+
+　　58.send local-file[remote-file]：同put。
+
+　　59.sendport：设置PORT命令的使用。
+
+　　60.site arg1，arg2...：将参数作为SITE命令逐字发送至远程ftp主机。
+
+　　61.size file-name：显示远程主机文件大小，如：site idle 7200。
+
+　　62.status：显示当前ftp状态。
+
+　　63.struct[struct-name]：将文件传输结构设置为struct-name，缺省时使用stream结构。
+
+　　64.sunique：将远程主机文件名存储设置为唯一(与runique对应)。
+
+　　65.system：显示远程主机的操作系统类型。
+
+　　66.tenex：将文件传输类型设置为TENEX机的所需的类型。
+
+　　67.tick：设置传输时的字节计数器。
+
+　　68.trace：设置包跟踪。
+
+　　69.type[type-name]：设置文件传输类型为type-name，缺省为ascii，如：type binary，设置二进制传输方式。
+
+　　70.umask[newmask]：将远程服务器的缺省umask设置为newmask，如：umask 3。
+
+　　71.user user-name[password][account]：向远程主机表明自己的身份，需要口令时，必须输入口令，如：user anonymous my@email。
+
+　　72.verbose：同命令行的-v参数，即设置详尽报告方式，ftp服务器的所有响应都将显示给用户，缺省为on. s
+
+　　73.?[cmd]：同help。
+　　
+　　
+　　[end]

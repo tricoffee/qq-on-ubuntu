@@ -1,0 +1,2 @@
+***.tar.xz 文件
+使用 tar xvJf  ***.tar.xz 命令来解压缩

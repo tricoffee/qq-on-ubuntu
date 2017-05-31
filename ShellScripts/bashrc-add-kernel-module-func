@@ -1,0 +1,8 @@
+# enable touchpad when system startup
+function modprobe-enable-touchpad(){
+   sudo modprobe -r psmouse 
+   sudo modprobe psmouse proto=imps
+}
+function modprobe-disable-touchpad(){
+   sudo modprobe -r psmouse 
+}

@@ -1,0 +1,25 @@
+修改linux机器名  
+
+2011-03-24 10:32:30|  分类： linux |  标签：修改  hostname  机器  hosts  sysconfig   |字号 订阅
+
+方法一：暂时修改机器名：hostname
+
+          用hostname命令可以临时修改机器名，但机器重新启动之后就会恢复原来的值。
+
+          #hostname   //查看机器名
+          #hostname -i  //查看本机器名对应的ip地址
+
+方法二：永久性修改机器名：修改系统配置文件
+
+    修改/etc/sysconfig/network   //修改这个系统配置文件，才能有效改变机器名
+        /etc/hosts                            //hostname命令读这个配置文件
+
+直接修改/etc/hosts文件，系统本身用到主机名的地方不会变化
+
+所以 /etc/hosts 是网络中用的，/etc/sysconfig/network是本机起作用。这个是刚刚学到的，记录一下。修改linux机器名 - Lia - Smile，my sunflower
+
+我也是刚刚知道还有一种方法是修改/etc/sysconfig/network 的。
+
+之前我一直是修改/etc/hostname来修改机器名的。在/etc/hosts中添加本机和其他需要的机器的ip地址和机器名（即hostname显示的名称）。这样的话需要登录其他机器时，
+不仅可以使用ip地址来登录，比如：ssh 192.168.170.129，也可以使用机器名来远程登录，前述ip的机器名为lia，则可以ssh lia来登录该机器，两种方法的效果是一样的。
+当然在修改了/etc/hostname中的内容后需要重新启动系统才能生效。

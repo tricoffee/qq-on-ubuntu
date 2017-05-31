@@ -1,0 +1,36 @@
+    Linux查看History记录加时间戳小技巧
+
+    分类：Linux 日记
+
+    （31101） （0）
+    [javascript] view plain copy
+
+        Linux查看History记录加时间戳小技巧  
+            熟悉bash的都一定知道使用history可以输出你曾经输入过的历史命令，例如  
+        [root@servyou_web ~]# history  |  more  
+            6  ./test.sh   
+            7  vim test.sh   
+            8  ./test.sh   
+         但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~/.bash_history里并没有保存时间。  
+          
+        通过设置环境变量 export HISTTIMEFORMAT="%F %T `whoami` " 给history加上时间戳  
+          
+        [root@servyou_web ~]# export HISTTIMEFORMAT="%F %T `whoami` "  
+        [root@servyou_web ~]# history  |  tail  
+         1014  2011-06-22 19:17:29 root    15  2011-06-22 19:13:02 root ./test.sh   
+         1015  2011-06-22 19:17:29 root    16  2011-06-22 19:13:02 root vim test.sh   
+         1016  2011-06-22 19:17:29 root    17  2011-06-22 19:13:02 root ./test.sh   
+         1017  2011-06-22 19:17:29 root    18  2011-06-22 19:13:02 root vim test.sh   
+         1018  2011-06-22 19:17:29 root    19  2011-06-22 19:13:02 root ./test.sh   
+         1019  2011-06-22 19:17:29 root    20  2011-06-22 19:13:02 root vim test.sh   
+         1020  2011-06-22 19:17:29 root    21  2011-06-22 19:13:02 root ./test.sh   
+         1021  2011-06-22 19:17:29 root    22  2011-06-22 19:13:02 root vim test.sh   
+         1022  2011-06-22 19:25:22 root    22  2011-06-22 19:13:02 root vim test.sh   
+         1023  2011-06-22 19:25:28 root history  |  tail  
+          
+        可以看到，历史命令的时间戳已经加上了，但是.bash_history里并没有加上这个时间戳。其实这个时间记录是保存在当前shell进程内存里的，如果你logout并且重新登录的话会发现你上次登录时执行的那些命令的时间戳都为同一个值，即当时logout时的时间。  
+          
+        尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo 'export HISTTIMEFORMAT="%F %T `whoami` "' >> /etc/profile 然后source一下就OK  
+
+
+[end]

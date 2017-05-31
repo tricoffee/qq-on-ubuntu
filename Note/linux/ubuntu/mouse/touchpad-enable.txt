@@ -1,0 +1,33 @@
+ubuntu 触摸板不能使用的解决办法
+2014-03-13 17:21 1538人阅读 评论(0) 收藏 举报
+
+首先在终端输入
+
+sudo -i
+
+切换至root权限，其中可以使用man sudo指令查看-i选项的作用。
+
+之后在终端输入：
+
+modprobe -r psmouse
+
+同样的道理，可以使用man modprobe指令查看modprobe的作用，这里简单提一下，该指令用来加载或者取消内核中某模块。
+
+上面指令执行完成之后，接着在终端输入：
+
+modprobe psmouse proto=imps
+
+执行完成之后，再次启用触摸板，可以发现已经能够正常使用。
+
+
+文中还提到，如果想让系统下次重启的时候也能够正常使用触摸板，可以做如下操作：
+
+sudo gedit /etc/modprobe.d/options
+
+以上指令在/etc/modprobe.d目录中新建options文件。
+
+在该文件中写入:
+
+options psmouse proto=imps
+
+

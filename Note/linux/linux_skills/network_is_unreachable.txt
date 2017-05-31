@@ -1,0 +1,5 @@
+connect: Network is unreachable
+
+解决办法：
+    sudo route add default gw 192.168.70.1
+	即可

@@ -1,0 +1,53 @@
+
+UBUNTU11.10 卸载Unity，使用Gnome3
+分类： linux 2012-01-17 14:28 5651人阅读 评论(0) 收藏 举报
+ubuntu桌面环境
+ 转的文章。UBUNTU11.10 卸载Unity，使用Gnome3
+
+ 
+
+Ubuntu已经转向Unity了，可是我怎么也习惯不了Unity，反倒是非常喜爱Gnome3。其实在Ubuntu上Unity和Gnome3完全可以共存，但是既然不用Unity，留着还需要更新，干脆删除算了。查了些资料，现在把删除方法总结如下：
+
+1.在删除前确保Unbutu没有设置自动登录
+
+2.安装Gnome3：
+
+sudo apt-get install gnome-shell
+
+sudo apt-get install gnome-tweak-tool
+
+3.设置默认登录桌面环境：
+
+登入GNOME SHELLCLASSIC:
+
+sudo /usr/lib/lightdm/lightdm-set-defaults -s gnome-classic
+
+如果喜欢GNOME3,就
+
+sudo /usr/lib/lightdm/lightdm-set-defaults -s gnome-shell
+
+4.删除Unity：
+
+sudo apt-get -y --auto-remove purge unity
+
+sudo apt-get -y --auto-remove purge unity-common
+
+sudo apt-get -y --auto-remove purge unity-lens*
+
+sudo apt-get -y --auto-remove purge unity-services
+
+sudo apt-get -y --auto-remove purge unity-asset-pool
+
+或者：
+sudo apt-get -y --auto-remove purge unity unity-common unity-lens* unity-services unity-asset-pool
+
+### 注意:不能用sudo apt-get --auto-removepurge unity*,看软件包列表里,有不少跟
+
+UNITY无关的也列出了。
+
+而且 unity-greeter必须保留。如果删了,自己蹲墙边哭一会儿再想办法。
+
+5.注销，然后再次登录。
+
+这样就可以使用可爱的Gnome3了。
+
