@@ -53,13 +53,8 @@
 │   ├── 2013-1-10-build-Qt.txt
 │   ├── 2013-1-10-build-Qt.txt~
 │   ├── 2013-1-10-Qt-QComboBox.txt
-<<<<<<< HEAD
 │   ├── 2013-1-11-我该如何充分的利用这段时间提高自己.txt~
 │   ├── 2013-1-11-我该如何充分的利用这段时间提高自己.txt
-=======
-│   ├── 2013-1-11-我该如何充分的利用这段时间提高自己.txt
-│   ├── 2013-1-11-我该如何充分的利用这段时间提高自己.txt~
->>>>>>> f425b49c757b2c9e52b1d3e63c54d9c8ab87056c
 │   ├── 2013-1-26-sdcv.txt~
 │   ├── 2013-1-27-emacs-learnning.txt~
 │   ├── bit-by-bit_learning_in_cyit.org
@@ -377,10 +372,7 @@
 │   │   ├── emacs.d_bak
 │   │   │   ├── init.el
 │   │   │   └── my_personal_setting
-<<<<<<< HEAD
 │   │   │       ├── bingapiel
-=======
->>>>>>> f425b49c757b2c9e52b1d3e63c54d9c8ab87056c
 │   │   │       └── sdcv
 │   │   │           └── sdcv-mode.el
 │   │   ├── emacs file.org
@@ -454,4 +446,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-69 directories, 376 files
+70 directories, 376 files
