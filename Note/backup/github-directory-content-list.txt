@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 emacs.d_changed_by_purcell
 emacs.d_fork_by_purcell
 jellybeans.vim
@@ -8,3 +9,5 @@ translate-shell
 uemacs
 vimperator-labs
 vimrc
+=======
+>>>>>>> f425b49c757b2c9e52b1d3e63c54d9c8ab87056c
