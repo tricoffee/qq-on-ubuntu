@@ -22,3 +22,7 @@
 11. 2017年 05月 26日 星期五 17:56:53 CST - CONTENT : complete the '~/ShellScripts/basic_scripts/format-error' file
 
 12. 2017年 05月 31日 星期三 19:14:42 CST - CONTENT : 1. 完成 .vimrc 中的新功能， 2. 以及给自定义的 shell 函数 'find-process()' 添加打印 ‘ps’ 命令显示结果每列的信息
+
+13. 2017年 06月 01日 星期四 14:59:35 CST - CONTENT : 1. 添加 bashrc-add-pic-func 文件，使用 getopts shell 内建函数解析多条参数中的转义字符。 2. 使用 set 命令修改执行 ‘.profile’ 配置文件的shell进程的属性，使得在登录阶段可以有效执行 xmodmap ~/.xmodmaprc 命令去更改键盘映射。
+
+14. 2017年 06月 01日 星期四 17:19:13 CST - CONTENT : 将 '.bashrc', '.profile', '.sessionrc' 三个配置文件当中的开机加载项设置整理至一个独立的文件中去。

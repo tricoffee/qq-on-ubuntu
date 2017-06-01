@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/if 
+~Msle0~/\<ARGS\>
 
 # Last Substitute Search Pattern:
 ~MSle0&targetword
@@ -19,7 +19,13 @@ $TargetWord
 # 命令列 歷史記錄 (新到舊):
 :q
 :q!
+:.26:58 UEANER
+:! echo $ LINUX 终端查看图片
+:set nu
+:set n
+:x
 :w
+:wq
 :help function
 :if 1 != empty(expand("%:e")) | pwd | endif
 :if 1 == empty(expand("%:e")) | echo expand("%") | endif
@@ -104,7 +110,6 @@ $TargetWord
 :help case
 :tabedit /home/qq/Note/text_editor/vim/vim-replace-string-command.txt
 :echo expand("%:t")
-:wq
 :tabnext 
 :tabnext 2
 :tabedit /home/qq/ShellScripts/bashrc-add-env-setting
@@ -117,7 +122,6 @@ $TargetWord
 :e ShellScripts/bashrc-add-find-func
 :help clipboard
 :call ShowCurFileFullPath()
-:x
 :echo getcwd()
 :echo expand("%:h")
 :help getcwd()
@@ -147,7 +151,6 @@ $TargetWord
 :help filaname
 :e .vimrc
 :tabedit /home/qq/ShellScripts/bashrc-add-emacs-func
-:set nu
 :'<,'>
 :tabedit /home/qq/Github/vimperator-labs/common/content/bookmarks.js
 :buffers
@@ -514,11 +517,10 @@ $TargetWord
 :gedit ./e
 :list
 :write
-:Bclose 6
-:badd
-:w execute-help.txt
 
 # 搜尋字串 歷史記錄 (新到舊):
+? \<ARGS\>
+?/崩溃
 ?/if 
 ? \<boolean\>
 ?/ture
@@ -927,42 +929,68 @@ $TargetWord
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-""0	CHAR	0
-	l:langCommentStyleDict
+"0	CHAR	0
+	-
 "1	LINE	0
-	
+	    echo -E "$@"
 "2	LINE	0
-	        if
+	    echo ${ARGS}
 "3	LINE	0
-	
+	    shotwell $ARGS
 "4	LINE	0
 	
 "5	LINE	0
-	
+	输出样例：
 "6	LINE	0
-	
+	    -t 这个参数可以设置生成截图的超时时间。-t 0 则表示禁用超时参数。
 "7	LINE	0
 	
 "8	LINE	0
-	
+	输出样例：
 "9	LINE	0
 	
-"-	CHAR	0
-	l
 
 # 檔案標記:
-'0  1  4  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
-'1  47  263  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
-'2  22  0  ~/TODO
-'3  495  54  ~/.vimrc
-'4  446  0  ~/.vimrc
-'5  444  40  ~/.vimrc
-'6  439  0  ~/.vimrc
-'7  29  8  ~/.vimrc
-'8  1  0  ~/all-emacs-name-file.txt
-'9  23  21  ~/ShellScripts/bashrc-add-emacs-func
+'0  1  0  ~/.xinputrc
+'1  9  4  ~/ShellScripts/bashrc-add-pic-func
+'2  154  44  ~/bash.txt
+'3  6  0  ~/ShellScripts/bashrc-add-alias-name
+'4  107  0  ~/shell.txt
+'5  10  15  ~/ShellScripts/bashrc-add-pic-func
+'6  10  15  ~/ShellScripts/bashrc-add-pic-func
+'7  10  17  ~/ShellScripts/bashrc-add-pic-func
+'8  1  0  ../ShellScripts/bashrc-add-pic-func
+'9  1  0  ~/Pictures/test.txt
 
 # Jumplist (由新到舊):
+-'  1  0  ~/.xinputrc
+-'  9  4  ~/ShellScripts/bashrc-add-pic-func
+-'  154  44  ~/bash.txt
+-'  1  0  ~/bash.txt
+-'  6  0  ~/ShellScripts/bashrc-add-alias-name
+-'  107  0  ~/shell.txt
+-'  2470  0  ~/shell.txt
+-'  2  0  ~/shell.txt
+-'  1  0  ~/shell.txt
+-'  10  4  ~/ShellScripts/bashrc-add-pic-func
+-'  1  0  ../ShellScripts/bashrc-add-pic-func
+-'  1  0  ~/Pictures/test.txt
+-'  8  0  ~/ShellScripts/bashrc-add-pic-func
+-'  1  0  ~/ShellScripts/bashrc-add-pic-func
+-'  132  30  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
+-'  15  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
+-'  1  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
+-'  7  0  ~/ShellScripts/bashrc-add-view-pic-func
+-'  1  0  ~/ShellScripts/bashrc-add-view-pic-func
+-'  43  0  ~/Note/linux/ubuntu/shell/shell_command/intercept-screenshot-of-the-webpage.txt
+-'  1  0  ~/Note/linux/ubuntu/shell/shell_command/intercept-screenshot-of-the-webpage.txt
+-'  238  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-setting.txt
+-'  1  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-setting.txt
+-'  139  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
+-'  108  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
+-'  1  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
+-'  102  168  ~/Note/linux/ubuntu/internet_browser/firefox/firefox-fast-startup.txt
+-'  1  0  ~/Note/linux/ubuntu/internet_browser/firefox/firefox-fast-startup.txt
 -'  1  4  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
 -'  47  263  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
 -'  22  0  ~/TODO
@@ -1033,35 +1061,115 @@ $TargetWord
 -'  13057  28  ~/modprobe.txt
 -'  13027  30  ~/modprobe.txt
 -'  495  54  ~/.vimrc
--'  272  17  ~/.vimrc
--'  164  0  ~/.vimrc
--'  151  0  ~/.vimrc
--'  135  0  ~/.vimrc
--'  86  0  ~/.vimrc
--'  1  0  ~/.vimrc
--'  491  38  ~/.vimrc
--'  487  10  ~/.vimrc
--'  488  29  ~/.vimrc
--'  486  18  ~/.vimrc
--'  482  10  ~/.vimrc
--'  504  39  ~/.vimrc
--'  502  36  ~/.vimrc
--'  483  10  ~/.vimrc
--'  485  46  ~/.vimrc
--'  520  22  ~/.vimrc
--'  51  9  ~/.vimrc
--'  50  0  ~/.vimrc
--'  49  9  ~/.vimrc
--'  507  11  ~/.vimrc
--'  503  13  ~/.vimrc
--'  508  14  ~/.vimrc
--'  480  4  ~/.vimrc
--'  479  4  ~/.vimrc
--'  441  4  ~/.vimrc
--'  440  4  ~/.vimrc
--'  417  3  ~/.vimrc
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/.xinputrc
+	"	1	0
+
+> ~/ShellScripts/bashrc-add-pic-func
+	"	9	4
+	^	9	15
+	.	9	14
+	+	8	20
+	+	10	14
+	+	10	8
+	+	10	13
+	+	10	18
+	+	10	0
+	+	9	0
+	+	10	15
+	+	10	17
+	+	10	0
+	+	10	0
+	+	9	14
+
+> ~/bash.txt
+	"	154	44
+	^	154	45
+	.	154	44
+	+	154	44
+
+> ~/ShellScripts/bashrc-add-alias-name
+	"	6	0
+	^	6	8
+	.	6	7
+	+	8	0
+	+	5	26
+	+	6	7
+
+> ~/shell.txt
+	"	107	0
+
+> ../ShellScripts/bashrc-add-pic-func
+	"	1	0
+
+> ~/Pictures/test.txt
+	"	1	0
+
+> ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
+	"	132	30
+
+> ~/ShellScripts/bashrc-add-view-pic-func
+	"	7	0
+	^	3	0
+	.	6	0
+	+	5	0
+	+	8	19
+	+	10	0
+	+	9	14
+	+	7	0
+	+	2	0
+	+	7	0
+	+	2	51
+	+	3	50
+	+	4	21
+	+	3	0
+	+	4	0
+	+	7	0
+	+	6	0
+
+> ~/Note/linux/ubuntu/shell/shell_command/intercept-screenshot-of-the-webpage.txt
+	"	43	0
+	^	20	0
+	.	30	0
+	+	40	0
+	+	33	0
+	+	28	0
+	+	19	0
+	+	9	0
+	+	13	0
+	+	25	0
+	+	21	0
+	+	20	0
+	+	30	0
+
+> ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-setting.txt
+	"	238	0
+
+> ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
+	"	139	0
+	^	50	0
+	.	56	125
+	+	6	0
+	+	13	0
+	+	19	0
+	+	25	0
+	+	27	0
+	+	30	0
+	+	33	0
+	+	43	0
+	+	47	0
+	+	50	0
+	+	55	0
+	+	57	0
+	+	56	125
+
+> ~/Note/linux/ubuntu/internet_browser/firefox/firefox-fast-startup.txt
+	"	102	168
+	^	126	0
+	.	126	0
+	+	126	0
 
 > ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
 	"	1	4
@@ -1299,14 +1407,6 @@ $TargetWord
 	.	11	0
 	+	9	11
 	+	11	0
-
-> ~/ShellScripts/bashrc-add-alias-name
-	"	6	7
-	^	6	8
-	.	6	7
-	+	8	0
-	+	5	26
-	+	6	7
 
 > ~/ShellScripts/bashrc-add-env-setting
 	"	1	0
@@ -2151,40 +2251,4 @@ $TargetWord
 	"	90	0
 
 > ~/ls
-	"	1	0
-
-> ~/Github/vimperator-labs/common/components/protocols.js
-	"	1	0
-
-> ~/Github/translate-shell/translate.awk
-	"	1	0
-
-> ~/Github/translate-shell/translate
-	"	1	0
-
-> ~/Github/spacemacs/init.el
-	"	1	0
-
-> ~/Github/vimrc/vimrcs/basic.vim
-	"	1	0
-
-> ~/Github/trans
-	"	1	0
-
-> ~/General
-	"	1	0
-
-> ~/Colors
-	"	1	0
-
-> /usr/share/vim/vim74/doc/insert.txt
-	"	1289	8
-
-> /usr/share/vim/vim74/doc/os_dos.txt
-	"	83	64
-
-> /usr/share/vim/vim74/doc/quickref.txt
-	"	1125	40
-
-> ~/Note/text_editor/vim/vim
 	"	1	0

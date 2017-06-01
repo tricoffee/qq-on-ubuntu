@@ -169,18 +169,14 @@
 │       │   ├── screenshot-command-under-terminal.txt
 │       │   ├── temp
 │       │   ├── terminal-record-command.txt
-│       │   └── use-google-on-terminal.txt
+│       │   ├── use-google-on-terminal.txt
+│       │   └── view-picture-on-char-term.txt
 │       ├── file_manager
 │       │   └── linux-terminal-file-manager.txt
-│       ├── firefox
-│       │   └── install-adobe-flash-plugins.txt
 │       ├── fonts_setting
 │       │   └── wenquanyi-microhei.txt
 │       ├── install_ubuntu
 │       │   └── install-ubuntu-from-harddisk.txt
-│       ├── internet_browser
-│       │   └── firefox
-│       │       └── replace-system-default-firefox.txt
 │       ├── IOS
 │       │   ├── ubuntu-connect-IOS-setup.txt
 │       │   ├── ubuntu-connect-IOS-setup.txt~
@@ -231,6 +227,14 @@
 │       │   └── build-ssh-server.txt
 │       ├── ubuntu_performance
 │       │   └── adjust-the-ubuntu-performance-yourself.txt
+│       ├── web_browser
+│       │   └── firefox
+│       │       ├── firefox-about-config-28-optimization-techniques.txt
+│       │       ├── firefox-about-config-arguments-explain.txt
+│       │       ├── firefox-about-config-optimize.txt
+│       │       ├── firefox-fast-startup.txt
+│       │       ├── install-adobe-flash-plugins.txt
+│       │       └── replace-system-default-firefox.txt
 │       └── window_manager
 │           ├── DWM
 │           │   ├── dmenu-usage.txt
@@ -438,4 +442,4 @@
     ├── 笔记.txt
     └── 追蓝屏log的方法.txt.txt
 
-71 directories, 367 files
+70 directories, 372 files
