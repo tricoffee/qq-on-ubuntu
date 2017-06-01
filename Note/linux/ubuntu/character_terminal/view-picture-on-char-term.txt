@@ -1,0 +1,74 @@
+ LINUX 终端查看图片
+更新于 2013-07-17 01:26:58 UEANER
+
+系统环境：CentOS 6.4 x86_64
+
+Linux 终端下查看图片有两款比较不错的软件：fbi 和 fbv。下面我们进行安装和使用：
+
+1. 安装 fbi
+添加 epel 源
+
+# rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+安装 fbida
+
+# yum install fbida
+
+使用 fbida
+
+使用 Ctrl + Alt + F2 开启一个 tty 终端，运行：
+
+# fbi filename.png
+
+很清晰的图片，通过 fbi --help 查看支持的文件类型。
+
+2. 安装 fbv
+安装 fbv
+
+到 http://repo.or.cz/w/fbv.git 下载 fbv 源码包，
+
+# yum install libpng-devel libjpeg-devel giflib-devel
+# cd /usr/local/src
+# tar xf /path/to/fbv-xxx.tar.gz
+# mkdir -p /usr/local/man/man1/
+# cd fbv
+# ./configure && make && make install
+
+使用 fbv
+
+同样开启一个 tty，运行
+
+# /usr/local/bin/fbv filename.png
+
+同样也很清晰，通过 /usr/local/bin/fbv --help 查看支持的文件类型。
+附：终端截图问题
+
+本想使用 fbgrab 截个图，但是截出的图变形且模糊，下面给出 fbgrab 安装步骤， 还请热心的朋友留言告知为什么截出的图变形且模糊，是 fbgrab 本身的原因，还是我用的有问题？
+安装 fbgrab
+
+# wget http://fbgrab.monells.se/fbgrab-1.0.tar.gz
+# yum install libpng libz splint
+# cd /usr/local/src
+# tar xf /path/to/fbgrab-1.0.tar.gz
+# vi Makefile
+    注释掉：
+    splint +posixlib fbgrab.c
+# mkdir -p /usr/man/man1/
+# cd fbgrab-1.0
+# make && make install
+
+Ctrl + Alt + F3 运行：
+
+/usr/bin/fbgrab -s 5 shot.png
+
+Ctrl + Alt + F2 运行：
+
+# fbi filename.png
+
+5 秒钟后生成 shot.png 文件，再使用 fbi shot.png 查看，好模糊？
+
+转载请注明出处。
+本文地址：http://blog.aboutc.net/linux/42/linux-terminal-image-view
+
+
+[end]

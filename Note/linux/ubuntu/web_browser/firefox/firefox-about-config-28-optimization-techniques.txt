@@ -1,0 +1,238 @@
+FireFox的About:config技巧
+2016-10-13 来源：网络转载 编辑：
+条评论
+
+    使用firefox的用户都会安装很多插件以增加使用体验。但是如果你想最大化的发挥FF的能力，还是要用about:config进行设置。
+    about:config面板中含有绝大部分(或者全部)FF的设置选项。也是目前提升FF性能的最佳途径。下面分享一下这28条最有用的优化技巧。
+
+    进入about:config面板
+
+    在地址栏键入about:config
+
+    会看到如下提示，点击“我保证会小心”按钮
+
+    你会看到一个很长的列表，在“过滤器”栏中键入你要搜索的关键字，这样会很方便的找到你需要的内容。
+    双击列表项就可以更改其设置，很方便。
+    1 调整智能地址栏建议条数
+
+    FF3的智能地址栏可能大家都很熟悉了，这里就不多说了，默认是提供12条相关的记录，如果想改其数量，那么找到browser.urlbar.maxRichResults修改就可以了。
+
+    名称: browser.urlbar.maxRichResults
+    默认: 12
+    修改值: 修改为需要的数值，如果想禁用的话输入-1
+    2) 禁用session restore功能
+
+    简单说这个功能就是：每10秒保存一次标签状态，以便在崩溃后能恢复，如果不喜欢可以使用browser.sessionstore.enabled禁用。
+    名称: browser.sessionstore.enabled
+    默认值: True
+    修改值: 改成False
+    3) 调整Session Restore保存时间
+
+    如果想保留这个功能，同时减小保存频率，使用browser.sessionstore.interval。
+    名称: browser.sessionstore.interval
+    默认值: 10000 (单位为毫秒)
+    修改值: 设为需要值，1000为1秒，相应的60000为1分钟。
+    4) 开启高级颜色配置支持
+
+    FF的高级颜色配置特点使它能显示更高质量的图像。由于对浏览器性能有影响故默认没有开启。如果你更关注显示质量的话可以在gfx.color_management.enabled中开启。
+    名称: gfx.color_management.enabled
+    默认值: False
+    修改值: True为开启
+    5) 关闭病毒扫描
+
+    这个主要针对Windows用户。默认情况下FF会调用默认杀毒软件自动扫描下载完的文件。如果下载的文件较大，扫描的时间会很长，影响浏览器性能，可以通过browser.download.manager.scanWhenDone关闭之。
+    名称: browser.download.manager.scanWhenDone
+    默认值: True
+    修改值: False为禁用
+    6) 设置滚动标签宽度
+
+    如果你打开了很多标签页，到一定程度后就不会再缩减标签的宽度(默认最小100px)了，取而代之的在两端加入滚动按钮。如果你不喜欢这个功能，而 且不在乎标签小到什么地步，把browser.tabs.tabMinWidth设置为0就好了。如果你想在滚动按钮出现之前显示更多的标签，相应的减小 宽度值就可以，例如75px。
+
+
+    名称: browser.tabs.tabMinWidth
+    默认值: 100
+    修改值: 0 禁用，其他为想要的宽度。
+    7) 显示/隐藏标签上的关闭按钮
+
+    有人喜欢在每个标签上都显示关闭按钮(就是那个红X)。也有人不喜欢，无论如何，都可以通过browser.tabs.closeButtons设置为喜好的显示方式。
+    firefox
+
+    名称: browser.tabs.closeButtons
+    默认值: 1
+    修改值:
+    * 0- 在活动标签上显示关闭按钮
+    * 1- 全部标签上显示
+    * 2- 全不显示
+    * 3- 在最后一个标签上显示
+    8 ) Extend Scripts Execution Time
+
+    FF3默认给代码的响应时间为10s，超时就会报警。如果你网速慢的话可以通过dom.max_script_run_time设置更大的值。
+    名称: dom.max_script_run_time
+    默认值:10 (单位秒)
+    修改值: 20或其他大于10的值。
+    9) 处理JavaScript弹窗
+
+    如果一个网站利用JavaScript弹出窗口，而且这个窗口没有标准窗口的特性，如后退/前进/刷新按钮、状态栏，那么FF会在弹窗中显示而不会 在新标签页中打开。不喜欢这样的行为，而想让所有的窗口都在新标签页中打开，可在 browser.link.open_newwindow.restriction设置。
+    名称: browser.link.open_newwindow.restriction
+    默认值: 2 - 除非Js指定了打开方式，否则所有的链接按你的设置打开窗口
+    * 0 – 所有的链接按你的设置打开窗口
+    * 1 – 不打开新窗口
+    * 2 - 除非Js指定了打开方式，否则同1
+    10) 在所有文本框中检查拼写
+
+    默认只检查多行的文本框，通过设置可以让FF也检查单行文本框。
+    名称: layout.spellcheck默认值
+    默认值: 1 (只检查多行)
+    修改值:
+    * 0 – 禁用拼写检查
+    * 2 – 开启所有文本框检查
+    11) 搜索结果在新窗口中打开
+
+    当你使用右上角的搜索框进行搜索时，结果会在当前标签页中显示，如果希望在新标签页中显示可以用browser.search.openintab设置
+    名称: browser.search.openintab
+    默认值: False
+    修改值: True (在新标签页中显示结果)
+    12) 最小化后降低物理内存使用
+
+    针对Windows用户。将FF最小化后它会释放物理内存转而使用虚拟内存。最小化后，FF的物理内存占用约减小到10M左右。
+    使用这个功能需要手动创建，右键背景空白处-新建-布尔，首选项名称填入：config.trim_on_minimize，值选择：True
+    13) 加速Firefox
+
+    需要做以下调整
+
+    名称: network.http.pipelining
+    默认值: False
+    修改值: True
+    ----------
+    名称: network.http.proxy.pipelining
+    默认值: False
+    修改值: True
+    ----------
+    名称: network.http.pipelining.maxrequests
+    默认值: 4
+    修改值: 4到8之间的值
+    ----------
+    名称: network.http.max-connections
+    默认值: 30
+    修改值: 96
+    ----------
+    名称: network.http.max-connections-per-server
+    默认值: 15
+    修改值: 32
+    14) 增加/减小磁盘缓存
+
+    加载一个页面后，FF将其缓存之硬盘，下次显示的时候就不用重新下载鸟~，缓存越大自然存储的页面越多。设置之前确保browser.cache.disk.enable为true
+    名称: browser.cache.disk.capacity
+    默认值: 50000 (单位KB)
+    修改值:
+    * 0 – 禁用
+    * 减小，小于50000的值
+    * 增加，大于50000的值
+    15) 点击地址栏的时候一次性选择所有文字
+
+    在Windows和Mac中可以一次性选择所有文字，但是Linux中只是将光标置于介入点。无论是哪个平台，都可以通过设置改变其选择方式。
+
+    名称: browser.urlbar.clickSelectsAll
+    修改值:
+    * False – 将光标置于介入点
+    * True – 一次点击，选择所有。
+    16) 自动填写地址栏
+
+    不同于智能地址栏特性，你可以设置FF根据你的输入自动填写地址栏。
+
+    名称: browser.urlbar.autofill
+    默认值: False
+    修改值: True
+    17) 为每个站点设置同样的缩放级别
+
+    FF会记住你对某个站点的缩放，下次打开时仍然保持之，如果你希望每个站点都用同样的缩放级别，可以使用如下设置：
+    名称: browser.zoom.siteSpecific
+    默认值: True
+    修改值: False (每个站点都用同样的缩放级别)
+    18) 设置缩放极限
+
+    如果最大/最小缩放都不能满足需求，可以更改其极限值以满足你的习惯。
+
+    名称: zoom.maxPercent
+    默认值: 300 (百分比)
+    修改值: 高于300的任何值
+
+    名称: zoom.minPercent
+    默认值: 30 (百分比)
+    修改值: 任何值
+    19) 设置空格键
+
+    可以设置空格键为后退或页面向上滚动
+    名称: browser.backspace_action
+    默认值: 2 (无作用)
+    修改值:
+    * 0 – 后退
+    * 1 - 页面向上滚动(译注：这两个值在我这里都是滚动页面，为什么呢？
+    20) 增加离线缓存
+
+    如果你离线的时间长的话那这个设置还是很有用的，默认为500MB
+    名称: browser.cache.offline.capacity
+    默认值: 512000 (单位KB)
+    修改值: 任何大于512000的值
+    21) 自动导出FF3书签至bookmarks.html
+
+    不像之前的版本，FF3将书签存放于SQlite数据库中，而不是通常的bookmarks.html文件。
+    名称: browser.bookmarks.autoExportHTML
+    默认值: False
+    修改值: True (自动导出书签至bookmarks.html)
+    22) 禁用插件兼容性检查
+
+    如果你当前版本的FF不能使用你想安装的插件，可以禁用插件兼容性检查功能，当然这里不推荐这样做。
+
+    空白处右键单击-新建-布尔，输入extensions.checkCompatibility，然后输入False
+    空白处右键单击-新建-布尔，输入extensions.checkUpdateSecurity，然后输入False
+    23) 禁用安装插件时的倒计时
+
+    每次安装插件时都有倒计时窗口出来，如果你和我一样讨厌这个功能的话可以通过security.dialog_enable_delay关闭它
+
+    名称: security.dialog_enable_delay
+    默认值: 2000 (单位毫秒)
+    修改值:
+    * 0 – 立刻安装
+    * 其他数值
+    24) 用你喜欢的编辑器查看源文件
+
+    这个选项对开发者很有用，可以使用外部编辑器查看源文件
+
+    两件事要做:
+    名称: view_source.editor.external
+    默认值: False
+    修改值: True (允许使用外部编辑器)
+
+    名称: view_source.editor.path
+    默认值: blank
+    修改值: 输入编辑器路径.
+    25) 增加“页面另存为”超时时间
+
+    当在页面中右键-页面另存为时，浏览器会查询URL以决定文件名，如果网速较慢，查询时间超过1秒就会超时，为了避免，可将默认时间设置为较大值。
+    名称: Browser.download.saveLinkAsFilenameTimeout
+    默认值: 1000 (1秒)
+    修改值: 高于1000的任何数值
+    26) 全屏时工具栏动态摺叠模式
+
+    全屏时，工具栏会动态的缩进屏幕顶部，鼠标经过时重新出现，出于性能考虑，这种动态效果只出现一次，不过可以通过设置关闭这个效果或始终显示。
+    名称: Browser.fullscreen.animateUp
+    默认值: 1 (仅第一次全屏时出现)
+    修改值:
+    * 0 -禁用
+    * 2- 每次都出现
+    27) 全屏时自动隐藏工具栏
+
+    全屏模式下工具栏会隐藏到屏幕顶部，鼠标经过时重新出现。如果需要的话可以通过设置使其始终显示。
+    名称: browser.fullscreen.autohide
+    默认值: True (始终自动隐藏)
+    修改值: False (总是显示)
+    28) 增加插件搜索结果的数量
+
+    如果通过工具-附加组件-获取附加组件，FF只会显示5条结果，想增加的话通过extensions.getAddons.maxResults设置便可。
+    名称: extensions.getAddons.maxResults
+    默认值: 5
+    修改值: 大于5的任何值
+
+
+[end]

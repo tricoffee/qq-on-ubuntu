@@ -1,0 +1,10 @@
+#
+# this shell script define some simple and utility 
+# create and view picture's function by use ubuntu-
+# linux common command
+#
+
+# use 'shotwell' to view picture
+function open-picture(){
+    shotwell $1
+}
