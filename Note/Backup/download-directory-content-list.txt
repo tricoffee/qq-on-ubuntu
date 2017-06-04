@@ -9,4 +9,6 @@ libqtwebkit4_2.3.2-0ubuntu11_amd64.deb
 LINUX SHELL脚本攻略(中文版带书签).pdf
 manpages-zh_1.5.2-1.1_all.deb
 spacemacs.org
-usr
+ubuntu-16.04.2-server-amd64.iso
+ubuntu-core-16-amd64.img.xz
+vim_2%3a7.4.1689-3ubuntu1.2_amd64.deb

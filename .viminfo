@@ -19,8 +19,8 @@ $
 # 命令列 歷史記錄 (新到舊):
 :wq
 :w
-:x
 :q
+:x
 :buffers
 :tabnext 
 :tabedit /etc/gnome/menus.blacklist
@@ -519,6 +519,7 @@ $
 :execute echo
 
 # 搜尋字串 歷史記錄 (新到舊):
+?/ecrypt
 ? @$
 ?/sdcv
 ?/ipad
@@ -1003,42 +1004,44 @@ $
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-"0	CHAR	0
-	 
-""1	LINE	0
-	
+"0	LINE	0
+		ls ~/Books/ > ~/Note/Backup/book-directory-content-list.txt
+"1	LINE	0
+		tree ~/Note/ > ~/Note/Backup/note-directory-content-list.txt
 "2	LINE	0
-	workspace/
-"3	LINE	0
-	Wallpapers/
-"4	LINE	0
-	ShellScripts/
-"5	LINE	0
-	Pictures/
-"6	LINE	0
-	Note/
-"7	LINE	0
 	
+"3	LINE	0
+	workspace/
+"4	LINE	0
+	Wallpapers/
+"5	LINE	0
+	ShellScripts/
+"6	LINE	0
+	Pictures/
+"7	LINE	0
+	Note/
 "8	LINE	0
-	.viminfo
+	
 "9	LINE	0
 	.viminfo
-"-	CHAR	0
-	#
+""-	CHAR	0
+	.
 
 # 檔案標記:
-'0  22  0  ~/.gitign1.txt
-'1  7  4  ~/git-rm-list
-'2  5  9  ~/git-rm-list
-'3  8  520  ~/git-rm-list
-'4  8  511  ~/git-rm-list
-'5  1  10  ~/git-rm-list
-'6  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
-'7  1  0  ~/.gitignore
-'8  49  0  ~/.gitign.txt
-'9  1  0  ~/.gitign1.txt
+'0  1  0  ~/ShellScripts/basic_scripts/backup.sh
+'1  22  0  ~/.gitign1.txt
+'2  7  4  ~/git-rm-list
+'3  5  9  ~/git-rm-list
+'4  8  520  ~/git-rm-list
+'5  8  511  ~/git-rm-list
+'6  1  10  ~/git-rm-list
+'7  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
+'8  1  0  ~/.gitignore
+'9  49  0  ~/.gitign.txt
 
 # Jumplist (由新到舊):
+-'  1  0  ~/ShellScripts/basic_scripts/backup.sh
+-'  52  10  ~/ShellScripts/basic_scripts/backup.sh
 -'  22  0  ~/.gitign1.txt
 -'  12  1  ~/.gitign1.txt
 -'  1  0  ~/.gitign1.txt
@@ -1133,8 +1136,29 @@ $
 -'  17  0  ~/Note/text_editor/emacs/emacs-skills.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs-skills.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt~
+-'  10  9  ~/.gitignore
+-'  18  8  ~/.gitignore
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/ShellScripts/basic_scripts/backup.sh
+	"	1	0
+	^	5	34
+	.	10	52
+	+	3	26
+	+	4	23
+	+	4	23
+	+	5	22
+	+	6	33
+	+	5	33
+	+	4	0
+	+	10	52
+
+> ~/.gitignore
+	"	10	9
+	.	10	9
+	+	27	8
+	+	10	9
 
 > ~/.gitign1.txt
 	"	22	0
@@ -1267,9 +1291,6 @@ $
 	+	7	4
 
 > ~/Note/Git/git-remove-remote-repository-file.txt
-	"	1	0
-
-> ~/.gitignore
 	"	1	0
 
 > ~/.gitign.txt
@@ -1902,6 +1923,3 @@ $
 
 > /usr/share/vim/vim74/doc/windows.txt
 	"	104	8
-
-> ~/Github/vim/README
-	"	1	0
