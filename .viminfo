@@ -17,10 +17,10 @@
 $
 
 # 命令列 歷史記錄 (新到舊):
-:x
-:w
-:q
 :wq
+:w
+:x
+:q
 :buffers
 :tabnext 
 :tabedit /etc/gnome/menus.blacklist
@@ -1005,40 +1005,43 @@ $
 # 暫存器:
 "0	CHAR	0
 	 
-"1	LINE	0
+""1	LINE	0
 	
 "2	LINE	0
-	
+	workspace/
 "3	LINE	0
-	
+	Wallpapers/
 "4	LINE	0
-	
+	ShellScripts/
 "5	LINE	0
-	
+	Pictures/
 "6	LINE	0
-	
+	Note/
 "7	LINE	0
 	
 "8	LINE	0
-	
+	.viminfo
 "9	LINE	0
-	
-""-	CHAR	0
+	.viminfo
+"-	CHAR	0
 	#
 
 # 檔案標記:
-'0  7  4  ~/git-rm-list
-'1  5  9  ~/git-rm-list
-'2  8  520  ~/git-rm-list
-'3  8  511  ~/git-rm-list
-'4  1  10  ~/git-rm-list
-'5  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
-'6  1  0  ~/.gitignore
-'7  49  0  ~/.gitign.txt
-'8  1  0  ~/.gitign1.txt
-'9  1  0  ~/.gitign.txt
+'0  22  0  ~/.gitign1.txt
+'1  7  4  ~/git-rm-list
+'2  5  9  ~/git-rm-list
+'3  8  520  ~/git-rm-list
+'4  8  511  ~/git-rm-list
+'5  1  10  ~/git-rm-list
+'6  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
+'7  1  0  ~/.gitignore
+'8  49  0  ~/.gitign.txt
+'9  1  0  ~/.gitign1.txt
 
 # Jumplist (由新到舊):
+-'  22  0  ~/.gitign1.txt
+-'  12  1  ~/.gitign1.txt
+-'  1  0  ~/.gitign1.txt
 -'  7  4  ~/git-rm-list
 -'  5  0  ~/git-rm-list
 -'  2  0  ~/git-rm-list
@@ -1050,12 +1053,7 @@ $
 -'  49  0  ~/.gitign.txt
 -'  41  0  ~/.gitign.txt
 -'  1  0  ~/.gitign.txt
--'  1  0  ~/.gitign1.txt
--'  18  0  ~/.gitign1.txt
--'  13  0  ~/.gitign1.txt
--'  12  0  ~/.gitign1.txt
 -'  11  0  ~/.gitign1.txt
--'  10  0  ~/.gitign1.txt
 -'  45  0  ~/.gitign.txt
 -'  16  0  ~/.gitign.txt
 -'  15  0  ~/.gitign.txt
@@ -1135,9 +1133,63 @@ $
 -'  17  0  ~/Note/text_editor/emacs/emacs-skills.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs-skills.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt~
--'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/.gitign1.txt
+	"	22	0
+	^	15	0
+	.	15	0
+	+	28	0
+	+	12	0
+	+	11	0
+	+	11	0
+	+	11	0
+	+	28	0
+	+	12	0
+	+	11	0
+	+	11	0
+	+	11	0
+	+	11	0
+	+	9	0
+	+	2	0
+	+	10	0
+	+	11	0
+	+	11	0
+	+	11	0
+	+	11	0
+	+	12	0
+	+	12	0
+	+	12	0
+	+	12	0
+	+	12	0
+	+	12	0
+	+	13	0
+	+	13	0
+	+	14	0
+	+	16	0
+	+	16	0
+	+	16	0
+	+	28	0
+	+	26	0
+	+	24	0
+	+	16	0
+	+	14	0
+	+	25	0
+	+	23	0
+	+	11	0
+	+	12	0
+	+	3	0
+	+	12	0
+	+	4	0
+	+	12	0
+	+	5	0
+	+	16	0
+	+	6	0
+	+	16	0
+	+	8	0
+	+	12	0
+	+	15	0
 
 > ~/git-rm-list
 	"	7	4
@@ -1277,22 +1329,6 @@ $
 	+	39	0
 	+	40	0
 	+	41	0
-
-> ~/.gitign1.txt
-	"	1	0
-	.	5	0
-	+	36	0
-	+	18	0
-	+	13	0
-	+	12	0
-	+	11	0
-	+	36	0
-	+	18	0
-	+	13	0
-	+	12	0
-	+	10	0
-	+	9	0
-	+	5	0
 
 > ~/.gconf/desktop/%gconf.xml
 	"	1	0
