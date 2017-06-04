@@ -90,7 +90,7 @@ Books/
 .cache/
 .config/
 Downloads/
-.ecryptfs/
+.ecryptfs
 .emacs.d/
 .gconf/
 .gimp-2.8/
@@ -107,7 +107,7 @@ Github/
 .mozilla/
 .nano/
 .npm/
-/.Private/
+/.Private
 .python_history
 .RapidSVN
 .sdcv_history

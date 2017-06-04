@@ -17,10 +17,10 @@
 $
 
 # 命令列 歷史記錄 (新到舊):
+:x
 :q
 :w
 :wq
-:x
 :buffers
 :tabnext 
 :tabedit /etc/gnome/menus.blacklist
@@ -1026,23 +1026,24 @@ $
 "9	LINE	0
 	.viminfo
 ""-	CHAR	0
-	.
+	/
 
 # 檔案標記:
-'0  27  0  ~/.gitignore
-'1  1  0  ~/ShellScripts/basic_scripts/backup.sh
-'2  22  0  ~/.gitign1.txt
-'3  7  4  ~/git-rm-list
-'4  5  9  ~/git-rm-list
-'5  8  520  ~/git-rm-list
-'6  8  511  ~/git-rm-list
-'7  1  10  ~/git-rm-list
-'8  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
-'9  1  0  ~/.gitignore
+'0  10  8  ~/.gitignore
+'1  1  0  ~/.gitign
+'2  27  0  ~/.gitignore
+'3  1  0  ~/ShellScripts/basic_scripts/backup.sh
+'4  22  0  ~/.gitign1.txt
+'5  7  4  ~/git-rm-list
+'6  5  9  ~/git-rm-list
+'7  8  520  ~/git-rm-list
+'8  8  511  ~/git-rm-list
+'9  1  10  ~/git-rm-list
 
 # Jumplist (由新到舊):
+-'  10  8  ~/.gitignore
 -'  27  0  ~/.gitignore
--'  10  0  ~/.gitignore
+-'  1  0  ~/.gitign
 -'  1  0  ~/ShellScripts/basic_scripts/backup.sh
 -'  52  10  ~/ShellScripts/basic_scripts/backup.sh
 -'  22  0  ~/.gitign1.txt
@@ -1133,16 +1134,22 @@ $
 -'  1  0  ~/Note/text_editor/emacs/emacs+w3m-1.txt
 -'  1416  0  ~/Note/text_editor/emacs/emacs-usage.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs-usage.txt
+-'  1  0  ~/ShellScripts/basic_scripts/backup.sh
+-'  52  10  ~/ShellScripts/basic_scripts/backup.sh
 
 # 檔案內 Mark 記錄 (由新到舊):
 
 > ~/.gitignore
-	"	27	0
+	"	10	8
 	^	27	1
-	.	27	0
+	.	10	8
 	+	27	8
 	+	10	9
-	+	27	0
+	+	27	8
+	+	10	8
+
+> ~/.gitign
+	"	1	0
 
 > ~/ShellScripts/basic_scripts/backup.sh
 	"	1	0
@@ -1917,6 +1924,3 @@ $
 	a	368	4
 	m	555	28
 	t	544	4
-
-> /usr/share/vim/vim74/doc/windows.txt
-	"	104	8
