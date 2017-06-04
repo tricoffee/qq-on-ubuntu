@@ -13,7 +13,6 @@ Books
 .cache
 .config
 crush_message
-current_shell_env
 diff-the-Home-dir-and-.gitignore-file.txt
 .dmrc
 Downloads
@@ -43,7 +42,6 @@ Note
 Pictures
 .Private
 .profile
-profile_shell_env
 .python_history
 .RapidSVN
 .sawfishrc
@@ -70,7 +68,6 @@ workspace
 .xinputrc
 .xmodmaprc
 .xsessionrc
-xsession_shell_env
 下載
 公共
 圖片

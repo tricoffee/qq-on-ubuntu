@@ -17,10 +17,10 @@
 $
 
 # 命令列 歷史記錄 (新到舊):
-:q
-:w
-:wq
 :x
+:w
+:q
+:wq
 :buffers
 :tabnext 
 :tabedit /etc/gnome/menus.blacklist
@@ -1005,7 +1005,7 @@ $
 # 暫存器:
 "0	CHAR	0
 	 
-""1	LINE	0
+"1	LINE	0
 	
 "2	LINE	0
 	
@@ -1023,22 +1023,29 @@ $
 	
 "9	LINE	0
 	
-"-	CHAR	0
-	current_shell_env/
+""-	CHAR	0
+	#
 
 # 檔案標記:
-'0  1  0  ~/.gitignore
-'1  49  0  ~/.gitign.txt
-'2  1  0  ~/.gitign1.txt
-'3  1  0  ~/.gitign.txt
-'4  45  0  ~/.gitign.txt
-'5  47  0  ~/.gitign.txt
-'6  73  0  ~/home-dir.txt
-'7  45  0  ~/git-dir.txt
-'8  1  0  ~/home-dir.txt
-'9  1  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
+'0  7  4  ~/git-rm-list
+'1  5  9  ~/git-rm-list
+'2  8  520  ~/git-rm-list
+'3  8  511  ~/git-rm-list
+'4  1  10  ~/git-rm-list
+'5  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
+'6  1  0  ~/.gitignore
+'7  49  0  ~/.gitign.txt
+'8  1  0  ~/.gitign1.txt
+'9  1  0  ~/.gitign.txt
 
 # Jumplist (由新到舊):
+-'  7  4  ~/git-rm-list
+-'  5  0  ~/git-rm-list
+-'  2  0  ~/git-rm-list
+-'  8  513  ~/git-rm-list
+-'  1  0  ~/git-rm-list
+-'  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
+-'  36  0  ~/Note/Git/git-remove-remote-repository-file.txt
 -'  1  0  ~/.gitignore
 -'  49  0  ~/.gitign.txt
 -'  41  0  ~/.gitign.txt
@@ -1129,15 +1136,86 @@ $
 -'  1  0  ~/Note/text_editor/emacs/emacs-skills.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt~
 -'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt
--'  1  0  ~/Note/text_editor/emacs/emacs-profile_bak.txt
--'  346  0  ~/Note/text_editor/emacs/emacs_learnning.org~
--'  1  0  ~/Note/text_editor/emacs/emacs_learnning.org~
--'  1  0  ~/Note/text_editor/emacs/emacs-full-screen-最大化.txt
--'  165  0  ~/Note/text_editor/emacs/emacs-full-screen-最大化.txt
--'  1  0  ~/Note/text_editor/emacs/emacs file.org~
--'  2  0  ~/Note/text_editor/emacs/dot-emacs.org
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/git-rm-list
+	"	7	4
+	^	5	10
+	.	7	4
+	+	8	18
+	+	1	10
+	+	8	26
+	+	8	34
+	+	8	48
+	+	8	61
+	+	8	74
+	+	8	81
+	+	8	89
+	+	8	98
+	+	8	109
+	+	8	120
+	+	8	130
+	+	8	138
+	+	8	149
+	+	8	155
+	+	8	163
+	+	8	172
+	+	8	189
+	+	8	207
+	+	8	215
+	+	8	229
+	+	8	238
+	+	8	246
+	+	8	259
+	+	8	269
+	+	8	276
+	+	8	282
+	+	8	292
+	+	8	308
+	+	8	318
+	+	8	332
+	+	8	343
+	+	8	349
+	+	8	362
+	+	8	388
+	+	8	400
+	+	8	413
+	+	8	427
+	+	8	434
+	+	8	445
+	+	8	455
+	+	8	456
+	+	8	463
+	+	8	471
+	+	8	479
+	+	8	487
+	+	8	495
+	+	8	503
+	+	8	511
+	+	10	0
+	+	8	512
+	+	8	520
+	+	8	19
+	+	8	520
+	+	8	0
+	+	10	0
+	+	8	18
+	+	3	6
+	+	3	507
+	+	5	16
+	+	6	0
+	+	9	3
+	+	8	23
+	+	5	5
+	+	8	4
+	+	7	10
+	+	5	9
+	+	8	4
+	+	7	4
+
+> ~/Note/Git/git-remove-remote-repository-file.txt
+	"	1	0
 
 > ~/.gitignore
 	"	1	0
@@ -1791,9 +1869,3 @@ $
 
 > ~/Github/vim/README
 	"	1	0
-
-> ~/Note/linux/ubuntu/apt/apt-dpkg-common-problem.txt
-	"	51	0
-
-> ~/Note/linux/ubuntu/apt/apt-usage.txt
-	"	298	0
