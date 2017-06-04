@@ -26,3 +26,5 @@
 13. 2017年 06月 01日 星期四 14:59:35 CST - CONTENT : 1. 添加 bashrc-add-pic-func 文件，使用 getopts shell 内建函数解析多条参数中的转义字符。 2. 使用 set 命令修改执行 ‘.profile’ 配置文件的shell进程的属性，使得在登录阶段可以有效执行 xmodmap ~/.xmodmaprc 命令去更改键盘映射。
 
 14. 2017年 06月 01日 星期四 17:19:13 CST - CONTENT : 将 '.bashrc', '.profile', '.sessionrc' 三个配置文件当中的开机加载项设置整理至一个独立的文件中去。
+
+15. 2017年 06月 04日 星期日 10:50:40 CST - CONTENT : 尝试 'PyGitHub' 提供的 github api 功能

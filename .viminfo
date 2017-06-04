@@ -8,24 +8,139 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<ARGS\>
+~MSle0~/sdcv
 
 # Last Substitute Search Pattern:
-~MSle0&targetword
+~MSle0&^
 
 # 前一組替代字串:
-$TargetWord
+$
 
 # 命令列 歷史記錄 (新到舊):
 :q
+:wq
+:w
+:x
+:buffers
+:tabnext 
+:tabedit /etc/gnome/menus.blacklist
+:tabedit /etc/gnome/defaults.list
+:tabedit /home/qq/Note/linux/ubuntu/shell/shell_command/./intercept-screenshot-of-the-webpage.txt
+:! sudo apt install glipper
 :q!
+:echo &statusline
+:echo statusline
+:set statusline=%l
+:tabedit /home/qq/Github/vim/../../.vimrc
+:let statusline = %l
+:let b:var = statusline
+:set b:var=statusline 
+:let statusline
+:echo %l
+:let &statusline = statusline
+:set &statusline
+:let &statusline
+:'<,'>tabedit /home/qq/Github/vim/../../.vimrc
+:help status-line
+:let statusline?
+:get statusline?
+:set statusline?
+:help statusline
+:help 
+:menu
+:help toolbar
+:help wildmenu
+:call AutoComment()
+:444,471 s/^/"/g
+:call AutoComment
+:call AU
+:echo getwinvar(1, "")
+:echo gettabvar(1, "")
+:echo winnr("$")
+:echo winnr('.')
+:echo winnr(".")
+:help getbufvar
+:echo getbufvar(bufnr("%"), "")
+:echo getbufvar(bufnr())
+:echo v:lnum
+:echo v:foldstart
+:echo v:fold
+:echo v:foldend
+:help variable
+:help visual-mode
+:help visual mode
+:help mark
+:echo line("'\"")
+:k
+:echo getpos(".")
+:echo b:linum[1]
+:let b:linum = getpos(".")
+:echo getpos()
+:help eval
+:echo getline(".")
+:call line("v")
+:line("v")
+:echo line("$")
+:echo line("v" . "$")
+:echo line("v", "$")
+:echo line(".")
+:echo line('v')
+:501,525 s/^/"/g
+:echo b:string
+:let b:string = getcmdline()
+:echo getcmdline()
+:eval
+:help command-line mode
+:help mode
+:help command line mode
+:'<,'>q
+:map
+:map <leader>c-m
+:help hlsearch
+:help <leader>^m
+:help <leader>C-m
+:help <leader>
+:execute("500" . "," . "501" . "s/^/" . "#" . "/g")
+:execute("500" . "," . "501" . "s/^/" . "#" . "/gc")
+:execute("500" "," "501"  "s/^/"  "#"  "/gc")
+:execute("500" . "501" . "s/^/" . "#" . "/gc")
+:execute("500"."501"."s/^/"."#"."/gc")
+:call execute("500"."501"."s/^/"."#"."/gc")
+:call execute("500" . "501" . "s/^/" . "#" . "/gc")
+:call execute("500,501" . "s/^/" . "#" . "/gc")
+:call execute("500,501" "s/^/" "#" "/gc")
+:set nu
+:e
+:tabedit /home/qq/Note/linux/ubuntu/shell/shell_script_skills/./shell-script-utility-expr.txt
+:echo get(b:langcomstydic, "b:curlang")
+:echo get(b:langcomstydic, b:curlang)
+:let b:curlang = 'vim'
+:let b:langcomstydic = {'c': '//', 'vim': '"'}
+:set b:langcomstydic = {'c': '//', 'vim': '"'}
+:tabedit /home/qq/xsession_shell_env/detect-sh-stat.txt
+:tabedit /home/qq/current_shell_env/detect-sh-stat.txt
+:tabnext 2
+:tabedit /home/qq/detect-shell-stat.sh
+:tabedit /home/qq/.bashrc
+:tabedit /home/qq/xsession_shell_env/
+:tabedit /home/qq/Note/linux/ubuntu/shell/shell_guide/./login-shell_nologin-shell-2.txt
+:e xsession_shell_env/detect-sh-stat.txt
+:vsplit
+:tabnext 1
+:tabnext 3
+:tabedit /home/qq/.xsessionrc
+:tabedit /home/qq/ShellScripts/bashrc-add-env-setting
+:tabedit /home/qq/ShellScripts/bashrc-add-emacs-func
+:tabedit /home/qq/ShellScripts/bashrc-add-alias-name
+:tabedit /home/qq/ShellScripts/bashrc-init
+:! ls
+:e .mozilla/
+:e .mozilla/firefox/7atv39a0.default/extensions/translator@zoli.bod.xpi
+:e .mozilla/firefox/7atv39a0.default/extensions/\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
+:e .mozilla/firefox/7atv39a0.default/extensions/\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi
 :.26:58 UEANER
 :! echo $ LINUX 终端查看图片
-:set nu
 :set n
-:x
-:w
-:wq
 :help function
 :if 1 != empty(expand("%:e")) | pwd | endif
 :if 1 == empty(expand("%:e")) | echo expand("%") | endif
@@ -63,7 +178,6 @@ $TargetWord
 :echo b:langCommentStyleDict = {'C': '//', 'shell': '#', 'vim': '"'}
 :let b:commentStyle = get(getbufvar(bufnr("%"), ""), b:curLanguage, 1)
 :get()
-:help variable
 :let b:commentStyle = get(getbufvar(bufnr("%"), ""), b:curLanguage)
 :let b:commentStyle = get(getbufvar(bufnr("%"), ""), 'b:curLanguage')
 :echo commentStyle
@@ -88,7 +202,6 @@ $TargetWord
 :echo 】vim行首加入某字符
 :echo
 :cu
-:help eval
 :echo current_syntex
 :help undo_indent
 :help undoindent
@@ -104,21 +217,15 @@ $TargetWord
 :filetype detect
 :filetype
 :help filetype
-:eval
 :help switch
 :switch
 :help case
 :tabedit /home/qq/Note/text_editor/vim/vim-replace-string-command.txt
 :echo expand("%:t")
-:tabnext 
-:tabnext 2
-:tabedit /home/qq/ShellScripts/bashrc-add-env-setting
 :tabedit /home/qq/ShellScripts/bashrc-add-find-func
 :w ShellScripts/bashrc-add-env-setting
 :e ShellScripts/bashrc-add-alias-name
-:vsplit
 :! shell
-:tabedit /home/qq/ShellScripts/bashrc-add-alias-name
 :e ShellScripts/bashrc-add-find-func
 :help clipboard
 :call ShowCurFileFullPath()
@@ -150,10 +257,8 @@ $TargetWord
 :help fnale
 :help filaname
 :e .vimrc
-:tabedit /home/qq/ShellScripts/bashrc-add-emacs-func
 :'<,'>
 :tabedit /home/qq/Github/vimperator-labs/common/content/bookmarks.js
-:buffers
 :b
 :tabedit /home/qq/Github/vimperator-labs/
 :tabedit /home/qq/Github/vimperator-labs/vimperator/content/config.js
@@ -179,12 +284,10 @@ $TargetWord
 :e ~/Note/linux/ubuntu/shell/shell_script_skills/shell-if-condition-judgment.txt
 :DelWithOutCurBuf
 :tabedit /home/qq/ShellScripts/basic_scripts/../../.vimrc
-:tabnext 1
 :tabedit /home/qq/ShellScripts/basic_scripts/format-error
 :tabedit /home/qq/ShellScripts/basic_scripts/ ~/.vimrc
 :!gedit ~/Note/linux/ubuntu/shell/shell_script_skills/shell-script-utility-expr.txt
 :! gedit ~/Note/linux/ubuntu/shell/./shell_script_skills/./shell-script-utility-expr
-:tabnext 3
 :tabedit /home/qq/Note/linux/ubuntu/shell/shell_script_skills/../../../../text_editor/vim/vim-basic-operate.txt
 :tabedit /home/qq/ShellScripts/basic_scripts/../../Note/linux/ubuntu/shell/shell_script_skills/./get-sh-argument.txt
 :tabedit /home/qq/BookMark/./bookmarks-2017-04-10.json
@@ -199,7 +302,6 @@ $TargetWord
 :help echo-redraw
 :help error
 :help message
-:e
 :help echo
 :help echo(
 :help echo()
@@ -402,7 +504,6 @@ $TargetWord
 :help builtin
 :help builtin function
 :help help
-:help 
 :echo g:actual_curbuf
 :set g:actual_curbuf
 :set g+
@@ -416,122 +517,108 @@ $TargetWord
 :execute "echo iskeyword"
 :execute echo iskeyword
 :execute echo
-:let b:curBufNum = bufnr("buffer-variable") && execute("echo " . b:curBufNum)
-:let b:curBufNum = bufnr("buffer-variable") && execute("echo ".b:curBufNum)
-:echo b:curbufnum
-:let b:curbufnum = 2
-:let b:curBufNum = bufnr("buffer-variable") && execute("echo " b:curBufNum)
-:let b:curBufNum = bufnr("buffer-variable") && echo b:curBufNum
-:echo t:curBufNum
-:echo w:curBufNum
-:tabNext
-:echo g:curBufNum
-:exit
-:get g:curBufNum
-:bufdo bdelete 2
-:bufdo bunload 
-:hello
-:Bclose
-:unload
-:help unload
-:help :bdellete
-:bufdo close 3
-:close
-:bufdo Nexplore
-:windo cexpr
-:help tab
-:help tab.txt
-:help tabs.txt
-:hidden-buffer
-:help window
-:function
-:help command
-:help builtin command
-:help intro
-:help index
-:help-tags
-:help bclose
-:help bufferclose
-:tabmove 0
-:tabmove 1
-:tabmove 4
-:tabmove 3
-:tabmove 2
-:bufdo
-:bufdo Bclose 2
-:Bclose 4
-:bufdo bdelete 6
-:Bclose 8
-:Bclose 7
-:tabclose 7
-:tabclose 6
-:tabedit /home/qq/Note/text_editor/vim/vim-basic-operate.txt
-:help try
-:set 
-:help expand()
-:help iskeyword
-:help [0-9
-:help 0-9
-:help cword
-:help isk
-:0-9
-:cword
-:help CR
-:help cr
-:help <cr>
-:help <CR>
-:help let
-:help mapleader
-:help input()
-:%s/targetword/TargetWord/g
-:W
-:help call
-:help line
-:help newline()
-:help newline
-:help call()
-:w input-help.txt
-:help input
-:help channel
-:help ()
-:index
-:help help-tags
-:help usr_01
-:echo GetVimIndent()
-:function-nargs
-:help function-args
-:help -nargs
-:help a:
-:help execute
-:!gedit execute-help.txt
-:tabedit /home/qq/
-:w hello
-:new
-:New
-:ReplaceCurStrBy hellp
-:RmVimball
-:%s/the/-hello-/gcp
-:re
-:ReplaceCurStrBy hello
-:ReplaceCurStrByhello
-:gedit ./e
-:list
-:write
 
 # 搜尋字串 歷史記錄 (新到舊):
+? @$
+?/sdcv
+?/ipad
+?/nautilus
+? \<LINK_NAME\>
+? \<status-line\>
+?/status
+? \<VIMRUNTIME\>
+? \<user\>
+?/toolbar
+? \<endLinum\>
+? \<startLinum\>
+? ^
+? \<startline\>
+? \<endline\>
+?/getwinvar
+?/winnr()
+?/gettabvar
+?/tabnr
+?/var(
+?/getbufvar(
+? \<getbufvar()\>
+? \<burnr\>
+?/Internal variable
+?/cursor
+? \<cursor,\>
+?/getpos
+? \<cursor\>
+?/getpos()
+?/getcurpos()
+?/line
+?/{lnum}
+?/lnum
+?/getline(
+?/getline()
+?/getbufline()
+?/buf
+?/line(
+?/line()
+? \<virtcol(\>
+?/vircol()
+?/vis
+?/Builtin Functions
+?/command-line
+?/cmdli
+?/cmdline
+?/visualmode()
+?/visualmode
+?/virtual
+?/virtcol()
+? \<setcmdpos(\>
+?/screenrow()
+?/getcurpos(
+?/cursor()
+? \<cursor(\>
+?/sursor
+?/# 
+? \<set\>
+?/hlsearch
+? \<ReplaceCurStrBy\>
+? 
+? \<range\>
+?/nohl
+? \<searching\>
+?/<leader>
+?/execute
+? \<commentStyle\>
+? \<commetStyle\>
+? \<curLanguage\>
+? \<curLangList\>
+? \<langCommentStyleDict\>
+? \<crLanguage\>
+?/fur
+?/futu
+?/fu
+?/log
+?/login
+?/xmodmap
+?/xmodmap	
+?/1487
+?/1523
+?/Xsession
+?/1966
+?/1555
+? \<BASHPID_TEMP\>
+? \<BASHPID\>
+?/1569
+?/>> $1
+? \<DETECT_SH_STAT\>
+? \<profile_shell_env\>
+?/aux
 ? \<ARGS\>
 ?/崩溃
 ?/if 
 ? \<boolean\>
 ?/ture
-?/Builtin Functions
 ? \<has_key()\>
 ?/if
 ?/empty(
 ?/empty
-? \<commentStyle\>
-? \<curLanguage\>
-? \<langCommentStyleDict\>
 ?/Dictionary
 ?/Variable types
 ?/variable
@@ -552,7 +639,6 @@ $TargetWord
 ?/getcharsearch()
 ?/setcharsearch(
 ?/items(
-? \<curLangList\>
 ? \<Dictionary\>
 ?/{key}
 ? \<{dict}])\>
@@ -560,7 +646,6 @@ $TargetWord
 ?/curbufnr
 ? \<Dictionaries\>
 ?/help eval
-?/var(
 ?/ver(
 ?/var
 ?/file type
@@ -650,17 +735,14 @@ $TargetWord
 ?/setcmd
 ?/setbuf
 ?/bufline
-?/buf
 ?/cmdline(
 ?/flush
 ?/flash
 ?/refrash
-?/cmdline
 ?/system()
 ? \<system(\>
 ? \<printf(\>
 ? \<getcmdline()\>
-?/getbufline()
 ? \<getbufline(\>
 ? \<foldtext()\>
 ?/CmdLine
@@ -697,12 +779,10 @@ $TargetWord
 ?/string is empty
 ?/string empty
 ?/input()
-? \<ReplaceCurStrBy\>
 ?/get
 ?/getch
 ?/curBuf
 ?/bufNum
-?/execute
 ?/help
 ?/join()
 ? \<{list}\>
@@ -766,12 +846,9 @@ $TargetWord
 ? \<tabpagebuflist()\>
 ?/\*tabpagebuflist(
 ?/Variables
-?/Internal variable
-?/winnr()
 ?/bufwinnr()
 ?/winnr
 ?/current tab
-?/tabnr
 ? \<{tabnr},\>
 ?/gettabwinvar(
 ?/n
@@ -787,7 +864,6 @@ $TargetWord
 ? \<tabpagebuflist(\>
 ?/#
 ?/h
-? \<range\>
 ? \<function\>
 ??let b:curBufNum = bufnr("buffer-variable") nexecute "echo " b:curBufNum
 ? \<endfunction\>
@@ -830,7 +906,6 @@ $TargetWord
 ?/gg
 ?/Defining functions
 ?/call
-?/line
 ?/builtin
 ?/input
 ?/read
@@ -869,7 +944,6 @@ $TargetWord
 ? \<VisualSelection\>
 ? \<ReplaceString\>
 ?/WORD
-?/cursor
 ? \<'ignorecase'\>
 ? let keyword = expand("<cword>")
 ? set keyword=expand("<cword>")
@@ -930,204 +1004,609 @@ $TargetWord
 
 # 暫存器:
 "0	CHAR	0
-	-
+	 
 "1	LINE	0
-	    echo -E "$@"
+	../
 "2	LINE	0
-	    echo ${ARGS}
+	./
 "3	LINE	0
-	    shotwell $ARGS
+	..
 "4	LINE	0
-	
+	.
 "5	LINE	0
-	输出样例：
-"6	LINE	0
-	    -t 这个参数可以设置生成截图的超时时间。-t 0 则表示禁用超时参数。
-"7	LINE	0
 	
+"6	LINE	0
+	
+"7	LINE	0
+	*** this is .gitignore regulate the file ignore rule ***
 "8	LINE	0
-	输出样例：
+	
 "9	LINE	0
 	
+""-	CHAR	0
+	.gitconfig
 
 # 檔案標記:
-'0  1  0  ~/.xinputrc
-'1  9  4  ~/ShellScripts/bashrc-add-pic-func
-'2  154  44  ~/bash.txt
-'3  6  0  ~/ShellScripts/bashrc-add-alias-name
-'4  107  0  ~/shell.txt
-'5  10  15  ~/ShellScripts/bashrc-add-pic-func
-'6  10  15  ~/ShellScripts/bashrc-add-pic-func
-'7  10  17  ~/ShellScripts/bashrc-add-pic-func
-'8  1  0  ../ShellScripts/bashrc-add-pic-func
-'9  1  0  ~/Pictures/test.txt
+'0  1  0  ~/.gitign.txt
+'1  75  0  ~/.gitign.txt
+'2  77  0  ~/.gitign.txt
+'3  73  0  ~/home-dir.txt
+'4  45  0  ~/git-dir.txt
+'5  1  0  ~/home-dir.txt
+'6  1  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
+'7  48  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
+'8  1  0  ~/Note/IC/ic.org
+'9  53  0  ~/Note/server-maintain/server-maintain.org
 
 # Jumplist (由新到舊):
--'  1  0  ~/.xinputrc
--'  9  4  ~/ShellScripts/bashrc-add-pic-func
--'  154  44  ~/bash.txt
--'  1  0  ~/bash.txt
--'  6  0  ~/ShellScripts/bashrc-add-alias-name
--'  107  0  ~/shell.txt
--'  2470  0  ~/shell.txt
--'  2  0  ~/shell.txt
--'  1  0  ~/shell.txt
--'  10  4  ~/ShellScripts/bashrc-add-pic-func
--'  1  0  ../ShellScripts/bashrc-add-pic-func
--'  1  0  ~/Pictures/test.txt
--'  8  0  ~/ShellScripts/bashrc-add-pic-func
--'  1  0  ~/ShellScripts/bashrc-add-pic-func
--'  132  30  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
--'  15  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
--'  1  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
--'  7  0  ~/ShellScripts/bashrc-add-view-pic-func
--'  1  0  ~/ShellScripts/bashrc-add-view-pic-func
--'  43  0  ~/Note/linux/ubuntu/shell/shell_command/intercept-screenshot-of-the-webpage.txt
--'  1  0  ~/Note/linux/ubuntu/shell/shell_command/intercept-screenshot-of-the-webpage.txt
--'  238  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-setting.txt
--'  1  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-setting.txt
--'  139  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
--'  108  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
--'  1  0  ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
--'  102  168  ~/Note/linux/ubuntu/internet_browser/firefox/firefox-fast-startup.txt
--'  1  0  ~/Note/linux/ubuntu/internet_browser/firefox/firefox-fast-startup.txt
--'  1  4  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
--'  47  263  ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
--'  22  0  ~/TODO
--'  495  54  ~/.vimrc
--'  272  17  ~/.vimrc
--'  164  0  ~/.vimrc
--'  151  0  ~/.vimrc
--'  135  0  ~/.vimrc
--'  86  0  ~/.vimrc
--'  1  0  ~/.vimrc
--'  491  38  ~/.vimrc
--'  487  10  ~/.vimrc
--'  488  29  ~/.vimrc
--'  486  18  ~/.vimrc
--'  482  10  ~/.vimrc
--'  504  39  ~/.vimrc
--'  502  36  ~/.vimrc
--'  483  10  ~/.vimrc
--'  485  46  ~/.vimrc
--'  520  22  ~/.vimrc
--'  51  9  ~/.vimrc
--'  50  0  ~/.vimrc
--'  49  9  ~/.vimrc
--'  507  11  ~/.vimrc
--'  503  13  ~/.vimrc
--'  508  14  ~/.vimrc
--'  480  4  ~/.vimrc
--'  479  4  ~/.vimrc
--'  441  4  ~/.vimrc
--'  440  4  ~/.vimrc
--'  417  3  ~/.vimrc
--'  416  3  ~/.vimrc
--'  401  4  ~/.vimrc
--'  400  4  ~/.vimrc
--'  392  4  ~/.vimrc
--'  391  4  ~/.vimrc
--'  388  4  ~/.vimrc
--'  254  14  ~/.vimrc
--'  252  0  ~/.vimrc
--'  251  2  ~/.vimrc
--'  76  0  ~/.vimrc
--'  1  0  ~/ShellScripts/basic_scripts/backup.sh
--'  146  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
--'  77  0  ~/Note/text_editor/vim/vim-replace-string-command.txt
--'  1  1  ~/all-emacs-name-file.txt
--'  2  0  ~/.xsessionrc
--'  1  0  ~/.xsessionrc
--'  33  0  ~/.profile
--'  26  0  ~/.profile
--'  25  0  ~/.profile
--'  30  0  ~/ShellScripts/bashrc-add-emacs-func
--'  1  0  ~/ShellScripts/bashrc-add-emacs-func
--'  1  0  ~/ShellScripts/bashrc-add-alias-name
--'  16  0  ~/ShellScripts/bashrc-init
--'  1  0  ~/ShellScripts/bashrc-init
--'  123  0  ~/.bashrc
--'  1  0  ~/.bashrc
--'  4  8  ~/ShellScripts/bashrc-add-kernel-module-func
--'  6  9  ~/ShellScripts/bashrc-add-kernel-module-func
--'  7  8  ~/ShellScripts/bashrc-add-kernel-module-func
--'  8  0  ~/ShellScripts/bashrc-add-kernel-module-func
--'  27  0  /etc/profile
--'  28  3  /etc/profile
--'  142  13  ~/modprobe.txt
--'  16011  48  ~/modprobe.txt
--'  16009  48  ~/modprobe.txt
--'  13690  46  ~/modprobe.txt
--'  13057  28  ~/modprobe.txt
--'  13027  30  ~/modprobe.txt
--'  495  54  ~/.vimrc
+-'  1  0  ~/.gitign.txt
+-'  75  0  ~/.gitign.txt
+-'  25  0  ~/.gitign.txt
+-'  23  0  ~/.gitign.txt
+-'  65  0  ~/.gitign.txt
+-'  62  0  ~/.gitign.txt
+-'  66  0  ~/.gitign.txt
+-'  4  0  ~/.gitign.txt
+-'  77  0  ~/.gitign.txt
+-'  73  0  ~/home-dir.txt
+-'  1  0  ~/home-dir.txt
+-'  45  0  ~/git-dir.txt
+-'  1  0  ~/git-dir.txt
+-'  1  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
+-'  48  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
+-'  1  0  ~/Note/IC/ic.org
+-'  53  0  ~/Note/server-maintain/server-maintain.org
+-'  1  0  ~/Note/server-maintain/server-maintain.org
+-'  1  0  ~/Note/learning/2013-1-11-我该如何充分的利用这段时间提高自己.txt
+-'  1  0  ~/Note/learning
+-'  8  0  ~/Note/linux/linux_skills/xmodmap-change-keymap.txt
+-'  1  0  ~/Note/linux/linux_skills/xmodmap-change-keymap.txt
+-'  134  0  ~/Note/linux/linux_skills/ubuntu-use-xmodmap-change-keymap.txt
+-'  1  0  ~/Note/linux/linux_skills/ubuntu-use-xmodmap-change-keymap.txt
+-'  23  0  ~/Note/linux/linux_skills/mplayer.txt
+-'  1  0  ~/Note/linux/linux_skills/mplayer.txt
+-'  73  0  ~/Note/text_editor/emacs/why_use_emacs.txt
+-'  1  0  ~/Note/text_editor/emacs/why_use_emacs.txt
+-'  468  0  ~/Note/text_editor/emacs/emacs-keystruct.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs-keystruct.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs-help-command.txt
+-'  67  0  ~/Note/text_editor/emacs/emacs-correlation-help.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs-correlation-help.txt
+-'  396  0  ~/Note/text_editor/emacs/!!!!!!---windows-home-path.txt
+-'  1  0  ~/Note/text_editor/emacs/!!!!!!---windows-home-path.txt
+-'  13  0  ~/Note/text_editor/emacs/why_use_emacs.org
+-'  27  8  ~/Note/text_editor/emacs/why_use_emacs.org
+-'  1  0  ~/Note/text_editor/emacs/why_use_emacs.org
+-'  1  0  ~/Note/text_editor/emacs/w3m.org
+-'  16  7  ~/Note/text_editor/emacs/use_manpage_in_emacs.org
+-'  14  6  ~/Note/text_editor/emacs/use_manpage_in_emacs.org
+-'  1  0  ~/Note/text_editor/emacs/use_manpage_in_emacs.org
+-'  322  0  ~/Note/text_editor/emacs/use_emacs_reading_source_code.org
+-'  1  0  ~/Note/text_editor/emacs/use_emacs_reading_source_code.org
+-'  124  0  ~/Note/text_editor/emacs/translucent.org
+-'  1  0  ~/Note/text_editor/emacs/translucent.org
+-'  1  0  ~/Note/text_editor/emacs/themes/some-emacs-theme.txt
+-'  40  0  ~/Note/text_editor/emacs/spacemacs-usage.txt
+-'  1  1  ~/Note/text_editor/emacs/spacemacs-usage.txt
+-'  53  0  ~/Note/text_editor/emacs/sdcv.org
+-'  1  0  ~/Note/text_editor/emacs/sdcv.org
+-'  1  0  ~/Note/text_editor/emacs/root_open_file.org
+-'  1  0  ~/Note/text_editor/emacs/c_c++_mode.txt
+-'  78  0  ~/Note/text_editor/emacs/redirect_backup_file.org
+-'  1  0  ~/Note/text_editor/emacs/redirect_backup_file.org
+-'  26  0  ~/Note/text_editor/emacs/readOnlyOpenEmacs.txt
+-'  1  0  ~/Note/text_editor/emacs/readOnlyOpenEmacs.txt
+-'  138  8  ~/Note/text_editor/emacs/org-mode_and_todo-mode.org
+-'  1  0  ~/Note/text_editor/emacs/org-mode_and_todo-mode.org
+-'  1  129  ~/Note/text_editor/emacs/mplayer-useage.txt
+-'  1  0  ~/Note/text_editor/emacs/lisp.txt
+-'  190  0  ~/Note/text_editor/emacs/Gnu.org
+-'  1  0  ~/Note/text_editor/emacs/Gnu.org
+-'  156  0  ~/Note/text_editor/emacs/gdb_for_emacs.org
+-'  1  0  ~/Note/text_editor/emacs/gdb_for_emacs.org
+-'  65  4  ~/Note/text_editor/emacs/frame_size.org
+-'  1  0  ~/Note/text_editor/emacs/frame_size.org
+-'  392  0  ~/Note/text_editor/emacs/ERC.org
+-'  1  0  ~/Note/text_editor/emacs/ERC.org
+-'  1014  0  ~/Note/text_editor/emacs/emacs+w3m-2.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs+w3m-2.txt
+-'  873  0  ~/Note/text_editor/emacs/emacs+w3m-1.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs+w3m-1.txt
+-'  1416  0  ~/Note/text_editor/emacs/emacs-usage.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs-usage.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs.txt
+-'  158  0  ~/Note/text_editor/emacs/emacs.txt
+-'  6  0  ~/Note/text_editor/emacs/emacs.txt
+-'  17  0  ~/Note/text_editor/emacs/emacs-skills.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs-skills.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt~
+-'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs-profile_bak.txt
+-'  346  0  ~/Note/text_editor/emacs/emacs_learnning.org~
+-'  1  0  ~/Note/text_editor/emacs/emacs_learnning.org~
+-'  1  0  ~/Note/text_editor/emacs/emacs-full-screen-最大化.txt
+-'  165  0  ~/Note/text_editor/emacs/emacs-full-screen-最大化.txt
+-'  1  0  ~/Note/text_editor/emacs/emacs file.org~
+-'  2  0  ~/Note/text_editor/emacs/dot-emacs.org
+-'  607  0  ~/Note/text_editor/emacs/emacs+w3m-2_utf-8.org
+-'  1  0  ~/Note/text_editor/emacs/emacs+w3m-2_utf-8.org
+-'  1  0  ~/Note/text_editor/emacs/emacs_shell_grabled.org
+-'  229  1  ~/Note/text_editor/emacs/emacs-menu.org
+-'  1  0  ~/Note/text_editor/emacs/emacs-menu.org
+-'  289  0  ~/Note/text_editor/emacs/emacs_learnning.org
+-'  1  0  ~/Note/text_editor/emacs/emacs_learnning.org
+-'  1  0  ~/Note/text_editor/emacs/emacs-profile-intro.txt
 
 # 檔案內 Mark 記錄 (由新到舊):
 
-> ~/.xinputrc
+> ~/.gitign.txt
 	"	1	0
-
-> ~/ShellScripts/bashrc-add-pic-func
-	"	9	4
-	^	9	15
-	.	9	14
-	+	8	20
-	+	10	14
-	+	10	8
-	+	10	13
-	+	10	18
-	+	10	0
-	+	9	0
-	+	10	15
-	+	10	17
-	+	10	0
-	+	10	0
-	+	9	14
-
-> ~/bash.txt
-	"	154	44
-	^	154	45
-	.	154	44
-	+	154	44
-
-> ~/ShellScripts/bashrc-add-alias-name
-	"	6	0
-	^	6	8
-	.	6	7
-	+	8	0
-	+	5	26
-	+	6	7
-
-> ~/shell.txt
-	"	107	0
-
-> ../ShellScripts/bashrc-add-pic-func
-	"	1	0
-
-> ~/Pictures/test.txt
-	"	1	0
-
-> ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-arguments-explain.txt
-	"	132	30
-
-> ~/ShellScripts/bashrc-add-view-pic-func
-	"	7	0
-	^	3	0
-	.	6	0
+	^	71	0
+	.	21	0
+	+	1	0
+	+	71	0
+	+	69	0
+	+	68	0
+	+	66	0
+	+	68	0
+	+	66	0
+	+	64	0
+	+	63	0
+	+	62	0
+	+	61	0
+	+	60	0
+	+	59	0
+	+	57	0
+	+	51	0
+	+	48	0
+	+	46	0
+	+	43	0
+	+	42	0
+	+	40	0
+	+	38	0
+	+	36	0
+	+	30	0
+	+	30	0
+	+	25	0
 	+	5	0
-	+	8	19
+	+	7	0
+	+	11	0
+	+	12	0
+	+	13	0
+	+	17	0
+	+	22	0
+	+	70	0
+	+	24	0
+	+	21	0
+
+> ~/.gconf/desktop/%gconf.xml
+	"	1	0
+
+> ~/.dmrc
+	"	1	0
+
+> ~/.gnome2/gnome-commander
+	"	1	0
+
+> ~/.gnome-commander/gnome-commander.xml
+	"	121	0
+
+> ~/.gnome-commander/devices
+	"	1	0
+
+> ~/.gnupg/gpg.conf
+	"	1	0
+
+> ~/.ICEauthority
+	"	41	0
+
+> ~/.lesshst
+	"	61	0
+
+> ~/.local/share/gnome-settings-daemon/input-sources-converted
+	"	1	0
+
+> ~/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys/settings.sol
+	"	1	0
+
+> ~/.mplayer/config
+	"	1	0
+
+> ~/.npm/colors/1.1.2/package/package.json
+	"	1	0
+
+> ~/.RapidSVN
+	"	83	0
+
+> ~/.sudo_as_admin_successful
+	"	1	0
+
+> ~/.thumbnails/fail/gimp-2.8/3890d1e4c899120c08f9bbd5d161bc0d.png
+	"	1	0
+
+> ~/.wget-hsts
+	"	1	0
+
+> ~/home-dir.txt
+	"	73	0
+	.	74	0
+	+	1	0
+	+	1	0
+	+	74	0
+
+> ~/git-dir.txt
+	"	45	0
+	.	46	0
+	+	46	0
+
+> ~/diff-the-Home-dir-and-.gitignore-file.txt
+	"	1	0
+	.	1	0
+	+	1	0
+
+> ~/Note/IC/ic.org
+	"	1	0
+
+> ~/Note/server-maintain/server-maintain.org
+	"	53	0
+
+> ~/Note/learning/2013-1-11-我该如何充分的利用这段时间提高自己.txt
+	"	1	0
+
+> ~/Note/linux/linux_skills/xmodmap-change-keymap.txt
+	"	8	0
+
+> ~/Note/linux/linux_skills/ubuntu-use-xmodmap-change-keymap.txt
+	"	134	0
+
+> ~/Note/linux/linux_skills/mplayer.txt
+	"	23	0
+
+> ~/Note/text_editor/emacs/why_use_emacs.txt
+	"	73	0
+
+> ~/Note/text_editor/emacs/emacs-keystruct.txt
+	"	468	0
+
+> ~/Note/text_editor/emacs/emacs-help-command.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs-correlation-help.txt
+	"	67	0
+
+> ~/Note/text_editor/emacs/!!!!!!---windows-home-path.txt
+	"	396	0
+
+> ~/Note/text_editor/emacs/why_use_emacs.org
+	"	13	0
+	^	106	0
+	.	106	0
+	+	112	0
+	+	113	0
+	+	115	0
+	+	117	0
+	+	120	0
+	+	7	0
+	+	8	0
 	+	10	0
-	+	9	14
-	+	7	0
-	+	2	0
-	+	7	0
-	+	2	51
-	+	3	50
-	+	4	21
+	+	12	0
+	+	19	0
+	+	21	0
+	+	22	0
+	+	27	189
+	+	29	0
+	+	27	183
+	+	29	0
+	+	28	10
+	+	27	0
+	+	30	0
+	+	31	0
+	+	33	0
+	+	35	0
+	+	37	0
+	+	41	0
+	+	44	0
+	+	49	0
+	+	54	0
+	+	59	0
+	+	63	0
+	+	66	0
+	+	72	0
+	+	76	0
+	+	79	0
+	+	87	0
+	+	90	0
+	+	94	0
+	+	106	0
+
+> ~/Note/text_editor/emacs/w3m.org
+	"	1	0
+
+> ~/Note/text_editor/emacs/use_manpage_in_emacs.org
+	"	16	7
+	.	16	7
+	+	32	0
+	+	38	6
+	+	14	0
+	+	17	0
+	+	16	7
+
+> ~/Note/text_editor/emacs/use_emacs_reading_source_code.org
+	"	322	0
+
+> ~/Note/text_editor/emacs/translucent.org
+	"	124	0
+
+> ~/Note/text_editor/emacs/themes/some-emacs-theme.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/spacemacs-usage.txt
+	"	40	0
+	.	52	0
+	+	52	0
+	+	52	0
+
+> ~/Note/text_editor/emacs/sdcv.org
+	"	53	0
+
+> ~/Note/text_editor/emacs/root_open_file.org
+	"	1	0
+
+> ~/Note/text_editor/emacs/c_c++_mode.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/redirect_backup_file.org
+	"	78	0
+
+> ~/Note/text_editor/emacs/readOnlyOpenEmacs.txt
+	"	26	0
+
+> ~/Note/text_editor/emacs/org-mode_and_todo-mode.org
+	"	138	8
+
+> ~/Note/text_editor/emacs/mplayer-useage.txt
+	"	1	129
+
+> ~/Note/text_editor/emacs/lisp.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/Gnu.org
+	"	190	0
+
+> ~/Note/text_editor/emacs/gdb_for_emacs.org
+	"	156	0
+
+> ~/Note/text_editor/emacs/frame_size.org
+	"	65	4
+
+> ~/Note/text_editor/emacs/ERC.org
+	"	392	0
+
+> ~/Note/text_editor/emacs/emacs+w3m-2.txt
+	"	1014	0
+
+> ~/Note/text_editor/emacs/emacs+w3m-1.txt
+	"	873	0
+
+> ~/Note/text_editor/emacs/emacs-usage.txt
+	"	1416	0
+
+> ~/Note/text_editor/emacs/emacs.txt
+	"	1	0
+	n	1	0
+
+> ~/Note/text_editor/emacs/emacs-skills.txt
+	"	17	0
+
+> ~/Note/text_editor/emacs/emacs-profile.txt~
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs-profile.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs-profile_bak.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs_learnning.org~
+	"	346	0
+
+> ~/Note/text_editor/emacs/emacs-full-screen-最大化.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs file.org~
+	"	1	0
+
+> ~/Note/text_editor/emacs/dot-emacs.org
+	"	2	0
+
+> ~/Note/text_editor/emacs/emacs+w3m-2_utf-8.org
+	"	607	0
+
+> ~/Note/text_editor/emacs/emacs_shell_grabled.org
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs-menu.org
+	"	229	1
+
+> ~/Note/text_editor/emacs/emacs_learnning.org
+	"	289	0
+
+> ~/Note/text_editor/emacs/emacs-profile-intro.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs file.org
+	"	1	0
+
+> ~/Note/text_editor/emacs/emacs_auto_notation.org
+	"	49	8
+
+> ~/Note/text_editor/emacs/custom-elisp/org-mode.el.txt
+	"	1	0
+
+> ~/Note/text_editor/emacs/ctrl_caps_swap.org
+	"	57	0
+
+> ~/Note/text_editor/emacs/c_c++_mode.org
+	"	413	8
+
+> ~/Note/text_editor/emacs/calender.org
+	"	124	0
+
+> ~/Note/programming_IDE/linux-programming-IDE.txt
+	"	42	0
+
+> ~/test
+	"	1	0
+
+> ~/all-emacs-name-file.txt
+	"	215	0
+
+> ~/Github/openiBoot/LICENSE.txt
+	"	302	0
+
+> ~/Github/openiBoot/printf.c
+	"	317	0
+
+> ~/Github/PyGithub/README.md
+	"	45	0
+
+> ~/Github/openiBoot/installer/SConscript
+	"	1	0
+
+> ~/Github/openiBoot/installer/installer.c
+	"	102	0
+
+> ~/Github/openiBoot/SConstruct
+	"	89	1
+
+> ~/Github/openiBoot/docs/readme.txt
+	"	1	0
+
+> ~/ShellScripts/basic_scripts/xmodmap.sh
+	"	3	4
+	.	4	0
 	+	3	0
 	+	4	0
+
+> ~/Github/PyGithub/setup.py
+	"	65	0
+
+> /etc/gnome/defaults.list
+	"	195	3
+	^	195	39
+	.	195	38
+	+	195	38
+
+> /etc/gnome/menus.blacklist
+	"	1	0
+
+> ~/Note/linux/ubuntu/gnome/gnome-utility-tools.txt
+	"	19	0
+
+> ~/gnome.txt
+	"	30	0
+	^	30	0
+	.	30	0
+	+	19	0
+	+	21	0
+	+	14	0
+	+	24	0
+	+	20	0
+	+	14	0
+	+	21	14
+	+	22	9
+	+	23	18
+	+	24	5
+	+	19	13
+	+	19	12
+	+	19	10
+	+	19	10
+	+	19	10
+	+	19	10
+	+	19	10
+	+	19	10
+	+	19	11
+	+	18	17
+	+	16	18
+	+	16	13
+	+	14	11
+	+	14	17
+	+	14	13
+	+	14	19
+	+	14	22
+	+	14	15
+	+	14	16
+	+	14	24
+	+	14	25
+	+	14	20
+	+	13	28
+	+	13	7
+	+	12	19
+	+	12	20
+	+	10	15
+	+	10	11
+	+	5	7
+	+	3	18
+	+	13	0
+	+	13	0
+	+	14	0
+	+	19	0
+	+	19	0
+	+	19	0
+	+	12	0
+	+	14	0
+	+	15	0
+	+	14	0
+	+	10	0
+	+	19	0
+	+	29	12
+	+	18	13
+	+	29	10
+	+	19	11
+	+	31	0
+	+	29	0
+	+	29	8
+	+	31	0
+	+	28	0
+	+	29	0
+	+	31	0
+	+	31	0
+	+	3	0
+	+	31	0
+	+	4	0
+	+	5	0
+	+	3	0
+	+	31	0
+	+	31	0
+	+	10	0
+	+	31	0
+	+	10	0
+	+	31	0
 	+	7	0
-	+	6	0
+	+	29	0
+	+	26	0
+	+	27	16
+	+	26	0
+	+	10	67
+	+	27	11
+	+	13	11
+	+	18	0
+	+	17	0
+	+	23	12
+	+	6	2
+	+	10	67
+	+	8	0
+	+	9	14
+	+	2	0
+	+	1	0
+	+	3	0
+	+	7	0
+	+	10	0
+	+	14	0
+	+	18	0
+	+	24	0
+	+	28	0
+	+	30	0
 
 > ~/Note/linux/ubuntu/shell/shell_command/intercept-screenshot-of-the-webpage.txt
 	"	43	0
@@ -1144,1111 +1623,147 @@ $TargetWord
 	+	20	0
 	+	30	0
 
-> ~/Note/linux/ubuntu/web_browser/firefox/firefox-about-config-setting.txt
-	"	238	0
+> ~/ShellScripts/bashrc-add-ln-func
+	"	9	33
+	^	6	10
+	.	6	9
+	+	9	41
+	+	6	9
 
-> ~/Note/linux/ubuntu/web_browser/firefox/firefox-fast-startup.txt
-	"	139	0
-	^	50	0
-	.	56	125
-	+	6	0
-	+	13	0
-	+	19	0
-	+	25	0
-	+	27	0
-	+	30	0
-	+	33	0
-	+	43	0
-	+	47	0
-	+	50	0
-	+	55	0
-	+	57	0
-	+	56	125
+> ~/.vimperatorrc
+	"	8	8
+	^	8	8
+	.	8	8
+	+	5	0
+	+	7	12
+	+	8	8
 
-> ~/Note/linux/ubuntu/internet_browser/firefox/firefox-fast-startup.txt
-	"	102	168
-	^	126	0
-	.	126	0
-	+	126	0
-
-> ~/Note/linux/ubuntu/shell/shell_script_skills/shell-history-format.txt
-	"	1	4
-	^	47	264
-	.	47	263
-	+	47	263
-
-> ~/TODO
-	"	22	0
-	.	23	0
-	+	23	0
+> ~/Github/vim/detect-statusline.txt
+	"	84	4
 
 > ~/.vimrc
-	"	495	54
-	^	495	55
-	.	495	54
-	+	513	41
-	+	479	19
-	+	480	12
-	+	508	24
-	+	480	20
-	+	479	22
-	+	508	0
-	+	507	31
-	+	508	0
-	+	508	35
-	+	511	8
-	+	508	0
-	+	507	15
-	+	510	70
-	+	507	30
-	+	503	17
-	+	507	9
-	+	482	0
-	+	503	38
-	+	482	0
-	+	446	0
-	+	445	0
-	+	475	0
-	+	446	0
-	+	445	0
-	+	483	19
-	+	503	7
-	+	483	41
-	+	482	44
-	+	503	6
-	+	507	10
-	+	483	25
-	+	503	13
-	+	502	37
-	+	503	18
-	+	503	0
-	+	505	12
-	+	503	12
-	+	504	18
-	+	503	19
-	+	507	17
-	+	503	23
-	+	507	21
-	+	482	4
-	+	502	4
-	+	502	32
-	+	486	0
-	+	486	33
-	+	486	21
-	+	482	80
-	+	502	4
-	+	502	4
-	+	501	0
-	+	502	4
-	+	502	4
-	+	502	4
-	+	502	4
-	+	502	4
-	+	502	4
-	+	502	4
-	+	502	4
-	+	502	4
-	+	485	15
-	+	483	49
-	+	485	46
-	+	486	0
-	+	501	8
+	"	281	5
+	^	82	1
+	.	82	0
+	+	481	0
+	+	481	33
+	+	481	21
+	+	477	80
+	+	523	4
+	+	523	4
+	+	523	0
+	+	523	4
+	+	523	4
+	+	523	4
+	+	523	4
+	+	523	4
+	+	523	4
+	+	523	4
+	+	523	4
+	+	523	4
+	+	480	15
+	+	478	49
+	+	480	46
+	+	481	0
+	+	523	8
+	+	478	0
+	+	523	4
+	+	478	0
+	+	479	0
+	+	523	3
+	+	523	4
+	+	523	52
+	+	523	60
+	+	523	0
+	+	482	8
 	+	483	0
-	+	502	4
-	+	483	0
+	+	523	0
 	+	484	0
-	+	502	3
-	+	502	4
-	+	502	52
-	+	504	60
-	+	503	0
+	+	484	7
+	+	482	56
+	+	483	29
+	+	484	0
+	+	492	12
+	+	486	0
+	+	487	10
+	+	486	56
+	+	480	10
+	+	482	14
+	+	486	8
 	+	487	8
-	+	488	0
-	+	501	0
-	+	489	0
-	+	489	7
-	+	487	56
-	+	488	29
-	+	489	0
-	+	497	12
-	+	491	0
-	+	492	10
-	+	491	56
-	+	485	10
-	+	487	14
-	+	491	8
-	+	492	8
-	+	491	13
-	+	492	17
-	+	494	21
-	+	482	62
-	+	494	63
-	+	496	53
-	+	494	55
-	+	495	54
+	+	486	13
+	+	487	17
+	+	489	21
+	+	477	62
+	+	489	63
+	+	491	53
+	+	489	55
+	+	490	54
+	+	483	0
+	+	523	0
+	+	523	0
+	+	523	0
+	+	523	0
+	+	528	0
+	+	523	21
+	+	528	41
+	+	523	0
+	+	373	0
+	+	532	7
+	+	533	0
+	+	523	0
+	+	524	0
+	+	528	61
+	+	523	0
+	+	496	0
+	+	494	0
+	+	494	0
+	+	521	0
+	+	523	0
+	+	496	0
+	+	505	0
+	+	527	61
+	+	528	41
+	+	528	0
+	+	525	0
+	+	527	0
+	+	525	63
+	+	528	4
+	+	517	0
+	+	478	38
+	+	529	19
+	+	530	13
+	+	444	0
+	+	494	0
+	+	521	0
+	+	477	0
+	+	530	20
+	+	526	12
+	+	527	4
+	+	526	29
+	+	531	0
+	+	530	17
+	+	531	4
+	+	82	0
 	a	368	4
-	m	325	40
-	t	314	0
-
-> ~/Note/text_editor/vim/vim-replace-string-command.txt
-	"	77	0
-	^	167	0
-	.	140	0
-	+	47	397
-	+	1	3
-	+	3	0
-	+	6	0
-	+	7	0
-	+	12	0
-	+	16	4
-	+	21	0
-	+	24	0
-	+	27	0
-	+	30	0
-	+	33	0
-	+	36	0
-	+	39	0
-	+	42	0
-	+	45	0
-	+	48	0
-	+	51	0
-	+	54	0
-	+	58	0
-	+	60	0
-	+	62	0
-	+	64	0
-	+	66	0
-	+	68	0
-	+	70	0
-	+	72	0
-	+	74	0
-	+	76	0
-	+	78	0
-	+	80	0
-	+	82	0
-	+	84	0
-	+	86	0
-	+	88	0
-	+	90	0
-	+	92	0
-	+	94	0
-	+	96	0
-	+	98	0
-	+	100	0
-	+	110	0
-	+	113	0
-	+	121	0
-	+	166	0
-	+	137	0
-	+	138	0
-	+	139	0
-	+	140	0
-	+	140	0
-
-> /usr/share/vim/vim74/doc/eval.txt
-	"	7851	0
-
-> /usr/share/vim/vim74/doc/change.txt
-	"	398	7
-
-> /usr/share/vim/vim74/doc/options.txt
-	"	2342	24
-
-> /usr/share/vim/vim74/doc/filetype.txt
-	"	293	2
-
-> /usr/share/vim/vim74/doc/cmdline.txt
-	"	441	1
-
-> /usr/share/vim/vim74/doc/usr_41.txt
-	"	2242	10
-
-> ~/Note/text_editor/vim/vim-get-current-dir-file.txt
-	"	1	0
-	.	18	0
-	+	33	0
-	+	32	0
-	+	33	0
-	+	32	4
-	+	6	54
-	+	7	80
-	+	8	25
-	+	9	27
-	+	10	78
-	+	11	59
-	+	13	0
-	+	13	0
-	+	3	0
-	+	3	0
-	+	18	0
-	+	19	0
-	+	20	0
-	+	21	0
-	+	22	0
-	+	2	0
-	+	3	0
-	+	28	0
-	+	26	0
-	+	22	0
-	+	21	0
-	+	20	0
-	+	19	0
-	+	18	0
-
-> ~/ShellScripts/basic_scripts/backup.sh
-	"	1	0
-
-> ~/all-emacs-name-file.txt
-	"	1	1
-
-> ~/ShellScripts/bashrc-add-find-func
-	"	10	0
-	^	11	0
-	.	11	0
-	+	9	11
-	+	11	0
-
-> ~/ShellScripts/bashrc-add-env-setting
-	"	1	0
-	^	7	46
-	.	7	48
-	+	7	101
-	+	7	0
-	+	6	10
-	+	7	114
-	+	7	1
-	+	7	13
-	+	7	8
-	+	7	0
-	+	7	0
-	+	7	23
-	+	7	22
-	+	7	0
-	+	7	47
-	+	7	17
-	+	7	47
-	+	7	0
-	+	7	31
-	+	7	0
-	+	7	0
-	+	7	0
-	+	7	25
-	+	7	0
-	+	7	0
-	+	7	0
-	+	7	17
-	+	7	14
-	+	7	0
-	+	7	0
-	+	7	25
-	+	7	0
-	+	8	0
-	+	7	0
-	+	7	0
-	+	7	0
-	+	7	0
-	+	7	0
-	+	7	0
-	+	7	32
-	+	7	0
-	+	8	0
-	+	7	48
-
-> /usr/share/vim/vim74/doc/gui.txt
-	"	455	0
-
-> /usr/share/vim/vim74/doc/editing.txt
-	"	1340	61
-
-> ~/Note/linux/ubuntu/shell/shell_command/text-processing-tools.txt
-	"	458	0
-
-> ~/ShellScripts/bashrc-add-emacs-func
-	"	23	21
-	.	23	21
-	+	22	20
-	+	23	21
-
-> ~/.xsessionrc
-	"	2	0
-
-> ~/.profile
-	"	33	0
-	^	31	0
-	.	34	0
-	+	32	3
-	+	32	0
-	+	28	45
-	+	30	42
-	+	31	0
-	+	34	0
-
-> ~/.bashrc
-	"	123	0
-
-> ~/ShellScripts/bashrc-init
-	"	12	1
-
-> /etc/bash.bashrc
-	"	68	0
-
-> ~/ShellScripts/bashrc-add-kernel-module-func
-	"	4	8
-	^	7	8
-	.	4	0
-	+	3	0
-	+	2	35
-	+	5	0
-	+	6	20
-	+	8	0
-	+	3	7
-	+	4	7
-	+	7	7
-	+	4	0
-
-> /etc/profile
-	"	27	0
-	.	28	0
-	+	28	3
-	+	28	0
-	+	28	0
-
-> ~/modprobe.txt
-	"	142	13
-
-> ~/Note/linux/system_management/get-system-info-utility-command.txt
-	"	35	0
-	.	45	0
-	+	45	8
-	+	47	0
-	+	46	4
-	+	2	0
-	+	45	0
-	+	45	0
-	+	45	0
-	+	45	0
-	+	45	0
-	+	45	0
-	+	45	0
-
-> ~/env.txt
-	"	22	0
-
-> ~/Note/linux/ubuntu/mouse/psmouse-enable.txt
-	"	33	0
-	^	33	9
-	.	34	0
-	+	33	8
-	+	34	0
-
-> ~/Github/vimperator-labs/dir-struct.txt
-	"	18	26
-
-> ~/Github/vimperator-labs/common/content/marks.js
-	"	1	0
-
-> ~/Github/vimperator-labs/common/content/bindings.xml
-	"	1	0
-
-> ~/Github/vimperator-labs/common/content/commandline.js
-	"	1	0
-
-> ~/Github/vimperator-labs/vimperator/components/commandline-handler.js
-	"	1	0
-
-> ~/Github/vimperator-labs/vimperator/content/config.js
-	"	79	8
-
-> ~/Github/vimperator-labs/common/content/bookmarks.js
-	"	640	27
-
-> ~/Github/vimperator-labs/common/content/events.js
-	"	176	12
-
-> ~/Github/vimperator-labs/common/locale/en-US/gui.xml
-	"	80	12
-
-> ~/ShellScripts/basic_scripts/format-the-shell-script.sh
-	"	127	0
-	^	90	18
-	.	90	17
-	+	101	2
-	+	102	0
-	+	105	0
-	+	105	3
-	+	106	0
-	+	106	0
-	+	107	0
-	+	75	0
-	+	76	8
-	+	76	8
-	+	76	8
-	+	76	8
-	+	76	8
-	+	78	8
-	+	80	0
-	+	89	62
-	+	96	0
-	+	98	0
-	+	95	0
-	+	100	8
-	+	101	15
-	+	96	14
-	+	101	14
-	+	106	0
-	+	103	0
-	+	105	0
-	+	99	12
-	+	105	0
-	+	104	0
-	+	105	15
-	+	108	0
-	+	72	5
-	+	74	9
-	+	73	0
-	+	74	0
-	+	73	0
-	+	112	4
-	+	78	0
-	+	112	0
-	+	110	33
-	+	111	8
-	+	113	3
-	+	115	0
-	+	50	3
-	+	51	0
-	+	69	0
-	+	54	0
-	+	58	4
-	+	62	0
-	+	65	4
-	+	55	0
-	+	63	0
-	+	49	22
-	+	55	0
-	+	56	22
-	+	63	0
-	+	64	25
-	+	69	0
-	+	54	0
-	+	57	0
-	+	65	23
-	+	49	17
-	+	56	23
-	+	65	26
-	+	66	11
-	+	124	0
-	+	123	25
-	+	130	0
-	+	124	0
-	+	78	22
-	+	77	7
-	+	78	0
-	+	77	0
-	+	76	22
-	+	78	10
-	+	81	0
-	+	82	14
-	+	94	0
-	+	84	11
-	+	87	9
-	+	87	0
-	+	88	8
-	+	89	8
-	+	92	8
-	+	93	8
-	+	93	20
-	+	93	20
-	+	94	0
-	+	94	0
-	+	89	11
-	+	92	0
-	+	93	8
-	+	87	0
-	+	89	78
-	+	84	71
-	+	85	16
-	+	84	70
-	+	85	56
-	+	89	60
-	+	90	17
-
-> ~/ShellScripts/test_scripts/test.sh
-	"	12	30
-	^	4	0
-	.	12	30
-	+	5	9
-	+	10	5
-	+	21	0
-	+	21	0
-	+	21	0
-	+	25	0
-	+	20	0
-	+	25	0
-	+	24	5
-	+	22	0
-	+	31	0
-	+	30	3
-	+	27	4
-	+	21	5
-	+	23	5
-	+	26	0
-	+	29	0
-	+	20	0
-	+	22	0
-	+	25	0
-	+	29	7
-	+	28	32
-	+	6	0
-	+	10	0
-	+	6	4
-	+	8	11
-	+	10	0
-	+	10	0
-	+	9	0
-	+	20	21
-	+	20	11
-	+	20	11
-	+	20	9
-	+	21	0
-	+	20	12
-	+	20	9
-	+	20	0
-	+	20	0
-	+	20	12
-	+	20	15
-	+	20	0
-	+	12	0
-	+	20	0
-	+	20	0
-	+	20	0
-	+	12	0
-	+	15	32
-	+	18	0
-	+	13	0
-	+	17	15
-	+	14	28
-	+	16	0
-	+	12	30
-	+	11	23
-	+	19	22
-	+	3	10
-	+	4	0
-	+	12	30
-
-> ~/Github/ShellScriptFormatter/git-retract-remove-local-file.txt
-	"	26	0
-	^	26	1
-	.	26	0
-	+	8	26
-	+	10	0
-	+	9	5
-	+	10	19
-	+	6	81
-	+	12	78
-	+	14	28
-	+	15	6
-	+	16	19
-	+	20	26
-	+	22	19
-	+	3	0
-	+	5	0
-	+	7	0
-	+	11	0
-	+	13	0
-	+	17	0
-	+	19	0
-	+	24	40
-	+	23	0
-	+	26	0
-
-> ~/Github/ShellScriptFormatter/.gitignore
-	"	215	0
-
-> ~/Github/ShellScriptFormatter/beauty.sh
-	"	117	3
-	^	114	0
-	.	116	0
-	+	62	1
-	+	61	28
-	+	117	0
-	+	116	0
-	+	66	0
-	+	62	0
-	+	117	0
-	+	117	0
-	+	116	0
-	+	118	0
-	+	118	0
-	+	119	0
-	+	114	0
-	+	116	0
-
-> ~/Note/linux/ubuntu/shell/shell_script_skills/shell-function.txt
-	"	1	0
-
-> ~/Github/ShellScriptFormatter/test-samples_beauty
-	"	1	10
-
-> ~/Github/ShellScriptFormatter/test-samples
-	"	59	0
-	^	75	6
-	.	59	0
-	+	2	0
-	+	7	0
-	+	13	0
-	+	34	0
-	+	36	0
-	+	37	0
-	+	42	0
-	+	44	0
-	+	49	0
-	+	56	0
-	+	57	0
-	+	82	0
-	+	59	19
-	+	59	29
-	+	59	27
-	+	67	5
-	+	63	25
-	+	64	11
-	+	66	9
-	+	65	12
-	+	72	17
-	+	73	7
-	+	74	8
-	+	75	5
-	+	76	0
-	+	71	0
-	+	72	0
-	+	74	0
-	+	59	28
-	+	59	19
-	+	59	24
-	+	59	0
-
-> ~/Github/ShellScriptFormatter/samples.sh
-	"	2	0
-	.	2	0
-	+	9	0
-	+	3	0
-	+	9	0
-	+	16	0
-	+	20	231
-	+	42	0
-	+	44	0
-	+	50	0
-	+	53	0
-	+	59	0
-	+	68	0
-	+	70	0
-	+	81	0
-	+	81	21
-	+	20	7
-	+	20	10
-	+	20	14
-	+	20	43
-	+	20	48
-	+	20	51
-	+	20	99
-	+	20	105
-	+	20	108
-	+	20	162
-	+	20	168
-	+	20	209
-	+	20	217
-	+	20	220
-	+	20	225
-	+	20	230
-	+	20	260
-	+	42	0
-	+	81	54
-	+	81	103
-	+	81	154
-	+	81	180
-	+	81	183
-	+	81	221
-	+	81	245
-	+	81	258
-	+	2	0
-
-> ~/ShellScripts/basic_scripts/format-error
-	"	1	0
-
-> ~/Note/linux/ubuntu/shell/shell_script_skills/shell-if-condition-judgment.txt
-	"	106	0
-
-> ~/Note/linux/ubuntu/regular_expression/regular-expression-simple-tutorial.txt
-	"	164	0
-
-> ~/Note/linux/ubuntu/shell/shell_script_skills/shell-script-utility-expr.txt
-	"	352	0
-
-> ~/ShellScripts/test_scripts/temp.sh
-	"	1	0
-
-> ~/format-the-shell-script.sh
-	"	1	0
-
-> ~/ShellScripts/basic_scripts/ ~/.vimrc
-	"	1	0
-
-> ~/Note/linux/ubuntu/shell/shell_script_skills/get-sh-argument.txt
-	"	1	0
-
-> ~/Note/text_editor/vim/vim-basic-operate.txt
-	"	1	0
-	^	199	0
-	.	321	0
-	+	90	0
-	+	92	0
-	+	94	0
-	+	95	0
-	+	97	0
-	+	98	0
-	+	100	0
-	+	102	0
-	+	104	0
-	+	106	0
-	+	108	0
-	+	109	0
-	+	111	0
-	+	121	0
-	+	123	0
-	+	124	0
-	+	126	0
-	+	127	0
-	+	129	0
-	+	130	0
-	+	132	0
-	+	134	0
-	+	136	0
-	+	137	0
-	+	139	0
-	+	140	0
-	+	142	0
-	+	152	0
-	+	154	0
-	+	155	0
-	+	157	0
-	+	158	0
-	+	160	0
-	+	161	0
-	+	163	0
-	+	164	0
-	+	166	0
-	+	167	0
-	+	169	0
-	+	171	0
-	+	173	0
-	+	174	0
-	+	176	0
-	+	179	0
-	+	181	0
-	+	184	0
-	+	186	0
-	+	187	0
-	+	189	0
-	+	190	0
-	+	192	0
-	+	193	0
-	+	195	0
-	+	196	0
-	+	198	0
-	+	199	0
-	+	200	0
-	+	202	0
-	+	203	0
-	+	205	0
-	+	211	0
-	+	213	0
-	+	214	0
-	+	216	0
-	+	218	0
-	+	220	0
-	+	223	0
-	+	225	0
-	+	232	0
-	+	227	0
-	+	230	0
-	+	239	0
-	+	241	0
-	+	245	0
-	+	247	0
-	+	253	0
-	+	255	0
-	+	261	0
-	+	263	0
-	+	279	0
-	+	281	0
-	+	287	0
-	+	289	0
-	+	301	0
-	+	303	0
-	+	307	0
-	+	309	0
-	+	313	0
-	+	315	0
-	+	327	0
-	+	329	0
-	+	331	0
-	+	333	0
-	+	349	0
-	+	358	0
-	+	347	0
-	+	277	0
-	+	304	0
-	+	323	0
-	+	321	0
-
-> ~/test
-	"	22	12
-	.	4	0
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	0
-	+	58	0
-	+	58	16
-	+	58	5
-	+	58	14
-	+	58	16
-	+	58	15
-	+	58	0
-	+	58	0
-	+	58	0
-	+	58	0
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	5
-	+	58	15
-	+	58	14
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	15
-	+	58	9
-	+	58	13
-	+	58	0
-	+	58	0
-	+	58	0
-	+	58	0
-	+	384	0
-	+	384	0
-	+	47	0
-	+	48	0
-	+	49	0
-	+	56	0
-	+	57	0
-	+	74	0
-	+	148	0
-	+	246	0
-	+	247	0
-	+	249	0
-	+	47	0
-	+	48	0
-	+	49	0
-	+	56	0
-	+	57	0
-	+	74	0
-	+	148	0
-	+	246	0
-	+	247	0
-	+	249	0
-	+	299	0
-	+	300	0
-	+	305	0
-	+	306	0
-	+	383	0
-	+	384	0
-	+	386	0
-	+	391	0
-	+	393	0
-	+	394	0
-	+	402	0
-	+	403	0
-	+	415	0
-	+	418	0
-	+	419	0
-	+	47	0
-	+	383	0
-	+	384	0
-	+	386	0
-	+	391	0
-	+	393	0
-	+	394	0
-	+	402	0
-	+	403	0
-	+	415	0
-	+	418	0
-	+	419	0
-	+	432	0
-	+	386	0
-	+	386	0
-	+	391	24
-	+	392	0
-	+	1	0
-	+	20	15
-	+	4	0
-	+	10	0
-	+	17	0
-	+	20	0
-	+	4	0
-	+	2	0
-	+	4	0
-
-> ~/Note/Qt/2013-1-8-build-Qt-compiler-env.txt
-	"	1	0
-
-> ~/BookMark/bookmarks-2017-04-10.json
-	"	1	0
-
-> ~/ShellScripts/bashrc-add-chmod-func
-	"	94	0
-	^	86	54
-	.	90	54
-	+	86	53
-	+	90	54
-
-> ~/Note/linux/ubuntu/shell/shell_script_skills/shell-script-simple-tutorial.txt
-	"	413	0
-
-> ~/Note/linux/ubuntu/shell/shell_script_skills/shell-script-expr.txt
-	"	1	0
-	^	404	494
-	.	404	491
-	+	404	491
-
-> /usr/share/vim/vim74/doc/pattern.txt
-	"	1365	2
-
-> /usr/share/vim/vim74/doc/help.txt
-	"	1	0
+	m	555	28
+	t	544	4
 
 > /usr/share/vim/vim74/doc/windows.txt
-	"	1232	0
+	"	104	8
 
-> /usr/share/vim/vim74/doc/undo.txt
-	"	360	7
-
-> /usr/share/vim/vim74/doc/message.txt
-	"	213	22
-
-> /usr/share/vim/vim74/doc/tabpage.txt
-	"	158	0
-
-> ~/hello-save
-	"	1	0
-	^	2	13
-	.	2	12
-	+	2	12
-
-> /usr/share/vim/vim74/doc/autocmd.txt
-	"	1077	1
-
-> ~/temp
-	"	1	0
-	^	6	1
-	.	1	0
-	+	1	0
-	+	4	12
-	+	2	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	1	0
-	+	4	0
-	+	6	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	6	0
-	+	1	0
-	+	4	0
-	+	6	0
-	+	1	0
-	+	4	0
-	+	6	0
-	+	1	0
-	+	4	0
-	+	6	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-	+	4	0
-	+	1	0
-
-> /usr/share/vim/vim74/doc/helphelp.txt
-	"	6	0
-
-> /usr/share/vim/vim74/doc/term.txt
-	"	18	0
-
-> /usr/share/vim/vim74/doc/intro.txt
-	"	561	3
-
-> /usr/share/vim/vim74/doc/netbeans.txt
-	"	844	10
-
-> /usr/share/vim/vim74/doc/tags
-	"	69	0
-
-> /usr/share/vim/vim74/doc/index.txt
-	"	108	4
-
-> /usr/share/vim/vim74/doc/map.txt
+> ~/Github/vim/README
 	"	1	0
 
-> ~/execute-help.txt
-	"	1	0
-	^	1	0
-	.	1	0
-	+	6	0
-	+	1	0
+> ~/Note/linux/ubuntu/apt/apt-dpkg-common-problem.txt
+	"	51	0
 
-> /usr/share/vim/vim74/doc/usr_01.txt
-	"	1	0
+> ~/Note/linux/ubuntu/apt/apt-usage.txt
+	"	298	0
 
-> /usr/share/vim/vim74/doc/channel.txt
-	"	7	37
+> /usr/share/vim/vim74/doc/options.txt
+	"	6986	18
 
-> /usr/share/vim/vim74/doc/motion.txt
-	"	312	0
-
-> /usr/share/vim/vim74/doc/quickfix.txt
-	"	129	18
-
-> ~/help.txt
-	"	1	0
-	.	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-
-> ~/Note/text_editor/vim/vim-multiple-file-edit.txt
-	"	90	0
-
-> ~/ls
-	"	1	0
+> /usr/share/vim/vim74/doc/eval.txt
+	"	1943	0
+	m	2618	3

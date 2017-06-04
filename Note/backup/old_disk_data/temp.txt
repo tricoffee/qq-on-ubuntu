@@ -1,3 +1,0 @@
-  /book/akaedu_linux_programming_on_one_website
-       /gimp-usage1
-       /gimp-usage2

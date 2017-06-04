@@ -1,2 +1,0 @@
-# DWM window manager official's website
-	http://git.suckless.org/

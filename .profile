@@ -25,9 +25,3 @@ fi
 alias emt='emacsclient -t -a ""'  # open emacsclient with term
 alias emc='emacsclient -c -a ""'  # open emacsclient with GUI
 
-# detect '.profile' shell script execute info
-# like shell env; it it alternative shell or no-alternative shell;
-# is a login shell or not login shell. etc.
-
-env > /home/qq/profile_shell_env/env.txt
-export > /home/qq/profile_shell_env/export.txt

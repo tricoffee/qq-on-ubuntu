@@ -3,8 +3,8 @@
 # create a soft link, from SOURCE point TARGET
 
 function ln-create-a-soft-link(){
-	SOURCE=$2
+	LINK_NAME=$2
 	TARGET=$1
 
-	sudo ln -f -i -s ${SOURCE} ${TARGET}
+	sudo ln -T -f -i -s ${TARGET} ${LINK_NAME}
 }
