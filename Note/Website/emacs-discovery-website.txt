@@ -1,0 +1,5 @@
+# emacswiki 包含emacs所有相关信息的网站
+https://www.emacswiki.org/emacs/SiteMap
+ 
+# emacs 官方网站，包含emacs相关的信息（包括emacswiki）
+http://www.gnuemacs.org/

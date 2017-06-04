@@ -1,0 +1,12 @@
+bcompare-4.2.2.22384_amd64.deb
+emacs
+Emacs-Mind-Image.zip
+Firefox-latest-x86_64.tar.bz2
+gawk-4.0.2
+gawk-4.0.2.tar.gz
+libqt4-opengl_4.8.7+dfsg-5ubuntu2_amd64.deb
+libqtwebkit4_2.3.2-0ubuntu11_amd64.deb
+LINUX SHELL脚本攻略(中文版带书签).pdf
+manpages-zh_1.5.2-1.1_all.deb
+spacemacs.org
+usr

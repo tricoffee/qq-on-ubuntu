@@ -1,0 +1,27 @@
+
+1. download firefox install package on firefox official website
+
+2. uncompress firefox install package 
+	$ tar jxvf Firefox-VERSION_NUM.tar.bz2
+
+3. use 'whereis' command find firefox command location
+	$ whereis firefox
+
+4. use 'ls -l' command find previous result 
+   for example :
+	$ ls -l /usr/bin/firefox
+   * it will be find this system's default firefox command is link to where directory
+
+5. use 'cp' command copy the "firefox/" directory to system default firefox location 
+   for example :
+	$ mv /usr/lib/firefox/ /usr/lib/firefox.bak/
+	$ cp -a ~/downloads/firefox/ /usr/lib/
+
+6. use 'cp' command copy the firefox start script to your new firefox directory
+	for example :
+	$ cp -a /usr/lib/firefox.bak/firefox.sh /usr/lib/firefox/
+
+7. now you can startup the new install's firefox and browse to internet
+
+
+[end]

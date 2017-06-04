@@ -1,0 +1,522 @@
+emacs配制文件整理修正(再修）
+
+;插件路径
+(add-to-list 'load-path (expand-file-name "/home/share/emacs"))
+
+
+;加入color-theme插件
+(require 'color-theme);
+(color-theme-initialize)
+(color-theme-arjen)
+
+
+
+;使用的字符码(UTF-8)
+(setq current-language-environment "UTF-8")
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+(set-default-font "courier-12")       
+(set-fontset-font (frame-parameter nil 'font)
+                   'han '("Microsoft YaHei" . "unicode-bmp"))
+
+
+;解决emacs shell 乱码
+(setq ansi-color-for-comint-mode t)
+(customize-group 'ansi-colors)
+(kill-this-buffer);关闭customize窗口
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;自定义按键
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key [f2] 'shell);F1进入Shell
+(global-set-key [f5] 'gdb);F5调试程序
+(setq compile-command "make -f Makefile")
+(global-set-key [f7] 'do-compile);F7编译文件
+(global-set-key [f8] 'other-window);F8窗口间跳转
+(global-set-key [C-return] 'kill-this-buffer);C-return关闭当前buffer
+(global-set-key [f11] 'split-window-vertically);F11分割窗口
+(global-set-key [f12] 'delete-other-windows);F12 关闭其它窗口
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;普通设置
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq-default make-backup-files nil);不产生临时文件
+(setq inhibit-startup-message t);关闭起动时闪屏
+(setq visible-bell nil);关闭出错时的提示声
+(setq make-backup-files nil);不产生备份文件
+(setq default-major-mode 'text-mode);一打开就起用 text 模式
+(global-font-lock-mode t);语法高亮
+(fset 'yes-or-no-p 'y-or-n-p);以 y/n代表 yes/no
+(column-number-mode t);显示列号
+(show-paren-mode t);显示括号匹配
+(display-time-mode 1);显示时间，格式如下
+   (setq display-time-24hr-format t)
+   (setq display-time-day-and-date t)
+;(tool-bar-mode nil);去掉那个大大的工具栏
+(scroll-bar-mode nil);去掉滚动条
+(pc-selection-mode);shift选择
+;(mouse-avoidance-mode 'animate);光标靠近鼠标指针时，让鼠标指针自动让开
+;(setq mouse-yank-at-point t);支持中键粘贴
+(transient-mark-mode t);允许临时设置标记
+(setq x-select-enable-clipboard t);支持emacs和外部程序的粘贴
+(setq frame-title-format '("" buffer-file-name "@emacs" ));在标题栏显示buffer名称
+(setq default-fill-column 80);默认显示 80列
+(setq suggest-key-bindings t);若命令有组合键，则提示该组合键
+(set-selection-coding-system 'iso-2022-8bit-ss2-dos);网页复制乱码问题
+
+
+
+;鼠标滚轮，默认的滚动太快，这里改为3行
+(defun up-slightly () (interactive) (scroll-up 3))
+(defun down-slightly () (interactive) (scroll-down 3))
+(global-set-key [mouse-4] 'down-slightly)
+(global-set-key [mouse-5] 'up-slightly)
+
+;防止页面滚动时跳动
+(setq scroll-margin 3
+scroll-conservatively 10000)
+
+;shell,gdb退出后，自动关闭该buffer
+(add-hook 'shell-mode-hook 'mode-hook-func)
+(add-hook 'gdb-mode-hook 'mode-hook-func)
+(defun mode-hook-func ()
+(set-process-sentinel (get-buffer-process (current-buffer))
+         #'kill-buffer-on-exit))
+(defun kill-buffer-on-exit (process state)
+(message "%s" state)
+(if (or
+       (string-match "exited abnormally with code.*" state)
+       (string-match "finished" state))
+      (kill-buffer (current-buffer))))
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;编辑的相关设定
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;设置tab为4个空格的宽度
+(setq c-basic-offset 4)
+(setq indent-tabs-mode nil)
+(setq default-tab-width 4)
+(setq tab-width 4)
+(setq tab-stop-list ())
+(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40
+44 48 52 56 60 64 68 72 76 80 84 88 92 96))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;C/C++设定(包括php)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;; CC-mode配置 http://cc-mode.sourceforge.net/
+(require 'cc-mode)
+(c-set-offset 'inline-open 0)
+(c-set-offset 'friend '-)
+(c-set-offset 'substatement-open 0)
+
+
+(defun my-c-mode-common-hook()
+;(c-toggle-auto-hungry-state 1);分号后自动换行
+;;按键定义
+(define-key c-mode-base-map [(control \`)] 'hs-toggle-hiding);将(CTRL-`)设为折页转换键
+(define-key c-mode-base-map [(return)] 'newline-and-indent);回车键自动换行并缩进
+;;预处理设置
+(setq c-macro-shrink-window-flag t)
+(setq c-macro-preprocessor "cpp")
+(setq c-macro-cppflags " ")
+(setq c-macro-prompt-flag t)
+(setq hs-minor-mode t)
+(setq abbrev-mode t)
+)
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+;;;;C++语言编辑策略
+(defun my-c++-mode-hook()
+(c-set-style "stroustrup")
+;(define-key c++-mode-map [f3] 'replace-regexp)
+)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;插件部分;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+;加入ibuffer
+;(require 'ibuffer)
+;(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+
+
+
+;显示行号
+(require 'setnu)
+(setnu-mode t)
+(global-set-key [f6] 'setnu-mode)
+
+
+
+
+
+;;加入cedet
+;(load-file "/home/share/emacs/cedet/common/cedet.el")
+;(semantic-load-enable-code-helpers)
+;(global-set-key [(f4)] 'speedbar-get-focus)
+;设置semanticdb范围
+;(setq semanticdb-project-roots
+;      (list
+;        (expand-file-name "/")))
+;;自定义自动补齐命令.
+;(defun my-indent-or-complete ()
+;   (interactive)
+;   (if (looking-at "\\>")
+;       (hippie-expand nil)
+;       (indent-for-tab-command))
+;)
+;(define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
+;(define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+
+;加入ecb
+;(add-to-list 'load-path
+;           "/home/share/emacs/ecb/")
+;(require 'ecb)
+;(setq ecb-use-speedbar-instead-native-tree-buffer 'source
+;      ecb-windows-width 0.25
+;      ecb-tip-of-the-day nil
+;)
+;绑定快捷键，s为Win键
+;(global-set-key (kbd "s-`") 'ecb-goto-window-edit1)
+;(global-set-key (kbd "s-1") 'ecb-goto-window-directories)
+;(global-set-key (kbd "s-2") 'ecb-goto-window-speedbar)
+;(global-set-key (kbd "s-3") 'ecb-goto-window-methods)
+;(custom-set-variables
+;; custom-set-variables was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
+;'(ecb-options-version "2.32")
+;'(ecb-source-path (quote (("/" "/") "/var/htdocs/zf-tutorial"))))
+;(custom-set-faces
+;; custom-set-faces was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
+;)
+
+
+
+
+
+
+
+;加入php插件
+
+(require 'php-mode)
+(add-hook 'php-mode-user-hook 'turn-on-font-lock)
+
+
+
+
+
+;加入xcscope
+;(require 'xcscope);
+
+
+
+
+
+
+;加入tabbar
+(require 'tabbar)
+(tabbar-mode)
+(global-set-key (kbd "s-1") 'tabbar-backward-group)
+(global-set-key (kbd "s-2") 'tabbar-forward-group)
+(global-set-key (kbd "s-q") 'tabbar-backward)
+(global-set-key (kbd "s-w") 'tabbar-forward)
+
+
+
+;设置tabbar字体
+(set-face-attribute 'tabbar-default-face
+          nil :family "Tahoma")
+
+
+
+
+;; 文本／代码折叠
+(load-library "hideshow")
+(add-hook 'java-mode-hook 'hs-minor-mode)
+(add-hook 'perl-mode-hook 'hs-minor-mode)
+(add-hook 'php-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-mode-hook 'hs-minor-mode)
+(add-hook 'c-mode-hook 'hs-minor-mode)
+(add-hook 'c++mode-hook 'hs-minor-mode)
+
+
+
+;加入session插件
+;(require 'session)
+;(add-hook 'after-init-hook 'session-initialize)
+
+
+
+
+
+;加入desktop
+;(load "desktop")
+;(desktop-load-default)
+;(desktop-read)
+
+
+
+
+
+
+;加入IDO
+(require 'ido)
+(ido-mode t)
+;;{{{ ido: fast switch buffers
+
+(add-hook 'ido-define-mode-map-hook 'ido-my-keys)
+
+(defun ido-my-keys ()
+"Set up the keymap for `ido'."
+
+;; common keys
+(define-key ido-mode-map "\C-e" 'ido-edit-input)
+(define-key ido-mode-map "\t" 'ido-complete) ;; complete partial
+(define-key ido-mode-map "\C-j" 'ido-select-text)
+(define-key ido-mode-map "\C-m" 'ido-exit-minibuffer)
+(define-key ido-mode-map "?" 'ido-completion-help) ;; list completions
+(define-key ido-mode-map [(control ? )] 'ido-restrict-to-matches)
+(define-key ido-mode-map [(control ?@)] 'ido-restrict-to-matches)
+
+;; cycle through matches
+(define-key ido-mode-map "\C-r" 'ido-prev-match)
+(define-key ido-mode-map "\C-s" 'ido-next-match)
+(define-key ido-mode-map [right] 'ido-next-match)
+(define-key ido-mode-map [left] 'ido-prev-match)
+
+;; toggles
+(define-key ido-mode-map "\C-t" 'ido-toggle-regexp) ;; same as in isearch
+(define-key ido-mode-map "\C-p" 'ido-toggle-prefix)
+(define-key ido-mode-map "\C-c" 'ido-toggle-case)
+(define-key ido-mode-map "\C-a" 'ido-toggle-ignore)
+
+;; keys used in file and dir environment
+(when (memq ido-cur-item '(file dir))
+    (define-key ido-mode-map "\C-b" 'ido-enter-switch-buffer)
+    (define-key ido-mode-map "\C-d" 'ido-enter-dired)
+    (define-key ido-mode-map "\C-f" 'ido-fallback-command)
+
+    ;; cycle among directories
+    ;; use [left] and [right] for matching files
+    (define-key ido-mode-map [down] 'ido-next-match-dir)
+    (define-key ido-mode-map [up]   'ido-prev-match-dir)
+
+    ;; backspace functions
+    (define-key ido-mode-map [backspace] 'ido-delete-backward-updir)
+    (define-key ido-mode-map "\d"        'ido-delete-backward-updir)
+    (define-key ido-mode-map [(meta backspace)] 'ido-delete-backward-word-updir)
+    (define-key ido-mode-map [(control backspace)] 'ido-up-directory)
+
+    ;; I can't understand this
+    (define-key ido-mode-map [(meta ?d)] 'ido-wide-find-dir)
+    (define-key ido-mode-map [(meta ?f)] 'ido-wide-find-file)
+    (define-key ido-mode-map [(meta ?k)] 'ido-forget-work-directory)
+    (define-key ido-mode-map [(meta ?m)] 'ido-make-directory)
+
+    (define-key ido-mode-map [(meta down)] 'ido-next-work-directory)
+    (define-key ido-mode-map [(meta up)] 'ido-prev-work-directory)
+    (define-key ido-mode-map [(meta left)] 'ido-prev-work-file)
+    (define-key ido-mode-map [(meta right)] 'ido-next-work-file)
+
+    ;; search in the directories
+    ;; use C-_ to undo this
+    (define-key ido-mode-map [(meta ?s)] 'ido-merge-work-directories)
+    (define-key ido-mode-map [(control ?\_)] 'ido-undo-merge-work-directory)
+    )
+
+(when (eq ido-cur-item 'file)
+    (define-key ido-mode-map "\C-k" 'ido-delete-file-at-head)
+    (define-key ido-mode-map "\C-l" 'ido-toggle-literal)
+    (define-key ido-mode-map "\C-o" 'ido-copy-current-word)
+    (define-key ido-mode-map "\C-v" 'ido-toggle-vc)
+    (define-key ido-mode-map "\C-w" 'ido-copy-current-file-name)
+    )
+
+(when (eq ido-cur-item 'buffer)
+    (define-key ido-mode-map "\C-b" 'ido-fallback-command)
+    (define-key ido-mode-map "\C-f" 'ido-enter-find-file)
+    (define-key ido-mode-map "\C-k" 'ido-kill-buffer-at-head)
+    ))
+(ido-mode t)
+
+
+
+
+
+
+
+
+
+
+
+
+
+其二
+
+
+
+emacs shell-mode乱码
+
+网上搜集的资料是在.emacs中添加(setq ansi-color-for-comint-mode t)但结果不理想，虽然控制颜色显示的乱码没了，但是shell-mode 的自动补全也不能用了，而且某些文件的高亮显示没有了！
+
+ 解决方案一：M-x ansi-term代替M-x shell 启动shell-mode 可以解决问题，不知道有没有修改.emacs文件的方法
+
+
+
+
+
+
+
+
+
+
+其三
+
+
+Emacs shell-mode 中文乱码问题
+Posted on 七月 31, 2012 by 阿飞
+在emacs中，’M-x shell’切换到shell-mode,　此时有可能出现中文乱码问题，比如ls时文件名为中文乱码、svn log日志是中文乱码等等.
+
+放狗搜了一下，网上各种坑爹的解决方案都不行，于是自己研究了一下。
+
+我在shell-mode里echo了一下LANG,发现居然为空，这应该就是问题所在了。
+
+再深究一下shell-mode默认是会加载家目录下的.bashrc这个配置，mac下默认是没有的，所以解决方案就是：
+
+在家目录建一个.bashrc
+编辑.bashrc加下 export LANG=zh_CN.UTF-8
+如果开着shell-mode，就重启一下，就可以看到效果了。
+
+举一反三，shell-mode里的PS1默认是很难看的，一样可以在.bashrc里把PS1定义一下。
+
+此外你可以查一下.bash_profile和.bashrc的区别，一般来说.bash_profile加载.bashrc。
+
+-　EOF –
+
+
+
+
+
+
+
+
+其四
+
+
+在emacs中运行shell ls乱码  
+
+2010-05-19 04:51:13|  分类： 文本编辑器 |字号 订阅
+关于shell-mode下乱码，今天查到一篇文章（http://spaces.msn.com/myknobby/Blog /cns!1pZiBfdrlJdyNTdFGqyf_9Ig!109.entry），解决了这个问题，就是在配置文件里面加这么一句话，然后就万事大吉 了：
+(setq ansi-color-for-comint-mode t)
+
+＃此方法试过无效。
+
+;真正shell－mode乱码解决。
+(ansi-color-for-comint-mode-on)
+
+
+
+在emacs中shell的工具有好多种。
+
+M-x shell
+Run a subshell with input and output through an Emacs buffer. You can then give commands interactively.
+
+M-x term
+Run a subshell with input and output through an Emacs buffer. You can then give commands interactively. Full terminal emulation is available.
+
+M-x eshell
+Start the Emacs shell
+
+还有M-x shell-command。
+
+它们之间的详细区别我就不清楚了.使用term是没有这个问题的。
+
+
+
+
+
+
+
+
+
+
+
+
+
+其五
+
+
+
+ emacs shell 乱码问题解决
+分类： Linux_cmd 2011-06-01 01:40 278人阅读 评论(0) 收藏 举报
+M-x ansi-color-for-comint-mode-on
+
+ 
+
+or
+
+ 
+
+M-x eshell
+
+ 
+
+
+
+
+
+
+
+
+
+其六
+
+
+
+ emacs的shell buffer乱码 2010-03-16 09:05:22
+分类： LINUX
+------------------
+我的gentoo设置的locale为utf-8，目的很明显。但是偏偏emacs有些水土不服，目前最头疼的问题有两个，一个是gnome下 emacs没法打开输入法，另一个就是shell-mode乱码了。
+第一个问题没有解决方案，确切的说是在gnome下没有办法解决，根据我的实践，在icewm下没有问题，网上也有人说在kde和xfce下都没有 问题。目前只好凑合了，相信迟早会有解决的办法。
+ps我就喜欢gnome，没有理由，就是喜欢。
+再ps，我就是喜欢emacs ，没有理由，就是喜欢。
+关于shell-mode下乱码，今天查到一篇文章（http://spaces.msn.com/myknobby/Blog /cns!1pZiBfdrlJdyNTdFGqyf_9Ig!109.entry），解决了这个问题，就是在配置文件里面加这么一句话，然后就万事大吉 了：
+(setq ansi-color-for-comint-mode t)
+2006年7月31日
+今天在debian unstable上遇到了同样的问题，但是 在.emacs里面设置了(setq ansi-color-for-comint-mode t)也不好用，又查了原来看到的文章，可以用M-x customize-group ansi-colors来设置，立刻就好了。
+另外也可以用M-x ansi-term来设置:p
+
+------------------
+
+上记为转载。
+
+
+最后的M-x customize-group ansi-colors 设置，实际上，什么也不设置，进去后再退出就OK了
+但是，messy code(乱码)是解决了，但是原本能正常显示的中文字符，都变成了其汉字对应的utf-8的8进制代码表示。
+还是有异常。
+
+通过M-x ansi-term来执行/usr/bin/bash的话，全部正常。

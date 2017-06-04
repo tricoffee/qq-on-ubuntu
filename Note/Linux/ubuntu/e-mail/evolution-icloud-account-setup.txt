@@ -1,0 +1,35 @@
+适用于 iCloud 电子邮件客户端的邮件服务器设置
+
+如果您需要手动设置您的电子邮件应用（客户端）来使用 iCloud 电子邮件帐户，请使用这些邮件服务器设置。 
+您是否需要这些邮件服务器设置？
+
+您可以使用本文中的邮件服务器设置手动设置您的电子邮件应用，以通过 iCloud 电子邮件帐户收发电子邮件。但是，如果您满足 iCloud 系统要求并且可以使用所有这些设置方法，则不需要进行此操作：
+
+    在运行 OS X Lion 10.7.4 或更高版本的 Mac 上使用 iCloud 偏好设置
+    在运行 Microsoft Windows 并装有 Outlook 2010 到 Outlook 2016 的 PC 上使用 Windows 版 iCloud。
+    在运行 iOS 7 或更高版本的 iPhone、iPad 或 iPod touch 上使用 iCloud 设置
+
+邮件服务器设置
+
+请参考您的电子邮件应用文稿以了解有关如何使用这些设置的信息。iCloud 邮件使用大多数现代电子邮件应用都支持的 IMAP 和 SMTP 标准。iCloud 不支持 POP。
+适用于收件服务器的 IMAP 信息
+
+    服务器名称：imap.mail.me.com
+    是否需要 SSL：是
+    如果您在使用 SSL 时看到错误信息，请尝试使用 TLS。
+    端口：993
+    用户名：通常是您的 iCloud 电子邮件地址的名称部分（例如 emilyparker，而不是 emilyparker@icloud.com）。如果仅使用 iCloud 电子邮件地址时您的电子邮件客户端无法连接 iCloud，请尝试使用完整地址。
+    密码：您的 iCloud 密码
+
+适用于发件服务器的 SMTP 信息
+
+    服务器名称：smtp.mail.me.com
+    是否需要 SSL：是
+    如果您在使用 SSL 时看到错误信息，请尝试使用 TLS 或 STARTTLS。
+    端口：587
+    是否需要 SMTP 鉴定：是
+    用户名：您的完整 iCloud 电子邮件地址（例如，emilyparker@icloud.com，而不是 emilyparker）
+    密码：您的 iCloud 密码
+
+
+[end]

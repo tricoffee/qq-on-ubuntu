@@ -1,0 +1,148 @@
+转载：Firefox about:config 参数详解
+
+转载自：http://blog.techippo.org/archives/211
+
+ 
+
+1.地址栏的设置
+browser.urlbar.autoFill 	自动补充 	默认关闭
+browser.urlbar.clickSelectsAll 	单击全部选中 	默认开启
+browser.urlbar.doubleClickSelectsAll 	双击选中全部 	默认关闭
+browser.urlbar.maxRichResults 	下拉列表中最大显示数目 	默认为12个
+browser.urlbar.matchOnlyTyped 	下拉列表只显示曾经输入过的 	默认关闭
+Browser.urlbar.matchBehavior 	下拉列表搜索方式 	值0-3 默认1
+browser.fixup.alternate.suffix 	自动补全功能的后缀 	默认.com
+keyword.URL 	地址栏的搜索引擎 	 
+
+ 
+
+下拉列表搜索方式
+
+0 – 搜索任何地方的文字
+
+1 – 先搜索完全符合的文字，再搜索整串字中有包含的文字
+
+2 – 只搜索完全符合的文字
+
+3 – 只搜索网页的网址和标题
+
+当你在地址栏输入一些东西的时候，下拉列表中就会给出一些“建议”的网址，这些建议并非随便做出的，而是通过对你访问这些网址的次数、频 率、新近程度、是在地址栏里敲入地址访问的还是通过书签进行访问的等等综合后按计算出的分数排列的。通过about:config你尝试对以下value 进行修改来改变相应动作对网页的加分数值:
+
+places.frecency.linkVisitBonus 100
+places.frecency.typedVisitBonus 2000
+places.frecency.bookmarkVisitBonus 150
+places.frecency.embedVisitBonus 0
+places.frecency.downloadVisitBonus 0
+places.frecency.permRedirectVisitBonus 0
+places.frecency.tempRedirectVisitBonus 0
+
+ 
+
+2.键盘与鼠标
+middlemouse.paste 	鼠标中键粘贴功能 	默认关闭
+mousewheel.withnokey.sysnumlines 	滚轮滚动是否启用系统设定的值 	默认打开
+mousewheel.withnokey.numlines 	自定义滚轮滚动行数 	上面的要关闭
+browser.backspace_action 	空格键的功能 	设置的值0，1，2
+
+ 
+
+browser.backspace_action
+
+• 0 – 回到上一页go back previous page
+
+• 1 – 向上翻页
+
+• 2 – 什么也不做
+
+3.标签页的设置
+browser.tabs.closeButtons 	标签页上的关闭按钮的显示 	值有0，1，2，3
+
+ 
+
+browser.tabs.closeButtons
+
+• 0 – 仅在活动的标签页上显示关闭按钮
+
+• 1- 在所有的标签页上显示关闭按钮
+
+• 2- 不显示任何的关闭按钮
+
+• 3- 在当前所有标签页的最后显示一个关闭按钮
+
+4.扩展与插件
+security.dialog_enable_delay 	安装插件的等待时间 	默认2000（ms）
+plugin.expose_full_path 	about:plugins显示插件安装目录 	建议打开
+extensions.checkCompatibility 	是否检查扩展的兼容性 	需要自己新建boolean值
+extensions.checkUpdateSecurity 	升级时是否检查扩展兼容性 	需要自己新建
+
+ 
+
+ 
+
+5.删除自己添加的条目
+
+方法一：在地址栏中输入about:config，回车进入变量列表。选中你要删除的变量，点击右键，然后选择“重置“。然后重启FF即可。此后再次进入about:config就会发现那个变量已经被删除了。此时你就可以通过右键菜单中的新建重新建立正确的变量了。
+
+方法二：这个办法也是实质性的。通过about:config新增的变量保存在FF程序系统文件prefs.js中。使用文本编辑器打开 prefs.js,你就可以发现 about:config中用户定义的变量基本上都存在于这个文件中，找到那个你要删除的项目，想怎么整就怎么整吧，可以删了，也可以直接在那里修改。不 过需要注意的是这些活动必须在FF关闭的时候进行，否则当FF被关闭的时候，这个文件中的项目会被FF重新写一遍，你改的东西可就白费了。修改完毕以后， 保存文件，打开FF即可正常使用了。
+
+ 
+
+6.书签
+browser.bookmarks.autoExportHTML 	导出书签为bookmarks.html 	默认为关闭
+browser.chrome.favicons 	是否在书签显示网站的图标 	默认开启
+
+ 
+
+7.下载
+signed.applets.codebase_principal_support 	支持迅雷专用链接（左键） 	默认为关闭
+browser.download.manager.addToRecentDocs 	将下载的内容添加到最近打开的文档中去 	默认打开
+browser.cache.disk.parent_directory 	缓存目录，自己设置文件夹 	默认没有该值
+
+ 
+
+8.历史
+browser.history_expire_days 	历史纪录过期天数 	默认180
+browser.history_expire_days_min 	历史记录，至少保存天数 	默认90
+browser.history_expire_sites 	历史记录的数目 	默认40000
+
+ 
+
+9.内存
+browser.cache.memory.enable 	是否使用内存缓存 	建议设为true
+browser.cache.memory.capacity 	内存缓存大小 	默认-1，单位KB
+config.trim_on_minimize 	当Firefox最小化时释放内存 	建议true
+
+ 
+
+10.界面
+browser.chrome.toolbar_tips 	是否鼠标指向工具栏图标时显示文字提示 	 
+extensions.getAddons.showPane 	扩展面板是否显示获取附加组件 	默认开启
+extensions.getAddons.maxResults 	获取附加组件的数目 	 
+  	  	 
+browser.preferences.instantApply 	选项对话框是否显示确定按钮 	使更改实时生效
+browser.chrome.site_icons 	
+
+是否显示网站的小图标
+	默认开启，关闭后已经在书签里的图标不能去掉
+browser.chrome.favicons
+
+ 
+
+11.其它实用功能
+browser.sessionstore.enabled 	崩溃时恢复上次打开的页面 	默认开启
+browser.sessionstore.interval 	调整进程恢复保存频率 	缺省值10000
+browser.search.openintab 	在新标签页打开搜索框结果 	缺省值: False
+
+About
+about:blank 	空白页
+about:buildconfig 	显示版本配置详细信息
+about:credits 	所有 Mozilla 项目贡献者
+about:cache 	显示缓存文件
+about:config 	修改 Firefox 配置选项的图形化界面
+about:license 	显示 Mozilla 和 Netscape 的公共授权许可
+about:mozilla 	著名的《Mozilla之书》
+about:plugins 	列出所有已安装的插件信息
+
+
+
+[end]

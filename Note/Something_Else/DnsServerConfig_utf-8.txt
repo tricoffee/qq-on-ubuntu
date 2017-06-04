@@ -1,0 +1,628 @@
+linux下的基本网络配置
+2011-09-15 13:29:58     我来说两句       收藏     我要投稿
+第一种：使用命令修改（直接即时生效,重启失效）
+＃ifconfig eth0 192.168.0.1 netmask 255.255.255.0 up
+说明：
+eth0是第一个网卡，其他依次为eth1，eth*
+192.168.0.1是给网卡配置的第一个网卡配置的ip地址
+netmask 255.255.255.0 配置的是子网掩码
+up是表示立即激活
+ifconfig的更多参数说明查看相关帮助
+　　gateway:
+　　# route add default gw 192.168.30.1 eth0
+　　dns:
+# vi etc/resolv.conf
+nameserver 202.131.80.1
+　　nameserver 202.131.80.5
+如果要重起生效,就把这些写到起动脚本 rc.local中
+第二种：修改配置文档（需要重启网络配置,永远生效）
+一、修改IP地址
+手动改/etc/sysconfig/network-scripts/ifcfg-eth0文件 #第二块网卡：vi /etc/sysconfig/network-scripts/ifcfg-eth1
+DEVICE=eth0 #物理设备名
+IPADDR=192.168.1.10 #IP地址
+NETMASK=255.255.255.0 #掩码值
+NETWORK=192.168.1.0 #网络地址(可不要)
+BROADCAST=192.168.1.255 #广播地址（可不要）
+GATEWAY=192.168.1.1 #网关地址
+ONBOOT=yes # [yes|no]（引导时是否激活设备）
+USERCTL=no #[yes|no]（非root用户是否可以控制该设备）
+BOOTPROTO=static #[none|static|bootp|dhcp]（引导时不使用协议|静态分配|BOOTP协议|DHCP协议）
+注:单网卡绑定两个IP
+Linux的设备配置文件存放在/etc/sysconfig/network-scripts里面，
+对于以太网的第一个设备，配置文件名一般为ifcfg-eth0
+如果需要为第一个设备绑定多一个IP地址，
+只需要在/etc/sysconfig/network-scripts目录里面创建一个名为ifcfg-eth0:0的文件，
+内容样例为：
+　　DEVICE="eth0:0"
+　　IPADDR="211.100.10.119"
+　 　NETMASK="255.255.255.0"
+如果需要再绑定多一个IP地址，只需要把文件名和文件内的DEVICE中的eth0:x加一即可。LINUX最多可以支持255个IP别名。
+　　
+其中的DEVICE为设备的名称，IPADDR为此设备的IP地址，NETMASK为子网掩码，ONBOOT表示在启动时自动启动。
+二、修改网关
+　　vi /etc/sysconfig/network
+　　NETWORKING=yes
+　　HOSTNAME=Aaron
+　　GATEWAY=192.168.30.1
+　　三、修改DNS　
+　　配置文件在/etc/resolv.conf下面。
+　　vi /etc/resolv.conf
+　　nameserver 202.109.14.5 #主DNS
+　　nameserver 219.141.136.10 #次DNS
+　　search localdomain
+　　四、重新启动网络配置
+方法有多种：
+1：root账户下 # service network restart
+　　2：# /etc/init.d/network restart
+3：# ifdown eth0
+# ifup eth0
+4：# ifconfig eth0 down
+# ifconfig eth0 up
+五、启动和关闭防火墙
+即时生效：
+1：#service iptables start
+#service iptables stop
+重启系统生效：
+2：#service iptables on
+#service iptables off
+       六、 修改主机名
+        vi /etc/sysconfig/network，修改HOSTNAME一行为HOSTNAME=主机名，重启后才能生效
+
+作者“寻寻觅觅”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+在Linux中配置网络
+---------------------------------------------------------------------------------------------------------
+与网络有关的常用命令：
+---------------------------------------------------------------------------------------------------------
+
+1、ifconfig
+# ifconfig [接口名称]
+查看某个设备的配置：
+# ifconfig eth0
+为网络接口设置IP：
+# ifconfig eth0 192.168.0.6 netmask 255.255.255.0
+为eth0配置第2个IP地址：
+# ifconfig eth0:0 192.168.0.7 netmask 255.255.255.0
+2、hostname
+把主机名修改为server.evil.club （只有root用户才有权限修改）
+# hostname server.evil.club
+3、netconfig
+运行这个命令后会出现一个简单的图形配置界面（此命令在有些版本中没有）：
+【 】 Use dynamic IP configuration (BOOTP/DHCP)
+IP address：               _____________ （IP地址）
+Netmask：                 _____________ （子网掩码）
+Default getway(IP)：   _____________ （网关）
+Primary nameserver：_____________ （主DNS）
+配置好后需要重新启动network服务：
+# service network restart
+4、ifup 和 ifdown
+ifup用于激活不活动的网络接口：
+# ifup 网络接口名称
+如下：
+# ifup eth0
+
+ifdown用于停止指定的网络接口
+# ifdown 网络接口名称
+如下：
+# ifdown eth0
+5、service 脚本
+语法如下：
+# service servicename start | restart | status
+例如：
+# service network restart
+显示系统中所有服务的运行状态：
+# service --status-all
+---------------------------------------------------------------------------------------------------------
+与网络有关的配置文件：
+---------------------------------------------------------------------------------------------------------
+1、以下是“/etc/sysconfig/network-scripts/ifcfg-eth0”文件的内容：
+#===========================================================
+DEVICE=eth0
+ONBOOT=yes
+BOOTPROTO=none
+IPADDR=192.168.1.8
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+TYPE=Ethernet
+USERCTL=no
+PEERDNS=no
+NETWORK=192.168.1.0
+BROADCAST=192.168.1.255
+#===========================================================
+说明如下：
+#===========================================================
+DEVICE=eth0 （设备名称）
+ONBOOT=yes （计算机启动时是否激活网卡，取值为：yes/no）
+BOOTPROTO=none   （获取IP的方式：取值为：static/bootp/dhcp）
+IPADDR=192.168.1.8 （该网络接口的IP地址）
+NETMASK=255.255.255.0 （子网掩码）
+GATEWAY=192.168.1.1      （网关地址）
+TYPE=Ethernet 
+USERCTL=no
+PEERDNS=no
+NETWORK=192.168.1.0
+BROADCAST=192.168.1.255 （广播地址）
+#===========================================================
+2、以下是“etc/sysconfig/network”文件的部分内容：
+#===========================================================
+NETWORKING=yes
+HOSTNAME=localhost.localdomain
+#===========================================================
+说明如下：
+NETWORKING：设置Linux是否运行网络，取值为：yes/no
+HOSTNAME：设置计算机的主机名
+GATEWAY：设置网关的IP地址
+GATEWAYDEV：连接网关的网络设备
+NISDOMAIN：NIS域名（使用NIS系统）
+#===========================================================
+
+3、以下是“etc/resolv.conf”文件的部分内容：
+#===========================================================
+search localdoma
+domain localdoma
+nameserver 202.96.128.166
+nameserver 192.168.1.1
+#===========================================================
+说明如下：
+search：DNS搜索路径，当解析不完整名称时默认的附加域名后缀。
+domain：设置计算机的本地域名。
+nameserver：设置DNS地址，客户机解析名称时会按顺序分别使用。
+#===========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+linux配置网络
+
+1. ifconfig 查看网络接口的信息。普通用户使用ifconfig的全路径：/sbin/ifconfig
+
+ifconfig 网络接口名称     ：显示指定接口的详细信息。
+
+ifconfig -a 查看所有网络接口的信息。
+
+2. route 显示路由表     
+
+route | grep default 显示主机的默认网关。
+
+3.ping -c 4 192.168.1.10 发送指定数量的数据包进行网络连接测试。
+
+4.traceroute 192.168.1.10 测试与其他主机的网络连接路径。
+
+5.hostname 显示当前主机名称。
+
+二、使用命令进行网络设置
+
+1.dhclient 从DHCP 服务器中申请新的网络设置。
+
+2.ifconfig   网络接口   ip 地址 netmask 子网掩码    ：配置ip地址 ，ifconfig 命令设置的网络接口属性只在当前系统运行中有效，系统重新启动后将按照网络接口配置文件的内容重新配置网络接口属性。
+
+3.route   del default gw 默认网关地址 ：删除默认网关路由记录。
+
+route add   default   gw 默认网关地址   ：   添加默认网关。
+
+4.hostname   Linserver   ： 设置主机名称是即时生效的，重启后将恢复原有主机名。
+
+5. 在 nslookup 命令的交互模式中使用 server 命令可以显示 linux 系统中使用的 DNS 服务器地址。
+
+6.netconfig   ：字符界面进行网络配置 。
+
+service   network    restart    ：重启网络服务。
+
+ifdown 网络接口
+
+ifup 网络接口   ： 重启网络接口
+
+7.修改 mac地址 ：
+
+ifconfig eth0 down ：先禁用网卡
+
+ifconfig   eth0   hw   ether   1234567890ab
+
+永远保持这样：
+
+在/etc/rc.d/rc.local里加上这三句(也可以在/etc/init.d/network里加下面三行)
+
+ifconfig eth0 down
+
+ifconfig eth0 hw ether 1234567890ab
+
+ifconfig eht0 up
+
+三、修改配置文件进行网络配置
+
+1.网络接口配置文件 ： /etc/sysconfig/network-scripts/ifcfg-eth0     
+
+                                     /etc/sysconfig/network-scripts/ifcfg-lo
+
+“ifcfg-eth0”配置文件中设置静态IP 地址内容如下 ：
+
+DEVICE=eth0                 设置网络接口名称
+
+ONBOOT=yes               设置网络接口在系统启动时激活。
+
+BOOTPROTO=static    配置为静态地址
+
+IPADDR=192.168.1.10
+
+NETMASK=255.255.255.0
+
+GATEWAY=192.168.1.1        网络接口的默认网关
+
+使用DHCP 方式获得网络配置内容：
+
+DEVICE=eth0
+
+ONBOOT=yes
+
+BOOTPROTO=dhcp    
+
+2.主机名配置文件     /etc/sysconfig/network
+
+NETWORKING=yes
+
+HOSTNAME=Linserver              Linserver 为设置的主机名称。
+
+3.本地主机名称解析文件            /etc/hosts
+
+4.域名服务器配置文件     /etc/resolv.conf
+
+search   lingdian.com       设置主机的默认查找域名
+
+nameserver 192.168.152.2 设置 DNS 服务器的IP 地址，文件中最多可以有3 个“nameserver”配置记录，每个记录一行，系统会优先使用最上面的“nameserver”配置记录
+
+linux的基本网络配置命令
+
+１、查看IP：Ifconfig
+
+２、配置IP的方法：
+
+A、这种方法立即生效，但是重启将不会保存。（除了这个方法的其它方法都可以保存下来）
+
+Ifconfig eth０ 1.1.1.1 netmask 255.0.0.0 up
+
+Ifconfig eth01 1.1.1.3 up 设置一个网卡多个IP的方法（在设置虚拟主机时有用到）
+
+激活网卡：Ifconfig eth0 up
+
+关闭网卡：Ifconfig eth0 down
+
+动态获取IP：Ifconfig etho –dynamic
+
+Dhclient
+
+修改Mac值：先关闭网卡：Ifconfig eth0 down
+
+再修改MAC值：Ifconfig eth0 hw ether 112233445566
+
+再激活网卡：Ifconfig eth0 up
+
+B、Netconfig或者Setup，但只能设置Eth0网卡
+
+C、Neat：打开图形窗口进行设置
+
+D、配置文件设置：
+
+vi etcsysconfignetwork-scriptsifcfg-eth0
+
+注意：配置完后重启网卡Service network restart出现失败时，用第四种方法检查配置文件中的Bootup是否为None，如果是DHCP一般会出错的。
+
+3、配置网关：
+
+查看网关：route
+
+添加默认路由：
+
+route add –net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1
+
+删除默认路由：
+
+route del –net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1
+
+4、配置dns：
+
+echo nameserver 192.168.0.1etcresolv.conf
+
+Linux路由配置：
+
+１、首先开启路由功能
+
+echo 1 procsysnetipv4ip_forward (１为打开路由功能，０为关闭路由功能)
+
+（在这个实验里只要开启路由功能就OK了）
+
+２、其它路由设置：
+
+A、添加路由信息：
+
+route add –net 10.0.0.1 netmask 255.0.0.0 gw 192.168.0.1
+
+或者route add –net 10.0.0.1 netmask 255.0.0.0 dev eth0 (通过本机的第一个网卡出去)
+
+删除路由条目：只要把上面的Add改为Del就可以了
+
+B、用Zebra配置路由（配置就跟Cisco的是一样的命令）：
+
+１）设置登录密码：
+
+Vi etczebrazebra.conf
+
+password abc #设置连接时的密码
+
+enable password 123 ＃设置特权密码
+
+２）开启服务
+
+service zebra start
+
+３）建立要配置的路由协议文件
+
+如用Rip协议：touch etczebraripd.conf
+
+４）开启Rip协议：service ripd start
+
+５）进入Zebra：　
+
+方法一、Telnet 127.0.0.1 2601　　　＃＃记得端口是2601
+
+如果没有设置密码，默认情况下是不允许连接的，适合于远程登录
+
+方法二、Vtysh　　　　＃＃不用密码也可以进入，如果有密码还会显示出来，但只适用于本地登录。
+
+６）配置路由：就跟在Cisco路由器里是一样的就略了７）退出quit(退出之前记得先保存一下)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ifconfig命令使LINUX核心知道软件回送和网卡这样一些网络接口，这样Linux就可以使用它们。除了上面介绍的这些用法之外，ifconfig命令用来监控和改变网络接口的状态，并且还可以带上很多命令行参数。下面是一个ifconfig的通用调用语法： 
+#ifconfig interface [[-net|-host] address [parameters]] 
+其中interface是网络接口名：address是分配给指定接口的主机名或IP地址。这里使用的主机名被解析成它们的对等IP地址，这个参数是必须的。-net和-host参数分别告诉ifconfig将这个地址作为网络号或者是主机地址。 
+如果调用ifconfig命令时后面只跟上端口设备名，那么它将显示这个端口的配置情况；如果不带任何参数，ifconfig命令将显示至今为止所配置的接口的所有信息；如果带上-a选项，那么还可以显示当前不活跃的接口。 
+一个检查以太网接口eth0的ifconfig调用可以得到如下的输出： 
+#ifconfig eth0 
+eth0 Link encap 10Mbps Ethernet HWaddr 00:00:C0:90:B3:44 
+inet addr xxx.xxx.xxx.xxx Bcast xxx.xxx.xxx.255 Mask 255.255.255.0 
+UP BROADCAST RUNNING MTU 1500 Metric 0 
+RX packets 3136 errors 217 dropped 7 overrun 26 
+TX packets 1752 errors 25 dropped 0 overrun 0 
+（注意：其中XXX.XXX.XXX.XXX是IP地址） 
+MTU和Metric这两列显示了当前eth0接口的最大数据传送值和接口度量值。接口度量值表示在这个路径上发送一个分组的成本。目前内核中还没有使用路由，但可能以后会用。RX（接收分组数）和TX（传送分组数）这两行显示出了接收、传送分组的数目，以及分组出错数、丢失分组数（一个可能原因是内存较少）和超限数（通常在接收器接收数据的速度快于核心的处理速度的时候发生）。 
+Parameters 表示ifconfig所支持的各种参数，使用这些参数就可以便方便地监控和改变网络接口的状态。 
+ifconfig的命令行参数: 
+up 激活指定的接口 
+down 关闭指定接口。该参数可以有效地阻止通过指定接口的IP信息 
+流，如果想永久地关闭一个接口，我们还需要从核心路由表中 
+将该接口的路由信息全部删除 
+netmask mask 为接口设置IP网络掩码。掩码可以是有前缀0x的32位十六进制 
+数，也可以是用点分开的4个十进制数。如果不打算将网络分成 
+子网，可以不管这一选项；如果要使用子网，那么请记住，网络 
+中每一个系统必须有相同子网掩码。 
+pointpoint 打开指定接口的点对点模式。它告诉核心该接口是对另一台机 
+器的直接连接。当包含了一个地址时，这个地址被分配给列表另 
+一端的机器。如果没有给出地址，就打开这个指定接口的 
+POINTPOINT选项。前面加一个负号表示关闭pointpoint选项。 
+broadcast address 当使用了一个地址时，设置这个接口的广播地址。如果 
+没有给出地址，就打开这个指定接口的IFF_BROADCAST选项。 
+前面加上一个负号表示关闭这个选项。 
+metric number 将接口度量值设置为整数number。度量值表示在这个路径上发 
+送一个分组的成本。目前内核中还没有使用路由成本，但将来会。 
+mtu bytes 将接口在一次传输中可以处理的最大字节数设置为整数bytes。 
+目前核心网络代码不处理IP分段，因此一定要把MTU（最大数据 
+传输单元） 值设置得足够大 
+arp 打开或关闭指定接口上使用的ARP协议。前面加上一个负号用于 
+关闭该选项。 
+allmuti 打开指定接口的无区别模式。打开这个模式让接口把网络上的 
+所有信息流都送到核心中，而不仅仅是把你的机器的信息发送给 
+核心。前面加上一个负号表示关闭该选项 
+hw 为指定接口设置硬件地址。硬件类型名和次硬件地址对等的 
+ASCII字符必须跟在这个关键字后面。目前支持以太网 
+（ether）、AMPR、AX.25和PPP 
+traliers 打开以太网帧上的跟踪器。目前还未在LINUX网络中实现 
+
+通常不需要使用所有的这些配置。Ifconfig可以仅由接口名、网络掩码和分配IP地址来设置所需的一切。当ifconfig疏漏了或者有一个复杂的网络时，只要重新设置大多数参数。 
+
+使用netstat检查网络状态 
+
+接下来的这一节将介绍一个很有用的命令——netstat，使用netstat命令可以监控TCP/IP网络配置和工作状况。它可以显示内核路由表、 
+活动的网络状态以及每个网络接口的有用的统计数字。欲得详情请阅man page。 
+-a 显示所有Internet连接的有关信息，包括那些正在监听的信息 
+-i 显示所有网络设备的统计数字 
+-c 不断显示网络的更新状态。这个参数使用netstat每秒一次的输出网络状态 
+列表，直到该程序被中断 
+-n 以数字/原始形式显示远程地址、本地地址和端口信息，而不是解析主机名 
+和服务器 
+-o 显示计数器的终止时间和每个网络连接的回退（back off）情况 
+-r 显示内核路由表 
+-t 只显示TCP socket信息，包括正在监听的信息 
+-u 只显示UDP socket信息 
+-v 显示netstat版本信息 
+-w 显示原始（raw）socket信息 
+-x 显示UNIX域socket信息 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+在Linux系统中，TCP/IP网络是通过若干个文本文件进行配置的，需要编辑这些文件来完成联网工作。系统中重要的有关网络配置文件为：
+
+◆ /etc/sysconfig/network
+◆ /etc/HOSTNAME
+◆ /etc/hosts
+◆ /etc/services
+◆ /etc/host.conf
+◆ /etc/nsswitch.conf
+◆ /etc/resolv.conf
+◆ /etc/rc.d/init.d/network 
+
+接下来我们将对这些文件逐一讲述，这些文件都可以在系统运行时进行修改，不用启动或者停止任何守护程序，更改会立刻生效(除了/etc/sysconfig/network)。另外，这些文件都支持由""#""开头的注释，每一个文件都有在UNIX手册页中的第5部分中有一项，可以用man命令来获取它们。
+
+◆ /etc/sysconfig/network 网络设置
+该文件用来指定服务器上的网络配置信息，包含了控制和网络有关的文件和守护程序的行为的参数。下面是一个例子文件：
+
+NETWORKING=yes
+HOSTNAME=machine1
+GATEWAY=210.34.6.2
+FORWARD_IPV4=yes
+GATEWAYDEV= 
+
+其中，NETWORK=yes/no 表示网络是否被配置；
+HOSTNAME=hostname hostname 表示服务器的主机名；
+GATEWAY=gw-ip gw-ip 表示网络网关的IP地址；
+FORWARD_IPV4=yes/no 是否开启IP转发功能；
+GAREWAYDEV=gw-dev gw-dw 表示网关的设备名，如：eth0等；
+为了和老的一些软件相兼容，""/etc/HOSTNAME""文件应该用和HOSTNAME=hostname相同的主机名。
+
+◆ /etc/HOSTNAME 主机名
+
+该文件包含了系统的主机名称，包括完全的域名，如：
+
+192.168.0.1 machine1.domain machine1
+
+这个文件是在启动时从文件/etc/sysconfig/network中的HOSTNAME行中得到的，用于在启动时设置系统的主机名。
+
+◆ /etc/hosts IP地址和主机名的映射
+
+/etc/hosts中包含了IP地址和主机名之间的映射，还包括主机名的别名，IP地址的设计使计算机容易识别，但对于人却很难记住它们，为了解决这个问题，创建了/etc/hosts这个文件。下面是一个例子文件：
+
+127.0.0.1 machine1 localhost.localdomain localhost
+192.168.1.100 machine7
+192.168.1.101 otherpc otheralias
+
+在这个例子中，本机名是machine1，otherpc还有别名otheralias，它可以指向otheralias。。一旦配置完机器的网络配置文件，应该重新启动网络以使修改生效，使用下面的命令来重新启动网络：
+
+/etc/rc.d/init.d/network restart
+
+/etc/hosts文件通常含有主机名、localhost和系统管理员经常使用的系统别名，有时候telnet到Linux机器要等待很长时间，可以通过在""/etc/hosts""加入客户的机器的IP地址和主机名的匹配项，就可以减少登录等待时间。在没有域名服务器情况下，系统上的所有网络程序都通过查询该文件来解析对应于某个主机名的IP地址，否则，其他的主机名通常使用DNS来解决，DNS客户部分的配置在文件/etc/resolv.conf中。
+
+◆ /etc/services
+
+/etc/services中包含了服务名和端口号之间的映射，不少的系统程序要使用这个文件，下面是RedHat 安装时缺省的/etc/services中的前几行：
+
+tcpmux 1/tcp # TCP port service multiplexer
+echo 7/tcp
+echo 7/udp
+discard 9/tcp sink null
+discard 9/udp sink null
+systat 11/tcp users
+
+最左边一列是主机服务名，中间一列是端口号，”/“ 后面是端口类型，可以是TCP也可以是UDP。任何后面的列都是前面服务的别名。在这个文件中也存在着别名，它们出现在端口号后面，在上述例子中sink和null 都是discard服务的别名。
+
+◆ /etc/host.conf 配置名字解析器
+
+有两个文件声明系统到哪里寻找名字信息来配置UNIX名字解析器的库。文件/etc/host.conf由版本5的libc库所使用，而/etc/nsswitch.conf由版本6使用(glibc )。问题在于一些程序使用其中一个，而一些使用另一个，所以将两个文件都配置正确是必要的。
+
+/etc/host.conf文件指定如何解析主机名，Linux通过解析器库来获得主机名对应的IP地址。下面是RedHat安装后缺省的""/etc/host.conf""内容：
+
+order hosts，bind
+multi on
+
+※""order "" 指定主机名查询顺序，其参数为用逗号隔开的查找方法，支持的查找方法为bind、hosts和nis，分别代表DNS、/etc/hosts和NIS，这里规定先查询""/etc/hosts""文件然后再使用DNS来解析域名。
+※""trim"" 表明当通过DNS进行地址到主机名的转换时，域名将从主机名中被裁剪掉，trim可以被多个域包含多次，对/etc/hosts和NIS查询方法不起作用，注意在/etc/hosts和NIS表中主机名是被适当地(有或没有全域名)列出的。
+※""multi"" 指定是否""/etc/hosts""文件中指定的主机可以有多个地址，值为on表示允许，拥有多个IP地址的主机一般称为具有多个网络界面。
+※""nospoof "" 指是否允许对该服务器进行IP地址欺骗，值为on表示不允许，IP欺骗是一种攻击系统安全的手段，通过把IP地址伪装成别的计算机，来取得其它计算机的信任。
+※""alert"" 当nospoof指令为on时，alert控制欺骗的企图是否用syslog工具进行记录，值为on表示使用，缺省值为off。
+※""rccorder"" 如果被设置为on，所有的查询将被重新排序，所以在同一子网中的主机将首选被返回，缺省值为off。
+
+◆ /etc/nsswitch.conf 配置名字解析器
+
+/etc/nsswitch.conf文件是由S u n公司开发并用于管理系统中多个配置文件查找的顺序，它比/etc/host.conf文件提供了更多的功能。/etc/nsswitch.conf中的每一行或者是注释(以#号开头)或者是一个关键字后跟冒号和一系列要试用的有顺序的方法。每一个关键字是在/etc/目录可以被/etc/nsswitch.conf控制的/etc文件的名字。下面是可以被包含的关键字：
+
+※aliases 邮件别名； 
+※passwd 系统用户；
+※group 用户组；
+※shadow 隐蔽口令；
+※hosts 主机名和I P地址；
+※networks 网络名和号；
+※protocols 网络协议；
+※services 端口号和服务名称；
+※ethers 以太网号；
+※rpc 远程进程调用的名称和号
+※netgroup 网内组
+
+下面也是可以包含的关键字：
+
+※files 除了netgroup，对其他关键字都有效。在相应的/etc文件中寻找记录
+※db 除了netgroup，对其他关键字都有效。在相应的/var/db数据库中寻找记录。对长文件很有效，如passwd文件已经 超过500项。要从标准/etc文件中产生这些文件，应改变目录到/var/db并运行run命令
+※compat 兼容性模式，对passwd、group和shadow文件有效。在本模式中，将先在对应的/etc文件中查找。如果想进行NIS查找，需要第一个值(用户名或组名)为加号( + )，后面跟对应数量的冒号( : ) ( /etc/passwd为6个， /etc/group为3个， /etc/shadow为8个)。如在/etc/passwd文件中，下面一行应被包含在文件尾： + : * : : : : :
+※dns 只对hosts有意义。像在/etc/resolvconf配置的，在DNS中进行查找
+※nis 对所有的关键字都有意义。如NIS是可以用的，在NIS服务器中查找
+※[ STATUS = action ] 控制名字服务的行为。STATUS是SUCCESS(操作被成功执行)、NOTFOUND (记录没找到)、UNAVAIL (所选择的服务不可用)和TRYAGAIN (服务暂时不可用，请重试)中的一个。action是return (终止查找并返回当前状态)或continue (继续这一行的其他项)中的一个。如hosts: dns nis [NOTFOUND=return] files将会首先在DNS中，然后在NIS中查找主机名。只有当前两项都不可用时才使用文件/etc/hosts
+
+◆ /etc/resolv.conf 配置DNS客户
+
+文件/etc/resolv.conf配置DNS客户，它包含了主机的域名搜索顺序和DNS服务器的地址，每一行应包含一个关键字和一个或多个的由空格隔开的参数。下面是一个例子文件：
+
+search mydom.edu.cn
+nameserver 210.34.0.14
+nameserver 210.34.0.2
+
+合法的参数及其意义如下：
+※nameserver 表明DNS服务器的IP地址。可以有很多行的nameserver，每一个带一个I P地址。在查询时就按nameserver在本文件中的顺序进行，且只有当第一个nameserver没有反应时才查询下面的nameserver.
+※domain 声明主机的域名。很多程序用到它，如邮件系统；当为没有域名的主机进行DNS查询时，也要用到。如果没有域名，主机名将被使用，删除所有在第一个点( . )前面的内容。
+※search 它的多个参数指明域名查询顺序。当要查询没有域名的主机，主机将在由search声明的域中分别查找。domain和search不能共存；如果同时存在，后面出现的将会被使用。
+※sortlist 允许将得到域名结果进行特定的排序。它的参数为网络/掩码对，允许任意的排列顺序。Red Hat中没有提供缺省的/ e t c / r e s o l v. c o n f文件，它的内容是根据在安装时给出的选项动态创建的。
+
+◆ /etc/init.d/network 主机地址、子网掩码和网关
+
+不像很多其他的UNIX和Linux操作系统， Red Hat当前并不能自动地通过/etc/hostname和/etc/hosts文件来配置网络。为了改变主机缺省的IP地址，必须直接编辑/etc/init.d/network脚本使其反映正确的网络配置。这个文件包括了声明IP地址、掩码、网络、广播地址和缺省路由器的变量。下面是这个文件中相应的部分：
+
+IPADDR=192.168.1.100
+NETMASK=255.255.255.0
+BROADCAST=192.168.1.255
+GATEWAY=192.168.1.1

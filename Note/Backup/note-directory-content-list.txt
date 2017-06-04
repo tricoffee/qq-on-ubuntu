@@ -1,0 +1,445 @@
+/home/qq/Note/
+├── android
+│   ├── fast-booting.txt
+│   └── fast-booting.txt~
+├── ARM
+│   └── 嵌入式开发所需的知识体系.txt
+├── backup
+│   ├── book-directory-content-list.txt
+│   ├── download-directory-content-list.txt
+│   ├── github-directory-content-list.txt
+│   ├── note-directory-content-list.txt
+│   └── old_disk_data
+│       └── temp.txt
+├── colors
+│   └── rainbow-rgb-and-cmyk-encoding.txt
+├── exercise
+│   └── exercise.txt
+├── Fun
+│   ├── 12-18_xieshi.txt
+│   ├── 2013-1-27-ubuntu-12+w3m-surfing-the-internet.txt
+│   ├── book-list.org
+│   ├── book.org
+│   ├── gnugoUseage.txt
+│   ├── GuWen-TangShi.txt
+│   ├── idea
+│   ├── linux-utility-command.txt
+│   ├── my-add-in-sbin.org
+│   ├── my-add-in-usr-sbin.org
+│   ├── my-add-in-usr-sbin.org~
+│   ├── my-school.txt
+│   ├── sdcv_move_to_windows.txt
+│   ├── ubuntu-12+w3m-surfing-the-internet.txt
+│   └── yu-shi.org
+├── git
+│   ├── gerrit.txt
+│   ├── git-ignore.txt
+│   ├── git-pull-failed-from-unmerged-files.txt
+│   ├── git-push-an-exist-local-repository-to-remote-server.txt
+│   ├── git-remove-remote-repository-file.txt
+│   ├── git-retract-commit.txt
+│   └── git-retract-remove-local-file.txt
+├── hardware
+│   └── SD-card.org
+├── IC
+│   └── ic.org
+├── learning
+│   ├── 12-14_need_works.txt
+│   ├── 12-18_RMU900-learnin.txt
+│   ├── 12-18_RMU900-learnin.txt~
+│   ├── 12-18_RMU部分api说明.txt
+│   ├── 2013-01-31-gongzuofangfawenti.txt
+│   ├── 2013-01-31-gongzuofangfawenti.txt~
+│   ├── 2013-1-10-build-Qt.txt
+│   ├── 2013-1-10-build-Qt.txt~
+│   ├── 2013-1-10-Qt-QComboBox.txt
+│   ├── 2013-1-11-我该如何充分的利用这段时间提高自己.txt~
+│   ├── 2013-1-11-我该如何充分的利用这段时间提高自己.txt
+│   ├── 2013-1-26-sdcv.txt~
+│   ├── 2013-1-27-emacs-learnning.txt~
+│   ├── bit-by-bit_learning_in_cyit.org
+│   ├── bit-by-bit_learning_in_cyit.org~
+│   ├── c-program-language.org
+│   ├── c-program-language.org~
+│   ├── englishWords.org
+│   ├── error-after-git-reset-at-build-Qt.txt
+│   ├── internet.txt
+│   ├── math
+│   │   └── how-to-learnning-the-higher_Mathematics.org
+│   ├── RMU900-learnin.txt
+│   └── RMU900-learn.txt
+├── linux
+│   ├── debian
+│   │   ├── apt-get
+│   │   │   └── apt-get-f-install.txt
+│   │   ├── input_method
+│   │   │   └── zh-input-method.txt
+│   │   └── window_manager
+│   │       ├── DWM
+│   │       │   ├── dmenu-usage.txt
+│   │       │   ├── dwm-usage.txt
+│   │       │   └── official-website.txt
+│   │       ├── linux-window-manager.txt
+│   │       ├── more-then-40-WM-evaluation.txt
+│   │       ├── sawfish.txt
+│   │       └── temp
+│   ├── linux_kernel
+│   │   ├── kernel-document.txt
+│   │   ├── linux-kernel.txt
+│   │   ├── old_version.png
+│   │   └── version-2.6.36.png
+│   ├── linux_skills
+│   │   ├── 10-23_XGcom.txt
+│   │   ├── #12-18_create_desktop_icon.txt#
+│   │   ├── 12-18_create_desktop_icon.txt
+│   │   ├── 12-18_create_desktop_icon.txt~
+│   │   ├── 12-18_indent参数.txt
+│   │   ├── 2013-1-11-easy-login-server.txt
+│   │   ├── 2013-1-11-easy-login-server.txt~
+│   │   ├── 2013-1-11-wget.txt
+│   │   ├── 2013-1-11-wget.txt~
+│   │   ├── 2013-1-8-android-disquisition.txt
+│   │   ├── 2013-1-8-android-disquisition.txt~
+│   │   ├── 2013-1-8-create-user-in-server.txt
+│   │   ├── 2013-1-8-create-user-in-server.txt~
+│   │   ├── 2013-1-8-how-to-work.txt
+│   │   ├── 2013-1-8-how-to-work.txt~
+│   │   ├── apt-get_useage.txt
+│   │   ├── bash_commond.txt
+│   │   ├── bluetooth.txt
+│   │   ├── cat-uuid_utf-8.txt
+│   │   ├── commandLine_start_ubuntu.org
+│   │   ├── c_program_package_gnome-open.org
+│   │   ├── creat-udisk-live-linux.txt
+│   │   ├── dd-command.org
+│   │   ├── decompress-file.txt
+│   │   ├── find_grep_command.txt
+│   │   ├── find-lost-linux-partitions-table.txt
+│   │   ├── format-disk-command_utf-8.txt
+│   │   ├── ftp_command_config.txt
+│   │   ├── GB-to-utf.txt
+│   │   ├── git_command.txt
+│   │   ├── gnome-terminal_skills
+│   │   ├── ibus_config.txt
+│   │   ├── iconv_all-dir_files.txt
+│   │   ├── kernel-partition-tables.org
+│   │   ├── kernel-partition-tables.org~
+│   │   ├── linux_file_decompress.txt
+│   │   ├── linux_remove_run_file.txt
+│   │   ├── linux_rename_filename.txt
+│   │   ├── linux_replace_file_context.txt
+│   │   ├── linux_user_management.txt
+│   │   ├── minicom.org
+│   │   ├── modify-hoseName.txt
+│   │   ├── mount.org
+│   │   ├── mount.org~
+│   │   ├── mount_utf-8.txt
+│   │   ├── mplayer.txt
+│   │   ├── network_is_unreachable.txt
+│   │   ├── network.org
+│   │   ├── open_docx_format_file.org
+│   │   ├── remount-dir_utf-8.txt
+│   │   ├── sudo_command.txt
+│   │   ├── suspend_and_hibernate.org
+│   │   ├── tar_useage.txt
+│   │   ├── ubuntu_suspend_and_hibernate.org
+│   │   ├── ubuntu_uninstall_unity.txt
+│   │   ├── ubuntu_uninstall_unity.txt~
+│   │   ├── ubuntu-use-xmodmap-change-keymap-2.txt
+│   │   ├── ubuntu-use-xmodmap-change-keymap.txt
+│   │   ├── use_google_api_translation.org
+│   │   ├── wget.org
+│   │   ├── xmodmap-change-keymap-2.txt
+│   │   ├── xmodmap-change-keymap-3.txt
+│   │   ├── xmodmap-change-keymap.txt
+│   │   ├── zh-manpages.txt
+│   │   └── 关于connect- network is unreachable 问题的解决.png
+│   ├── system_management
+│   │   └── get-system-info-utility-command.txt
+│   └── ubuntu
+│       ├── apt
+│       │   ├── apt-dpkg-common-problem.txt
+│       │   ├── apt-fix-depend-on-problem.txt
+│       │   ├── apt-usage.txt
+│       │   └── extract-deb-packege.txt
+│       ├── boot
+│       │   └── boot-directory-clean.txt
+│       ├── character_terminal
+│       │   ├── character-terminal-zh-encoding-support.txt
+│       │   ├── screenshot-command-under-terminal.txt
+│       │   ├── temp
+│       │   ├── terminal-record-command.txt
+│       │   ├── use-google-on-terminal.txt
+│       │   └── view-picture-on-char-term.txt
+│       ├── file_manager
+│       │   └── linux-terminal-file-manager.txt
+│       ├── fonts_setting
+│       │   └── wenquanyi-microhei.txt
+│       ├── install_ubuntu
+│       │   └── install-ubuntu-from-harddisk.txt
+│       ├── IOS
+│       │   ├── ubuntu-connect-IOS-setup.txt
+│       │   ├── ubuntu-connect-IOS-setup.txt~
+│       │   └── ubuntu-connect-IOS-support.txt
+│       ├── keyboard
+│       │   └── use-xmodmap-to-remap-key.txt
+│       ├── man
+│       │   └── zh-manpages.txt
+│       ├── mouse
+│       │   └── touchpad-enable.txt
+│       ├── regular_expression
+│       │   └── regular-expression-simple-tutorial.txt
+│       ├── shell
+│       │   ├── shell_command
+│       │   │   ├── chmod-usage.txt
+│       │   │   ├── convert-pdf-to-text.txt
+│       │   │   ├── convert-text-file-encoding.txt
+│       │   │   ├── create-symbol-link.txt
+│       │   │   ├── dd-command.org
+│       │   │   ├── gnome-term-specified-geometry-initialization.txt
+│       │   │   ├── google-translate-api-text-and-voice.txt
+│       │   │   ├── indent-arguments.txt
+│       │   │   ├── intercept-screenshot-of-the-webpage.txt
+│       │   │   ├── linux-terminal-file-manager.txt
+│       │   │   ├── mount.org
+│       │   │   ├── text-processing-tools.txt
+│       │   │   ├── use-google-on-terminal.txt
+│       │   │   └── wget
+│       │   │       ├── wget-usage-2.txt
+│       │   │       └── wget-usage.txt
+│       │   ├── shell_config
+│       │   │   └── shell-confusion-encoding-乱码.txt
+│       │   ├── shell_guide
+│       │   │   ├── learnning-shell-website.txt
+│       │   │   ├── login-shell_nologin-shell.txt
+│       │   │   └── shell-redirect.txt
+│       │   └── shell_script_skills
+│       │       ├── format-the-shell-scripts.txt
+│       │       ├── get-sh-argument.txt
+│       │       ├── shell-case.txt
+│       │       ├── shell-function.txt
+│       │       ├── shell-history-format.txt
+│       │       ├── shell-if-condition-judgment.txt
+│       │       ├── shell-script-simple-tutorial.txt
+│       │       ├── shell-script-utility-expr.txt
+│       │       └── shell-variable.txt
+│       ├── ssh_server
+│       │   └── build-ssh-server.txt
+│       ├── ubuntu_performance
+│       │   └── adjust-the-ubuntu-performance-yourself.txt
+│       ├── web_browser
+│       │   └── firefox
+│       │       ├── firefox-about-config-28-optimization-techniques.txt
+│       │       ├── firefox-about-config-arguments-explain.txt
+│       │       ├── firefox-about-config-optimize.txt
+│       │       ├── firefox-fast-startup.txt
+│       │       ├── install-adobe-flash-plugins.txt
+│       │       └── replace-system-default-firefox.txt
+│       └── window_manager
+│           ├── DWM
+│           │   ├── dmenu-usage.txt
+│           │   ├── dwm-usage.txt
+│           │   └── official-website.txt
+│           ├── linux-window-manager.txt
+│           ├── more-then-40-WM-evaluation.txt
+│           ├── sawfish.txt
+│           └── temp
+├── programming_IDE
+│   ├── emacs
+│   │   ├── auto-copy.org
+│   │   ├── build_emacs
+│   │   │   ├── emacs.txt
+│   │   │   ├── linux_compile_emacs_23_dependencies.txt
+│   │   │   ├── linux_compile_emacs_24_config_help_output.txt
+│   │   │   ├── linux_compile_emacs_24_config_success_output.txt
+│   │   │   └── linux_compile_emacs_24_make_success_output.txt
+│   │   ├── calender.org
+│   │   ├── can not open emacs on server.txt
+│   │   ├── c_c++_mode.org
+│   │   ├── c_c++_mode.org~
+│   │   ├── color-theme.org
+│   │   ├── copy_and_paste.org
+│   │   ├── ctrl_caps_swap.org
+│   │   ├── dot-emacs.org
+│   │   ├── emacs_auto_notation.org
+│   │   ├── emacs-call-w3m-to-browse-website.txt
+│   │   ├── emacs-c++_IDE.txt
+│   │   ├── emacs-correlation-help.txt
+│   │   ├── emacs file.org
+│   │   ├── emacs file.org~
+│   │   ├── emacs-full-screen-最大化.txt
+│   │   ├── emacs_learnning.org
+│   │   ├── emacs_learnning.org~
+│   │   ├── #emacs-peizhi.txt#
+│   │   ├── emacs-profile.txt
+│   │   ├── emacs-profile.txt~
+│   │   ├── emacs_shell_grabled.org
+│   │   ├── emacs-skills.txt
+│   │   ├── emacs.txt
+│   │   ├── emacs-usage.txt
+│   │   ├── emacs+w3m-1.txt
+│   │   ├── emacs+w3m-2.txt
+│   │   ├── ERC.org
+│   │   ├── ERC.org~
+│   │   ├── ERC.txt~
+│   │   ├── frame_size.org
+│   │   ├── frame_size.org~
+│   │   ├── gdb_for_emacs.org
+│   │   ├── Gnu.org
+│   │   ├── Gnu.org~
+│   │   ├── mplayer-useage.txt
+│   │   ├── org-mode_and_todo-mode.org
+│   │   ├── readOnlyOpenEmacs.txt
+│   │   ├── redirect_backup_file.org
+│   │   ├── redirect_backup_file.org~
+│   │   ├── root_open_file.org
+│   │   ├── sdcv.org
+│   │   ├── spacemacs-usage.txt
+│   │   ├── themes
+│   │   │   └── some-emacs-theme.txt
+│   │   ├── translucent.org
+│   │   ├── use_emacs_reading_source_code.org
+│   │   ├── use_emacs_reading_source_code.org~
+│   │   ├── use_manpage_in_emacs.org
+│   │   ├── use_manpage_in_emacs.org~
+│   │   ├── w3m.org
+│   │   ├── w3m.txt
+│   │   ├── w3m.txt~
+│   │   ├── why_use_emacs.org
+│   │   └── !!!!!!---windows-home-path.txt
+│   ├── linux-programming-IDE.txt
+│   └── vim
+│       ├── vim-config20121013.tar.bz2
+│       └── vim-usage.txt
+├── Qt
+│   ├── 2013-01-16-Qt-bug.txt
+│   ├── 2013-01-16-Qt-bug.txt~
+│   ├── 2013-1-22-learnning-Qt.txt
+│   ├── 2013-1-22-learnning-Qt.txt~
+│   ├── 2013-1-8-build-Qt-compiler-env.txt
+│   ├── 2013-1-8-build-Qt-compiler-env.txt~
+│   ├── build_Qt.txt
+│   ├── dialog-center.txt
+│   ├── learnning-Qt.txt
+│   ├── setWindowFlags.txt
+│   └── 关于qt中的tr（）函数 - TJU355的专栏 - 博客频道 - CSDN.NET.png
+├── reading-notes
+│   ├── how_to_write_note.org
+│   └── mozi.org
+├── server-maintain
+│   └── server-maintain.org
+├── somethings
+│   ├── bookmark.txt
+│   ├── coding.txt
+│   ├── DnsServerConfig_utf-8.txt
+│   ├── internet.txt
+│   ├── new file_utf-8.txt
+│   ├── url.txt
+│   └── yu-shi.org
+├── test
+│   ├── 2012-10-09_TDriver-Qt自动测试.txt
+│   ├── 2013-1-27-find-new-bug.txt
+│   ├── 2013-1-28-test-android.txt
+│   ├── 2013-1-28-todo.txt
+│   ├── git clone.txt
+│   ├── #my-test-task.org#
+│   ├── my-test-task.org
+│   ├── test.org
+│   ├── test outline.org
+│   ├── test.txt
+│   └── test work function.txt
+├── testWork
+│   └── test-flow.txt
+├── text_editor
+│   ├── emacs
+│   │   ├── auto-copy.org
+│   │   ├── calender.org
+│   │   ├── can not open emacs on server.txt
+│   │   ├── c_c++_mode.org
+│   │   ├── color-theme.org
+│   │   ├── copy_and_paste.org
+│   │   ├── ctrl_caps_swap.org
+│   │   ├── custom-elisp
+│   │   │   └── org-mode.el.txt
+│   │   ├── dot-emacs.org
+│   │   ├── emacs_auto_notation.org
+│   │   ├── emacs-c++_IDE.txt
+│   │   ├── emacs.d_bak
+│   │   │   ├── init.el
+│   │   │   └── my_personal_setting
+│   │   │       ├── bingapiel
+│   │   │       └── sdcv
+│   │   │           └── sdcv-mode.el
+│   │   ├── emacs file.org
+│   │   ├── emacs-help-command.txt
+│   │   ├── emacs-keystruct.txt
+│   │   ├── emacs_learnning.org
+│   │   ├── emacs-menu.org
+│   │   ├── #emacs-peizhi.txt#
+│   │   ├── emacs-profile_bak.txt
+│   │   ├── emacs-profile.txt
+│   │   ├── emacs_shell_grabled.org
+│   │   ├── emacs-skills.txt
+│   │   ├── emacs.txt
+│   │   ├── emacs+w3m-1.txt
+│   │   ├── emacs+w3m-1_utf-8.txt
+│   │   ├── emacs+w3m-2.txt
+│   │   ├── emacs+w3m-2_utf-8.org
+│   │   ├── #ERC.org#
+│   │   ├── ERC.org
+│   │   ├── eww
+│   │   │   └── eww-config.txt
+│   │   ├── eww-useage.txt
+│   │   ├── frame_size.org
+│   │   ├── gdb_for_emacs.org
+│   │   ├── Gnu.org
+│   │   ├── install-emacs-log.txt
+│   │   ├── lisp.txt
+│   │   ├── mplayer-useage.txt
+│   │   ├── org-mode_and_todo-mode.org
+│   │   ├── readOnlyOpenEmacs.txt
+│   │   ├── redirect_backup_file.org
+│   │   ├── root_open_file.org
+│   │   ├── sdcv.org
+│   │   ├── translucent.org
+│   │   ├── use_emacs_reading_source_code.org
+│   │   ├── use_manpage_in_emacs.org
+│   │   ├── w3m.org
+│   │   ├── w3m.txt
+│   │   ├── why_use_emacs.org
+│   │   └── !!!!!!---windows-home-path.txt
+│   └── vim
+│       ├── vim-basic-operate.txt
+│       ├── vim-color-config.txt
+│       ├── vim-get-current-dir-file.txt
+│       ├── vim-multiple-file-edit.txt
+│       ├── vimrc-config.txt
+│       └── vim-replace-string-command.txt
+├── virtualbox
+│   ├── modify-vboxharddisk-size.txt
+│   └── vbox.txt
+├── VPN
+│   ├── greevpnserver.txt
+│   └── openvpn.txt
+├── website
+│   ├── development-and-learnning-website.txt
+│   ├── emacs-discovery-website.txt
+│   ├── linux-window-manager.website.txt
+│   ├── some-website-from-old-backup-2.txt
+│   ├── some-website-from-old-backup.txt
+│   ├── ubuntu-development-correlate-website.txt
+│   └── without-working-website.txt
+├── windows
+│   └── windows-home-path.txt
+└── work
+    ├── 2012-09-28_env.sh
+    ├── 2012-09-29_qiaoqiang.txt
+    ├── 2012-10-08_compile-UT7310.txt
+    ├── 2012-10-09_TDriver-Qt自动测试.txt
+    ├── 2012-10-15_adb bug.txt
+    ├── 2012-10-18_git-clone
+    ├── git clone.txt
+    ├── 笔记.txt
+    └── 追蓝屏log的方法.txt.txt
+
+70 directories, 372 files

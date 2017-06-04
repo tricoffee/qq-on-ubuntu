@@ -1,0 +1,37 @@
+　　内核文档
+
+　　内核代码中包含有大量的文档，这些文档对于学习理解内核有着不可估量的价值，记住，在任何时候，它们在我们心目中的地位都应该高于那些各式的内核参考书。下面是一些内核新人所应该阅读的文档。
+
+　　README
+
+　　这个文件首先简单介绍了Linux内核的背景，然后描述了如何配置和编译内核，最后还告诉我们出现问题时应该怎么办。
+
+　　Documentation/Changes这个文件给出了用来编译和使用内核所需要的最小软件包列表。
+
+　　Documentation/CodingStyle这个文件描述了内核首选的编码风格，所有代码都应该遵守里面定义的规范。
+
+　　Documentation/SubmittingPatches
+
+　　Documentation/SubmittingDrivers
+
+　　Documentation/SubmitChecklist
+
+　　这三个文件都是描述如何提交代码的，其中SubmittingPatches给出创建和提交补丁的过程，
+
+　　SubmittingDrivers描述了如何将 设备驱动提交给2.4、2.6等不同版本的内核树，SubmitChecklist则描述了提交代码之前需要check自己的代码应该遵守的某些事项。
+
+　　Documentation/stable_api_nonsense.txt这个文件解释了为什么内核没有一个稳定的内部API(到用户空间的接口——系统调用——是稳定的)，它对于理解Linux的开发哲学至关重要，对于将开发平台从其他操作系统转移到Linux的开发者来说也很重要。
+
+　　Documentation/stable_kernel_rules.txt解释了稳定版内核(stable releases)发布的规则，以及如何将补丁提交给这些版本。
+
+　　Documentation/SecurityBugs
+
+　　内核开发者对安全性问题非常关注，如果你认为自己发现了这样的问题，可以根据这个文件中给出的联系方式提交bug，以便能够尽可能快的解决这个问题。
+
+　　Documentation/kernel-docs.txt这个文件列举了很多内核相关的文档和书籍，里面不乏经典之作。
+
+　　Documentation/applying-patches.txt这个文件回答了如何为内核打补丁。
+
+　　Documentation/bug-hunting这个文件是有关寻找、提交、修正bug的。
+
+　　Documentation/HOWTO这个文件将指导你如何成为一名内核开发者，并且学会如何同内核开发社区合作。它尽可能不包括任何关于内核编程的技术细节，但会给你指引一条获得这些知识的正确途径。

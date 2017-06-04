@@ -1,0 +1,7 @@
+
+编译Qt代码时，出现一下状况：首先整体编译代码，然后reset回退到之前的版本，再次编译systemimage的时候出现某些文件编译时出错的情况
+
+解决方法：
+    git clean -df 清除代码库当中的无关代码
+	git reset --hard HEAD 回退到最新的节点
+	git pull 从库上面拉下来最新的代码

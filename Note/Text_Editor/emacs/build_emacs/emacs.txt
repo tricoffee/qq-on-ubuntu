@@ -1,0 +1,364 @@
+﻿找时间看看有没有lisp相关的公开课。
+
+编译emacs24源码包出现的问题
+
+
+
+1，
+
+checking for libXaw... configure: error: No X toolkit could be found.
+
+If you are sure you want Emacs compiled without an X toolkit, pass
+  
+--with-x-toolkit=no
+
+to configure.  Otherwise, install the development libraries for the toolkit
+
+that you want to use (e.g. Gtk+) and re-run configure.
+
+
+
+
+
+
+
+
+JUL
+22
+Building Emacs 24
+Emacs 24 is not released, but building it is not so hard.
+
+Here's what I did, on Ubuntu 11.04.
+
+1) git clone git://github.com/emacsmirror/emacs.git
+This takes a while - it's big.
+
+2) The INSTALL file says to run configure, but there ain't no such thing. After some head-scratching, I figure out that I have to run autogen.sh to create it.
+
+3) run ./configure - attempt #1
+checking for makeinfo... no
+configure: error: You do not seem to have makeinfo >= 4.6, and your
+source tree does not seem to have pre-built manuals in the `info' directory.
+Either install a suitable version of makeinfo, or re-run configure
+with the `--without-makeinfo' option to build without the manuals.
+
+The obvious solution: "sudo apt-get install makeinfo" doesn't work. Google reveals that you actually need "sudo apt-get install texinfo".
+
+4) ./configure - attempt #2
+
+checking for xaw3d... no
+checking for libXaw... configure: error: No X toolkit could be found.
+If you are sure you want Emacs compiled without an X toolkit, pass
+  --with-x-toolkit=no
+to configure.  Otherwise, install the development libraries for the toolkit
+that you want to use (e.g. Gtk+) and re-run configure.
+
+Well, I want to use Gtk, so by a process of wild guesswork I figure out that "sudo apt-get install libgtk2.0-dev" is the right incantation.
+
+5) ./configure - attempt #3
+checking for gif_lib.h... no
+configure: error: The following required libraries were not found:
+    libXpm libjpeg libgif/libungif libtiff
+Maybe some development libraries/packages are missing?
+If you don't want to link with them give
+    --with-xpm=no --with-jpeg=no --with-gif=no --with-tiff=no
+as options to configure
+Hmm, I don't really use emacs to view images, but I would rather build a fully functional version, so... "sudo apt-get install libxpm-dev libjpeg-dev libgif-dev libtiff4-dev". Where would society be without tab-completion of package names? It would be anarchy, I tell you.
+
+6) ./configure - attempt #4. Yay, victory!
+
+7) make
+This takes a while too.
+
+8) sudo make install
+This is pretty quick.
+
+At this point, I congratulate myself for getting this far without reading more than a paragraph or so of instructions. That's the way real men do it. But unfortunately, I'm now lost - I don't know where my shiny new emacs is, or how I make it my default. I'll have to break down and do some research.
+
+Scanning Makefile I find "prefix=/usr/local", and sure enough, there is a /usr/local/bin/emacs-24.0.50, and it works.
+
+I don't know much about update-alternatives, but after some poking around I manage:
+sudo update-alternatives --install /usr/bin/emacs emacs /usr/local/bin/emacs-24.0.50 2
+That last "2" is a priority, but I didn't have any idea what number to pick. I found out afterwards that emacs 23 has a priority of 26. Huh? Whatever, doesn't matter. I do "sudo update-alternatives --config emacs", and pick the shiny new emacs-24. Now typing "emacs" at the commandline gives me the new hotness. Yay for me.
+
+
+
+
+
+
+
+
+build emacs with X support
+
+up vote
+3
+down vote
+favorite
+2
+I am trying to build emacs 24.0.94 with X support on a 64-bit Suse Linux (10.2 Enterprise release) box. I see that the X11 libraries are installed in /usr/lib/X11R6 and I am telling the configure script to look for them in that location:
+
+--x-includes=/usr/X11R6/include:/usr/include --x-libraries=/usr/X11R6/lib64:/usr/lib64
+Even with the above options, the configure script complains that it cannot find any Xtoolkit:
+
+checking X11 version 6... before 6
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for librsvg-2.0 >= 2.11.0... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for Wand >= 6.2.8... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for gtk+-2.0 >= 2.10 glib-2.0 >= 2.10... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for dbus-1 >= 1.0... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for gio-2.0 >= 2.26... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for gconf-2.0 >= 2.13... no
+checking for lgetfilecon in -lselinux... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for gnutls >= 2.6.6... no
+checking for gnutls_certificate_set_verify_function... no
+checking for xaw3d... no
+checking for libXaw... configure: error: No X toolkit could be found.
+If you are sure you want Emacs compiled without an X toolkit, pass
+  --with-x-toolkit=no
+to configure.  Otherwise, install the development libraries for the toolkit
+that you want to use (e.g. Gtk+) and re-run configure.
+Could somebody please tell me what could be the problem?
+
+emacs
+share|improve this question
+edited Mar 13 '12 at 8:05
+
+N.N.
+2,86941135	
+asked Mar 13 '12 at 4:01
+
+Raj
+19510
+Which toolkit do you want to use? Do you have it properly installed? Where? If you don't know, you probably want to go with GTK. – tripleee Mar 13 '12 at 5:47
+Yes, X11 is the very lowest level of the display functionality. To draw a parallel with Windows, think of it as the bits of functionality needed to handle graphics card drivers and to paint blobs on screen. On top of that layer, you need something that provides libraries for buttons and menus and all the other stuff that goes into a graphical application, and you're missing that piece. Gtk+ is probably the one you want, so as others have said, just install gtk2-devel (or whatever it's called?) and the build should work. – deong Mar 13 '12 at 9:57
+Thanks. Please see my comment below about local install of emacs/gtk2-devel – Raj Mar 13 '12 at 10:13
+2 Answers activeoldestvotes
+up vote
+3
+down vote
+accepted
+On Suse you will typically want to compile Emacs with support for GTK, so you should install GTK headers along with X headers (package gtk2-devel).
+
+In order to compile Emacs with all modern features you will want to install development packages for packages not found in your ./configure output: rsvg, dbus, gnutls, etc...
+
+share|improve this answer
+answered Mar 13 '12 at 8:32
+
+Antoine
+2,477518
+Thanks. I am doing a local install(installing emacs in my home directory) as I do not have sudo/root privileges on the system. Is it possible to install the gtk2-devel package locally and use that for building emacs? – Raj Mar 13 '12 at 9:58
+@Raj Try to download the RPM and and install it locally. Here are some instruction, but I didn't test them. – Antoine Mar 13 '12 at 11:36
+@Antoine probably has the easier solution, but you can also download the Gtk+ source code and install it the same way ("./configure --prefix=/home/Raj/local"). The upside of using RPM is that it should handle dependencies for you. With source, you'll have to make sure you install any required libraries on your own. Either way, you'll probably need to tell the configure script for emacs where the libraries are installed, so something like "./configure --prefix=/home/Raj/local --with-gtk=/home/Raj/local". Read the configure help to get the flags right. – deong Mar 13 '12 at 12:36
+Thanks for all the replies. I decided to install emacs without X. – Raj Mar 14 '12 at 14:37
+1	  
+@Raj Wise decision. – Antoine Mar 14 '12 at 14:48
+
+up vote
+4
+down vote
+Since like last week you can now compile with GTK3
+
+Here is the list of dependencies for debian-based systems :
+
+Tools:
+gcc autoconf automake texinfo libtool git
+
+libs:
+libncurses5-dev libgnutls-dev librsvg2-dev libxpm-dev libjpeg62-dev libtiff-dev libgif-dev libqt4-dev libgtk-3-dev
+
+(another way is to use apt-get build-dep emacs23 and add gtk3)
+
+And here is the script I use for automated builds on all my machines:
+
+#!/bin/bash
+
+init=false
+SRC_DIR=~/src
+
+if [ ! -d "$SRC_DIR" ]; then mkdir $SRC_DIR; fi
+
+if [ ! -d "$SRC_DIR/emacs" ]; then
+    init=true
+    cd $SRC_DIR && pwd && git clone git://git.sv.gnu.org/emacs.git && cd emacs
+else
+    cd $SRC_DIR/emacs
+fi
+
+git pull 1>&1 | grep "Already up-to-date."
+if [[ ! $? -eq 0 && ! $init ]]; then
+    read -e -p "## Branch moved, build and install emacs? [Y/n] " yn
+    if [[ $yn == "y" || $yn == "Y" || $yn == "" ]] ; then
+        make distclean && autoreconf -i -I m4 && ./configure --with-x-toolkit=gtk3 && make && sudo make install
+    fi
+fi
+share|improve this answer
+edited Aug 7 '12 at 20:45
+
+answered Aug 7 '12 at 20:36
+
+xaccrocheur
+823510
+Thanks for the script. – Raj Aug 8 '12 at 14:07
+You're welcome, Raj. It could be better ; I don't like how I'm forced to grep the output of git to determine if the branch has moved. – xaccrocheur Aug 8 '12 at 17:19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Building Emacs on Linux — a Guide
+
+
+ 
+Programer for Hire
+Xah Lee, 2012-09-29, 2013-03-11
+
+Tweet 
+This page shows you how to compile emacs on Linux.
+
+Here's how to compile emacs 24 on Linux. It should work for building any emacs version. I assume you are on Ubuntu Linux.
+
+Summery
+
+Just do this first:
+
+# install essential build tools
+sudo apt-get install build-essential
+
+# get all dependencies of a previous emacs version
+sudo apt-get build-dep emacs23
+then cd to the emacs source dir then
+
+cd ‹source dir name›
+./configure
+make
+sudo make install # optional. This basically copy the binary to /usr/local/bin
+Following is more detailed explanation.
+
+Check Prepared Emacs Packages
+
+On Ubuntu, typically you install by sudo apt-get install emacs24, where the “emacs24” may be other version. To find out what's the package name, do: apt-cache search emacs | grep emacs.
+
+For latest emacs release, the Linux may not have a prepared package yet.
+
+Possible source for latest version of pre-build emacs packages:
+
+emacs-snapshot Debian packages 2012-10-01 By Julien Danjou. @ emacs.naquadah.org…
+Emacs-snapshot versions 2012-10-01 By Damien Cassou. @ launchpad.net…
+Or, you build it yourself. It's easy.
+
+Get Emacs Source Code
+
+Here: http://ftp.gnu.org/gnu/emacs/
+
+Compile Steps
+
+To compile programs on unix, typically the steps are:
+
+cd ‹source dir name›
+./configure
+make
+sudo make install # optional. This basically copy the binary to /usr/local/bin
+In the source dir, there's usually a README or INSTALL file.
+
+However, you'll probably fail in the configure step, because emacs requires lots other libraries, also, you might be missing build tools.
+
+Here's some sample output of failure:
+
+checking for libXaw... configure: error: No X toolkit could be found.
+If you are sure you want Emacs compiled without an X toolkit, pass
+  --with-x-toolkit=no
+to configure.  Otherwise, install the development libraries for the toolkit
+that you want to use (⁖ Gtk+) and re-run configure.
+configure: error: The following required libraries were not found:
+    libXpm libjpeg libpng libgif/libungif libtiff
+Maybe some development libraries/packages are missing?
+If you don't want to link with them give
+    --with-xpm=no --with-jpeg=no --with-png=no --with-gif=no --with-tiff=no
+as options to configure
+configure: error: The required function `tputs' was not found in any library.
+These libraries were tried: libncurses, libterminfo, libtermcap, libcurses.
+Please try installing whichever of these libraries is most appropriate
+for your system, together with its header files.
+For example, a libncurses-dev(el) or similar package.
+You can type ./configure --help to see the options it supports. See its output here: linux_compile_emacs_24_config_help_output.txt.
+
+Install Basic Build Tools
+
+If you haven't done so already, do: sudo apt-get install build-essential. This will install many tools for building.
+
+To see info about the package, do apt-cache showpkg build-essential and apt-cache show build-essential.
+
+Dependencies
+
+You'll need to install some 30 dependent libraries. The trick is to know which are they. Took me a couple hours to find out the hard way.
+
+The easiest way is to install all dependencies of a previous version of the package, like this:
+
+sudo apt-get build-dep emacs23
+This will install all packages emacs23 depends on. Here's the output on my machine:
+
+The following NEW packages will be installed:
+  autoconf automake autotools-dev bsd-mailx diffstat imagemagick libasound2-dev libdatrie-dev
+  libdbus-1-dev libgconf2-dev libgpm-dev libgtk2.0-dev liblockfile-dev liblqr-1-0 libm17n-dev
+  libmagickcore3 libmagickwand3 libncurses5-dev libotf-dev librsvg2-dev libthai-dev libtinfo-dev
+  libxml2-dev postfix quilt sharutils texinfo xaw3dg xaw3dg-dev xutils-dev
+0 upgraded, 30 newly installed, 0 to remove and 4 not upgraded.
+Need to get 12.4 MB of archives.
+After this operation, 49.5 MB of additional disk space will be used.
+You can see the full bash output here: linux_compile_emacs_23_dependencies.txt
+
+config, make
+
+make distclean to clear files created by configure.
+
+Once you have all the dependencies, you can now run ./configure and make again.
+
+Here's a sample successful output:
+
+linux_compile_emacs_24_config_success_output.txt
+linux_compile_emacs_24_make_success_output.txt
+After successful “make”, you should have a binary at 〔src/emacs〕 in the current dir. You can test run it by src/emacs &.
+
+Optionally, you can do sudo make install, which will basically copy the binary to /user/loca/bin/, and copy various elisp files, info files, man pages, etc, into various Linux default dirs.
+
+
+
+
+
+
+
+
+
+
+
+Install emacs 24
+Get emacs24 source:  http://ftp.gnu.org/gnu/emacs/
+Untar bz2 file: tar xjvf emacs-24.2.tar.bz2
+./Configure
+Error #1: checking for libXaw… configure: error: No X toolkit could be found.If you are sure you want Emacs compiled without an X toolkit, pass —with-x-toolkit=no to configure.  Otherwise, install the development libraries for the toolkit that you want to use (e.g. Gtk+) and re-run configure.
+Error #2: checking for gif_lib.h… no configure: error: The following required libraries were not found:libXpm libjpeg libgif/libungif libtiff Maybe some development libraries/packages are missing?  If you don’t want to link with them give —with-xpm=no —with-jpeg=no —with-gif=no —with-tiff=no 
+Then I decide to run: sudo apt-get build-dep emacs-snapshotp #install the dependencies for emacs snapshot
+This time, ./configure pass
+sudo make
+sudo make install: copy the binary to/user/local/bin/   
+>ls /usr/local/bin: ctags emacs emacsclient grep-changelog ebrowse emacs-24.2 etags     rcs-checkin
+Reference:
+http://ergoemacs.org/emacs/building_emacs_on_linux.htmlhttp://chrisperkins.blogspot.com/2011/07/building-emacs-24.html

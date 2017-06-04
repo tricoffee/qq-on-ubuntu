@@ -1,0 +1,396 @@
+Windows下设置Emacs的HOME目录
+2010年4月22日ahei发表评论阅读评论
+作者: Water Lin
+
+
+
+总的来说，Emacs的默认配置文件放在变量HOME所指的路径下，所以，只要我们把.emacs扔到HOME所指向的目录就可以了，下面就简单介绍一下在Windows下设置home目录的几种方法，并进行简单的对比。
+
+第一种方法，改变home环境变量的值。
+
+这种方法，改变了$home变量，也会影响Cygwin或是其他一些应用程序，因为有一些程序会根据Windows的home环境变量来寻找数据存放的路径。
+
+第二种方法，不改变Windows默认的home值，设置默认的.emacs文件读取你自己的Emacs配置文件，并重新设定Emacs的home目录。
+
+你可以在Emacs中输入C-x C-f，然后打开路径~（即当前的home环境变量所指的路径，一般来说是这样的路径：C:/Documents and Settings/water/Application Data）。
+
+看看显示的是哪个目录，如果此目录下没有.emacs，可以创建一个.emacs或_emacs，然后在这个.emacs文件里，加入如下语句：
+
+?[Copy to clipboard]View Code LISP
+(load-file "E:/water/.emacs")
+文件 E:/water/.emacs 才是我们真正的Emacs配置文件，我们可以在这个真正的配置文件里用如下语句设置我们的home目录：
+
+?[Copy to clipboard]View Code LISP
+1
+2
+3
+4
+5
+(setenv "HOME" "E:/water")
+(setenv "PATH" "E:/water")
+;;set the default file path
+(setq default-directory "~/")
+(add-to-list 'load-path "~/emacs/site-lisp")
+这个方法的优点是比较简单同样也方便对.emacs文件备份，不会对其它应用程序产生任何影响。
+
+第三种方法，修改注册表，在注册表中进行如下设置：
+HKEY_LOCAL_MACHINE\SOFTWARE\GNU\Emacs\HOME=%emacs_dir%
+以上三种方法都可以设置好Emacs的Home目录，但是，系统是按什么顺序来解析它们的呢？大体上的顺序是这样的：
+
+如果设置了环境变量HOME，则使用HOME指定的目录。
+如果设置了注册表里的值HKCU\SOFTWARE\GNU\Emacs\HOME，则使用这个值所指定的目录作为home目录。并不是太推荐使用这种方法，因为会导致用户共享一个home目录。
+如果 C:\.emacs 文件存在，则使用 C:\.emacs 这个文件。这个是为了向低版本的Emacs兼容，因为低版本的Emacs就是默认用这个文件作为配置文件。
+把用户的AppData目录作为home目录（通常来说，就是类似这样的目录 C:/Documents and Settings/water/Application Data ），这个用户的数据目录根据Windows版本的不同而有所不同。
+我个人比较喜欢用第二种方法，即简单又方便备份。
+
+其实，如果你只是想要Emacs能找到你的.emacs的话，也可以不用管HOME目录的，写个批处理文件emacs.bat:
+
+path-of-emacs.exe -q -l path-of-your.emacs
+以后执行这个批处理文件就可以用你的配置打开Emacs了。
+
+
+
+
+
+
+
+windows下Emacs的安装与配置
+2008-09-08 16:17 23873人阅读 评论(11) 收藏 举报
+emacswindowslisplinuxpath文档
+最近在学习windows下的Emacs，遇到不少问题，比如什么home目录啦，.emacs配置文件啦，.el文件啦，通过几天的反复琢磨，终于有所感悟。我想不仅是我，很多人都遇到过这些问题，现在就总结如下，以供有需要的朋友参考。
+1、下载
+到这个网址可以下载到Emacs的windows版本：http://ftp.gnu.org/pub/gnu/emacs/windows/
+只需要一个压缩文档，如emacs-22.3-bin-i386.zip
+2、安装
+在D盘根目录下新建一个文件夹，取名Emacs22.2（也可以是其他路径，随个人喜好而定），将emacs-22.2-bin-i386.zip里的文件解压到这个目录下，这样在d:/Emacs22.2/下就有bin, tec, info, leim, lisp, site-lisp等目录。
+双击bin文件夹里的addpm.exe进行安装，安装后将在开始菜单生成Gnu Emacs/Emacs链接，点击这个链接便可启动Emacs。也可以双击bin文件夹里的runemacs.exe启动。注意到bin目录里还有个文件是emacs.exe，双击它也可以启动，但是会出现一个控制台窗口
+3、修改注册表
+打开注册表，找到HKEY_LOCAL_MACHINE/SOFTWARE/GNU/Emacs（如果没有则手动添加项），在此项下添加字符串值，名称为HOME，值为D:/Emacs22.2。这样做的目的是让D:/Emacs22.2成为Emacs的home路径（传说中的home path，以后你将会经常看到“home目录”、“home directory”等等）。
+4、创建.emacs.d目录和.emacs文件
+相信.emacs.d目录和.emacs文件是困扰大家很久的问题了，其实有个简单的办法可以解决此问题。启动emacs，用鼠标点击Options菜单，随便点击一两个选项，比如点击一下Active Region Highlighting，然后点击Save Options。先不要担心你会破坏了什么东西，这样做的目的是让emacs自动创建.emacs.d目录以及.emacs文件！观察你的Emacs窗口最后一行，是否显示“Wrote d:/Emacs22.2/.emacs”？如果是的话就对了，当你选择Save Options的时候，Emacs会在home路径下产生.emacs文件，并把配置信息写进这个文件。现在看看你的d:/Emacs22.2/目录下是否产生了这两个东西？
+5、加载.el文件
+lisp目录下存放着lisp源文件（*.el）和已编译的lisp文件（*.elc），以后你也可以将自己的.el文件放在这个目录下，然后还要在.emacs文件插入相关语句。比如你有一个文件叫做abcd.el，将它复制到lisp目录下，然后打开.emacs文件插入一句(require 'abcd)就可以了（包括圆括号，不需要扩展名.el）。
+如果你不喜欢lisp文件夹，也可以自己新建一个，比如在home目录下建一个文件夹叫做xyz，然后把abcd.el放在xyz目录下，在.emacs文件插入以下两句：
+(setq load-path (cons "~/xyz" load-path))
+(require 'abcd)
+第一句告诉emacs先加载你的xyz目录，第二句再加载abcd.el。注意“~/”是linux系统的用法，表示home目录。
+如果你和我一样在学习《Sams Teach Yourself Emacs in 24 Hours》这本书的话，我想你一定需要sams-lib.el这个文件！可以到这个网址下载：
+http://www.cs.virginia.edu/~wh5a/personal/Emacs/
+找到sams-lib.el之后右键点击“目标另存为”就可以了！
+最后，在下有一事不解，除了lisp还有一个site-lisp目录，我把sams-lib.el分别放在这两个目录下，发现效果是一样的，不知道这两个目录有何不同之处？
+
+
+
+
+
+
+
+
+
+
+ 在Windows下使用Emacs 2007-05-16 12:48:21
+分类： LINUX
+在Windows下使用Emacs
+在Windows下使用Emacs
+安装Emacs
+安装auctex
+安装mule-gbk
+安装aspell
+安装Mew
+用gnuserv给Emacs插上翅膀
+ 
+安装Emacs
+1.     到 http://nqmacs.sourceforge.net 下载emacs的Windows编译版本，包括两个文件 emacs-21.3.50.1-20050130c-w32.zip 和 emacs-21.3.50.1-20050130-lisp.zip
+2.     将 emacs-21.3.50.1-20050130c-w32.zip 解压缩到想要放置的目录，这里为 D:\Program Reserved\emacs-21.3.50.1-20050130c-w32
+3.     将 emacs-21.3.50.1-20050130-lisp.zip 也解压缩在这个目录，然后设置环境变量
+4.                
+HOME=D:\Program Reserved\emacs-21.3.50.1-20050130c-w32
+这样在以后 .emacs.d 目录和 .emacs 文件就都在 $HOME 目录下面了，但是这个方法并不好，因为设置 $HOME 会影响 Cygwin 和 MSYS 等很多东西，所以最好的方法是在注册表中设置 HKEY_LOCAL_MACHINE\SOFTWARE\GNU\Emacs\HOME=%emacs_dir%
+5.     需要自己添加的el文件放在 D:\Program Reserved\emacs-21.3.50.1-20050130c-w32\site-lisp 里面即可
+安装auctex
+1.     到 http://www.gnu.org/software/auctex/ 下载auctex，然后解压到任意目录，不过不要解压到 $HOME 目录下面，这里解压缩到 D:\auctex
+2.     然后可以根据 INSTALL.windows 这个文件进行安装，用cygwin安装的步骤如下：
+3.                 $cd d: (或者$cd /cygdrive/d)
+4.                 $cd auctex
+5.                 $./configure --prefix=d:/"Program Reserved"/emacs-21.3.50.1-20050130c-w32
+6.                              
+--with-emacs=d:/"Program Reserved"/emacs-21.3.50.1-20050130c-w32/bin/emacs.exe
+7.                 $make
+8.                 $make install
+（注意上面对于有空格的目录要加双引号，同时用/而不是\，用d:而不是/cygdrive/d) 
+这样，可以在 $HOME\site-lisp 目录下面看到生成了 auctex 目录，同时在 $HOME 目录下面也生成了一个 var 目录
+9.     在 $HOME\.emacs 文件中添加
+10.            (require 'tex-mik)
+11.            (setq TeX-electric-escape t)
+这样就可以正常使用auctex了
+安装mule-gbk
+安装mule-gbk后可以显示更多的汉字，比如朱镕基的“镕”，如果不用mule-gbk是无法正确显示的
+1.     到 http://mule-gbk.sourceforge.net/ 下载mule-gbk，然后解压到任意目录，不过不要解压到 $HOME 目录下面，这里解压缩到 D:\mule-gbk-0.1.2004080701 ，然后仿照auctex的安装方法即可，用cygwin安装的步骤如下：
+2.                 $cd d: (或者$cd /cygdrive/d)
+3.                 $cd mule-gbk-0.1.2004080701
+4.                 $./configure
+5.                 $make
+6.                 $make lispdir=d:/"Program\ Reserved"/emacs-21.3.50.1-20050130c-w32/site-lisp install
+（注意上面和auctex不同，有空格的目录名空格前要加入一个\） 
+最后一条命令中， lispdir 指定的是el文件安装的目录
+7.     现在在 .emacs 中加入
+8.                 (setq w32-charset-info-alist
+9.                     
+(cons '("gbk" w32-charset-gb2312 . 936) w32-charset-info-alist))
+10.            (set-w32-system-coding-system 'chinese-gbk)
+11.            (set-selection-coding-system 'chinese-gbk)
+12.            (set-keyboard-coding-system 'chinese-gbk)
+13.            (set-language-environment 'chinese-gbk)
+14.            (setq locale-coding-system 'chinese-gbk)
+15.            (setq current-language-environment "Chinese-GBK")
+呵呵，中文问题解决了
+安装aspell
+1.     到 http://aspell.net/win32/ 下载Windows下的aspell安装程序和词典，这里下载的是 Aspell-0-50-3-3-Setup.exe 和 Aspell-en-0.50-2-3.exe
+2.     安装即可，这里安装到 D:\Program Reserved\Aspell
+3.     设置环境变量，将 D:\Program Reserved\Aspell\bin 加入到 $Path 中
+4.     到 http://kdstevens.com/~stevens/ispell-page.html 下载最新的 ispell.el ，这里下载的是 ispell.el-3.6 ，将其改名为 ispell.el 放到 $HOME\site-lisp 目录下
+5.     在 .emacs 中加入
+6.                 (setq-default ispell-program-name "aspell")
+7.                 (setq-default ispell-local-dictionary "american")
+8.                 (global-set-key (kbd "") 'ispell-complete-word)
+这样就可以使用拼写检查功能了，但是绑定到F8上的complete-word命令还是无法使用，这个需要解决
+安装Mew
+1.     到 http://www.mew.org/Win32/ 下载Mew的Windows版本这里下载的是Mew 4.2，文件为 MEW42W0.ZIP
+2.     将 MEW42W0.ZIP 解压，这里解压到 E:\Download\Temp\MEW42W0\mew-4.2
+3.     安装前需要设置好两个环境变量：一个是 $HOME 变量，当然这在安装emacs的时候已经设置好了，另一个是 $TZ 变量，这个是时区，设置为 JST-8
+4.     注意emacs在Windows下需要执行 $HOME\bin\addpm.exe 来进行一下安装，否则Mew会认为没有安装emacs，然后在cygwin下进行编译：
+5.                 $cd e:
+6.                 $cd Download/Temp/MEW42W0/mew-4.2/
+7.                 $./configure
+8.                 $make
+9.     在命令行下执行
+10.            >mew
+然后就根据提示来安装吧
+11.        注意我安装完成之后发现mew所用的图片都没有安装，将解压出来的mew-4.2目下的 etc 目录复制到 D:\Program Reserved\emacs-21.3.50.1-20050130c-w32\site-lisp\mew\ 就可以了
+12.        注意mew中的邮件默认是utf-8编码的，所以需要在mule-gbk的环境下使用utf-8支持，具体看一下 mule-gbk-0.1.2004080701.tar.gz 中的 README.unicode ，具体方法为在在 .emacs 文件中添加
+13.            ;; Unicode support, for Emacs CVS (21.3.50) only
+14.            (when (fboundp 'utf-translate-cjk-mode)
+15.              ;; Load modified utf-translate-cjk-mode
+16.              (require 'gbk-utf-mode)
+17.              ;; Turn on utf-translate-cjk-mode
+18.              (utf-translate-cjk-mode 1)
+19.              ;; Setup X selection for unicode encoding
+20.              (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+这样，就可以存取中文Unicode编码的文件了，具体使用方法是：
+C-x RET f utf-8 RET
+将当前缓冲区的编码改为utf-8然后保存
+C-x RET c utf-8 RET C-x C-s filename RET
+在保存时转换文件格式
+C-x RET r utf-8 RET
+用这个命令重新以utf-8编码加载文件
+21.        mew的设置和使用请看这里
+用gnuserv给Emacs插上翅膀
+　　通常情况下，用Emacs编辑文件需要先启动Emacs，然后C-x C-f，再输入文件的路径，这是很麻烦的，尤其对于用惯了图形界面的人更是不便，这个问题可以用gnuserv解决，这里是Windows下编译好的gnuserv。
+　　gnuserv的安装非常简单，将上面压缩包中的 gnuserv.el 放到 $HOME/site-lisp 目录下，再把release文件夹下的几个可执行文件放到 $HOME/bin 目录下，然后在.emacs中加入：
+(require 'gnuserv)
+(gnuserv-start)
+这样就可以用 gnuclientw.exe 打开文件了，再建立一个 gnuclientw.exe 的快捷方式放到“Documents and Settings\username\SendTo”目录下，就可以用右键的“发送到”菜单把文件传输到Emacs中编辑了。
+　　 gnuclientw.exe 默认是用一个新的frame打开文件，在.emacs中添加下面的命令可以设置在原来的frame中打开文件：
+;; 在当前frame打开
+(setq gnuserv-frame (selected-frame))
+;; 打开后让emacs跳到前面来
+(setenv "GNUSERV_SHOW_EMACS" "1")
+　　如果你喜欢在新的frame中打开文件，绑定下面几个控制frame的函数，操作frame会简单一些：
+;; 关闭一个frame，绑定到 C-F4
+(global-set-key [(control f4)] 'delete-frame)
+;; 在两个frame中切换
+(global-set-key [(control tab)] 'other-frame)
+(global-set-key [(control shift tab)] '(lambda ()
+(interactive)
+(other-frame -1)))
+
+
+
+
+
+在Windows下使用Emacs（转）  
+
+2009-03-23 15:35:36|  分类： windows |字号 订阅
+在Windows下使用Emacs
+top
+到 http://nqmacs.sourceforge.net 下载emacs的Windows编译版本，包括两个文件 emacs-21.3.50.1-20050130c-w32.zip 和 emacs-21.3.50.1-20050130-lisp.zip
+将 emacs-21.3.50.1-20050130c-w32.zip 解压缩到想要放置的目录，这里为 D:\Program Reserved\emacs-21.3.50.1-20050130c-w32
+将 emacs-21.3.50.1-20050130-lisp.zip 也解压缩在这个目录，然后设置环境变量
+这样在以后 .emacs.d 目录和 .emacs 文件就都在 $HOME 目录下面了，但是这个方法并不好，因为设置 $HOME 会影响 Cygwin 和 MSYS 等很多东西，所以最好的方法是在注册表中设置 HKEY_LOCAL_MACHINE\SOFTWARE\GNU\Emacs\HOME=%emacs_dir%
+需要自己添加的el文件放在 D:\Program Reserved\emacs-21.3.50.1-20050130c-w32\site-lisp 里面即可
+top
+到 http://www.gnu.org/software/auctex/ 下载auctex，然后解压到任意目录，不过不要解压到 $HOME 目录下面，这里解压缩到 D:\auctex
+然后可以根据 INSTALL.windows 这个文件进行安装，用cygwin安装的步骤如下：
+（注意上面对于有空格的目录要加双引号，同时用/而不是\，用d:而不是/cygdrive/d) 
+这样，可以在 $HOME\site-lisp 目录下面看到生成了 auctex 目录，同时在 $HOME 目录下面也生成了一个 var 目录
+在 $HOME\.emacs 文件中添加
+这样就可以正常使用auctex了
+top
+到 http://mule-gbk.sourceforge.net/ 下载mule-gbk，然后解压到任意目录，不过不要解压到 $HOME 目录下面，这里解压缩到 D:\mule-gbk-0.1.2004080701 ，然后仿照auctex的安装方法即可，用cygwin安装的步骤如下：
+（注意上面和auctex不同，有空格的目录名空格前要加入一个\） 
+最后一条命令中， lispdir 指定的是el文件安装的目录
+现在在 .emacs 中加入
+呵呵，中文问题解决了
+top
+到 http://aspell.net/win32/ 下载Windows下的aspell安装程序和词典，这里下载的是 Aspell-0-50-3-3-Setup.exe 和 Aspell-en-0.50-2-3.exe
+安装即可，这里安装到 D:\Program Reserved\Aspell
+设置环境变量，将 D:\Program Reserved\Aspell\bin 加入到 $Path 中
+到 http://kdstevens.com/~stevens/ispell-page.html 下载最新的 ispell.el ，这里下载的是 ispell.el-3.6 ，将其改名为 ispell.el 放到 $HOME\site-lisp 目录下
+在 .emacs 中加入
+") 'ispell-complete-word)  
+这样就可以使用拼写检查功能了，但是绑定到F8上的complete-word命令还是无法使用，这个需要解决
+top
+到 http://www.mew.org/Win32/ 下载Mew的Windows版本这里下载的是Mew 4.2，文件为 MEW42W0.ZIP
+将 MEW42W0.ZIP 解压，这里解压到 E:\Download\Temp\MEW42W0\mew-4.2
+安装前需要设置好两个环境变量：一个是 $HOME 变量，当然这在安装emacs的时候已经设置好了，另一个是 $TZ 变量，这个是时区，设置为 JST-8
+注意emacs在Windows下需要执行 $HOME\bin\addpm.exe 来进行一下安装，否则Mew会认为没有安装emacs，然后在cygwin下进行编译：
+在命令行下执行
+然后就根据提示来安装吧
+注意我安装完成之后发现mew所用的图片都没有安装，将解压出来的mew-4.2目下的 etc 目录复制到 D:\Program Reserved\emacs-21.3.50.1-20050130c-w32\site-lisp\mew\ 就可以了
+注意mew中的邮件默认是utf-8编码的，所以需要在mule-gbk的环境下使用utf-8支持，具体看一下 mule-gbk-0.1.2004080701.tar.gz 中的 README.unicode ，具体方法为在在 .emacs 文件中添加
+这样，就可以存取中文Unicode编码的文件了，具体使用方法是：
+C-x RET f utf-8 RET	将当前缓冲区的编码改为utf-8然后保存
+C-x RET c utf-8 RET C-x C-s filename RET	在保存时转换文件格式
+C-x RET r utf-8 RET	用这个命令重新以utf-8编码加载文件
+mew的设置和使用请看这里
+top这里是Windows下编译好的gnuserv。
+　　gnuserv的安装非常简单，将上面压缩包中的 gnuserv.el 放到 $HOME/site-lisp 目录下，再把release文件夹下的几个可执行文件放到 $HOME/bin 目录下，然后在.emacs中加入：
+
+这样就可以用 gnuclientw.exe 打开文件了，再建立一个 gnuclientw.exe 的快捷方式放到“Documents and Settings\username\SendTo”目录下，就可以用右键的“发送到”菜单把文件传输到Emacs中编辑了。
+　　 gnuclientw.exe 默认是用一个新的frame打开文件，在.emacs中添加下面的命令可以设置在原来的frame中打开文件：
+
+(setq gnuserv-frame (selected-frame))  (setenv "GNUSERV_SHOW_EMACS" "1")  
+　　如果你喜欢在新的frame中打开文件，绑定下面几个控制frame的函数，操作frame会简单一些：
+
+(global-set-key [(control f4)] 'delete-frame)  (global-set-key [(control tab)] 'other-frame)  (global-set-key [(control shift tab)] '(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+windows环境下使用emacs + cscope + ecb替代source insight
+
+source insight是windows环境下用于代码开发和阅读的利器，功能强大，对于大规模代码的维护和开发几乎不可或缺（这里
+指它提供的功能，类似的商业工具还有很多）。使用emacs替代source insight原因有：a，si是商业软件，使用需要付费，虽然可以从网上
+找到破解版本；b，对于unix/linux爱好者或者需要同时工作于unix和windows环境下的开发人员，emacs是通用工具；emacs其它的强大
+功能暂且不表。
+下面是基于windows xp平台的安装方法，其中大部分步骤和unix环境下的一样，只有cscope的有所不同。
+
+1）准备工作
+首先，你得下载一下一些工具（扩展），emacs，cscope，ecb，cedet是必须的，session，doxymacs不是必要的，但是装上会
+更方便。下载这些东西的网址链接如下：（当然，下面这些东西都可以从google找到下载链接，下面提供的网址都是google出来的，如果
+下面提供的链接不可用了，大家可以自己google一把）
+i）emacs：http://www.gnu.org/software/emacs/
+从gnu的ftp网站上下载windows版本，最新的版本是emacs-22.1。下面的设置都是在这个版本上进行的。
+
+ii）cscope：cscope的主页http://cscope.sourceforge.net/，其中有一个download的链接，从那里可以下载到编译好的压缩包。
+win32版本的下载地址：http://iamphet.nm.ru/cscope/index.html，压缩包中有两个编译好的exe文件：cscope.exe, sort.exe
+
+iii）ecb：主页地址http://ecb.sourceforge.net/，download页面中还有一个Xemcas的安装程序setup.exe，可以试试，我没有使用这个。
+sourceforg下载地址http://sourceforge.net/project/showfiles.php?group_id=17484
+
+iv）cedet：主页http://cedet.sourceforge.net/，下载release压缩包1.0pre4.tar.gz，这个包中已经包含了semantic，ede，eieio，
+speedbar，因此下载了这个大包后不用分别下载这些扩展插件。
+
+v）session：sf下载地址http://sourceforge.net/project/showfiles.php?group_id=46019
+
+vi）doxymacs：地址http://doxymacs.sourceforge.net/，
+下载http://sourceforge.net/project/s ... p;release_id=514962
+
+vii）下载windows下的bash工具，主要是用到其中的find工具，用来手工生成cscope.files。如果安装了cygwin则不用安装这个了。
+地址：http://folk.uio.no/andreass/unix_tools.html
+
+2）安装
+安装emacs：这个很简单，只要将压缩包解开，放到你想放的位置就可以用了，如果要在windows的开始菜单中添加菜单项，点击bin目录下
+的addpm运行，就会在菜单中加入gnu菜单项。
+
+安装cscope：a，解压平台不相关的那个tar.gz包，将/contrib/xscope/xscope.el拷贝到emacs-22.1/site-lisp目录下（emacs-22.1是
+你安装emacs的目录）；b，解压win32版本的cscope，将cscope.ext sort.exe拷贝到emacs-22.1/bin目录下（这个路径不是必要的，因为
+cscope在windows下要用起来还得费点劲，4）点会讲到）
+
+安装ecb：解压，将解压后的ecb目录拷贝到site-lisp目录下。
+
+安装cedet：解压，将解压后的cedet目录拷贝到site-lisp目录下。
+
+安装session：解压，将解压后的session目录拷贝到site-lisp目录下。
+
+安装doxymacs：解压，将解压后的doxymacs目录拷贝到site-lisp目录下。
+
+安装win32bash：点击user.exe安装文件一步步点到最后就行了。
+到此安装工作完成。
+
+3）配置.emacs启动文件
+显示指定扩展插件的加载地址（这一步好像不是必要的，只列出一个地址，其它类似）
+(add-to-list 'load-path "e:/emacs/site-lisp/ecb-2.31"
+加载相应插件：
+(require 'xcscope) ;;加载xcscope
+(require 'cedet) ;;加载cedet
+(require 'ecb) ;;加载ecb
+(require 'session) ;;加载session
+(add-hook 'after-init-hook 'session-initialize) ;; 启动时初始化session
+(require 'doxymacs) ;; 启动doxymacs
+在配置文件中加入这些语句后，保存重启emacs，重启后查看一下Message窗口中的加载信息，可以看到各个插件加载成功。
+在.emacs中加入一些方便的设置就可以使用了，完整的配置文件附在后面。（这些配置都是从google上到处搜刮来的，其中王垠博士的
+网页上有很多emacs设置的好东西可以参考，还有一些英文网站上贴出的配置文件中也有很多好东西，大家可以根据自己的习惯写自己的
+配置）
+
+4）问题及解决
+安装进行到这里，大部分功能都没有问题了，存在的问题有：
+i）cscope的创建文件列表和创建代码符号索引两个命令不可用，按下C-c s L和C-c s I后minibuffer中显示cscope-indexer找不到。在
+cscope的安装包中确实有一个cscope-indexer的文件，我们安装时没有将它拷贝到emacs的安装路径中去，但是即使将它拷贝到bin目录下
+也还是不能工作，用文本编辑器打开cscope-indexer会发现它其实是个shell脚本文件，从脚本中可以看到，它首先通过find，grep等工具
+生成一个cscope.files的文件，然后调用cscope使用cscope.files作为输入生成cscope.out的索引文件。
+因此，只要能生成一个文件列表的文件就可以使用win32版本的cscope.exe来生成cscope.out文件。到此，我们可以使用win32bash中的find
+工具生成一个源代码文件列表了（与unix下一样：find /my-project-source -name "*.[chs]" -print > cscope.files，不知windows下
+是否有类似find这样功能的命令，xp下的find好像不能用通配符，如果有这样的东西就可以不安装win32bash）。
+生成了cscope.files源码文件列表后就可以使用它像si一样在代码间穿梭了：
+C-c s a设定代码根目录，cscope.files必须放在这个设定目录下，否则cscope找不到；在第一次使用如下几条命令时cscope会自动生成
+cscope.out，也可以在windows的cmd中调用cscope.exe -b -i cscope.files -f cscope.out生成cscope.out。
+C-c s g查找函数（或变量）定义；
+C-c s c查看调用者；
+C-c s C查看函数中调用的子函数；
+
+ii）semantic中设置的项目根目录好像不起作用，在进行tag查找时semantic只查了当前目录中的代码文件，如果引用的是其它目录中的函数
+或变量，查找相应定义时就找不到。这个问题还不知道原因，可能是设置的问题，semantic的设置项太多了。遇到相同问题的朋友请解答一下。
+
+到此，si中常用的几个动作实现了。
+
+还有个si中类似功能的实现：跳到函数定义后如何在跳回刚才的调用函数的地方。
+在王垠的网页中找到了一个实现
+;;;临时记号
+(global-set-key [(control ?\.)] 'ska-point-to-register)
+(global-set-key [(control ?\,)] 'ska-jump-to-register)
+(defun ska-point-to-register()
+  "Store cursorposition _fast_ in a register. 
+Use ska-jump-to-register to jump back to the stored 
+position."
+  (interactive)
+  (setq zmacs-region-stays t)
+  (point-to-register )
+
+(defun ska-jump-to-register()
+  "Switches between current cursorposition and position
+that was stored with ska-point-to-register."
+  (interactive)
+  (setq zmacs-region-stays t)
+  (let ((tmp (point-marker)))
+        (jump-to-register 
+        (set-register 8 tmp)))
+这样就可以在函数间跳来跳去，
+结合cscope的pop-mark，就可以跳来跳去了，这样基本可以满足大多数情况下的使用。
+还有一些有用扩展：http://docs.huihoo.com/homepage/shredderyin/emacs_elisp.html
+
+ecb，cedet（semantic）提供了很多功能，不过由于太多了，需要慢慢摸索，目前使用cscope已经基本上实现了si上的几个常用功能，
+ecb + semantic可以实现像si中的函数/变量上下文显示功能，但是由于4）ii）中提到的问题，这个显示上下文功能有时候不起作用。
+
+[ 本帖最后由 tigerwu2049 于 2007-11-11 04:00 编辑 ]

@@ -1,0 +1,28 @@
+1)
+android快速开机技术
+
+使用工具：bootchart
+
+
+第一篇 android快速开机技术探讨
+内容概括：
+            1节，概括内容。2节，分析一般的android开机流程。3，测量android开机流程中载入linux kernel和初始化android的时间。
+			4，列举并分析目前已有的android平台快速开机技术。5，总结
+
+主要内容：
+            1,测量载入linux kernel的时间，
+					在kernel configuration文件里面添加如下内容：
+			    			 CONFIG_PRINTK_TIME=y
+					即可在开机时查看kernel启动时具体模块所消耗的时间
+					或者也可以使用dmesg来查看
+			2,载入android的时间
+			        使用bootchart工具，android中有附带此工具，也可以登录官网下载embedded版本自己编译
+					需要重新编译init.c
+			3,加载pre-load classes和pre-loadresource的时间
+
+
+2)
+嵌入式android系统的启动研究
+
+内容概括：
+            

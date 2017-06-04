@@ -1,0 +1,26 @@
+
+[Emacs] 怎样让Emacs自动只读打开文件
+
+收藏到手机    转发   评论
+2010-10-19 16:08
+通常使用Emacs时，我们会打开很多文件，特别是长时间使用的情况下。这样就会有一个小问题。打开的文件多了，一不小心就会改错文件。特别是
+在不知情的情况下，比如偶然碰了一下键盘，这样当前Buffer的内容就改变了。如果是程序开发人员，那小小的一个改动可能就会是以后的一个大
+Bug :-(
+
+我们在改动文件的时候，通常在一段时间内也只会修改同一个文件，而其它文件主要是做为引用或查找使用。所以在这种情况下，只有当前的文件是
+可写，其它文件都是只读就比较“安全“了。
+
+Emacs中，默认打开文件是find-file (C-x C-f)。这样打开的文件就是可写的。还有一个find-file-read-only(C-x C-r)，它打开的文件是只读的。
+通常我们已经习惯了使用C-x C-f，再去养成另一种习惯还是比较困难的。togger-read-only可以将当前Buffer标记为只读状态。但每次手动执行也
+太烦。最好的办法就是在打开文件的时候，自动执行一下。下面的Lisp code就是利用find-file-hook来实现的。
+
+(defun make-some-files-read-only ()
+  "when file opened is of a certain mode, make it read only"
+  (when (memq major-mode '(c++-mode tcl-mode text-mode python-mode))
+    (toggle-read-only 1)))
+
+(add-hook 'find-file-hooks 'make-some-files-read-only)
+
+在使用的时候，将上面列表中的mode列表修改为自己需要的，再将代码加到.emacs文件中就OK了。
+
+(end)

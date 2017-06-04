@@ -1,0 +1,74 @@
+BASH=/bin/bash
+BASHOPTS=cmdhist:complete_fullquote:extquote:force_fignore:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=([0]="1" [1]="1")
+BASH_ARGV=([0]="/home/qq/.profile" [1]="gnome-session-classic")
+BASH_CMDS=()
+BASH_LINENO=([0]="37" [1]="48" [2]="0")
+BASH_SOURCE=([0]="/home/qq/.profile" [1]="/etc/gdm3/Xsession" [2]="/etc/gdm3/Xsession")
+BASH_VERSINFO=([0]="4" [1]="3" [2]="48" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='4.3.48(1)-release'
+CONFIG_FILE=/home/qq/.profile
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-1cRQe52SbS,guid=926c761b9a7efeebd0d6716659323506
+DESKTOP_SESSION=gnome-classic
+DIRSTACK=()
+DISPLAY=:1
+ERR=/tmp/config-err-T5nfLX
+EUID=1000
+FUNCNAME=([0]="source" [1]="source_with_error_check" [2]="main")
+GDMSESSION=gnome-classic
+GROUPS=()
+HOME=/home/qq
+HOSTNAME=qq-Aspire-4752
+HOSTTYPE=x86_64
+IFS=$' \t\n'
+LANG=zh_TW.UTF-8
+LANGUAGE=zh_TW:zh
+LC_ADDRESS=zh_CN.UTF-8
+LC_IDENTIFICATION=zh_CN.UTF-8
+LC_MEASUREMENT=zh_CN.UTF-8
+LC_MONETARY=zh_CN.UTF-8
+LC_NAME=zh_CN.UTF-8
+LC_NUMERIC=zh_CN.UTF-8
+LC_PAPER=zh_CN.UTF-8
+LC_TELEPHONE=zh_CN.UTF-8
+LC_TIME=zh_CN.UTF-8
+LOGNAME=qq
+MACHTYPE=x86_64-pc-linux-gnu
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PIPESTATUS=([0]="0")
+PPID=1501
+PS4='+ '
+PWD=/home/qq
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:hashall:interactive-comments
+SHLVL=1
+TERM=dumb
+UID=1000
+USER=qq
+USERNAME=qq
+WINDOWPATH=2
+XAUTHORITY=/run/user/1000/gdm/Xauthority
+XDG_CURRENT_DESKTOP=GNOME-Classic:GNOME
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_SEAT=seat0
+XDG_SESSION_DESKTOP=gnome-classic
+XDG_SESSION_ID=1
+XDG_SESSION_TYPE=x11
+XDG_VTNR=2
+_=emc
+command=gnome-session-classic
+file=/home/qq/.profile
+source_with_error_check () 
+{ 
+    CONFIG_FILE="$1";
+    . "$CONFIG_FILE" 2> "$ERR";
+    if [ -s "$ERR" ]; then
+        . /etc/gdm/config-error-dialog.sh;
+    fi;
+    cat "$ERR" >> /dev/stderr;
+    truncate -s 0 "$ERR"
+}

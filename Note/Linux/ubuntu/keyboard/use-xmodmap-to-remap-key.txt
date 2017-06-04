@@ -1,0 +1,36 @@
+第一种方法：
+~/.Xmodmap or ~/.xmodmaprc is read by /etc/gdm/Xsession.
+
+
+第二种方法：
+1. Write "xmodmap ~/.xmodmaprc" in ~/.xsessionrc or ~/.xsession 
+2. make sure that /etc/X11/Xsession.options contains allow-user-xsession.
+
+
+第三种方法：
+If you're not using gdm, you could add a script named: 91xmodmap
+
+in /etc/X11/Xsession.d/
+
+that contains:
+
+XMODMAP="$(which xmodmap)"
+SYSMODMAP="/etc/X11/Xmodmap"
+USRMODMAP="$HOME/.Xmodmap"
+if [ -x $XMODMAP ]; then
+    if [ -f "$SYSMODMAP" ]; then
+        $XMODMAP "$SYSMODMAP"
+    fi
+    if [ -f "$USRMODMAP" ]; then
+        $XMODMAP "$USRMODMAP"
+    fi
+fi
+
+
+第四种方法：
+1. 在'.emacs.d'目录中添加elisp文件使得emacs启动时即执行xmodmap命令
+2. 在'.xsessionrc'文件中添加emacs启动项使得登录x-window时自动启动emacs
+3. 这样可以变相实现每次开机重新映射键盘
+
+
+[end]

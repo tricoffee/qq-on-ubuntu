@@ -1,0 +1,85 @@
+Ubuntu自定义键位xmodmap 2011-12-24 15:58:38
+
+分类： LINUX
+
+基于“授人以鱼不如授人以渔”的观念，本文在给出结论的同时还会给出结论得来的方法。
+Linux程序员在Linux哲学的熏陶下，往往会有一些特殊的想法，来提高工作效率。比如将重复性机械劳动写进脚本，或者是本文的内容——改变键位。
+HHKB是Linux下vimer的首选键盘，不谈电容键盘的手感，其键位就是为vim设计的：拉近了ESC，BackSpace，把Ctrl放到了A的左边，而vimer一天到晚需要按Ctrl，这样的设计会大大的降低小指的劳累程度。但是这个拉风的键盘，价格高达2000RMB，而且很容易被同事说“装B”。
+在买HHKB之前，我尝试着用KBC POKER来实现HHKB的键位；在买了HHKB之后，哇，这一套配置就更加必不可少了，因为我已经用不了普通键盘了。
+
+接下去就讲讲具体的实现，我的OS是Ubuntu 10.04 LTS，通过xmodmap来实现，对整个X桌面都有效。
+
+1.如何实现
+首先查看系统当前的键位（还有各个键的表示方法）：
+# xmodmap -pke > /tmp/map
+编辑/tmp/map文件，找到下面4行：
+#----------------------------------------------------------------------
+keycode   9 = Escape NoSymbol Escape
+keycode  37 = Control_L NoSymbol Control_L
+keycode  49 = grave asciitilde grave asciitilde
+keycode  66 = Caps_Lock NoSymbol Caps_Lock
+#----------------------------------------------------------------------
+就是对应的ESC，左CTRL，重音符和CAPS_LOCK的键位。
+
+我的目的是交换ESC和重音符，CAPS_LOCK映射到左CTRL，修改
+~/.xmodmaprc
+#----------------------------------------------------------------------
+!
+! Swap Caps_Lock and Control_L
+!
+remove Lock = Caps_Lock
+!remove Control = Control_L
+!keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+!add Lock = Caps_Lock
+add Control = Control_L
+!
+!  keycode   9 = grave asciitilde grave asciitilde
+!  keycode  49 = Escape NoSymbol Escape
+keysym Escape = grave asciitilde grave asciitilde
+keysym grave = Escape
+#----------------------------------------------------------------------
+然后重新启动xserver登录到当前用户。
+
+gnome桌面启动时会检测匹配 ~/.xmodmap* 的配置文件，如果发现有新的配置文件，就会自动弹出对话框选择载入哪些配置文件。
+然后，大功告成！
+具体脚本的用法可以man xmodmap，不过依葫芦画瓢应该不会太难。
+
+
+2.如果你动过Ubuntu的键盘选项里面有某些键位映射的选项
+如果步骤1就成功了，你也许没有必要看下去了。但是，如果没有成功，可能就是以下的原因。
+但是Ubuntu的键盘选项里面有某些键位映射的选项（比如，系统-首选项-键盘-布局-选项-"Ctrl Key Position"里面选择"Make CapsLock an additional Ctrl"），而且应用这些选项会比xmodmap更晚，导致它们会覆盖左CTRL和CAPS_LOCK的设置。
+而且，更可恶的是，如果曾经在desktop/gnome/peripherals/keyboard(系统-首选项-键盘)里面设置过键盘首选项"Ctrl Key Position"就没有办法通过图形界面将这个设置取消了。即使将其设置成"默认"，系统也会在启动gnome桌面的时候进行重设键位，然后把我在.xmodmaprc里面的配置覆盖掉。此时需要将这个选项清除。
+
+a)修改
+~/.gconf/desktop/gnome/peripherals/keyboard/kbd/%gconf.xml
+删除以下节点
+#----------------------------------------------------------------------
+		
+			ctrl	ctrl:swapcaps
+		
+#----------------------------------------------------------------------
+
+b)修改
+~/.gconfd/saved_state
+删除所有带 "keyboard" 的行。
+
+c)写入.xmodmaprc ，然后重新启动xserver(Ctrl+Alt+Backspace，如果启用了该快捷键的话)，将会自动把配置写入 ~/.gconfd/saved_state 。然后每次开机都能应用了。
+
+
+3.如果.xmodmaprc没有被载入配置怎么办
+一不小心禁用了.xmodmaprc，或者是修改了.xmodmaprc却没有反应的时候，可以尝试：
+修改
+~/.gconf/desktop/gnome/peripherals/keyboard/general/%gconf.xml
+删除以下节点
+#----------------------------------------------------------------------
+	
+		
+			.xmodmaprc
+		
+		
+			xmodmaprc
+		
+	
+#----------------------------------------------------------------------
+下次开机就能重新选择是否载入配置了。

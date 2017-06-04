@@ -1,0 +1,33 @@
+bug号0000018，设置rfid频道带宽，保存设置后显示频道带宽值为原来的值+1
+
+1）怀疑QComboBox中的setCurrentIndex方法的问题，但是另外一个QComboBox没有问题，
+2）每次重新选择频道带宽，并且保存后，才会增加，怀疑是“自定义”标准下设置“起始频率”导致QComboBox的setCurrentIndex方法的计算值出现了问题，
+
+=============================================
+ build common.......
+=============================================
+arm-linux-g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DCOMMON_LIBRARY -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I/home/qiaoqiang/br_Dev_C6310_QT_4.8.2_UT7310/out/target/qt/usr/mkspecs/qws/linux-arm-g++ -I. -I/home/qiao/br_Dev_C6310_QT_4.8.2_UT7310/out/target/qt/usr/include/QtCore -I/home/qiao/br_Dev_C6310_QT_4.8.2_UT7310/out/target/qt/usr/include/QtNetwork -I/home/qiao/br_Dev_C6310_QT_4.8.2_UT7310/out/target/qt/usr/include/QtGui -I/home/qiao/br_Dev_C6310_QT_4.8.2_UT7310/out/target/qt/usr/include -I../include -I. -o fileselectlistwidget.o fileselectlistwidget.cpp
+In file included from fileselectlistwidget.cpp:1:
+../include/fileselectlistwidget.h:4:21: error: QListView: No such file or directory
+../include/fileselectlistwidget.h:5:23: error: QModelIndex: No such file or directory
+fileselectlistwidget.cpp:2:21: error: QDirModel: No such file or directory
+fileselectlistwidget.cpp:3:18: error: QDebug: No such file or directory
+In file included from fileselectlistwidget.cpp:1:
+../include/fileselectlistwidget.h:10: error: expected class-name before '{' token
+../include/fileselectlistwidget.h:11: error: ISO C++ forbids declaration of 'Q_OBJECT' with no type
+../include/fileselectlistwidget.h:13: error: expected ';' before 'public'
+../include/fileselectlistwidget.h:15: error: expected ',' or '...' before '&' token
+../include/fileselectlistwidget.h:15: error: ISO C++ forbids declaration of 'QString' with no type
+../include/fileselectlistwidget.h:19: error: expected primary-expression before 'void'
+../include/fileselectlistwidget.h:19: error: ISO C++ forbids declaration of 'signals' with no type
+../include/fileselectlistwidget.h:19: error: expected ';' before 'void'
+../include/fileselectlistwidget.h:21: error: expected `:' before 'slots'
+../include/fileselectlistwidget.h:22: error: expected primary-expression before 'void'
+../include/fileselectlistwidget.h:22: error: ISO C++ forbids declaration of 'slots' with no type
+../include/fileselectlistwidget.h:22: error: expected ';' before 'void'
+../include/fileselectlistwidget.h:26: error: 'QString' does not name a type
+fileselectlistwidget.cpp:5: error: expected `)' before '*' token
+fileselectlistwidget.cpp:13: error: variable or field 'indexClicked' declared void
+fileselectlistwidget.cpp:13: error: 'QModelIndex' was not declared in this scope
+make: *** [fileselectlistwidget.o] 错误 1
+qiaoqiang@cyitbj-server3:~/br_Dev_C6310_QT_4.8.2_UT7310$ ls out/target/qt/

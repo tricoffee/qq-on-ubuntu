@@ -1,0 +1,44 @@
+
+Linux格式化硬盘 常用命令小记
+[日期：2011-05-16] 来源：blog.sina.com.cn/u/1767567142  作者：Andrea [字体：大 中 小]  
+
+今天新蛋上订购了一块1TB的硬盘打算装Ubuntu，当然先要做好功课，查一下注意事项啦！
+
+基本功，格式化命令，以格式化 /dev/sda1 分区为例：
+$ sudo umount /dev/sda1    # 必须先卸载该分区
+
+# 格式化为 FAT 分区
+$ sudo mkfs.vfat -F 32 /dev/sda1       # -F 参数必须大写，参数有 12，16 和 32，分别对应 FAT12，FAT16，FAT32。
+
+# 格式化为 NTFS 分区，先要安装ntfsprogs，以 Ubuntu / Debian 为例：
+$ sudo apt-get install ntfsprogs
+
+#然后执行格式化命令，以格式化 /dev/sda1 分区为例：
+$ sudo umount /dev/sda1       # 必须先卸载该分区
+$ sudo mkfs.ntfs /dev/sda1        # 格式化为ntfs速度有点慢。
+
+# 格式化为ext4/3/2 ， 以格式化 /dev/sda1 分区为例：
+$ sudo umount /dev/sda1       # 必须先卸载该分区
+$ sudo mkfs.ext4 /dev/sda1    # 格式化为ext4分区
+$ sudo mkfs.ext3 /dev/sda1    # 格式化为ext3分区
+$ sudo mkfs.ext2 /dev/sda1    # 格式化为ext2分区
+
+由于ext系列的分区都有一个给super user的保留空间，必须占用一定的百分比，默认5%，这么一来格式化容量小的分区还不觉得，5%也没多少，但是如果是几百G，1T的分区就会有问题，in this case，5%可是不小的数目啊！
+
+『解决方法』
+
+一、针对将要格式化的分区，以ext3为例：
+$ sudo umount /dev/sda1     # 必须先卸载该分区，这里要格式化的是 /dev/sda1 分区。
+$ sudo mkfs.ext3 -m 0.05 /dev/sda1     # 注意-m后的参数，设定的已经是百分位，这里设定为0.05，是0.05%，也就是万分之5！
+
+好了，这样以1T的分区为例，1T=1024GB=1048576MB（都是乘以1024的关系），1048576MB*0.0005=524.288MB。
+
+也就是说设定-m参数之后，保留区大概是524MB。当然你可以根据自己喜好设定。
+
+二、对已经格式化完毕的分区，并且不想擦出分区中的数据，可以使用tune2fs -m的方法：
+# 这条命令无须先卸载分区。
+$ sudo tune2fs -m 0.05 /dev/sda2       # 这个例子是转换 /dev/sda2 分区的super user保留区，同样设定为0.05，在提醒一次，是0.05%，也就是万分之5。
+
+
+?0
+?顶一下

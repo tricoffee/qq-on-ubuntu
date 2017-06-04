@@ -1,0 +1,30 @@
+
+Harddisk Tools
+    gnome-disk-utility - manage and configure disk drives and media
+    gparted - GNOME partition editor
+
+IDE
+    gnome-builder - IDE for GNOME
+
+Divece & Files Manager
+    gnome-commander - nice and fast file manager for the GNOME desktop
+    gnome-phone-manager
+
+Media Player
+    gnome-mplayer 
+    gnome-music 
+
+Widgets
+    gnome-applets - Various applets for the GNOME panel - binary files 
+    gnome-panel - launcher and docking facility for GNOME 
+    gnome-clocks 
+    gnome-weather 
+
+Web Utility Tools
+    gnome-web-photo
+    gnome-blog
+
+Connect & Message
+    yarssr - RSS reader for the notification area
+    pidgin - graphical multi-protocol instant messaging client for X
+

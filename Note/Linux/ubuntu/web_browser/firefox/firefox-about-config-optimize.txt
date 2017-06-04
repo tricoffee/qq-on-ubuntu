@@ -1,0 +1,102 @@
+    Firefox火狐浏览器优化加速about:config配置
+
+    分类：领悟途中
+
+    （1959） （0）
+
+    Firefox火狐浏览器优化加速about:config配置
+
+    如果你是个爱折腾的火狐迷，进阶about:config火狐浏览器高级配置命令就不得不学啦，用了chrome后会不会小小抱怨火狐上网速度慢了？不过相信你还是不会嫌弃火狐的。本文主要介绍一些修改about:config高级配置的参数来优化加速火狐，实用易学，解释详细，通俗易懂，童叟无欺！
+
+    在火狐浏览器地址栏键入about:config回车，打开火狐高级设置，在搜索框中输入下列命令。
+
+    1.network.prefetch-nextfalse = false
+
+    火狐预加载功能，当载入一个网页后，火狐会预加载你可能会打开的网页链接内容，如果你打开下一个链接，网页就会很快加载，可是很多时候都是多余的，CUP和宽带浪费率太高。建议双击设置为false。
+
+    2.browser.tabs.animate = false
+
+    标签页的动画效果，如果没必要可以关闭。
+
+    3.middlemouse.paste = True
+
+    单击鼠标中建粘贴剪切板内容，提高效率，建议开启。
+
+    4.browser.sessionhistory.max_total_viewers = 5
+
+    这是页面前进/后退中保存的页面数，默认是-1(无限)，把值修改为5或更小的数。
+
+    5.dom.popup_maximum = 5
+
+    设置最大弹出窗口数，建议设置小一点的数值，防止被恶意网站冒出一堆弹窗。
+
+    6.security.dialog_enable_delay = 0
+
+    设置安装扩展时等待的时间(单位毫秒)。改值为0后只要一点击“安装到Firefox”按钮不用等待就可直接安装扩展了。默认值是等待4秒。
+
+    7.config.trim_on_minimize = true
+
+    右击空白部分，在“新建”中选“布尔”，输入名称“config.trim_on_minimize”，其值设定为true，最小化火狐时释放内存。
+
+    8.content.notify.backoffcount = 5
+
+    创建新的整数值content.notify.backoffcount，设定值为5，这 个键值控制Firefox的内置计数器在归零之前加载页面返回的次数。
+
+    9.nglayout.initialpaint.delay = 0
+
+    创建新的整值nglayout.initialpa0int.delay，设定为0，这个值是延迟显示整个网页的时间，设置为0则即可显示网页，适合网页还未加载完成就先进行阅读的用户习惯。
+
+    10.network.dns.disableIPv6 = true
+
+    禁用IPv6，IPv4仍然是主流，IPv6数量很少，火狐很少会去解析，因此关闭它可以提高速度。
+
+    11.改进火狐数据请求连接的配置
+
+    network.http.pipelining=true
+
+    network.http.proxy.pipelining=true
+
+    network.http.pipelining.maxrequests
+
+    network.http.max-persistent-connections-per-server
+
+    network.http.max-persistent-connections-per-proxy
+
+    network.http.pipelining设置为true是开启火狐“流水线”连接技术，原理如下图，在一个连接中同时发出多个请求，来达到网页数据加载加速。
+
+    300px-HTTP_pipelining2.svg
+
+    network.http.pipelining.maxrequests是设置开启pipelining后允许一个连接中最大同时发出多少条请求，火狐19.0中默认是32，可以不用更改。
+
+    network.http.max-persistent-connections-per-server是连接同一个服务器允许的最大持久连接数，默认为6，可以不用更改。
+
+    network.http.proxy.pipelining连接代理服务器是否允许 pipelining，network.http.max-persistent-connections-per-proxy每个代理服务器允许的最大持久连接数。
+
+    上述各项连接数可以更加你当前的网络情况来适当更改。
+
+    12.改进火狐网页渲染加载的配置
+
+    content.interrupt.parsing=true
+
+    content.notify.ontimer =true
+
+    content.max.tokenizing.time=2250000
+
+    content.notify.interval=750000
+
+    content.switch.threshold=750000
+
+    右键新建 Boolean 值，键名为 content.interrupt.parsing，赋值 true。我们激活这个命令之后，当目标网页加载时，火狐会根据一定频率打断解析的过程，不断的向用户呈现收集到的网页信息。右键新建 Boolean 值，键名为 content.notify.ontimer，赋值 true。要使下面三个命令生效需要开启这两个命令。
+
+    content.max.tokenizing.time右键新建整数值，键名为 content.notify.interval，赋值 750000。这个键值的作用其实就是指定一个循环事件的处理周期，理论上当我们将这个值取的越小，网页就会从视觉上加载的越流畅，因为Firefox会在很短的单位时间里反馈回解析到的网页信息。可是这样无疑延迟了网页整体加载的时间，所以在这里我们不妨将这个周期取的大一些，理论上可以加速网页的加载。
+
+    content.notify.interval右键新建整数值，键名为 content.notify.interval，赋值 750000。从我们第一次向服务器发出连接请求到我们在终端收到这个预加载页面花费的时间，就是这里我们要定义的键值。理论上当我们将这个时间设置的很低时，肯定会更快的拿到所谓的预载入页面，可这样无形中反而增加了我们整体页面的加载时间。按照官方的说法，低于100,000 将会降低Firefox 的性能，那好吧，那我们把设到750000吧，也就是四分之三秒。
+
+    content.switch.threshold右键新建整数值，键名为 content.switch.threshold ，赋值750000。把 content.interrupt.parsing 激活后当页面加载时Firefox会有两种操作模式：高频和低频中断模式。使用高频模式时，网页交互响应也很快，在显示器前看到的网页加载过程也会更加的平滑。低频时网页交互的响应相对比较低，可是这时反而加快了网页加载的时间。当我们移动鼠标或者触击键盘时，高频模式被激活。在经过某一段时间我们没有碰鼠标和键盘，Firefox 就会自动进入低频模式工作，而这所谓的某一段时间，就是我们这里要指定的值。
+
+    上述5个命令需要同时开启并设置合理值才能生效。
+
+    经过对上述about:config高级命令的个性化，能在网络环境良好的情况下提供潜在的优化速度，当然，并不能保证一定有效，如果出现异常，请将相关键值恢复默认值。
+
+
+[end]

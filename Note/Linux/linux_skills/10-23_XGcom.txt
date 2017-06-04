@@ -1,0 +1,3 @@
+
+    XGcom是谷歌code的一个项目，它可以让用户在linux环境下，使用手动的方法向串口发送数据，并且接受串口发回的数据
+	项目主页：code.google.com/p/xgcom

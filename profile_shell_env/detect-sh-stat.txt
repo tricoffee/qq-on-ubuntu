@@ -1,0 +1,223 @@
+
+ list execute this shell script's shell's information.
+
+=========================================
+# detech is or is not interactive shell
+=========================================
+hB
+
+
+=========================================
+# detech is or is not login shell
+=========================================
+/etc/gdm3/Xsession
+
+
+=========================================
+# detech current shell's PID
+=========================================
+1516
+
+
+=========================================
+# detech current shell's PID with simple process tree
+=========================================
+qq        1516  0.0  0.0  14320  3192 tty2     S+   12:03   0:00 /bin/bash /etc/gdm3/Xsession gnome-session-classic
+qq        1522  0.0  0.0  15988   928 tty2     S+   12:03   0:00 grep 1516
+systemd(1)---gdm3(1140)---gdm-session-wor(1478)---gdm-x-session(1501)---Xsession(1516)---pstree(1523)
+
+
+=========================================
+# detech current shell's PID with process tree
+=========================================
+ PPID   PID  PGID   SID TTY      TPGID STAT   UID   TIME COMMAND
+    0     2     0     0 ?           -1 S        0   0:00 [kthreadd]
+    2     3     0     0 ?           -1 S        0   0:00  \_ [ksoftirqd/0]
+    2     4     0     0 ?           -1 S        0   0:00  \_ [kworker/0:0]
+    2     5     0     0 ?           -1 S<       0   0:00  \_ [kworker/0:0H]
+    2     6     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:0]
+    2     7     0     0 ?           -1 S        0   0:00  \_ [rcu_sched]
+    2     8     0     0 ?           -1 S        0   0:00  \_ [rcu_bh]
+    2     9     0     0 ?           -1 S        0   0:00  \_ [migration/0]
+    2    10     0     0 ?           -1 S        0   0:00  \_ [watchdog/0]
+    2    11     0     0 ?           -1 S        0   0:00  \_ [watchdog/1]
+    2    12     0     0 ?           -1 S        0   0:00  \_ [migration/1]
+    2    13     0     0 ?           -1 S        0   0:00  \_ [ksoftirqd/1]
+    2    14     0     0 ?           -1 S        0   0:00  \_ [kworker/1:0]
+    2    15     0     0 ?           -1 S<       0   0:00  \_ [kworker/1:0H]
+    2    16     0     0 ?           -1 S        0   0:00  \_ [watchdog/2]
+    2    17     0     0 ?           -1 S        0   0:00  \_ [migration/2]
+    2    18     0     0 ?           -1 S        0   0:00  \_ [ksoftirqd/2]
+    2    19     0     0 ?           -1 S        0   0:00  \_ [kworker/2:0]
+    2    20     0     0 ?           -1 S<       0   0:00  \_ [kworker/2:0H]
+    2    21     0     0 ?           -1 S        0   0:00  \_ [watchdog/3]
+    2    22     0     0 ?           -1 S        0   0:00  \_ [migration/3]
+    2    23     0     0 ?           -1 S        0   0:00  \_ [ksoftirqd/3]
+    2    24     0     0 ?           -1 S        0   0:00  \_ [kworker/3:0]
+    2    25     0     0 ?           -1 S<       0   0:00  \_ [kworker/3:0H]
+    2    26     0     0 ?           -1 S        0   0:00  \_ [kdevtmpfs]
+    2    27     0     0 ?           -1 S<       0   0:00  \_ [netns]
+    2    28     0     0 ?           -1 S<       0   0:00  \_ [perf]
+    2    29     0     0 ?           -1 S        0   0:00  \_ [khungtaskd]
+    2    30     0     0 ?           -1 S<       0   0:00  \_ [writeback]
+    2    31     0     0 ?           -1 SN       0   0:00  \_ [ksmd]
+    2    32     0     0 ?           -1 SN       0   0:00  \_ [khugepaged]
+    2    33     0     0 ?           -1 S<       0   0:00  \_ [crypto]
+    2    34     0     0 ?           -1 S<       0   0:00  \_ [kintegrityd]
+    2    35     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    36     0     0 ?           -1 S<       0   0:00  \_ [kblockd]
+    2    37     0     0 ?           -1 S<       0   0:00  \_ [ata_sff]
+    2    38     0     0 ?           -1 S<       0   0:00  \_ [md]
+    2    39     0     0 ?           -1 S<       0   0:00  \_ [devfreq_wq]
+    2    40     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:1]
+    2    41     0     0 ?           -1 S        0   0:00  \_ [kworker/0:1]
+    2    43     0     0 ?           -1 S        0   0:00  \_ [kswapd0]
+    2    44     0     0 ?           -1 S<       0   0:00  \_ [vmstat]
+    2    45     0     0 ?           -1 S        0   0:00  \_ [fsnotify_mark]
+    2    46     0     0 ?           -1 S        0   0:00  \_ [ecryptfs-kthrea]
+    2    62     0     0 ?           -1 S<       0   0:00  \_ [kthrotld]
+    2    63     0     0 ?           -1 S<       0   0:00  \_ [acpi_thermal_pm]
+    2    64     0     0 ?           -1 S        0   0:00  \_ [kworker/3:1]
+    2    65     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    66     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    67     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    68     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    69     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    70     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    71     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    72     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2    73     0     0 ?           -1 S        0   0:00  \_ [kworker/2:1]
+    2    77     0     0 ?           -1 S<       0   0:00  \_ [ipv6_addrconf]
+    2    90     0     0 ?           -1 S<       0   0:00  \_ [deferwq]
+    2    91     0     0 ?           -1 S<       0   0:00  \_ [charger_manager]
+    2   133     0     0 ?           -1 S<       0   0:00  \_ [kpsmoused]
+    2   134     0     0 ?           -1 S        0   0:00  \_ [kworker/1:1]
+    2   135     0     0 ?           -1 S        0   0:00  \_ [kworker/1:2]
+    2   136     0     0 ?           -1 S        0   0:00  \_ [irq/16-mmc0]
+    2   137     0     0 ?           -1 S        0   0:00  \_ [scsi_eh_0]
+    2   138     0     0 ?           -1 S<       0   0:00  \_ [scsi_tmf_0]
+    2   139     0     0 ?           -1 S        0   0:00  \_ [scsi_eh_1]
+    2   140     0     0 ?           -1 S<       0   0:00  \_ [scsi_tmf_1]
+    2   141     0     0 ?           -1 S        0   0:00  \_ [scsi_eh_2]
+    2   142     0     0 ?           -1 S<       0   0:00  \_ [scsi_tmf_2]
+    2   143     0     0 ?           -1 S        0   0:00  \_ [scsi_eh_3]
+    2   144     0     0 ?           -1 S<       0   0:00  \_ [scsi_tmf_3]
+    2   145     0     0 ?           -1 S        0   0:00  \_ [scsi_eh_4]
+    2   146     0     0 ?           -1 S<       0   0:00  \_ [scsi_tmf_4]
+    2   147     0     0 ?           -1 S        0   0:00  \_ [scsi_eh_5]
+    2   148     0     0 ?           -1 S<       0   0:00  \_ [scsi_tmf_5]
+    2   149     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:2]
+    2   150     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:3]
+    2   151     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:4]
+    2   152     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:5]
+    2   153     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:6]
+    2   154     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:7]
+    2   155     0     0 ?           -1 S        0   0:00  \_ [kworker/3:2]
+    2   156     0     0 ?           -1 S        0   0:00  \_ [kworker/2:2]
+    2   157     0     0 ?           -1 S<       0   0:00  \_ [ttm_swap]
+    2   158     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2   159     0     0 ?           -1 S        0   0:00  \_ [kworker/u16:8]
+    2   160     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2   214     0     0 ?           -1 S        0   0:00  \_ [kworker/0:2]
+    2   224     0     0 ?           -1 S<       0   0:00  \_ [kworker/2:1H]
+    2   225     0     0 ?           -1 S<       0   0:00  \_ [kworker/3:1H]
+    2   241     0     0 ?           -1 S<       0   0:00  \_ [kworker/0:1H]
+    2   243     0     0 ?           -1 S        0   0:00  \_ [jbd2/sda6-8]
+    2   244     0     0 ?           -1 S<       0   0:00  \_ [ext4-rsv-conver]
+    2   273     0     0 ?           -1 S        0   0:00  \_ [kauditd]
+    2   283     0     0 ?           -1 S        0   0:00  \_ [kworker/1:3]
+    2   287     0     0 ?           -1 S        0   0:00  \_ [kworker/1:4]
+    2   424     0     0 ?           -1 S        0   0:00  \_ [irq/27-mei_me]
+    2   426     0     0 ?           -1 S<       0   0:00  \_ [cfg80211]
+    2   449     0     0 ?           -1 S<       0   0:00  \_ [kworker/u17:0]
+    2   450     0     0 ?           -1 S<       0   0:00  \_ [hci0]
+    2   451     0     0 ?           -1 S<       0   0:00  \_ [hci0]
+    2   452     0     0 ?           -1 S<       0   0:00  \_ [kworker/u17:1]
+    2   453     0     0 ?           -1 S<       0   0:00  \_ [kworker/u17:2]
+    2   501     0     0 ?           -1 S<       0   0:00  \_ [kvm-irqfd-clean]
+    2   616     0     0 ?           -1 S        0   0:00  \_ [kworker/3:3]
+    2   704     0     0 ?           -1 S<       0   0:00  \_ [kdmflush]
+    2   742     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2   743     0     0 ?           -1 S<       0   0:00  \_ [kcryptd_io]
+    2   744     0     0 ?           -1 S<       0   0:00  \_ [kcryptd]
+    2   745     0     0 ?           -1 S        0   0:00  \_ [dmcrypt_write]
+    2   746     0     0 ?           -1 S<       0   0:00  \_ [bioset]
+    2   770     0     0 ?           -1 S        0   0:00  \_ [jbd2/sda7-8]
+    2   771     0     0 ?           -1 S<       0   0:00  \_ [ext4-rsv-conver]
+    2   788     0     0 ?           -1 S<       0   0:00  \_ [kworker/1:1H]
+    2  1330     0     0 ?           -1 S<       0   0:00  \_ [krfcommd]
+    0     1     1     1 ?           -1 Ss       0   0:01 /sbin/init splash
+    1   295   295   295 ?           -1 Ss       0   0:00 /lib/systemd/systemd-journald
+    1   334   334   334 ?           -1 Ss       0   0:00 /lib/systemd/systemd-udevd
+    1   701   701   701 ?           -1 Ss       0   0:00 /lib/systemd/systemd-fsckd
+    1   827   827   827 ?           -1 Ssl    100   0:00 /lib/systemd/systemd-timesyncd
+    1   921   921   921 ?           -1 Ssl      0   0:00 /usr/lib/accountsservice/accounts-daemon
+    1   926   926   926 ?           -1 Ss       0   0:00 /lib/systemd/systemd-logind
+    1   932   932   932 ?           -1 Ss     106   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+    1   977   977   977 ?           -1 Ssl      0   0:00 /usr/sbin/NetworkManager --no-daemon
+  977  1211  1211   977 ?           -1 S        0   0:00  \_ /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /var/run/dhclient-wlp3s0.pid -lf /var/lib/NetworkManager/dhclient-4dfc5647-8b22-414f-b1e2-78f1d0be6d59-wlp3s0.lease -cf /var/lib/NetworkManager/dhclient-wlp3s0.conf wlp3s0
+  977  1296  1296   977 ?           -1 S    65534   0:00  \_ /usr/sbin/dnsmasq --no-resolv --keep-in-foreground --no-hosts --bind-interfaces --pid-file=/var/run/NetworkManager/dnsmasq.pid --listen-address=127.0.1.1 --cache-size=0 --conf-file=/dev/null --proxy-dnssec --enable-dbus=org.freedesktop.NetworkManager.dnsmasq --conf-dir=/etc/NetworkManager/dnsmasq.d
+    1   978   978   978 ?           -1 Ssl    104   0:00 /usr/sbin/rsyslogd -n
+    1   979   979   979 ?           -1 Ss     110   0:00 avahi-daemon: running [qq-Aspire-4752.local]
+  979  1098   979   979 ?           -1 S      110   0:00  \_ avahi-daemon: chroot helper
+    1   985   985   985 ?           -1 Ssl      0   0:00 /usr/sbin/thermald --no-daemon --dbus-enable
+    1   988   988   988 ?           -1 Ss       0   0:00 /usr/sbin/acpid
+    1   990   990   990 ?           -1 Ss       0   0:00 /usr/lib/bluetooth/bluetoothd
+    1   992   992   992 ?           -1 Ss       0   0:00 /usr/sbin/cupsd -l
+  992  1122  1122   992 ?           -1 S        7   0:00  \_ /usr/lib/cups/notifier/dbus dbus://
+  992  1123  1123   992 ?           -1 S        7   0:00  \_ /usr/lib/cups/notifier/dbus dbus://
+  992  1124  1124   992 ?           -1 S        7   0:00  \_ /usr/lib/cups/notifier/dbus dbus://
+    1  1005  1005  1005 ?           -1 Ssl      0   0:00 /usr/sbin/iio-sensor-proxy
+    1  1010  1010  1010 ?           -1 Ss       0   0:00 /usr/sbin/cron -f
+    1  1011  1011  1011 ?           -1 Ssl      0   0:00 /usr/sbin/ModemManager
+    1  1017  1017  1017 ?           -1 Ssl    108   0:00 /usr/bin/whoopsie -f
+    1  1019  1019  1019 ?           -1 Ssl      0   0:00 /usr/lib/snapd/snapd
+    1  1052  1051  1051 ?           -1 S<L      0   0:00 /usr/bin/atop -a -w /var/log/atop/atop_20170603 600
+    1  1056  1055  1055 ?           -1 S        0   0:00 /bin/sh /etc/init.d/ondemand background
+ 1056  1074  1055  1055 ?           -1 S        0   0:00  \_ sleep 60
+    1  1087  1087  1087 ?           -1 Ss       0   0:00 /usr/sbin/irqbalance --pid=/var/run/irqbalance.pid
+    1  1099  1099  1099 ?           -1 Ssl      0   0:00 /usr/sbin/cups-browsed
+    1  1106  1106  1106 ?           -1 Ss       0   0:00 /lib/systemd/systemd-hostnamed
+    1  1112  1112  1112 ?           -1 Ssl      0   0:00 /usr/lib/policykit-1/polkitd --no-debug
+    1  1140  1140  1140 ?           -1 Ssl      0   0:00 /usr/sbin/gdm3
+ 1140  1156  1140  1140 ?           -1 Sl       0   0:00  \_ gdm-session-worker [pam/gdm-launch-environment]
+ 1156  1177  1177  1177 tty7      1177 Ssl+   121   0:00  |   \_ /usr/lib/gdm3/gdm-x-session /usr/bin/gnome-session --autostart /usr/share/gdm/greeter/autostart
+ 1177  1179  1177  1177 tty7      1177 S+     121   0:00  |       \_ /usr/lib/xorg/Xorg vt7 -displayfd 3 -auth /run/user/121/gdm/Xauthority -background none -noreset -keeptty -verbose 3
+ 1177  1187  1177  1177 tty7      1177 S+     121   0:00  |       \_ dbus-daemon --print-address 4 --session
+ 1177  1190  1177  1177 tty7      1177 Sl+    121   0:00  |       \_ /usr/lib/gnome-session/gnome-session-binary --autostart /usr/share/gdm/greeter/autostart
+ 1190  1235  1177  1177 tty7      1177 Sl+    121   0:00  |           \_ /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+ 1190  1269  1177  1177 tty7      1177 Sl+    121   0:01  |           \_ gnome-shell --mode=gdm
+ 1269  1421  1421  1177 tty7      1177 Sl     121   0:00  |               \_ ibus-daemon --xim --panel disable
+ 1421  1426  1421  1177 tty7      1177 Sl     121   0:00  |                   \_ /usr/lib/ibus/ibus-dconf
+ 1421  1458  1421  1177 tty7      1177 Sl     121   0:00  |                   \_ /usr/lib/ibus/ibus-engine-simple
+ 1140  1478  1140  1140 ?           -1 Sl       0   0:00  \_ gdm-session-worker [pam/gdm-password]
+ 1478  1501  1501  1501 tty2      1501 Ssl+  1000   0:00      \_ /usr/lib/gdm3/gdm-x-session --run-script gnome-session-classic
+ 1501  1503  1501  1501 tty2      1501 S+    1000   0:00          \_ /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3
+ 1501  1513  1501  1501 tty2      1501 S+    1000   0:00          \_ dbus-daemon --print-address 4 --session
+ 1501  1516  1501  1501 tty2      1501 S+    1000   0:00          \_ /bin/bash /etc/gdm3/Xsession gnome-session-classic
+ 1516  1524  1501  1501 tty2      1501 R+    1000   0:00              \_ ps -axjf
+    1  1166  1166  1166 ?           -1 Ss       0   0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+    1  1172  1172  1172 ?           -1 Ss     121   0:00 /lib/systemd/systemd --user
+ 1172  1173  1172  1172 ?           -1 S      121   0:00  \_ (sd-pam)
+    1  1219  1177  1177 tty7      1177 Sl+    121   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+ 1219  1224  1177  1177 tty7      1177 S+     121   0:00  \_ /usr/bin/dbus-daemon --config-file=/etc/at-spi2/accessibility.conf --nofork --print-address 3
+    1  1227  1177  1177 tty7      1177 Sl+    121   0:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+    1  1243  1243  1243 ?           -1 Ssl      0   0:00 /usr/lib/upower/upowerd
+    1  1267  1267  1267 ?           -1 Ssl    111   0:00 /usr/lib/colord/colord
+    1  1282  1281  1281 ?           -1 S<l    121   0:00 /usr/bin/pulseaudio --start --log-target=syslog
+    1  1283  1283  1283 ?           -1 SNsl   118   0:00 /usr/lib/rtkit/rtkit-daemon
+    1  1388  1388  1388 ?           -1 Ss       0   0:00 /lib/systemd/systemd-localed
+    1  1428  1421  1177 tty7      1177 Sl     121   0:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+    1  1439   932   932 ?           -1 SNl      0   0:00 /usr/bin/python3 /usr/sbin/aptd
+    1  1448   932   932 ?           -1 Sl       0   0:00 /usr/lib/realmd/realmd
+    1  1468  1468  1468 tty1      1468 Ss+      0   0:00 /sbin/agetty --noclear tty1 linux
+    1  1483  1140  1140 ?           -1 S     1000   0:00 gdm-session-worker [pam/gdm-password]
+    1  1484  1484  1484 ?           -1 Ss    1000   0:00 /lib/systemd/systemd --user
+ 1484  1492  1484  1484 ?           -1 S     1000   0:00  \_ (sd-pam)
+    1  1498  1497  1497 ?           -1 Sl    1000   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+
+
+=========================================
+ 1501  1516  1501  1501 tty2      1501 S+    1000   0:00          \_ /bin/bash /etc/gdm3/Xsession gnome-session-classic
+ 1516  1525  1501  1501 tty2      1501 R+    1000   0:00              \_ ps -axjf
+ 1516  1526  1501  1501 tty2      1501 S+    1000   0:00              \_ grep 1516

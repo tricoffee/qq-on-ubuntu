@@ -1,0 +1,180 @@
+[非]交互式shell、[非]登录shell的区别
+
+
+Linux也算是用了好几年了吧，shell（主要是Bash）也一直在用，最开始学的时候其实看到过交互式shell、登录shell的说明，但当时什么都不懂，理解也不深，看了和没看区别不太大，只是脑子里留下了一个印象而已；现在无意中又碰到了这个话题，觉得有必要再看看，补充一下这方面的知识。
+搜索关键字：
+
+linux 登录shell 交互式shell
+
+himBh
+
+==
+[非]交互式shell、[非]登录shell的区别：
+
+首先，这是从两个不同的维度来划分的，一个是是否交互式，另一个是是否需登录。
+交互式shell和非交互式shell（interactive shell and non-interactive shell）
+
+交互模式就是在终端上执行，shell等待你的输入，并且立即解释执行你提交的命令。这种模式被称作交互式是因为shell与用户进行交互。这种模式也是大多数用户非常熟悉的：登录、执行一些命令、退出。当你退出后，shell也终止了。
+
+shell也可以运行在另外一种模式：非交互式模式，以shell script(非交互)方式执行。在这种模式下，shell不与你进行交互，而是读取存放在文件中的命令，并且依此解释执行它们。当它读到文件的结尾EOF，shell也就终止了。
+
+可以通过打印“$-”变量的值（代表着当前shell的选项标志），查看其中的“i”选项（表示interactive shell）来区分交互式与非交互式shell。
+
+查看man bash中的Invocation一节。有：
+
+	    A login shell is one whose first character of argument zero is a -, or one started with the –login option.
+
+	    An interactive shell is one started without non-option arguments and without the -c option whose standard input and error are both connected to terminals (as determined by isatty(3)), or one started with the -i option. PS1 is set and $- includes i if bash is interactive, allowing a shell script or a startup file to test this state.
+
+上面这一段内容就给出了如何区分登录shell和非登录shell、交互式shell和非交互式shell的方法：
+	root@crazyof.me:~# ps aux | grep bash
+	root      2513  0.0  0.7   7148  3604 pts/0    Ss   12:39   0:00 -bash
+	root      3373  0.0  0.1   4672   820 pts/0    S+   13:05   0:00 grep --color=auto bash
+	root@crazyof.me:~# echo $0
+	-bash
+	root@crazyof.me:~# bash
+	root@crazyof.me:~# echo $0
+	bash
+
+	root@crazyof.me:~# ps aux | grep bash
+	root      2513  0.0  0.7   7148  3604 pts/0    Ss   12:39   0:00 -bash
+	root      3383  0.0  0.3   5784  2020 pts/0    S    13:05   0:00 bash
+	root      3398  0.0  0.1   4672   820 pts/0    S+   13:05   0:00 grep --color=auto bash
+
+	root@crazyof.me:~# pstree -ps 2513
+	init(1)───sshd(901)───sshd(2425)───bash(2513)───bash(3383)───pstree(3411)
+	root@crazyof.me:~# pstree -ps 3383
+	init(1)───sshd(901)───sshd(2425)───bash(2513)───bash(3383)───pstree(3417)
+	root@crazyof.me:~# pstree -p 3383
+	bash(3383)───pstree(3426)
+
+	root@crazyof.me:~# logout
+	bash: logout: not login shell: use `exit'
+	root@crazyof.me:~# exit
+	exit
+	root@crazyof.me:~# ps aux | grep bash
+	root      2513  0.0  0.7   7148  3604 pts/0    Ss   12:39   0:00 -bash
+	root      3444  0.0  0.1   4672   820 pts/0    S+   13:07   0:00 grep --color=auto bash
+	root@crazyof.me:~# pstree -ps 2513
+	init(1)───sshd(901)───sshd(2425)───bash(2513)───pstree(3458)
+
+	
+	root@crazyof.me:~# ps aux | grep bash
+	root      2513  0.0  0.7   7148  3604 pts/0    Ss   12:39   0:00 -bash
+	root      3373  0.0  0.1   4672   820 pts/0    S+   13:05   0:00 grep --color=auto bash
+	root@crazyof.me:~# echo $0
+	-bash
+	root@crazyof.me:~# bash
+	root@crazyof.me:~# echo $0
+	bash
+	 
+	root@crazyof.me:~# ps aux | grep bash
+	root      2513  0.0  0.7   7148  3604 pts/0    Ss   12:39   0:00 -bash
+	root      3383  0.0  0.3   5784  2020 pts/0    S    13:05   0:00 bash
+	root      3398  0.0  0.1   4672   820 pts/0    S+   13:05   0:00 grep --color=auto bash
+	 
+	root@crazyof.me:~# pstree -ps 2513
+	init(1)───sshd(901)───sshd(2425)───bash(2513)───bash(3383)───pstree(3411)
+	root@crazyof.me:~# pstree -ps 3383
+	init(1)───sshd(901)───sshd(2425)───bash(2513)───bash(3383)───pstree(3417)
+	root@crazyof.me:~# pstree -p 3383
+	bash(3383)───pstree(3426)
+	 
+	root@crazyof.me:~# logout
+	bash: logout: not login shell: use `exit'
+	root@crazyof.me:~# exit
+	exit
+	root@crazyof.me:~# ps aux | grep bash
+	root      2513  0.0  0.7   7148  3604 pts/0    Ss   12:39   0:00 -bash
+	root      3444  0.0  0.1   4672   820 pts/0    S+   13:07   0:00 grep --color=auto bash
+	root@crazyof.me:~# pstree -ps 2513
+	init(1)───sshd(901)───sshd(2425)───bash(2513)───pstree(3458)
+
+	root@crazyof.me:~# cat ishell.sh
+	#!/bin/bash
+	echo $-
+	root@crazyof.me:~# bash ishell.sh
+	hB
+
+	root@crazyof.me:~# echo $-
+	himBH
+
+	
+	root@crazyof.me:~# cat ishell.sh
+	#!/bin/bash
+	echo $-
+	root@crazyof.me:~# bash ishell.sh
+	hB
+	 
+	root@crazyof.me:~# echo $-
+	himBH
+
+登录shell和非登录shell
+
+登录shell：是需要用户名、密码登录后才能进入的shell（或者通过“–login”选项生成的shell）。
+
+非登录shell：当然就不需要输入用户名和密码即可打开的Shell，例如：直接命令“bash”就是打开一个新的非登录shell，在Gnome或KDE中打开一个“终端”（terminal）窗口程序也是一个非登录shell。
+
+执行exit命令，退出一个shell（登录或非登录shell）；
+
+执行logout命令，退出登录shell（不能退出非登录shell）。
+	root@crazyof.me:~# echo $0
+	-bash
+	root@crazyof.me:~# bash
+	root@crazyof.me:~# echo $0
+	bash
+	root@crazyof.me:~# logout
+	bash: logout: not login shell: use `exit'
+	root@crazyof.me:~# exit
+	exit
+
+	
+	root@crazyof.me:~# echo $0
+	-bash
+	root@crazyof.me:~# bash
+	root@crazyof.me:~# echo $0
+	bash
+	root@crazyof.me:~# logout
+	bash: logout: not login shell: use `exit'
+	root@crazyof.me:~# exit
+	exit
+
+对于Bash来说，登录shell（包括交互式登录shell和使用“–login”选项的非交互shell），它会首先读取和执行/etc/profile全局配置文件中的命令，然后依次查找~/.bash_profile、~/.bash_login 和 ~/.profile这三个配置文件，读取和执行这三个中的第一个存在且可读的文件中命令。除非被“–noprofile”选项禁止了。
+
+在非登录shell里，只读取 ~/.bashrc （和 /etc/bash.bashrc、/etc/bashrc ）文件，不同的发行版里面可能有所不同。对于这些规则，可以直接在相应的配置文件中加一些echo命令来验证其真实性。
+
+==
+环境变量{$-}中各个字符的含义
+
+From man bash:
+
+    –
+
+    Expands to the current option flags as specified upon invocation, by the set builtin command, or those set by the shell itself (such as the -i option).
+
+So these are the current options that control the behavior of the shell. In particular:
+
+    h: Cache location of binaries in the $PATH. Speeds up execution, but fails if you move binaries around during the shell session.
+    i: The current shell is interactive
+    m: Job control is enabled
+    B: Brace expansion is enabled
+    H: History substitution like !-1
+
+==
+参考链接：
+
+    什么是交互式登录 Shell
+    交互式shell和非交互式shell、登录shell和非登录shell的区别
+    bash 深入理解：交互式shell和非交互式shell、登录shell和非登录shell的区别
+    Linux环境变量加载的研究
+    =
+    linux下的bash与sh 详解以及例子
+    登录shell,交互式非登录shell,非交互式shell
+    =
+    Shell 默认选项 himBH 的解释
+    Find out what your UNIX shell’s flags are & then change them
+    linux – What do the characters in the bash environment variable $- mean ? – Stack Overflow
+    shell – What does “${-#*i}” != “$-” mean? – Unix & Linux Stack Exchange
+
+ 
+

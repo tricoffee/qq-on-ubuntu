@@ -1,0 +1,326 @@
+
+apt-get install安装软件问题(安装包的依赖库版本过高问题)
+
+
+
+
+问题描述：
+使用apt-get安装程序时，报告已安装依赖库的版本高于安装包所需的依赖库指定版本。
+相关信息如下：
+
+	(Shell Message) : 
+
+	Loong:~/hw_test/toolsloongson-0.1lemote# apt-get install qt4-dev-tools
+	Reading package lists...
+	Building dependency tree...
+	Reading state information...
+	Some packages could not be installed. This may mean that you have
+	requested an impossible situation or if you are using the unstable
+	distribution that some required packages have not yet been created
+	or been moved out of Incoming.
+	The following information may help to resolve the situation:
+
+	The following packages have unmet dependencies:
+	  qt4-dev-tools: Depends: libqt4-dbus (= 4.4.3-1) but 4.5.1-2 is to be installed
+			 Depends: libqt4-help (= 4.4.3-1) but 4.5.1-2 is to be installed
+			 Depends: libqt4-network (= 4.4.3-1) but 4.5.1-2 is to be installed
+			 Depends: libqt4-xml (= 4.4.3-1) but 4.5.1-2 is to be installed
+			 Depends: libqt4-xmlpatterns (= 4.4.3-1) but 4.5.1-2 is to be installed
+			 Depends: libqtcore4 (= 4.4.3-1) but 4.5.1-2 is to be installed
+			 Depends: libqtgui4 (= 4.4.3-1) but 4.5.1-2 is to be installed
+			 Depends: libqt4-sql-sqlite but it is not going to be installed
+			 Recommends: libqt4-dev but it is not going to be installed
+			 Recommends: qt4-designer but it is not going to be installed
+	E: Broken packages
+	Loong:~/hw_test/toolsloongson-0.1lemote#
+
+解决方案：
+1，先使用apt-get showpkg命令来确认有libqt4-xx(使用其中的一个库来查找，这里使用libqt4-dbus)的较低版本：
+
+	(Shell Message) : 
+
+	Loong:~/hw_test/toolsloongson-0.1lemote# apt-cache showpkg libqt4-dbus
+	Package: libqt4-dbus
+	Versions:
+	4.5.1-2 (/var/lib/dpkg/status)
+	 Description Language:
+			 File: /var/lib/dpkg/status
+			MD5: d4138bc6e2864e684d9cd85db1fb1bb8
+	4.4.3-1 (/var/lib/apt/lists/192.168.2.60_debian-rebuild_dists_lenny_main_binary-mipsel_Packages)
+	 Description Language:
+			 File: /var/lib/apt/lists/192.168.2.60_debian-rebuild_dists_lenny_main_binary-mipsel_Packages
+			 MD5: d4138bc6e2864e684d9cd85db1fb1bb8
+
+	Reverse Depends:
+	  libqt4-script,libqt4-dbus 4.5.1-2
+	  libqt4-ruby1.8,libqt4-dbus 4.4.3
+	  libsmokeqt4-1,libqt4-dbus 4.4.3
+	  libqt4-dev,libqt4-dbus 4.4.3-1
+	  libqt4-script,libqt4-dbus 4.4.3-1
+	  qt4-demos,libqt4-dbus 4.4.3-1
+	  qt4-dev-tools,libqt4-dbus 4.4.3-1
+	  libqt4-core,libqt4-dbus 4.4.3-1
+	  libakonadiprivate1,libqt4-dbus 4.4.3
+	  akonadi-server,libqt4-dbus 4.4.3
+	  systemsettings,libqt4-dbus 4.4.3
+	  libstrigiqtdbusclient0,libqt4-dbus 4.4.3
+	  libsoprano4,libqt4-dbus 4.4.3
+	  marble,libqt4-dbus 4.4.3
+	  mumble,libqt4-dbus 4.4.3
+	  mumble-server,libqt4-dbus 4.4.3
+	  libphonon4,libqt4-dbus 4.4.3
+	  ktorrent,libqt4-dbus 4.4.3
+	  kdelibs-bin,libqt4-dbus 4.4.3
+	  kdelibs5,libqt4-dbus 4.4.3
+	  kdepimlibs5,libqt4-dbus 4.4.3
+	  kdebase-runtime-bin-kde4,libqt4-dbus 4.4.3
+	  khelpcenter4,libqt4-dbus 4.4.3
+	  phonon-backend-xine,libqt4-dbus 4.4.3
+	  kdebase-runtime,libqt4-dbus 4.4.3
+	Dependencies:
+	4.5.1-2 - libc6 (2 2.7-1) libgcc1 (2 1:4.1.1) libqt4-xml (5 4.5.1-2) libqtcore4 (5 4.5.1-2) libstdc++6 (2 4.1.1) libqt4-core (3 4.4.0~beta1-1)
+	4.4.3-1 - libc6 (2 2.7-1) libgcc1 (2 1:4.1.1) libqt4-xml (5 4.4.3-1) libqtcore4 (5 4.4.3-1) libstdc++6 (2 4.1.1) libqt4-core (3 4.4.0~beta1-1)
+	Provides:
+	4.5.1-2 -
+	4.4.3-1 -
+	Reverse Provides:
+	Loong:~/hw_test/toolsloongson-0.1lemote#
+从上面的信息中查看"Provides"的信息就可以确认有较低版本的libqt4-xx(4.4.3-1)，我们就可以将高版本的libqt4-xx库恢复到较低版本了，即从4.5.1-2到4.4.3-1。下面我们就可以通过aptitude install命令来将高版本的恢复到所需的低版本的libqt4-xx库了。
+
+2，恢复安装4.4.3-1版本的libqt4-xx库
+
+	(Shell Message) : 
+
+	Loong:~/hw_test/toolsloongson-0.1lemote# aptitude install libqt4-dbus=4.4.3-1
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	Reading extended state information
+	Initializing package states... Done
+	Writing extended state information... Done
+	Reading task descriptions... Done
+	The following packages are BROKEN:
+	  libqt4-dbus libqt4-script
+	0 packages upgraded, 0 newly installed, 1 downgraded, 0 to remove and 3 not upgraded.
+	Need to get 230kB of archives. After unpacking 36.9kB will be freed.
+	The following packages have unmet dependencies:
+	  libqt4-dbus: Depends: libqt4-xml (= 4.4.3-1) but 4.5.1-2 is installed.
+			     Depends: libqtcore4 (= 4.4.3-1) but 4.5.1-2 is installed.
+	  libqt4-script: Depends: libqt4-dbus (= 4.5.1-2) but 4.4.3-1 is to be installed.
+	The following actions will resolve these dependencies:
+
+	Remove the following packages:
+	cloudy
+	colockout
+	lemote-cocreate-desktop
+	libqt4-gui
+	rdesktoploongson
+	recorder-loongso
+	sysinfoloongson
+
+	Downgrade the following packages:
+	libqt4-assistant [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-designer [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-help [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-network [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-opengl [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-qt3support [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-script [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-sql [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-sql-MySQL [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-svg [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-test [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-webkit [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-xml [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqt4-xmlpatterns [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqtcore4 [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	libqtgui4 [4.5.1-2 (now) -> 4.4.3-1 (stable)]
+	smplayer [0.6.6-0ubuntu1loongson2fcocreate11 (now) -> 0.6.1-1 (stable)]
+	smplayer-translations [0.6.6-0ubuntu1loongson2fcocreate11 (now) -> 0.6.1-1 (stable)]
+
+	Score is 63
+
+	Accept this solution? [Y/n/q/?] y
+	The following packages will be DOWNGRADED:
+	  libqt4-assistant libqt4-dbus libqt4-designer libqt4-help libqt4-network libqt4-qt3support libqt4-script
+	  libqt4-sql libqt4-sql-mysql libqt4-svg libqt4-test libqt4-webkit libqt4-xml libqt4-xmlpatterns
+	  libqtcore4 libqtgui4 smplayer smplayer-translations
+	The following packages will be REMOVED:
+	  cloudy{a} colockout{a} lemote-cocreate-desktop{a} libphonon4{u} libqt4-gui{a} libqt4-opengl{u}
+	  phonon{u} phonon-backend-gstreamer{u} rdesktop{u} rdesktoploongson{a} recorder-loongson{a}
+	  sysinfoloongson{a}
+	The following packages are RECOMMENDED but will NOT be installed:
+	  qt4-qtconfig
+	0 packages upgraded, 0 newly installed, 18 downgraded, 12 to remove and 1 not upgraded.
+	Need to get 17.3MB of archives. After unpacking 27.4MB will be freed.
+	Do you want to continue? [Y/n/?] 
+	Writing extended state information... Done
+	Get:1 http://192.168.2.60 lenny/main libqt4-xmlpatterns 4.4.3-1 [760kB]
+	Get:2 http://192.168.2.60 lenny/main libqt4-test 4.4.3-1 [60.2kB]
+	Get:3 http://192.168.2.60 lenny/main libqt4-qt3support 4.4.3-1 [1328kB]
+	Get:4 http://192.168.2.60 lenny/main libqt4-designer 4.4.3-1 [1959kB]
+	Get:5 http://192.168.2.60 lenny/main libqt4-script 4.4.3-1 [425kB]
+	Get:6 http://192.168.2.60 lenny/main libqt4-dbus 4.4.3-1 [230kB]
+	Get:7 http://192.168.2.60 lenny/main libqt4-sql-mysql 4.4.3-1 [57.8kB]
+	Get:8 http://192.168.2.60 lenny/main libqt4-help 4.4.3-1 [237kB]
+	Get:9 http://192.168.2.60 lenny/main libqt4-sql 4.4.3-1 [130kB]
+	Get:10 http://192.168.2.60 lenny/main libqt4-webkit 4.4.3-1 [3144kB]
+	Get:11 http://192.168.2.60 lenny/main smplayer 0.6.1-1 [835kB]
+	Get:12 http://192.168.2.60 lenny/main smplayer-translations 0.6.1-1 [1037kB]
+	Get:13 http://192.168.2.60 lenny/main libqt4-svg 4.4.3-1 [183kB]
+	Get:14 http://192.168.2.60 lenny/main libqtgui4 4.4.3-1 [4290kB]
+	Get:15 http://192.168.2.60 lenny/main libqt4-xml 4.4.3-1 [136kB]
+	Get:16 http://192.168.2.60 lenny/main libqt4-assistant 4.4.3-1 [41.8kB]
+	Get:17 http://192.168.2.60 lenny/main libqt4-network 4.4.3-1 [440kB]
+	Get:18 http://192.168.2.60 lenny/main libqtcore4 4.4.3-1 [2048kB]
+	Fetched 17.3MB in 1min41s (172kB/s)
+	(Reading database ... 73022 files and directories currently installed.)
+	Removing cloudy ...
+	dpkg - warning: while removing cloudy, directory `/usr/local' not empty so not removed.
+	Removing colockout ...
+	Removing lemote-cocreate-desktop ...
+	dpkg - warning: while removing lemote-cocreate-desktop, directory `/usr/share/desktop-cocreate/resource/mainpage' not empty so not removed
+	dpkg - warning: while removing lemote-cocreate-desktop, directory `/usr/share/desktop-cocreate/resource' not empty so not removed.
+	dpkg - warning: while removing lemote-cocreate-desktop, directory `/usr/share/desktop-cocreate' not empty so not removed.
+	Removing libqt4-gui ...
+	dpkg - warning: downgrading libqt4-xmlpatterns from 4.5.1-2 to 4.4.3-1.
+	(Reading database ... 72800 files and directories currently installed.)
+	Preparing to replace libqt4-xmlpatterns 4.5.1-2 (using .../libqt4-xmlpatterns_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-xmlpatterns ...
+	dpkg - warning: downgrading libqt4-test from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-test 4.5.1-2 (using .../libqt4-test_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-test ...
+	(Reading database ... 72799 files and directories currently installed.)
+	Removing rdesktoploongson ...
+	Removing recorder-loongson ...
+	Removing sysinfoloongson ...
+	Processing triggers for man-db ...
+	Processing triggers for menu ...
+	dpkg - warning: downgrading libqt4-qt3support from 4.5.1-2 to 4.4.3-1.
+	Reading database ... 72761 files and directories currently installed.)
+	Preparing to replace libqt4-qt3support 4.5.1-2 (using .../libqt4-qt3support_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-qt3support ...
+	dpkg - warning: downgrading libqt4-designer from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-designer 4.5.1-2 (using .../libqt4-designer_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-designer ...
+	dpkg - warning: downgrading libqt4-script from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-script 4.5.1-2 (using .../libqt4-script_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-script ...
+	dpkg - warning: downgrading libqt4-dbus from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-dbus 4.5.1-2 (using .../libqt4-dbus_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-dbus ...
+	dpkg - warning: downgrading libqt4-sql-mysql from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-sql-mysql 4.5.1-2 (using .../libqt4-sql-mysql_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-sql-mysql ...
+	dpkg - warning: downgrading libqt4-help from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-help 4.5.1-2 (using .../libqt4-help_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-help ...
+	dpkg - warning: downgrading libqt4-sql from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-sql 4.5.1-2 (using .../libqt4-sql_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-sql ...
+	dpkg - warning: downgrading libqt4-webkit from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-webkit 4.5.1-2 (using .../libqt4-webkit_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-webkit ...
+	(Reading database ... 72760 files and directories currently installed.)
+	Removing phonon ...
+	Removing phonon-backend-gstreamer ...
+	Removing libqt4-opengl ...
+	dpkg - warning: downgrading smplayer from 0.6.6-0ubuntu1loongson2fcocreate11 to 0.6.1-1.
+	(Reading database ... 72736 files and directories currently installed.)
+	Preparing to replace smplayer 0.6.6-0ubuntu1loongson2fcocreate11 (using .../smplayer_0.6.1-1_mipsel.deb) ...
+	Unpacking replacement smplayer ...
+	dpkg - warning: downgrading smplayer-translations from 0.6.6-0ubuntu1loongson2fcocreate11 to 0.6.1-1.
+	Preparing to replace smplayer-translations 0.6.6-0ubuntu1loongson2fcocreate11 (using .../smplayer-translations_0.6.1-1_all.deb) ...
+	Unpacking replacement smplayer-translations ...
+	dpkg - warning: downgrading libqt4-svg from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-svg 4.5.1-2 (using .../libqt4-svg_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-svg ...
+	dpkg - warning: downgrading libqtgui4 from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqtgui4 4.5.1-2 (using .../libqtgui4_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqtgui4 ...
+	dpkg - warning: downgrading libqt4-xml from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-xml 4.5.1-2 (using .../libqt4-xml_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-xml ...
+	dpkg - warning: downgrading libqt4-assistant from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-assistant 4.5.1-2 (using .../libqt4-assistant_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-assistant ...
+	dpkg - warning: downgrading libqt4-network from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqt4-network 4.5.1-2 (using .../libqt4-network_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqt4-network ...
+	dpkg - warning: downgrading libqtcore4 from 4.5.1-2 to 4.4.3-1.
+	Preparing to replace libqtcore4 4.5.1-2 (using .../libqtcore4_4.4.3-1_mipsel.deb) ...
+	Unpacking replacement libqtcore4 ...
+	Processing triggers for man-db ...
+	Processing triggers for menu ...
+	(Reading database ... 72699 files and directories currently installed.)
+	Removing libphonon4 ...
+	Removing rdesktop ..
+	Processing triggers for man-db ...
+	Setting up libqtcore4 (4.4.3-1) ...
+	Setting up libqt4-network (4.4.3-1) ...
+	Setting up libqt4-xmlpatterns (4.4.3-1) ...
+	Setting up libqt4-test (4.4.3-1) ...
+	Setting up libqt4-xml (4.4.3-1) ...
+	Setting up libqt4-dbus (4.4.3-1) ...
+	Setting up libqt4-script (4.4.3-1) ...
+	Setting up libqtgui4 (4.4.3-1) ...
+	Setting up libqt4-designer (4.4.3-1) ...
+	Setting up libqt4-sql (4.4.3-1) ...
+	Setting up libqt4-qt3support (4.4.3-1) ...
+	Setting up libqt4-sql-mysql (4.4.3-1) ...
+	Setting up libqt4-help (4.4.3-1) ...
+	Setting up libqt4-webkit (4.4.3-1) ...
+	Setting up smplayer-translations (0.6.1-1) ...
+	Setting up smplayer (0.6.1-1) ...
+	Setting up libqt4-svg (4.4.3-1) ...
+	Setting up libqt4-assistant (4.4.3-1) ...
+	Processing triggers for menu ...
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	Reading extended state information
+	Initializing package states... Done
+	Writing extended state information... Done
+	Reading task descriptions... Done
+
+	Current status: 1 update [-2], 17475 new [-2].
+	Loong:~/hw_test/toolsloongson-0.1lemote#
+
+3，现在就可以安装qt4-dev-tool等工具包了。
+
+	(Shell Message) : 
+
+	Loong:~/hw_test/toolsloongson-0.1lemote# apt-get install qt4-dev-tools qt4-doc qt4-qtconfig qt4-demos qt4-designer
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	The following packages were automatically installed and are no longer required:
+	  x11proto-input-dev libpthread-stubs0-dev libpthread-stubs0
+	Use 'apt-get autoremove' to remove them.
+	The following extra packages will be installed:
+	  libpthread-stubs0 libpthread-stubs0-dev libqt4-dev libqt4-opengl libqt4-sql-sqlite qt4-qmake
+	  x11proto-input-dev
+	Suggested packages:
+	  libmysqlclient15-dev libsqlite0-dev libsqlite3-dev libpq-dev libiodbc2-dev firebird2.0-dev
+	Recommended packages:
+	  libqt4-opengl-dev
+	The following NEW packages will be installed:
+	  libpthread-stubs0 libpthread-stubs0-dev libqt4-dev libqt4-opengl libqt4-sql-sqlite qt4-demos qt4-designer
+	  qt4-dev-tools qt4-doc qt4-qmake qt4-qtconfig x11proto-input-dev
+	0 upgraded, 12 newly installed, 0 to remove and 1 not upgraded.
+	Need to get 71.7MB of archives.
+	After this operation, 138MB of additional disk space will be used.
+	Do you want to continue [Y/n]? y
+	Get:1 http://192.168.2.60 lenny/main x11proto-input-dev 1.4.3-2 [16.0kB]
+	Get:2 http://192.168.2.60 lenny/main libpthread-stubs0 0.1-2 [2782B]
+	Get:3 http://192.168.2.60 lenny/main libpthread-stubs0-dev 0.1-2 [3060B]
+	Get:4 http://192.168.2.60 lenny/main qt4-qmake 4.4.3-1 [1586kB]
+	Get:5 http://192.168.2.60 lenny/main libqt4-dev 4.4.3-1 [4449kB]
+	... ...
+
+4，问题解决。
+
+5，注意：要解决方案可能会移除一些有用的包，因此请注意使用与系统匹配的源。
+
+
+[end]

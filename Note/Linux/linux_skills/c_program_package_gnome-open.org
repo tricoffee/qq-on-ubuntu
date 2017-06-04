@@ -1,0 +1,106 @@
+C语言实现对gnome-open封装
+
+Ubuntu下gnome-open类似与Windows下的start.
+
+我们可以使用gnome-open来打开文件、文件夹、网页等。
+
+for example：gnome-open http:www.g.cn   //打开google首页   
+
+                        gnome-open  /home    //打开home目录
+
+                        gnome-open ./             //打开当前目录
+
+Ubuntu下封装gnome-open(当然要确保gnome-open已经安装),通过main传递多个参数,C语言代码实现如下:
+
+/*************************************************************************
+
+    Function:封装gnome-open,生成的程序后可接多个参数
+
+    Purpose: 实现对gnome-open的封装,熟悉main参数的传递
+
+    Author:  ZJQ     
+
+    Time:2012-07-12
+
+*************************************************************************/
+
+#include <stdio.h>
+
+#include <stdlib.h>/*system()*/
+
+#include <string.h>
+
+int main(int argc, char *argv[])
+
+{
+
+int cnt = 0;
+
+int i = 1;
+
+char str[]="gnome-open ";
+
+char str_cmd[1024];/
+*if the length of array of str_cmd is not enough to save the command , the program will error when running this program!*/
+
+char *ptr = NULL;
+
+if(argc<=1)
+
+{
+
+printf("Please input object that you want to open!\n");
+
+return 0;
+
+}
+
+cnt = argc-1;
+
+int len = sizeof(str_cmd);
+
+while(cnt)
+
+{
+
+memset(str_cmd,0,len);
+
+       strcpy(str_cmd,str);
+
+ptr = strncat(str_cmd,argv[i],strlen(argv[i]));
+
+/*for test
+
+printf("ptr =  %s\n",ptr);*/
+
+i++;
+
+cnt--;
+
+system(ptr);
+
+}
+
+return 0;
+
+}
+
+以个人的编译过程为例:
+
+假如我们这个文件保存在bmsf_open.c这个文件中,接下来我们可以编译这个源代码。
+
+编译命令:gcc -Wall bmsf_open.c -o bmsf_open
+
+编译好后就生成了一个bmsf_open的可执行文件。
+
+当我们使用gnome-open时只能接一个参数,然而我们可以在bmsf_open后接多个参数，而且只要参数满足条件都可执行。
+
+在开始的三个命令中，我们就可以用bmsf_open一个命令来完成:
+
+在Terminal中bmsf_open所在目录下输入命令:   ./bmsf_open   /home   ./   http:www.g.cn
+
+这个就是对gnome-open命令的一个扩展，封装后的程序可以接收多个参数而已，功能也就是gnome-open所能实现的功能。
+
+如果觉得bmsf_open这个程序好用，你也可以把它添加到/usr/bin/这个目录下，可以在整个系统下都可以方便的使用这个命令。
+
+如果觉得这样的小程序有点意思，还可以尝试去封装其它的命令或者写一些其它的有意思的程序。

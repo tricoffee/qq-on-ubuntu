@@ -1,0 +1,75 @@
+高效使用Linux系统的在线文档系统
+
+时间:2008-02-28 19:53 来源:网管之家bitsCN.com 字体:[大中小]
+
+　　Linux相比于Windows一个比较好的地方在于Linux提供了非常丰富的在线文档，更重要的是这些都是free的（下面的说明是针对debian发行版，
+其他的发行版情况可能会有所不同）。
+
+　　Linux的在线文档大概可以分为以下几类：
+
+　　（1）Man格式的手册，默认存放于/usr/share/man目录，用man命令查看。
+
+　　（2）Info 格式的手册，默认存放于/usr/share/info 目录，用info 命令查看。
+
+　　（3）/usr/share/doc/目录下，针对每个软件有一个目录，存放FAQ，README，Changelog之类的文档。
+
+    （4）WOMAN 
+        Emacs集成的看man page的工具，比MAN（unix自带的工具）要方便。WOMAN（对应于MAN）这个名字体现了大牛们的幽默，全称是With Out Man。 
+
+　　对于man格式的文档：
+
+　　man -k 查看手册名或手册简介中含keyword的手册，和apropos的作用一样。
+
+　　man -f 查看手册name的简介，和whatis的作用一样。
+
+　　man -w 查看name手册对应的手册文件的路径。
+
+　　man 2 open 查看系统调用open的手册，数字表示第几个手册。
+
+　　man手册是按照下面的规则进行分类的：
+
+　　1 Executable programs or shell commands
+    2 System calls (functions provided by the kernel)
+    3 Library calls (functions within program libraries)
+    4 Special files (usually found in /dev)
+    5 File formats and conventions eg /etc/passwd
+    6 Games
+    7 Miscellaneous (including macro packages and conven-
+      tions), e.g. man(7), groff(7)
+    8 System administration commands (usually only for root)
+    9 Kernel routines [Non standard]
+
+　　当同一个手册名字有对应多个分类中的手册时，用数字来指定要查看哪个分类中的手册，每一类型的手册具体的介绍可以用 man -a intro来查
+看。
+
+　　用man查看一个具体的手册时，可以用/来往前搜索，?往后搜索，gg跳至手册最顶部，G跳至手册尾部，Ctrl-L刷新屏幕，这个和vim的默认按键
+绑定一致。
+
+　　man可以和一些环境变量互动，MANPATH设定搜索手册的路径，MANWIDTH设定手册显示时的宽度等等，具体可以查看man。
+
+　　关于info格式的文档：
+
+　　熟悉Emacs的网友一定很习惯使用info，一些快捷键和Emacs保持一致。
+
+　　info 进入一个和Emacs很类似的界面，一般而言，info是按照节来组织的，一路空格能遍历整个手册。?能查看info的命令帮助，常用的总结如
+下：
+
+　　n 下一个节点；
+
+　　p 上一个节点；
+
+　　u 上一层节点；
+
+　　l 返回上一个历史位置，直到回到最起点；
+
+　　d 到info总目录；
+
+　　m 选择菜单项；
+
+　　q 退出。
+
+　　info手册中搜索某个key和emacs中一样，ctrl-s正向搜索，ctrl-r反向搜索。
+
+　　其它文档：
+
+　　如果是.gz结尾的，则用zmore查看，如果是文本，用more查看。
