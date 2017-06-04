@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/sdcv
+~MSle0~/Pri
 
 # Last Substitute Search Pattern:
 ~MSle0&^
@@ -17,9 +17,9 @@
 $
 
 # 命令列 歷史記錄 (新到舊):
-:wq
-:w
 :q
+:w
+:wq
 :x
 :buffers
 :tabnext 
@@ -519,6 +519,7 @@ $
 :execute echo
 
 # 搜尋字串 歷史記錄 (新到舊):
+?/Pri
 ?/ecrypt
 ? @$
 ?/sdcv
@@ -1028,18 +1029,20 @@ $
 	.
 
 # 檔案標記:
-'0  1  0  ~/ShellScripts/basic_scripts/backup.sh
-'1  22  0  ~/.gitign1.txt
-'2  7  4  ~/git-rm-list
-'3  5  9  ~/git-rm-list
-'4  8  520  ~/git-rm-list
-'5  8  511  ~/git-rm-list
-'6  1  10  ~/git-rm-list
-'7  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
-'8  1  0  ~/.gitignore
-'9  49  0  ~/.gitign.txt
+'0  27  0  ~/.gitignore
+'1  1  0  ~/ShellScripts/basic_scripts/backup.sh
+'2  22  0  ~/.gitign1.txt
+'3  7  4  ~/git-rm-list
+'4  5  9  ~/git-rm-list
+'5  8  520  ~/git-rm-list
+'6  8  511  ~/git-rm-list
+'7  1  10  ~/git-rm-list
+'8  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
+'9  1  0  ~/.gitignore
 
 # Jumplist (由新到舊):
+-'  27  0  ~/.gitignore
+-'  10  0  ~/.gitignore
 -'  1  0  ~/ShellScripts/basic_scripts/backup.sh
 -'  52  10  ~/ShellScripts/basic_scripts/backup.sh
 -'  22  0  ~/.gitign1.txt
@@ -1130,16 +1133,16 @@ $
 -'  1  0  ~/Note/text_editor/emacs/emacs+w3m-1.txt
 -'  1416  0  ~/Note/text_editor/emacs/emacs-usage.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs-usage.txt
--'  1  0  ~/Note/text_editor/emacs/emacs.txt
--'  158  0  ~/Note/text_editor/emacs/emacs.txt
--'  6  0  ~/Note/text_editor/emacs/emacs.txt
--'  17  0  ~/Note/text_editor/emacs/emacs-skills.txt
--'  1  0  ~/Note/text_editor/emacs/emacs-skills.txt
--'  1  0  ~/Note/text_editor/emacs/emacs-profile.txt~
--'  10  9  ~/.gitignore
--'  18  8  ~/.gitignore
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/.gitignore
+	"	27	0
+	^	27	1
+	.	27	0
+	+	27	8
+	+	10	9
+	+	27	0
 
 > ~/ShellScripts/basic_scripts/backup.sh
 	"	1	0
@@ -1153,12 +1156,6 @@ $
 	+	5	33
 	+	4	0
 	+	10	52
-
-> ~/.gitignore
-	"	10	9
-	.	10	9
-	+	27	8
-	+	10	9
 
 > ~/.gitign1.txt
 	"	22	0
