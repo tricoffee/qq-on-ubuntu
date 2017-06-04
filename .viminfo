@@ -1005,55 +1005,57 @@ $
 # 暫存器:
 "0	CHAR	0
 	 
-"1	LINE	0
-	../
+""1	LINE	0
+	
 "2	LINE	0
-	./
+	
 "3	LINE	0
-	..
+	
 "4	LINE	0
-	.
+	
 "5	LINE	0
 	
 "6	LINE	0
 	
 "7	LINE	0
-	*** this is .gitignore regulate the file ignore rule ***
+	
 "8	LINE	0
 	
 "9	LINE	0
 	
-""-	CHAR	0
+"-	CHAR	0
 	current_shell_env/
 
 # 檔案標記:
-'0  1  0  ~/.gitign1.txt
-'1  1  0  ~/.gitign.txt
-'2  75  0  ~/.gitign.txt
-'3  77  0  ~/.gitign.txt
-'4  73  0  ~/home-dir.txt
-'5  45  0  ~/git-dir.txt
-'6  1  0  ~/home-dir.txt
-'7  1  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
-'8  48  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
-'9  1  0  ~/Note/IC/ic.org
+'0  1  0  ~/.gitignore
+'1  49  0  ~/.gitign.txt
+'2  1  0  ~/.gitign1.txt
+'3  1  0  ~/.gitign.txt
+'4  45  0  ~/.gitign.txt
+'5  47  0  ~/.gitign.txt
+'6  73  0  ~/home-dir.txt
+'7  45  0  ~/git-dir.txt
+'8  1  0  ~/home-dir.txt
+'9  1  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
 
 # Jumplist (由新到舊):
+-'  1  0  ~/.gitignore
+-'  49  0  ~/.gitign.txt
+-'  41  0  ~/.gitign.txt
+-'  1  0  ~/.gitign.txt
 -'  1  0  ~/.gitign1.txt
 -'  18  0  ~/.gitign1.txt
 -'  13  0  ~/.gitign1.txt
 -'  12  0  ~/.gitign1.txt
 -'  11  0  ~/.gitign1.txt
 -'  10  0  ~/.gitign1.txt
--'  1  0  ~/.gitign.txt
--'  75  0  ~/.gitign.txt
--'  25  0  ~/.gitign.txt
--'  23  0  ~/.gitign.txt
--'  65  0  ~/.gitign.txt
--'  62  0  ~/.gitign.txt
--'  66  0  ~/.gitign.txt
+-'  45  0  ~/.gitign.txt
+-'  16  0  ~/.gitign.txt
+-'  15  0  ~/.gitign.txt
+-'  39  0  ~/.gitign.txt
+-'  40  0  ~/.gitign.txt
 -'  4  0  ~/.gitign.txt
--'  77  0  ~/.gitign.txt
+-'  47  0  ~/.gitign.txt
 -'  73  0  ~/home-dir.txt
 -'  1  0  ~/home-dir.txt
 -'  45  0  ~/git-dir.txt
@@ -1134,9 +1136,69 @@ $
 -'  165  0  ~/Note/text_editor/emacs/emacs-full-screen-最大化.txt
 -'  1  0  ~/Note/text_editor/emacs/emacs file.org~
 -'  2  0  ~/Note/text_editor/emacs/dot-emacs.org
--'  607  0  ~/Note/text_editor/emacs/emacs+w3m-2_utf-8.org
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/.gitignore
+	"	1	0
+
+> ~/.gitign.txt
+	"	49	0
+	^	41	0
+	.	41	0
+	+	1	0
+	+	41	0
+	+	41	0
+	+	41	0
+	+	40	0
+	+	41	0
+	+	40	0
+	+	39	0
+	+	39	0
+	+	39	0
+	+	39	0
+	+	39	0
+	+	39	0
+	+	38	0
+	+	33	0
+	+	31	0
+	+	30	0
+	+	28	0
+	+	28	0
+	+	27	0
+	+	26	0
+	+	25	0
+	+	20	0
+	+	20	0
+	+	16	0
+	+	5	0
+	+	6	0
+	+	9	0
+	+	9	0
+	+	9	0
+	+	12	0
+	+	15	0
+	+	41	0
+	+	16	0
+	+	15	0
+	+	5	0
+	+	6	0
+	+	9	0
+	+	12	0
+	+	15	0
+	+	16	0
+	+	20	0
+	+	25	0
+	+	26	0
+	+	27	0
+	+	28	0
+	+	30	0
+	+	31	0
+	+	33	0
+	+	38	0
+	+	39	0
+	+	40	0
+	+	41	0
 
 > ~/.gitign1.txt
 	"	1	0
@@ -1153,46 +1215,6 @@ $
 	+	10	0
 	+	9	0
 	+	5	0
-
-> ~/.gitign.txt
-	"	1	0
-	^	71	0
-	.	21	0
-	+	1	0
-	+	71	0
-	+	69	0
-	+	68	0
-	+	66	0
-	+	68	0
-	+	66	0
-	+	64	0
-	+	63	0
-	+	62	0
-	+	61	0
-	+	60	0
-	+	59	0
-	+	57	0
-	+	51	0
-	+	48	0
-	+	46	0
-	+	43	0
-	+	42	0
-	+	40	0
-	+	38	0
-	+	36	0
-	+	30	0
-	+	30	0
-	+	25	0
-	+	5	0
-	+	7	0
-	+	11	0
-	+	12	0
-	+	13	0
-	+	17	0
-	+	22	0
-	+	70	0
-	+	24	0
-	+	21	0
 
 > ~/.gconf/desktop/%gconf.xml
 	"	1	0
@@ -1775,6 +1797,3 @@ $
 
 > ~/Note/linux/ubuntu/apt/apt-usage.txt
 	"	298	0
-
-> /usr/share/vim/vim74/doc/options.txt
-	"	6986	18
