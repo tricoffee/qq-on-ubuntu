@@ -18,8 +18,8 @@ $
 
 # 命令列 歷史記錄 (新到舊):
 :x
-:q
 :w
+:q
 :wq
 :buffers
 :tabnext 
@@ -1026,25 +1026,39 @@ $
 "9	LINE	0
 	.viminfo
 ""-	CHAR	0
-	/
+	e
 
 # 檔案標記:
-'0  10  8  ~/.gitignore
-'1  1  0  ~/.gitign
-'2  27  0  ~/.gitignore
-'3  1  0  ~/ShellScripts/basic_scripts/backup.sh
-'4  22  0  ~/.gitign1.txt
-'5  7  4  ~/git-rm-list
-'6  5  9  ~/git-rm-list
-'7  8  520  ~/git-rm-list
-'8  8  511  ~/git-rm-list
-'9  1  10  ~/git-rm-list
+'0  10  51  ~/ShellScripts/basic_scripts/backup.sh
+'1  70  6  ~/ShellScripts/basic_scripts/backup.sh
+'2  1  0  ~/Note/Backup/tools-directory-content-list.txt
+'3  445  0  ~/Note/Backup/note-directory-content-list.txt
+'4  12  0  ~/Note/Backup/github-directory-content-list.txt
+'5  14  0  ~/Note/Backup/download-directory-content-list.txt
+'6  1  0  ~/Note/Backup/book-directory-content-list.txt
+'7  1  0  ~/Note/Backup/books-directory-content-list.txt
+'8  36  0  ~/diff-the-Home-dir-and-gitignore-file.txt
+'9  43  0  ~/.gitignore
 
 # Jumplist (由新到舊):
--'  10  8  ~/.gitignore
+-'  10  51  ~/ShellScripts/basic_scripts/backup.sh
+-'  70  0  ~/ShellScripts/basic_scripts/backup.sh
+-'  1  0  ~/ShellScripts/basic_scripts/backup.sh
+-'  1  0  ~/Note/Backup/tools-directory-content-list.txt
+-'  445  0  ~/Note/Backup/note-directory-content-list.txt
+-'  1  0  ~/Note/Backup/note-directory-content-list.txt
+-'  12  0  ~/Note/Backup/github-directory-content-list.txt
+-'  1  0  ~/Note/Backup/github-directory-content-list.txt
+-'  14  0  ~/Note/Backup/download-directory-content-list.txt
+-'  1  0  ~/Note/Backup/download-directory-content-list.txt
+-'  1  0  ~/Note/Backup/book-directory-content-list.txt
+-'  1  0  ~/Note/Backup/books-directory-content-list.txt
+-'  36  0  ~/diff-the-Home-dir-and-gitignore-file.txt
+-'  1  0  ~/diff-the-Home-dir-and-gitignore-file.txt
+-'  43  0  ~/.gitignore
+-'  10  0  ~/.gitignore
 -'  27  0  ~/.gitignore
 -'  1  0  ~/.gitign
--'  1  0  ~/ShellScripts/basic_scripts/backup.sh
 -'  52  10  ~/ShellScripts/basic_scripts/backup.sh
 -'  22  0  ~/.gitign1.txt
 -'  12  1  ~/.gitign1.txt
@@ -1121,26 +1135,47 @@ $
 -'  1  129  ~/Note/text_editor/emacs/mplayer-useage.txt
 -'  1  0  ~/Note/text_editor/emacs/lisp.txt
 -'  190  0  ~/Note/text_editor/emacs/Gnu.org
--'  1  0  ~/Note/text_editor/emacs/Gnu.org
--'  156  0  ~/Note/text_editor/emacs/gdb_for_emacs.org
--'  1  0  ~/Note/text_editor/emacs/gdb_for_emacs.org
--'  65  4  ~/Note/text_editor/emacs/frame_size.org
--'  1  0  ~/Note/text_editor/emacs/frame_size.org
--'  392  0  ~/Note/text_editor/emacs/ERC.org
--'  1  0  ~/Note/text_editor/emacs/ERC.org
--'  1014  0  ~/Note/text_editor/emacs/emacs+w3m-2.txt
--'  1  0  ~/Note/text_editor/emacs/emacs+w3m-2.txt
--'  873  0  ~/Note/text_editor/emacs/emacs+w3m-1.txt
--'  1  0  ~/Note/text_editor/emacs/emacs+w3m-1.txt
--'  1416  0  ~/Note/text_editor/emacs/emacs-usage.txt
--'  1  0  ~/Note/text_editor/emacs/emacs-usage.txt
--'  1  0  ~/ShellScripts/basic_scripts/backup.sh
--'  52  10  ~/ShellScripts/basic_scripts/backup.sh
 
 # 檔案內 Mark 記錄 (由新到舊):
 
+> ~/ShellScripts/basic_scripts/backup.sh
+	"	10	51
+	^	10	52
+	.	10	51
+	+	3	26
+	+	4	23
+	+	4	23
+	+	5	22
+	+	6	33
+	+	5	33
+	+	4	0
+	+	10	52
+	+	6	4
+	+	10	51
+
+> ~/Note/Backup/tools-directory-content-list.txt
+	"	1	0
+
+> ~/Note/Backup/note-directory-content-list.txt
+	"	445	0
+
+> ~/Note/Backup/github-directory-content-list.txt
+	"	12	0
+
+> ~/Note/Backup/download-directory-content-list.txt
+	"	14	0
+
+> ~/Note/Backup/book-directory-content-list.txt
+	"	1	0
+
+> ~/Note/Backup/books-directory-content-list.txt
+	"	1	0
+
+> ~/diff-the-Home-dir-and-gitignore-file.txt
+	"	36	0
+
 > ~/.gitignore
-	"	10	8
+	"	43	0
 	^	27	1
 	.	10	8
 	+	27	8
@@ -1150,19 +1185,6 @@ $
 
 > ~/.gitign
 	"	1	0
-
-> ~/ShellScripts/basic_scripts/backup.sh
-	"	1	0
-	^	5	34
-	.	10	52
-	+	3	26
-	+	4	23
-	+	4	23
-	+	5	22
-	+	6	33
-	+	5	33
-	+	4	0
-	+	10	52
 
 > ~/.gitign1.txt
 	"	22	0
@@ -1675,252 +1697,3 @@ $
 
 > /etc/gnome/menus.blacklist
 	"	1	0
-
-> ~/Note/linux/ubuntu/gnome/gnome-utility-tools.txt
-	"	19	0
-
-> ~/gnome.txt
-	"	30	0
-	^	30	0
-	.	30	0
-	+	19	0
-	+	21	0
-	+	14	0
-	+	24	0
-	+	20	0
-	+	14	0
-	+	21	14
-	+	22	9
-	+	23	18
-	+	24	5
-	+	19	13
-	+	19	12
-	+	19	10
-	+	19	10
-	+	19	10
-	+	19	10
-	+	19	10
-	+	19	10
-	+	19	11
-	+	18	17
-	+	16	18
-	+	16	13
-	+	14	11
-	+	14	17
-	+	14	13
-	+	14	19
-	+	14	22
-	+	14	15
-	+	14	16
-	+	14	24
-	+	14	25
-	+	14	20
-	+	13	28
-	+	13	7
-	+	12	19
-	+	12	20
-	+	10	15
-	+	10	11
-	+	5	7
-	+	3	18
-	+	13	0
-	+	13	0
-	+	14	0
-	+	19	0
-	+	19	0
-	+	19	0
-	+	12	0
-	+	14	0
-	+	15	0
-	+	14	0
-	+	10	0
-	+	19	0
-	+	29	12
-	+	18	13
-	+	29	10
-	+	19	11
-	+	31	0
-	+	29	0
-	+	29	8
-	+	31	0
-	+	28	0
-	+	29	0
-	+	31	0
-	+	31	0
-	+	3	0
-	+	31	0
-	+	4	0
-	+	5	0
-	+	3	0
-	+	31	0
-	+	31	0
-	+	10	0
-	+	31	0
-	+	10	0
-	+	31	0
-	+	7	0
-	+	29	0
-	+	26	0
-	+	27	16
-	+	26	0
-	+	10	67
-	+	27	11
-	+	13	11
-	+	18	0
-	+	17	0
-	+	23	12
-	+	6	2
-	+	10	67
-	+	8	0
-	+	9	14
-	+	2	0
-	+	1	0
-	+	3	0
-	+	7	0
-	+	10	0
-	+	14	0
-	+	18	0
-	+	24	0
-	+	28	0
-	+	30	0
-
-> ~/Note/linux/ubuntu/shell/shell_command/intercept-screenshot-of-the-webpage.txt
-	"	43	0
-	^	20	0
-	.	30	0
-	+	40	0
-	+	33	0
-	+	28	0
-	+	19	0
-	+	9	0
-	+	13	0
-	+	25	0
-	+	21	0
-	+	20	0
-	+	30	0
-
-> ~/ShellScripts/bashrc-add-ln-func
-	"	9	33
-	^	6	10
-	.	6	9
-	+	9	41
-	+	6	9
-
-> ~/.vimperatorrc
-	"	8	8
-	^	8	8
-	.	8	8
-	+	5	0
-	+	7	12
-	+	8	8
-
-> ~/Github/vim/detect-statusline.txt
-	"	84	4
-
-> ~/.vimrc
-	"	281	5
-	^	82	1
-	.	82	0
-	+	481	0
-	+	481	33
-	+	481	21
-	+	477	80
-	+	523	4
-	+	523	4
-	+	523	0
-	+	523	4
-	+	523	4
-	+	523	4
-	+	523	4
-	+	523	4
-	+	523	4
-	+	523	4
-	+	523	4
-	+	523	4
-	+	480	15
-	+	478	49
-	+	480	46
-	+	481	0
-	+	523	8
-	+	478	0
-	+	523	4
-	+	478	0
-	+	479	0
-	+	523	3
-	+	523	4
-	+	523	52
-	+	523	60
-	+	523	0
-	+	482	8
-	+	483	0
-	+	523	0
-	+	484	0
-	+	484	7
-	+	482	56
-	+	483	29
-	+	484	0
-	+	492	12
-	+	486	0
-	+	487	10
-	+	486	56
-	+	480	10
-	+	482	14
-	+	486	8
-	+	487	8
-	+	486	13
-	+	487	17
-	+	489	21
-	+	477	62
-	+	489	63
-	+	491	53
-	+	489	55
-	+	490	54
-	+	483	0
-	+	523	0
-	+	523	0
-	+	523	0
-	+	523	0
-	+	528	0
-	+	523	21
-	+	528	41
-	+	523	0
-	+	373	0
-	+	532	7
-	+	533	0
-	+	523	0
-	+	524	0
-	+	528	61
-	+	523	0
-	+	496	0
-	+	494	0
-	+	494	0
-	+	521	0
-	+	523	0
-	+	496	0
-	+	505	0
-	+	527	61
-	+	528	41
-	+	528	0
-	+	525	0
-	+	527	0
-	+	525	63
-	+	528	4
-	+	517	0
-	+	478	38
-	+	529	19
-	+	530	13
-	+	444	0
-	+	494	0
-	+	521	0
-	+	477	0
-	+	530	20
-	+	526	12
-	+	527	4
-	+	526	29
-	+	531	0
-	+	530	17
-	+	531	4
-	+	82	0
-	a	368	4
-	m	555	28
-	t	544	4

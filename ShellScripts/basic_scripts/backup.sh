@@ -3,11 +3,11 @@
 	ls ~/Downloads/ > ~/Note/Backup/download-directory-content-list.txt
 	ls ~/Github/ > ~/Note/Backup/github-directory-content-list.txt
 	ls ~/Books/ > ~/Note/Backup/books-directory-content-list.txt
-	ls ~/Tools/ > ~/Note/Backup/tools-directory-content-list.txt
+	tree ~/Tools/ > ~/Note/Backup/tools-directory-content-list.txt
 
 # use system command to checkout what different between the remote repository and local repository
 	LF='\n'
-	DIFF_HOMEDIR_AND_GITIGNORE=~/diff-the-Home-dir-and-gitignore-file.txt
+	DIFF_HOMEDIR_AND_GITIGNORE=~/diff-the-Home-and-repo.txt
 
 	echo "*** this is Home directory's contant ***" > ${DIFF_HOMEDIR_AND_GITIGNORE}
 	echo -e "${LF}$(ls -a ~/)${LF}${LF}" >> ${DIFF_HOMEDIR_AND_GITIGNORE}
