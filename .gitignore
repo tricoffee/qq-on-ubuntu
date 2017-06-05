@@ -39,6 +39,13 @@ Tools/
 .wget-hsts
 .xinputrc
 
+.Xauthority 
+.chewing/ 
+.cinnamon/ 
+.compiz/ 
+.dbus/ 
+.scim/ 
+
 下載/
 公共/
 圖片/

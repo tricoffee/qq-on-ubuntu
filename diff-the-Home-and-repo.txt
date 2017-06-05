@@ -21,6 +21,7 @@ Downloads
 .emacs.d_bak
 .gconf
 .git
+.gitconfig
 Github
 .gitign1.txt
 .gitignore
@@ -102,6 +103,13 @@ Github/
 Tools/
 .wget-hsts
 .xinputrc
+
+.Xauthority 
+.chewing/ 
+.cinnamon/ 
+.compiz/ 
+.dbus/ 
+.scim/ 
 
 下載/
 公共/

@@ -1007,40 +1007,43 @@ $
 # 暫存器:
 "0	LINE	0
 		ls ~/Books/ > ~/Note/Backup/book-directory-content-list.txt
-"1	LINE	0
-		tree ~/Note/ > ~/Note/Backup/note-directory-content-list.txt
+""1	LINE	0
+	.Xauthority .chewing/ .cinnamon/ .compiz/ .dbus/ .scim/ 
 "2	LINE	0
-	
+		tree ~/Note/ > ~/Note/Backup/note-directory-content-list.txt
 "3	LINE	0
-	workspace/
-"4	LINE	0
-	Wallpapers/
-"5	LINE	0
-	ShellScripts/
-"6	LINE	0
-	Pictures/
-"7	LINE	0
-	Note/
-"8	LINE	0
 	
+"4	LINE	0
+	workspace/
+"5	LINE	0
+	Wallpapers/
+"6	LINE	0
+	ShellScripts/
+"7	LINE	0
+	Pictures/
+"8	LINE	0
+	Note/
 "9	LINE	0
-	.viminfo
-""-	CHAR	0
+	
+"-	CHAR	0
 	e
 
 # 檔案標記:
-'0  10  51  ~/ShellScripts/basic_scripts/backup.sh
-'1  70  6  ~/ShellScripts/basic_scripts/backup.sh
-'2  1  0  ~/Note/Backup/tools-directory-content-list.txt
-'3  445  0  ~/Note/Backup/note-directory-content-list.txt
-'4  12  0  ~/Note/Backup/github-directory-content-list.txt
-'5  14  0  ~/Note/Backup/download-directory-content-list.txt
-'6  1  0  ~/Note/Backup/book-directory-content-list.txt
-'7  1  0  ~/Note/Backup/books-directory-content-list.txt
-'8  36  0  ~/diff-the-Home-dir-and-gitignore-file.txt
-'9  43  0  ~/.gitignore
+'0  41  0  ~/.gitignore
+'1  56  0  ~/.gitignore
+'2  10  51  ~/ShellScripts/basic_scripts/backup.sh
+'3  70  6  ~/ShellScripts/basic_scripts/backup.sh
+'4  1  0  ~/Note/Backup/tools-directory-content-list.txt
+'5  445  0  ~/Note/Backup/note-directory-content-list.txt
+'6  12  0  ~/Note/Backup/github-directory-content-list.txt
+'7  14  0  ~/Note/Backup/download-directory-content-list.txt
+'8  1  0  ~/Note/Backup/book-directory-content-list.txt
+'9  1  0  ~/Note/Backup/books-directory-content-list.txt
 
 # Jumplist (由新到舊):
+-'  41  0  ~/.gitignore
+-'  56  0  ~/.gitignore
+-'  50  0  ~/.gitignore
 -'  10  51  ~/ShellScripts/basic_scripts/backup.sh
 -'  70  0  ~/ShellScripts/basic_scripts/backup.sh
 -'  1  0  ~/ShellScripts/basic_scripts/backup.sh
@@ -1055,7 +1058,6 @@ $
 -'  1  0  ~/Note/Backup/books-directory-content-list.txt
 -'  36  0  ~/diff-the-Home-dir-and-gitignore-file.txt
 -'  1  0  ~/diff-the-Home-dir-and-gitignore-file.txt
--'  43  0  ~/.gitignore
 -'  10  0  ~/.gitignore
 -'  27  0  ~/.gitignore
 -'  1  0  ~/.gitign
@@ -1135,8 +1137,26 @@ $
 -'  1  129  ~/Note/text_editor/emacs/mplayer-useage.txt
 -'  1  0  ~/Note/text_editor/emacs/lisp.txt
 -'  190  0  ~/Note/text_editor/emacs/Gnu.org
+-'  10  51  ~/ShellScripts/basic_scripts/backup.sh
+-'  70  0  ~/ShellScripts/basic_scripts/backup.sh
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/.gitignore
+	"	41	0
+	^	41	0
+	.	41	0
+	+	27	8
+	+	10	9
+	+	27	8
+	+	10	8
+	+	57	0
+	+	42	12
+	+	43	10
+	+	44	11
+	+	45	9
+	+	46	7
+	+	41	0
 
 > ~/ShellScripts/basic_scripts/backup.sh
 	"	10	51
@@ -1173,15 +1193,6 @@ $
 
 > ~/diff-the-Home-dir-and-gitignore-file.txt
 	"	36	0
-
-> ~/.gitignore
-	"	43	0
-	^	27	1
-	.	10	8
-	+	27	8
-	+	10	9
-	+	27	8
-	+	10	8
 
 > ~/.gitign
 	"	1	0
