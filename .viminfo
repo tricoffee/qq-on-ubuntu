@@ -17,9 +17,9 @@
 $
 
 # 命令列 歷史記錄 (新到舊):
+:q
 :x
 :w
-:q
 :wq
 :buffers
 :tabnext 
@@ -1029,18 +1029,20 @@ $
 	e
 
 # 檔案標記:
-'0  41  0  ~/.gitignore
-'1  56  0  ~/.gitignore
-'2  10  51  ~/ShellScripts/basic_scripts/backup.sh
-'3  70  6  ~/ShellScripts/basic_scripts/backup.sh
-'4  1  0  ~/Note/Backup/tools-directory-content-list.txt
-'5  445  0  ~/Note/Backup/note-directory-content-list.txt
-'6  12  0  ~/Note/Backup/github-directory-content-list.txt
-'7  14  0  ~/Note/Backup/download-directory-content-list.txt
-'8  1  0  ~/Note/Backup/book-directory-content-list.txt
-'9  1  0  ~/Note/Backup/books-directory-content-list.txt
+'0  3  0  ~/.gitconfig
+'1  41  0  ~/.gitignore
+'2  56  0  ~/.gitignore
+'3  10  51  ~/ShellScripts/basic_scripts/backup.sh
+'4  70  6  ~/ShellScripts/basic_scripts/backup.sh
+'5  1  0  ~/Note/Backup/tools-directory-content-list.txt
+'6  445  0  ~/Note/Backup/note-directory-content-list.txt
+'7  12  0  ~/Note/Backup/github-directory-content-list.txt
+'8  14  0  ~/Note/Backup/download-directory-content-list.txt
+'9  1  0  ~/Note/Backup/book-directory-content-list.txt
 
 # Jumplist (由新到舊):
+-'  3  0  ~/.gitconfig
+-'  1  0  ~/.gitconfig
 -'  41  0  ~/.gitignore
 -'  56  0  ~/.gitignore
 -'  50  0  ~/.gitignore
@@ -1138,9 +1140,11 @@ $
 -'  1  0  ~/Note/text_editor/emacs/lisp.txt
 -'  190  0  ~/Note/text_editor/emacs/Gnu.org
 -'  10  51  ~/ShellScripts/basic_scripts/backup.sh
--'  70  0  ~/ShellScripts/basic_scripts/backup.sh
 
 # 檔案內 Mark 記錄 (由新到舊):
+
+> ~/.gitconfig
+	"	3	0
 
 > ~/.gitignore
 	"	41	0
@@ -1705,6 +1709,3 @@ $
 	^	195	39
 	.	195	38
 	+	195	38
-
-> /etc/gnome/menus.blacklist
-	"	1	0
