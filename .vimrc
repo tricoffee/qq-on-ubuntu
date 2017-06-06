@@ -36,6 +36,7 @@
 "    -> Spell checking
 "    -> Misc
 "    -> Helper functions
+"    -> My personal custem functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -430,47 +431,15 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 
-"
-" my personal custem functions
-"
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => my personal custem functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ShowCurFileFullPath()
     let l:fileFullName = expand("%")
     let l:curPath = getcwd()
 
     echo "curret full path and file name is :"
     echo l:curPath . "/" . l:fileFullName
-
-"                                        *clipboard*
-"            There is a special register for storing this selection, it is the "*
-"            register.  Nothing is put in here unless the information about what text is
-"            selected is about to change (e.g. with a left mouse click somewhere), or when
-"            another application wants to paste the selected text.  Then the text is put
-"            in the "* register.  For example, to cut a line and make it the current
-"            selection/put it on the clipboard: >
-"
-"                "*dd
-"
-"            Similarly, when you want to paste a selection from another application, e.g.,
-"            by clicking the middle mouse button, the selection is put in the "* register
-"            first, and then 'put' like any other register.  For example, to put the
-"            selection (contents of the clipboard): >
-"
-"                "*p
-"
-"            When using this register under X11, also see |x11-selection|.  This also
-"            explains the related "+ register.
-"
-"            Note that when pasting text from one Vim into another separate Vim, the type
-"            of selection (character, line, or block) will also be copied.  For other
-"            applications the type is always character.  However, if the text gets
-"            transferred via the |x11-cut-buffer|, the selection type is ALWAYS lost.
-"
-"            When the "unnamed" string is included in the 'clipboard' option, the unnamed
-"            register is the same as the "* register.  Thus you can yank to and paste the
-"            selection without prepending "* to commands.
-
-
 endfunction 
 
 function! AutoComment()
@@ -492,40 +461,14 @@ function! AutoComment()
         endif
     endif
 
-
-"                                                    *line()*
-"line({expr})	The result is a Number, which is the line number of the file
-"		position given with {expr}.  The accepted positions are:
-"		    .	    the cursor position
-"		    $	    the last line in the current buffer
-"		    'x	    position of mark x (if the mark is not set, 0 is
-"			    returned)
-"		    w0	    first line visible in current window
-"		    w$	    last line visible in current window
-"		    v	    In Visual mode: the start of the Visual area (the
-"			    cursor is the end).  When not in Visual mode
-"			    returns the cursor position.  Differs from |'<| in
-"			    that it's updated right away.
-"		Note that a mark in another file can be used.  The line number
-"		then applies to another buffer.
-"		To get the column number use |col()|.  To get both use
-"		|getpos()|.
-"		Examples: >
-"			line(".")		line number of the cursor
-"			line("'t")		line number of mark t
-"			line("'" . marker)	line number of mark marker
-"<							*last-position-jump*
-"		This autocommand jumps to the last known position in a file
-"		just after opening it, if the '" mark is set: >
-"	:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-
     ": 2,50 s/^/'\/\/'/g  在2~50行首添加//号注释
     "   如何获得 startline，endline ？
-    let l:startline = line("v") " first linum of select lines in visual mode
-    let l:endline = line(".") 
+    let l:startline = line('v') " first linum of select lines in visual mode
+    let l:endline = winline()
     "let l:endline = getpos(".") " return a list : [0, linum, 0, 0]
+    "
     "execute(l:startline . "," . l:endline[1] . "s/^/" . l:commentStyle . "/gcp")
+    "
     echo l:startline
     echo l:endline
     "echo l:endline[1]

@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/Pri
+~Msle0~/\<winline()\>
 
 # Last Substitute Search Pattern:
 ~MSle0&^
@@ -20,6 +20,27 @@ $
 :q
 :x
 :w
+:help comments
+:help eval
+:call ShowCurFileFullPath()
+:call AutoComment()
+:set nu
+:call
+:set n
+:tabedit /home/qq/Github/vim/src/screen.c
+:tabedit /home/qq/Github/vim/src/GvimExt/
+:echo type(v:t_list)
+:type(v:t_list)
+:echo v:t_list
+:tabedit /home/qq/Github/vim/src/testdir/test_statusline.vim
+:redraw_statuslines()
+:call redraw_statuslines()
+:help redraw_custom_statusline()
+:help get_statusline()
+:help ScreenLines()
+:ScreenLines()
+:set linum
+:tabedit /home/qq/Github/vim/src/testdir/test_statusline.vim +12
 :wq
 :buffers
 :tabnext 
@@ -50,7 +71,6 @@ $
 :menu
 :help toolbar
 :help wildmenu
-:call AutoComment()
 :444,471 s/^/"/g
 :call AutoComment
 :call AU
@@ -76,7 +96,6 @@ $
 :echo b:linum[1]
 :let b:linum = getpos(".")
 :echo getpos()
-:help eval
 :echo getline(".")
 :call line("v")
 :line("v")
@@ -109,7 +128,6 @@ $
 :call execute("500" . "501" . "s/^/" . "#" . "/gc")
 :call execute("500,501" . "s/^/" . "#" . "/gc")
 :call execute("500,501" "s/^/" "#" "/gc")
-:set nu
 :e
 :tabedit /home/qq/Note/linux/ubuntu/shell/shell_script_skills/./shell-script-utility-expr.txt
 :echo get(b:langcomstydic, "b:curlang")
@@ -140,7 +158,6 @@ $
 :e .mozilla/firefox/7atv39a0.default/extensions/\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi
 :.26:58 UEANER
 :! echo $ LINUX 终端查看图片
-:set n
 :help function
 :if 1 != empty(expand("%:e")) | pwd | endif
 :if 1 == empty(expand("%:e")) | echo expand("%") | endif
@@ -228,7 +245,6 @@ $
 :! shell
 :e ShellScripts/bashrc-add-find-func
 :help clipboard
-:call ShowCurFileFullPath()
 :echo getcwd()
 :echo expand("%:h")
 :help getcwd()
@@ -501,24 +517,25 @@ $
 :echo bufnr("buffer-variable")
 :bufdo bunload
 :win
-:help builtin
-:help builtin function
-:help help
-:echo g:actual_curbuf
-:set g:actual_curbuf
-:set g+
-:help curbuf
-:echo b:curBufNum
-:let bcurbufnum = bufnr("buffer-variable")
-:let b:curBufNum = bufnr("buffer-variable") 
-:let b:curBufNum = bufnr("buffer-variable") execute "echo " b:curBufNum 
-:let b:curBufNum = bufnr("buffer-variable") && execute "echo " b:curBufNum 
-:execute "set iskeyword"
-:execute "echo iskeyword"
-:execute echo iskeyword
-:execute echo
 
 # 搜尋字串 歷史記錄 (新到舊):
+?//
+? \<winline()\>
+?/cursor
+? \<cursor,\>
+?/line()
+?/getpos()
+? \<getpos(\>
+? \<getcurpos\>
+? \<getcurpos()\>
+? \<cursor\>
+? \<getcmdpos()\>
+?/Builtin Functions
+? \<screenrow()\>
+? \<cursor(\>
+? \<wp\>
+?/statusline
+? \<get_statusline\>
 ?/Pri
 ?/ecrypt
 ? @$
@@ -545,11 +562,7 @@ $
 ? \<getbufvar()\>
 ? \<burnr\>
 ?/Internal variable
-?/cursor
-? \<cursor,\>
 ?/getpos
-? \<cursor\>
-?/getpos()
 ?/getcurpos()
 ?/line
 ?/{lnum}
@@ -559,11 +572,9 @@ $
 ?/getbufline()
 ?/buf
 ?/line(
-?/line()
 ? \<virtcol(\>
 ?/vircol()
 ?/vis
-?/Builtin Functions
 ?/command-line
 ?/cmdli
 ?/cmdline
@@ -575,7 +586,6 @@ $
 ?/screenrow()
 ?/getcurpos(
 ?/cursor()
-? \<cursor(\>
 ?/sursor
 ?/# 
 ? \<set\>
@@ -976,7 +986,6 @@ $
 ?/world
 ?/expand
 ?/insert
-?//
 ? \<text\>
 ? \<Text\>
 ?/hight
@@ -1005,45 +1014,125 @@ $
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-"0	LINE	0
-		ls ~/Books/ > ~/Note/Backup/book-directory-content-list.txt
-""1	LINE	0
-	.Xauthority .chewing/ .cinnamon/ .compiz/ .dbus/ .scim/ 
+"0	CHAR	0
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" => Helper functions
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	
+"1	LINE	0
+	
 "2	LINE	0
-		tree ~/Note/ > ~/Note/Backup/note-directory-content-list.txt
+	
 "3	LINE	0
 	
 "4	LINE	0
-	workspace/
+	"
 "5	LINE	0
-	Wallpapers/
+	
 "6	LINE	0
-	ShellScripts/
+	"
 "7	LINE	0
-	Pictures/
+	
 "8	LINE	0
-	Note/
+	
 "9	LINE	0
 	
-"-	CHAR	0
-	e
+""-	CHAR	0
+	my personal custem functions
 
 # 檔案標記:
-'0  3  0  ~/.gitconfig
-'1  41  0  ~/.gitignore
-'2  56  0  ~/.gitignore
-'3  10  51  ~/ShellScripts/basic_scripts/backup.sh
-'4  70  6  ~/ShellScripts/basic_scripts/backup.sh
-'5  1  0  ~/Note/Backup/tools-directory-content-list.txt
-'6  445  0  ~/Note/Backup/note-directory-content-list.txt
-'7  12  0  ~/Note/Backup/github-directory-content-list.txt
-'8  14  0  ~/Note/Backup/download-directory-content-list.txt
-'9  1  0  ~/Note/Backup/book-directory-content-list.txt
+'0  41  0  ~/.gitignore
+'1  39  11  ~/.vimrc
+'2  467  24  ~/.vimrc
+'3  132  1  ~/Github/vim/find-text.txt
+'4  283  4  ~/.vimrc
+'5  143  0  ~/Github/vim/src/README.txt
+'6  279  5  ~/Github/vim/src/screen.c
+'7  1283  0  ~/Github/vim/src/toolbar.phi
+'8  288  0  ~/Github/vim/src/memline.c
+'9  265  39  ~/Github/vim/src/testdir/test_statusline.vim
 
 # Jumplist (由新到舊):
+-'  41  0  ~/.gitignore
+-'  39  11  ~/.vimrc
+-'  435  5  ~/.vimrc
+-'  465  4  ~/.vimrc
+-'  474  0  ~/.vimrc
+-'  475  0  ~/.vimrc
+-'  467  27  ~/.vimrc
+-'  283  0  ~/.vimrc
+-'  132  1  ~/Github/vim/find-text.txt
+-'  2  0  ~/Github/vim/find-text.txt
+-'  395  4  ~/.vimrc
+-'  143  0  ~/Github/vim/src/README.txt
+-'  1  0  ~/Github/vim/src/README.txt
+-'  279  5  ~/Github/vim/src/screen.c
+-'  1  0  ~/Github/vim/src/screen.c
+-'  1283  0  ~/Github/vim/src/toolbar.phi
+-'  1  0  ~/Github/vim/src/toolbar.phi
+-'  288  0  ~/Github/vim/src/memline.c
+-'  1  0  ~/Github/vim/src/memline.c
+-'  1  0  ~/Github/vim/nsis
+-'  265  39  ~/Github/vim/src/testdir/test_statusline.vim
+-'  12  7  ~/Github/vim/src/testdir/test_statusline.vim
+-'  72  36  ~/Github/vim/src/testdir/test_statusline.vim
+-'  258  31  ~/Github/vim/src/testdir/test_statusline.vim
+-'  254  34  ~/Github/vim/src/testdir/test_statusline.vim
+-'  245  34  ~/Github/vim/src/testdir/test_statusline.vim
+-'  231  37  ~/Github/vim/src/testdir/test_statusline.vim
+-'  226  55  ~/Github/vim/src/testdir/test_statusline.vim
+-'  224  35  ~/Github/vim/src/testdir/test_statusline.vim
+-'  219  45  ~/Github/vim/src/testdir/test_statusline.vim
+-'  217  40  ~/Github/vim/src/testdir/test_statusline.vim
+-'  212  32  ~/Github/vim/src/testdir/test_statusline.vim
+-'  210  33  ~/Github/vim/src/testdir/test_statusline.vim
+-'  206  37  ~/Github/vim/src/testdir/test_statusline.vim
+-'  204  37  ~/Github/vim/src/testdir/test_statusline.vim
+-'  202  37  ~/Github/vim/src/testdir/test_statusline.vim
+-'  200  35  ~/Github/vim/src/testdir/test_statusline.vim
+-'  195  41  ~/Github/vim/src/testdir/test_statusline.vim
+-'  191  42  ~/Github/vim/src/testdir/test_statusline.vim
+-'  189  31  ~/Github/vim/src/testdir/test_statusline.vim
+-'  183  46  ~/Github/vim/src/testdir/test_statusline.vim
+-'  180  31  ~/Github/vim/src/testdir/test_statusline.vim
+-'  174  37  ~/Github/vim/src/testdir/test_statusline.vim
+-'  171  33  ~/Github/vim/src/testdir/test_statusline.vim
+-'  165  42  ~/Github/vim/src/testdir/test_statusline.vim
+-'  160  40  ~/Github/vim/src/testdir/test_statusline.vim
+-'  158  32  ~/Github/vim/src/testdir/test_statusline.vim
+-'  152  48  ~/Github/vim/src/testdir/test_statusline.vim
+-'  148  48  ~/Github/vim/src/testdir/test_statusline.vim
+-'  146  31  ~/Github/vim/src/testdir/test_statusline.vim
+-'  142  53  ~/Github/vim/src/testdir/test_statusline.vim
+-'  139  38  ~/Github/vim/src/testdir/test_statusline.vim
+-'  137  36  ~/Github/vim/src/testdir/test_statusline.vim
+-'  131  45  ~/Github/vim/src/testdir/test_statusline.vim
+-'  127  31  ~/Github/vim/src/testdir/test_statusline.vim
+-'  125  38  ~/Github/vim/src/testdir/test_statusline.vim
+-'  123  40  ~/Github/vim/src/testdir/test_statusline.vim
+-'  121  38  ~/Github/vim/src/testdir/test_statusline.vim
+-'  116  40  ~/Github/vim/src/testdir/test_statusline.vim
+-'  109  33  ~/Github/vim/src/testdir/test_statusline.vim
+-'  106  37  ~/Github/vim/src/testdir/test_statusline.vim
+-'  98  43  ~/Github/vim/src/testdir/test_statusline.vim
+-'  96  32  ~/Github/vim/src/testdir/test_statusline.vim
+-'  91  50  ~/Github/vim/src/testdir/test_statusline.vim
+-'  87  42  ~/Github/vim/src/testdir/test_statusline.vim
+-'  82  38  ~/Github/vim/src/testdir/test_statusline.vim
+-'  80  38  ~/Github/vim/src/testdir/test_statusline.vim
+-'  78  38  ~/Github/vim/src/testdir/test_statusline.vim
+-'  75  32  ~/Github/vim/src/testdir/test_statusline.vim
+-'  1  0  ~/Github/vim/src/testdir/test_statusline.vim
+-'  7  0  ~/Github/vim/src/testdir/view_util.vim
+-'  1  0  ~/Github/vim/src/testdir/view_util.vim
+-'  235  0  ~/Github/vim/find-text.txt
+-'  237  0  ~/Github/vim/find-text.txt
+-'  325  17  ~/Github/vim/find-text.txt
+-'  1  0  ~/Github/vim/find-text.txt
+-'  1  0  ~/.vimrc
+-'  1  0  ~/ShellScripts/basic_scripts/detect-shell-env.sh
 -'  3  0  ~/.gitconfig
 -'  1  0  ~/.gitconfig
--'  41  0  ~/.gitignore
 -'  56  0  ~/.gitignore
 -'  50  0  ~/.gitignore
 -'  10  51  ~/ShellScripts/basic_scripts/backup.sh
@@ -1058,93 +1147,11 @@ $
 -'  1  0  ~/Note/Backup/download-directory-content-list.txt
 -'  1  0  ~/Note/Backup/book-directory-content-list.txt
 -'  1  0  ~/Note/Backup/books-directory-content-list.txt
--'  36  0  ~/diff-the-Home-dir-and-gitignore-file.txt
--'  1  0  ~/diff-the-Home-dir-and-gitignore-file.txt
--'  10  0  ~/.gitignore
--'  27  0  ~/.gitignore
--'  1  0  ~/.gitign
--'  52  10  ~/ShellScripts/basic_scripts/backup.sh
--'  22  0  ~/.gitign1.txt
--'  12  1  ~/.gitign1.txt
--'  1  0  ~/.gitign1.txt
--'  7  4  ~/git-rm-list
--'  5  0  ~/git-rm-list
--'  2  0  ~/git-rm-list
--'  8  513  ~/git-rm-list
--'  1  0  ~/git-rm-list
--'  1  0  ~/Note/Git/git-remove-remote-repository-file.txt
--'  36  0  ~/Note/Git/git-remove-remote-repository-file.txt
--'  1  0  ~/.gitignore
--'  49  0  ~/.gitign.txt
--'  41  0  ~/.gitign.txt
--'  1  0  ~/.gitign.txt
--'  11  0  ~/.gitign1.txt
--'  45  0  ~/.gitign.txt
--'  16  0  ~/.gitign.txt
--'  15  0  ~/.gitign.txt
--'  39  0  ~/.gitign.txt
--'  40  0  ~/.gitign.txt
--'  4  0  ~/.gitign.txt
--'  47  0  ~/.gitign.txt
--'  73  0  ~/home-dir.txt
--'  1  0  ~/home-dir.txt
--'  45  0  ~/git-dir.txt
--'  1  0  ~/git-dir.txt
--'  1  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
--'  48  0  ~/diff-the-Home-dir-and-.gitignore-file.txt
--'  1  0  ~/Note/IC/ic.org
--'  53  0  ~/Note/server-maintain/server-maintain.org
--'  1  0  ~/Note/server-maintain/server-maintain.org
--'  1  0  ~/Note/learning/2013-1-11-我该如何充分的利用这段时间提高自己.txt
--'  1  0  ~/Note/learning
--'  8  0  ~/Note/linux/linux_skills/xmodmap-change-keymap.txt
--'  1  0  ~/Note/linux/linux_skills/xmodmap-change-keymap.txt
--'  134  0  ~/Note/linux/linux_skills/ubuntu-use-xmodmap-change-keymap.txt
--'  1  0  ~/Note/linux/linux_skills/ubuntu-use-xmodmap-change-keymap.txt
--'  23  0  ~/Note/linux/linux_skills/mplayer.txt
--'  1  0  ~/Note/linux/linux_skills/mplayer.txt
--'  73  0  ~/Note/text_editor/emacs/why_use_emacs.txt
--'  1  0  ~/Note/text_editor/emacs/why_use_emacs.txt
--'  468  0  ~/Note/text_editor/emacs/emacs-keystruct.txt
--'  1  0  ~/Note/text_editor/emacs/emacs-keystruct.txt
--'  1  0  ~/Note/text_editor/emacs/emacs-help-command.txt
--'  67  0  ~/Note/text_editor/emacs/emacs-correlation-help.txt
--'  1  0  ~/Note/text_editor/emacs/emacs-correlation-help.txt
--'  396  0  ~/Note/text_editor/emacs/!!!!!!---windows-home-path.txt
--'  1  0  ~/Note/text_editor/emacs/!!!!!!---windows-home-path.txt
--'  13  0  ~/Note/text_editor/emacs/why_use_emacs.org
--'  27  8  ~/Note/text_editor/emacs/why_use_emacs.org
--'  1  0  ~/Note/text_editor/emacs/why_use_emacs.org
--'  1  0  ~/Note/text_editor/emacs/w3m.org
--'  16  7  ~/Note/text_editor/emacs/use_manpage_in_emacs.org
--'  14  6  ~/Note/text_editor/emacs/use_manpage_in_emacs.org
--'  1  0  ~/Note/text_editor/emacs/use_manpage_in_emacs.org
--'  322  0  ~/Note/text_editor/emacs/use_emacs_reading_source_code.org
--'  1  0  ~/Note/text_editor/emacs/use_emacs_reading_source_code.org
--'  124  0  ~/Note/text_editor/emacs/translucent.org
--'  1  0  ~/Note/text_editor/emacs/translucent.org
--'  1  0  ~/Note/text_editor/emacs/themes/some-emacs-theme.txt
--'  40  0  ~/Note/text_editor/emacs/spacemacs-usage.txt
--'  1  1  ~/Note/text_editor/emacs/spacemacs-usage.txt
--'  53  0  ~/Note/text_editor/emacs/sdcv.org
--'  1  0  ~/Note/text_editor/emacs/sdcv.org
--'  1  0  ~/Note/text_editor/emacs/root_open_file.org
--'  1  0  ~/Note/text_editor/emacs/c_c++_mode.txt
--'  78  0  ~/Note/text_editor/emacs/redirect_backup_file.org
--'  1  0  ~/Note/text_editor/emacs/redirect_backup_file.org
--'  26  0  ~/Note/text_editor/emacs/readOnlyOpenEmacs.txt
--'  1  0  ~/Note/text_editor/emacs/readOnlyOpenEmacs.txt
--'  138  8  ~/Note/text_editor/emacs/org-mode_and_todo-mode.org
--'  1  0  ~/Note/text_editor/emacs/org-mode_and_todo-mode.org
--'  1  129  ~/Note/text_editor/emacs/mplayer-useage.txt
--'  1  0  ~/Note/text_editor/emacs/lisp.txt
--'  190  0  ~/Note/text_editor/emacs/Gnu.org
--'  10  51  ~/ShellScripts/basic_scripts/backup.sh
+-'  39  11  ~/.vimrc
+-'  435  5  ~/.vimrc
+-'  465  4  ~/.vimrc
 
 # 檔案內 Mark 記錄 (由新到舊):
-
-> ~/.gitconfig
-	"	3	0
 
 > ~/.gitignore
 	"	41	0
@@ -1161,6 +1168,68 @@ $
 	+	45	9
 	+	46	7
 	+	41	0
+
+> ~/.vimrc
+	"	39	11
+	^	39	8
+	.	39	8
+	+	467	0
+	+	467	61
+	+	467	30
+	+	468	0
+	+	467	28
+	+	466	29
+	+	467	20
+	+	466	0
+	+	465	0
+	+	464	0
+	+	469	0
+	+	471	0
+	+	443	0
+	+	437	0
+	+	432	0
+	+	433	0
+	+	434	1
+	+	434	0
+	+	435	32
+	+	434	0
+	+	432	0
+	+	437	0
+	+	435	0
+	+	39	8
+
+> /usr/share/vim/vim74/doc/eval.txt
+	"	6475	8
+
+> /usr/share/vim/vim74/doc/options.txt
+	"	1693	1
+
+> ~/Github/vim/find-text.txt
+	"	132	1
+
+> ~/Github/vim/src/screen.c
+	"	279	5
+
+> ~/Github/vim/src/README.txt
+	"	143	0
+
+> ~/Github/vim/src/toolbar.phi
+	"	1283	0
+
+> ~/Github/vim/src/memline.c
+	"	288	0
+
+> ~/Github/vim/src/testdir/test_statusline.vim
+	"	265	39
+
+> ~/Github/vim/src/testdir/view_util.vim
+	"	7	0
+
+> ~/ShellScripts/basic_scripts/detect-shell-env.sh
+	"	1	0
+
+> ~/.gitconfig
+	"	3	0
 
 > ~/ShellScripts/basic_scripts/backup.sh
 	"	10	51
@@ -1670,42 +1739,3 @@ $
 
 > ~/test
 	"	1	0
-
-> ~/all-emacs-name-file.txt
-	"	215	0
-
-> ~/Github/openiBoot/LICENSE.txt
-	"	302	0
-
-> ~/Github/openiBoot/printf.c
-	"	317	0
-
-> ~/Github/PyGithub/README.md
-	"	45	0
-
-> ~/Github/openiBoot/installer/SConscript
-	"	1	0
-
-> ~/Github/openiBoot/installer/installer.c
-	"	102	0
-
-> ~/Github/openiBoot/SConstruct
-	"	89	1
-
-> ~/Github/openiBoot/docs/readme.txt
-	"	1	0
-
-> ~/ShellScripts/basic_scripts/xmodmap.sh
-	"	3	4
-	.	4	0
-	+	3	0
-	+	4	0
-
-> ~/Github/PyGithub/setup.py
-	"	65	0
-
-> /etc/gnome/defaults.list
-	"	195	3
-	^	195	39
-	.	195	38
-	+	195	38
