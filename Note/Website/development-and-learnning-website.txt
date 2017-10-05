@@ -20,6 +20,10 @@ http://www.runoob.com/
 https://www.codecademy.com/
 # 可视化正则表达式测试网站
 https://stackoverflow.com
+# 实验楼， 网页模拟的计算机测试环境，用于测试一些
+  不错的python，ruby，Linux等相关代码，省
+  去了在本机环境上测试。
+https://www.shiyanlou.com/
 
 
 ### 现成的软件项目
@@ -89,39 +93,29 @@ https://searchcode.com/
 https://github.com/
 
 
+### 技术 forum information etc.
+# startup news, it新闻与技术共享，开发者论坛
+http://news.dbanotes.net/
+# 技术 blog
+https://xiequan.info/
+# Hi PDA - 各种移动设备相关信息论坛
+http://www.hi-pda.com/forum/
+# HackDig, 计算机安全论坛
+http://en.hackdig.com/
+# FreeBuf.com， 关注黑客与极客
+http://www.freebuf.com/
+# 大牛俱乐部， 技术论坛、生活论坛
+http://www.daniu.io/history
+# 程序员的资料库， 各种程序员读物
+http://codecloud.net/
+# Solidot, IT资讯、新闻
+http://www.solidot.org/
+# 开发者头条， 程序员分享平台，技术极客的头条新闻
+https://toutiao.io/
+# SD card reference
+https://www.sdcard.org/cht/index.html
+
+
 ### 结对编程
 # CSDN CODE - 代码托管、协作编程、代码片段、社区支持
 https://code.csdn.net/
-
-
-### startup news, it新闻与技术共享，开发者论坛
-http://news.dbanotes.net/
-
-### 技术博客
-https://xiequan.info/
-
-### Hi PDA - 各种移动设备相关信息论坛
-http://www.hi-pda.com/forum/
-
-### HackDig, 计算机安全论坛
-http://en.hackdig.com/
-
-### FreeBuf.com， 关注黑客与极客
-http://www.freebuf.com/
-
-### 大牛俱乐部， 技术论坛、生活论坛
-http://www.daniu.io/history
-
-### 程序员的资料库， 各种程序员读物
-http://codecloud.net/
-
-### Solidot, IT资讯、新闻
-http://www.solidot.org/
-
-### 开发者头条， 程序员分享平台，技术极客的头条新闻
-https://toutiao.io/
-
-### 实验楼， 网页模拟的计算机测试环境，用于测试一些
-             不错的python，ruby，Linux等相关代码，省
-             去了在本机环境上测试。
-https://www.shiyanlou.com/
