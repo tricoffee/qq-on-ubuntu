@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<winline()\>
+~MSle0~/emacs
 
 # Last Substitute Search Pattern:
 ~MSle0&^
@@ -18,13 +18,15 @@ $
 
 # 命令列 歷史記錄 (新到舊):
 :q
-:x
+:wq
 :w
+:x
+:q!
+:set nu
 :help comments
 :help eval
 :call ShowCurFileFullPath()
 :call AutoComment()
-:set nu
 :call
 :set n
 :tabedit /home/qq/Github/vim/src/screen.c
@@ -41,14 +43,12 @@ $
 :ScreenLines()
 :set linum
 :tabedit /home/qq/Github/vim/src/testdir/test_statusline.vim +12
-:wq
 :buffers
 :tabnext 
 :tabedit /etc/gnome/menus.blacklist
 :tabedit /etc/gnome/defaults.list
 :tabedit /home/qq/Note/linux/ubuntu/shell/shell_command/./intercept-screenshot-of-the-webpage.txt
 :! sudo apt install glipper
-:q!
 :echo &statusline
 :echo statusline
 :set statusline=%l
@@ -519,6 +519,20 @@ $
 :win
 
 # 搜尋字串 歷史記錄 (新到舊):
+?/emacs
+? @$
+?/term
+?/xterm
+? \<Mod1Mask\>
+? \<MODKEY\>
+? \<spawn\>
+? \<st\>
+?/terminal
+?/WenQuanYi Micro Hei Mono
+?/font
+?/install
+?/runlevel
+?/video
 ?//
 ? \<winline()\>
 ?/cursor
@@ -538,7 +552,6 @@ $
 ? \<get_statusline\>
 ?/Pri
 ?/ecrypt
-? @$
 ?/sdcv
 ?/ipad
 ?/nautilus
@@ -686,7 +699,6 @@ $
 ?/    emacsclient -e "(kill-emacs)"
 ?/    emacsclient -e "(kill-emacs)"n    emacs_pid=\$( ps -C \'emacs --daemon\' -o pid= )n    if \[\[ -n "\${emacs_pid}" \]\];thenn        kill -9 "\${emacs_pid}"n    fin
 ?/Emacs
-?/emacs
 ? \<modprobe\>
 ?/mouse
 ??\/home\/qq\/profile_shell_env\/
@@ -1014,147 +1026,144 @@ $
 # 輸入行  歷史記錄 (新到舊):
 
 # 暫存器:
-"0	CHAR	0
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	" => Helper functions
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"0	LINE	0
 	
-"1	LINE	0
+""1	LINE	0
 	
 "2	LINE	0
 	
 "3	LINE	0
 	
 "4	LINE	0
-	"
-"5	LINE	0
 	
+"5	LINE	0
+	    
 "6	LINE	0
-	"
+	
 "7	LINE	0
 	
 "8	LINE	0
 	
 "9	LINE	0
-	
-""-	CHAR	0
-	my personal custem functions
+	分别安装上面的组件，命令如下：
+"-	CHAR	0
+	 
 
 # 檔案標記:
-'0  41  0  ~/.gitignore
-'1  39  11  ~/.vimrc
-'2  467  24  ~/.vimrc
-'3  132  1  ~/Github/vim/find-text.txt
-'4  283  4  ~/.vimrc
-'5  143  0  ~/Github/vim/src/README.txt
-'6  279  5  ~/Github/vim/src/screen.c
-'7  1283  0  ~/Github/vim/src/toolbar.phi
-'8  288  0  ~/Github/vim/src/memline.c
-'9  265  39  ~/Github/vim/src/testdir/test_statusline.vim
+'0  31  5  ~/.gitignore
+'1  30  1  ~/ShellScripts/basic_scripts/backup.sh
+'2  19  0  ~/ShellScripts/bashrc-add-gui-poweroff-logout
+'3  1  0  ~/ShellScripts/bashrc-init
+'4  13  28  ~/ShellScripts/basic_scripts/install-my-custom-sh-script.sh
+'5  256  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
+'6  46  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
+'7  105  74  ~/Github/dwm/config.def.h
+'8  75  1  ~/Github/dwm/config.h
+'9  9  30  ~/Note/Linux/ubuntu/fonts_setting/wenquanyi-microhei.txt
 
 # Jumplist (由新到舊):
+-'  31  5  ~/.gitignore
+-'  11  1  ~/.gitignore
+-'  1  0  ~/.gitignore
 -'  41  0  ~/.gitignore
--'  39  11  ~/.vimrc
--'  435  5  ~/.vimrc
--'  465  4  ~/.vimrc
--'  474  0  ~/.vimrc
--'  475  0  ~/.vimrc
--'  467  27  ~/.vimrc
--'  283  0  ~/.vimrc
--'  132  1  ~/Github/vim/find-text.txt
--'  2  0  ~/Github/vim/find-text.txt
--'  395  4  ~/.vimrc
--'  143  0  ~/Github/vim/src/README.txt
--'  1  0  ~/Github/vim/src/README.txt
--'  279  5  ~/Github/vim/src/screen.c
--'  1  0  ~/Github/vim/src/screen.c
--'  1283  0  ~/Github/vim/src/toolbar.phi
--'  1  0  ~/Github/vim/src/toolbar.phi
--'  288  0  ~/Github/vim/src/memline.c
--'  1  0  ~/Github/vim/src/memline.c
--'  1  0  ~/Github/vim/nsis
--'  265  39  ~/Github/vim/src/testdir/test_statusline.vim
--'  12  7  ~/Github/vim/src/testdir/test_statusline.vim
--'  72  36  ~/Github/vim/src/testdir/test_statusline.vim
--'  258  31  ~/Github/vim/src/testdir/test_statusline.vim
--'  254  34  ~/Github/vim/src/testdir/test_statusline.vim
--'  245  34  ~/Github/vim/src/testdir/test_statusline.vim
--'  231  37  ~/Github/vim/src/testdir/test_statusline.vim
--'  226  55  ~/Github/vim/src/testdir/test_statusline.vim
--'  224  35  ~/Github/vim/src/testdir/test_statusline.vim
--'  219  45  ~/Github/vim/src/testdir/test_statusline.vim
--'  217  40  ~/Github/vim/src/testdir/test_statusline.vim
--'  212  32  ~/Github/vim/src/testdir/test_statusline.vim
--'  210  33  ~/Github/vim/src/testdir/test_statusline.vim
--'  206  37  ~/Github/vim/src/testdir/test_statusline.vim
--'  204  37  ~/Github/vim/src/testdir/test_statusline.vim
--'  202  37  ~/Github/vim/src/testdir/test_statusline.vim
--'  200  35  ~/Github/vim/src/testdir/test_statusline.vim
--'  195  41  ~/Github/vim/src/testdir/test_statusline.vim
--'  191  42  ~/Github/vim/src/testdir/test_statusline.vim
--'  189  31  ~/Github/vim/src/testdir/test_statusline.vim
--'  183  46  ~/Github/vim/src/testdir/test_statusline.vim
--'  180  31  ~/Github/vim/src/testdir/test_statusline.vim
--'  174  37  ~/Github/vim/src/testdir/test_statusline.vim
--'  171  33  ~/Github/vim/src/testdir/test_statusline.vim
--'  165  42  ~/Github/vim/src/testdir/test_statusline.vim
--'  160  40  ~/Github/vim/src/testdir/test_statusline.vim
--'  158  32  ~/Github/vim/src/testdir/test_statusline.vim
--'  152  48  ~/Github/vim/src/testdir/test_statusline.vim
--'  148  48  ~/Github/vim/src/testdir/test_statusline.vim
--'  146  31  ~/Github/vim/src/testdir/test_statusline.vim
--'  142  53  ~/Github/vim/src/testdir/test_statusline.vim
--'  139  38  ~/Github/vim/src/testdir/test_statusline.vim
--'  137  36  ~/Github/vim/src/testdir/test_statusline.vim
--'  131  45  ~/Github/vim/src/testdir/test_statusline.vim
--'  127  31  ~/Github/vim/src/testdir/test_statusline.vim
--'  125  38  ~/Github/vim/src/testdir/test_statusline.vim
--'  123  40  ~/Github/vim/src/testdir/test_statusline.vim
--'  121  38  ~/Github/vim/src/testdir/test_statusline.vim
--'  116  40  ~/Github/vim/src/testdir/test_statusline.vim
--'  109  33  ~/Github/vim/src/testdir/test_statusline.vim
--'  106  37  ~/Github/vim/src/testdir/test_statusline.vim
--'  98  43  ~/Github/vim/src/testdir/test_statusline.vim
--'  96  32  ~/Github/vim/src/testdir/test_statusline.vim
--'  91  50  ~/Github/vim/src/testdir/test_statusline.vim
--'  87  42  ~/Github/vim/src/testdir/test_statusline.vim
--'  82  38  ~/Github/vim/src/testdir/test_statusline.vim
--'  80  38  ~/Github/vim/src/testdir/test_statusline.vim
--'  78  38  ~/Github/vim/src/testdir/test_statusline.vim
--'  75  32  ~/Github/vim/src/testdir/test_statusline.vim
--'  1  0  ~/Github/vim/src/testdir/test_statusline.vim
--'  7  0  ~/Github/vim/src/testdir/view_util.vim
--'  1  0  ~/Github/vim/src/testdir/view_util.vim
--'  235  0  ~/Github/vim/find-text.txt
--'  237  0  ~/Github/vim/find-text.txt
--'  325  17  ~/Github/vim/find-text.txt
--'  1  0  ~/Github/vim/find-text.txt
--'  1  0  ~/.vimrc
--'  1  0  ~/ShellScripts/basic_scripts/detect-shell-env.sh
--'  3  0  ~/.gitconfig
--'  1  0  ~/.gitconfig
--'  56  0  ~/.gitignore
--'  50  0  ~/.gitignore
--'  10  51  ~/ShellScripts/basic_scripts/backup.sh
--'  70  0  ~/ShellScripts/basic_scripts/backup.sh
--'  1  0  ~/ShellScripts/basic_scripts/backup.sh
--'  1  0  ~/Note/Backup/tools-directory-content-list.txt
--'  445  0  ~/Note/Backup/note-directory-content-list.txt
--'  1  0  ~/Note/Backup/note-directory-content-list.txt
--'  12  0  ~/Note/Backup/github-directory-content-list.txt
--'  1  0  ~/Note/Backup/github-directory-content-list.txt
--'  14  0  ~/Note/Backup/download-directory-content-list.txt
--'  1  0  ~/Note/Backup/download-directory-content-list.txt
--'  1  0  ~/Note/Backup/book-directory-content-list.txt
--'  1  0  ~/Note/Backup/books-directory-content-list.txt
--'  39  11  ~/.vimrc
--'  435  5  ~/.vimrc
--'  465  4  ~/.vimrc
+-'  30  1  ~/ShellScripts/basic_scripts/backup.sh
+-'  10  1  ~/ShellScripts/basic_scripts/backup.sh
+-'  19  0  ~/ShellScripts/bashrc-add-gui-poweroff-logout
+-'  1  0  ~/ShellScripts/bashrc-add-gui-poweroff-logout
+-'  1  0  ~/ShellScripts/bashrc-init
+-'  13  28  ~/ShellScripts/basic_scripts/install-my-custom-sh-script.sh
+-'  1  0  ~/ShellScripts/basic_scripts
+-'  256  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
+-'  46  5  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
+-'  1  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
+-'  105  74  ~/Github/dwm/config.def.h
+-'  65  66  ~/Github/dwm/config.def.h
+-'  60  19  ~/Github/dwm/config.def.h
+-'  106  79  ~/Github/dwm/config.def.h
+-'  115  0  ~/Github/dwm/config.def.h
+-'  47  15  ~/Github/dwm/config.def.h
+-'  49  3  ~/Github/dwm/config.def.h
+-'  50  3  ~/Github/dwm/config.def.h
+-'  51  3  ~/Github/dwm/config.def.h
+-'  52  3  ~/Github/dwm/config.def.h
+-'  64  3  ~/Github/dwm/config.def.h
+-'  66  3  ~/Github/dwm/config.def.h
+-'  1  0  ~/Github/dwm/config.def.h
+-'  75  1  ~/Github/dwm/config.h
+-'  8  0  ~/Github/dwm/config.h
+-'  9  30  ~/Note/Linux/ubuntu/fonts_setting/wenquanyi-microhei.txt
+-'  1  0  ~/Note/Linux/ubuntu/fonts_setting/wenquanyi-microhei.txt
+-'  9  23  ~/Github/dwm/config.h
+-'  59  75  ~/Github/dwm/config.h
+-'  26  0  ~/Github/dwm/config.h
+-'  1  0  ~/Github/dwm/config.h
+-'  2  0  ~/Note/Linux/ubuntu/window_manager/DWM/x11_xlib_h-error.txt
+-'  6  0  ~/Note/Linux/ubuntu/window_manager/DWM/x11_xlib_h-error.txt
+-'  4  0  ~/Note/Linux/ubuntu/window_manager/DWM/x11_xlib_h-error.txt
+-'  3  0  ~/Note/Linux/ubuntu/window_manager/DWM/x11_xlib_h-error.txt
+-'  1  0  ~/Note/Linux/ubuntu/window_manager/DWM/dmenu-usage.txt
+-'  333  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-usage.txt
+-'  1  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-usage.txt
+-'  1  0  ~/Note/Linux/ubuntu/window_manager/DWM
+-'  47  3  ~/Github/spacemacs/README.md
+-'  31  8  ~/Github/spacemacs/README.md
+-'  459  73  ~/Github/spacemacs/README.md
+-'  266  13  ~/Github/spacemacs/README.md
+-'  262  33  ~/Github/spacemacs/README.md
+-'  260  57  ~/Github/spacemacs/README.md
+-'  249  46  ~/Github/spacemacs/README.md
+-'  244  14  ~/Github/spacemacs/README.md
+-'  230  3  ~/Github/spacemacs/README.md
+-'  123  57  ~/Github/spacemacs/README.md
+-'  56  0  ~/Github/spacemacs/README.md
+-'  1  0  ~/Github/spacemacs/README.md
+-'  72  0  ~/Note/Linux/ubuntu/server/system-Upgrade.txt
+-'  49  0  ~/Note/Linux/ubuntu/server/system-Upgrade.txt
+-'  1  0  ~/Note/Linux/ubuntu/server/system-Upgrade.txt
+-'  129  188  ~/Note/Linux/ubuntu/server/WIFI-configure.txt
+-'  1  0  ~/Note/Linux/ubuntu/server/WIFI-configure.txt
+-'  42  0  ~/Note/Linux/ubuntu/character_terminal/fbterm-setup.txt
+-'  27  4  ~/Note/Linux/ubuntu/character_terminal/fbterm-setup.txt
+-'  1  0  ~/Note/Linux/ubuntu/character_terminal/fbterm-setup.txt
+-'  120  0  ~/Note/Linux/ubuntu/character_terminal/character-terminal-zh-encoding-support.txt
+-'  119  0  ~/Note/Linux/ubuntu/character_terminal/character-terminal-zh-encoding-support.txt
+-'  1  0  ~/Note/Linux/ubuntu/character_terminal/character-terminal-zh-encoding-support.txt
+-'  1  0  ~/Note/Linux/system_management
+-'  5  0  ~/Note/Linux/ubuntu/window_manager/DWM/x11_xlib_h-error.txt
+-'  6  0  ~/Note/Linux/ubuntu/window_manager/DWM/x11/xlib_h-error.txt
+-'  1  0  ~/Note/Linux/ubuntu/window_manager/DWM/x11/xlib_h-error.txt
+-'  8  0  ~/Note/Linux/ubuntu/window_manager/DWM
+-'  10  0  ~/Note/Linux/ubuntu/window_manager
+-'  1  0  ~/Note/Linux/ubuntu/window_manager
+-'  1  0  ~/Github/dwm/README
+-'  1  0  ~/Note/Website/linux-window-manager.website.txt
+-'  2  0  ~/Note/Linux/ubuntu/window_manager/DWM/official-website.txt
+-'  1  0  ~/Note/Linux/ubuntu/window_manager/DWM/official-website.txt
+-'  12  0  /etc/default/grub
+-'  23  0  /etc/default/grub
+-'  10  27  /etc/init/gdm3.conf
+-'  78  31  /etc/init/gdm3.conf
+-'  52  34  /etc/init/gdm3.conf
+-'  15  8  /etc/init/gdm3.conf
+-'  13  6  /etc/init/gdm3.conf
+-'  1  0  /etc/init/gdm3.conf
+-'  105  74  ~/Github/dwm/config.def.h
+-'  65  66  ~/Github/dwm/config.def.h
+-'  60  19  ~/Github/dwm/config.def.h
+-'  106  79  ~/Github/dwm/config.def.h
+-'  115  0  ~/Github/dwm/config.def.h
+-'  47  15  ~/Github/dwm/config.def.h
+-'  49  3  ~/Github/dwm/config.def.h
+-'  50  3  ~/Github/dwm/config.def.h
+-'  51  3  ~/Github/dwm/config.def.h
+-'  52  3  ~/Github/dwm/config.def.h
+-'  64  3  ~/Github/dwm/config.def.h
+-'  66  3  ~/Github/dwm/config.def.h
 
 # 檔案內 Mark 記錄 (由新到舊):
 
 > ~/.gitignore
-	"	41	0
+	"	31	5
 	^	41	0
 	.	41	0
 	+	27	8
@@ -1169,8 +1178,267 @@ $
 	+	46	7
 	+	41	0
 
+> ~/ShellScripts/basic_scripts/backup.sh
+	"	30	1
+	^	10	52
+	.	10	51
+	+	3	26
+	+	4	23
+	+	4	23
+	+	5	22
+	+	6	33
+	+	5	33
+	+	4	0
+	+	10	52
+	+	6	4
+	+	10	51
+
+> ~/ShellScripts/bashrc-add-gui-poweroff-logout
+	"	19	0
+
+> ~/ShellScripts/bashrc-init
+	"	1	0
+
+> ~/ShellScripts/basic_scripts/install-my-custom-sh-script.sh
+	"	13	28
+	.	17	0
+	+	13	1
+	+	17	0
+
+> ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
+	"	256	0
+	^	258	5
+	.	256	0
+	+	46	0
+	+	258	4
+	+	256	0
+
+> ~/Github/dwm/config.def.h
+	"	105	74
+
+> ~/Github/dwm/config.h
+	"	75	1
+	^	22	55
+	.	9	63
+	+	8	57
+	+	9	55
+	+	8	64
+	+	9	63
+	+	22	0
+	+	9	63
+
+> ~/Note/Linux/ubuntu/fonts_setting/wenquanyi-microhei.txt
+	"	9	30
+	^	7	23
+	.	7	22
+	+	7	22
+
+> ~/Note/Linux/ubuntu/window_manager/DWM/x11_xlib_h-error.txt
+	"	2	0
+	^	1	21
+	.	6	0
+	+	6	42
+	+	6	0
+	+	6	0
+	+	2	0
+	+	1	18
+	+	6	0
+
+> ~/Note/Linux/ubuntu/window_manager/DWM/dmenu-usage.txt
+	"	1	0
+
+> ~/Note/Linux/ubuntu/window_manager/DWM/dwm-usage.txt
+	"	333	0
+
+> ~/Github/spacemacs/README.md
+	"	47	3
+
+> ~/Note/Linux/ubuntu/server/system-Upgrade.txt
+	"	72	0
+	.	95	0
+	+	8	0
+	+	12	0
+	+	16	0
+	+	20	0
+	+	26	0
+	+	30	0
+	+	33	0
+	+	36	0
+	+	33	0
+	+	30	0
+	+	45	0
+	+	49	3
+	+	49	0
+	+	74	0
+	+	78	0
+	+	82	0
+	+	86	0
+	+	90	0
+	+	94	0
+	+	95	0
+
+> ~/Note/Linux/ubuntu/server/WIFI-configure.txt
+	"	129	188
+	^	129	189
+	.	129	188
+	+	129	188
+
+> ~/Note/Linux/ubuntu/character_terminal/fbterm-setup.txt
+	"	42	0
+	^	49	0
+	.	49	0
+	+	13	0
+	+	18	0
+	+	27	0
+	+	18	0
+	+	31	0
+	+	38	0
+	+	51	0
+	+	55	185
+	+	52	192
+	+	58	0
+	+	49	0
+
+> ~/.fbtermrc
+	"	9	11
+	^	42	17
+	.	42	12
+	+	10	11
+	+	42	12
+
+> ~/Note/Linux/ubuntu/character_terminal/character-terminal-zh-encoding-support.txt
+	"	120	0
+
+> ~/Note/Linux/ubuntu/character_terminal/terminal-pic-viwer.txt
+	"	54	94
+	^	55	121
+	.	55	118
+	+	55	118
+
+> ~/Note/Linux/ubuntu/window_manager/DWM/x11/xlib_h-error.txt
+	"	6	0
+	^	6	0
+	.	5	42
+	+	5	42
+
+> ~/Github/dwm/README
+	"	1	0
+
+> ~/Note/Website/linux-window-manager.website.txt
+	"	1	0
+
+> ~/Note/Linux/ubuntu/window_manager/DWM/official-website.txt
+	"	2	0
+
+> /etc/default/grub
+	"	12	0
+	^	12	32
+	.	12	1
+	+	12	0
+	+	11	0
+	+	12	31
+	+	11	0
+	+	12	1
+
+> /etc/init/gdm3.conf
+	"	10	27
+	^	10	28
+	.	10	27
+	+	10	27
+
+> /etc/passwd
+	"	34	0
+
+> ~/Note/Linux/ubuntu/character_terminal/ubuntu-startup-with-character_terminal.txt
+	"	21	0
+	^	3	0
+	.	3	0
+	+	34	17
+	+	34	0
+	+	33	0
+	+	1	6
+	+	8	0
+	+	10	0
+	+	14	0
+	+	20	0
+	+	22	0
+	+	26	0
+	+	28	9
+	+	30	3
+	+	32	0
+	+	29	0
+	+	4	0
+	+	3	0
+
+> /etc/init.d/rc.local
+	"	27	0
+
+> /etc/init.d/rc
+	"	265	0
+
+> /etc/init/console-setup.conf
+	"	13	0
+
+> /etc/init/console-font.conf
+	"	1	0
+
+> ~/ubuntu-startup-tree.txt
+	"	1	0
+
+> /etc/rc.local
+	"	9	37
+
+> ~/Note/Linux/system_management/Ubuntu-Desktop-Manager.txt
+	"	152	0
+	^	96	0
+	.	96	0
+	+	34	1
+	+	32	0
+	+	61	0
+	+	43	4
+	+	41	0
+	+	60	1
+	+	59	0
+	+	80	0
+	+	77	0
+	+	78	0
+	+	79	1
+	+	87	0
+	+	88	0
+	+	86	0
+	+	84	0
+	+	86	1
+	+	94	0
+	+	95	0
+	+	99	4
+	+	108	0
+	+	110	1
+	+	119	1
+	+	126	1
+	+	125	0
+	+	135	2
+	+	134	0
+	+	140	0
+	+	142	2
+	+	118	0
+	+	95	0
+	+	96	0
+
+> ~/Note/Linux/system_management/Linux-Power-Save.txt
+	"	12	0
+	^	3	2
+	.	3	0
+	+	2	0
+	+	3	0
+
+> ~/.vimperatorrc
+	"	4	0
+	^	4	2
+	.	4	0
+	+	4	0
+
 > ~/.vimrc
-	"	39	11
+	"	69	0
 	^	39	8
 	.	39	8
 	+	467	0
@@ -1230,21 +1498,6 @@ $
 
 > ~/.gitconfig
 	"	3	0
-
-> ~/ShellScripts/basic_scripts/backup.sh
-	"	10	51
-	^	10	52
-	.	10	51
-	+	3	26
-	+	4	23
-	+	4	23
-	+	5	22
-	+	6	33
-	+	5	33
-	+	4	0
-	+	10	52
-	+	6	4
-	+	10	51
 
 > ~/Note/Backup/tools-directory-content-list.txt
 	"	1	0
@@ -1635,107 +1888,4 @@ $
 	"	1	0
 
 > ~/Note/text_editor/emacs/c_c++_mode.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/redirect_backup_file.org
-	"	78	0
-
-> ~/Note/text_editor/emacs/readOnlyOpenEmacs.txt
-	"	26	0
-
-> ~/Note/text_editor/emacs/org-mode_and_todo-mode.org
-	"	138	8
-
-> ~/Note/text_editor/emacs/mplayer-useage.txt
-	"	1	129
-
-> ~/Note/text_editor/emacs/lisp.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/Gnu.org
-	"	190	0
-
-> ~/Note/text_editor/emacs/gdb_for_emacs.org
-	"	156	0
-
-> ~/Note/text_editor/emacs/frame_size.org
-	"	65	4
-
-> ~/Note/text_editor/emacs/ERC.org
-	"	392	0
-
-> ~/Note/text_editor/emacs/emacs+w3m-2.txt
-	"	1014	0
-
-> ~/Note/text_editor/emacs/emacs+w3m-1.txt
-	"	873	0
-
-> ~/Note/text_editor/emacs/emacs-usage.txt
-	"	1416	0
-
-> ~/Note/text_editor/emacs/emacs.txt
-	"	1	0
-	n	1	0
-
-> ~/Note/text_editor/emacs/emacs-skills.txt
-	"	17	0
-
-> ~/Note/text_editor/emacs/emacs-profile.txt~
-	"	1	0
-
-> ~/Note/text_editor/emacs/emacs-profile.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/emacs-profile_bak.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/emacs_learnning.org~
-	"	346	0
-
-> ~/Note/text_editor/emacs/emacs-full-screen-最大化.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/emacs file.org~
-	"	1	0
-
-> ~/Note/text_editor/emacs/dot-emacs.org
-	"	2	0
-
-> ~/Note/text_editor/emacs/emacs+w3m-2_utf-8.org
-	"	607	0
-
-> ~/Note/text_editor/emacs/emacs_shell_grabled.org
-	"	1	0
-
-> ~/Note/text_editor/emacs/emacs-menu.org
-	"	229	1
-
-> ~/Note/text_editor/emacs/emacs_learnning.org
-	"	289	0
-
-> ~/Note/text_editor/emacs/emacs-profile-intro.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/emacs file.org
-	"	1	0
-
-> ~/Note/text_editor/emacs/emacs_auto_notation.org
-	"	49	8
-
-> ~/Note/text_editor/emacs/custom-elisp/org-mode.el.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/ctrl_caps_swap.org
-	"	57	0
-
-> ~/Note/text_editor/emacs/c_c++_mode.org
-	"	413	8
-
-> ~/Note/text_editor/emacs/calender.org
-	"	124	0
-
-> ~/Note/programming_IDE/linux-programming-IDE.txt
-	"	42	0
-
-> ~/test
 	"	1	0

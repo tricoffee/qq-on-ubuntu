@@ -10,8 +10,7 @@
 	SCRIPT_PATH=~/ShellScripts/basic_scripts/
 	SPECIFIED_SHELL_SCRIPT=$(ls ${SCRIPT_PATH} | grep -E -v "(test|temp|tmp)")
 
-	 echo ${SPECIFIED_SHELL_SCRIPT}
+	echo ${SPECIFIED_SHELL_SCRIPT}
 	cd ${SCRIPT_PATH}
 	cp -a ${SPECIFIED_SHELL_SCRIPT} /usr/local/bin/
 	cd -
-

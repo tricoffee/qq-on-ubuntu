@@ -4,7 +4,7 @@
 
 2. 进入字体包的安装目录，将字体文件设置为所有用户都可执行
   cd /usr/share/fonts/truetype/wqy/
-  sudo chmod 555 *
+  sudo chmod 555 *  # -r-xr-xr-x
 
 3. 执行以下命令更新系统可选字体
   sudo mkfontscale 

@@ -1,3 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/qq/Github/vim/nsis'
+let g:netrw_dirhist_2='/home/qq/Note/Linux/ubuntu/character_terminal'
+let g:netrw_dirhist_3='/etc/grub.d'
+let g:netrw_dirhist_4='/home/qq/Note/Linux/ubuntu/window_manager'
+let g:netrw_dirhist_5='/home/qq/Note/Linux/ubuntu/window_manager/DWM'
+let g:netrw_dirhist_6='/home/qq/Note/Linux/system_management'
+let g:netrw_dirhist_7='/home/qq/Note/Linux/ubuntu/window_manager/DWM'
+let g:netrw_dirhist_8='/home/qq/ShellScripts/basic_scripts'

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# is not a environment variable just a internal variable 
-# in current shell procecc
-TEST_VARIABLE="hello world !"
-# this varaible's name 
-HOME="hello"
-
-echo $HOME
