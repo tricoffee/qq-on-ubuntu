@@ -1,0 +1,393 @@
+DWM窗口管理器[Xft特性][热键简介]
+DWM一个很小的窗口管理器.
+如果说KDE,GNOME五官齐全,那DWM就是一个骷髅人(就那么一堆骨头,刚好能用:P).
+
+简介
+DWM在3.5的时候,就可以支持中文显示了.不过因为X Core的核心配置字体方式太多繁复而显示中文很难.
+DWM支持热键,自定颜色和简单的常规输入状态条.
+轻便是它最大的特点.
+
+更新簡介:
+代码:
+
+5.5
+更新一下补丁,只是在之前的补丁上稍微修改下就可以用了:-D
+设置方法照旧.
+
+不过遇到一个小问题:Xft中的XftTextExternUtf8函数会出现警告语句(被我无视后正常使用:P),有时间会看看的.
+
+历史:
+代码:
+
+4.8 -> 4.9 
+更詳細的規則配置。
+增加一個布局結構配置。
+
+4.9版本
+
+注意：
+53樓有takethat兄弟4.9的xft補丁
+:P 其實我也做了，不過近來忙沒有寫配置，
+4.9的配置變化大了點
+
+特点：
+代码:
+
+× 简单，轻便，快速。
+× 可读取标准输入作为状态条。
+× 标签式的桌面管理。
+× 一站式安装，配置通过源代码，单一文件。
+× 自定义颜色。
+× 热键。
+
+dwm.4.8.xft.jpg
+
+配置
+就是一个config.h如果要改变配置,只有重新编译(或是自己修改二进制:P)
+[外观]
+代码:
+
+/* 边框大小 */
+#define BORDERPX 1
+/* 字体设置(这里写的是打了Xft补丁的配置，如果没有打，就用x core的方式填写 */
+#define FONT "WenQuanYi Bitmap Song:size=8"
+/* 默认边框颜色 */
+#define NORMBORDERCOLOR "#CCCCCC"
+/* 默认背景颜色 */
+#define NORMBGCOLOR "#CCCCCC"
+/* 默认前景颜色 */
+#define NORMFGCOLOR "#000000"
+/* 选中边框颜色 */
+#define SELBORDERCOLOR "#0066FF"
+/* 选中背景颜色 */
+#define SELBGCOLOR "#0066FF"
+/* 选中前景颜色 */
+#define SELFGCOLOR "#FFFFFF"
+
+[标签]
+代码:
+
+/*
+ 这里请注意，完全能够用中文标示，可是最后排序的时候，要读取这个标签请使用tags[数字]，数字从0开始。
+ 比如tags[0]就是“通用”，tags[1]是“网络”。
+ MAXTAGLEN是16个字符。
+ */
+const char tags[][MAXTAGLEN] = { "通用", "网络", "系统" };
+
+[窗口标签分配规则]
+代码:
+
+/* 
+ 前三個逗号前是窗口一个子字符串。
+ 第四個逗號前，是字符串，對應tags的配置。
+ 最後一個，是浮动的开关，默认的有两大类，一个是浮动，一个固定排版。（排版下面有说明）
+
+ 在哪里读取窗口的信息呢？
+ 使用xprop吧，里面的WM_WINDOW_ROLE，WM_CLASS，WM_NAME就是我们需要的。
+*/
+Rule rules[] = {
+	/* class	instance	title tags ref	isfloating */
+	{ "Gimp",	NULL, NULL, NULL, True },
+	{ "Opera", "Opera", NULL, tags[1], False },
+	{ NULL, "vim", NULL, NULL, False },
+};
+
+[布局]
+代码:
+
+/*
+ 在本布局裏面使用的窗口打開方式，
+ 比如是一些 */
+/* geometries, s{x,y,w,h} and bh are already initualized here */
+/* 函數名 X坐標 Y坐標 bw wx wy ww wh mx my mw mh tx ty tw th mox moy mow moh */
+#define MFACT 0.55	/* master width factor [0.1 .. 0.9] */
+DEFGEOM(single, 0, 0, sw, 0, bh, sw, sh-bh, wx, wy, mfact*sw, wh, mx+mw, wy, ww-mw, wh, wx, wy, ww, wh)
+
+/* 布局窗口啟動方式 */
+Geom geoms[] = {
+	/* symbol	function */
+	{ "固|", single },	/* first entry is default */
+};
+
+/* 布局 */
+#define RESIZEHINTS True	/* 如果为False，就是放弃尺寸，直接使用平铺 */
+#define SNAP 32	/* 最小尺寸？ */
+/*
+ { "浮", floating,	True },
+ 第一个逗号前是标签，就是使用的时候显示的一种方法。可以中文。
+ 第二个逗号前是布局方法，这里是窗口出现的时候排版方式，可以在最后提供是否浮动窗口，默认提供四种。
+ floating, 简单浮动
+ tilev, 横向平铺
+ tileh, 纵向平铺
+ monocle ？属于浮动
+ 第三个是窗口是否浮动。
+*/
+Layout layouts[] = {
+	{ "浮", floating,	True },
+	{ "固=", tilev, False },
+	{ "固|", tileh, False },
+	{ "[M]", monocle,	True },
+};
+
+[热键]
+代码:
+
+/*
+ 第一个逗号前是主组合键，包括ctrl,atl,shift，使用“|”来代表组合。
+ 第二个逗号前是次组合键，包括功能键（回车，删除），字符键。
+ 第三个逗号钱是方法，包括：
+ spawn：运行你指定的命令，我们的dmenu_run就是这么来的。 最后参数必须是执行用的命令（string）
+ focusnext，focusprev：焦点后移和前移。 最后参数NULL
+ reapply：重新以你正在的桌面标签为基本标签，运作一次规则。最后参数NULL
+ zoom：完全没有成功过的缩放。最后参数NULL
+ viewpretag：返回上一个桌面标签。最后参数NULL
+ setlayout：设置桌面布局。最后参数是布局的名字
+ togglefloating：切换是否浮动。最后参数NULL
+ killclient：强制关闭窗口。最后参数NULL
+ view：查看桌面标签。最后参数可以是NULL（全局查看）或是tags[数字]指定的桌面标签
+ toggleview：同时查看多个桌面标签。最后参数tags[数字]指定的桌面标签
+ tag：切换指定的窗口到达指定的桌面标签。最后参数tags[数字]指定的桌面标签
+ toggletag：指定窗口被设定多个桌面标签，最后参数tags[数字]指定的桌面标签
+ quit：退出dwm。最后参数NULL
+*/
+#define MODKEY Mod1Mask /* 主组合键 Alt */
+Key keys[] = {
+	/* modifier key function	argument */
+	{ MODKEY, XK_p, spawn, "exec dmenu_run -nb '"NORMBGCOLOR"' -nf '"NORMFGCOLOR"' -sb '"SELBGCOLOR"' -sf '"SELFGCOLOR"'" },
+	{ MODKEY|ShiftMask, XK_Return,	spawn, "exec tilda" },
+	{ MODKEY, XK_j, focusnext,	NULL },
+	{ MODKEY, XK_k, focusprev,	NULL },
+	{ MODKEY, XK_r, reapply,	NULL },
+	{ MODKEY, XK_Return,	zoom, NULL },
+	{ MODKEY, XK_Tab, viewprevtag,	NULL },
+	{ MODKEY, XK_m, setlayout,	"[M]" },
+	{ MODKEY, XK_f, setlayout,	"浮" },
+	{ MODKEY, XK_v, setlayout,	"固=" },
+	{ MODKEY, XK_h, setlayout,	"固|" },
+	{ MODKEY|ShiftMask, XK_space,	togglefloating,	NULL },
+	{ MODKEY, XK_F4, killclient,	NULL },
+	{ MODKEY, XK_0, view, NULL },
+	{ MODKEY, XK_1, view, tags[0] }, 
+爆 炸后几天内，成千上万被称为“清理者”的工人被匆忙调集到切尔诺贝利来制服这座充满辐射的炼狱。煤矿工人在炽热的石墨堆芯下挖掘，以便泵入液氮来冷却核 燃料。直升机驾驶员空投了4500吨铅、沙子、黏土和其它物料来竭力熄灭火焰。军人们定时冲上顶部，将炸飞的、冒着烟的石墨块铲回反应堆中心。参与这次行 动的3400名超级勇士被不敬地称为“生物 机器人”，他们当中
+	{ MODKEY, XK_2, view, tags[1] },
+	{ MODKEY, XK_3, view, tags[2] },
+	{ MODKEY, XK_4, view, tags[3] },
+	{ MODKEY, XK_5, view, tags[4] },
+	{ MODKEY, XK_6, view, tags[5] },
+	{ MODKEY, XK_7, view, tags[6] },
+	{ MODKEY, XK_8, view, tags[7] },
+	{ MODKEY, XK_9, view, tags[8] },
+	{ MODKEY|ControlMask, XK_1, toggleview,	tags[0] },
+	{ MODKEY|ControlMask, XK_2, toggleview,	tags[1] },
+	{ MODKEY|ControlMask, XK_3, toggleview,	tags[2] },
+	{ MODKEY|ControlMask, XK_4, toggleview,	tags[3] },
+	{ MODKEY|ControlMask, XK_5, toggleview,	tags[4] },
+	{ MODKEY|ShiftMask, XK_0, tag, NULL },
+	{ MODKEY|ShiftMask, XK_1, tag, tags[0] },
+	{ MODKEY|ShiftMask, XK_2, tag, tags[1] },
+	{ MODKEY|ShiftMask, XK_3, tag, tags[2] },
+	{ MODKEY|ShiftMask, XK_4, tag, tags[3] },
+	{ MODKEY|ShiftMask, XK_5, tag, tags[4] },
+	{ MODKEY|ControlMask|ShiftMask,	XK_1, toggletag,	tags[0] },
+	{ MODKEY|ControlMask|ShiftMask,	XK_2, toggletag,	tags[1] },
+	{ MODKEY|ControlMask|ShiftMask,	XK_3, toggletag,	tags[2] },
+	{ MODKEY|ControlMask|ShiftMask,	XK_4, toggletag,	tags[3] },
+	{ MODKEY|ControlMask|ShiftMask,	XK_5, toggletag,	tags[4] },
+	{ MODKEY|ShiftMask, XK_q, quit, NULL },
+};
+
+注意这一行:
+代码:
+
+#define FONT "WenQuanYi Bitmap Song:size=8" /* 字体设置 */
+
+因为我写了点Xft补丁.这里使用了fontconfig来配置字体.
+中文显示现在好多了.
+
+全部的热键定义在(库路径)/X11/keysymdef.h 和 (库路径)/X11/keysym.h
+这里列出常用的几个
+代码:
+
+
+#define XK_Shift_L 0xffe1 /* Left shift */
+#define XK_Shift_R 0xffe2 /* Right shift */
+#define XK_Control_L 0xffe3 /* Left control */
+#define XK_Control_R 0xffe4 /* Right control */
+#define XK_Caps_Lock 0xffe5 /* Caps lock */
+#define XK_Shift_Lock 0xffe6 /* Shift lock */
+
+#define XK_Meta_L 0xffe7 /* Left meta */
+#define XK_Meta_R 0xffe8 /* Right meta */
+#define XK_Alt_L 0xffe9 /* Left alt */
+#define XK_Alt_R 0xffea /* Right alt */
+#define XK_Super_L 0xffeb /* Left super */
+#define XK_Super_R 0xffec /* Right super */
+
+/*
+ * Latin 1
+ * (ISO/IEC 8859-1 = Unicode U+0020..U+00FF)
+ * Byte 3 = 0
+ */
+#ifdef XK_LATIN1
+#define XK_space 0x0020 /* U+0020 SPACE */
+#define XK_exclam 0x0021 /* U+0021 EXCLAMATION MARK */
+#define XK_quotedbl 0x0022 /* U+0022 QUOTATION MARK */
+#define XK_numbersign 0x0023 /* U+0023 NUMBER SIGN */
+#define XK_dollar 0x0024 /* U+0024 DOLLAR SIGN */
+#define XK_percent 0x0025 /* U+0025 PERCENT SIGN */
+#define XK_ampersand 0x0026 /* U+0026 AMPERSAND */
+#define XK_apostrophe 0x0027 /* U+0027 APOSTROPHE */
+#define XK_quoteright 0x0027 /* deprecated */
+#define XK_parenleft 0x0028 /* U+0028 LEFT PARENTHESIS */
+#define XK_parenright 0x0029 /* U+0029 RIGHT PARENTHESIS */
+#define XK_asterisk 0x002a /* U+002A ASTERISK */
+#define XK_plus 0x002b /* U+002B PLUS SIGN */
+#define XK_comma 0x002c /* U+002C COMMA */
+#define XK_minus 0x002d /* U+002D HYPHEN-MINUS */
+#define XK_period 0x002e /* U+002E FULL STOP */
+#define XK_slash 0x002f /* U+002F SOLIDUS */
+#define XK_0 0x0030 /* U+0030 DIGIT ZERO */
+#define XK_1 0x0031 /* U+0031 DIGIT ONE */
+#define XK_2 0x0032 /* U+0032 DIGIT TWO */
+#define XK_3 0x0033 /* U+0033 DIGIT THREE */
+#define XK_4 0x0034 /* U+0034 DIGIT FOUR */
+#define XK_5 0x0035 /* U+0035 DIGIT FIVE */
+#define XK_6 0x0036 /* U+0036 DIGIT SIX */
+#define XK_7 0x0037 /* U+0037 DIGIT SEVEN */
+#define XK_8 0x0038 /* U+0038 DIGIT EIGHT */
+#define XK_9 0x0039 /* U+0039 DIGIT NINE */
+#define XK_colon 0x003a /* U+003A COLON */
+#define XK_semicolon 0x003b /* U+003B SEMICOLON */
+#define XK_less 0x003c /* U+003C LESS-THAN SIGN */
+#define XK_equal 0x003d /* U+003D EQUALS SIGN */
+#define XK_greater 0x003e /* U+003E GREATER-THAN SIGN */
+#define XK_question 0x003f /* U+003F QUESTION MARK */
+#define XK_at 0x0040 /* U+0040 COMMERCIAL AT */
+#define XK_A 0x0041 /* U+0041 LATIN CAPITAL LETTER A */
+#define XK_B 0x0042 /* U+0042 LATIN CAPITAL LETTER B */
+#define XK_C 0x0043 /* U+0043 LATIN CAPITAL LETTER C */
+#define XK_D 0x0044 /* U+0044 LATIN CAPITAL LETTER D */
+#define XK_E 0x0045 /* U+0045 LATIN CAPITAL LETTER E */
+#define XK_F 0x0046 /* U+0046 LATIN CAPITAL LETTER F */
+#define XK_G 0x0047 /* U+0047 LATIN CAPITAL LETTER G */
+#define XK_H 0x0048 /* U+0048 LATIN CAPITAL LETTER H */
+#define XK_I 0x0049 /* U+0049 LATIN CAPITAL LETTER I */
+#define XK_J 0x004a /* U+004A LATIN CAPITAL LETTER J */
+#define XK_K 0x004b /* U+004B LATIN CAPITAL LETTER K */
+#define XK_L 0x004c /* U+004C LATIN CAPITAL LETTER L */
+#define XK_M 0x004d /* U+004D LATIN CAPITAL LETTER M */
+#define XK_N 0x004e /* U+004E LATIN CAPITAL LETTER N */
+#define XK_O 0x004f /* U+004F LATIN CAPITAL LETTER O */
+#define XK_P 0x0050 /* U+0050 LATIN CAPITAL LETTER P */
+#define XK_Q 0x0051 /* U+0051 LATIN CAPITAL LETTER Q */
+#define XK_R 0x0052 /* U+0052 LATIN CAPITAL LETTER R */
+#define XK_S 0x0053 /* U+0053 LATIN CAPITAL LETTER S */
+#define XK_T 0x0054 /* U+0054 LATIN CAPITAL LETTER T */
+#define XK_U 0x0055 /* U+0055 LATIN CAPITAL LETTER U */
+#define XK_V 0x0056 /* U+0056 LATIN CAPITAL LETTER V */
+#define XK_W 0x0057 /* U+0057 LATIN CAPITAL LETTER W */
+#define XK_X 0x0058 /* U+0058 LATIN CAPITAL LETTER X */
+#define XK_Y 0x0059 /* U+0059 LATIN CAPITAL LETTER Y */
+#define XK_Z 0x005a /* U+005A LATIN CAPITAL LETTER Z */
+#define XK_bracketleft 0x005b /* U+005B LEFT SQUARE BRACKET */
+#define XK_backslash 0x005c /* U+005C REVERSE SOLIDUS */
+#define XK_bracketright 0x005d /* U+005D RIGHT SQUARE BRACKET */
+#define XK_asciicircum 0x005e /* U+005E CIRCUMFLEX ACCENT */
+#define XK_underscore 0x005f /* U+005F LOW LINE */
+#define XK_grave 0x0060 /* U+0060 GRAVE ACCENT */
+#define XK_quoteleft 0x0060 /* deprecated */
+#define XK_a 0x0061 /* U+0061 LATIN SMALL LETTER A */
+#define XK_b 0x0062 /* U+0062 LATIN SMALL LETTER B */
+#define XK_c 0x0063 /* U+0063 LATIN SMALL LETTER C */
+#define XK_d 0x0064 /* U+0064 LATIN SMALL LETTER D */
+#define XK_e 0x0065 /* U+0065 LATIN SMALL LETTER E */
+#define XK_f 0x0066 /* U+0066 LATIN SMALL LETTER F */
+#define XK_g 0x0067 /* U+0067 LATIN SMALL LETTER G */
+#define XK_h 0x0068 /* U+0068 LATIN SMALL LETTER H */
+#define XK_i 0x0069 /* U+0069 LATIN SMALL LETTER I */
+#define XK_j 0x006a /* U+006A LATIN SMALL LETTER J */
+#define XK_k 0x006b /* U+006B LATIN SMALL LETTER K */
+#define XK_l 0x006c /* U+006C LATIN SMALL LETTER L */
+#define XK_m 0x006d /* U+006D LATIN SMALL LETTER M */
+#define XK_n 0x006e /* U+006E LATIN SMALL LETTER N */
+#define XK_o 0x006f /* U+006F LATIN SMALL LETTER O */
+#define XK_p 0x0070 /* U+0070 LATIN SMALL LETTER P */
+#define XK_q 0x0071 /* U+0071 LATIN SMALL LETTER Q */
+#define XK_r 0x0072 /* U+0072 LATIN SMALL LETTER R */
+#define XK_s 0x0073 /* U+0073 LATIN SMALL LETTER S */
+#define XK_t 0x0074 /* U+0074 LATIN SMALL LETTER T */
+#define XK_u 0x0075 /* U+0075 LATIN SMALL LETTER U */
+#define XK_v 0x0076 /* U+0076 LATIN SMALL LETTER V */
+#define XK_w 0x0077 /* U+0077 LATIN SMALL LETTER W */
+#define XK_x 0x0078 /* U+0078 LATIN SMALL LETTER X */
+#define XK_y 0x0079 /* U+0079 LATIN SMALL LETTER Y */
+#define XK_z 0x007a /* U+007A LATIN SMALL LETTER Z */
+#define XK_braceleft 0x007b /* U+007B LEFT CURLY BRACKET */
+#define XK_bar 0x007c /* U+007C VERTICAL LINE */
+#define XK_braceright 0x007d /* U+007D RIGHT CURLY BRACKET */
+#define XK_asciitilde 0x007e /* U+007E TILDE */
+
+附上一个我使用的启动脚本：
+~/.xinitrc
+PHP 代码:
+#!/bin/sh
+
+# Default Fix My Board
+xmodmap /other/Backup/fix/xmodmap &
+
+# Base Env Var Setup
+X_ENV="dwm"
+
+# Open office fix
+export OOO_FORCE_DESKTOP=gnome
+
+# Input System
+export LANG=zh_CN.UTF-8 
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+fcitx -d
+
+# Wall Page
+feh --bg-center .wp.png &
+
+# Default Exec 
+tilda -h 2>&1 > /dev/null &
+
+# dwm ENV
+if [ $X_ENV ]; then
+  export AWT_TOOLKIT=MToolkit
+  while true
+  do
+    . ~/.status.bar
+  done | exec dwm
+fi 
+~/.status.bar
+PHP 代码:
+#!/bin/bash
+
+# 标准检查
+p_list="opera:Op pidgin:PG vim:Vi";
+G_CODE="";
+for index in $p_list
+do
+  p=`expr match $index '\(.*\):'`
+  s=`expr match $index '.*:\(.*\)'`
+  G_CODE += "`pgrep $p > /dev/null && echo [$s]`"
+done
+
+# 特殊程序
+MPD="[`mpc | sed -n '2s/\[\(.*\)\].*/\1/;2s/playing/Music/p;'`]";
+DATE="`date +%m.%d` `date +%H:%M`";
+
+echo "$G_CODE$MPD $DATE"
+
+# 每三十秒才更新一次,太快会很占用CPU，毕竟我不需要秒
+sleep 30s 
+如果有任何的不明白，请说明：）
+有错误也请大方指出，谢谢：）
+
+
+[end]

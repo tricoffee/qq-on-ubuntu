@@ -1,0 +1,182 @@
+羽量级的窗口管理器：dwm
+
+从重量级的桌面系统 Gnome、KDE 到 fvwm2、IceWM 等轻量级的窗口管理器，FreeBSD 有足够多可选择的桌面用于满足各式口味的用户。从效率和视觉效果上，一些高定制的 WM (window manager，窗口管理器) 让重口味的玩家随心所欲地搭建个性化的桌面系统。有的超炫，有的简约，有的易用，有的侧重键盘操作，……。琳琅满目，总有一款适合你。
+
+我的心路历程是 Gnome → KDE → fvwm2 → dwm (dynamic window manager for X)。这是一条看破红尘返朴归真的路。前两个选择曾亮瞎过我的钛金鼠目，后两个选择让我今生今世永不后悔。总而言之，它们趋向于平平淡淡才是真的境界。以高定制性见长的fvwm2的介绍见 设置你自己的 FVWM2，以平铺（即所有窗口规则摆放，且铺满整个屏幕而不浪费机器的任何一个像素）和低耗为特点的dwm的简介见dwm。
+
+dwm是我所了解的最小的WM之一，它的编译只需几秒钟。它的个性化是靠直接修改config.h文件，而这个文件的可读性非常好，比fvwm的配置文件简单多了。如果追求简约风格，与其浪费时间在fvwm的配置上，不如直接拿来dwm，因为它的设计无处不体现着简约。如果追求炫，dwm不如fvwm的定制性强。
+
+我喜欢具有简约朴实外表的WM，使用习惯偏向键盘操作，追求高效率和稳定性。即便我有大把的银子能买好机器，我也不会改变这种清淡的口味（况且我是一枚穷光蛋）。以此为标准，我认为，dwm是最优秀的WM之一。同时，dwm也很养眼，因为它没有什么炫的东西能把我晃晕。当然，炫不是一件坏事。烟花易冷，炫过后要么想更炫，要么想回归到最简单的需求。
+
+本wiki将详细描述如何搭建中文化的dwm桌面，以及一些设置。值得强调的是，这个中文化的过程是简单的，毋须补丁之类的来正常显示中文。
+准备工作：安装 dwm
+
+    在make config时勾上所有选项，特别是XFT支持。
+    先make一下，将work里的config.h文件拷贝到/root/下。该文件就是dwm的配置文件，以后我们只需修改此文件就可以定制个性化的dwm。
+    修改 $HOME/.xinitrc 文件如下。
+
+## Language and input method
+export LANG=zh_CN.UTF-8
+export LC_ALL="en_US.UTF-8"
+export XMODIFIERS='@im=fcitx'
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+exec fcitx &
+
+## Status bar
+while true; do
+   xsetroot -name "$(date +"%A %F")"
+   sleep 300
+done &
+
+## Conky
+conky | while read LINE; do xsetroot -name "$LINE"; done &
+exec dwm
+
+有必要提醒一下：LC_ALL的值必须是“en_US.UTF-8”，不能是“zh_CN.UTF-8”。否则，fcitx在uxterm、vim、emacs里就唤不出来了。另外，因为LC_ALL的值已给，其他LC_*的值就不必设定了，它们都缺省的是LC_ALL的值。
+
+如果你不用conky，可以把上面conky的那一句注释掉。
+
+如果你选用其他的中文输入法，可相应地将上面fcitx替换掉。
+uxterm 的设置
+
+xterm和uxterm是xorg自带的模拟终端，二者差别不大，uxterm缺省使用utf-8。和其他优秀的模拟终端（如urxvt）相比，xterm 和 uxterm 速度更快，也易于中文化。dwm缺省使用uxterm作为模拟终端，这是一个明智的选择。
+
+uxterm有一个缺憾：如果字体设置得小了，某些中文在uxterm里只能显示为一个虚线方块儿。最直接的解决方案是将缺省的字体设置改大一点点，这样就能正常地显示中文了。 我在网上也看到改 .Xdefault 设置的方法，但下面的方法是一了百了的。
+
+    修改 /usr/local/lib/X11/app-defaults/UXTerm 文件，将缺省字体 *VT100.font 那一行改为 *VT100.font5 的设置。即，
+
+*VT100.font:    -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
+
+    UXTerm的颜色设置：在 HOME/.Xdefaults中添加
+
+!!!!!!!!!!!!!!!!!!!!!
+!! UXTerm settings !!
+!!!!!!!!!!!!!!!!!!!!!
+UXTerm*background: #000000 
+UXTerm*foreground: white 
+UXTerm*customization: -color 
+UXTerm*toolBar: false 
+UXTerm*highlightSelection: true 
+UXTerm*VT100*underLine: on 
+UXTerm*VT100*colorMode: on 
+UXTerm*VT100*dynamicColors: on 
+UXTerm*VT100*colorAttrMode: off 
+UXTerm*VT100*colorBDMode: on 
+UXTerm*VT100*colorBD: blue 
+UXTerm*VT100*colorULMode: on 
+UXTerm*VT100*colorUL: green 
+UXTerm*VT100*titeInhibit: true 
+
+UXTerm.VT100*color0: black 
+UXTerm.VT100*color1: red3 
+UXTerm.VT100*color2: green3 
+UXTerm.VT100*color3: yellow3 
+UXTerm.VT100*color4: blue3 
+UXTerm.VT100*color5: magenta3 
+UXTerm.VT100*color6: cyan3 
+UXTerm.VT100*color7: gray90 
+UXTerm.VT100*color8: gray30 
+UXTerm.VT100*color9: red 
+UXTerm.VT100*color10: green 
+UXTerm.VT100*color11: yellow 
+UXTerm.VT100*color12: blue 
+UXTerm.VT100*color13: magenta 
+UXTerm.VT100*color14: cyan 
+UXTerm.VT100*color15: white 
+UXTerm.VT100*cursorColor: lime green
+
+配置 config.h
+
+在配置 config.h 之前，需要了解机器的键盘。在 FreeBSD 之下，利用 Xorg 系统自带的命令 xev 来查看键的名称。 对于 Thinkpad 笔记本而言，除了 ThinkVantage 键，其他任何键都可以在 dwm 下设置成热键。譬如，在下面的设置中，我把 “WINKEY + Shift + o” 设置成打开 Opera。
+
+dwm 的特点是将窗口平铺，经常需要在窗口之间切换。除了 dwm 缺省的设置外，我把 XF86XK_Back（右 Ctrl 键和向上箭头之间的那个键） 和 XF86XK_Forward 这两个键绑定为窗口切换的热键。
+
+另外，我喜欢把“WINKEY + XF86XK_Sleep (Fn)” 绑定为 xlock，很直观，就是 Window sleeps.
+
+热键的使用可以提高效率。相对于鼠标，我更倾向于在 dwm 下使用热键。配置 /root/config.h，这是一个个性化的行为。我改动的地方是
+
+static const char font[]            = "Unibit:style=Regular:pixelsize=10";
+static const char normbgcolor[]     = "#565656";
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const Rule rules[] = { 
+    /* class      instance    title       tags mask     isfloating   monitor */
+    { "Gimp",     NULL,       NULL,       0,            True,        -1 },
+    { "MPlayer",  NULL,       NULL,       0,            True,        -1 },
+};
+
+另外，我觉得dwm中热键的设置不合我的胃口。dwm用Alt+数字来切换 tag，而Alt+数字早被我用于轻量级的网页浏览器：surf。与此同时，WINKEY键却很少被用到，这让我决定把 config.h 中的 #define MODKEY Mod1Mask 改为 #define WINKEY Mod4Mask，并且把所有 MODKEY 都换为 WINKEY。这样做的结果是让快捷键变得直观，也更容易记住。
+
+/* commands */
+static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[]    = { "uxterm", NULL };
+static const char *volumedown[] = { "mixer", "vol", "-2", NULL };
+static const char *volumeup[]   = { "mixer", "vol", "+2", NULL };
+static const char *mutecmd[]    = { "mixer", "vol", "0", NULL };
+static const char *xlockcmd[]   = { "xlock", NULL };
+static const char *operacmd[]   = { "opera", "--nomail", "--nosession", NULL };
+static const char *lscreen[]    = { "xdotool", "mousemove", "200", "500", "click", "1", NULL };
+static const char *rscreen[]    = { "xdotool", "mousemove", "2000", "500", "click", "1", NULL };
+
+
+/* Opera is opened by hotkey "WINKEY + Shift + o".
+   XF86XK_Back is the key between R_Ctrl and up-arrow, and 
+   XF86XK_Forward is the key right to up-arrow.
+   We set them as alternatives to "WINKEY + XK_j" and "WINKEY + XK_k".
+   "WINKEY + XF86XK_Sleep (Fn)" is binded to xlock command.
+   "lscreen" switches to the left monitor, and "rscreen" the right.
+*/
+
+static Key keys[] = {
+    /* modifier                     key        function        argument */
+    { WINKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { WINKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+    /* Hotkeys defined for Thinkpad X200 */
+    { 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = volumedown } },
+    { 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = volumeup } }, 
+    { 0,                XF86XK_AudioMute,      spawn,          {.v = mutecmd } },
+    { WINKEY,               XF86XK_Sleep,      spawn,          {.v = xlockcmd } },
+    { 0,                  XF86XK_Forward, focusstack,          {.i = +1 } },
+    { 0,                     XF86XK_Back, focusstack,          {.i = -1 } },
+    { WINKEY|ShiftMask,             XK_o,      spawn,          {.v = operacmd } },
+    { WINKEY,                    XK_Left,      spawn,          {.v = lscreen } },
+    { WINKEY,                   XK_Right,      spawn,          {.v = rscreen } },
+    /* end of definition */
+以下省略……    
+
+以后，每次对dwm进行个性化，只需要
+
+root@/usr/ports/x11-wm/dwm# make deinstall clean && make DWM_CONF=/root/config.h install clean
+
+常见的热键
+
+按照我的定义，dwm启动一个uxterm原来用SHIFT+ALT+ENTER，现在变为SHIFT+WINKEY+ENTER。还有下面几个常用的热键。
+
+    转移到 tag2：WINKEY+2
+    移动窗口到 tag2：SHIFT+WINKEY+2
+    关闭窗口：SHIFT+WINKEY+c
+    退出 dwm：SHIFT+WINKEY+q
+
+效果图
+
+后记
+
+在上面的工作都完成之后，如果中文显示还不正常，如dwm标题栏里的中文为乱码，别着急，我这里有一个小偏方。这个小偏方在我的机器上是有效的，但我不能指着灯泡保证在你的机器上也有效，死马当活马医吧。
+
+这个偏方就是：
+
+    在心里默念，“乱码，画个圈圈诅咒你”。
+    在uxterm里，按住CTRL+鼠标右键不放手，然后选“Large”即可。
+
+dwm + surf + mutt 是一剂春药，可以让许多老机器重新雄起。所以，别轻易地换掉跟随你多年再也跑不动win7的笔记本。在这个以炫为美的世界里，“简约”也不失为一种特立独行的生活方式。
+/data/vhosts/wiki-data/pages/doc/d/dwm.txt · 最后更改: 2013/07/06 00:33 由 IOU
+页面工具
+
+    显示源文件
+    修订记录
+    反向链接
+    回到顶部
+
+除额外注明的地方外，本维基上的内容按下列许可协议发布： CC Attribution-Share Alike 4.0 International
+CC Attribution-Share Alike 4.0 International Donate Powered by PHP Valid HTML5 Valid CSS Driven by DokuWiki
+

@@ -1,0 +1,95 @@
+一、如何升级到Ubuntu 16.04 LTS
+
+
+如果你不想全新安装 Ubuntu 16.04 LTS ，本文将介绍如何从 Ubuntu 15.10 或更老版本的 Ubuntu 进行升级。就目前来看，升级到 Ubuntu 16.04 LTS 的过程中虽然会有些小错误，但整个升级过程还算不错。
+
+在正式开始升级之前，请使用如下命令先对系统进行更新：
+
+    sudo apt-get update && sudo apt-get dist-upgrade
+
+上述命令将为当前系统安装最新可用的软件包，升级完成后请使用如下命令重启系统以完成更新安装：
+
+    sudo reboot
+
+系统重启完成后，执行如下命令可将 Ubuntu 升级到最新的 Ubuntu 16.04 LTS 版本：
+
+    sudo update-manager –d
+
+此时「软件更新器」将搜索最新的系统可用版本，一些时间后将可以看到如下界面：
+
+    软件更新器
+
+    升级到Ubuntu 16.04 LTS
+
+    点击「升级」按钮即可开始升级过程。
+
+注意：Ubuntu 16.04 LTS 的 FinalRelease 时间为 2016 年 4 月 21 日，在此之前升级到的都是测试版，请只用于测试环境。
+
+几分钟之后，升级向导会提示要卸载的软件包、将安装和升级的软件包个数，还会统计需要下载的包大小，如果确定无误就点击「开始升级」。
+
+
+此时正式的升级就开始了，在如下图所示的界面中大家可以看到升级的简易进度。整个升级时间取决于你的网速和计算机性能，大家喝杯咖啡慢慢等待。
+
+
+升级完成之后，重启系统就可以使用新版本了。
+
+
+
+
+二、Ubuntu Server升级到16.04 LTS
+
+下面我们来介绍下如何将旧版 Ubuntu Server 升级到 Ubuntu Server 16.04 LTS。
+
+1 使用如下命令安装 update-manager-core 包：
+
+    sudo apt-get install update-manager-core
+
+2 编辑 /etc/update-manager/release-upgrades 文件，设置 Prompt=normal 或 Prompt=lts 值。
+
+# Default behavior for the release upgrader.
+
+[DEFAULT]
+# Default prompting behavior, valid options:
+#
+#  never  - Never check for a new release.
+#  normal - Check to see if a new release is available.  If more than one new
+#           release is found, the release upgrader will attempt to upgrade to
+#           the release that immediately succeeds the currently-running
+#           release.
+#  lts    - Check to see if a new LTS release is available.  The upgrader
+#           will attempt to upgrade to the first LTS release available after
+#           the currently-running one.  Note that this option should not be
+#           used if the currently-running release is not itself an LTS
+#           release, since in that case the upgrader won't be able to
+#           determine if a newer release is available.
+Prompt=normal
+
+    Normal：检查是否有新系统版本可用，如果有则进行版本更新。
+    LTS：检查是否有新的 LTS 版本可用，如果有则更新到 LTS 版本。
+
+由于我们测试的服务器版本为 Ubuntu 15.10，Ubuntu 16.04 是其下一个版本，所以我们配置为 normal。
+
+3 执行如下命令先对系统进行更新：
+
+    sudo apt-get update && sudo apt-get dist-upgrade
+
+4 更新完成后使用如下命令重启服务器：
+
+    sudo reboot
+
+5 如果你通过 SSH 远程连接进行升级，为防止 SSH 连接问题造成 Ubuntu Server 16.04 LTS 升级会话中断。我们把升级会话丢到 screen 会话当中。因此先要进行安装：
+
+    sudo apt-get install screen
+
+6 使用如下命令启动 screen 会话
+
+    screen –Dr
+
+7 执行如下命令开始升级：
+
+    sudo do-release-upgrade –d
+
+在升级开始之后，在有提示时一路按「Y」即可完成升级。
+
+
+[end]

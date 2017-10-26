@@ -1,0 +1,139 @@
+一、Ubuntu Server 16.04设置WiFi
+
+
+想装个Server版的Linux系统玩玩，下面记录一下Ubuntu Server 16.04安装配置遇到的坑。
+
+1：安装语言选英文：可能是因为其他原因，我选中文的时候安装失败了，最后一次选中文的时候成功了。
+
+2：以前装了一个Ubuntu的，后面想着直接覆盖Ubuntu的分区就可以了吧，但是事实证明很悲剧，建议由这个覆盖想法的小伙伴先把之前的Ubuntu分区都删了，只留一个可用的大分区就好，双系统没关系,Linux的分区比较散，Windows一般就CDE三个盘，吧Linux的分区都删了就OK。
+
+3：主要详细记录怎么设置WiFi的问题：
+
+首先查看自己网卡的信息：一般人的都是eth0，和wlan0，但在Ubuntu Server 16.04里面变成了enp4s0和wlp5s0，算是第一个坑吧，
+
+ubuntu@ubuntu:~$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp4s0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 28:d2:44:98:33:2a brd ff:ff:ff:ff:ff:ff
+3: wlp5s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 18:cf:5e:00:84:ba brd ff:ff:ff:ff:ff:ff
+    inet 192.168.224.102/24 brd 192.168.224.255 scope global wlp5s0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::1acf:5eff:fe00:84ba/64 scope link 
+       valid_lft forever preferred_lft forever
+
+ubuntu-server16.0本身没有自带wpa_supplicant，所以一开始必须练有线网络安装
+
+apt-get install wpasupplicant
+
+把WiFi-ssid和密码写入一个配置文件
+
+wpa_passphrase ssid password > xxx.conf
+
+编辑网络配置文件vi /etc/network/interfaces
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+auto wlp5s0
+iface wlp5s0 inet dhcp
+wpa-conf /home/ubuntu/xxx.conf
+# The primary network interface
+
+接下来有几种方法获取ip地址：
+
+自动获取ip地址：如果不行可以先reboot一下
+
+dhclient wlp5s0
+
+或者手动获取ip：如果不行可以先reboot一下
+
+    -B - fork into background
+    -c filename - path to configuration file
+    -i interface - interface to listen on
+
+wpa_supplicant  -i wlp5s0  -c /home/ubuntu/xxx.conf
+
+
+
+
+二、Server无线连接配置
+
+由于Ubuntu  Linux内核对于WPA的加密方式支持不是很好，所有使用普通方式的命令行无法连接WPA2类型的路由。首先检查是否安装了wpasupplicant，Ubuntu 10.04已经安装了。
+
+1、安装wpasupplicant
+
+由于Ubuntu 10.04 Server已经集成了这个包，所以无需安装。如果是其他版本的Ubuntu Server，可以使用下面的命令进行安装：
+
+    #apt-get install wpasupplicant
+
+2、生成无线路由密钥
+
+    这一步就是根据你无线网络的SSID和密码，来生成WLAN需要的配置文件。命令如下：
+
+# wpa_passphrase ESSID PWD > xxx.conf
+
+然后将生成的xxx.conf放到一个确定的目录下，这个配置文件名字可以随便取。
+
+3、设置无线网络
+
+编辑/etc/network/interfaces文件，将wlan添加到其中：
+
+    #vim /etc/network/interfaces
+
+在里面加上：
+
+    auto wlan0
+    iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_config.conf
+
+注意如果你的路由器没有开启DHCP，则需要手动配置address、netmask、gateway、network和broadcast几项参数。另外就是wpa-conf后面跟着你刚才产生的密钥配置文件名。
+
+如果一直不需要使用有线网络，可以连有线网络一起禁用掉，将auto eth0注释掉即可。
+
+3、然后运行：
+# sudo wpa_supplicant -B -i wlan0 -Dwext -c  ~/netconf/lncmcc.conf
+# iwconfig wlan0
+
+检查已经连接上路由
+
+4、设置自动获取IP：
+
+# dhclient wlan0
+
+完了可以ping下http://www.baidu.com/
+
+# ping http://www.baidu.com/
+
+
+
+
+Ubuntu 16.04 LTS正式发布下载，长达5年技术支持  http://www.linuxidc.com/Linux/2016-04/130508.htm
+
+Ubuntu 16.04 U盘安装图文教程 http://www.linuxidc.com/Linux/2016-04/130520.htm
+
+Ubuntu 16.04 LTS安装好需要设置的15件事 http://www.linuxidc.com/Linux/2016-04/130519.htm
+
+Ubuntu 16.04 LTS 今日发布 Canonical公布系统新特性 http://www.linuxidc.com/Linux/2016-04/130466.htm
+
+将Ubuntu 15.10升级到Ubuntu 16.04  http://www.linuxidc.com/Linux/2016-03/129158.htm
+
+Ubuntu 16.04安装Lua游戏引擎Love http://www.linuxidc.com/Linux/2016-03/129108.htm
+
+Ubuntu 16.04 LTS如何使用Snap软件包 http://www.linuxidc.com/Linux/2016-04/130679.htm
+
+Ubuntu 16.04 需要你的帮助，让 GNOME Software 更美观 http://www.linuxidc.com/Linux/2016-03/129237.htm
+
+更多Ubuntu相关信息见Ubuntu 专题页面 http://www.linuxidc.com/topicnews.aspx?tid=2
+
+本文永久更新链接地址：http://www.linuxidc.com/Linux/2016-05/131486.htm
+
+
+[end]

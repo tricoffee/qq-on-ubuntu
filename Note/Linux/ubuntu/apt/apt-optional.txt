@@ -1,0 +1,96 @@
+给Ubuntu软件升级命令
+
+sudo apt-get update  --更新软件源
+
+sudo apt-get upgrade  -更新已经安装的软件
+
+
+
+以非root用户更新系统
+
+sudo: sudo是linux系统管理指令，是允许系统管理员让普通用户执行一些或者全部的root命令的一个工具，如halt，reboot，su等等。这样不仅减少了root用户的登陆 和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。
+
+apt-get: apt-get是一条linux命令，适用于deb包管理式的操作系统，主要用于自动从互联网的软件仓库中搜索、安装、升级、卸载软件或操作系统。 　　apt-get命令一般需要root权限执行，所以一般跟着sudo命令。
+
+一、APT的使用（Ubuntu Linux软件包管理工具一）
+apt-cache search # ------(package 搜索包)
+apt-cache show #------(package 获取包的相关信息，如说明、大小、版本等)
+sudo apt-get install # ------(package 安装包)
+sudo apt-get install # -----(package - - reinstall 重新安装包)
+sudo apt-get -f install # -----(强制安装?#"-f = --fix-missing"当是修复安
+装吧...)
+sudo apt-get remove #-----(package 删除包)
+sudo apt-get remove - - purge # ------(package 删除包，包括删除配置文件
+等)
+sudo apt-get autoremove --purge # ----(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)
+sudo apt-get update #------更新源
+sudo apt-get upgrade #------更新已安装的包
+sudo apt-get dist-upgrade # ---------升级系统
+sudo apt-get dselect-upgrade #------使用 dselect 升级
+apt-cache depends #-------(package 了解使用依赖)
+apt-cache rdepends # ------(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧...)
+sudo apt-get build-dep # ------(package 安装相关的编译环境)
+apt-get source #------(package 下载该包的源代码)
+sudo apt-get clean && sudo apt-get autoclean # --------清理下载文件的存
+档 && 只清理过时的包
+sudo apt-get check #-------检查是否有损坏的依赖
+
+
+apt-get install 的用法
+apt-get install <package>
+下载 <package> 以及所有倚赖的包裹,同时进行包裹的安装或升级.如果某个包裹被设置了 hold (停止标志,就会被搁在一边(即不会被升级).更多 hold 细节请看下面.
+
+apt-get remove [--purge] <package>
+移除 <package> 以及任何倚赖这个包裹的其它包裹.--purge 指明这个包裹应该被完全清除 (purged) ,更多信息请看 dpkg -P .
+
+apt-get update
+升级来自 Debian 镜像的包裹列表,如果你想安装当天的任何软件,至少每天运行一次,而且每次修改了
+/etc/apt/sources.list 后,必须执行.
+
+apt-get upgrade [-u]
+升 级所以已经安装的包裹为最新可用版本.不会安装新的或移除老的包裹.如果一个包改变了倚赖关系而需要安装一个新的包裹,那么它将不会被升级,而是标志为 hold .apt-get update 不会升级被标志为 hold 的包裹 (这个也就是 hold 的意思).请看下文如何手动设置包裹为 hold .我建议同时使用 '-u' 选项,因为这样你就能看到哪些包裹将会被升级.
+
+apt-get dist-upgrade [-u]
+和 apt-get upgrade 类似,除了 dist-upgrade 会安装和移除包裹来满足倚赖关系.因此具有一定的危险性.
+
+apt-cache search <pattern>
+搜索满足 <pattern> 的包裹和描述.
+
+apt-cache show <package>
+显示 <package> 的完整的描述.
+
+apt-cache showpkg <package>
+显示 <package> 许多细节,以及和其它包裹的关系.
+
+dselect, console-apt, aptitude, gnome-apt,是APT 的几个图形前端(其中一些在使用前得先安装).这里 dselect 无疑是最强大的,也是最古老,最难驾驭.
+
+ 
+
+要用apt-get这种方式安装LAMP时，最好先运行下面在命令升级自己的系统这样是为了更新源，而如果你找的源不好，可能安装LMAP失败。
+
+
+#sudo apt-get update 获得最近的软件包的列表；列表中包含一些包的信息，比如这个包是否更新过
+#sudo apt-get dist-upgrade 如果这个包没有发布更新，就不管它；如果发布了更新，就把包下载到电脑上，并安装。
+apt-get update 指令会同步使用者端和APT 伺服器的RPM 索引清单（package list），APT 伺服器的RPM 索引清单置于base 资料夹内，使用者端电脑取得base 资料夹内的bz2 RPM 索引清单压缩档后，会将其解压置放于/var/state/apt/lists/，而使用者使用apt-get install 或apt-get dist-upgrade 指令的时候，就会将这个资料夹内的资料和使用者端电脑内的RPM 资料库比对，如此一来就可以知道那些RPM 已安装、未安装、或是可以升级的。
+这里提一下apt-get upgrade 与apt-get dist-upgrade的关系
+由于包与包之间存在各种依赖关系。upgrade只是简单的更新包，不管这些依赖，它不和添加包，或是删除包。而dist-upgrade可以根据依赖关系的变化，添加包，删除包。
+一般在运行upgrade或dist-upgrade之间，要运行update.
+
+
+最后运行如下
+
+#sudo apt-get install mysql-server 
+安装上mysql5
+#sudo apt-get install apache2 
+安装apache2
+#sudo apt-get install php5 
+安装php5
+#sudo apt-get install php5-mysql 
+安装php的mysql模块
+#sudo apt-get install php5-gd
+
+
+sudo (apt-get update && apt-get dist-upgrade && apt-get autoremove && apt-get autoclean)包
+
+ 
+[end]

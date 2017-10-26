@@ -1,0 +1,32 @@
+Linux 省电10招
+
+
+浏览次数：次 2009年04月29日 知道分子 字号: 大 中 小
+
+1. Linux Kernel 2.6.21 开始支持 Tickless（此前的内核默认设置为 1000Hz timer tick），于是系统空闲时不再无故骚扰 CPU，可以节省大量能耗。Fedora 7+ 以及目前的 Ubuntu Linux 发行版都含有 Tickless 特性，而 RHEL 则要到版本 6 才会随新版本内核正式支持该特性（预计 2010年上市）。检查你的 Linux 系统是否支持 Tickless： watch --interval=1 cat /proc/interrupts ，若 timer 中断值并非以 1000 为步进单位增加，则说明该内核支持 Tickless。
+
+2. 编译内核（make menuconfig）：
+
+    启用 Tickless： Processor type and features -> [*] Tickless System (Dynamic Ticks)
+    启用 CONFIG_USB_SUSPEND： Device Drivers -> USB support -> [*] USB selective suspend/resume and wakeup （自动禁用 UHCI USB，可以节省约 1 watt）
+
+3. PowerTOP 可以找出计算机闲置时哪些进程耗电最多。（Kernel Hacking -> [*] Collect kernel timers statistics） 详见： http://www.lesswatts.org/projects/powertop/
+
+4. 启用 power aware CPU scheduler（Scheduler Power Saving Mode）： echo 1 > /sys/devices/system/cpu/sched_mc_power_savings
+
+5. RHEL 5.3 支持 Intel Core i7 (Nehalem) 的电源管理功能。
+
+6. 启用 irqbalance 服务，既可以提升性能，又可以降低能耗。irqbalance 用于优化中断分配，它会自动收集系统数据以分析使用模式，并依据系统负载状况将工作状态置于 Performance mode 或 Power-save mode。处于 Performance mode 时，irqbalance 会将中断尽可能均匀地分发给各个 CPU core，以充分利用 CPU 多核，提升性能。处于 Power-save mode 时，irqbalance 会将中断集中分配给第一个 CPU，以保证其它空闲 CPU 的睡眠时间，降低能耗。（详见：http://www.irqbalance.org/documentation.php ）
+
+7. 禁用 pcscd，该进程会阻碍 USB 子系统进入 Power-save mode。
+
+8. 将 VM dirty writeback time 延长至 15 秒： echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+
+9. 启用 noatime 文件系统选项： mount -o remount,noatime / （noatime 禁止更新 atime，可以节省大量 I/O，但为了避免 atime 相关应用程序出现问题，建议启用 relatime 代之： mount -o remount,relatime / ，relatime 自 Kernel 2.6.29 起为默认设置。）
+
+10. 禁止 hal 轮询你的 cdrom： hal-disable-polling --device /dev/cdrom
+
+* 关于 Linux 节能的更多信息，请看： http://www.lesswatts.org
+
+本文来自：http://hutuworm.blogspot.com/2009/04/linux.html
+

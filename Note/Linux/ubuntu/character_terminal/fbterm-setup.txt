@@ -1,0 +1,62 @@
+Fbterm -- 支持显示 UTF-8 字体的纯终端  
+
+2010-12-03 11:44:38|  分类： 默认分类 |举报 |字号 订阅
+       
+
+<h2>Fbterm -- 支持显示 UTF-8 字体的纯终端</h2>
+http://www.linuxgem.org/2008/8/7/Fbterm.4887.html
+
+从 Linux.com 看到了这个新的支援 UTF-8 字体显示的终端，试用了一下，感觉非常不错～
+Fbterm 基于 Framebuffer，目标是为 Linux 提供一个可以支持国际化字符显示、并且支持字体配置的纯终端环境，类似于大家熟悉的 zhcon 和 cce，不过安装和配置上要简单不少。
+要想运行 Fbterm，首先你的 Linux 内核必须已经配置并且启用了 Framebuffer 的支持，如果正确配置，应该会有 /dev/fb 这个文件，如果没有，Fbterm 会报错。
+之后，下载最新的 Fbterm 软件包，安装过程非常简单：
+    ./configure
+    make
+    sudo make install
+
+现在就可以在纯控制台下运行 fbterm 了，第一次运行 fbterm，会生成一个 ~/.fbtermrc 文件，内容如下：
+# Configuration for fbterm
+
+# font family/pixelsize used by fbterm, mulitple font families must be separated by ','
+    font_family=mono
+    font_size=12
+
+# default color of foreground/background text
+# available colors: 0 = black, 1 = red, 2 = green, 3 = brown, 4 = blue, 5 = magenta, 6 = cyan, 7 = white
+    color_foreground=7
+    color_background=0
+
+font_family 就是 fbterm 所使用的字体，默认为 mono，既然我们想要在终端下显示中文，那么把 mono 替换为中文字体就可以了，比如 simsun 或者 wqy。
+你也可以用逗号分隔字体，比如：
+    font_family=Courier New, simsun
+
+这样，英文就会使用 Courier New，中文就会使用 simsun 了～
+除此之外，你还可以配置字体的大小、前景色和背景色，相信随着 Fbterm 的不断进步，可以配置的选项也会越来越多。
+显示效果：
+
+Fbterm 还提供了虚拟终端的支持：
+    Ctrl Alt c :  创建新的虚拟终端
+    Shift Left  :  移动到上一个虚拟终端
+    Shift Right  :  移动到下一个虚拟终端
+    Ctrl Alt 数字 : 移动到第 n 个虚拟终端
+    另外，还有翻页的能力：
+    Shitf Page Up : 向上翻页
+    Shitf Page Down : 向下翻页
+这样，在终端下排错的时候，就省去了因为看不见错误信息的最后几行，而把错误信息重定向到文件中去的麻烦了。
+
+
+Q&A：
+
+1. 为啥我没有 /dev/fb 这个文件？
+    首先你要正确的在内核中启用 Framebuffer 的支持，这不在本文的范围内，google 一下能查到详细的配置方法。
+    如果你启用了 Framebuffer 还是没有这个文件，那么你可以看看在 grub 中有没有加入了正确的 vga 参数；如果有 /dev/fb0 这个文件，那么建一个链接 
+    /dev/fb -> /dev/fb0 就可以了。
+2. 为啥运行了 fbterm 还是没法显示中文？
+    先看看是不是在 ~/.fbtermrc 中正确配置了中文字体，另外不要忘记把终端的 Locale 中的字符集设定为 UTF-8，可以尝试把 export LC_ALL="zh_CN.UTF-8"
+    加入到你的 ~/.bashrc 中。
+
+
+Fbterm 的主页： http://code.google.com/p/fbterm/
+
+
+[end]

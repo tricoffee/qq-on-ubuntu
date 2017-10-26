@@ -1,0 +1,6 @@
+安装如下组件：
+
+libx11-dev - X11 client-side library (development headers)
+libxkbcommon-x11-dev - library to create keymaps with the XKB X11 protocol - development files
+libghc-x11-dev - Haskell X11 binding for GHC
+libxft-dev

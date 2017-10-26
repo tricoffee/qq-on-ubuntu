@@ -1,0 +1,258 @@
+DWM——Linux 上的桌面管理器
+发表于2014 年 9 月 24 日	
+
+        与 Windows 不同，要说 Linux 上，有众多的窗口管理器。什么 Gnome，KDE，Unity，就像 Android 上一会儿一个锤子，一会儿一个 Flyme，一会儿又一个 MIUI 一样（在我看来，这一个个的深度定制不过也就是在内核上套了个不一样的盒子）。果然开放的系统就是不一样，大家想让它变成什么样，它就能变成什么样。
+
+        对于一些比较老的机器，Linux 发行版也日渐变得庞大和缓慢。在这一方面，桌面管理器有着不可推卸的责任。动辄数百 MB 的体量，不仅占用了大量内存，还拖慢了处理器的速度。而本文要介绍的桌面管理器，则是史无前例的小体量，不光适合老机器，还适合喜欢瞎折腾的 Geek 们。
+
+        DWM，我一直管它叫“大碗面”，全称 Dynamic Window Manager——所以应该叫做窗口管理器才更贴切，不过我总觉得它是一个桌面，所以就叫它“桌面管理器”。这是它的主页，上面除了有源代码，还有许多补丁。
+
+        DWM 用 C 语言编写，设计的目标是不超过 2000 行代码（最新的 dwm 6.0 约有 2100 行代码）。它的所有配置都直接写在了代码里，所以相比于从源里安装，从源代码编译安装是一个更好的选择。
+
+        DWM 的补丁有不少，大都是提供了一些额外的功能。在这些里面，最需要的我认为有两个——一个是 xft，它使得 DWM 可以设置 UTF8 字符集，从而可以支持中文；另一个是 systray，它使得在状态栏可以显示系统图标。我打补丁的顺序是先前者，后后者，发现两个补丁有一些冲突，需要进行一些手动修改。具体打补丁的方法，在 DWM 的页面上也有简单的说明。
+
+        另外有一个不得不说的工具，这个可以直接从源里安装：dmenu。它是专为 DWM 设计的，可以快速启动程序。
+
+        下面就从编译安装、编译前配置、启动配置、快捷键等几个方面说明一下 DWM 的安装和使用。
+
+    编译安装
+
+            编译安装的命令简单粗暴，默认安装在 /usr/local 目录下：
+
+    $ make clean install
+
+    编译前配置
+
+            编译之前对 DWM 的自定义配置都放在 config.h 文件中，这个文件默认是不存在的，但有一个 config.def.h，可以以之为模板，复制出一份 config.h。我进行的改动主要有（感谢春哥的DWM）：
+
+    /* appearance */
+    static const char font[]            = "WenQuanYi Micro Hei Mono";
+    static const unsigned int borderpx  = 0;        /* border pixel of windows */
+
+    /* tagging */
+    static const char *tags[] = { "赵", "钱", "孙", "李", "周", "吴", "郑", "王" };
+
+    /* key definitions */
+    #define MODKEY Mod4Mask   /* Change the Alt key to Super key. */
+
+    /* commands */
+    static const char *eccmd[] = { "emacs", ""};//emacs
+    static const char *volumedown[] = { "mixer", "vol", "-1", NULL };//音量控制
+    static const char *volumeup[]   = { "mixer", "vol", "+1", NULL };
+    static const char *mutecmd[]    = { "mixer", "vol", "0", NULL };
+
+    #include<X11/XF86keysym.h>
+    static Key keys[] = {
+   		/* modifier                     key        function        argument */
+    	{ Mod1Mask,                     XK_Tab,    view,           {0} },
+    	{ MODKEY,			XK_e,	   spawn,	   {.v = eccmd } },
+    	{ 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = volumedown } },//音量控制
+    	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = volumeup } }, 
+    	{ 0,                XF86XK_AudioMute,      spawn,          {.v = mutecmd } },
+    };
+
+    在以上的配置中，主要是更换了字体、标签的名字和键绑定（把 Alt 键换成了更常用的 Super 键，也就是 Win 键），另外增加了快速启动 Emacs 和音量调节按键的功能。
+    启动配置
+
+            DWM 的启动很简单，只要在 ～/.xinitrc（这个文件默认可能是没有的）中加入一行：exec dwm，之后用 startx 启动即可。废话不说，我的 .xinitrc 如下（从各种地方拷贝+拼凑）：
+
+    #!/bin/sh 
+
+    # Default Fix My Board 
+    xmodmap /other/Backup/fix/xmodmap & 
+
+    # Base Env Var Setup 
+    X_ENV="dwm" 
+
+    # Open office fix 
+    export OOO_FORCE_DESKTOP=gnome 
+
+    # Input System 
+    export LANG=zh_CN.UTF-8
+    export LC_CTYPE=zh_CN.UTF-8
+    #export LC_ALL="en_US.UTF-8"
+    export XIM=fcitx 
+    export XIM_PROGRAM=fcitx 
+    export GTK_IM_MODULE=fcitx 
+    export XMODIFIERS="@im=fcitx" 
+    export QT_IM_MODULE=fcitx
+    fcitx -d 
+
+    # Wall Page 
+    feh --bg-center .wp.png & 
+
+    # dwm ENV 
+    if [ $X_ENV ]; then 
+    export AWT_TOOLKIT=MToolkit
+    fi
+
+    # Sound
+    start-pulseaudio-x11 &
+
+    # My Status Bar
+    while true ; do
+        batt=$(acpi -b)
+        case $batt in
+            *Discharging*)
+    	    batt="<$(echo $batt | awk '{print $4}' | tr -d ',')"
+                ;;
+    	*Charging*)
+    	    batt=">$(echo $batt | awk '{print $4}' | tr -d ',')"
+    	    ;;
+            *)
+    	    batt="$(echo $batt | awk '{print $4}' | tr -d ',')"
+                ;;
+        esac
+
+        ##echo user nice system idle iowait irq softirq  
+        CPULOG_1=$(cat /proc/stat | grep 'cpu ' | awk '{print $2" "$3" "$4" "$5" "$6" "$7" "$8}')  
+        SYS_IDLE_1=$(echo $CPULOG_1 | awk '{print $4}')  
+        Total_1=$(echo $CPULOG_1 | awk '{print $1+$2+$3+$4+$5+$6+$7}')
+
+        sleep 3
+        
+        CPULOG_2=$(cat /proc/stat | grep 'cpu ' | awk '{print $2" "$3" "$4" "$5" "$6" "$7" "$8}')  
+        SYS_IDLE_2=$(echo $CPULOG_2 | awk '{print $4}')  
+        Total_2=$(echo $CPULOG_2 | awk '{print $1+$2+$3+$4+$5+$6+$7}')  
+     
+        SYS_IDLE=`expr $SYS_IDLE_2 - $SYS_IDLE_1`  
+     
+        Total=`expr $Total_2 - $Total_1`  
+        SYS_USAGE=`expr $SYS_IDLE/$Total*100 |bc -l`  
+     
+        SYS_Rate=`expr 100-$SYS_USAGE |bc -l`  
+     
+        Disp_SYS_Rate=`expr "scale=2; $SYS_Rate/1" |bc`
+
+        xsetroot -name "$batt $( date +"%F %R" ) $Disp_SYS_Rate%"
+        sleep 57
+    done &
+
+    exec dwm
+
+    具体每一部分完成什么，在上述文件中有简单的注释。这里要强调一点，就是关于声音设置的一行：start-pulseaudio-x11 & 。该行生效后就可以使用 alsamixer 设置系统声音，如果没有这一行，系统就无法输出声音。而要使之生效，还有一个前提，就是当前用户必须在 audio 用户组中。比如我的用户名是 linhan，就需要（之后别忘了重启）：
+
+    # adduser linhan audio
+
+            DWM 默认的终端是 UXTerm，还需要对它的颜色、字号等进行一些设置（默认的情况下是白底黑字，而且字号较小，会发生一些中文无法显示的问题）。把下面的内容放在文件 ~/.Xdefaults 中即可：
+
+    !!!!!!!!!!!!!!!!!!!!!
+    !! UXTerm settings !!
+    !!!!!!!!!!!!!!!!!!!!!
+    UXTerm*background: #000000 
+    UXTerm*foreground: white 
+    UXTerm*customization: -color 
+    UXTerm*toolBar: false 
+    UXTerm*highlightSelection: true 
+    UXTerm*VT100*underLine: on 
+    UXTerm*VT100*colorMode: on 
+    UXTerm*VT100*dynamicColors: on 
+    UXTerm*VT100*colorAttrMode: off 
+    UXTerm*VT100*colorBDMode: on 
+    UXTerm*VT100*colorBD: blue 
+    UXTerm*VT100*colorULMode: on 
+    UXTerm*VT100*colorUL: green 
+    UXTerm*VT100*titeInhibit: true 
+
+    UXTerm.VT100*color0: black 
+    UXTerm.VT100*color1: red3 
+    UXTerm.VT100*color2: green3 
+    UXTerm.VT100*color3: yellow3 
+    UXTerm.VT100*color4: blue3 
+    UXTerm.VT100*color5: magenta3 
+    UXTerm.VT100*color6: cyan3 
+    UXTerm.VT100*color7: gray90 
+    UXTerm.VT100*color8: gray30 
+    UXTerm.VT100*color9: red 
+    UXTerm.VT100*color10: green 
+    UXTerm.VT100*color11: yellow 
+    UXTerm.VT100*color12: blue 
+    UXTerm.VT100*color13: magenta 
+    UXTerm.VT100*color14: cyan 
+    UXTerm.VT100*color15: white 
+    UXTerm.VT100*cursorColor: lime green
+
+    ! TrueType font
+    !UXTerm*faceName: DejaVu Sans Mono
+    UXTerm*faceName: Bitstream Vera Sans Mono
+    UXTerm*faceNameDoublesize: WenQuanYi Zen Hei
+    UXTerm*faceSize: 12
+
+    使用一段时间后，你还会感兴趣 UXTerm 和其他窗口之间如何复制粘贴。在 UXTerm 中，选中即复制，到其他窗口中，鼠标中键就是粘贴（当然，左右键一起按是一样的）。也有人说粘贴使用 Shift+Insert 组合键，我在 UXTerm 中使用是成功的，但到了其他窗口中就无效了。
+
+            DWM 都装了，下一步自然就是让 Linux 系统默认启动到文字界面，这样我们就可以帅帅地在 DWM 中工作了。方法很简单，修改 /etc/default/grub 文件：
+
+    #GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+    GRUB_CMDLINE_LINUX_DEFAULT="text"
+
+    然后更新 grub：
+
+    # update-grub
+
+    好了，重启试试吧，是不是 Geek 了很多？
+
+            除了上面的设置，我还在 contab 中设置了每 10 分钟清理一次内存（都是强迫症惹的祸）：
+
+    # m h dom mon dow user	command
+    */10 *  * * *   root    echo 1 > /proc/sys/vm/drop_caches
+
+    在 ~/.bash_aliases 中重命名 nautilus，使之可以在 DWM 下使用（只能在终端中启动 nautilus）：
+
+    alias nautilus='nautilus --no-desktop'
+
+    锁屏（本内容为后期更新）
+
+            DWM 本身是不带锁屏功能的，从这个角度讲就不太“安全”。为了解决该问题，可以借助一些第三方锁屏工具。我用的是i3lock。一般而言，通过 Linux 发行版的源可以直接安装。我的做法是写一个脚本并将其添加到 $PATH 中，然后在 config.h 中添加热键绑定。脚本如下：
+
+    #!/bin/bash
+    i3lock -c 000000 -d  #lock the screen
+    xset dpms force off  #turn off screen at once
+
+    在 config.h 中的设置为：
+
+    /* commands */
+    ...
+    static const char *lockscr[] = { "lock.sh", NULL};
+    ...
+
+    static Key keys[] = {
+    ...
+    /* modifier     key        function        argument */
+    { MODKEY,	XK_z,	   spawn,	   {.v = lockscr } },
+    ...
+    };
+
+    快捷键
+
+            DWM 默认的快捷键是绑定在 Alt 键上的，用起来很不习惯，我在上面的配置中将其改成了 Win 键。主要的快捷键有：
+
+    Win+Shift+Enter		启动 UXterm
+    Win+<数字>			跳转到标签<数字>
+    Win+Shift+<数字>		当前程序窗口转移到标签<数字>中
+    Win+p				启动 dmenu
+    Win+e				启动 emacs
+    Win+Tab				在最近两个标签间切换
+    Alt+Tab				同上
+    Win+b				隐藏/显示状态栏
+    Win+Shift+c			关闭当前程序窗口
+    Win+Shift+q			退出 DWM
+    Win+z				锁屏
+
+    其他
+
+            鼠标下的程序会自动获取焦点，有时候很影响操作，要改动，只需注释掉 dwm.c 中下面一行代码：
+
+    [EnterNotify] = enternotify,
+
+            有时会发现终端窗口不能铺满屏幕，边缘总是有一些间隙（不得不说，又是强迫症惹的祸），这是因为其窗口的大小和字体有关。为了简单地解决该问题，只需要把config.h 文件中的 resizehints 设置为 False：
+
+    static const Bool resizehints = False;
+
+        到此为止，DWM 已基本配置安装完成。接下来，帅帅地开始工作吧！
+
+        最后，贴一份我在 github 上的代码备份，包含已打好的补丁、改好的配置和配置文件（不保证与最新代码同步）：https://github.com/lanhin/dwm-6.0
+
+        对了，没图不幸福：
+
+
+[end]

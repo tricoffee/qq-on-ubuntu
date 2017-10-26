@@ -1,0 +1,33 @@
+ubuntu 字符界面启动
+
+
+一般启动图形界面较慢，而且耗资源，这是可修改系统引导文件，ubuntu10.10，貌似跟readhat不太一样哦
+
+一、grub启动文件：/etc/default/grub ，将：
+
+ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+
+改成：
+
+ GRUB_CMDLINE_LINUX_DEFAULT="text"
+
+修改等待时间：
+
+ GRUB_TIMEOUT=0
+
+  
+
+更改后，注意更新：
+
+  $ sudo update-grub
+
+   
+
+二、若需启动图形界面，则更简单
+
+命令：
+
+  $ startx
+
+
+[end]
