@@ -61,6 +61,8 @@ http://coolshell.cn/
 http://blog.codingnow.com/
 # The Daily WTF - （关于编程方面的搞笑博客）
 http://thedailywtf.com/
+# 編程工具 blog
+http://blog.star7th.com
 
 
 #### 编程技术论坛
