@@ -7,10 +7,10 @@
 
 # hlsearch on (H) or off (h):
 ~h
-# Last Search Pattern:
+# 上个 Search 图案：
 ~MSle0~/emacs
 
-# Last Substitute Search Pattern:
+# 上个 替换 Search 图案：
 ~MSle0&^
 
 # 前一組替代字串:
@@ -18,9 +18,9 @@ $
 
 # 命令列 歷史記錄 (新到舊):
 :q
-:wq
-:w
 :x
+:w
+:wq
 :q!
 :set nu
 :help comments
@@ -1028,7 +1028,7 @@ $
 # 暫存器:
 "0	LINE	0
 	
-""1	LINE	0
+"1	LINE	0
 	
 "2	LINE	0
 	
@@ -1046,23 +1046,31 @@ $
 	
 "9	LINE	0
 	分别安装上面的组件，命令如下：
-"-	CHAR	0
+""-	CHAR	0
 	 
 
 # 檔案標記:
-'0  31  5  ~/.gitignore
-'1  30  1  ~/ShellScripts/basic_scripts/backup.sh
-'2  19  0  ~/ShellScripts/bashrc-add-gui-poweroff-logout
-'3  1  0  ~/ShellScripts/bashrc-init
-'4  13  28  ~/ShellScripts/basic_scripts/install-my-custom-sh-script.sh
-'5  256  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
-'6  46  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
-'7  105  74  ~/Github/dwm/config.def.h
-'8  75  1  ~/Github/dwm/config.h
-'9  9  30  ~/Note/Linux/ubuntu/fonts_setting/wenquanyi-microhei.txt
+'0  11  0  ~/Note/Linux/ubuntu/apt/apt-dpkg-common-problem.txt
+'1  326  0  ~/Note/Linux/ubuntu/apt/apt-fix-depend-on-problem.txt
+'2  18  22  ~/Note/Works/testWork/test-flow.txt
+'3  55  0  ~/.gitignore
+'4  31  5  ~/.gitignore
+'5  30  1  ~/ShellScripts/basic_scripts/backup.sh
+'6  19  0  ~/ShellScripts/bashrc-add-gui-poweroff-logout
+'7  1  0  ~/ShellScripts/bashrc-init
+'8  13  28  ~/ShellScripts/basic_scripts/install-my-custom-sh-script.sh
+'9  256  0  ~/Note/Linux/ubuntu/window_manager/DWM/dwm-tutorial-on-linux.txt
 
 # Jumplist (由新到舊):
--'  31  5  ~/.gitignore
+-'  11  0  ~/Note/Linux/ubuntu/apt/apt-dpkg-common-problem.txt
+-'  1  0  ~/Note/Linux/ubuntu/apt/apt-dpkg-common-problem.txt
+-'  326  0  ~/Note/Linux/ubuntu/apt/apt-fix-depend-on-problem.txt
+-'  1  0  ~/Note/Linux/ubuntu/apt/apt-fix-depend-on-problem.txt
+-'  18  22  ~/Note/Works/testWork/test-flow.txt
+-'  1  0  ~/Note/Works/testWork/test-flow.txt
+-'  55  0  ~/.gitignore
+-'  45  0  ~/.gitignore
+-'  31  0  ~/.gitignore
 -'  11  1  ~/.gitignore
 -'  1  0  ~/.gitignore
 -'  41  0  ~/.gitignore
@@ -1153,17 +1161,31 @@ $
 -'  106  79  ~/Github/dwm/config.def.h
 -'  115  0  ~/Github/dwm/config.def.h
 -'  47  15  ~/Github/dwm/config.def.h
--'  49  3  ~/Github/dwm/config.def.h
--'  50  3  ~/Github/dwm/config.def.h
--'  51  3  ~/Github/dwm/config.def.h
--'  52  3  ~/Github/dwm/config.def.h
--'  64  3  ~/Github/dwm/config.def.h
--'  66  3  ~/Github/dwm/config.def.h
 
 # 檔案內 Mark 記錄 (由新到舊):
 
+> ~/Note/Linux/ubuntu/apt/apt-dpkg-common-problem.txt
+	"	11	0
+
+> /mnt/readme.txt
+	"	2	0
+
+> ~/Note/Linux/ubuntu/apt/apt-fix-depend-on-problem.txt
+	"	326	0
+
+> ~/Note/Works/testWork/test-flow.txt
+	"	18	22
+	^	18	25
+	.	18	22
+	+	12	3
+	+	4	0
+	+	6	0
+	+	8	0
+	+	10	0
+	+	18	22
+
 > ~/.gitignore
-	"	31	5
+	"	55	0
 	^	41	0
 	.	41	0
 	+	27	8
@@ -1873,19 +1895,4 @@ $
 	"	124	0
 
 > ~/Note/text_editor/emacs/themes/some-emacs-theme.txt
-	"	1	0
-
-> ~/Note/text_editor/emacs/spacemacs-usage.txt
-	"	40	0
-	.	52	0
-	+	52	0
-	+	52	0
-
-> ~/Note/text_editor/emacs/sdcv.org
-	"	53	0
-
-> ~/Note/text_editor/emacs/root_open_file.org
-	"	1	0
-
-> ~/Note/text_editor/emacs/c_c++_mode.txt
 	"	1	0
