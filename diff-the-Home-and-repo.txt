@@ -29,7 +29,6 @@ Github
 .local
 .mozilla
 .mplayer
-My ISO Files
 Note
 .pam_environment
 Pictures
@@ -109,6 +108,7 @@ Github/
 .thumbnails/
 .thunderbird/
 Tools/
+VirtualBox\ VMs/
 .wget-hsts
 .xinputrc
 
