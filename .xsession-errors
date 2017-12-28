@@ -1,0 +1,4 @@
+/home/qq/.xsessionrc: 行 11: 未预期的符号 `fi' 附近有语法错误
+/home/qq/.xsessionrc: 行 11: `    fi'
+openConnection: connect: 沒有此一檔案或目錄
+cannot connect to brltty at :0

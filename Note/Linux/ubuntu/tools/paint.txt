@@ -1,0 +1,22 @@
+
+一些只言片语：
+
+    GIMP：图像编辑
+
+    Inkscape：矢量图编辑
+
+    Scribus：出版
+
+    Agave：调色版
+
+    Simple-Scan: 图片扫描
+
+    Belder: 三维处理
+
+    MyPaint:随手画
+
+    PiTiVi: 视频编辑
+
+    Audacity: 音频编辑
+
+这9个工具构成美工自由的工具箱。

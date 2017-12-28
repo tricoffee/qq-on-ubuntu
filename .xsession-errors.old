@@ -1,0 +1,10 @@
+/home/qq/.xsessionrc: 行 11: 未预期的符号 `fi' 附近有语法错误
+/home/qq/.xsessionrc: 行 11: `    fi'
+openConnection: connect: 沒有此一檔案或目錄
+cannot connect to brltty at :0
+dwm: missing fontset: ISO10646-1
+dwm: missing fontset: BIG5-0
+dwm: missing fontset: ISO8859-1
+dwm: missing fontset: ISO8859-1
+
+** (gnome-terminal.real:1688): WARNING **: Couldn't connect to accessibility bus: Failed to connect to socket /tmp/dbus-FAEG7fn533: 連線被拒絕
